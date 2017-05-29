@@ -7,31 +7,63 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="Mario">
-      <sprites name="Small">
-        <sprite>sprites\spr_mario_small_walk</sprite>
-        <sprite>sprites\spr_mario_small_jump</sprite>
-        <sprite>sprites\spr_mario_small_run</sprite>
-        <sprite>sprites\spr_mario_small_runjump</sprite>
-        <sprite>sprites\spr_mario_small_skid</sprite>
-        <sprite>sprites\spr_mario_small_climb</sprite>
-        <sprite>sprites\spr_mario_small_swim</sprite>
-        <sprite>sprites\spr_mario_small_swim2</sprite>
-        <sprite>sprites\spr_mario_small_carry</sprite>
-        <sprite>sprites\spr_mario_small_hold</sprite>
-        <sprite>sprites\spr_mario_small_hold2</sprite>
-        <sprite>sprites\spr_mario_small_duck</sprite>
-        <sprite>sprites\spr_mario_small_spin</sprite>
-        <sprite>sprites\spr_mario_small_slide</sprite>
-        <sprite>sprites\spr_mario_small_kick</sprite>
+      <sprites name="Main">
+        <sprites name="Small">
+          <sprite>sprites\spr_mario_small_walk</sprite>
+          <sprite>sprites\spr_mario_small_jump</sprite>
+          <sprite>sprites\spr_mario_small_run</sprite>
+          <sprite>sprites\spr_mario_small_runjump</sprite>
+          <sprite>sprites\spr_mario_small_skid</sprite>
+          <sprite>sprites\spr_mario_small_climb</sprite>
+          <sprite>sprites\spr_mario_small_swim</sprite>
+          <sprite>sprites\spr_mario_small_carry</sprite>
+          <sprite>sprites\spr_mario_small_hold</sprite>
+          <sprite>sprites\spr_mario_small_hold2</sprite>
+          <sprite>sprites\spr_mario_small_duck</sprite>
+          <sprite>sprites\spr_mario_small_spin</sprite>
+          <sprite>sprites\spr_mario_small_slide</sprite>
+          <sprite>sprites\spr_mario_small_kick</sprite>
+        </sprites>
+        <sprites name="Big">
+          <sprite>sprites\spr_mario_big_walk</sprite>
+          <sprite>sprites\spr_mario_big_jump</sprite>
+          <sprite>sprites\spr_mario_big_run</sprite>
+          <sprite>sprites\spr_mario_big_runjump</sprite>
+          <sprite>sprites\spr_mario_big_skid</sprite>
+          <sprite>sprites\spr_mario_big_climb</sprite>
+          <sprite>sprites\spr_mario_big_swim</sprite>
+          <sprite>sprites\spr_mario_big_carry</sprite>
+          <sprite>sprites\spr_mario_big_hold</sprite>
+          <sprite>sprites\spr_mario_big_hold2</sprite>
+          <sprite>sprites\spr_mario_big_duck</sprite>
+          <sprite>sprites\spr_mario_big_spin</sprite>
+          <sprite>sprites\spr_mario_big_slide</sprite>
+          <sprite>sprites\spr_mario_big_kick</sprite>
+        </sprites>
+        <sprites name="Fire">
+          <sprite>sprites\spr_mario_fire_walk</sprite>
+          <sprite>sprites\spr_mario_fire_jump</sprite>
+          <sprite>sprites\spr_mario_fire_run</sprite>
+          <sprite>sprites\spr_mario_fire_runjump</sprite>
+          <sprite>sprites\spr_mario_fire_skid</sprite>
+          <sprite>sprites\spr_mario_fire_climb</sprite>
+          <sprite>sprites\spr_mario_fire_swim</sprite>
+          <sprite>sprites\spr_mario_fire_carry</sprite>
+          <sprite>sprites\spr_mario_fire_hold</sprite>
+          <sprite>sprites\spr_mario_fire_hold2</sprite>
+          <sprite>sprites\spr_mario_fire_duck</sprite>
+          <sprite>sprites\spr_mario_fire_spin</sprite>
+          <sprite>sprites\spr_mario_fire_slide</sprite>
+          <sprite>sprites\spr_mario_fire_kick</sprite>
+          <sprite>sprites\spr_mario_fire_shoot</sprite>
+        </sprites>
       </sprites>
-      <sprites name="Big">
-        <sprite>sprites\spr_mario_big_walk</sprite>
-        <sprite>sprites\spr_mario_big_jump</sprite>
+      <sprites name="Extra">
+        <sprite>sprites\spr_mario_pull</sprite>
+        <sprite>sprites\spr_mario_ride</sprite>
       </sprites>
       <sprite>sprites\spr_mask</sprite>
       <sprite>sprites\spr_bigmask</sprite>
-      <sprite>sprites\spr_mario_pull</sprite>
-      <sprite>sprites\spr_mario_ride</sprite>
       <sprite>sprites\spr_mario_dead</sprite>
     </sprites>
   </sprites>

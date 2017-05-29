@@ -2,15 +2,15 @@
 <sprite>
   <type>0</type>
   <xorig>8</xorig>
-  <yorigin>0</yorigin>
+  <yorigin>16</yorigin>
   <colkind>0</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>-1</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
   <bbox_right>15</bbox_right>
-  <bbox_top>0</bbox_top>
-  <bbox_bottom>15</bbox_bottom>
+  <bbox_top>5</bbox_top>
+  <bbox_bottom>31</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -18,10 +18,10 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>16</width>
-  <height>16</height>
+  <height>32</height>
   <frames>
-    <frame index="0">images\spr_mario_small_swim_0.png</frame>
-    <frame index="1">images\spr_mario_small_swim_1.png</frame>
-    <frame index="2">images\spr_mario_small_swim_2.png</frame>
+    <frame index="0">images\spr_mario_fire_walk_0.png</frame>
+    <frame index="1">images\spr_mario_fire_walk_1.png</frame>
+    <frame index="2">images\spr_mario_fire_walk_2.png</frame>
   </frames>
 </sprite>
