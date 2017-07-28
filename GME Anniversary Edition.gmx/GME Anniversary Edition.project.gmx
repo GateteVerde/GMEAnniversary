@@ -195,6 +195,20 @@
         <sprites name="Super">
           <sprite>sprites\spr_mario_super_walk</sprite>
           <sprite>sprites\spr_mario_super_jump</sprite>
+          <sprite>sprites\spr_mario_super_run</sprite>
+          <sprite>sprites\spr_mario_super_runjump</sprite>
+          <sprite>sprites\spr_mario_super_skid</sprite>
+          <sprite>sprites\spr_mario_super_climb</sprite>
+          <sprite>sprites\spr_mario_super_swim</sprite>
+          <sprite>sprites\spr_mario_super_carry</sprite>
+          <sprite>sprites\spr_mario_super_hold</sprite>
+          <sprite>sprites\spr_mario_super_hold2</sprite>
+          <sprite>sprites\spr_mario_super_duck</sprite>
+          <sprite>sprites\spr_mario_super_spin</sprite>
+          <sprite>sprites\spr_mario_super_slide</sprite>
+          <sprite>sprites\spr_mario_super_clear</sprite>
+          <sprite>sprites\spr_mario_super_kick</sprite>
+          <sprite>sprites\spr_mario_super_shoot</sprite>
         </sprites>
       </sprites>
       <sprites name="Extra">
@@ -208,7 +222,6 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
-  <shaders name="shaders"/>
   <constants number="17">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
