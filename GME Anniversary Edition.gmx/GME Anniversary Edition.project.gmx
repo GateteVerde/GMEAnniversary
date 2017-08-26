@@ -347,9 +347,42 @@
       <sprite>sprites\spr_bigmask</sprite>
       <sprite>sprites\spr_mario_dead</sprite>
     </sprites>
+    <sprites name="Masks">
+      <sprites name="Collision">
+        <sprite>sprites\spr_square</sprite>
+        <sprite>sprites\spr_square_b</sprite>
+        <sprite>sprites\spr_square_c</sprite>
+        <sprite>sprites\spr_square_d</sprite>
+        <sprite>sprites\spr_square_e</sprite>
+        <sprite>sprites\spr_square_f</sprite>
+        <sprites name="Slopes">
+          <sprite>sprites\spr_slope_r</sprite>
+          <sprite>sprites\spr_slope_l</sprite>
+          <sprite>sprites\spr_slope_sr</sprite>
+          <sprite>sprites\spr_slope_sl</sprite>
+        </sprites>
+        <sprites name="Slopes (Ceiling)">
+          <sprite>sprites\spr_cslope_r</sprite>
+          <sprite>sprites\spr_cslope_l</sprite>
+          <sprite>sprites\spr_cslope_sr</sprite>
+          <sprite>sprites\spr_cslope_sl</sprite>
+        </sprites>
+        <sprite>sprites\spr_linemask</sprite>
+        <sprite>sprites\spr_squaremask</sprite>
+      </sprites>
+    </sprites>
+    <sprite>sprites\spr_up</sprite>
+    <sprite>sprites\spr_down</sprite>
+    <sprite>sprites\spr_left</sprite>
+    <sprite>sprites\spr_right</sprite>
+    <sprite>sprites\spr_endmarker</sprite>
+    <sprite>sprites\spr_eventmarker</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <objects name="objects">
+    <object>objects\obj_persistent</object>
+  </objects>
   <constants number="17">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
