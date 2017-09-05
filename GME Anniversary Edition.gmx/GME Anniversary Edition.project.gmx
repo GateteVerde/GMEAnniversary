@@ -380,6 +380,9 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_init_globals.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_persistent</object>
   </objects>
