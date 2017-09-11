@@ -51,6 +51,12 @@
 //Persistence mode
 global.persistence = true;
 
+//Game width
+global.gw = 384;
+
+//Game height
+global.gh = 216;
+
 //Screenshot of the game, if it exists
 back = -1;
 
@@ -108,6 +114,367 @@ math_set_epsilon(0.00001);
 
 //Disable application surface automatic drawing
 application_surface_draw_enable(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Delay applying settings
+
+//Apply fullscreen
+window_set_fullscreen(fullscreen);
+
+//Apply filtering and VSync
+event_user(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Center the window
+
+window_center();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Update the view values
+
+//Set the view width and height
+view_wport[0] = global.gw;
+view_hport[0] = global.gh;
+view_wview[0] = global.gw;
+view_hview[0] = global.gh;
+
+//Enable views
+view_enabled = true;
+
+//Make sure view 0 is always visible
+if (!view_visible[0])
+    view_visible[0] = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="18">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle all of the hot keys
+
+//Quit the game when ALT+F4 are pressed.
+if (keyboard_check_pressed(vk_f4))
+    game_end();
+    
+//Restart the game when ALT+R are pressed.
+else if (keyboard_check_pressed(ord('R'))) {
+
+    //Stop all playing sounds
+    audio_stop_all();
+    
+    //Force reset the game
+    room_goto(rm_enginetest)
+}
+
+//Fullscreen (Handled by GM: Studio)
+else if (keyboard_check_pressed(vk_enter)) {
+
+    //Toggle between fullscreen or windowed mode.
+    fullscreen = !fullscreen
+        
+    //Apply settings
+    event_user(1);
+}
+
+//Toggles VSync
+else if (keyboard_check_pressed(ord('V'))) {
+
+    //Toggle vertical syncronization on / off.
+    vsync = !vsync
+        
+    //Apply settings
+    event_user(1);
+}
+
+//Toggle FPS display
+else if (keyboard_check_pressed(ord('F')))
+    showfps = !showfps
+
+//Set default window size
+else if (keyboard_check_pressed(ord('1'))) {
+
+    filter = 0;
+    event_user(1);
+}
+
+//Set 2x window size
+else if (keyboard_check_pressed(ord('2'))) {
+
+    filter = 1;
+    event_user(1);
+}
+
+//Set 3x window size
+else if (keyboard_check_pressed(ord('3'))) {
+
+    filter = 2
+    event_user(1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set up the screen to be displayed
+
+//Temporary variable
+var s;
+
+//Normal
+if (filter = 0)
+    s = 1;
+
+//HQ2X
+else if (filter = 1)
+    s = 2;
+
+//HQ4X
+else if (filter = 2)
+    s = 3;
+
+//Reset display
+display_reset(0,vsync);
+
+//Set up the window
+window_set_size(global.gw*s,global.gh*s);
+
+//Set up the display
+display_set_gui_size(global.gw*s,global.gh*s);
+
+//Center the window
+alarm[2] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Save Fullscreen + Window size + VSync Settings
+
+//Open the file
+var file = file_text_open_write("Settings.dat");
+
+//Save fullscreen settings
+file_text_write_string(file,string(fullscreen));
+file_text_writeln(file);
+
+//Save filtering settings
+file_text_write_string(file,string(filter));
+file_text_writeln(file);
+
+//Save vsync settings
+file_text_write_string(file,string(vsync));
+
+//Close the file
+file_text_close(file);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Load Fullscreen + Window size + VSync Settings
+
+//If the 'settings.dat' file exist.
+if (file_exists("Settings.dat")) {
+
+    //Open the file
+    var file = file_text_open_read("Settings.dat");
+
+    //Set fullscreen mode based on the read value
+    fullscreen = real(file_text_read_string(file));
+    file_text_readln(file);
+
+    //Set filtering mode based on the read value
+    filter = real(file_text_read_string(file));
+    file_text_readln(file);
+
+    //Set vsync based on the read value
+    vsync = real(file_text_read_string(file));
+
+    //Close the file
+    file_text_close(file);
+}
+else {
+
+    //Fullscreen is off by default
+    fullscreen = 0;
+
+    //Set the window to double of it's original size
+    filter = 2;
+
+    //VSync is off by default
+    vsync = 0;
+}
+
+//Apply loaded settings
+alarm[5] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Deals with the application surface, window size, and fading.
+
+//Disable alpha blending
+draw_enable_alphablend(false)
+
+//No Filter
+if (filter = 0)
+    draw_surface(application_surface,0,0);
+
+//2x Filtering 
+else if (filter = 1)
+    draw_surface_stretched(application_surface,0,0,global.gw*2,global.gh*2);
+
+//3x Filtering
+else if (filter = 2)
+    draw_surface_stretched(application_surface,0,0,global.gw*3,global.gh*3);
+
+//Enable alpha blending
+draw_enable_alphablend(true)
 </string>
           </argument>
         </arguments>

@@ -26,6 +26,9 @@ lives = 3;
 //Score
 score = 0;
 
+//Current Player
+global.player = 0;
+
 //Display 'Mario Start!'
 global.ms = false;
 
@@ -60,6 +63,12 @@ global.palaceyellow = 0;
 global.palacegreen = 0;
 
 //Position change object type
+//-1: No Change
+//0: Mario
+//1: Pipe
+//2: Jump
+//3: Climb
+//4: Warp/Mystery Boxes
 global.postchange = -1;
 
 //Position change coordinates

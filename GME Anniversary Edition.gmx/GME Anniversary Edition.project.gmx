@@ -346,6 +346,10 @@
       <sprite>sprites\spr_mask</sprite>
       <sprite>sprites\spr_bigmask</sprite>
       <sprite>sprites\spr_mario_dead</sprite>
+      <sprite>sprites\spr_mario_position</sprite>
+      <sprite>sprites\spr_mario_position_jump</sprite>
+      <sprite>sprites\spr_mario_position_climb</sprite>
+      <sprite>sprites\spr_mario_position_warp</sprite>
     </sprites>
     <sprites name="Masks">
       <sprites name="Collision">
@@ -381,11 +385,58 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Player">
+      <scripts name="Behaviour">
+        <script>scripts\scr_player_behaviour.gml</script>
+        <script>scripts\scr_player_behaviour_climb.gml</script>
+        <script>scripts\scr_player_behaviour_swim.gml</script>
+        <script>scripts\scr_player_behaviour_slide.gml</script>
+      </scripts>
+    </scripts>
     <script>scripts\scr_init_globals.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_persistent</object>
+    <object>objects\obj_player_start</object>
+    <objects name="Collision">
+      <object>objects\obj_solid</object>
+      <object>objects\obj_semisolid</object>
+      <object>objects\obj_climb</object>
+      <object>objects\obj_climb_net</object>
+      <object>objects\obj_swim</object>
+      <object>objects\obj_slippery</object>
+      <objects name="Slopes">
+        <object>objects\obj_slope_r</object>
+        <object>objects\obj_slope_l</object>
+        <object>objects\obj_slope_sr</object>
+        <object>objects\obj_slope_sl</object>
+      </objects>
+    </objects>
+    <objects name="Special">
+      <objects name="Parents">
+        <objects name="Collision">
+          <object>objects\obj_slopeparent</object>
+          <object>objects\obj_ceilslopeparent</object>
+        </objects>
+        <object>objects\obj_playerparent</object>
+      </objects>
+      <objects name="Don't Use">
+        <objects name="Players">
+          <objects name="Skins">
+            <object>objects\obj_mario</object>
+          </objects>
+        </objects>
+      </objects>
+      <object>objects\obj_persistent</object>
+    </objects>
+    <object>objects\obj_up</object>
+    <object>objects\obj_down</object>
+    <object>objects\obj_left</object>
+    <object>objects\obj_right</object>
   </objects>
+  <rooms name="rooms">
+    <room>rooms\rm_load</room>
+    <room>rooms\rm_enginetest</room>
+  </rooms>
   <constants number="17">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
