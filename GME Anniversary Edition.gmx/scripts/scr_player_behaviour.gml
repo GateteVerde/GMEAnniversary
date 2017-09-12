@@ -9,8 +9,8 @@
 */
 
 //Figure out the player's state.
-if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
-|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0))
+if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
+|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)))
 && (gravity == 0) {
 
     //Figure out if the player is standing or walking
@@ -34,38 +34,31 @@ else {
 }
 
 //Prevent the player from falling too fast.
-if (vspeed > 3.5)
-    vspeed = 3.5;
+if (vspeed > 4)
+    vspeed = 4;
     
 //Set up the player's maximum horizontal speed.
-//Collision with 45ª slopes
-if ((collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slope_sr,1,0)) && (hspeed > 0))
-|| ((collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slope_sl,1,0)) && (hspeed < 0)) { 
+if (!flying) { //If the player is not flying
 
-    //Perform only if walking
-    if (state == 1)
-        hspeedmax = 0.675;
-}
+    if (keyboard_check(vk_control)) { //If the control key is being held.
+        
+        //If the P-Meter is filled up.
+        if (run)  
+            hspeedmax = 3;
+        
+        //Otherwise, if the P-Meter is not filled up.
+        else    
+            hspeedmax = 2.5;
+    }               
     
-//Collision with 22.5ª slopes.
-else if ((collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slope_r,1,0)) && (hspeed > 0))
-|| ((collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slope_l,1,0)) && (hspeed < 0)) {
+    //Otherwise, do not reduce speed until Mario makes contact with the ground.  
+    else  
+        hspeedmax = 1.5;
+}
 
-    //Perform only if walking
-    if (state == 1)
-        hspeedmax = 1.35;
-}
-
-//Otherwise, set default limits.
-else {
-    
-    if (keyboard_check(vk_control)) //If the control key is being held.
-        hspeedmax = 2.7;
-    
-    //Otherwise, do not reduce speed until the player makes contact with the ground.  
-    else
-        hspeedmax = 1.35;
-}
+//Otherwise, if Mario is flying.
+else 
+    hspeedmax = 2;
 
 //Handle basic movements
 if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disabled.
@@ -306,12 +299,15 @@ else if (vspeed == 0) {
 if ((state != 2) && (abs(hspeed) > hspeedmax))
     hspeed = max(0,abs(hspeed)-0.1)*sign(hspeed);
 
-//If the player is jumping
-if ((state == 2) || (delay > 0)) {
+//If Mario is jumping
+if ((state == 2) || (statedelay > 0)) {
     
     //Variable jumping
-    if (vspeed < -2) && (jumping == 1)
+    if (vspeed < -2) && (jumping == 1) {
+    
+        //Use alternate gravity
         gravity = grav_alt;
+    }   
     
     //Otherwise, use alternate gravity.     
     else {
@@ -323,10 +319,37 @@ if ((state == 2) || (delay > 0)) {
         if (jumping = 1)
             jumping = 2;
     }
+
+    //If Mario is using the raccoon or the tanooki powerup.
+    if (global.powerup == cs_leaf) {
+    
+        //If gravity is disabled.
+        if (disablegrav > 0) {
+        
+            if (state != 2) {
+            
+                //Enable gravity
+                disablegrav = 0;
+            }
+            else {
+            
+                //Deny gravity
+                gravity = 0;
+                
+                //Enable gravity
+                disablegrav--;
+            }
+        }
+    }
+    
+    //Otherwise, enable gravity.
+    else
+        disablegrav = 0;
 }
 
 //Climb if overlapping a climbing surface.
-if (collision_rectangle(bbox_left,y,bbox_right,y+15,obj_climb,0,0))
+if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_climb,0,0))
+&& (holding = 0)
 && (!disablecontrol)
 && (keyboard_check(vk_up)) {
 
@@ -338,13 +361,94 @@ if (collision_rectangle(bbox_left,y,bbox_right,y+15,obj_climb,0,0))
     gravity = 0;    
 }
 
-//Handles sliding down slopes and shell/penguin Mario sliding
-if keyboard_check_pressed(vk_down)
-&& (!disablecontrol)
-&& (holding = 0) {
+//Makes Mario butt-slide down slopes
+if (keyboard_check_pressed(vk_down)) 
+&& (disablecontrol == 0) {
 
     //If Mario is on a slope, and the above didn't happen, slide normally
-    if (collision_rectangle(x-1,bbox_bottom-4,x-1,bbox_bottom+1,obj_slopeparent,1,0))
-    || (collision_rectangle(x+1,bbox_bottom-4,x+1,bbox_bottom+1,obj_slopeparent,1,0))
-        sliding = true;
+    if (collision_point(x-1,bbox_bottom+2,obj_slopeparent,1,0)) 
+    || (collision_point(x+1,bbox_bottom+2,obj_slopeparent,1,0)) {
+    
+        //If Mario can slide and it's not holding anything.
+        if (holding == 0)
+            sliding = true;
+            
+        //Otherwise, just crouch down if Mario can do it.
+        else
+            crouch = true;
+    }       
+}
+
+//Make Mario able to fly or slowdown his fall.
+if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
+&& (jumping != 1)
+&& (state == 2)
+&& (stompstyle == false)
+&& (keyboard_check_pressed(vk_shift)) {
+
+    //If Mario is running.
+    if (run) {
+    
+        //Play 'tail' sound.
+        audio_stop_sound(snd_spin);
+        audio_play_sound(snd_spin,0,0);
+        
+        //If Mario can fly
+        if (canfly) {
+        
+            //Make Mario able to fly for 4 seconds
+            if (!flying) {
+            
+                flying = true;
+                alarm[9] = 240;
+            }
+            
+            //Whip tail.
+            wiggle = 16;
+            
+            //Disable gravity.
+            disablegrav = 16;            
+            
+            //Set the vertical speed.
+            if (alarm[9] > 30)  
+                vspeed = -1.5;
+            else {
+            
+                if (vspeed < 0)
+                    vspeed  = max(vspeed + 0.5, 0);
+                else
+                    vspeed = 0;
+            }
+        }
+        
+        //Otherwise, if Mario cannot fly
+        else if (!canfly) { 
+            
+            //Whip tail.
+            wiggle = 16;
+            
+            //Disable gravity.
+            disablegrav = 16;
+            
+            //Set the vertical speed.
+            vspeed = 0.75;        
+        }
+    }
+    
+    //Otherwise, if Mario is not running.
+    else if (!run) { 
+    
+        //Play 'tail' sound.
+        audio_stop_sound(snd_spin);
+        audio_play_sound(snd_spin,0,0);      
+        
+        //Whip tail.
+        wiggle = 16;
+        
+        //Disable gravity.
+        disablegrav = 16;
+        
+        //Set the vertical speed.
+        vspeed = 0.75;
+    }
 }
