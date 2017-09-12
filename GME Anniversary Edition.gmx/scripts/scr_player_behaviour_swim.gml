@@ -8,8 +8,9 @@
 **      Handles the main movement of the player when it's swimming
 */
 
-//Do not slide
-sliding = false;
+//Reset following variables
+sliding = 0;
+stompstyle = 0;
 
 //Figure out the player's state.
 if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
@@ -59,6 +60,9 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
 
     //If the player presses the 'Shift' key.
     if (keyboard_check_pressed(vk_shift)) {
+    
+        //Play 'Swim' sound
+        audio_play_sound(snd_swim, 0, false);
     
         //Swim higher if the 'Up' key is pressed.
         if (keyboard_check(vk_up))
@@ -145,8 +149,9 @@ else if (disablecontrol) {
 }
 
 //Prevent the player from sliding too fast.
-if (abs(hspeed) > hspeedmax)
-    hspeed = max(0,abs(hspeedmax)-0.05*2)*sign(hspeed);
+if (state != 2)
+&& (abs(hspeed) > hspeedmax)
+    hspeed = max(0,abs(hspeedmax)-0.1)*sign(hspeed);
     
 //Apply gravity
 if ((state == 2) || (delay > 0))

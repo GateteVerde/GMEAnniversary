@@ -75,16 +75,39 @@ if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disable
     && (jumping == 0)
     && (vspeed == 0) 
     && (state != 2) { //If the 'Shift' key is pressed and the player is not jumping.
-                        
-        //Set the vertical speed.
-        vspeed = -jumpstr+abs(hspeed)/7.5*-1;
+                            
+        //If the 'Up' key is pressed.
+        if (keyboard_check(vk_up)) {
+            
+            //Set the vertical speed.
+            vspeed = -jumpstr;
+            
+            //Set the stomp style
+            stompstyle = true;
+            
+            //Play 'Jump' sound
+            audio_play_sound(snd_spin, 0, false);                    
+        }
+        
+        //Otherwise, if it's not
+        else if (!keyboard_check(vk_up)) {
+            
+            //Set the vertical speed.
+            vspeed = -jumpstr+abs(hspeed)/7.5*-1;
+            
+            //Set the stomp style
+            stompstyle = false;
+            
+            //Play 'Jump' sound
+            audio_play_sound(snd_jump, 0, false);
+        }
+        
+        //Switch to jump state
+        state = 2;        
         
         //Make the player able to vary the jump.
         jumping = 1;
-        
-        //Switch to jump state
-        state = 2;
-        
+                
         //Move the player a few pixels upwards when on contact with a moving platform or a slope.
         var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);
         if ((platform) && (platform.vspeed < 0))
@@ -240,17 +263,6 @@ if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disable
                 hspeed = 0;
         }
     }
-    
-    //Slowdown the player is he is faster than his maximum speed.
-    if ((state != 2) && (abs(hspeed) > hspeedmax)) {
-
-        //Slow down Mario's horizontal speed
-        hspeed = max(0,abs(hspeed)-0.025)*sign(hspeed);
-
-        //If Mario is slow enough, stop his horizontal speed entirely
-        if abs(hspeed) < 0.025
-            hspeed = 0
-    }
 }
 
 //Otherwise, if the player's controls are disabled and the player is on contact with the ground.
@@ -290,6 +302,10 @@ else if (vspeed == 0) {
     }
 }
 
+//Slowdown the player is he is faster than his maximum speed.
+if ((state != 2) && (abs(hspeed) > hspeedmax))
+    hspeed = max(0,abs(hspeed)-0.1)*sign(hspeed);
+
 //If the player is jumping
 if ((state == 2) || (delay > 0)) {
     
@@ -310,7 +326,7 @@ if ((state == 2) || (delay > 0)) {
 }
 
 //Climb if overlapping a climbing surface.
-if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_climb,0,0))
+if (collision_rectangle(bbox_left,y,bbox_right,y+15,obj_climb,0,0))
 && (!disablecontrol)
 && (keyboard_check(vk_up)) {
 
@@ -318,8 +334,8 @@ if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_climb,0,0))
     state = 3;
     
     //Stop movement
-    gravity = 0;
     speed = 0;
+    gravity = 0;    
 }
 
 //Handles sliding down slopes and shell/penguin Mario sliding
@@ -328,7 +344,7 @@ if keyboard_check_pressed(vk_down)
 && (holding = 0) {
 
     //If Mario is on a slope, and the above didn't happen, slide normally
-    if collision_point(bbox_left,bbox_bottom+1,obj_slopeparent,1,0)
-    || collision_point(bbox_right,bbox_bottom+1,obj_slopeparent,1,0)
+    if (collision_rectangle(x-1,bbox_bottom-4,x-1,bbox_bottom+1,obj_slopeparent,1,0))
+    || (collision_rectangle(x+1,bbox_bottom-4,x+1,bbox_bottom+1,obj_slopeparent,1,0))
         sliding = true;
 }

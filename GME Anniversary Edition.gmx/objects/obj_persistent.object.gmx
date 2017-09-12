@@ -119,7 +119,7 @@ application_surface_draw_enable(0);
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="5">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -142,13 +142,13 @@ application_surface_draw_enable(0);
 window_set_fullscreen(fullscreen);
 
 //Apply filtering and VSync
-event_user(1);
+event_user(0);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="2">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -270,28 +270,28 @@ else if (keyboard_check_pressed(ord('F')))
 else if (keyboard_check_pressed(ord('1'))) {
 
     filter = 0;
-    event_user(1);
+    event_user(0);
 }
 
 //Set 2x window size
 else if (keyboard_check_pressed(ord('2'))) {
 
     filter = 1;
-    event_user(1);
+    event_user(0);
 }
 
 //Set 3x window size
 else if (keyboard_check_pressed(ord('3'))) {
 
     filter = 2
-    event_user(1);
+    event_user(0);
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="11">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -335,7 +335,7 @@ window_set_size(global.gw*s,global.gh*s);
 display_set_gui_size(global.gw*s,global.gh*s);
 
 //Center the window
-alarm[2] = 1;
+alarm[0] = 1;
 </string>
           </argument>
         </arguments>
@@ -433,7 +433,7 @@ else {
 }
 
 //Apply loaded settings
-alarm[5] = 1;
+alarm[1] = 1;
 </string>
           </argument>
         </arguments>

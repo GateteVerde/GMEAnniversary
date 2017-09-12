@@ -8,6 +8,9 @@
 **      Handles the main movement of the player when it's sliding down a slope
 */
 
+//Reset following variables
+stompstyle = 0;
+
 //Figure out the player's state.
 if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
 || (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0))
@@ -47,22 +50,51 @@ if (global.powerup == cs_frog)
 //Make the player able to jump.
 if (!disablecontrol) { //If the player's controls are not disabled.
     
-    //If the player presses the 'Shift' key and the player is sliding down a slope.
-    if (keyboard_check_pressed(vk_shift)) 
-    && (jumping == 0) 
-    && (gravity = 0) {
+    //Make the player able to jump when is on contact with the ground.
+    if (keyboard_check_pressed(vk_shift))
+    && (jumping == 0)
+    && (vspeed == 0) 
+    && (state != 2) { //If the 'Shift' key is pressed and the player is not jumping.
+                            
+        //If the 'Up' key is pressed.
+        if (keyboard_check(vk_up)) {
+            
+            //Set the vertical speed.
+            vspeed = -jumpstr+abs(hspeed)/3.75*-1;
+            
+            //Set the stomp style
+            stompstyle = true;
+            
+            //Play 'Jump' sound
+            audio_play_sound(snd_spin, 0, false);                    
+        }
+        
+        //Otherwise, if it's not
+        else if (!keyboard_check(vk_up)) {
+            
+            //Set the vertical speed.
+            vspeed = -jumpstr+abs(hspeed)/7.5*-1;
+            
+            //Set the stomp style
+            stompstyle = false;
+            
+            //Play 'Jump' sound
+            audio_play_sound(snd_jump, 0, false);
+        }
+        
+        //Stop slide
+        sliding = false;
+        
+        //Switch to jump state
+        state = 2;        
         
         //Make the player able to vary the jump.
         jumping = 1;
-        
-        //Do not slide
-        sliding = 0;
-        
-        //Set the jumping state
-        state = 2;
-        
-        //Set the vertical speed.
-        vspeed = -jumpstr+abs(hspeed)/7.5*-1;      
+                
+        //Move the player a few pixels upwards when on contact with a moving platform or a slope.
+        var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);
+        if ((platform) && (platform.vspeed < 0))
+            y -= 4;
     }
 }
 
