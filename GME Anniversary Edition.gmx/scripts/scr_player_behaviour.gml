@@ -395,45 +395,28 @@ if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
         audio_stop_sound(snd_spin);
         audio_play_sound(snd_spin, 0, false);
         
-        //If Mario can fly
-        if (canfly) {
+        //Make Mario able to fly for 4 seconds
+        if (!flying) {
         
-            //Make Mario able to fly for 4 seconds
-            if (!flying) {
-            
-                flying = true;
-                alarm[9] = 240;
-            }
-            
-            //Whip tail.
-            wiggle = 16;
-            
-            //Disable grav.
-            disablegrav = 16;            
-            
-            //Set the vertical speed.
-            if (alarm[9] > 30)  
-                yspeed = -1.5;
-            else {
-            
-                if (yspeed < 0)
-                    yspeed  = max(yspeed + 0.5, 0);
-                else
-                    yspeed = 0;
-            }
+            flying = true;
+            alarm[9] = 240;
         }
         
-        //Otherwise, if Mario cannot fly
-        else if (!canfly) { 
-            
-            //Whip tail.
-            wiggle = 16;
-            
-            //Disable grav.
-            disablegrav = 16;
-            
-            //Set the vertical speed.
-            yspeed = 0.75;        
+        //Whip tail.
+        wiggle = 16;
+        
+        //Disable grav.
+        disablegrav = 16;            
+        
+        //Set the vertical speed.
+        if (alarm[9] > 30)  
+            yspeed = -1.5;
+        else {
+        
+            if (yspeed < 0)
+                yspeed  = max(yspeed + 0.5, 0);
+            else
+                yspeed = 0;
         }
     }
     

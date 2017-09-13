@@ -84,7 +84,6 @@ sliding = 0;
 
 //Makes the player able to fly high.
 flying = false;
-canfly = false;
 
 //Makes the player able to crouch down.
 crouch = 0;
@@ -369,7 +368,7 @@ if (!swimming) {
             }
             
             //Otherwise, if the player's horizontal speed is lower than 2.4
-            else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; 2.4))) { 
+            else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; 2.5))) { 
             
                 //If the player is flying and lands on the floor.
                 if (flying) {
@@ -487,8 +486,8 @@ else if (xspeed &lt; 0)
 if (yspeed &lt; 0) {
 
     //Collision with a ceiling
-    if ((collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,0,0)) 
-    || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
+    if ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,0,0)) 
+    || (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
     
         //Play 'Bump' sound
         if (!audio_is_playing(snd_bump))        
@@ -693,6 +692,12 @@ else if (inwall) {
         inwall = false;
 }
 
+//Handle tail whip animation
+if ((state == 2) &amp;&amp; (wiggle &gt; 0))
+    wiggle--;
+else
+    wiggle = 0;
+
 //If the player is not in contact with water.
 if (!collision_rectangle(bbox_left,y,bbox_right,bbox_bottom,obj_swim,1,1)) {
 
@@ -709,7 +714,7 @@ if (y &lt; -96)
 else {
 
     //If the player is below the bottom room boundary, restart the room.
-    if (bbox_top &gt; room_height+32)
+    if (bbox_bottom &gt; room_height+32)
         room_restart();
 }
 </string>
