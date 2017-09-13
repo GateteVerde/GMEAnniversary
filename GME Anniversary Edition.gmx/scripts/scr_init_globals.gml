@@ -39,7 +39,7 @@ global.ms = false;
 global.clear = 0;
 
 //Powerup
-global.powerup = cs_small;
+global.powerup = cs_leaf;
 
 //Reserve item
 global.reserve = cs_small;

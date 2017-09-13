@@ -27,97 +27,103 @@
             <kind>1</kind>
             <string>///Super Player Parent
 
-//Handle Mario's current state.
+//Movement variables
+xspeed = 0;
+yspeed = 0;
+ygrav = 0;
+
+//Handle the player current state.
 //0:    Idle
 //1:    Walk
 //2:    Jump / Swim
 //3:    Climb
 state = 0;
-statedelay = 0;
+delay = 0;
 
-//Handle Mario's facing direction.
+//Handle the player facing direction.
 //1:    Right
 //-1:   Left
 xscale = 1;
 
-//Handle Mario's direction when stuck on a solid.
+//Handle the player direction when stuck on a solid.
 //1:    Right
 //-1:   Left
 direct = 1;
 
-//Make Mario able to hold various items.
+//Make the player able to hold various items.
 //0:    Can hold
 //1:    SMB2 style holding.
 //2:    SMW/SMB3 style holding.
 //3:    SMA4 Boomerang
 holding = 0;
 
-//Handle Mario's jump.
+//Handle the player jump.
 //0:    Can jump
 //1:    Can stop in mid-air
 //2:    Cannot stop in mid-air
 jumping = 0;
 
-//Allow Mario to spin-jump.
+//Allow the player to spin-jump.
 stompstyle = false;
 
-//Plays a sound when Mario is climbing up a beanstalk.
+//Plays a sound when the player is climbing up a beanstalk.
 noise = 0;
 
-//Makes Mario run faster
+//Makes the player run faster
 run = 0;
 
-//Makes Mario change it's direction.
+//Makes the player change it's direction.
 skidnow = 0;
 turning = 0;
 
-//Makes Mario swim when on contact with a water surface.
+//Makes the player swim when on contact with a water surface.
 swimming = 0;
 
-//Makes Mario able to buttslide down slopes.
+//Makes the player able to buttslide down slopes.
 sliding = 0;
 
-//Makes Mario able to fly high.
+//Makes the player able to fly high.
 flying = false;
+canfly = false;
 
-//Makes Mario able to crouch down.
+//Makes the player able to crouch down.
 crouch = 0;
 
-//Handles Mario net smacking
+//Handles the player net smacking
 netsmack = false;
 
-//Makes Mario able or not able to move.
+//Makes the player able or not able to move.
 move = false;
 
 //Handle P-Meter
 pmeter = 0;
 pmeterready = false;
 
-//Makes Mario able to kick held items.
+//Makes the player able to kick held items.
 kicking = false;
 
-//Is Mario's gravity disabled?
+//Is the player gravity disabled?
 disablegrav = 0;
 
-//Makes Mario invulnerable to all hazards.
+//Makes the player invulnerable to all hazards.
 invulnerable = false;
 
-//Disables Mario's controls completely.
+//Disables the player controls completely.
 disablecontrol = false;
 
-//Checks if Mario is stuck on a solid surface.
+//Checks if the player is stuck on a solid surface.
 inwall = false;
 
-//Displays Mario's shooting pose when firing a projectile
+//Displays the player shooting pose when firing a projectile
 firing = 0;
 
-//Is Raccoon / Tanooki Mario wiggling his tail?
+//Is Raccoon / Tanooki the player wiggling his tail?
 wiggle = 0;
 
-//Handles Mario's combos and gives extra lives.
+//Handles the player combos and gives extra lives.
 combo = 0;
 
-//Delay the use of the leaf powerup if Mario just dismounted yoshi
+//Delay the use of the leaf powerup if the player just dismounted yoshi
 dismount = 0;
 </string>
           </argument>
@@ -151,6 +157,10 @@ pmeter = 0;
 
 //Make Mario walk
 run = 0;
+
+//Stop 'P-Meter' sound
+if (audio_is_playing(snd_pmeter))
+    audio_stop_sound(snd_pmeter);
 </string>
           </argument>
         </arguments>
@@ -237,11 +247,16 @@ invulnerable = false;
             <kind>1</kind>
             <string>///Physics
 
+//Move the player based on the values of xspeed, yspeed and ygrav
+x += xspeed;
+y += yspeed;
+yspeed += ygrav;
+
 //Floor collision
-if (vspeed &gt;= 0) { //If the player is moving down.
+if (yspeed &gt;= 0) { //If the player is moving down.
 
     //Check for a semisolid object
-    var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_semisolid,0,0);
+    var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+yspeed,obj_semisolid,0,0);
     
     //If the semisolid exists and the player is above it.
     if (semisolid)
@@ -252,41 +267,42 @@ if (vspeed &gt;= 0) { //If the player is moving down.
         y = semisolid.y-16;
         
         //Stop vertical movement
-        vspeed = 0;
-        gravity = 0;
+        yspeed = 0;
+        ygrav = 0;
         
         //Reset values
         event_user(15);
     }
 }
     
-//Embed Mario into the slope if he is walking or sliding down a slope to ensure correct slope physics.
-if (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0))
-&amp;&amp; (state == 1)
-    y += 4;
+//Embed the player into the slope if he is walking or sliding down a slope to ensure correct slope physics.
+if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+5,obj_slopeparent,1,0)) 
+&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_slopeparent,1,0))
+&amp;&amp; (state == 1) {
+
+    if (!collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,1))
+        y += 4;
+}
 
 //Handle Slope collision
-if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0)) 
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
+if (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slopeparent,1,0)) 
+&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj_slopeparent,1,0)) {
 
-    //If Mario is moving down onto a slope.
-    if (vspeed &gt; 0) {
+    //If the player is moving down onto a slope.
+    if (yspeed &gt; 0) {
     
         //Stop vertical movement
-        vspeed = 0;
-        gravity = 0;
+        yspeed = 0;
+        ygrav = 0;
         
         //Reset values
         event_user(15);
     }
     
-    //Prevent Mario from getting embed inside a slope.
-    if (vspeed &gt; -0.85) {
-    
-        while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0))
+    //Prevent the player from getting embed inside a slope.
+    if (yspeed &gt; -0.85)    
+        while (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slopeparent,1,0))        
             y--;
-    }
 }
 
 /*
@@ -319,19 +335,25 @@ if (!swimming) {
             //Execute main behaviour script
             scr_player_behaviour();
             
-            //If Mario's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
-            if (abs(hspeed) &gt;= 2.4) {
+            //If the player's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
+            if (abs(xspeed) &gt; 2.4) {
             
-                //If Mario is not jumping.
+                //If the player is not jumping.
                 if (state &lt; 2) {
                 
                     //If the P-Meter is full.
                     if (pmeter &gt; 112) {
+                    
+                        //Play 'P-Meter' sound
+                        if (!audio_is_playing(snd_pmeter)) {
+                        
+                            audio_play_sound(snd_pmeter, 0, true);
+                        }
                         
                         //Keep P-Meter full.
                         pmeter = 112;
                     
-                        //Make Mario able to run.
+                        //Make the player able to run.
                         run = true;
                     }
                     else {
@@ -341,21 +363,24 @@ if (!swimming) {
                     }
                 }
                 
-                //If Mario is on the ground and not running.
+                //If the player is on the ground and not running.
                 else if ((!run) &amp;&amp; (pmeter &gt; 0))
                     pmeter--;
             }
             
-            //Otherwise, if Mario's horizontal speed is lower than 2.4
-            else if ((!run) || ((state &lt;= 1) &amp;&amp; (abs(hspeed) &lt; 2.4))) { 
+            //Otherwise, if the player's horizontal speed is lower than 2.4
+            else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; 2.4))) { 
             
-                //If Mario is flying and lands on the floor.
+                //If the player is flying and lands on the floor.
                 if (flying) {
+                
+                    //Stop 'P-Meter' sound
+                    audio_stop_sound(snd_pmeter);
                     
-                    //Allow Mario to fly again.
+                    //Allow the player to fly again.
                     flying = false;
                     
-                    //Make Mario walk
+                    //Make the player walk
                     run = false;
                     
                     //Empty P-Meter.
@@ -363,10 +388,13 @@ if (!swimming) {
                         pmeter --;
                 }
                 
-                //If Mario is not flying.
+                //If the player is not flying.
                 else if (!flying) {
-                    
-                    //Make Mario walk
+                
+                    //Stop 'P-Meter' sound
+                    audio_stop_sound(snd_pmeter);
+                                        
+                    //Make the player walk
                     run = false;
                     
                     //Restart flying.
@@ -384,7 +412,10 @@ if (!swimming) {
         
             //Execute climb behaviour script
             scr_player_behaviour_climb();
-                                    
+        
+            //Stop 'P-Meter' sound
+            audio_stop_sound(snd_pmeter);
+                                                            
             //Decrement P-Meter
             flying = false;
             run = false;
@@ -398,6 +429,9 @@ if (!swimming) {
     
         //Execute slide behaviour script
         scr_player_behaviour_slide();
+        
+        //Stop 'P-Meter' sound
+        audio_stop_sound(snd_pmeter);
                     
         //Decrement P-Meter
         flying = false;
@@ -412,7 +446,10 @@ else if (swimming) {
     
     //Execute swim behaviour script
     scr_player_behaviour_swim();
-                
+        
+    //Stop 'P-Meter' sound
+    audio_stop_sound(snd_pmeter);
+                    
     //Decrement P-Meter
     flying = false;
     run = false;
@@ -421,44 +458,44 @@ else if (swimming) {
 }
 
 //If the player is bumping into a wall to the right
-if (hspeed &gt; 0) 
+if (xspeed &gt; 0) 
 &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-4,obj_solid,0,0)) {
 
     //Stop horizontal movement
-    hspeed = 0;    
+    xspeed = 0;    
     
     //Prevent the player from getting embed into the wall
-    while (collision_rectangle(x,bbox_top+4,bbox_right,bbox_bottom-4,obj_solid,0,0))
+    while (collision_rectangle(x,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,0))
     &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
         x--;
 }
 
 //Otherwise, if the player is bumping into a wall to the left
-else if (hspeed &lt; 0)
+else if (xspeed &lt; 0)
 &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-4,obj_solid,0,0)) {
 
     //Stop horizontal movement
-    hspeed = 0;    
+    xspeed = 0;    
     
     //Prevent the player from getting embed into the wall
-    while (collision_rectangle(bbox_left,bbox_top+4,x,bbox_bottom-4,obj_solid,0,0))
+    while (collision_rectangle(bbox_left,bbox_top+4,x,bbox_bottom-1,obj_solid,0,0))
     &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
         x++;
 }
 
 //If the player is moving up
-if (vspeed &lt; 0) {
+if (yspeed &lt; 0) {
 
     //Collision with a ceiling
-    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,0,0)) 
-    || (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_ceilslopeparent,1,0)) {
+    if ((collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,0,0)) 
+    || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
     
         //Play 'Bump' sound
         if (!audio_is_playing(snd_bump))        
             audio_play_sound(snd_bump, 0, false);
         
         //Stop vertical movement
-        vspeed = 0;
+        yspeed = 0;
         
         //If the player is not climbing
         if (state = 2)
@@ -468,9 +505,9 @@ if (vspeed &lt; 0) {
 }
 
 //Prevent player from getting embed on a ceiling
-if ((state &gt; 2) || (delay &gt; 0)) {
-    while (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,0,0))
-    || (collision_rectangle(bbox_left,bbox_top-2,bbox_right,bbox_top-1,obj_ceilslopeparent,1,0))
+if (((state == 2) || (delay &gt; 0)) || (state == 3)) {
+    while ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,0,0))
+    || (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
         y++;
 }
 
@@ -518,12 +555,12 @@ if ((!swimming) &amp;&amp; (water)) {
     crouch = false;
     
     //Stop horizontal movement
-    hspeed = 0;
+    xspeed = 0;
     
     //Stop vertical movement
-    gravity = 0;
-    if (vspeed &gt; 0)
-        vspeed = 0;
+    ygrav = 0;
+    if (yspeed &gt; 0)
+        yspeed = 0;
 }
 
 //Otherwise, if the player had enough swimming and wants to get out
@@ -533,7 +570,7 @@ else if ((swimming) &amp;&amp; (!water)) {
     if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,0,0)) {
     
         //If the player is moving up
-        if ((state == 2) &amp;&amp; (vspeed &lt; 0)) {
+        if ((state == 2) &amp;&amp; (yspeed &lt; 0)) {
         
             //If 'Shift' is held
             if (keyboard_check(vk_shift)) {
@@ -545,15 +582,15 @@ else if ((swimming) &amp;&amp; (!water)) {
                 jumping = 1;
                 
                 //Set the vertical speed
-                vspeed = -3.4675;
+                yspeed = -3.4675;
             }
             
             //Otherwise, if 'Shift' is not held.
             else {
             
                 //If the player is moving up.
-                if (vspeed &lt; 0)
-                    vspeed = 0;
+                if (yspeed &lt; 0)
+                    yspeed = 0;
             }
         }
     }
@@ -578,7 +615,7 @@ if (state &lt;= 1)
             if (xscale == 1) {
             
                 //If the player's horizontal speed is equal/greater than 0
-                if (hspeed &gt;= 0) {
+                if (xspeed &gt;= 0) {
             
                     //Move the player to safety
                     inwall = true;
@@ -588,7 +625,7 @@ if (state &lt;= 1)
                 }
                 
                 //Otherwise, if the player's horizontal speed is lower than 0
-                else if (hspeed &lt; 0) {
+                else if (xspeed &lt; 0) {
                 
                     //Move the player to safety
                     inwall = true;
@@ -602,7 +639,7 @@ if (state &lt;= 1)
             else if (xscale == -1) {
             
                 //If the player's horizontal speed if equal/lower than 0.
-                if (hspeed &lt;= 0) {
+                if (xspeed &lt;= 0) {
             
                     //Move the player to safety
                     inwall = true;
@@ -612,7 +649,7 @@ if (state &lt;= 1)
                 }
                 
                 //Otherwise, if the player's horizontal speed if greater than 0
-                else if (hspeed &gt; 0) {
+                else if (xspeed &gt; 0) {
                 
                     //Move the player to safety
                     inwall = true;
@@ -711,6 +748,52 @@ if (!sliding)
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Default bounce script
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Default hurt script
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -731,6 +814,18 @@ if (!sliding)
             <string>///Draw player
 
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_white,1);
+
+//Set the font
+draw_set_font(fnt_debug);
+
+//Draw the debug information
+draw_text_colour_shadowed(view_xview[0]+2,view_yview[0]+2,"X: " + string(x)
++ "#Y: " + string(y)
++ "#H. Speed: " + string(xspeed)
++ "#V. Speed: " + string(yspeed)
++ "#State: " + string(state)
++ "#P: " + string(pmeter)
++ "#Flying: " + string(flying) + " - " + string(alarm[9]), c_black, c_white, 1, 1, 0.5, 1);
 </string>
           </argument>
         </arguments>

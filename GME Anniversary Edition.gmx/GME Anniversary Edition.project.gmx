@@ -12,6 +12,7 @@
       <sound>sound\snd_spin</sound>
       <sound>sound\snd_swim</sound>
     </sounds>
+    <sound>sound\snd_pmeter</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Mario">
@@ -368,6 +369,8 @@
           <sprite>sprites\spr_slope_l</sprite>
           <sprite>sprites\spr_slope_sr</sprite>
           <sprite>sprites\spr_slope_sl</sprite>
+          <sprite>sprites\spr_slope_ssr</sprite>
+          <sprite>sprites\spr_slope_ssl</sprite>
         </sprites>
         <sprites name="Slopes (Ceiling)">
           <sprite>sprites\spr_cslope_r</sprite>
@@ -386,7 +389,19 @@
     <sprite>sprites\spr_endmarker</sprite>
     <sprite>sprites\spr_eventmarker</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <backgrounds name="Tile Sets">
+      <backgrounds name="Decoration">
+        <background>background\bgr_tileset_bush</background>
+        <background>background\bgr_tileset_bush_large</background>
+      </backgrounds>
+      <background>background\bgr_tileset_smb</background>
+      <background>background\bgr_tileset_smb2</background>
+      <background>background\bgr_tileset_smb3</background>
+      <background>background\bgr_tileset_smw</background>
+      <background>background\bgr_tileset_smw_pipes</background>
+    </backgrounds>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Player">
@@ -397,8 +412,14 @@
         <script>scripts\scr_player_behaviour_slide.gml</script>
       </scripts>
     </scripts>
+    <scripts name="GUI">
+      <script>scripts\draw_text_colour_shadowed.gml</script>
+    </scripts>
     <script>scripts\scr_init_globals.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_debug</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_player_start</object>
     <objects name="Collision">

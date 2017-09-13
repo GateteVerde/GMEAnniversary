@@ -13,14 +13,14 @@ stompstyle = 0;
 
 //Figure out the player's state.
 if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
-|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)))
-&& (gravity == 0) {
+|| (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)))
+&& (ygrav == 0) {
 
     //Figure out if the player is standing or walking
-    if (hspeed == 0)
-        state = 0;
-    else
+    if (xspeed != 0)
         state = 1;
+    else 
+        state = 0;
 
     //Reset state delay
     delay = 0;
@@ -37,11 +37,11 @@ else {
 }
 
 //Prevent the player from falling too fast.
-if (vspeed > 4)
-    vspeed = 4;
+if (yspeed > 4)
+    yspeed = 4;
     
 //Prevent the player from sliding too fast.
-hspeedmax = 2.7;
+xspeedmax = 2.5;
 
 //You can't slide down slopes while having the frog suit, so make him stop.
 if (global.powerup == cs_frog)
@@ -53,14 +53,14 @@ if (!disablecontrol) { //If the player's controls are not disabled.
     //Make the player able to jump when is on contact with the ground.
     if (keyboard_check_pressed(vk_shift))
     && (jumping == 0)
-    && (vspeed == 0) 
+    && (yspeed == 0) 
     && (state != 2) { //If the 'Shift' key is pressed and the player is not jumping.
                             
         //If the 'Up' key is pressed.
         if (keyboard_check(vk_up)) {
             
             //Set the vertical speed.
-            vspeed = -jumpstr+abs(hspeed)/3.75*-1;
+            yspeed = -jumpstr+abs(xspeed)/3.75*-1;
             
             //Set the stomp style
             stompstyle = true;
@@ -73,7 +73,7 @@ if (!disablecontrol) { //If the player's controls are not disabled.
         else if (!keyboard_check(vk_up)) {
             
             //Set the vertical speed.
-            vspeed = -jumpstr+abs(hspeed)/7.5*-1;
+            yspeed = -jumpstr+abs(xspeed)/7.5*-1;
             
             //Set the stomp style
             stompstyle = false;
@@ -91,10 +91,11 @@ if (!disablecontrol) { //If the player's controls are not disabled.
         //Make the player able to vary the jump.
         jumping = 1;
                 
-        //Move the player a few pixels upwards when on contact with a moving platform or a slope.
+        /*Move the player a few pixels upwards when on contact with a moving platform or a slope.
         var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);
-        if ((platform) && (platform.vspeed < 0))
+        if ((platform) && (platform.yspeed < 0))
             y -= 4;
+        */
     }
 }
 
@@ -103,19 +104,19 @@ if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_slopepa
 
     //22.5º Right Slope
     if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slope_r,1,0))     
-        hspeed += -0.05;
+        xspeed += -0.05;
     
     //22.5º Left Slope
     else if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slope_l,1,0))  
-        hspeed += 0.05;
+        xspeed += 0.05;
     
     //45º Right Slope
     else if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slope_sr,1,0))    
-        hspeed += -0.1;
+        xspeed += -0.1;
     
     //45º Left Slope
     else if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slope_sl,1,0))    
-        hspeed += 0.1;
+        xspeed += 0.1;
 }
 
 //Make the player decelerate when not sliding down a slope.
@@ -128,11 +129,11 @@ else if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj
         if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
         
             //Slowdown
-            hspeed = max(0,abs(hspeed)-0.05)*sign(hspeed);
-            if ((hspeed > -0.05) && (hspeed < 0.05)) {
+            xspeed = max(0,abs(xspeed)-0.05)*sign(xspeed);
+            if ((xspeed > -0.05) && (xspeed < 0.05)) {
             
                 //Stop horizontal speed.
-                hspeed = 0;
+                xspeed = 0;
                 
                 //End combo
                 hitcombo = 0;
@@ -146,11 +147,11 @@ else if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj
         else if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
         
             //Slowdown
-            hspeed = max(0,abs(hspeed)-0.0125)*sign(hspeed);
-            if ((hspeed > -0.0125) && (hspeed < 0.0125)) {
+            xspeed = max(0,abs(xspeed)-0.0125)*sign(xspeed);
+            if ((xspeed > -0.0125) && (xspeed < 0.0125)) {
             
                 //Stop horizontal speed.
-                hspeed = 0;
+                xspeed = 0;
                 
                 //End combo
                 hitcombo = 0;
@@ -163,9 +164,9 @@ else if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj
 }
 
 //Prevent the player from sliding too fast.
-if (abs(hspeed) > hspeedmax)
-    hspeed = max(0,abs(hspeedmax)-0.1)*sign(hspeed);
+if (abs(xspeed) > xspeedmax)
+    xspeed = max(0,abs(xspeedmax)-0.1)*sign(xspeed);
     
 //If the player is jumping
 if ((state == 2) || (delay > 0))
-    gravity = grav;
+    ygrav = grav;

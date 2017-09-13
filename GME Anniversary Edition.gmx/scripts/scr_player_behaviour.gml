@@ -10,14 +10,14 @@
 
 //Figure out the player's state.
 if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
-|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)))
-&& (gravity == 0) {
+|| (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)))
+&& (ygrav == 0) {
 
     //Figure out if the player is standing or walking
-    if (hspeed == 0)
-        state = 0;
-    else
+    if (xspeed != 0)
         state = 1;
+    else 
+        state = 0;
 
     //Reset state delay
     delay = 0;
@@ -34,8 +34,8 @@ else {
 }
 
 //Prevent the player from falling too fast.
-if (vspeed > 4)
-    vspeed = 4;
+if (yspeed > 4)
+    yspeed = 4;
     
 //Set up the player's maximum horizontal speed.
 if (!flying) { //If the player is not flying
@@ -44,21 +44,21 @@ if (!flying) { //If the player is not flying
         
         //If the P-Meter is filled up.
         if (run)  
-            hspeedmax = 3;
+            xspeedmax = 3;
         
         //Otherwise, if the P-Meter is not filled up.
         else    
-            hspeedmax = 2.5;
+            xspeedmax = 2.5;
     }               
     
     //Otherwise, do not reduce speed until Mario makes contact with the ground.  
     else  
-        hspeedmax = 1.5;
+        xspeedmax = 1.5;
 }
 
 //Otherwise, if Mario is flying.
 else 
-    hspeedmax = 2;
+    xspeedmax = 2;
 
 //Handle basic movements
 if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disabled.
@@ -66,14 +66,14 @@ if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disable
     //Make the player able to jump when is on contact with the ground.
     if (keyboard_check_pressed(vk_shift))
     && (jumping == 0)
-    && (vspeed == 0) 
+    && (yspeed == 0) 
     && (state != 2) { //If the 'Shift' key is pressed and the player is not jumping.
                             
         //If the 'Up' key is pressed.
         if (keyboard_check(vk_up)) {
             
             //Set the vertical speed.
-            vspeed = -jumpstr;
+            yspeed = -jumpstr;
             
             //Set the stomp style
             stompstyle = true;
@@ -86,7 +86,7 @@ if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disable
         else if (!keyboard_check(vk_up)) {
             
             //Set the vertical speed.
-            vspeed = -jumpstr+abs(hspeed)/7.5*-1;
+            yspeed = -jumpstr+abs(xspeed)/7.5*-1;
             
             //Set the stomp style
             stompstyle = false;
@@ -101,10 +101,11 @@ if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disable
         //Make the player able to vary the jump.
         jumping = 1;
                 
-        //Move the player a few pixels upwards when on contact with a moving platform or a slope.
+        /*Move the player a few pixels upwards when on contact with a moving platform or a slope.
         var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);
-        if ((platform) && (platform.vspeed < 0))
+        if ((platform) && (platform.yspeed < 0))
             y -= 4;
+        */
     }
     
     //Make the player fall if the player releases the 'Shift' key.
@@ -140,35 +141,35 @@ if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disable
         if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)) {
         
             //Check up the player's horizontal speed
-            if (hspeed < hspeedmax) {
+            if (xspeed < xspeedmax) {
                             
                 //Make the player move horizontally.
                 if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) { //If the player is overlapping a slippery surface.
                     
                     //If the player's horizontal speed is equal/greater than 0.
-                    if (hspeed >= 0) {
+                    if (xspeed >= 0) {
                     
-                        //Add 'acc' to hspeed.
-                        hspeed += acc;
+                        //Add 'acc' to xspeed.
+                        xspeed += acc;
                     }
                     else { //Otherwise, if the player's speed is lower than 0.
                     
-                        //Add 'accskid' to hspeed;
-                        hspeed += accskid;
+                        //Add 'accskid' to xspeed;
+                        xspeed += accskid;
                     }
                 }
                 else { //Otherwise, if the player is overlapping a slippery surface.
                 
                     //If the player's horizontal speed is equal/greater than 0.
-                    if (hspeed >= 0) {
+                    if (xspeed >= 0) {
                     
-                        //Add 'acc' to hspeed
-                        hspeed += acc/2;
+                        //Add 'acc' to xspeed
+                        xspeed += acc/2;
                     }
                     else { //Otherwise, if the player's speed is lower than 0.
                     
-                        //Add 'accskid' to hspeed.
-                        hspeed += accskid/2;
+                        //Add 'accskid' to xspeed.
+                        xspeed += accskid/2;
                     }                                              
                 }
             }
@@ -185,35 +186,35 @@ if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disable
         if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)) {
         
             //Check up the player's horizontal speed.
-            if (hspeed > -hspeedmax) {
+            if (xspeed > -xspeedmax) {
                     
                 //Make the player move horizontally.
                 if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) { //If the player is overlapping a slippery surface.
                     
                     //If the player's horizontal speed is equal/lower than 0.
-                    if (hspeed <= 0) {
+                    if (xspeed <= 0) {
                         
-                        //Add 'acc' to hspeed.
-                        hspeed += -acc;
+                        //Add 'acc' to xspeed.
+                        xspeed += -acc;
                     }
                     else { //Otherwise, if the player's speed is greater than 0.
                     
-                        //Add 'accskid' to hspeed;
-                        hspeed += -accskid;
+                        //Add 'accskid' to xspeed;
+                        xspeed += -accskid;
                     }
                 }
                 else { //Otherwise, if the player is overlapping a slippery surface.
                 
                     //If the player's horizontal speed is equal/lower than 0.
-                    if (hspeed <= 0) {
+                    if (xspeed <= 0) {
                     
-                        //Add 'acc' to hspeed
-                        hspeed += -acc/2;
+                        //Add 'acc' to xspeed
+                        xspeed += -acc/2;
                     }
                     else { //Otherwise, if the player's speed is greater than 0.
                     
-                        //Add 'accskid' to hspeed.
-                        hspeed += -accskid/2;
+                        //Add 'accskid' to xspeed.
+                        xspeed += -accskid/2;
                     }                                              
                 }
             }
@@ -221,7 +222,7 @@ if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disable
     }
     
     //Otherwise if the player is on contact with the ground, slowdown him until he stops.
-    else if (vspeed == 0) { 
+    else if (yspeed == 0) { 
     
         //If the player is not overlapping a slippery surface.
         if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
@@ -230,36 +231,36 @@ if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disable
             if (!crouch) {
             
                 //Reduce the player's speed until he stops.
-                hspeed = max(0,abs(hspeed)-dec)*sign(hspeed);
+                xspeed = max(0,abs(xspeed)-dec)*sign(xspeed);
                 
-                //Set up horizontal speed to 0 when hspeed hits the value given on 'dec'.
-                if ((hspeed < dec) && (hspeed > -dec))             
-                    hspeed = 0;
+                //Set up horizontal speed to 0 when xspeed hits the value given on 'dec'.
+                if ((xspeed < dec) && (xspeed > -dec))             
+                    xspeed = 0;
             }
             else { //If the player is crouched down.
             
                 //Reduce the player's speed until he stops.
-                hspeed = max(0,abs(hspeed)-dec)*sign(hspeed);
+                xspeed = max(0,abs(xspeed)-dec)*sign(xspeed);
                 
-                //Set up horizontal speed to 0 when hspeed hits the value given on 'dec'.
-                if ((hspeed < decskid) && (hspeed > -decskid))                
-                    hspeed = 0;
+                //Set up horizontal speed to 0 when xspeed hits the value given on 'dec'.
+                if ((xspeed < decskid) && (xspeed > -decskid))                
+                    xspeed = 0;
             }
         }
         else { //Otherwise, if the player is overlapping a slippery surface.
         
             //Reduce the player's speed until he stops.
-            hspeed = max(0,abs(hspeed)-dec/8)*sign(hspeed);
+            xspeed = max(0,abs(xspeed)-dec/8)*sign(xspeed);
             
-            //Set up horizontal speed to 0 when hspeed hits the value given on 'dec'.
-            if ((hspeed < dec/8) && (hspeed > -dec/8))          
-                hspeed = 0;
+            //Set up horizontal speed to 0 when xspeed hits the value given on 'dec'.
+            if ((xspeed < dec/8) && (xspeed > -dec/8))          
+                xspeed = 0;
         }
     }
 }
 
 //Otherwise, if the player's controls are disabled and the player is on contact with the ground.
-else if (vspeed == 0) { 
+else if (yspeed == 0) { 
         
     //If the player is not overlapping a slippery surface.
     if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
@@ -268,52 +269,52 @@ else if (vspeed == 0) {
         if (!crouch) {
         
             //Reduce the player's speed until he stops.
-            hspeed = max(0,abs(hspeed)-dec)*sign(hspeed);
+            xspeed = max(0,abs(xspeed)-dec)*sign(xspeed);
             
-            //Set up horizontal speed to 0 when hspeed hits the value given on 'dec'.
-            if ((hspeed < dec) && (hspeed > -dec))         
-                hspeed = 0;
+            //Set up horizontal speed to 0 when xspeed hits the value given on 'dec'.
+            if ((xspeed < dec) && (xspeed > -dec))         
+                xspeed = 0;
         }
         else { //If the player is crouched down.
         
             //Reduce the player's speed until he stops.
-            hspeed = max(0,abs(hspeed)-dec)*sign(hspeed);
+            xspeed = max(0,abs(xspeed)-dec)*sign(xspeed);
             
-            //Set up horizontal speed to 0 when hspeed hits the value given on 'dec'.
-            if ((hspeed < decskid) && (hspeed > -decskid))        
-                hspeed = 0;
+            //Set up horizontal speed to 0 when xspeed hits the value given on 'dec'.
+            if ((xspeed < decskid) && (xspeed > -decskid))        
+                xspeed = 0;
         }
     }
     else { //Otherwise, if the player is overlapping a slippery surface.
     
         //Reduce the player's speed until he stops.
-        hspeed = max(0,abs(hspeed)-dec/8)*sign(hspeed);
+        xspeed = max(0,abs(xspeed)-dec/8)*sign(xspeed);
         
-        //Set up horizontal speed to 0 when hspeed hits the value given on 'dec'.
-        if ((hspeed < dec/8) && (hspeed > -dec/8))   
-            hspeed = 0;
+        //Set up horizontal speed to 0 when xspeed hits the value given on 'dec'.
+        if ((xspeed < dec/8) && (xspeed > -dec/8))   
+            xspeed = 0;
     }
 }
 
 //Slowdown the player is he is faster than his maximum speed.
-if ((state != 2) && (abs(hspeed) > hspeedmax))
-    hspeed = max(0,abs(hspeed)-0.1)*sign(hspeed);
+if ((state != 2) && (abs(xspeed) > xspeedmax))
+    xspeed = max(0,abs(xspeed)-0.1)*sign(xspeed);
 
 //If Mario is jumping
-if ((state == 2) || (statedelay > 0)) {
+if ((state == 2) || (delay > 0)) {
     
     //Variable jumping
-    if (vspeed < -2) && (jumping == 1) {
+    if (yspeed < -2) && (jumping == 1) {
     
-        //Use alternate gravity
-        gravity = grav_alt;
+        //Use alternate ygrav
+        ygrav = grav_alt;
     }   
     
-    //Otherwise, use alternate gravity.     
+    //Otherwise, use alternate ygrav.     
     else {
     
-        //Use default gravity
-        gravity = grav;
+        //Use default ygrav
+        ygrav = grav;
         
         //End variable jumping if it never ends manually.
         if (jumping = 1)
@@ -321,28 +322,28 @@ if ((state == 2) || (statedelay > 0)) {
     }
 
     //If Mario is using the raccoon or the tanooki powerup.
-    if (global.powerup == cs_leaf) {
+    if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki)) {
     
-        //If gravity is disabled.
+        //If ygrav is disabled.
         if (disablegrav > 0) {
         
             if (state != 2) {
             
-                //Enable gravity
+                //Enable ygrav
                 disablegrav = 0;
             }
             else {
             
-                //Deny gravity
-                gravity = 0;
+                //Deny ygrav
+                ygrav = 0;
                 
-                //Enable gravity
+                //Enable ygrav
                 disablegrav--;
             }
         }
     }
     
-    //Otherwise, enable gravity.
+    //Otherwise, enable ygrav.
     else
         disablegrav = 0;
 }
@@ -357,8 +358,8 @@ if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_climb,0,0))
     state = 3;
     
     //Stop movement
-    speed = 0;
-    gravity = 0;    
+    yspeed = 0;
+    ygrav = 0;    
 }
 
 //Makes Mario butt-slide down slopes
@@ -366,8 +367,8 @@ if (keyboard_check_pressed(vk_down))
 && (disablecontrol == 0) {
 
     //If Mario is on a slope, and the above didn't happen, slide normally
-    if (collision_point(x-1,bbox_bottom+2,obj_slopeparent,1,0)) 
-    || (collision_point(x+1,bbox_bottom+2,obj_slopeparent,1,0)) {
+    if (collision_point(bbox_left-1,bbox_bottom+2,obj_slopeparent,1,0)) 
+    || (collision_point(bbox_right+1,bbox_bottom+2,obj_slopeparent,1,0)) {
     
         //If Mario can slide and it's not holding anything.
         if (holding == 0)
@@ -383,6 +384,7 @@ if (keyboard_check_pressed(vk_down))
 if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
 && (jumping != 1)
 && (state == 2)
+&& (swimming == false)
 && (stompstyle == false)
 && (keyboard_check_pressed(vk_shift)) {
 
@@ -391,7 +393,7 @@ if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
     
         //Play 'tail' sound.
         audio_stop_sound(snd_spin);
-        audio_play_sound(snd_spin,0,0);
+        audio_play_sound(snd_spin, 0, false);
         
         //If Mario can fly
         if (canfly) {
@@ -406,18 +408,18 @@ if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
             //Whip tail.
             wiggle = 16;
             
-            //Disable gravity.
+            //Disable grav.
             disablegrav = 16;            
             
             //Set the vertical speed.
             if (alarm[9] > 30)  
-                vspeed = -1.5;
+                yspeed = -1.5;
             else {
             
-                if (vspeed < 0)
-                    vspeed  = max(vspeed + 0.5, 0);
+                if (yspeed < 0)
+                    yspeed  = max(yspeed + 0.5, 0);
                 else
-                    vspeed = 0;
+                    yspeed = 0;
             }
         }
         
@@ -427,11 +429,11 @@ if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
             //Whip tail.
             wiggle = 16;
             
-            //Disable gravity.
+            //Disable grav.
             disablegrav = 16;
             
             //Set the vertical speed.
-            vspeed = 0.75;        
+            yspeed = 0.75;        
         }
     }
     
@@ -440,15 +442,15 @@ if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
     
         //Play 'tail' sound.
         audio_stop_sound(snd_spin);
-        audio_play_sound(snd_spin,0,0);      
+        audio_play_sound(snd_spin, 0, false);      
         
         //Whip tail.
         wiggle = 16;
         
-        //Disable gravity.
+        //Disable grav.
         disablegrav = 16;
         
         //Set the vertical speed.
-        vspeed = 0.75;
+        yspeed = 0.75;
     }
 }
