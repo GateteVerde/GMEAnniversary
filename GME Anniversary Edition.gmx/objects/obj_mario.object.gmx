@@ -35,6 +35,7 @@ xspeedmax = 1.5;
 
 //Jump strength
 jumpstr = 3.4675;
+frogjumpstr = 3.9675;
 
 //Acceleration
 acc = 0.05;
@@ -88,6 +89,36 @@ grav_swim = 0.03;
           <argument>
             <kind>1</kind>
             <string>///Mario's animation
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make Mario stop when walking with the frog suit
+
+if (sprite_index == spr_mario_frog_walk) {
+
+    //If the horizontal speed is not equal to 0.
+    if (xspeed &lt;&gt; 0)
+        xspeed = 0;
+}
 </string>
           </argument>
         </arguments>

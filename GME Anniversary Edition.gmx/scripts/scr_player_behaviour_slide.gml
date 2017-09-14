@@ -55,33 +55,10 @@ if (!disablecontrol) { //If the player's controls are not disabled.
     && (jumping == 0)
     && (yspeed == 0) 
     && (state != 2) { //If the 'Shift' key is pressed and the player is not jumping.
-                            
-        //If the 'Up' key is pressed.
-        if (keyboard_check(vk_up)) {
             
-            //Set the vertical speed.
-            yspeed = -jumpstr+abs(xspeed)/3.75*-1;
-            
-            //Set the stomp style
-            stompstyle = true;
-            
-            //Play 'Jump' sound
-            audio_play_sound(snd_spin, 0, false);                    
-        }
-        
-        //Otherwise, if it's not
-        else if (!keyboard_check(vk_up)) {
-            
-            //Set the vertical speed.
-            yspeed = -jumpstr+abs(xspeed)/7.5*-1;
-            
-            //Set the stomp style
-            stompstyle = false;
-            
-            //Play 'Jump' sound
-            audio_play_sound(snd_jump, 0, false);
-        }
-        
+        //Set the vertical speed.
+        yspeed = -jumpstr+abs(xspeed)/7.5*-1;
+                
         //Stop slide
         sliding = false;
         
@@ -90,6 +67,9 @@ if (!disablecontrol) { //If the player's controls are not disabled.
         
         //Make the player able to vary the jump.
         jumping = 1;
+        
+        //Play 'Jump' sound
+        audio_play_sound(snd_jump, 0, false);
                 
         /*Move the player a few pixels upwards when on contact with a moving platform or a slope.
         var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);

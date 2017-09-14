@@ -742,12 +742,56 @@ else {
             <string>///Reset all values when landing
 
 //Allow the player to jump again
-if (jumping = 2)
-    jumping = 0;
+jumping = 0;
 
-//Reset combo variable
+//Reset spin jump variable
+stompstyle = 0;
+
+//Reset combo variable if not sliding
 if (!sliding)
     hitcombo = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Toggle movement when crouched down
+
+//If the player is crouched down.
+if (crouch) { 
+
+    if (state == 2) { //If the player is jumping.
+    
+        //Allow the player's horizontal movement.
+        move = true;
+    }
+    else { //Otherwise, disallow the player's movement.
+    
+        //Disallow the player's horizontal movement.
+        move = false;    
+    }
+}
+
+//If the player is not crouched down.
+else 
+    move = true;
 </string>
           </argument>
         </arguments>

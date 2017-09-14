@@ -51,85 +51,81 @@ if (!flying) { //If the player is not flying
             xspeedmax = 2.5;
     }               
     
-    //Otherwise, do not reduce speed until Mario makes contact with the ground.  
+    //Otherwise, do not reduce speed until the player makes contact with the ground.  
     else  
         xspeedmax = 1.5;
 }
 
-//Otherwise, if Mario is flying.
-else 
+//Otherwise, if the player is flying.
+else {
+
     xspeedmax = 2;
+}
+    
+//If controls are not disabled or the player is not stuck in a wall
+if (!disablecontrol) && (!inwall) {
 
-//Handle basic movements
-if ((!disablecontrol) && (!inwall)) { //If the player's controls are not disabled.
-
-    //Make the player able to jump when is on contact with the ground.
+    //Handles the player's jumping
     if (keyboard_check_pressed(vk_shift))
-    && (jumping == 0)
-    && (yspeed == 0) 
-    && (state != 2) { //If the 'Shift' key is pressed and the player is not jumping.
-                            
-        //If the 'Up' key is pressed.
-        if (keyboard_check(vk_up)) {
-            
-            //Set the vertical speed.
-            yspeed = -jumpstr;
-            
-            //Set the stomp style
-            stompstyle = true;
-            
-            //Play 'Jump' sound
-            audio_play_sound(snd_spin, 0, false);                    
-        }
+    
+    //Make sure that the player can jump
+    && (((jumping == 0) && (state < 2))
+    
+    //Allow the player to jump off of Yoshi or a shoe while in midair
+    || ((keyboard_check(vk_up))
+    && (!crouch)
+    && (global.mount != 0))
+    
+    //Allow propeller the player to do his special jump
+    || ((global.powerup == cs_propeller)
+    && (keyboard_check(vk_up)) 
+    && (!stompstyle) 
+    && (!crouch) 
+    && (holding == 0))) {
+    
+        //Jump high if you have the frog powerup, and you are not riding anything
+        if (global.powerup == cs_frog)        
+            yspeed = -frogjumpstr;
+    
+        //Jump depending of the horizontal speed.
+        else {
         
-        //Otherwise, if it's not
-        else if (!keyboard_check(vk_up)) {
-            
-            //Set the vertical speed.
             yspeed = -jumpstr+abs(xspeed)/7.5*-1;
-            
-            //Set the stomp style
-            stompstyle = false;
-            
-            //Play 'Jump' sound
+        }
+    
+        //Make the player spin jump
+        if ((keyboard_check(vk_up))
+        && (!crouch)
+        && ((holding == 0) || (global.mount != 0)))
+        || (state == 2) {
+    
+            //Set spin jump variable
+            stompstyle = true;
+    
+            //Play spin jump sound
+            audio_play_sound(snd_spin, 0, false);
+        }
+    
+        //Play the jump sound if he is not spin jumping
+        else {
+        
             audio_play_sound(snd_jump, 0, false);
         }
+    
+        //Switch to the jump state
+        state = 2;     
         
-        //Switch to jump state
-        state = 2;        
-        
-        //Make the player able to vary the jump.
-        jumping = 1;
-                
-        /*Move the player a few pixels upwards when on contact with a moving platform or a slope.
-        var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);
-        if ((platform) && (platform.yspeed < 0))
-            y -= 4;
-        */
+        //Enable variable jumping
+        jumping = 1;   
     }
     
-    //Make the player fall if the player releases the 'Shift' key.
-    else if ((jumping == 1) && (keyboard_check_released(vk_shift)))         
+    //Check if the player should still be variable jumping
+    if (keyboard_check_released(vk_shift))
+    && (jumping == 1)
         jumping = 2;
     
     //Enable/Disable controls
-    if (crouch) { //If the player is crouched down.
-    
-        if (state == 2) { //If the player is jumping.
-        
-            //Allow the player's horizontal movement.
-            move = true;
-        }
-        else { //Otherwise, disallow the player's movement.
-        
-            //Disallow the player's horizontal movement.
-            move = false;    
-        }
-    }
-    else { //If the player is not crouched down.
-    
-        move = true;
-    }
+    event_user(2);
     
     //Handle Horizontal Movement.
     if ((keyboard_check(vk_right)) && (!keyboard_check(vk_left)) && (move)) { //If the player holds the 'Right' key and the 'Left' key is not being held.
@@ -300,7 +296,7 @@ else if (yspeed == 0) {
 if ((state != 2) && (abs(xspeed) > xspeedmax))
     xspeed = max(0,abs(xspeed)-0.1)*sign(xspeed);
 
-//If Mario is jumping
+//If the player is jumping
 if ((state == 2) || (delay > 0)) {
     
     //Variable jumping
@@ -320,8 +316,29 @@ if ((state == 2) || (delay > 0)) {
         if (jumping = 1)
             jumping = 2;
     }
+    
+    //Propeller player jumping
+    if (global.powerup == cs_propeller) {
 
-    //If Mario is using the raccoon or the tanooki powerup.
+        //If the player is spin jumping normally
+        if ((stompstyle) && (global.mount == 0)) {
+
+            //Lower the gravity
+            ygrav = ygrav/2;
+
+            //Allow the player to charge downwards
+            if (keyboard_check(vk_down))
+                yspeed = 4;
+            else if (yspeed > 1)
+                yspeed = 1;
+
+            //Play the sound when he charges downwards
+            if (keyboard_check_pressed(vk_down))
+                audio_play_sound(snd_spin, 0, false)
+        }
+    }
+
+    //If the player is using the raccoon or the tanooki powerup.
     if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki)) {
     
         //If ygrav is disabled.
@@ -362,25 +379,25 @@ if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_climb,0,0))
     ygrav = 0;    
 }
 
-//Makes Mario butt-slide down slopes
+//Makes the player butt-slide down slopes
 if (keyboard_check_pressed(vk_down)) 
 && (disablecontrol == 0) {
 
-    //If Mario is on a slope, and the above didn't happen, slide normally
+    //If the player is on a slope, and the above didn't happen, slide normally
     if (collision_point(bbox_left-1,bbox_bottom+2,obj_slopeparent,1,0)) 
     || (collision_point(bbox_right+1,bbox_bottom+2,obj_slopeparent,1,0)) {
     
-        //If Mario can slide and it's not holding anything.
+        //If the player can slide and it's not holding anything.
         if (holding == 0)
             sliding = true;
             
-        //Otherwise, just crouch down if Mario can do it.
+        //Otherwise, just crouch down if the player can do it.
         else
             crouch = true;
     }       
 }
 
-//Make Mario able to fly or slowdown his fall.
+//Make the player able to fly or slowdown his fall.
 if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
 && (jumping != 1)
 && (state == 2)
@@ -388,14 +405,14 @@ if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
 && (stompstyle == false)
 && (keyboard_check_pressed(vk_shift)) {
 
-    //If Mario is running.
+    //If the player is running.
     if (run) {
     
         //Play 'tail' sound.
         audio_stop_sound(snd_spin);
         audio_play_sound(snd_spin, 0, false);
         
-        //Make Mario able to fly for 4 seconds
+        //Make the player able to fly for 4 seconds
         if (!flying) {
         
             flying = true;
@@ -420,7 +437,7 @@ if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
         }
     }
     
-    //Otherwise, if Mario is not running.
+    //Otherwise, if the player is not running.
     else if (!run) { 
     
         //Play 'tail' sound.
