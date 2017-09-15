@@ -124,6 +124,17 @@ combo = 0;
 
 //Delay the use of the leaf powerup if the player just dismounted yoshi
 dismount = 0;
+
+//Carrot / Bee powerup flight variables
+beefly = 0;
+floatnow = 0;
+isfloating = 0;
+
+//Frog / Penguin powerup swimming variables
+swimtype = 0;
+
+//Mutes the 'Bump' sound when either the player is climbing or swimming with the frog or penguin powerups
+noisy = 0;
 </string>
           </argument>
         </arguments>
@@ -250,6 +261,13 @@ invulnerable = false;
 x += xspeed;
 y += yspeed;
 yspeed += ygrav;
+
+//Mute 'Bump' sound when climbing or when the player is swimming with the frog or penguin powerup
+if (state == 3)
+|| ((state == 2) &amp;&amp; (swimming) &amp;&amp; ((global.powerup == cs_frog) || (global.powerup == cs_penguin)))
+    noisy = 1;
+else
+    noisy = 0;
 
 //Floor collision
 if (yspeed &gt;= 0) { //If the player is moving down.
@@ -483,31 +501,35 @@ else if (xspeed &lt; 0)
 }
 
 //If the player is moving up
-if (yspeed &lt; 0) {
-
-    //Collision with a ceiling
-    if ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,0,0)) 
-    || (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
+if (yspeed &lt; 0)
+&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,0,0)) 
+|| (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
     
+    //Prevent the player's head from getting stuck on a ceiling.
+    if (state &gt; 1) {
+
+        while ((collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,0,0))
+        || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
+            y++;
+    }
+    
+    //Stop vertical speed
+    yspeed = 0;
+    
+    //If the player does not have either the frog and penguin suit, and it's not climbing.
+    if (state &lt; 3) 
+    &amp;&amp; (noisy == 0) {
+    
+        //Max out the bee flying timer
+        beefly = 128;
+        
+        //Stop variable jumping
+        jumpnow = 2;        
+        
         //Play 'Bump' sound
         if (!audio_is_playing(snd_bump))        
-            audio_play_sound(snd_bump, 0, false);
-        
-        //Stop vertical movement
-        yspeed = 0;
-        
-        //If the player is not climbing
-        if (state = 2)
-        &amp;&amp; (state != 3)
-            jumping = 2;
+            audio_play_sound(snd_bump, 0, false);        
     }
-}
-
-//Prevent player from getting embed on a ceiling
-if (((state == 2) || (delay &gt; 0)) || (state == 3)) {
-    while ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,0,0))
-    || (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
-        y++;
 }
 
 //If the player is not climbing
@@ -515,17 +537,19 @@ if (state != 3) {
 
     //If the player's controls are not disabled and it's not jumping
     if (state != 2)
+    &amp;&amp; (!sliding)
     &amp;&amp; (!disablecontrol) {
     
         //Make the player crouch down when the 'Down' key is held
         if (keyboard_check(vk_down))
+        &amp;&amp; (global.powerup != cs_frog)
         &amp;&amp; (!crouch)
+        &amp;&amp; (!noisy)
             crouch = true;
             
         //Otherwise, if the 'Down' key is no longer pressed
-        else if (!keyboard_check(vk_down))
-        &amp;&amp; (crouch) {
-        
+        else if (!keyboard_check(vk_down)) {
+                
             //Make the player get up
             crouch = false;
             
@@ -539,6 +563,9 @@ else {
 
     //Make the player get up
     crouch = false;
+    
+    //Stop special jump
+    stompstyle = false;
 }
 
 //Check for a nearby swimming surface
@@ -741,6 +768,9 @@ else {
             <kind>1</kind>
             <string>///Reset all values when landing
 
+//Reset bee flight
+beefly = 0;
+
 //Allow the player to jump again
 jumping = 0;
 
@@ -874,6 +904,7 @@ draw_text_colour_shadowed(view_xview[0]+2,view_yview[0]+2,"X: " + string(x)
 + "#V. Speed: " + string(yspeed)
 + "#State: " + string(state)
 + "#P: " + string(pmeter)
++ "#B: " + string(beefly)
 + "#Flying: " + string(flying) + " - " + string(alarm[9]), c_black, c_white, 1, 1, 0.5, 1);
 </string>
           </argument>

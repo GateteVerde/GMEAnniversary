@@ -384,8 +384,8 @@ if (keyboard_check_pressed(vk_down))
 && (disablecontrol == 0) {
 
     //If the player is on a slope, and the above didn't happen, slide normally
-    if (collision_point(bbox_left-1,bbox_bottom+2,obj_slopeparent,1,0)) 
-    || (collision_point(bbox_right+1,bbox_bottom+2,obj_slopeparent,1,0)) {
+    if ((collision_point(bbox_left-1,bbox_bottom+2,obj_slopeparent,1,0)) 
+    || (collision_point(bbox_right+1,bbox_bottom+2,obj_slopeparent,1,0))) {
     
         //If the player can slide and it's not holding anything.
         if (holding == 0)
@@ -394,63 +394,155 @@ if (keyboard_check_pressed(vk_down))
         //Otherwise, just crouch down if the player can do it.
         else
             crouch = true;
-    }       
+    }
 }
 
-//Make the player able to fly or slowdown his fall.
-if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
-&& (jumping != 1)
-&& (state == 2)
-&& (swimming == false)
-&& (stompstyle == false)
-&& (keyboard_check_pressed(vk_shift)) {
+//If the player is jumping, not ducking, not spin jumping, can control himself, and is not riding anything
+if (state == 2)
+&& (!crouch)
+&& (!stompstyle)
+&& (!disablecontrol)
+&& (global.mount == 0) {
 
-    //If the player is running.
-    if (run) {
+    //If the player does have either the raccoon or the tanooki powerup
+    if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
+    && (jumping != 1)
+    && (swimming == false)
+    && (keyboard_check_pressed(vk_shift)) {
     
-        //Play 'tail' sound.
-        audio_stop_sound(snd_spin);
-        audio_play_sound(snd_spin, 0, false);
+        //If the player is running.
+        if (run) {
         
-        //Make the player able to fly for 4 seconds
-        if (!flying) {
-        
-            flying = true;
-            alarm[9] = 240;
+            //Play 'tail' sound.
+            audio_stop_sound(snd_spin);
+            audio_play_sound(snd_spin, 0, false);
+            
+            //Make the player able to fly for 4 seconds
+            if (!flying) {
+            
+                flying = true;
+                alarm[9] = 60 * global.flighttime;
+            }
+            
+            //Whip tail.
+            wiggle = 16;
+            
+            //Disable grav.
+            disablegrav = 16;            
+            
+            //Set the vertical speed.
+            if (alarm[9] > 30)  
+                yspeed = -1.5;
+            else {
+            
+                if (yspeed < 0)
+                    yspeed  = max(yspeed + 0.5, 0);
+                else
+                    yspeed = 0;
+            }
         }
         
-        //Whip tail.
-        wiggle = 16;
+        //Otherwise, if the player is not running.
+        else if (!run) { 
         
-        //Disable grav.
-        disablegrav = 16;            
-        
-        //Set the vertical speed.
-        if (alarm[9] > 30)  
-            yspeed = -1.5;
-        else {
-        
-            if (yspeed < 0)
-                yspeed  = max(yspeed + 0.5, 0);
+            //Play 'tail' sound.
+            audio_stop_sound(snd_spin);
+            audio_play_sound(snd_spin, 0, false);      
+            
+            //Whip tail.
+            wiggle = 16;
+            
+            //Disable grav.
+            disablegrav = 16;
+            
+            //Set the vertical speed.
+            yspeed = 0.75;
+        }
+    }
+    
+    //Handles carrot and bee Mario's floating
+    else if ((global.powerup == cs_carrot) 
+    || ((global.powerup == cs_bee) && (beefly < 128)))
+    && (keyboard_check(vk_shift)) {
+
+        //If Mario is moving downwards
+        if (yspeed > 0) {
+
+            //Set the floating variable
+            isfloating = 1;
+
+            //Bee Mario flies upwards if the ceiling is not above him
+            if (global.powerup == cs_bee)
+            && ((!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,0,0))
+            || (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
+
+                //Fly upwards
+                yspeed = -1;
+
+                //Make the bee timer tick extra because of the initial push
+                beefly += 8;
+            }
+
+            //Carrot Mario floats down slowly
             else
-                yspeed = 0;
+                yspeed = 0.5;
         }
+
+        //If Mario is not moving downwards
+        else {
+
+            //If bee Mario is floating
+            if ((global.powerup == cs_bee) && (beefly < 128) && (isfloating)) {
+
+                //Continue flying upwards
+                yspeed = -1;
+
+                //Make the bee timer tick
+                beefly++
+
+                //Slow bee Mario down if he is moving too fast
+                if (xspeed > 1)
+                    xspeed -= 0.1;
+                if (xspeed < -1)
+                    xspeed += 0.1;
+
+            }
+
+            //Stop floating otherwise
+            else
+                isfloating = false;
+        }
+
     }
-    
-    //Otherwise, if the player is not running.
-    else if (!run) { 
-    
-        //Play 'tail' sound.
-        audio_stop_sound(snd_spin);
-        audio_play_sound(snd_spin, 0, false);      
-        
-        //Whip tail.
-        wiggle = 16;
-        
-        //Disable grav.
-        disablegrav = 16;
-        
-        //Set the vertical speed.
-        yspeed = 0.75;
-    }
+
+    //Stop floating
+    else
+        isfloating = false;
+
+}
+
+//Stop floating
+else {
+
+    isfloating = false;
+}
+
+//If carrot or bee Mario is floating, but the sound is not playing
+if ((isfloating) && (!floatnow)) {
+
+    //Mark that the sound is playing
+    floatnow = true;
+
+    //Loop the sound
+    audio_play_sound(snd_spin,0,1);
+}
+
+//If carrot or bee Mario is not floating, but the sound is playing
+else if ((!isfloating) && (floatnow)) {
+
+    //Mark that the sound is not playing
+    floatnow = false;
+
+    //Stop the sound
+    audio_stop_sound(snd_spin)
 }

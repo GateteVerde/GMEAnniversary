@@ -9,8 +9,16 @@
 */
 
 //Reset following variables
+floatnow = 0;
+beefly = 0;
 sliding = 0;
 stompstyle = 0;
+if (isfloating) {
+
+    isfloating = 0;
+    if (audio_is_playing(snd_spin))
+        audio_stop_sound(snd_spin);
+}
 
 //Cap horizontal speed
 if (xspeed > 1)

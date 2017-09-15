@@ -9,6 +9,7 @@
       <sound>sound\snd_bump</sound>
       <sound>sound\snd_climb</sound>
       <sound>sound\snd_jump</sound>
+      <sound>sound\snd_skid</sound>
       <sound>sound\snd_spin</sound>
       <sound>sound\snd_swim</sound>
     </sounds>
@@ -405,6 +406,31 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Player">
+      <scripts name="Animation">
+        <scripts name="Mario">
+          <script>scripts\scr_mario_walk.gml</script>
+          <script>scripts\scr_mario_jump.gml</script>
+          <script>scripts\scr_mario_run.gml</script>
+          <script>scripts\scr_mario_runjump.gml</script>
+          <script>scripts\scr_mario_skid.gml</script>
+          <script>scripts\scr_mario_climb.gml</script>
+          <script>scripts\scr_mario_swim.gml</script>
+          <script>scripts\scr_mario_swim2.gml</script>
+          <script>scripts\scr_mario_swim3.gml</script>
+          <script>scripts\scr_mario_carry.gml</script>
+          <script>scripts\scr_mario_hold.gml</script>
+          <script>scripts\scr_mario_hold2.gml</script>
+          <script>scripts\scr_mario_duck.gml</script>
+          <script>scripts\scr_mario_goal.gml</script>
+          <script>scripts\scr_mario_spin.gml</script>
+          <script>scripts\scr_mario_spin2.gml</script>
+          <script>scripts\scr_mario_shoot.gml</script>
+          <script>scripts\scr_mario_slide.gml</script>
+          <script>scripts\scr_mario_kick.gml</script>
+          <script>scripts\scr_mario_clear.gml</script>
+        </scripts>
+        <script>scripts\scr_inice.gml</script>
+      </scripts>
       <scripts name="Behaviour">
         <script>scripts\scr_player_behaviour.gml</script>
         <script>scripts\scr_player_behaviour_climb.gml</script>

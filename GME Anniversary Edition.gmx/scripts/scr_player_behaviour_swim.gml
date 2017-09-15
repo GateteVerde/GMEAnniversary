@@ -9,8 +9,16 @@
 */
 
 //Reset following variables
+floatnow = 0;
+beefly = 0;
 sliding = 0;
 stompstyle = 0;
+if (isfloating) {
+
+    isfloating = 0;
+    if (audio_is_playing(snd_spin))
+        audio_stop_sound(snd_spin);
+}
 
 //Figure out the player's state.
 if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
