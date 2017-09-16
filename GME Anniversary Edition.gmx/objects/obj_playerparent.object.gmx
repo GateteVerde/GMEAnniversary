@@ -607,8 +607,8 @@ if ((!swimming) &amp;&amp; (water)) {
     //Make the player get up
     crouch = false;
     
-    //Stop horizontal movement
-    xspeed = 0;
+    //Stop most horizontal movement
+    xspeed = xspeed/2.5;
     
     //Stop vertical movement
     ygrav = 0;

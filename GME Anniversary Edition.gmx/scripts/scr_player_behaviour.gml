@@ -397,14 +397,19 @@ if ((state == 2) || (delay > 0)) {
     if (global.powerup == cs_propeller) {
 
         //If the player is spin jumping normally
-        if ((stompstyle) && (global.mount == 0)) {
-
+        if ((stompstyle) && (global.mount == 0)) 
+        {   
             //Lower the gravity
             ygrav = ygrav/2;
 
             //Allow the player to charge downwards
-            if (keyboard_check(vk_down))
-                yspeed = 4;
+            if ((keyboard_check(vk_down)) && (yspeed > 0))
+            {
+                if yspeed < 4
+                yspeed += 0.5
+                
+                xspeed = 0   
+            }
             else if (yspeed > 1)
                 yspeed = 1;
 
