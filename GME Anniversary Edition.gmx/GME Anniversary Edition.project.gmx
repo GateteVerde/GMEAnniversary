@@ -449,6 +449,9 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_player_start</object>
+    <objects name="Level Control">
+      <object>objects\obj_levelcontrol</object>
+    </objects>
     <objects name="Collision">
       <object>objects\obj_solid</object>
       <object>objects\obj_semisolid</object>
@@ -478,11 +481,12 @@
         <object>objects\obj_playerparent</object>
       </objects>
       <objects name="Don't Use">
-        <objects name="Players">
+        <objects name="Player">
           <objects name="Skins">
             <object>objects\obj_mario</object>
           </objects>
         </objects>
+        <object>objects\obj_camera</object>
       </objects>
       <object>objects\obj_persistent</object>
     </objects>
