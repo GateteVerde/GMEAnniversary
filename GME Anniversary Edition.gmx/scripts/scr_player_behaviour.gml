@@ -13,14 +13,26 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
 || (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)))
 && (ygrav == 0) {
 
-    //Figure out if the player is standing or walking
-    if (xspeed == 0)
-        state = 0;
-    else 
-        state = 1;
-
-    //Reset state delay
-    delay = 0;
+    //If the player is flying, do a special check
+    if ((flying) && (yspeed < 0)) {
+    
+        //If the player is overlapping a slope, set up jumping state.
+        if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,1))      
+            state = 2;
+    }
+    
+    //Otherwise, do the normal check
+    else {
+    
+        //Figure out if the player is standing or walking
+        if (xspeed == 0)
+            state = 0;
+        else 
+            state = 1;
+    
+        //Reset state delay
+        delay = 0;
+    }
 }
 
 //the player is jumping if there's no ground below him.
@@ -162,7 +174,8 @@ if (!disablecontrol) && (!inwall) {
             if (xspeed < xspeedmax) {
                             
                 //Make the player move horizontally.
-                if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) { //If the player is overlapping a slippery surface.
+                if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) 
+                || (global.powerup == cs_penguin) { //If the player is not overlapping a slippery surface.
                     
                     //If the player's horizontal speed is equal/greater than 0.
                     if (xspeed >= 0) {
@@ -225,7 +238,8 @@ if (!disablecontrol) && (!inwall) {
             if (xspeed > -xspeedmax) {
                     
                 //Make the player move horizontally.
-                if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) { //If the player is overlapping a slippery surface.
+                if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) 
+                || (global.powerup == cs_penguin) { //If the player is not overlapping a slippery surface.
                     
                     //If the player's horizontal speed is equal/lower than 0.
                     if (xspeed <= 0) {
@@ -279,7 +293,8 @@ if (!disablecontrol) && (!inwall) {
     else if (yspeed == 0) { 
     
         //If the player is not overlapping a slippery surface.
-        if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
+        if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) 
+        || (global.powerup == cs_penguin) {
         
             //If the player is not crouched down.
             if (!crouch) {
