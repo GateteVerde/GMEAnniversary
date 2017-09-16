@@ -121,9 +121,9 @@ if (crouch == true) {
         else {
         
             if (holding == 2)
-                image_index = 1;
-            else
                 image_index = 2;
+            else
+                image_index = 1;
         }
     }
     
@@ -216,34 +216,58 @@ else {
                         
                         //If Mario does not have the frog powerup
                         if (global.powerup != cs_frog)
+                        &amp;&amp; (global.powerup != cs_penguin)
                             image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
                             
                         //Otherwise, if Mario does have the frog suit.
-                        else {
-                        
-                            //If Mario does have the penguin powerup
-                            if (global.powerup == cs_penguin) {
+                        else if (global.powerup == cs_frog) {
+                            
+                            //If Mario is swimming
+                            if (swimming) {
                             
                                 //If Mario is not holding anything.
                                 if (holding == 0) {
-                                    
+                                
                                     if (xspeed == 0)
                                         image_speed = 0.1;
                                     else
-                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));   
+                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
                                 }
                                 else
-                                    image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;                         
+                                    image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
                             }
-                        
-                            //Otherwise, if Mario does not have the penguin suit.
+                            
+                            //Otherwise, if Mario is not swimming
                             else {
-                                
+                            
                                 if (holding == 0)
                                     image_speed = 0.1;
                                 else
                                     image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                            }                        
+                        }
+                        
+                        //Otherwise, if Mario does have the penguin suit.
+                        else if (global.powerup == cs_penguin) {
+                            
+                            //If Mario is swimming
+                            if (swimming) {
+                            
+                                //If Mario is not holding anything.
+                                if (holding == 0) {
+                                
+                                    if (xspeed == 0)
+                                        image_speed = 0.1;
+                                    else
+                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
+                                }
+                                else
+                                    image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
                             }
+                            
+                            //Otherwise, if Mario is not swimming
+                            else
+                                image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;                         
                         }
                     
                         //If Mario is running
@@ -317,8 +341,13 @@ else {
                                 
                                     if (floatnow &gt; 0)
                                         image_speed = 0.15;
-                                    else
-                                        image_index = 1;
+                                    else {
+                                    
+                                        if (run)
+                                            image_index = 0;
+                                        else
+                                            image_index = 1;
+                                    }
                                 }
                             }
                             

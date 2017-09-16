@@ -528,7 +528,7 @@ else if (xspeed &lt; 0)
 }
 
 //If the player is moving up
-if (yspeed &lt; 0)
+if (yspeed &lt;= 0)
 &amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,0,0)) 
 || (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
     
@@ -601,15 +601,15 @@ var water = collision_rectangle(bbox_left,y,bbox_right,y,obj_swim,0,0);
 //If the player is not swimming and makes contact with a water surface
 if ((!swimming) &amp;&amp; (water)) {
         
+    //Stop most horizontal movement
+    xspeed = xspeed/2.5;    
+    
     //Make the player swim.
     swimming = true;
     
     //Make the player get up
     crouch = false;
-    
-    //Stop most horizontal movement
-    xspeed = xspeed/2.5;
-    
+        
     //Stop vertical movement
     ygrav = 0;
     if (yspeed &gt; 0)
@@ -627,6 +627,9 @@ else if ((swimming) &amp;&amp; (!water)) {
         
             //If 'Shift' is held
             if (keyboard_check(vk_shift)) {
+            
+                //Play 'Jump' sound
+                audio_play_sound(snd_jump, 0, false);
                 
                 //Make the player not swim
                 swimming = false;
@@ -920,20 +923,6 @@ else
             <string>///Draw player
 
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_white,1);
-
-//Set the font
-draw_set_font(fnt_debug);
-
-//Draw the debug information
-draw_text_colour_shadowed(view_xview[0]+2,view_yview[0]+2,"X: " + string(x)
-+ "#Y: " + string(y)
-+ "#H. Speed: " + string(xspeed)
-+ "#V. Speed: " + string(yspeed)
-+ "#State: " + string(state)
-+ "#P: " + string(pmeter)
-+ "#B: " + string(beefly)
-+ "#H: " + string(sliding)
-+ "#Flying: " + string(flying) + " - " + string(alarm[9]), c_black, c_white, 1, 1, 0.5, 1);
 </string>
           </argument>
         </arguments>

@@ -93,17 +93,11 @@ if (!disablecontrol) { //If the player controls are not disabled.
                             audio_play_sound(snd_climb, 0, false);
                         }
                     }
-                    else {
-                    
-                        //Keep climb variable at 0
+                    else
                         noise = 0;
-                    }
                 }
-                else {
-                
-                    //Keep climb variable at 0
+                else
                     noise = 0;
-                }
             }
         }
     }
