@@ -135,6 +135,9 @@ swimtype = 0;
 
 //Mutes the 'Bump' sound when either the player is climbing or swimming with the frog or penguin powerups
 noisy = 0;
+
+//Allows the player to end sliding manually when releasing the 'Down' key.
+holddown = false;
 </string>
           </argument>
         </arguments>
@@ -277,8 +280,8 @@ if (yspeed &gt;= 0) { //If the player is moving down.
     
     //If the semisolid exists and the player is above it.
     if (semisolid)
-    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5)
-    &amp;&amp; (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,semisolid.y-1,obj_solid,1,0)) {
+    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+4)
+    &amp;&amp; (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,semisolid.y-1,obj_solid,0,0)) {
     
         //Snap above the semisolid platform
         y = semisolid.y-16;
@@ -293,11 +296,11 @@ if (yspeed &gt;= 0) { //If the player is moving down.
 }
     
 //Embed the player into the slope if he is walking or sliding down a slope to ensure correct slope physics.
-if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+5,obj_slopeparent,1,0)) 
+if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+4,obj_slopeparent,1,0)) 
 &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_slopeparent,1,0))
 &amp;&amp; (state == 1) {
 
-    if (!collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,1))
+    if (!collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
         y += 4;
 }
 
@@ -306,7 +309,7 @@ if (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slo
 &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj_slopeparent,1,0)) {
 
     //If the player is moving down onto a slope.
-    if (yspeed &gt; 0) {
+    if (yspeed &gt;= 0) {
     
         //Stop vertical movement
         yspeed = 0;
@@ -478,8 +481,20 @@ else if (swimming) {
 if (xspeed &gt; 0) 
 &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-4,obj_solid,0,0)) {
 
-    //Stop horizontal movement
-    xspeed = 0;    
+    //If Mario is sliding with the shell
+    if (global.powerup == cs_shell)
+    &amp;&amp; (sliding)
+        xspeed = -xspeed;
+        
+    //Otherwise, stop it and stop slide if necessary.
+    else {
+    
+        //Stop horizontal movement
+        xspeed = 0;
+        
+        //Stop sliding
+        sliding = false;        
+    }
     
     //Prevent the player from getting embed into the wall
     while (collision_rectangle(x,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,0))
@@ -491,8 +506,20 @@ if (xspeed &gt; 0)
 else if (xspeed &lt; 0)
 &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-4,obj_solid,0,0)) {
 
-    //Stop horizontal movement
-    xspeed = 0;    
+    //If the player is sliding with the shell
+    if (global.powerup == cs_shell)
+    &amp;&amp; (sliding)
+        xspeed = -xspeed;
+
+    //Otherwise, stop it and stop slide if necessary.    
+    else {
+    
+        //Stop horizontal movement
+        xspeed = 0;
+        
+        //Stop sliding
+        sliding = false; 
+    }        
     
     //Prevent the player from getting embed into the wall
     while (collision_rectangle(bbox_left,bbox_top+4,x,bbox_bottom-1,obj_solid,0,0))
@@ -905,6 +932,7 @@ draw_text_colour_shadowed(view_xview[0]+2,view_yview[0]+2,"X: " + string(x)
 + "#State: " + string(state)
 + "#P: " + string(pmeter)
 + "#B: " + string(beefly)
++ "#H: " + string(sliding)
 + "#Flying: " + string(flying) + " - " + string(alarm[9]), c_black, c_white, 1, 1, 0.5, 1);
 </string>
           </argument>

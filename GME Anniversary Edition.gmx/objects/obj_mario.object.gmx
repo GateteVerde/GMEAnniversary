@@ -35,10 +35,13 @@ xspeedmax = 1.5;
 
 //Jump strength
 jumpstr = 3.4675;
-frogjumpstr = 3.9675;
+frogjumpstr = 3.7675;
 
 //Acceleration
 acc = 0.05;
+
+//Acceleration (frog suit)
+accfrog = 0.12;
 
 //Acceleration (when turning)
 accskid = 0.15;
@@ -193,6 +196,7 @@ else {
                     if ((((xspeed &gt; 0.1) &amp;&amp; (xscale == -1))
                     || ((xspeed &lt; -0.1) &amp;&amp; (xscale == 1)))
                     &amp;&amp; (!swimming)
+                    &amp;&amp; (global.powerup != cs_frog)
                     &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0))) {
                     
                         //Set the skidding sprite
@@ -209,7 +213,15 @@ else {
                     else {
                         
                         //Set the animation speed
-                        image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                        if (global.powerup != cs_frog)
+                            image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                        else {
+                        
+                            if (holding == 0)
+                                image_speed = 0.1;
+                            else
+                                image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                        }
                     
                         //If Mario is running
                         if (run)                      
@@ -433,12 +445,32 @@ else {
         //Otherwise, if the player is sliding down a slope
         else if (sliding) {
         
-            //Set up the sprite
-            sprite_index = scr_mario_slide();
+            //If Mario does have the shell powerup
+            if (global.powerup == cs_shell) {
             
-            //Do not animate
-            image_speed = 0;
-            image_index = 0;
+                //If the sprite is not the sliding one
+                if (sprite_index != scr_mario_slide()) {
+                
+                    //Set up the sprite
+                    sprite_index = scr_mario_slide();
+                    
+                    //Set up the frame
+                    if (image_index != 0)
+                        image_index = 0;
+                }
+                
+                //Animate
+                image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+            }
+            else {
+                
+                //Set up the sprite
+                sprite_index = scr_mario_slide();
+                
+                //Do not animate
+                image_speed = 0;
+                image_index = 0;
+            }
         }
     }
     
@@ -621,8 +653,9 @@ else {
                 mask_index = spr_mask;
         }
         
-        //Otherwise, if Mario does have the penguin powerup.
-        else if (global.powerup == cs_penguin) {
+        //Otherwise, if Mario does have the either the shell or penguin powerups.
+        else if (global.powerup == cs_shell) 
+        || (global.powerup == cs_penguin) {
         
             if (sliding)
                 mask_index = spr_mask;
@@ -667,6 +700,9 @@ else {
 //If Mario is walking with the frog suit
 if (sprite_index == spr_mario_frog_walk) {
 
+    //Play 'Frog' sound
+    audio_play_sound(snd_frog, 0, false);
+
     //If the horizontal speed is not equal to 0.
     if (xspeed &lt;&gt; 0)
         xspeed = 0;
@@ -676,6 +712,10 @@ if (sprite_index == spr_mario_frog_walk) {
 else if ((sprite_index == spr_mario_carrot_jump)
 || (sprite_index == spr_mario_bee_jump))
     image_index = 1;
+    
+//Otherwise, if Mario is sliding inside his shell.
+else if (sprite_index == spr_mario_shell_slide)
+    image_index = 2;
 </string>
           </argument>
         </arguments>

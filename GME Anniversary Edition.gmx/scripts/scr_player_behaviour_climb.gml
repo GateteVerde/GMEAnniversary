@@ -12,6 +12,7 @@
 floatnow = 0;
 beefly = 0;
 sliding = 0;
+shelltime = 0;
 stompstyle = 0;
 if (isfloating) {
 

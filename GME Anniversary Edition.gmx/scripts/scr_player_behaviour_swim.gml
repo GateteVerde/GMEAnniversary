@@ -12,6 +12,7 @@
 floatnow = 0;
 beefly = 0;
 sliding = 0;
+shelltime = 0;
 stompstyle = 0;
 if (isfloating) {
 
@@ -26,10 +27,10 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
 && (ygrav == 0) {
 
     //Figure out if the player is standing or walking
-    if (xspeed != 0)
-        state = 1;
-    else 
+    if (xspeed == 0)
         state = 0;
+    else 
+        state = 1;
 
     //Reset state delay
     delay = 0;
@@ -158,8 +159,10 @@ else if (disablecontrol) {
 }
 
 //Prevent the player from sliding too fast.
-if (abs(xspeed) > xspeedmax)
-    xspeed = max(0,abs(xspeedmax)-0.1)*sign(xspeed);
+if (xspeed > xspeedmax)
+    xspeed = xspeedmax;
+if (xspeed < -xspeedmax)
+    xspeed = -xspeedmax;
     
 //Apply ygrav
 if ((state == 2) || (delay > 0))

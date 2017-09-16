@@ -14,10 +14,10 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
 && (ygrav == 0) {
 
     //Figure out if the player is standing or walking
-    if (xspeed != 0)
-        state = 1;
-    else 
+    if (xspeed == 0)
         state = 0;
+    else 
+        state = 1;
 
     //Reset state delay
     delay = 0;
@@ -42,13 +42,34 @@ if (!flying) { //If the player is not flying
 
     if (keyboard_check(vk_control)) { //If the control key is being held.
         
-        //If the P-Meter is filled up.
-        if (run)  
-            xspeedmax = 3;
+        //If Mario does have the frog powerup
+        if (global.powerup == cs_frog) {
         
-        //Otherwise, if the P-Meter is not filled up.
-        else    
-            xspeedmax = 2.5;
+            if (holding == 0)
+                xspeedmax = 1.5;
+            else {
+                            
+                //If the P-Meter is filled up.
+                if (run)  
+                    xspeedmax = 3;
+                
+                //Otherwise, if the P-Meter is not filled up.
+                else    
+                    xspeedmax = 2.5;                
+            }
+        }
+        
+        //Otherwise, if Mario does not have the frog powerup
+        else {
+            
+            //If the P-Meter is filled up.
+            if (run)  
+                xspeedmax = 3;
+            
+            //Otherwise, if the P-Meter is not filled up.
+            else    
+                xspeedmax = 2.5;
+        }
     }               
     
     //Otherwise, do not reduce speed until the player makes contact with the ground.  
@@ -96,6 +117,7 @@ if (!disablecontrol) && (!inwall) {
         //Make the player spin jump
         if ((keyboard_check(vk_up))
         && (!crouch)
+        && (global.powerup != cs_frog)
         && ((holding == 0) || (global.mount != 0)))
         || (state == 2) {
     
@@ -146,7 +168,16 @@ if (!disablecontrol) && (!inwall) {
                     if (xspeed >= 0) {
                     
                         //Add 'acc' to xspeed.
-                        xspeed += acc;
+                        if (global.powerup != cs_frog)
+                            xspeed += acc;
+                        else {
+                        
+                            //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
+                            if ((holding == 0) && (global.mount == 0))                              
+                                xspeed += accfrog;
+                            else
+                                xspeed += acc;
+                        }
                     }
                     else { //Otherwise, if the player's speed is lower than 0.
                     
@@ -159,8 +190,17 @@ if (!disablecontrol) && (!inwall) {
                     //If the player's horizontal speed is equal/greater than 0.
                     if (xspeed >= 0) {
                     
-                        //Add 'acc' to xspeed
-                        xspeed += acc/2;
+                        //Add 'acc' to xspeed.
+                        if (global.powerup != cs_frog)
+                            xspeed += acc/2;
+                        else {
+                        
+                            //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
+                            if ((holding == 0) && (global.mount == 0))                              
+                                xspeed += accfrog/2;
+                            else
+                                xspeed += acc/2;
+                        }
                     }
                     else { //Otherwise, if the player's speed is lower than 0.
                     
@@ -189,9 +229,18 @@ if (!disablecontrol) && (!inwall) {
                     
                     //If the player's horizontal speed is equal/lower than 0.
                     if (xspeed <= 0) {
-                        
+                    
                         //Add 'acc' to xspeed.
-                        xspeed += -acc;
+                        if (global.powerup != cs_frog)
+                            xspeed += -acc;
+                        else {
+                        
+                            //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
+                            if ((holding == 0) && (global.mount == 0))                              
+                                xspeed += -accfrog;
+                            else
+                                xspeed += -acc;
+                        }
                     }
                     else { //Otherwise, if the player's speed is greater than 0.
                     
@@ -204,8 +253,17 @@ if (!disablecontrol) && (!inwall) {
                     //If the player's horizontal speed is equal/lower than 0.
                     if (xspeed <= 0) {
                     
-                        //Add 'acc' to xspeed
-                        xspeed += -acc/2;
+                        //Add 'acc' to xspeed.
+                        if (global.powerup != cs_frog)
+                            xspeed += -acc/2;
+                        else {
+                        
+                            //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
+                            if ((holding == 0) && (global.mount == 0))                              
+                                xspeed += -accfrog/2;
+                            else
+                                xspeed += -acc/2;
+                        }
                     }
                     else { //Otherwise, if the player's speed is greater than 0.
                     
@@ -292,9 +350,27 @@ else if (yspeed == 0) {
     }
 }
 
-//Slowdown the player is he is faster than his maximum speed.
-if ((state != 2) && (abs(xspeed) > xspeedmax))
-    xspeed = max(0,abs(xspeed)-0.1)*sign(xspeed);
+
+//Prevent the player from moving too fast
+if (state != 2) {
+
+    //Check if the pmeter is full and enter the shell if so.
+    if (global.powerup == cs_shell)
+    && (pmeter >= 112) {
+    
+        //Force sliding
+        sliding = true;
+        
+        //Force press 'Down' key
+        keyboard_key_press(vk_down);
+    }
+    
+    //Check the horizontal speed
+    if (xspeed > xspeedmax)
+        xspeed = xspeedmax;
+    if (xspeed < -xspeedmax)
+        xspeed = -xspeedmax;
+}
 
 //If the player is jumping
 if ((state == 2) || (delay > 0)) {
@@ -381,12 +457,20 @@ if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_climb,0,0))
 
 //Makes the player butt-slide down slopes
 if (keyboard_check_pressed(vk_down)) 
-&& (disablecontrol == 0) {
+&& (!disablecontrol) {
+
+    //If the player does have the penguin suit
+    if ((global.powerup == cs_shell)
+    || (global.powerup == cs_penguin))
+    && (state == 1)
+    && (!sliding)
+    && (!holding)
+        sliding = true;
 
     //If the player is on a slope, and the above didn't happen, slide normally
-    if ((collision_point(bbox_left-1,bbox_bottom+2,obj_slopeparent,1,0)) 
-    || (collision_point(bbox_right+1,bbox_bottom+2,obj_slopeparent,1,0))) {
-    
+    else if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+2,obj_slopeparent,1,0))
+    && (global.powerup != cs_frog) {
+            
         //If the player can slide and it's not holding anything.
         if (holding == 0)
             sliding = true;
