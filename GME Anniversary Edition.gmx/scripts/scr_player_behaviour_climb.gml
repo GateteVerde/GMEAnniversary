@@ -9,9 +9,16 @@
 */
 
 //Reset following variables
+if (sliding > 0) {
+
+    //Stop sliding
+    sliding = 0;
+    
+    //Clear 'Down' key
+    keyboard_clear(vk_down);
+}
 floatnow = 0;
 beefly = 0;
-sliding = 0;
 shelltime = 0;
 stompstyle = 0;
 if (isfloating) {
@@ -20,6 +27,7 @@ if (isfloating) {
     if (audio_is_playing(snd_spin))
         audio_stop_sound(snd_spin);
 }
+
 
 //Cap horizontal speed
 if (xspeed > 1)

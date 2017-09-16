@@ -67,7 +67,7 @@ back = -1;
 message = "";
 
 //Declare all the global variables
-scr_init_globals();
+init_globals();
 
 //Item that is being carried between rooms
 global.carrieditem = noone;
@@ -240,6 +240,9 @@ else if (keyboard_check_pressed(ord('R'))) {
 
     //Stop all playing sounds
     audio_stop_all();
+    
+    //Reset globals
+    init_globals();
     
     //Force reset the game
     room_goto(rm_enginetest)

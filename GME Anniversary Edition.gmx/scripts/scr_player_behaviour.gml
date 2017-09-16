@@ -488,7 +488,6 @@ if (keyboard_check_pressed(vk_down))
 
 //If the player is jumping, not ducking, not spin jumping, can control himself, and is not riding anything
 if (state == 2)
-&& (!crouch)
 && (!stompstyle)
 && (!disablecontrol)
 && (global.mount == 0) {
@@ -552,6 +551,7 @@ if (state == 2)
     //Handles carrot and bee Mario's floating
     else if ((global.powerup == cs_carrot) 
     || ((global.powerup == cs_bee) && (beefly < 128)))
+    && (!crouch)
     && (keyboard_check(vk_shift)) {
 
         //If Mario is moving downwards

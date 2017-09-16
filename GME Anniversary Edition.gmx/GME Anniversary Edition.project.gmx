@@ -392,6 +392,13 @@
     <sprite>sprites\spr_eventmarker</sprite>
   </sprites>
   <backgrounds name="background">
+    <backgrounds name="Level Backgrounds">
+      <backgrounds name="Gradients">
+        <background>background\bgr_gradient</background>
+      </backgrounds>
+      <background>background\bgr_blocks</background>
+      <background>background\bgr_hills</background>
+    </backgrounds>
     <backgrounds name="Tile Sets">
       <backgrounds name="Decoration">
         <background>background\bgr_tileset_bush</background>
@@ -442,7 +449,8 @@
     <scripts name="GUI">
       <script>scripts\draw_text_colour_shadowed.gml</script>
     </scripts>
-    <script>scripts\scr_init_globals.gml</script>
+    <script>scripts\init_globals.gml</script>
+    <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
@@ -486,7 +494,9 @@
             <object>objects\obj_mario</object>
           </objects>
         </objects>
-        <object>objects\obj_camera</object>
+        <objects name="System">
+          <object>objects\obj_foreground</object>
+        </objects>
       </objects>
       <object>objects\obj_persistent</object>
     </objects>

@@ -273,7 +273,7 @@ else
     noisy = 0;
 
 //Floor collision
-if (yspeed &gt;= 0) { //If the player is moving down.
+if (yspeed &gt;= 0) { //If the player is moving down and the gravity is not disabled.
 
     //Check for a semisolid object
     var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+yspeed,obj_semisolid,0,0);
@@ -320,7 +320,7 @@ if (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slo
     }
     
     //Prevent the player from getting embed inside a slope.
-    if (yspeed &gt; -0.85)    
+    if (yspeed &gt; -0.85)
         while (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slopeparent,1,0))        
             y--;
 }
@@ -478,10 +478,10 @@ else if (swimming) {
 }
 
 //If the player is bumping into a wall to the right
-if (xspeed &gt; 0) 
+if (xspeed &gt; 0)
 &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-4,obj_solid,0,0)) {
 
-    //If Mario is sliding with the shell
+    //If the player is sliding with the shell
     if (global.powerup == cs_shell)
     &amp;&amp; (sliding)
         xspeed = -xspeed;
@@ -544,14 +544,14 @@ if (yspeed &lt;= 0)
     yspeed = 0;
     
     //If the player does not have either the frog and penguin suit, and it's not climbing.
-    if (state &lt; 3) 
-    &amp;&amp; (noisy == 0) {
+    if ((state &gt; 1) &amp;&amp; (!noisy)) {
     
         //Max out the bee flying timer
         beefly = 128;
         
         //Stop variable jumping
-        jumpnow = 2;        
+        if (state != 3)
+            jumpnow = 2;        
         
         //Play 'Bump' sound
         if (!audio_is_playing(snd_bump))        
@@ -582,6 +582,7 @@ if (state != 3) {
             
             //Check if there's a ceiling above the player and make him move until it's not embed in a solid
             if (collision_rectangle(bbox_left,bbox_top-16,bbox_right,bbox_top-16,obj_solid,0,0))
+            &amp;&amp; (global.powerup != cs_small)
                 inwall = true;
         }            
     }
@@ -600,16 +601,17 @@ var water = collision_rectangle(bbox_left,y,bbox_right,y,obj_swim,0,0);
 
 //If the player is not swimming and makes contact with a water surface
 if ((!swimming) &amp;&amp; (water)) {
-        
-    //Stop most horizontal movement
-    xspeed = xspeed/2.5;    
     
     //Make the player swim.
     swimming = true;
+    swimtype = 0;
     
     //Make the player get up
     crouch = false;
-        
+    
+    //Stop most horizontal movement
+    xspeed = xspeed/2.5;
+            
     //Stop vertical movement
     ygrav = 0;
     if (yspeed &gt; 0)
@@ -657,94 +659,94 @@ if (state &lt;= 1)
 &amp;&amp; (!crouch) 
 &amp;&amp; (!inwall) {
 
-    //Check for a nearby solid block
+    //Check for a nearby solid block.
     var stuck = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,1);
     
-    //If the player is embed on a wall
+    //If the player is embed on a wall and it's not overlapping a mushblock.
     if (stuck) {
     
-        //If the player is colliding with a left or right modifier
+        //If the player is colliding with a left or right modifier.
         if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_left,0,0))
         &amp;&amp; (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_right,0,0)) {
         
-            //If the player is facing right
+            //If the player is facing right.
             if (xscale == 1) {
             
-                //If the player's horizontal speed is equal/greater than 0
-                if (xspeed &gt;= 0) {
+                //If the player's horizontal speed is equal/greater than 0.
+                if (hspeed &gt;= 0) {
             
-                    //Move the player to safety
+                    //Move mario to safety.
                     inwall = true;
                     
-                    //Set the direction to move
+                    //Set the direction to move.
                     direct = -1;
                 }
                 
-                //Otherwise, if the player's horizontal speed is lower than 0
-                else if (xspeed &lt; 0) {
+                //Otherwise, if the player's horizontal speed is lower than 0.
+                else if (hspeed &lt; 0) {
                 
-                    //Move the player to safety
+                    //Move mario to safety.
                     inwall = true;
                     
-                    //Set the direction to move
+                    //Set the direction to move.
                     direct = 1;                
                 }
             }
             
-            //Otherwise, if the player is facing left
+            //Otherwise, if the player is facing left.
             else if (xscale == -1) {
             
                 //If the player's horizontal speed if equal/lower than 0.
-                if (xspeed &lt;= 0) {
+                if (hspeed &lt;= 0) {
             
-                    //Move the player to safety
+                    //Move mario to safety.
                     inwall = true;
                     
-                    //Set the direction to move
+                    //Set the direction to move.
                     direct = 1;
                 }
                 
-                //Otherwise, if the player's horizontal speed if greater than 0
-                else if (xspeed &gt; 0) {
+                //Otherwise, if the player's horizontal speed if greater than 0.
+                else if (hspeed &gt; 0) {
                 
-                    //Move the player to safety
+                    //Move mario to safety.
                     inwall = true;
                     
-                    //Set the direction to move
+                    //Set the direction to move.
                     direct = -1;                
                 }           
             }
         }
         
-        //Otherwise, if the player is overlapping an left modifier
+        //Otherwise, if the player is overlapping an left modifier.
         else if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_left,0,0)) {
         
-            //Move the player to safety
+            //Move mario to safety.
             inwall = true;
             
-            //Set the direction to move
+            //Set the direction to move.
             direct = -1;              
         }
         
-        //Otherwise, if the player is overlapping an right modifier
+        //Otherwise, if the player is overlapping an right modifier.
         else if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_right,0,0)) {
         
-            //Move the player to safety
+            //Move mario to safety.
             inwall = true;
             
-            //Set the direction to move
+            //Set the direction to move.
             direct = 1;              
         }
     }
 }
 
-//Otherwise, if the player gets stuck on a wall
+//Otherwise, if the player gets stuck on a wall.
 else if (inwall) {
 
-    //Move the player until it's not embed in a wall
-    x += 1*sign(direct);
+    //Move the player until it's not embed in a wall.
+    x += 2*sign(direct);
     
-    //If the player is not longer embed on a wall, make him able to move
+    //If the player is not longer embed on a wall, make him able to move.
     if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,1,0))
         inwall = false;
 }
@@ -797,6 +799,9 @@ else {
           <argument>
             <kind>1</kind>
             <string>///Reset all values when landing
+
+//Enable gravity
+disablegrav = 0;
 
 //Reset bee flight
 beefly = 0;

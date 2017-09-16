@@ -3,7 +3,7 @@
   <spriteName>spr_eventmarker</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,218 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_camera)
+            <string>///The level manager, this is needed on every in-game level. Do not forget to place it.
+
+//Manage barrier
+barrier = 1;
+alarm[6] = 3;
+
+//Manage backgrounds
+for (i=0; i&lt;8; i++;) {
+
+    bg[i] = noone;
+    fg[i] = background_foreground[i];
+}
+alarm[7] = 1;
+
+//Make sure the view follows this object.
+view_object[0] = id;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create foreground layers
+
+var i = 0;
+repeat (8) {
+
+    //Create the respective layer for the background.
+    if (background_foreground[i] == true) {
+    
+        bglayer = instance_create(0,0,obj_foreground);
+        bglayer.index = i;
+    }
+    
+    //Find next layer
+    i++;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Disable barrier
+
+barrier = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Deals with various game logic stuff
+
+//Follow main player
+if (instance_exists(obj_playerparent)) {
+
+    //Snap into the player position
+    x = obj_playerparent.x;
+    y = obj_playerparent.y;
+    
+    //Make sure the barrier is not active
+    if (!barrier) {
+         
+        //Prevent the player from going outside the left boundary
+        if (obj_playerparent.x &lt; view_xview[0]+5) {
+        
+            //Snap the player 5 pixels at the left of the boundary
+            obj_playerparent.x = view_xview[0]+5;
+            
+            //Stop Mario's horizontal movement
+            if (obj_playerparent.xspeed &lt; 0) {
+            
+                //Stop horizontal movement
+                obj_playerparent.xspeed = 0;
+                
+                //Stop sliding if necessary
+                if (obj_playerparent.sliding) {
+                
+                    //Stop sliding
+                    sliding = false;
+                    
+                    //Free 'Down' key
+                    keyboard_clear(vk_down);
+                }
+            }
+        }
+        
+        //Otherwise, prevent the player from going outside the right boundary
+        else if (obj_playerparent.x &gt; view_xview[0]+view_wview[0]-5) {
+        
+            //Snap the player 5 pixels at the left of the boundary
+            obj_playerparent.x = view_xview[0]+view_wview[0]-5;
+            
+            //Stop Mario's horizontal movement
+            if (obj_playerparent.xspeed &gt; 0) {
+            
+                //Stop horizontal movement
+                obj_playerparent.xspeed = 0;
+                
+                //Stop sliding if necessary
+                if (obj_playerparent.sliding) {
+                
+                    //Stop sliding
+                    sliding = false;
+                    
+                    //Free 'Down' key
+                    keyboard_clear(vk_down);
+                }
+            }
+        }
+    }
+}
+
+//Round position variables
+x = round(x);
+y = round(y);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Deals with parallax backgrounds.
+
+var i = 0; 
+repeat (8) {
+
+    //If the background is NOT a foreground.
+    if (background_foreground[i] == false) {
+    
+        //Handle position of the main background.
+        if ((i = 0) &amp;&amp; (background_index[0] &gt; -1)) {
+                    
+            if (room_height &lt;= 432)
+                draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0],1,1,0,c_white,background_alpha[0]);
+            else    
+                draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0]+(view_yview[0]*(room_height-background_height[0])/(room_height-view_hview[0])-32),1,1,0,c_white,background_alpha[0]);            
+        }
+        
+        //Handle position of the rest of backgrounds.
+        else if ((i &gt; 0) &amp;&amp; (background_index[i] &gt; -1))
+            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i],1,1,0,c_white,background_alpha[i]);
+    }
+    
+    //Next layer
+    i++;
+}
 </string>
           </argument>
         </arguments>
