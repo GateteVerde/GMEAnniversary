@@ -210,24 +210,54 @@ else {
                         if (!audio_is_playing(snd_skid))
                             audio_play_sound(snd_skid, 0, true);
                     }
+                    
+                    //Set the animation speed
                     else {
                         
-                        //Set the animation speed
+                        //If Mario does not have the frog powerup
                         if (global.powerup != cs_frog)
                             image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                            
+                        //Otherwise, if Mario does have the frog suit.
                         else {
                         
-                            if (holding == 0)
-                                image_speed = 0.1;
-                            else
-                                image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                            //If Mario does have the penguin powerup
+                            if (global.powerup == cs_penguin) {
+                            
+                                //If Mario is not holding anything.
+                                if (holding == 0) {
+                                    
+                                    if (xspeed == 0)
+                                        image_speed = 0.1;
+                                    else
+                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));   
+                                }
+                                else
+                                    image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;                         
+                            }
+                        
+                            //Otherwise, if Mario does not have the penguin suit.
+                            else {
+                                
+                                if (holding == 0)
+                                    image_speed = 0.1;
+                                else
+                                    image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                            }
                         }
                     
                         //If Mario is running
                         if (run)                      
                             sprite_index = scr_mario_run();
-                        else                      
-                            sprite_index = scr_mario_walk();
+                        else {
+                                             
+                            if ((global.powerup == cs_frog)
+                            || (global.powerup == cs_penguin))
+                            &amp;&amp; (swimming)
+                                sprite_index = scr_mario_swim();
+                            else
+                                sprite_index = scr_mario_walk();
+                        }
                     }
                 }
                 
@@ -362,7 +392,10 @@ else {
                                 sprite_index = scr_mario_swim();
                             
                                 //...and animate it
-                                image_speed = 0.15;
+                                if (xspeed == 0)
+                                    image_speed = 0.1;
+                                else
+                                    image_speed = 0.1+(0.1*keyboard_check(vk_control));
                             }
                             
                             //Otherwise, if Mario is swimming upwards
@@ -373,9 +406,9 @@ else {
                                 
                                 //Set the speed
                                 if ((x != xprevious) || (y != yprevious))
-                                    image_speed = 0;
+                                    image_speed = 0.1+(0.1*keyboard_check(vk_control));
                                 else
-                                    image_speed = 0.15;
+                                    image_speed = 0;
                             }
                             
                             //Otherwise, if Mario is swimming downwards
@@ -386,9 +419,9 @@ else {
                                 
                                 //Set the speed
                                 if ((x != xprevious) || (y != yprevious))
-                                    image_speed = 0;
+                                    image_speed = 0.1+(0.1*keyboard_check(vk_control));
                                 else
-                                    image_speed = 0.15;
+                                    image_speed = 0;
                             }
                         }
                         
@@ -716,6 +749,16 @@ else if ((sprite_index == spr_mario_carrot_jump)
 //Otherwise, if Mario is sliding inside his shell.
 else if (sprite_index == spr_mario_shell_slide)
     image_index = 2;
+    
+//Otherwise, if Mario is swimming with either the frog or penguin powerup.
+else if ((sprite_index == spr_mario_frog_swim2) || (sprite_index == spr_mario_penguin_swim2))
+|| ((sprite_index == spr_mario_frog_swim3) || (sprite_index == spr_mario_penguin_swim3))
+|| ((sprite_index == spr_mario_frog_swim4) || (sprite_index == spr_mario_penguin_swim4)) {
+
+    //Play 'Swim' sound
+    audio_stop_sound(snd_swim);
+    audio_play_sound(snd_swim, 0, false);
+}
 </string>
           </argument>
         </arguments>

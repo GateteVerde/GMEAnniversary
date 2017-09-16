@@ -50,100 +50,190 @@ else {
 if ((state == 2) && (crouch))
     crouch = false;
 
-//Prevent the player from swimming too fast.
-if (yspeed < -2) 
-    yspeed = -2;
-    
-//Prevent the player from diving too fast.
-if (yspeed > 4)
-    yspeed = 4;
-
-//Set up the maximum horizontal speed.
-if (state == 2)
-    xspeedmax = 2;
-else
-    xspeedmax = 0.5;
-
 //Handle the player movement.
 if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
 
-    //If the player presses the 'Shift' key.
-    if (keyboard_check_pressed(vk_shift)) {
+    //If the player does not have either the frog or penguin powerup and it's not holding anything.
+    if ((global.powerup == cs_frog)
+    || (global.powerup == cs_penguin)) 
+    && (holding == 0) {
     
-        //Play 'Swim' sound
-        audio_play_sound(snd_swim, 0, false);
-    
-        //Swim higher if the 'Up' key is pressed.
-        if (keyboard_check(vk_up))
-            yspeed -= 2;
+        //Deny gravity at all times
+        ygrav = 0
         
-        //Swim lower if the 'Down' key is pressed.
-        else if (keyboard_check(vk_down))
-            yspeed -= 0.5;
+        //If the 'Control' key is pressed, move faster.
+        if (keyboard_check(vk_control))  
+            xspeedmax = 2.5;
         
-        //Otherwise
+        //Otherwise, move slower.
         else        
-            yspeed -= 1.5;
-            
-        //Set the state
-        state = 2;
-            
-        /*Move the player a few pixels upwards when on contact with a moving platform or a slope.
-        var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);
-        if (platform)
-        && (platform.yspeed < 0)
-            y -= 4;
-        */
-    }
-    
-    //Handle horizontal movement.
-    //If the player presses the 'Right' key and the 'Left' key is not held.
-    if ((keyboard_check(vk_right)) && (!keyboard_check(vk_left)) && (!crouch) ) {
+            xspeedmax = 1.5;
         
-        //Set the facing direction.
-        xscale = 1;
+        //Handle horizontal movement
+        //If the left key is pressed and the player is not crouched down.
+        if ((keyboard_check(vk_left)) && (!crouch) && (!keyboard_check(vk_right))) {
         
-        //If there's NOT a wall on the way.
-        if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)) {
-        
-            //Set the horizontal speed.
-            if (xspeed >= 0) //If the player horizontal speed is equal/greater than 0.        
-                xspeed += acc_swim;
+            //Set the horizontal speed
+            xspeed += -0.5;
             
-            //Otherwise, If the player horizontal speed is lower than 0.
-            else         
-                xspeed += acc_swim*2;
+            //Set the facing direction
+            xscale = -1;
+            
+            //Set the swimming direction
+            swimtype = 0;
         }
+        
+        //Otherwise, if the right key is pressed and the player is not crouched down.
+        else if ((keyboard_check(vk_right)) && (!crouch) && (!keyboard_check(vk_left))) {
+        
+            //Set the horizontal speed
+            xspeed += 0.5;
+            
+            //Set the facing direction
+            xscale = 1;
+            
+            //Set the swimming direction
+            swimtype = 0;
+        }
+        
+        //Otherwise, stop the player.
+        else 
+        xspeed = 0;
+            
+        //If the 'Up' key is pressed.
+        if (keyboard_check(vk_up)) {
+        
+            //Move upwards
+            yspeed += -0.5;
+            
+            //Set the swimming animation.
+            swimtype = 1;
+        }
+        
+        //Otherwise, if the 'Down' key is pressed.
+        else if (keyboard_check(vk_down)) {
+        
+            //Set the swimming animation
+            swimtype = 2;
+            
+            //Move downwards
+            if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
+            || (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slopeparent,1,0))
+                yspeed = 0;
+            else
+                yspeed += 0.5;
+        }
+        else 
+        yspeed = 0;
+            
+        //Prevent the player from moving horizontally too fast.
+        if (xspeed > xspeedmax) 
+            xspeed = xspeedmax;
+        if (xspeed < -xspeedmax) 
+            xspeed = -xspeedmax;
+            
+        //Prevent the player from moving vertically too fast.
+        if (yspeed > xspeedmax) 
+            yspeed = xspeedmax;
+        if (yspeed < -xspeedmax) 
+            yspeed = -xspeedmax;        
     }
     
-    //If the player presses the 'Left' key and the 'Right' key is not held.
-    else if ((keyboard_check(vk_left)) && (!keyboard_check(vk_right)) && (!crouch)) {
+    //Otherwise, if the player does not have any of the above powerups.
+    else {
+    
+        //Prevent the player from swimming too fast.
+        if (yspeed < -2) 
+            yspeed = -2;
+            
+        //Prevent the player from diving too fast.
+        if (yspeed > 4)
+            yspeed = 4;
         
-        //Set the facing direction
-        xscale = -1;
+        //Set up the maximum horizontal speed.
+        if (state == 2)
+            xspeedmax = 2;
+        else
+            xspeedmax = 0.5;
+            
+        //If the player presses the 'Shift' key.
+        if (keyboard_check_pressed(vk_shift)) {
         
-        //If there's NOT a wall on the way.
-        if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)) {
+            //Play 'Swim' sound
+            audio_play_sound(snd_swim, 0, false);
         
-            //Set the horizontal speed.
-            if (xspeed <= 0) //If the player horizontal speed is equal/lower than 0.        
-                xspeed += -acc_swim;
-                
-            //Otherwise, If the player horizontal speed is greater than 0. 
+            //Swim higher if the 'Up' key is pressed.
+            if (keyboard_check(vk_up))
+                yspeed -= 2;
+            
+            //Swim lower if the 'Down' key is pressed.
+            else if (keyboard_check(vk_down))
+                yspeed -= 0.5;
+            
+            //Otherwise
             else        
-                xspeed += -acc_swim*2;
-        }      
-    }
-    
-    //Otherwise, if neither of the 'Left' key or 'Right' key is not held.
-    else if (yspeed == 0) { //If the player is on the ground.
-    
-        //Reduce the player speed until he stops.
-        xspeed = max(0,abs(xspeed)-dec_swim)*sign(xspeed);
+                yspeed -= 1.5;
+                
+            //Set the state
+            state = 2;
+                
+            /*Move the player a few pixels upwards when on contact with a moving platform or a slope.
+            var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);
+            if (platform)
+            && (platform.yspeed < 0)
+                y -= 4;
+            */
+        }
         
-        //Set up horizontal speed to 0 when xspeed hits the value given on 'dec_swim'.
-        if ((xspeed < dec_swim) && (xspeed > -dec_swim))      
-            xspeed = 0;     
+        //Handle horizontal movement.
+        //If the player presses the 'Right' key and the 'Left' key is not held.
+        if ((keyboard_check(vk_right)) && (!keyboard_check(vk_left)) && (!crouch) ) {
+            
+            //Set the facing direction.
+            xscale = 1;
+            
+            //If there's NOT a wall on the way.
+            if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)) {
+            
+                //Set the horizontal speed.
+                if (xspeed >= 0) //If the player horizontal speed is equal/greater than 0.        
+                    xspeed += acc_swim;
+                
+                //Otherwise, If the player horizontal speed is lower than 0.
+                else         
+                    xspeed += acc_swim*2;
+            }
+        }
+        
+        //If the player presses the 'Left' key and the 'Right' key is not held.
+        else if ((keyboard_check(vk_left)) && (!keyboard_check(vk_right)) && (!crouch)) {
+            
+            //Set the facing direction
+            xscale = -1;
+            
+            //If there's NOT a wall on the way.
+            if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)) {
+            
+                //Set the horizontal speed.
+                if (xspeed <= 0) //If the player horizontal speed is equal/lower than 0.        
+                    xspeed += -acc_swim;
+                    
+                //Otherwise, If the player horizontal speed is greater than 0. 
+                else        
+                    xspeed += -acc_swim*2;
+            }      
+        }
+        
+        //Otherwise, if neither of the 'Left' key or 'Right' key is not held.
+        else if (yspeed == 0) { //If the player is on the ground.
+        
+            //Reduce the player speed until he stops.
+            xspeed = max(0,abs(xspeed)-dec_swim)*sign(xspeed);
+            
+            //Set up horizontal speed to 0 when xspeed hits the value given on 'dec_swim'.
+            if ((xspeed < dec_swim) && (xspeed > -dec_swim))      
+                xspeed = 0;     
+        }
     }
 }
 
