@@ -368,6 +368,13 @@
         <sprite>sprites\spr_qblock_3x_empty</sprite>
       </sprites>
     </sprites>
+    <sprites name="Items">
+      <sprites name="Collectables">
+        <sprites name="Coins">
+          <sprite>sprites\spr_coin</sprite>
+        </sprites>
+      </sprites>
+    </sprites>
     <sprites name="Masks">
       <sprites name="Collision">
         <sprite>sprites\spr_square</sprite>
@@ -392,6 +399,15 @@
         </sprites>
         <sprite>sprites\spr_linemask</sprite>
         <sprite>sprites\spr_squaremask</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Special">
+      <sprites name="Palettes">
+        <sprites name="Blocks">
+          <sprite>sprites\spr_palette_qblock</sprite>
+          <sprite>sprites\spr_palette_qblock_empty</sprite>
+          <sprite>sprites\spr_palette_brick</sprite>
+        </sprites>
       </sprites>
     </sprites>
     <sprite>sprites\spr_up</sprite>
@@ -459,9 +475,21 @@
     <scripts name="GUI">
       <script>scripts\draw_text_colour_shadowed.gml</script>
     </scripts>
+    <scripts name="Shaders">
+      <scripts name="Palettes">
+        <script>scripts\pal_swap_init_system.gml</script>
+        <script>scripts\pal_swap_set.gml</script>
+        <script>scripts\pal_swap_reset.gml</script>
+        <script>scripts\pal_swap_get_pal_count.gml</script>
+      </scripts>
+    </scripts>
     <script>scripts\init_globals.gml</script>
     <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
+    <script>scripts\wrap.gml</script>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
   </fonts>

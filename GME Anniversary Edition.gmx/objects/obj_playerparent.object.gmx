@@ -584,6 +584,11 @@ if (yspeed &lt;= 0)
     }
 }
 
+//Make sure that the player does not get embed on ceiling slopes
+if (state &gt; 1)
+    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
+        y++;
+
 //If the player is not climbing
 if (state != 3) {
 

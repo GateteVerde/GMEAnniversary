@@ -46,13 +46,23 @@
 //      -   obj_pullparent
 //
 //  This is a very important variable, do not delete it.
-*/ 
+*/
+
+//Initialize Colour Swap shader.
+global.Pal_Shader = shd_palette_swapper;
+pal_swap_init_system(global.Pal_Shader);
 
 //Persistence mode
 global.persistence = true;
 
 //Flight time (In seconds)
 global.flighttime = 4;
+
+//Skin of the level
+//0: Normal
+//1: Underground
+//2: Castle
+global.skin = 0;
 
 //Game width
 global.gw = 384;
