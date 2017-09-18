@@ -27,7 +27,7 @@ lives = 3;
 score = 0;
 
 //Health
-health = 4;
+health = 3;
 
 //Coins
 global.coins = 0;

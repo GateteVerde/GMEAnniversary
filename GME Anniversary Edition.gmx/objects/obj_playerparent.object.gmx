@@ -27,14 +27,6 @@
             <kind>1</kind>
             <string>///Super Player Parent
 
-//Make sure to have the big powerup if health mode is active.
-if (global.healthmode) {
-
-    //If the player is not big and it does not have a bigger powerup.
-    if (global.powerup &lt; cs_fire)
-        global.powerup = cs_big;
-}
-
 //Movement variables
 xspeed = 0;
 yspeed = 0;

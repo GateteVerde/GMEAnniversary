@@ -93,6 +93,10 @@ if (!flying) { //If the player is not flying
 else {
 
     xspeedmax = 2;
+    if (xspeed > 2)
+        xspeed -= 0.1;
+    if (xspeed < -2)
+        xspeed += 0.1;
 }
     
 //If controls are not disabled or the player is not stuck in a wall
@@ -391,16 +395,13 @@ if (state != 2) {
 if ((state == 2) || (delay > 0)) {
     
     //Variable jumping
-    if (yspeed < -2) && (jumping == 1) {
-    
-        //Use alternate ygrav
+    if (yspeed < -2) && (jumping == 1)
         ygrav = grav_alt;
-    }   
     
-    //Otherwise, use alternate ygrav.     
+    //Otherwise, use default gravity.     
     else {
     
-        //Use default ygrav
+        //Use default gravity
         ygrav = grav;
         
         //End variable jumping if it never ends manually.
@@ -616,20 +617,16 @@ if (state == 2)
             else
                 isfloating = false;
         }
-
     }
 
     //Stop floating
     else
         isfloating = false;
-
 }
 
 //Stop floating
-else {
-
+else
     isfloating = false;
-}
 
 //If carrot or bee Mario is floating, but the sound is not playing
 if ((isfloating) && (!floatnow)) {
