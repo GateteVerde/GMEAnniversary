@@ -26,6 +26,12 @@ lives = 3;
 //Score
 score = 0;
 
+//Health
+health = 4;
+
+//Coins
+global.coins = 0;
+
 //Current Player
 global.player = 0;
 

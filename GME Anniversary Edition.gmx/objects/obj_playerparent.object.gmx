@@ -27,6 +27,14 @@
             <kind>1</kind>
             <string>///Super Player Parent
 
+//Make sure to have the big powerup if health mode is active.
+if (global.healthmode) {
+
+    //If the player is not big and it does not have a bigger powerup.
+    if (global.powerup &lt; cs_fire)
+        global.powerup = cs_big;
+}
+
 //Movement variables
 xspeed = 0;
 yspeed = 0;
@@ -138,6 +146,10 @@ noisy = 0;
 
 //Allows the player to end sliding manually when releasing the 'Down' key.
 holddown = false;
+
+//Initialize important alarms
+alarm[8] = 1; 
+alarm[10] = 1; //This one is found on player skins
 </string>
           </argument>
         </arguments>
@@ -174,6 +186,33 @@ run = 0;
 //Stop 'P-Meter' sound
 if (audio_is_playing(snd_pmeter))
     audio_stop_sound(snd_pmeter);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create a bubble effect if the player is swimming
+
+alarm[8] = 45+random_range(-15, 15);
+if (swimming)
+    instance_create(x,bbox_top,obj_bubble);
 </string>
           </argument>
         </arguments>
@@ -646,6 +685,13 @@ if ((!swimming) &amp;&amp; (water)) {
     ygrav = 0;
     if (yspeed &gt; 0)
         yspeed = 0;
+        
+    //Create splash effect
+    with (instance_create(x-8,water.y-15,obj_smoke)) {
+    
+        depth = -4;
+        sprite_index = spr_splash;
+    }
 }
 
 //Otherwise, if the player had enough swimming and wants to get out
@@ -671,6 +717,13 @@ else if ((swimming) &amp;&amp; (!water)) {
                 
                 //Set the vertical speed
                 yspeed = -3.4675;
+                
+                //Create splash effect
+                with (instance_create(x-8,y-15,obj_smoke)) {
+                
+                    depth = -4;
+                    sprite_index = spr_splash;
+                }
             }
             
             //Otherwise, if 'Shift' is not held.
@@ -955,18 +1008,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw player and debug
+            <string>///Draw player
 
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_white,1);
-
-//Draw debug
-draw_set_font(fnt_debug);
-
-//Draw text
-draw_text_colour_shadowed(view_xview[0]+2,view_yview[0]+2,string(state),c_black,c_white,1,1,0.5,1);
-
-//Reset alpha
-draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

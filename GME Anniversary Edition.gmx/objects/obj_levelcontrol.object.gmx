@@ -41,6 +41,9 @@ alarm[7] = 1;
 
 //Make sure the view follows this object.
 view_object[0] = id;
+
+//Create HUD object
+instance_create(0,0,obj_hud);
 </string>
           </argument>
         </arguments>
@@ -195,7 +198,7 @@ y = round(y);
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="3">
+    <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>

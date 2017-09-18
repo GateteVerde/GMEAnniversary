@@ -402,6 +402,50 @@
       </sprites>
     </sprites>
     <sprites name="Special">
+      <sprites name="Eyecandy">
+        <sprites name="Score">
+          <sprite>sprites\spr_10pts</sprite>
+          <sprite>sprites\spr_100pts</sprite>
+          <sprite>sprites\spr_200pts</sprite>
+          <sprite>sprites\spr_400pts</sprite>
+          <sprite>sprites\spr_800pts</sprite>
+          <sprite>sprites\spr_1000pts</sprite>
+          <sprite>sprites\spr_2000pts</sprite>
+          <sprite>sprites\spr_4000pts</sprite>
+          <sprite>sprites\spr_8000pts</sprite>
+          <sprite>sprites\spr_1uppts</sprite>
+          <sprite>sprites\spr_2uppts</sprite>
+          <sprite>sprites\spr_3uppts</sprite>
+        </sprites>
+        <sprite>sprites\spr_bubble</sprite>
+        <sprite>sprites\spr_castlesmoke</sprite>
+        <sprite>sprites\spr_cinder</sprite>
+        <sprite>sprites\spr_smoke</sprite>
+        <sprite>sprites\spr_smoke_b</sprite>
+        <sprite>sprites\spr_smoke_c</sprite>
+        <sprite>sprites\spr_sparkle</sprite>
+        <sprite>sprites\spr_spinthump</sprite>
+        <sprite>sprites\spr_splash</sprite>
+        <sprite>sprites\spr_splash_lava</sprite>
+        <sprite>sprites\spr_splash_lava_up</sprite>
+        <sprite>sprites\spr_star</sprite>
+      </sprites>
+      <sprites name="GUI">
+        <sprites name="In-Level">
+          <sprites name="Digits">
+            <sprite>sprites\spr_numbers</sprite>
+            <sprite>sprites\spr_numbersgold</sprite>
+          </sprites>
+          <sprite>sprites\spr_hud_mario</sprite>
+          <sprite>sprites\spr_hud_coin</sprite>
+          <sprite>sprites\spr_hud_time</sprite>
+          <sprite>sprites\spr_hud_health</sprite>
+          <sprite>sprites\spr_hud_pmeter</sprite>
+        </sprites>
+        <sprite>sprites\spr_hud_reserve</sprite>
+        <sprite>sprites\spr_hud_starcoin</sprite>
+        <sprite>sprites\spr_hud_starcoin_get</sprite>
+      </sprites>
       <sprites name="Palettes">
         <sprites name="Blocks">
           <sprite>sprites\spr_palette_qblock</sprite>
@@ -437,7 +481,9 @@
       <background>background\bgr_tileset_smw_pipes</background>
     </backgrounds>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\pth_bubble</path>
+  </paths>
   <scripts name="scripts">
     <scripts name="Player">
       <scripts name="Animation">
@@ -486,6 +532,7 @@
     <script>scripts\init_globals.gml</script>
     <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
     <script>scripts\wrap.gml</script>
+    <script>scripts\string_add_zeros.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
@@ -538,11 +585,18 @@
             <object>objects\obj_mario</object>
           </objects>
         </objects>
-        <objects name="Blocks">
-          <object>objects\obj_emptyblock</object>
+        <objects name="Items">
+          <objects name="Blocks">
+            <object>objects\obj_emptyblock</object>
+          </objects>
+        </objects>
+        <objects name="Effects">
+          <object>objects\obj_bubble</object>
+          <object>objects\obj_smoke</object>
         </objects>
         <objects name="System">
           <object>objects\obj_foreground</object>
+          <object>objects\obj_hud</object>
         </objects>
       </objects>
       <object>objects\obj_persistent</object>
