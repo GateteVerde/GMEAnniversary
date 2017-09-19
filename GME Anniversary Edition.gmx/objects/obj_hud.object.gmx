@@ -100,13 +100,13 @@ if (global.healthmode) {
     //Health Alpha
     if (collision_rectangle(view_xview[0]+4,view_yview[0]+4,view_xview[0]+41,view_yview[0]+41,obj_playerparent,0,0)) {
     
-        alpha1 -= 0.05;
-        if (alpha1 &lt; 0.3)
-            alpha1 = 0.3;
+        alpha1 -= 0.025;
+        if (alpha1 &lt; 0.25)
+            alpha1 = 0.25;
     }
     else {
     
-        alpha1 += 0.05;
+        alpha1 += 0.025;
         if (alpha1 &gt; 1)
             alpha1 = 1;
     }
@@ -114,13 +114,13 @@ if (global.healthmode) {
     //Lives / Coins Alpha
     if (collision_rectangle(view_xview[0]+45,view_yview[0]+4,view_xview[0]+87,view_yview[0]+41,obj_playerparent,0,0)) {
     
-        alpha2 -= 0.05;
-        if (alpha2 &lt; 0.3)
-            alpha2 = 0.3;
+        alpha2 -= 0.025;
+        if (alpha2 &lt; 0.25)
+            alpha2 = 0.25;
     }
     else {
     
-        alpha2 += 0.05;
+        alpha2 += 0.025;
         if (alpha2 &gt; 1)
             alpha2 = 1;
     }        
@@ -130,9 +130,9 @@ else {
     //Lives / Coins Alpha
     if (collision_rectangle(view_xview[0]+4,view_yview[0]+4,view_xview[0]+46,view_yview[0]+41,obj_playerparent,0,0)) {
     
-        alpha2 -= 0.05;
-        if (alpha2 &lt; 0.3)
-            alpha2 = 0.3;
+        alpha2 -= 0.025;
+        if (alpha2 &lt; 0.25)
+            alpha2 = 0.25;
     }
     else {
     
@@ -145,13 +145,13 @@ else {
 //Reserve box alpha
 if (collision_rectangle(view_xview[0]+view_wview[0]/2-14,view_yview[0]+4,view_xview[0]+view_wview[0]/2+14,view_yview[0]+32,obj_playerparent,0,0)) {
 
-    alpha3 -= 0.05;
-    if (alpha3 &lt; 0.3)
-        alpha3 = 0.3;
+    alpha3 -= 0.025;
+    if (alpha3 &lt; 0.25)
+        alpha3 = 0.25;
 }
 else {
 
-    alpha3 += 0.05;
+    alpha3 += 0.025;
     if (alpha3 &gt; 1)
         alpha3 = 1;
 }
@@ -159,13 +159,13 @@ else {
 //Score
 if (collision_rectangle(view_xview[0]+view_wview[0]-130,view_yview[0]+4,view_xview[0]+view_wview[0]-58,view_yview[0]+19,obj_playerparent,0,0)) {
 
-    alpha4 -= 0.05;
-    if (alpha4 &lt; 0.3)
-        alpha4 = 0.3;
+    alpha4 -= 0.025;
+    if (alpha4 &lt; 0.25)
+        alpha4 = 0.25;
 }
 else {
 
-    alpha4 += 0.05;
+    alpha4 += 0.025;
     if (alpha4 &gt; 1)
         alpha4 = 1;
 }
@@ -173,13 +173,13 @@ else {
 //Time
 if (collision_rectangle(view_xview[0]+view_wview[0]-45,view_yview[0]+4,view_xview[0]+view_wview[0]-5,view_yview[0]+19,obj_playerparent,0,0)) {
 
-    alpha5 -= 0.05;
-    if (alpha5 &lt; 0.3)
-        alpha5 = 0.3;
+    alpha5 -= 0.025;
+    if (alpha5 &lt; 0.25)
+        alpha5 = 0.25;
 }
 else {
 
-    alpha5 += 0.05;
+    alpha5 += 0.025;
     if (alpha5 &gt; 1)
         alpha5 = 1;
 }
@@ -187,13 +187,13 @@ else {
 //P-Meter
 if (collision_rectangle(view_xview[0]+4,view_yview[0]+view_hview[0]-22,view_xview[0]+81,view_yview[0]+view_hview[0]-5,obj_playerparent,0,0)) {
 
-    alpha6 -= 0.05;
-    if (alpha6 &lt; 0.3)
-        alpha6 = 0.3;
+    alpha6 -= 0.025;
+    if (alpha6 &lt; 0.25)
+        alpha6 = 0.25;
 }
 else {
 
-    alpha6 += 0.05;
+    alpha6 += 0.025;
     if (alpha6 &gt; 1)
         alpha6 = 1;
 }
