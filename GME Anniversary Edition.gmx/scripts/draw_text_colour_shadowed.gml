@@ -20,7 +20,7 @@
 */
 
 //Draw the back text
-draw_text_colour(argument[0]+argument[5],argument[1]+argument[6],argument[2],argument[3],argument[3],argument[3],argument[3],argument[7]/2);
+draw_text_colour(argument[0]+argument[5],argument[1]+argument[6],argument[2],argument[3],argument[3],argument[3],argument[3],argument[7]);
 
 //Draw the front text
 draw_text_colour(argument[0],argument[1],argument[2],argument[4],argument[4],argument[4],argument[4],argument[8]);

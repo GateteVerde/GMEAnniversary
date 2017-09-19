@@ -28,22 +28,17 @@
             <string>///The In-Level HUD
 
 //Regular Numbers
-numbers_w = font_add_sprite_ext(spr_numbers,"0123456789",1,-1);
+numbers_w = font_add_sprite_ext(spr_numbers,"0123456789",0,0);
+
+//Regular Blk Numbers
+numbers_b = font_add_sprite_ext(spr_numbersblk,"0123456789",0,0);
 
 //Regular Gold Numbers
-numbers_g = font_add_sprite_ext(spr_numbersgold,"0123456789",1,-1);
+numbers_g = font_add_sprite_ext(spr_numbersgold,"0123456789",0,0);
 
 //P-Meter flash
 flash = 0;
 alarm[0] = 7;
-
-//Alpha values for HUD elements
-alpha1 = 1;
-alpha2 = 1;
-alpha3 = 1;
-alpha4 = 1;
-alpha5 = 1;
-alpha6 = 1;
 </string>
           </argument>
         </arguments>
@@ -75,133 +70,6 @@ alarm[0] = 7;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Handle alpha values for HUD elements
-
-//Health / Lives + Coins
-if (global.healthmode) {
-
-    //Health Alpha
-    if (collision_rectangle(view_xview[0]+4,view_yview[0]+4,view_xview[0]+41,view_yview[0]+41,obj_playerparent,0,0)) {
-    
-        alpha1 -= 0.025;
-        if (alpha1 &lt; 0.25)
-            alpha1 = 0.25;
-    }
-    else {
-    
-        alpha1 += 0.025;
-        if (alpha1 &gt; 1)
-            alpha1 = 1;
-    }
-    
-    //Lives / Coins Alpha
-    if (collision_rectangle(view_xview[0]+45,view_yview[0]+4,view_xview[0]+87,view_yview[0]+41,obj_playerparent,0,0)) {
-    
-        alpha2 -= 0.025;
-        if (alpha2 &lt; 0.25)
-            alpha2 = 0.25;
-    }
-    else {
-    
-        alpha2 += 0.025;
-        if (alpha2 &gt; 1)
-            alpha2 = 1;
-    }        
-}
-else {
-
-    //Lives / Coins Alpha
-    if (collision_rectangle(view_xview[0]+4,view_yview[0]+4,view_xview[0]+46,view_yview[0]+41,obj_playerparent,0,0)) {
-    
-        alpha2 -= 0.025;
-        if (alpha2 &lt; 0.25)
-            alpha2 = 0.25;
-    }
-    else {
-    
-        alpha2 += 0.05;
-        if (alpha2 &gt; 1)
-            alpha2 = 1;
-    }
-}
-
-//Reserve box alpha
-if (collision_rectangle(view_xview[0]+view_wview[0]/2-14,view_yview[0]+4,view_xview[0]+view_wview[0]/2+14,view_yview[0]+32,obj_playerparent,0,0)) {
-
-    alpha3 -= 0.025;
-    if (alpha3 &lt; 0.25)
-        alpha3 = 0.25;
-}
-else {
-
-    alpha3 += 0.025;
-    if (alpha3 &gt; 1)
-        alpha3 = 1;
-}
-
-//Score
-if (collision_rectangle(view_xview[0]+view_wview[0]-130,view_yview[0]+4,view_xview[0]+view_wview[0]-58,view_yview[0]+19,obj_playerparent,0,0)) {
-
-    alpha4 -= 0.025;
-    if (alpha4 &lt; 0.25)
-        alpha4 = 0.25;
-}
-else {
-
-    alpha4 += 0.025;
-    if (alpha4 &gt; 1)
-        alpha4 = 1;
-}
-
-//Time
-if (collision_rectangle(view_xview[0]+view_wview[0]-45,view_yview[0]+4,view_xview[0]+view_wview[0]-5,view_yview[0]+19,obj_playerparent,0,0)) {
-
-    alpha5 -= 0.025;
-    if (alpha5 &lt; 0.25)
-        alpha5 = 0.25;
-}
-else {
-
-    alpha5 += 0.025;
-    if (alpha5 &gt; 1)
-        alpha5 = 1;
-}
-
-//P-Meter
-if (collision_rectangle(view_xview[0]+4,view_yview[0]+view_hview[0]-22,view_xview[0]+81,view_yview[0]+view_hview[0]-5,obj_playerparent,0,0)) {
-
-    alpha6 -= 0.025;
-    if (alpha6 &lt; 0.25)
-        alpha6 = 0.25;
-}
-else {
-
-    alpha6 += 0.025;
-    if (alpha6 &gt; 1)
-        alpha6 = 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -221,58 +89,55 @@ else {
             <kind>1</kind>
             <string>///Draw the HUD
 
-//Health (Only visible if health mode is activated)
+//Draw the health bar
 if (global.healthmode) {
 
-    draw_sprite_ext(spr_hud_health, health, view_xview[0]+4, view_yview[0]+4, 1, 1, 0, c_white, alpha1);
+    draw_sprite_ext(spr_hud_health, health, view_xview[0]+4,view_yview[0]+4,1,1,0,c_white,1);
 }
 
 //Set font
 draw_set_font(numbers_w);
 
 //Lives
-draw_sprite_ext(spr_hud_mario, global.player, view_xview[0]+(4+(41*global.healthmode)), view_yview[0]+4, 1, 1, 0, c_white, alpha2);
-draw_text_colour(view_xview[0]+(30+(41*global.healthmode)), view_yview[0]+4, string_add_zeros(lives, 2), c_white, c_white, c_white, c_white, alpha2);
+draw_sprite_ext(spr_hud_mario, 0, view_xview[0]+(4+(41*global.healthmode)), view_yview[0]+5, 1, 1, 0, c_white, 1);
+draw_text_colour_shadowed(view_xview[0]+(8+(54*global.healthmode)), view_yview[0]+9, string_format(lives, 2, 0), c_black, c_white, 1, 1, 1, 1);
 
 //Set font
 draw_set_font(numbers_g);
 
 //Coins
-draw_sprite_ext(spr_hud_coin, global.player, view_xview[0]+(4+(41*global.healthmode)), view_yview[0]+26, 1, 1, 0, c_white, alpha2);
-draw_text_colour(view_xview[0]+(30+(41*global.healthmode)), view_yview[0]+26, string_add_zeros(global.coins, 2), c_white, c_white, c_white, c_white, alpha2);
+draw_sprite_ext(spr_hud_coin, 0, view_xview[0]+(4+(41*global.healthmode)), view_yview[0]+25, 1, 1, 0, c_white, 1);
+draw_text_colour_shadowed(view_xview[0]+(8+(54*global.healthmode)), view_yview[0]+29, string_format(global.coins, 2, 0), c_black, c_white, 1, 1, 1, 1);;
+
+//Star Coins
+draw_sprite_ext(spr_hud_starcoin, 0, view_xview[0]+4, view_yview[0]+45, 1, 1, 0, c_white, 1);
 
 //Reserve Box
-draw_sprite_ext(spr_hud_reserve, -1, view_xview[0]+view_wview[0]/2, view_yview[0]+18, 1, 1, 0, c_white, alpha3);
+draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+18, 1, 1, 0, c_white, 1);
+
+//Set font
+draw_set_font(numbers_b);
+
+//Score
+draw_text_colour_shadowed(view_xview[0]+view_wview[0]-156, view_yview[0]+9, string_add_zeros(score, 9), c_black, c_white, 1, 1, 1, 1);
 
 //Set font
 draw_set_font(numbers_w);
 
-//Score
-draw_text_colour(view_xview[0]+view_wview[0]-130, view_yview[0]+4, string_add_zeros(score, 9), c_white, c_white, c_white, c_white, alpha4);
-
-//Set font
-draw_set_font(numbers_g);
-
 //Time
-draw_sprite_ext(spr_hud_time, -1, view_xview[0]+view_wview[0]-45, view_yview[0]+4, 1, 1, 0, c_white, alpha5);
-draw_text_colour(view_xview[0]+view_wview[0]-29, view_yview[0]+4, string_add_zeros(global.time, 3), c_white, c_white, c_white, c_white, alpha5);
+draw_sprite_ext(spr_hud_time, 0, view_xview[0]+view_wview[0]-50, view_yview[0]+9, 1, 1, 0, c_white, 1);
+draw_text_colour_shadowed(view_xview[0]+view_wview[0]-35, view_yview[0]+9, string_add_zeros(global.time, 3), c_black, c_white, 1, 1, 1, 1);
 
 //P-Meter
-if (instance_exists(obj_playerparent)) { //If the player does exist.
+if (instance_exists(obj_playerparent)) {
 
-    if (obj_mario.pmeter &gt;= 112) { //If the player is running...
-    
-        //...draw a filled flashing P-Meter.
-        draw_sprite_ext(spr_hud_pmeter,6+flash, view_xview[0]+4, view_yview[0]+view_hview[0]-22, 1, 1, 0, c_white, alpha6);
-    }
-    else { //Otherwise, if the player is not running...
-    
-        //...draw a filling P-Meter
-        draw_sprite_ext(spr_hud_pmeter, round(0+obj_playerparent.pmeter/18.6), view_xview[0]+4, view_yview[0]+view_hview[0]-22, 1, 1, 0, c_white, alpha6);        
-    }
+    if (obj_playerparent.pmeter &gt; 111)
+        draw_sprite_ext(spr_hud_pmeter, 6+flash, view_xview[0]+4, view_yview[0]+view_hview[0]-22, 1, 1, 0, c_white, 1);
+    else
+        draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/18.6), view_xview[0]+4, view_yview[0]+view_hview[0]-22, 1, 1, 0, c_white, 1);
 }
 else
-    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+4, view_yview[0]+view_hview[0]-22, 1, 1, 0, c_white, alpha6);    
+    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+4, view_yview[0]+view_hview[0]-22, 1, 1, 0, c_white, 1);
 </string>
           </argument>
         </arguments>

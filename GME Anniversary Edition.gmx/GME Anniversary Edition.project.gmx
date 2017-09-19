@@ -434,6 +434,7 @@
         <sprites name="In-Level">
           <sprites name="Digits">
             <sprite>sprites\spr_numbers</sprite>
+            <sprite>sprites\spr_numbersblk</sprite>
             <sprite>sprites\spr_numbersgold</sprite>
           </sprites>
           <sprite>sprites\spr_hud_mario</sprite>
@@ -453,6 +454,7 @@
           <sprite>sprites\spr_palette_brick</sprite>
         </sprites>
       </sprites>
+      <sprite>sprites\spr_pit</sprite>
     </sprites>
     <sprite>sprites\spr_up</sprite>
     <sprite>sprites\spr_down</sprite>
@@ -463,11 +465,10 @@
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Level Backgrounds">
-      <backgrounds name="Gradients">
-        <background>background\bgr_gradient</background>
+      <backgrounds name="Foregrounds">
+        <background>background\bgr_cloudblanket</background>
       </backgrounds>
       <background>background\bgr_blocks</background>
-      <background>background\bgr_hills</background>
     </backgrounds>
     <backgrounds name="Tile Sets">
       <backgrounds name="Decoration">

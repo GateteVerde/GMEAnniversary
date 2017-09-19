@@ -21,7 +21,7 @@ global.lvlid = 0;
 global.time = 0;
 
 //Lives
-lives = 3;
+lives = 99;
 
 //Score
 score = 0;
@@ -30,7 +30,7 @@ score = 0;
 health = 3;
 
 //Coins
-global.coins = 0;
+global.coins = 99;
 
 //Current Player
 global.player = 0;
