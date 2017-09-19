@@ -213,16 +213,13 @@ if (xspeed < -xspeedmax)
 if ((state == 2) || (delay > 0)) {
     
     //Variable jumping
-    if (yspeed < -2) && (jumping == 1) {
-    
-        //Use alternate ygrav
+    if (yspeed < -2) && (jumping == 1)
         ygrav = grav_alt;
-    }   
     
-    //Otherwise, use alternate ygrav.     
+    //Otherwise, use default gravity.     
     else {
     
-        //Use default ygrav
+        //Use default gravity
         ygrav = grav;
         
         //End variable jumping if it never ends manually.

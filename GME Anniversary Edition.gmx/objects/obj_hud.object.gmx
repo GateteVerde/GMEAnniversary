@@ -100,14 +100,14 @@ draw_set_font(numbers_w);
 
 //Lives
 draw_sprite_ext(spr_hud_mario, 0, view_xview[0]+(4+(41*global.healthmode)), view_yview[0]+5, 1, 1, 0, c_white, 1);
-draw_text_colour_shadowed(view_xview[0]+(8+(54*global.healthmode)), view_yview[0]+9, string_format(lives, 2, 0), c_black, c_white, 1, 1, 1, 1);
+draw_text_colour_shadowed(view_xview[0]+(15+(41*global.healthmode)), view_yview[0]+9, string_format(lives, 2, 0), c_black, c_white, 1, 1, 1, 1);
 
 //Set font
 draw_set_font(numbers_g);
 
 //Coins
 draw_sprite_ext(spr_hud_coin, 0, view_xview[0]+(4+(41*global.healthmode)), view_yview[0]+25, 1, 1, 0, c_white, 1);
-draw_text_colour_shadowed(view_xview[0]+(8+(54*global.healthmode)), view_yview[0]+29, string_format(global.coins, 2, 0), c_black, c_white, 1, 1, 1, 1);;
+draw_text_colour_shadowed(view_xview[0]+(15+(41*global.healthmode)), view_yview[0]+29, string_format(global.coins, 2, 0), c_black, c_white, 1, 1, 1, 1);;
 
 //Star Coins
 draw_sprite_ext(spr_hud_starcoin, 0, view_xview[0]+4, view_yview[0]+45, 1, 1, 0, c_white, 1);
