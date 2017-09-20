@@ -53,7 +53,7 @@ index = 0;
             <kind>1</kind>
             <string>///Draw the background at the front of all objects
 
-draw_background_tiled_horizontal_ext(background_index[index],view_xview[0]/1.2+(0.4*index)+(background_x[index]+background_hspeed[index]),background_y[index],1,1,0,c_white,background_alpha[index]);
+draw_background_tiled_horizontal_ext(background_index[index],view_xview[0]/1.2+(0.4*index)+(background_x[index]+background_hspeed[index]),background_y[index]+(view_yview[0]*(room_height-background_height[index])/(room_height-view_hview[0])),1,1,0,c_white,background_alpha[index]);
 </string>
           </argument>
         </arguments>

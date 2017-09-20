@@ -264,7 +264,7 @@ repeat (8) {
         
         //Handle position of the rest of backgrounds.
         else if ((i &gt; 0) &amp;&amp; (background_index[i] &gt; -1))
-            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i],1,1,0,c_white,background_alpha[i]);
+            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/1.2+(0.4*i)+(background_x[i]+background_hspeed[i]),background_y[i]+(view_yview[0]*(room_height-background_height[i])/(room_height-view_hview[0])),1,1,0,c_white,background_alpha[i]);
     }
     
     //Next layer
@@ -272,7 +272,7 @@ repeat (8) {
 }
 
 //Draw pit marker
-draw_sprite_ext(spr_pit, 0, 0, room_height-32, room_width/16, 1, 0, c_white, 1);
+draw_sprite_ext(spr_pit, 0, 0, room_height-24, room_width/16, 1, 0, c_white, 1);
 </string>
           </argument>
         </arguments>

@@ -514,8 +514,20 @@ if (xspeed &gt; 0)
 
     //If the player is sliding with the shell
     if (global.powerup == cs_shell)
-    &amp;&amp; (sliding)
+    &amp;&amp; (sliding) {
+    
+        //Play 'Bump' sound
+        if (!audio_is_playing(snd_bump)) {
+        
+            audio_play_sound(snd_bump, 0, false);
+        }
+    
+        //Reverse horizontal speed
         xspeed = -xspeed;
+        
+        //Create shell thump effect
+        instance_create(x+5,y+8,obj_shellbump);
+    }
         
     //Otherwise, stop it and stop slide if necessary.
     else {
@@ -539,8 +551,20 @@ else if (xspeed &lt; 0)
 
     //If the player is sliding with the shell
     if (global.powerup == cs_shell)
-    &amp;&amp; (sliding)
+    &amp;&amp; (sliding) {
+        
+        //Play 'Bump' sound
+        if (!audio_is_playing(snd_bump)) {
+        
+            audio_play_sound(snd_bump, 0, false);
+        }
+    
+        //Reverse horizontal speed
         xspeed = -xspeed;
+        
+        //Create shell thump effect
+        instance_create(x-5,y+8,obj_shellbump);
+    }
 
     //Otherwise, stop it and stop slide if necessary.    
     else {

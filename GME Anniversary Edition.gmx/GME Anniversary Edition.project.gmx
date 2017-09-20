@@ -400,6 +400,7 @@
         <sprite>sprites\spr_linemask</sprite>
         <sprite>sprites\spr_squaremask</sprite>
       </sprites>
+      <sprite>sprites\spr_24mask</sprite>
     </sprites>
     <sprites name="Special">
       <sprites name="Eyecandy">
@@ -426,6 +427,7 @@
         <sprite>sprites\spr_sparkle</sprite>
         <sprite>sprites\spr_spinthump</sprite>
         <sprite>sprites\spr_shellthump</sprite>
+        <sprite>sprites\spr_shellbump_st</sprite>
         <sprite>sprites\spr_splash</sprite>
         <sprite>sprites\spr_splash_lava</sprite>
         <sprite>sprites\spr_splash_lava_up</sprite>
@@ -437,6 +439,10 @@
             <sprite>sprites\spr_numbers</sprite>
             <sprite>sprites\spr_numbersblk</sprite>
             <sprite>sprites\spr_numbersgold</sprite>
+          </sprites>
+          <sprites name="Letters">
+            <sprite>sprites\spr_hud_font</sprite>
+            <sprite>sprites\spr_hud_font_message</sprite>
           </sprites>
           <sprite>sprites\spr_hud_mario</sprite>
           <sprite>sprites\spr_hud_coin</sprite>
@@ -595,11 +601,13 @@
         <objects name="Effects">
           <object>objects\obj_bubble</object>
           <object>objects\obj_smoke</object>
+          <object>objects\obj_shellbump</object>
         </objects>
         <objects name="System">
           <object>objects\obj_foreground</object>
           <object>objects\obj_hud</object>
         </objects>
+        <object>objects\obj_blockbumper</object>
       </objects>
       <object>objects\obj_persistent</object>
     </objects>
