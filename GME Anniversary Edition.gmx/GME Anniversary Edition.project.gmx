@@ -14,7 +14,13 @@
       <sound>sound\snd_spin</sound>
       <sound>sound\snd_swim</sound>
     </sounds>
-    <sound>sound\snd_pmeter</sound>
+    <sounds name="Item">
+      <sound>sound\snd_1up</sound>
+      <sound>sound\snd_coin</sound>
+    </sounds>
+    <sounds name="Menu">
+      <sound>sound\snd_pmeter</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="Mario">
@@ -599,6 +605,9 @@
           </objects>
         </objects>
         <objects name="Effects">
+          <objects name="Score">
+            <object>objects\obj_score</object>
+          </objects>
           <object>objects\obj_bubble</object>
           <object>objects\obj_smoke</object>
           <object>objects\obj_shellbump</object>

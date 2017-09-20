@@ -73,6 +73,9 @@ global.gw = 384;
 //Game height
 global.gh = 216;
 
+//Lives to give
+addlives = 0;
+
 //Screenshot of the game, if it exists
 back = -1;
 
@@ -130,6 +133,44 @@ math_set_epsilon(0.00001);
 
 //Disable application surface automatic drawing
 application_surface_draw_enable(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Give spare lives left
+
+if (addlives &gt; 0) {
+
+    //Play '1up' sound
+    audio_play_sound(snd_1up, 0, false);
+
+    //Add a life
+    lives++;
+    
+    //Subtract a spare life
+    addlives--;
+    
+    //Continue
+    alarm[2] = 60;
+}
 </string>
           </argument>
         </arguments>
