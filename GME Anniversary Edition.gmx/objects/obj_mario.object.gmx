@@ -360,7 +360,39 @@ else {
                                 }
                             }
                             
-                            //If Mario does not have the propeller suit
+                            //If Mario does have the cat suit
+                            if (global.powerup == cs_cat) {
+                            
+                                //Check if the climbing is active
+                                if (wallkick == 1) {
+                                
+                                    //Set the special spinning sprite
+                                    sprite_index = spr_mario_cat_climb2;
+                                    
+                                    //Animate it
+                                    
+                                    if yspeed &lt;&gt; 0
+                                    image_speed = 0.25;
+                                    
+                                    else {
+                                    
+                                        image_index = 0
+                                        image_speed = 0
+                                    }
+                                }
+                                else {
+                                
+                                    image_speed = 0
+                                    
+                                    //Set the appropiate sprite
+                                    if (!run)
+                                        sprite_index = scr_mario_jump();
+                                    else
+                                        sprite_index = scr_mario_runjump();
+                                }
+                            }
+                            
+                            //If Mario does not have the propeller or cat suit
                             else {
                             
                                 //Set the spinning sprite

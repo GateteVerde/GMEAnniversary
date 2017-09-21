@@ -360,6 +360,7 @@
           <sprite>sprites\spr_mario_cat_jump</sprite>
           <sprite>sprites\spr_mario_cat_skid</sprite>
           <sprite>sprites\spr_mario_cat_climb</sprite>
+          <sprite>sprites\spr_mario_cat_climb2</sprite>
           <sprite>sprites\spr_mario_cat_swim</sprite>
           <sprite>sprites\spr_mario_cat_carry</sprite>
           <sprite>sprites\spr_mario_cat_hold</sprite>
@@ -547,6 +548,7 @@
         <script>scripts\scr_player_behaviour_climb.gml</script>
         <script>scripts\scr_player_behaviour_swim.gml</script>
         <script>scripts\scr_player_behaviour_slide.gml</script>
+        <script>scripts\scr_player_behaviour_wall.gml</script>
       </scripts>
     </scripts>
     <scripts name="GUI">

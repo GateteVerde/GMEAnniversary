@@ -31,6 +31,8 @@
 xspeed = 0;
 yspeed = 0;
 ygrav = 0;
+wallkick = 0;
+catclimbing = 0;
 
 //Handle the player current state.
 //0:    Idle
@@ -210,6 +212,32 @@ if (swimming)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Resets certain actions of the player.
+
+//Reset the wallkick
+wallkick = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -233,7 +261,7 @@ if (swimming)
 if (invulnerable) {
 
     //Repeat the process
-    alarm[1] = 1;
+    alarm[1] = 2;
     
     //Change alpha
     image_alpha = !image_alpha;
@@ -386,6 +414,9 @@ if (!swimming) {
             //Execute main behaviour script
             scr_player_behaviour();
             
+            //Execute the wall collision checking script
+            scr_player_behaviour_wall()
+            
             //If the player's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
             if (abs(xspeed) &gt; 2.4) {
             
@@ -536,7 +567,7 @@ if (xspeed &gt; 0)
         xspeed = 0;
         
         //Stop sliding
-        sliding = false;        
+        sliding = false;       
     }
     
     //Prevent the player from getting embed into the wall
@@ -910,6 +941,12 @@ jumping = 0;
 
 //Reset spin jump variable
 stompstyle = 0;
+
+//Reset the wall kick
+wallkick = 0;
+
+//Reset the cat climb time
+catclimbing = 0;
 
 //Reset combo variable if not sliding
 if (!sliding)
