@@ -27,4 +27,5 @@ switch (global.powerup) {
     case (cs_lightning): return spr_mario_lightning_climb;
     case (cs_penguin): return spr_mario_penguin_climb;
     case (cs_propeller): return spr_mario_propeller_climb;
+    case (cs_cat): return spr_mario_cat_climb;
 }

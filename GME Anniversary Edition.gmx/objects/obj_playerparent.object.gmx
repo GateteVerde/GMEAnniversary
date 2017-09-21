@@ -331,7 +331,7 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+4,obj_sl
 &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)))
 &amp;&amp; (state == 1) {
 
-    if (!collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
+    if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
         y += 4;
 }
 
@@ -340,7 +340,7 @@ if (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slo
 &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj_slopeparent,1,0)) {
 
     //If the player is moving down onto a slope.
-    if (yspeed &gt; 0) {
+    if (yspeed &gt;= 0) {
     
         //Stop vertical movement
         yspeed = 0;

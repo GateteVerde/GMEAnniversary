@@ -27,4 +27,5 @@ switch (global.powerup) {
     case (cs_lightning): return spr_mario_lightning_clear;
     case (cs_penguin): return spr_mario_penguin_clear;
     case (cs_propeller): return spr_mario_propeller_clear;
+    case (cs_cat): return spr_mario_cat_clear;
 }

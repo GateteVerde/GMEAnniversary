@@ -169,7 +169,7 @@ if (addlives &gt; 0) {
     addlives--;
     
     //Continue
-    alarm[2] = 60;
+    alarm[2] = 30;
 }
 </string>
           </argument>
@@ -323,6 +323,9 @@ else if (keyboard_check_pressed(ord('R'))) {
     
     //Reset globals
     init_globals();
+    
+    //Do not add lives
+    addlives = 0;
     
     //Force reset the game
     room_goto(rm_enginetest)

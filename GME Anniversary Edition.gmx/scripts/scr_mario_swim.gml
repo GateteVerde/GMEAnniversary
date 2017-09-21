@@ -39,4 +39,5 @@ switch (global.powerup) {
             return spr_mario_penguin_swim2;
     }
     case (cs_propeller): return spr_mario_propeller_swim;
+    case (cs_cat): return (spr_mario_cat_swim);
 }
