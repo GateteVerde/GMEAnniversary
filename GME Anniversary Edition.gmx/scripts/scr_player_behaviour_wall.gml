@@ -20,7 +20,7 @@ if (yspeed > 0)
     if ((keyboard_check(vk_right)) && (xscale == 1)) {
         
         //If the player hugs a wall at the right
-        if (collision_line(bbox_right,bbox_top+4,bbox_right+2,bbox_bottom-1,obj_solid,0,1)) {
+        if (collision_line(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,0,1)) {
             
             //Enable wallkick
             wallkick = 1;
@@ -38,7 +38,7 @@ if (yspeed > 0)
     else if ((keyboard_check(vk_left)) && (xscale == -1)) {
         
         //If the player hugs a wall at the left
-        if (collision_line(bbox_left-2,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,1)) {
+        if (collision_line(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,1)) {
             
             //Enable wallkick
             wallkick = 1;
@@ -58,40 +58,54 @@ if (yspeed > 0)
 //Handle wall kick
 if (wallkick == 1) {
 
-    //End manually wall kick
+    //End manually wall kick when not in-air or swimming.
     if ((state < 2) || (swimming))
+        wallkick = 0;
+        
+    //End manually wall kick when not in contact with a wall.
+    if ((xscale < 0) && (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,1)))
+    || ((xscale > 0) && (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,0,1)))
         wallkick = 0;
 
     //If the player does have the cat powerup.
-    if ((global.powerup == cs_cat)
-    && (keyboard_check(vk_up))
-    && (catclimbing < (global.cattime * 60))) {
+    if ((global.powerup == cs_cat) && (keyboard_check(vk_up))) {
+    
+        //If the player can climb
+        if (catclimbing < (global.cattime * 60)) {
+                
+            //Increase cat climb
+            catclimbing++;    
             
-        //Increase cat climb
-        catclimbing++;    
-        
-        //Move up
-        yspeed -= 0.5;
-        
-        //No grav
-        ygrav = 0;
-        
-        //Prevent the playing from climbing too fast.
-        if (yspeed < -1.5)
-            yspeed = -1.5;  
+            //Move up
+            yspeed -= 0.5;
+            
+            //No grav
+            ygrav = 0;
+            
+            //Prevent the player from climbing too fast.
+            if (yspeed < -1.5)
+                yspeed = -1.5;  
+        }
+        else if (catclimbing == (global.cattime * 60)) {
+            
+            //Set the gravity
+            ygrav = 0.03;
+            
+            //Prevent the player from falling too fast.
+            if (yspeed > 1.5)
+                yspeed = 1.5;
+        }
     }
+    
+    //Otherwise, if the player does not have the cat powerup
     else {
     
-        //Slow down cat mario
-        if (global.powerup == cs_cat) {
-        
-            if (yspeed < 1.5)
-                yspeed += 0.025;
-        }
+        //Set the gravity
+        ygrav = grav;
     
-        //Prevent the player from falling too fast.
+        //Prevent the player from falling too fast
         if (yspeed > 1.5)
-            yspeed = 1.5;   
+            yspeed = 1.5;
     }
 
     //If the 'Jump' key is being pressed.
@@ -107,7 +121,7 @@ if (wallkick == 1) {
         alarm[7] = 20;
     
         //If the 'Right' key is pressed and the player is facing right.
-        if ((xscale > 0) && (keyboard_check(vk_right)) && (!keyboard_check(vk_left))) {
+        if (xscale > 0) {
         
             //Set the horizontal speed
             xspeed = xspeedmax*-0.8;
@@ -125,12 +139,12 @@ if (wallkick == 1) {
             audio_play_sound(snd_stomp,1,0);
             
             //Create effect
-            with (instance_create(x+3,y+8,obj_smoke))
+            with (instance_create(bbox_right,y+8,obj_smoke))
                 sprite_index = spr_spinthump;
         }
         
         //Otherwise, if the 'Left' key is pressed and the player is facing left.
-        else if ((xscale < 0) && (keyboard_check(vk_left)) && (!keyboard_check(vk_right))) {
+        else if (xscale < 0) {
         
             //Set the horizontal speed.
             xspeed = xspeedmax*+0.8;
@@ -148,7 +162,7 @@ if (wallkick == 1) {
             audio_play_sound(snd_stomp,1,0);
             
             //Create effect
-            with (instance_create(x-9,y+8,obj_smoke))
+            with (instance_create(bbox_left,y+8,obj_smoke))
                 sprite_index = spr_spinthump;        
         }
     }

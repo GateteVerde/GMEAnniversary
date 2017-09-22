@@ -101,7 +101,7 @@ if (sprite_index == scr_mario_skid()) || ((sliding) &amp;&amp; (state &lt; 2)) {
     &amp;&amp; (wallkick != 1) {
     
         alarm[10] = 4;
-        with (instance_create(x,bbox_bottom,obj_smoke))
+        with (instance_create(x,bbox_bottom-4,obj_smoke))
             sprite_index = spr_smoke_c;
     }
     
@@ -113,9 +113,22 @@ if (sprite_index == scr_mario_skid()) || ((sliding) &amp;&amp; (state &lt; 2)) {
 //Otherwise, if Mario is walljumping
 else if (sprite_index == scr_mario_walljump()) {
 
+    //If Mario is small
+    if (global.powerup == cs_small) {
+        
+        with (instance_create(x+5*sign(xscale), y, obj_smoke))
+            sprite_index = spr_smoke_c;
+    }
+    
+    //Otherwise, if Mario is not small
+    else {
+    
+        with (instance_create(x+5*sign(xscale), y-8, obj_smoke))
+            sprite_index = spr_smoke_c;        
+    }
+    
+    //Repeat the process
     alarm[10] = 4;
-    with (instance_create(x+5*sign(xscale), y+4, obj_smoke))
-        sprite_index = spr_smoke_c;
 }
 
 //Otherwise, hold it
@@ -503,7 +516,7 @@ else {
                                             
                                             //Animate
                                             if (yspeed &lt; 0) 
-                                                image_speed = 0.065+abs(yspeed)/7.5;
+                                                image_speed = 0.15;
                                             else {
                                             
                                                 image_speed = 0;
