@@ -43,6 +43,7 @@
           <sprite>sprites\spr_mario_small_goal</sprite>
           <sprite>sprites\spr_mario_small_clear</sprite>
           <sprite>sprites\spr_mario_small_kick</sprite>
+          <sprite>sprites\spr_mario_small_walljump</sprite>
         </sprites>
         <sprites name="Big">
           <sprite>sprites\spr_mario_big_walk</sprite>
@@ -61,6 +62,7 @@
           <sprite>sprites\spr_mario_big_goal</sprite>
           <sprite>sprites\spr_mario_big_clear</sprite>
           <sprite>sprites\spr_mario_big_kick</sprite>
+          <sprite>sprites\spr_mario_big_walljump</sprite>
         </sprites>
         <sprites name="Fire">
           <sprite>sprites\spr_mario_fire_walk</sprite>
@@ -80,6 +82,7 @@
           <sprite>sprites\spr_mario_fire_clear</sprite>
           <sprite>sprites\spr_mario_fire_kick</sprite>
           <sprite>sprites\spr_mario_fire_shoot</sprite>
+          <sprite>sprites\spr_mario_fire_walljump</sprite>
         </sprites>
         <sprites name="Ice">
           <sprite>sprites\spr_mario_ice_walk</sprite>
@@ -99,6 +102,7 @@
           <sprite>sprites\spr_mario_ice_clear</sprite>
           <sprite>sprites\spr_mario_ice_kick</sprite>
           <sprite>sprites\spr_mario_ice_shoot</sprite>
+          <sprite>sprites\spr_mario_ice_walljump</sprite>
         </sprites>
         <sprites name="Carrot">
           <sprite>sprites\spr_mario_carrot_walk</sprite>
@@ -120,6 +124,7 @@
           <sprite>sprites\spr_mario_carrot_goal</sprite>
           <sprite>sprites\spr_mario_carrot_clear</sprite>
           <sprite>sprites\spr_mario_carrot_kick</sprite>
+          <sprite>sprites\spr_mario_carrot_walljump</sprite>
         </sprites>
         <sprites name="Raccoon">
           <sprite>sprites\spr_mario_raccoon_walk</sprite>
@@ -142,6 +147,7 @@
           <sprite>sprites\spr_mario_raccoon_clear</sprite>
           <sprite>sprites\spr_mario_raccoon_kick</sprite>
           <sprite>sprites\spr_mario_raccoon_attack</sprite>
+          <sprite>sprites\spr_mario_raccoon_walljump</sprite>
         </sprites>
         <sprites name="Frog">
           <sprite>sprites\spr_mario_frog_walk</sprite>
@@ -158,6 +164,7 @@
           <sprite>sprites\spr_mario_frog_goal</sprite>
           <sprite>sprites\spr_mario_frog_clear</sprite>
           <sprite>sprites\spr_mario_frog_kick</sprite>
+          <sprite>sprites\spr_mario_frog_walljump</sprite>
         </sprites>
         <sprites name="Tanooki">
           <sprite>sprites\spr_mario_tanooki_walk</sprite>
@@ -181,6 +188,7 @@
           <sprite>sprites\spr_mario_tanooki_kick</sprite>
           <sprite>sprites\spr_mario_tanooki_attack</sprite>
           <sprite>sprites\spr_mario_tanooki_attack2</sprite>
+          <sprite>sprites\spr_mario_tanooki_walljump</sprite>
         </sprites>
         <sprites name="Hammer">
           <sprite>sprites\spr_mario_hammer_walk</sprite>
@@ -200,6 +208,7 @@
           <sprite>sprites\spr_mario_hammer_clear</sprite>
           <sprite>sprites\spr_mario_hammer_kick</sprite>
           <sprite>sprites\spr_mario_hammer_shoot</sprite>
+          <sprite>sprites\spr_mario_hammer_walljump</sprite>
         </sprites>
         <sprites name="Boomerang">
           <sprite>sprites\spr_mario_boomerang_walk</sprite>
@@ -219,6 +228,7 @@
           <sprite>sprites\spr_mario_boomerang_clear</sprite>
           <sprite>sprites\spr_mario_boomerang_kick</sprite>
           <sprite>sprites\spr_mario_boomerang_shoot</sprite>
+          <sprite>sprites\spr_mario_boomerang_walljump</sprite>
         </sprites>
         <sprites name="Super">
           <sprite>sprites\spr_mario_super_walk</sprite>
@@ -238,6 +248,7 @@
           <sprite>sprites\spr_mario_super_clear</sprite>
           <sprite>sprites\spr_mario_super_kick</sprite>
           <sprite>sprites\spr_mario_super_shoot</sprite>
+          <sprite>sprites\spr_mario_super_walljump</sprite>
         </sprites>
         <sprites name="Bomb">
           <sprite>sprites\spr_mario_bomb_walk</sprite>
@@ -256,6 +267,7 @@
           <sprite>sprites\spr_mario_bomb_goal</sprite>
           <sprite>sprites\spr_mario_bomb_clear</sprite>
           <sprite>sprites\spr_mario_bomb_kick</sprite>
+          <sprite>sprites\spr_mario_bomb_walljump</sprite>
         </sprites>
         <sprites name="Shell">
           <sprite>sprites\spr_mario_shell_walk</sprite>
@@ -274,6 +286,7 @@
           <sprite>sprites\spr_mario_shell_goal</sprite>
           <sprite>sprites\spr_mario_shell_clear</sprite>
           <sprite>sprites\spr_mario_shell_kick</sprite>
+          <sprite>sprites\spr_mario_shell_walljump</sprite>
         </sprites>
         <sprites name="Bee">
           <sprite>sprites\spr_mario_bee_walk</sprite>
@@ -295,6 +308,7 @@
           <sprite>sprites\spr_mario_bee_goal</sprite>
           <sprite>sprites\spr_mario_bee_clear</sprite>
           <sprite>sprites\spr_mario_bee_kick</sprite>
+          <sprite>sprites\spr_mario_bee_walljump</sprite>
         </sprites>
         <sprites name="Lightning">
           <sprite>sprites\spr_mario_lightning_walk</sprite>
@@ -314,6 +328,7 @@
           <sprite>sprites\spr_mario_lightning_clear</sprite>
           <sprite>sprites\spr_mario_lightning_kick</sprite>
           <sprite>sprites\spr_mario_lightning_shoot</sprite>
+          <sprite>sprites\spr_mario_lightning_walljump</sprite>
         </sprites>
         <sprites name="Penguin">
           <sprite>sprites\spr_mario_penguin_walk</sprite>
@@ -336,6 +351,7 @@
           <sprite>sprites\spr_mario_penguin_clear</sprite>
           <sprite>sprites\spr_mario_penguin_kick</sprite>
           <sprite>sprites\spr_mario_penguin_shoot</sprite>
+          <sprite>sprites\spr_mario_penguin_walljump</sprite>
         </sprites>
         <sprites name="Propeller">
           <sprite>sprites\spr_mario_propeller_walk</sprite>
@@ -355,6 +371,7 @@
           <sprite>sprites\spr_mario_propeller_goal</sprite>
           <sprite>sprites\spr_mario_propeller_clear</sprite>
           <sprite>sprites\spr_mario_propeller_kick</sprite>
+          <sprite>sprites\spr_mario_propeller_walljump</sprite>
         </sprites>
         <sprites name="Cat">
           <sprite>sprites\spr_mario_cat_walk</sprite>
@@ -541,6 +558,7 @@
           <script>scripts\scr_mario_slide.gml</script>
           <script>scripts\scr_mario_kick.gml</script>
           <script>scripts\scr_mario_clear.gml</script>
+          <script>scripts\scr_mario_walljump.gml</script>
         </scripts>
         <script>scripts\scr_inice.gml</script>
       </scripts>

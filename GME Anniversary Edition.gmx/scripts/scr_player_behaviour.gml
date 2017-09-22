@@ -511,6 +511,7 @@ if (state == 2)
     //If the player does have either the raccoon or the tanooki powerup
     if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
     && (jumping != 1)
+    && (wallkick < 1)
     && (swimming == false)
     && (keyboard_check_pressed(vk_shift)) {
     
@@ -568,6 +569,7 @@ if (state == 2)
     else if ((global.powerup == cs_carrot) 
     || ((global.powerup == cs_bee) && (beefly < 128)))
     && (!crouch)
+    && (wallkick < 1)
     && (keyboard_check(vk_shift)) {
 
         //If Mario is moving downwards

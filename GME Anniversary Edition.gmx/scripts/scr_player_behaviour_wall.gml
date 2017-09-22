@@ -14,16 +14,21 @@ if (yspeed > 0)
 && (!stompstyle) 
 && (holding == 0) 
 && (global.mount = 0) 
-&& (global.powerup != cs_frog)
 && (!instance_exists(obj_spinner)) {
         
     //If the 'Right' key is pressed and the player is facing right.
     if ((keyboard_check(vk_right)) && (xscale == 1)) {
         
-        if (collision_line(bbox_right,bbox_top,bbox_right+2,bbox_bottom,obj_solid,0,1)) {
+        //If the player hugs a wall at the right
+        if (collision_line(bbox_right,bbox_top+4,bbox_right+2,bbox_bottom-1,obj_solid,0,1)) {
             
+            //Enable wallkick
             wallkick = 1;
             wallready = 0;
+            
+            //Enable gravity if disabled
+            if (disablegrav > 0)
+                disablegrav = 0;
         }            
         else
             wallkick = 0;
@@ -32,10 +37,16 @@ if (yspeed > 0)
     //Otherwise, if the 'Left' key is pressed and the player is facing left.
     else if ((keyboard_check(vk_left)) && (xscale == -1)) {
         
-        if (collision_line(bbox_left-2,bbox_top,bbox_left,bbox_bottom,obj_solid,0,1))  {
+        //If the player hugs a wall at the left
+        if (collision_line(bbox_left-2,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,1)) {
             
+            //Enable wallkick
             wallkick = 1;
             wallready = 1;
+            
+            //Enable gravity if disabled
+            if (disablegrav > 0)
+                disablegrav = 0;
         }
         else
             wallkick = 0;
@@ -118,6 +129,7 @@ if (wallkick == 1) {
                 sprite_index = spr_spinthump;
         }
         
+        //Otherwise, if the 'Left' key is pressed and the player is facing left.
         else if ((xscale < 0) && (keyboard_check(vk_left)) && (!keyboard_check(vk_right))) {
         
             //Set the horizontal speed.
