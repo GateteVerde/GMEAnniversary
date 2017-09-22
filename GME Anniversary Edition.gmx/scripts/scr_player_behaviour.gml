@@ -166,7 +166,7 @@ if (!disablecontrol) && (!inwall) {
     event_user(2);
     
     //Handle Horizontal Movement.
-    if ((keyboard_check(vk_right)) && (!keyboard_check(vk_left)) && (move) && (wallkick = 0)) { //If the player holds the 'Right' key and the 'Left' key is not being held.
+    if ((keyboard_check(vk_right)) && (move) && (wallkick < 1) && (!keyboard_check(vk_left))) { //If the player holds the 'Right' key and the 'Left' key is not being held.
         
         //Set the facing direction.
         xscale = 1;
@@ -230,7 +230,7 @@ if (!disablecontrol) && (!inwall) {
     }
     
     //Otherwise, if the player holds the 'Left' key and the 'Right' key is not being held.
-    else if ((keyboard_check(vk_left)) && (!keyboard_check(vk_right)) && (move) && (wallkick = 0)) {
+    else if ((keyboard_check(vk_left)) && (move) && (wallkick == 0) && (!keyboard_check(vk_right))) {
         
         //Set the facing direction.
         xscale = -1;
