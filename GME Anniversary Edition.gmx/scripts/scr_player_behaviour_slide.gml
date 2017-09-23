@@ -220,7 +220,7 @@ if ((state == 2) || (delay > 0)) {
     else {
     
         //Use default gravity
-        ygrav = grav;
+        ygrav = grav+0.1;
         
         //End variable jumping if it never ends manually.
         if (jumping = 1)

@@ -31,7 +31,7 @@
 hspeed = 1*sign(hspeed);
 
 //Set angle
-image_angle += 10*sign(hspeed);
+image_angle += 10*sign(hspeed)*-1;
 
 //Set gravity
 if (sprite_index != spr_brick)

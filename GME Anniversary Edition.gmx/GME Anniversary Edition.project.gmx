@@ -416,13 +416,48 @@
     </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
+        <sprites name="Powerups">
+          <sprite>sprites\spr_mushroom</sprite>
+          <sprite>sprites\spr_fireflower</sprite>
+          <sprite>sprites\spr_iceflower</sprite>
+          <sprite>sprites\spr_carrot</sprite>
+          <sprite>sprites\spr_leaf</sprite>
+          <sprite>sprites\spr_frogsuit</sprite>
+          <sprite>sprites\spr_tanookisuit</sprite>
+          <sprite>sprites\spr_hammerflower</sprite>
+          <sprite>sprites\spr_boomerangflower</sprite>
+          <sprite>sprites\spr_superflower</sprite>
+          <sprite>sprites\spr_bombshroom</sprite>
+          <sprite>sprites\spr_blueshell</sprite>
+          <sprite>sprites\spr_beeshroom</sprite>
+          <sprite>sprites\spr_voltshroom</sprite>
+          <sprite>sprites\spr_penguinsuit</sprite>
+          <sprite>sprites\spr_propellershroom</sprite>
+          <sprite>sprites\spr_superbell</sprite>
+          <sprite>sprites\spr_starman</sprite>
+          <sprite>sprites\spr_1up</sprite>
+          <sprite>sprites\spr_poison</sprite>
+        </sprites>
         <sprites name="Coins">
           <sprites name="Block">
             <sprite>sprites\spr_blockcoin</sprite>
+            <sprite>sprites\spr_blockcoin_b</sprite>
+          </sprites>
+          <sprites name="Rings">
+            <sprite>sprites\spr_redring</sprite>
+            <sprite>sprites\spr_redring_get</sprite>
           </sprites>
           <sprite>sprites\spr_coin</sprite>
+          <sprite>sprites\spr_pcoin</sprite>
+          <sprite>sprites\spr_redcoin</sprite>
+          <sprite>sprites\spr_starcoin</sprite>
+          <sprite>sprites\spr_starcoin_get</sprite>
         </sprites>
       </sprites>
+      <sprite>sprites\spr_plusclock_10</sprite>
+      <sprite>sprites\spr_plusclock_100</sprite>
+      <sprite>sprites\spr_holdbubble</sprite>
+      <sprite>sprites\spr_3upmoon</sprite>
     </sprites>
     <sprites name="Masks">
       <sprites name="Collision">
