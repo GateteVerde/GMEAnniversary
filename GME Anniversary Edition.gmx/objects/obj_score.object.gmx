@@ -85,17 +85,30 @@ if (vspeed == 0)
 //Set the sprite
 sprite_index = spr_3uppts;
 
-//Add to lives
-lives++;
+//If there's not spare lifes
+if (obj_persistent.addlives == 0) {
 
-//Play '1up' sound
-audio_play_sound(snd_1up, 0, false);
+    //Play '1up' sound
+    audio_play_sound(snd_1up, 0, false);
 
-//Make obj_persistent give a spare life
-with (obj_persistent) {
+    //Add a life instantly
+    lives++;
+    
+    //ADd a spare life
+    with (obj_persistent) {
+    
+        addlives += 2;
+        alarm[2] = 30;
+    }
+}
+else {
 
-    addlives += 2;
-    alarm[2] = 30;
+    //Add a spare life
+    with (obj_persistent) {
+    
+        addlives += 3;
+        alarm[2] = 30;
+    }
 }
 </string>
           </argument>
@@ -124,17 +137,30 @@ with (obj_persistent) {
 //Set the sprite
 sprite_index = spr_2uppts;
 
-//Add to lives
-lives++;
+//If there's not spare lifes
+if (obj_persistent.addlives == 0) {
 
-//Play '1up' sound
-audio_play_sound(snd_1up, 0, false);
+    //Play '1up' sound
+    audio_play_sound(snd_1up, 0, false);
 
-//Make obj_persistent give a spare life
-with (obj_persistent) {
+    //Add a life instantly
+    lives++;
+    
+    //ADd a spare life
+    with (obj_persistent) {
+    
+        addlives++;
+        alarm[2] = 30;
+    }
+}
+else {
 
-    addlives += 1;
-    alarm[2] = 30;
+    //Add a spare life
+    with (obj_persistent) {
+    
+        addlives += 2;
+        alarm[2] = 30;
+    }
 }
 </string>
           </argument>
@@ -163,11 +189,24 @@ with (obj_persistent) {
 //Set the sprite
 sprite_index = spr_1uppts;
 
-//Add to lives
-lives++;
+//If there's not spare lifes
+if (obj_persistent.addlives == 0) {
 
-//Play '1up' sound
-audio_play_sound(snd_1up, 0, false);
+    //Play '1up' sound
+    audio_play_sound(snd_1up, 0, false);
+
+    //Add a life instantly
+    lives++;
+}
+else {
+
+    //Add a spare life
+    with (obj_persistent) {
+    
+        addlives++;
+        alarm[2] = 30;
+    }
+}
 </string>
           </argument>
         </arguments>

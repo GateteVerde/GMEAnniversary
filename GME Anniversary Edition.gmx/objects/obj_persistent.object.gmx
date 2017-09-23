@@ -48,33 +48,29 @@
 //  This is a very important variable, do not delete it.
 */
 
-//Initialize Colour Swap shader.
-global.Pal_Shader = shd_palette_swapper;
-pal_swap_init_system(global.Pal_Shader);
+//Initialize palette system
+pal_swap_init_system(shd_palette_swapper);
 
 //Persistence mode
 global.persistence = true;
 
-//Flight time (In seconds)
+//Flight time
 global.flighttime = 4;
-
-//Cat climb time (In seconds)
-global.cattime = 3;
 
 //Health Mode
 global.healthmode = 0;
 
-//Skin of the level
-//0: Normal
-//1: Underground
-//2: Castle
-global.skin = 0;
+//Cat climb time
+global.cattime = 3;
 
 //Game width
 global.gw = 384;
 
 //Game height
 global.gh = 216;
+
+//Initialize global variables
+init_globals();
 
 //Lives to give
 addlives = 0;
@@ -84,9 +80,6 @@ back = -1;
 
 //Message to display to the screen
 message = "";
-
-//Declare all the global variables
-init_globals();
 
 //Item that is being carried between rooms
 global.carrieditem = noone;
@@ -127,9 +120,6 @@ global.sc_count = ds_map_create();
 
 //Data structure for storing the state of the world map.
 global.worldmap = ds_map_create();
-
-//Data structure for modified items when changing rooms (Will work only if global.persistence is set to 1).
-global.modified = ds_map_create();
 
 //Set the epsilon value for floating point numbers
 math_set_epsilon(0.00001);

@@ -25,48 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Standard Question Mark Block
-
-/*
-**  This item uses creation code!
-**
-**  sprout = Pick from below:
-**      cs_big
-**      cs_fire
-**      cs_ice
-**      cs_carrot
-**      cs_leaf
-**      cs_frog
-**      cs_tanooki
-**      cs_hammer
-**      cs_boomerang
-**      cs_super
-**      cs_bomb
-**      cs_shell
-**      cs_bee
-**      cs_lightning
-**      cs_penguin
-**      cs_propeller
-**      cs_greenyoshi
-**      cs_redyoshi
-**      cs_yellowyoshi
-**      cs_blueyoshi
-**      cs_kuriboshoe
-**      cs_baburushoe
-**      cs_dossunshoe
-**      cs_jugemushoe
-**      cs_1up
-**      cs_3up
-**      cs_poison
-**      cs_star
-**      cs_key
-**      cs_spring
-**      cs_superspring
-**      cs_pswitch
-**      cs_gswitch
-**      cs_propellerblock
-**      cs_beanstalk
-*/
+            <string>///Multi-Coin Question Block
 
 //First, check if this block was hit before.
 if (ds_map_find_value(global.modified, id) == 1) {
@@ -75,17 +34,42 @@ if (ds_map_find_value(global.modified, id) == 1) {
     exit;
 }
 
-//Default value
-sprout = cs_coin;
-
 //Animate
 image_speed = 0.15;
 
 //Whether this block can be hit
 ready = 0;
 
+//Whether the timer was initiated
+coiny = 0;
+
 //Make it solid
 mysolid = instance_create(x,y,obj_solid);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///End coin timer
+
+coiny = 2;
 </string>
           </argument>
         </arguments>
@@ -110,22 +94,24 @@ mysolid = instance_create(x,y,obj_solid);
             <kind>1</kind>
             <string>///Finish block bump
 
-//Make sure this block cannot be hit again, unless you exit or clear the level.
-if (global.persistence) {
-
-    ds_map_add(global.modified, id, 1);
-}
-
 //Stop vertical movement
 vspeed = 0;
 y = ystart;
 
-/*
-//  ITEMS GO HERE!
-*/ 
-
 //Change into a empty block
-instance_change(obj_emptyblock, false);
+if (coiny == 2) {
+
+    //Make sure this block cannot be hit again, unless you exit or clear the level.
+    if (global.persistence) {
+    
+        ds_map_add(global.modified, id, 1);
+    }
+    
+    //Change into a empty block
+    instance_change(obj_emptyblock, false);
+}
+else
+    ready = 0;
 </string>
           </argument>
         </arguments>
@@ -148,10 +134,14 @@ instance_change(obj_emptyblock, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Create a coin if no item was selected
+            <string>///Create a coin if no item was selected and initialize the counter
 
-if (sprout == cs_coin)
-    instance_create(x,ystart-16,obj_blockcoin);
+instance_create(x,ystart-16,obj_blockcoin);
+if (coiny == 0) {
+
+    coiny = 1;
+    alarm[2] = 240;
+}
 </string>
           </argument>
         </arguments>

@@ -196,6 +196,32 @@ if (instance_exists(obj_playerparent)) {
 //Round position variables
 x = round(x);
 y = round(y);
+
+//Get a extra life if 100 coins are collected
+if (global.coins &gt; 99) {
+
+    //Subtract 100 coins
+    global.coins -= 100;
+    
+    //If there's not spare lifes
+    if (obj_persistent.addlives == 0) {
+    
+        //Play '1up' sound
+        audio_play_sound(snd_1up, 0, false);
+    
+        //Add a life instantly
+        lives++;
+    }
+    else {
+    
+        //Add a spare life
+        with (obj_persistent) {
+        
+            addlives++;
+            alarm[2] = 30;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -226,7 +252,8 @@ y = round(y);
 
 
 //Restart level colours
-global.skin = 0;
+if (global.skin != 0)
+    global.skin = 0;
 </string>
           </argument>
         </arguments>

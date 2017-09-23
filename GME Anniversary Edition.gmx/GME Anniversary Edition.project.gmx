@@ -6,6 +6,7 @@
   <NewExtensions/>
   <sounds name="sound">
     <sounds name="Action">
+      <sound>sound\snd_break</sound>
       <sound>sound\snd_bump</sound>
       <sound>sound\snd_climb</sound>
       <sound>sound\snd_frog</sound>
@@ -410,10 +411,15 @@
         <sprite>sprites\spr_qblock_3x</sprite>
         <sprite>sprites\spr_qblock_3x_empty</sprite>
       </sprites>
+      <sprite>sprites\spr_brick</sprite>
+      <sprite>sprites\spr_shard</sprite>
     </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
         <sprites name="Coins">
+          <sprites name="Block">
+            <sprite>sprites\spr_blockcoin</sprite>
+          </sprites>
           <sprite>sprites\spr_coin</sprite>
         </sprites>
       </sprites>
@@ -468,6 +474,7 @@
         <sprite>sprites\spr_smoke_b</sprite>
         <sprite>sprites\spr_smoke_c</sprite>
         <sprite>sprites\spr_sparkle</sprite>
+        <sprite>sprites\spr_sparkle_b</sprite>
         <sprite>sprites\spr_spinthump</sprite>
         <sprite>sprites\spr_shellthump</sprite>
         <sprite>sprites\spr_shellbump_st</sprite>
@@ -503,6 +510,7 @@
           <sprite>sprites\spr_palette_qblock_empty</sprite>
           <sprite>sprites\spr_palette_brick</sprite>
         </sprites>
+        <sprite>sprites\pal_null</sprite>
       </sprites>
       <sprite>sprites\spr_pit</sprite>
     </sprites>
@@ -576,16 +584,19 @@
     </scripts>
     <scripts name="Shaders">
       <scripts name="Palettes">
-        <script>scripts\pal_swap_init_system.gml</script>
-        <script>scripts\pal_swap_set.gml</script>
-        <script>scripts\pal_swap_reset.gml</script>
-        <script>scripts\pal_swap_get_pal_count.gml</script>
+        <scripts name="Palette Swap System">
+          <script>scripts\pal_swap_init_system.gml</script>
+          <script>scripts\pal_swap_set.gml</script>
+          <script>scripts\pal_swap_reset.gml</script>
+          <script>scripts\pal_swap_get_pal_count.gml</script>
+        </scripts>
+        <script>scripts\palette_get.gml</script>
       </scripts>
     </scripts>
-    <script>scripts\init_globals.gml</script>
     <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
-    <script>scripts\wrap.gml</script>
+    <script>scripts\init_globals.gml</script>
     <script>scripts\string_add_zeros.gml</script>
+    <script>scripts\wrap.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
@@ -621,6 +632,15 @@
     <objects name="Blocks">
       <objects name="Item Blocks">
         <object>objects\obj_qblock</object>
+        <object>objects\obj_qblock_coins</object>
+      </objects>
+      <object>objects\obj_brick</object>
+    </objects>
+    <objects name="Items">
+      <objects name="Collectables">
+        <objects name="Coins">
+          <object>objects\obj_coin</object>
+        </objects>
       </objects>
     </objects>
     <objects name="Special">
@@ -642,6 +662,8 @@
         <objects name="Items">
           <objects name="Blocks">
             <object>objects\obj_emptyblock</object>
+            <object>objects\obj_blockcoin</object>
+            <object>objects\obj_shard</object>
           </objects>
         </objects>
         <objects name="Effects">

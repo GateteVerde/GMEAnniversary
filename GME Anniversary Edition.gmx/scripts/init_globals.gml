@@ -20,6 +20,9 @@ global.lvlid = 0;
 //Level time
 global.time = 0;
 
+//Level skid
+global.skin = 0;
+
 //Lives
 lives = 5;
 
@@ -28,6 +31,12 @@ score = 0;
 
 //Health
 health = 3;
+
+//Skin
+//0: No skin
+//1: Underground
+//2: Castle
+global.skin = 0;
 
 //Coins
 global.coins = 0;
@@ -110,6 +119,9 @@ global.prize[2] = 0;
 
 //Map pipe area type
 global.pipetype = 0;
+
+//Data structure for modified items. (Will work only if persistance is active).
+global.modified = ds_map_create();
 
 //Map inventory variables
 for(var i=0; i<16; i++)

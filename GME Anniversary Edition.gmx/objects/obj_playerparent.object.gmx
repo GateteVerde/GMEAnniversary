@@ -1064,9 +1064,6 @@ else
             <string>///Draw player
 
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_white,1);
-
-//Draw current state of the player
-draw_text(x-5,y-32,string(state));
 </string>
           </argument>
         </arguments>
