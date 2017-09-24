@@ -471,10 +471,10 @@ if (global.healthmode) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Save Fullscreen + Window size + VSync Settings
+            <string>///Save Keys + Fullscreen + Window size + VSync Settings
 
 //Open the file
-var file = file_text_open_write("Settings.dat");
+var file = file_text_open_write("settings.dat");
 
 //Save fullscreen settings
 file_text_write_string(file,string(fullscreen));
@@ -486,6 +486,38 @@ file_text_writeln(file);
 
 //Save vsync settings
 file_text_write_string(file,string(vsync));
+file_text_writeln(file);
+
+//Save control key
+file_text_write_string(file,string(real(global.controlkey)));
+file_text_writeln(file);
+
+//Save shift key
+file_text_write_string(file,string(real(global.shiftkey)));
+file_text_writeln(file);
+
+//Save space key
+file_text_write_string(file,string(real(global.spacekey)));
+file_text_writeln(file);
+
+//Save enter key
+file_text_write_string(file,string(real(global.enterkey)));
+file_text_writeln(file);
+
+//Save up key
+file_text_write_string(file,string(real(global.upkey)));
+file_text_writeln(file);
+
+//Save down key
+file_text_write_string(file,string(real(global.downkey)));
+file_text_writeln(file);
+
+//Save left key
+file_text_write_string(file,string(real(global.leftkey)));
+file_text_writeln(file);
+
+//Save right key
+file_text_write_string(file,string(real(global.rightkey)));
 
 //Close the file
 file_text_close(file);
@@ -511,13 +543,13 @@ file_text_close(file);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Load Fullscreen + Window size + VSync Settings
+            <string>///Load Keys + Fullscreen + Window size + VSync Settings
 
 //If the 'settings.dat' file exist.
-if (file_exists("Settings.dat")) {
+if (file_exists("settings.dat")) {
 
     //Open the file
-    var file = file_text_open_read("Settings.dat");
+    var file = file_text_open_read("settings.dat");
 
     //Set fullscreen mode based on the read value
     fullscreen = real(file_text_read_string(file));
@@ -529,6 +561,38 @@ if (file_exists("Settings.dat")) {
 
     //Set vsync based on the read value
     vsync = real(file_text_read_string(file));
+    file_text_readln(file);
+    
+    //Set key assigned to 'Control'
+    global.controlkey = real(file_text_read_string(file));
+    file_text_readln(file);
+
+    //Set key assigned to 'Shift'
+    global.shiftkey = real(file_text_read_string(file));
+    file_text_readln(file);
+
+    //Set key assigned to 'Space'
+    global.spacekey = real(file_text_read_string(file));
+    file_text_readln(file);
+    
+    //Set key assigned to 'Enter'
+    global.enterkey = real(file_text_read_string(file));
+    file_text_readln(file);
+    
+    //Set key assigned to 'Up'
+    global.upkey = real(file_text_read_string(file));
+    file_text_readln(file);
+    
+    //Set key assigned to 'Down'
+    global.downkey = real(file_text_read_string(file));
+    file_text_readln(file);
+    
+    //Set key assigned to 'Left'
+    global.leftkey = real(file_text_read_string(file));
+    file_text_readln(file);
+    
+    //Set key assigned to 'Right'
+    global.rightkey = real(file_text_read_string(file));
 
     //Close the file
     file_text_close(file);
@@ -543,6 +607,30 @@ else {
 
     //VSync is off by default
     vsync = 0;
+    
+    //Control key
+    global.controlkey = vk_control;
+    
+    //Shift key
+    global.shiftkey = vk_shift;
+    
+    //Space key
+    global.spacekey = vk_space;
+    
+    //Enter key
+    global.enterkey = vk_enter;
+    
+    //Up key
+    global.upkey = vk_up;
+    
+    //Down key
+    global.downkey = vk_down;
+    
+    //Left key
+    global.leftkey = vk_left;
+    
+    //Right key
+    global.rightkey = vk_right;
 }
 
 //Apply loaded settings

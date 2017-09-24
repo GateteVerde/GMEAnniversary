@@ -17,7 +17,7 @@ if (yspeed > 0)
 && (!instance_exists(obj_spinner)) {
         
     //If the 'Right' key is pressed and the player is facing right.
-    if ((keyboard_check(vk_right)) && (xscale == 1)) {
+    if ((keyboard_check(global.rightkey)) && (xscale == 1)) {
         
         //If the player hugs a wall at the right
         if (collision_line(bbox_right,bbox_top+4,bbox_right+1,bbox_top+4,obj_solid,0,1)) {
@@ -35,7 +35,7 @@ if (yspeed > 0)
     }
     
     //Otherwise, if the 'Left' key is pressed and the player is facing left.
-    else if ((keyboard_check(vk_left)) && (xscale == -1)) {
+    else if ((keyboard_check(global.leftkey)) && (xscale == -1)) {
         
         //If the player hugs a wall at the left
         if (collision_line(bbox_left-1,bbox_top+4,bbox_left,bbox_top+4,obj_solid,0,1)) {
@@ -109,7 +109,7 @@ if (wallkick == 1) {
     }
 
     //If the 'Jump' key is being pressed.
-    if (keyboard_check_pressed(vk_shift)) {
+    if (keyboard_check_pressed(global.shiftkey)) {
     
         //Set the vertical speed
         yspeed = jumpstr*-1.047;

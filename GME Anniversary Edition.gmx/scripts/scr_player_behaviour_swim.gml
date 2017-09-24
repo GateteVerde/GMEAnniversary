@@ -15,7 +15,7 @@ if (sliding > 0) {
     sliding = 0;
     
     //Clear 'Down' key
-    keyboard_clear(vk_down);
+    keyboard_clear(global.downkey);
 }
 floatnow = 0;
 beefly = 0;
@@ -69,7 +69,7 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         ygrav = 0
         
         //If the 'Control' key is pressed, move faster.
-        if (keyboard_check(vk_control))  
+        if (keyboard_check(global.controlkey))  
             xspeedmax = 2.5;
         
         //Otherwise, move slower.
@@ -78,7 +78,7 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         
         //Handle horizontal movement
         //If the left key is pressed and the player is not crouched down.
-        if ((keyboard_check(vk_left)) && (!crouch) && (!keyboard_check(vk_right))) {
+        if ((keyboard_check(global.leftkey)) && (!crouch) && (!keyboard_check(global.rightkey))) {
         
             //Set the horizontal speed
             xspeed += -0.5;
@@ -91,7 +91,7 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         }
         
         //Otherwise, if the right key is pressed and the player is not crouched down.
-        else if ((keyboard_check(vk_right)) && (!crouch) && (!keyboard_check(vk_left))) {
+        else if ((keyboard_check(global.rightkey)) && (!crouch) && (!keyboard_check(global.leftkey))) {
         
             //Set the horizontal speed
             xspeed += 0.5;
@@ -108,7 +108,7 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         xspeed = 0;
             
         //If the 'Up' key is pressed.
-        if (keyboard_check(vk_up)) {
+        if (keyboard_check(global.upkey)) {
         
             //Move upwards
             yspeed += -0.5;
@@ -118,7 +118,7 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         }
         
         //Otherwise, if the 'Down' key is pressed.
-        else if (keyboard_check(vk_down)) {
+        else if (keyboard_check(global.downkey)) {
         
             //Set the swimming animation
             swimtype = 2;
@@ -164,17 +164,17 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
             xspeedmax = 0.5;
             
         //If the player presses the 'Shift' key.
-        if (keyboard_check_pressed(vk_shift)) {
+        if (keyboard_check_pressed(global.shiftkey)) {
         
             //Play 'Swim' sound
             audio_play_sound(snd_swim, 0, false);
         
             //Swim higher if the 'Up' key is pressed.
-            if (keyboard_check(vk_up))
+            if (keyboard_check(global.upkey))
                 yspeed -= 2;
             
             //Swim lower if the 'Down' key is pressed.
-            else if (keyboard_check(vk_down))
+            else if (keyboard_check(global.downkey))
                 yspeed -= 0.5;
             
             //Otherwise
@@ -194,7 +194,7 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         
         //Handle horizontal movement.
         //If the player presses the 'Right' key and the 'Left' key is not held.
-        if ((keyboard_check(vk_right)) && (!keyboard_check(vk_left)) && (!crouch) ) {
+        if ((keyboard_check(global.rightkey)) && (!keyboard_check(global.leftkey)) && (!crouch) ) {
             
             //Set the facing direction.
             xscale = 1;
@@ -213,7 +213,7 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         }
         
         //If the player presses the 'Left' key and the 'Right' key is not held.
-        else if ((keyboard_check(vk_left)) && (!keyboard_check(vk_right)) && (!crouch)) {
+        else if ((keyboard_check(global.leftkey)) && (!keyboard_check(global.rightkey)) && (!crouch)) {
             
             //Set the facing direction
             xscale = -1;

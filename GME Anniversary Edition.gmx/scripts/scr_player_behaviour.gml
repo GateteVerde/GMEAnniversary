@@ -52,7 +52,7 @@ if (yspeed > 4)
 //Set up the player's maximum horizontal speed.
 if (!flying) { //If the player is not flying
 
-    if (keyboard_check(vk_control)) { //If the control key is being held.
+    if (keyboard_check(global.controlkey)) { //If the control key is being held.
         
         //If Mario does have the frog powerup
         if (global.powerup == cs_frog) {
@@ -103,19 +103,19 @@ else {
 if (!disablecontrol) && (!inwall) {
 
     //Handles the player's jumping
-    if (keyboard_check_pressed(vk_shift))
+    if (keyboard_check_pressed(global.shiftkey))
     
     //Make sure that the player can jump
     && (((jumping == 0) && (state < 2))
     
     //Allow the player to jump off of Yoshi or a shoe while in midair
-    || ((keyboard_check(vk_up))
+    || ((keyboard_check(global.upkey))
     && (!crouch)
     && (global.mount != 0))
     
     //Allow propeller the player to do his special jump
     || ((global.powerup == cs_propeller)
-    && (keyboard_check(vk_up)) 
+    && (keyboard_check(global.upkey)) 
     && (!stompstyle) 
     && (!crouch) 
     && (holding == 0))) {
@@ -131,7 +131,7 @@ if (!disablecontrol) && (!inwall) {
         }
     
         //Make the player spin jump
-        if ((keyboard_check(vk_up))
+        if ((keyboard_check(global.upkey))
         && (!crouch)
         && (global.powerup != cs_frog)
         && ((holding == 0) || (global.mount != 0)))
@@ -158,7 +158,7 @@ if (!disablecontrol) && (!inwall) {
     }
     
     //Check if the player should still be variable jumping
-    if (keyboard_check_released(vk_shift))
+    if (keyboard_check_released(global.shiftkey))
     && (jumping == 1)
         jumping = 2;
     
@@ -166,7 +166,7 @@ if (!disablecontrol) && (!inwall) {
     event_user(2);
     
     //Handle Horizontal Movement.
-    if ((keyboard_check(vk_right)) && (move) && (wallkick < 1) && (!keyboard_check(vk_left))) { //If the player holds the 'Right' key and the 'Left' key is not being held.
+    if ((keyboard_check(global.rightkey)) && (move) && (wallkick < 1) && (!keyboard_check(global.leftkey))) { //If the player holds the 'Right' key and the 'Left' key is not being held.
         
         //Set the facing direction.
         xscale = 1;
@@ -230,7 +230,7 @@ if (!disablecontrol) && (!inwall) {
     }
     
     //Otherwise, if the player holds the 'Left' key and the 'Right' key is not being held.
-    else if ((keyboard_check(vk_left)) && (move) && (wallkick == 0) && (!keyboard_check(vk_right))) {
+    else if ((keyboard_check(global.leftkey)) && (move) && (wallkick == 0) && (!keyboard_check(global.rightkey))) {
         
         //Set the facing direction.
         xscale = -1;
@@ -381,7 +381,7 @@ if (state != 2) {
         sliding = true;
         
         //Force press 'Down' key
-        keyboard_key_press(vk_down);
+        keyboard_key_press(global.downkey);
     }
     
     //Check the horizontal speed
@@ -413,24 +413,36 @@ if ((state == 2) || (delay > 0)) {
     if (global.powerup == cs_propeller) {
 
         //If the player is spin jumping normally
-        if ((stompstyle) && (global.mount == 0)) 
-        {   
+        if ((stompstyle) && (global.mount == 0)) {
+           
             //Lower the gravity
             ygrav = ygrav/2;
 
             //Allow the player to charge downwards
-            if ((keyboard_check(vk_down)) && (yspeed > 0))
-            {
-                if yspeed < 4
-                yspeed += 0.5
+            if ((keyboard_check(global.downkey)) && (yspeed > 0)) {
+            
+                //Do stompstyle
+                stompstyle = 1;
                 
-                xspeed = 0   
+                //Stop horizontal movement
+                xspeed = 0
+                
+                //Cap vertical speed
+                if (yspeed < 4)
+                    yspeed += 0.5;            
             }
-            else if (yspeed > 1)
-                yspeed = 1;
+            else {
+            
+                //Keep stompstyle
+                stompstyle = 2;
+            
+                //Cap vertical speed
+                if (yspeed > 1)
+                    yspeed = 1;
+            }
 
             //Play the sound when he charges downwards
-            if (keyboard_check_pressed(vk_down))
+            if (keyboard_check_pressed(global.downkey))
                 audio_play_sound(snd_spin, 0, false)
         }
     }
@@ -466,7 +478,7 @@ if ((state == 2) || (delay > 0)) {
 if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_climb,0,0))
 && (holding = 0)
 && (!disablecontrol)
-&& (keyboard_check(vk_up)) {
+&& (keyboard_check(global.upkey)) {
 
     //Change to climbing state
     state = 3;
@@ -477,7 +489,7 @@ if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_climb,0,0))
 }
 
 //Makes the player butt-slide down slopes
-if (keyboard_check_pressed(vk_down)) 
+if (keyboard_check_pressed(global.downkey)) 
 && (!disablecontrol) {
 
     //If the player does have the penguin suit
@@ -513,7 +525,7 @@ if (state == 2)
     && (jumping != 1)
     && (wallkick < 1)
     && (swimming == false)
-    && (keyboard_check_pressed(vk_shift)) {
+    && (keyboard_check_pressed(global.shiftkey)) {
     
         //If the player is running.
         if (run) {
@@ -570,7 +582,7 @@ if (state == 2)
     || ((global.powerup == cs_bee) && (beefly < 128)))
     && (!crouch)
     && (wallkick < 1)
-    && (keyboard_check(vk_shift)) {
+    && (keyboard_check(global.shiftkey)) {
 
         //If Mario is moving downwards
         if (yspeed > 0) {

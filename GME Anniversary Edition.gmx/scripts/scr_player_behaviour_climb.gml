@@ -15,7 +15,7 @@ if (sliding > 0) {
     sliding = 0;
     
     //Clear 'Down' key
-    keyboard_clear(vk_down);
+    keyboard_clear(global.downkey);
 }
 floatnow = 0;
 beefly = 0;
@@ -45,7 +45,7 @@ yspeed = -1;
 if (!disablecontrol) { //If the player controls are not disabled.
 
     //If the 'Right' key is held and the 'Left' key is not held.
-    if (keyboard_check(vk_right)) && (!keyboard_check(vk_left)) {
+    if (keyboard_check(global.rightkey)) && (!keyboard_check(global.leftkey)) {
     
         //Set the horizontal speed.
         xspeed += 0.15;
@@ -55,7 +55,7 @@ if (!disablecontrol) { //If the player controls are not disabled.
     }
     
     //Otherwise, if the 'Left' key is held and the 'Right' key not.
-    else if (keyboard_check(vk_left)) && (!keyboard_check(vk_right)) {
+    else if (keyboard_check(global.leftkey)) && (!keyboard_check(global.rightkey)) {
     
         //Set the horizontal speed.
         xspeed += -0.15;
@@ -71,7 +71,7 @@ if (!disablecontrol) { //If the player controls are not disabled.
     }
     
     //If the 'Up' key is held and the 'Down' key is not held.
-    if ((keyboard_check(vk_up)) && (!keyboard_check(vk_down))) {
+    if ((keyboard_check(global.upkey)) && (!keyboard_check(global.downkey))) {
     
         //Check if there's not a solid in the way.
         if (!collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,0,0))
@@ -111,7 +111,7 @@ if (!disablecontrol) { //If the player controls are not disabled.
     }
     
     //If the 'Down' key is held and the 'Up' key not.
-    else if ((keyboard_check(vk_down)) && (!keyboard_check(vk_up))) {
+    else if ((keyboard_check(global.downkey)) && (!keyboard_check(global.upkey))) {
     
         //Set the vertical speed.
         yspeed += 0.15;
@@ -127,7 +127,7 @@ if (!disablecontrol) { //If the player controls are not disabled.
         yspeed = 0;
     
     //Make the player able to jump.
-    if (keyboard_check_pressed(vk_shift)) { //If the 'Shift' key is pressed and the player is not jumping.
+    if (keyboard_check_pressed(global.shiftkey)) { //If the 'Shift' key is pressed and the player is not jumping.
         
         //Set the vertical speed.
         yspeed = -jumpstr;

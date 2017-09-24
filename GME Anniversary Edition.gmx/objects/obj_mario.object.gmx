@@ -357,14 +357,14 @@ else {
                     if (!swimming) {
                     
                         //If Mario is doing a spinjump
-                        if (stompstyle) {
+                        if (stompstyle &gt; 0) {
                         
                             //If Mario does have the propeller suit
                             if (global.powerup == cs_propeller) {
                             
                                 //Check if the 'Down' key is pressed
                                 if ((yspeed &lt; 0)
-                                || (keyboard_check(vk_down))) {
+                                || (keyboard_check(global.downkey))) {
                                 
                                     //Set the special spinning sprite
                                     sprite_index = scr_mario_spin2();

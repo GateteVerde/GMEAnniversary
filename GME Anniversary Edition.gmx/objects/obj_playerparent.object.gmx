@@ -324,6 +324,11 @@ x += xspeed;
 y += yspeed;
 yspeed += ygrav;
 
+//Make sure the player is doing a spinjump
+if (global.powerup != cs_propeller)
+&amp;&amp; (stompstyle == 2)
+    stompstyle = 1;
+
 //Mute 'Bump' sound when climbing or when the player is swimming with the frog or penguin powerup
 if (state == 3)
 || ((state == 2) &amp;&amp; (swimming) &amp;&amp; ((global.powerup == cs_frog) || (global.powerup == cs_penguin)))
@@ -684,14 +689,14 @@ if (state != 3) {
     &amp;&amp; (!disablecontrol) {
     
         //Make the player crouch down when the 'Down' key is held
-        if (keyboard_check(vk_down))
+        if (keyboard_check(global.downkey))
         &amp;&amp; (global.powerup != cs_frog)
         &amp;&amp; (!crouch)
         &amp;&amp; (!noisy)
             crouch = true;
             
         //Otherwise, if the 'Down' key is no longer pressed
-        else if (!keyboard_check(vk_down)) {
+        else if (!keyboard_check(global.downkey)) {
                 
             //Make the player get up
             crouch = false;
@@ -751,7 +756,7 @@ else if ((swimming) &amp;&amp; (!water)) {
         if ((state == 2) &amp;&amp; (yspeed &lt; 0)) {
         
             //If 'Shift' is held
-            if (keyboard_check(vk_shift)) {
+            if (keyboard_check(global.shiftkey)) {
             
                 //Play 'Jump' sound
                 audio_play_sound(snd_jump, 0, false);
@@ -1015,7 +1020,31 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Default bounce script
+            <string>///Make the player bounce
+
+//If the player has the propeller suit and the down key is pressed.
+if (global.powerup == cs_propeller)
+&amp;&amp; (keyboard_check(global.downkey))
+    exit;
+    
+//Otherwise, bounce
+else {
+
+    //Set the vertical speed
+    yspeed = -3.6;
+    
+    //Boost jump
+    y--;
+    
+    //Switch to jump state
+    state = 2;
+    
+    //Check if the 'Jump' key is pressed.
+    if (keyboard_check(global.shiftkey))
+        jumping = 1;
+    else
+        jumping = 2;
+}
 </string>
           </argument>
         </arguments>

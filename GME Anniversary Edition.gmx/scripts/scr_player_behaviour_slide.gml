@@ -81,7 +81,7 @@ if (!disablecontrol) { //If the player's controls are not disabled.
     }
     
     //Make the player able to jump when is on contact with the ground.
-    if (keyboard_check_pressed(vk_shift))
+    if (keyboard_check_pressed(global.shiftkey))
     && (jumping == 0)
     && (yspeed == 0) 
     && (state != 2) { //If the 'Shift' key is pressed and the player is not jumping.
@@ -111,7 +111,7 @@ if (!disablecontrol) { //If the player's controls are not disabled.
     }
     
     //Check if the player should still be variable jumping
-    if (keyboard_check_released(vk_shift))
+    if (keyboard_check_released(global.shiftkey))
     && (jumping == 1)
         jumping = 2;
 }
@@ -220,7 +220,7 @@ if ((state == 2) || (delay > 0)) {
     else {
     
         //Use default gravity
-        ygrav = grav+0.1;
+        ygrav = grav;
         
         //End variable jumping if it never ends manually.
         if (jumping = 1)
