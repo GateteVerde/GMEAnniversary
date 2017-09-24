@@ -411,8 +411,20 @@
         <sprite>sprites\spr_qblock_3x</sprite>
         <sprite>sprites\spr_qblock_3x_empty</sprite>
       </sprites>
-      <sprite>sprites\spr_brick</sprite>
-      <sprite>sprites\spr_shard</sprite>
+      <sprites name="Bricks">
+        <sprites name="Shards">
+          <sprite>sprites\spr_shard</sprite>
+          <sprite>sprites\spr_shard_y</sprite>
+        </sprites>
+        <sprite>sprites\spr_brick</sprite>
+        <sprite>sprites\spr_bluebrick</sprite>
+        <sprite>sprites\spr_bluebrick_th</sprite>
+        <sprite>sprites\spr_redbrick</sprite>
+        <sprite>sprites\spr_redbrick_th</sprite>
+        <sprite>sprites\spr_graybrick</sprite>
+        <sprite>sprites\spr_graybrick_th</sprite>
+        <sprite>sprites\spr_flipblock</sprite>
+      </sprites>
     </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
@@ -669,7 +681,9 @@
         <object>objects\obj_qblock</object>
         <object>objects\obj_qblock_coins</object>
       </objects>
-      <object>objects\obj_brick</object>
+      <objects name="Bricks">
+        <object>objects\obj_brick</object>
+      </objects>
     </objects>
     <objects name="Items">
       <objects name="Collectables">
