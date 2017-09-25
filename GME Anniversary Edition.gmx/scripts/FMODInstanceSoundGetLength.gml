@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSoundGetLength(double instance)
+//export double FMODInstanceSoundGetLength(double instance)
 //returns 0 on error
 //returns the length of the intance's sound in millisecs
 

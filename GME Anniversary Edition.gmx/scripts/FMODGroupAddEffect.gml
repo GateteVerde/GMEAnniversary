@@ -1,4 +1,4 @@
-﻿//export double FMODGroupAddEffect(double group, double effects)
+//export double FMODGroupAddEffect(double group, double effects)
 //effect (0 on fail) = FMODGroupAddEffect(1, 5)
 
 //Adds an FMOD effect to a group

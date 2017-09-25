@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceGetWaveSnapshot2(double instance, double channel, double size)
+//export double FMODInstanceGetWaveSnapshot2(double instance, double channel, double size)
 //This function stores data to a memory buffer which you can manipulate for better
 //range using FMODNormalizeWaveData and read using 
 //FMODGetWaveBuffer and FMODGetSnapshotEntry

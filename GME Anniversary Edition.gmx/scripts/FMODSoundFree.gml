@@ -1,4 +1,4 @@
-﻿//export double FMODSoundFree(double sound)
+//export double FMODSoundFree(double sound)
 //This function frees a sound from memory
 //You shoud do this when the game ends though it's not required
 //You should definitivelly do this if you added a temporary sound

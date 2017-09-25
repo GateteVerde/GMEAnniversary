@@ -1,4 +1,4 @@
-﻿//export double FMODGetWaveBuffer(double start, double size)
+//export double FMODGetWaveBuffer(double start, double size)
 //returns 0 on error
 //returns 1 on success 
 

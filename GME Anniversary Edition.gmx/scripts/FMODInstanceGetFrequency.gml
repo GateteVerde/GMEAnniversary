@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceGetFrequency(double instance)
+//export double FMODInstanceGetFrequency(double instance)
 
 //Set a playing instance frequency fro "bullet time" effect
 //some sounds can have negative freq, reversed/rewinding effect if not streamed

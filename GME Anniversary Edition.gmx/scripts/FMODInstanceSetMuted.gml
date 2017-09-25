@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSetMuted(double instance, double mute)
+//export double FMODInstanceSetMuted(double instance, double mute)
 
 //Mutes the specified instance but does not stop it
 //if the group or all is muted, it will unmute when the group and all are unmuted

@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceGetSound(double instance)
+//export double FMODInstanceGetSound(double instance)
 
 //Get the sound the instance is playing. It must be playing (valid) or you will get 0
 

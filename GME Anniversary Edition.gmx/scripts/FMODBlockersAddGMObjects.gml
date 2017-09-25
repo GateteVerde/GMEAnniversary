@@ -1,4 +1,4 @@
-﻿//FMODBlockerAddGMObjects (ObjectIndex or instance ID)
+//FMODBlockerAddGMObjects (ObjectIndex or instance ID)
 //adds all the objects of type ObjectIndex or the instance ID to the blocker system
 with(argument0)
 {

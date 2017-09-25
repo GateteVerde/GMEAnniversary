@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSetLoopPoints(double instance, double start, double end)
+//export double FMODInstanceSetLoopPoints(double instance, double start, double end)
 
 //returns 0 on error
 //returns 1 on success

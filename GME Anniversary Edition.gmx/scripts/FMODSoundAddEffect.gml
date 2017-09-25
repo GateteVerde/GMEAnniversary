@@ -1,4 +1,4 @@
-﻿//export double FMODSoundAddEffect(double sound, double effects, position)
+//export double FMODSoundAddEffect(double sound, double effects, position)
 
 //Adds an FMOD effect to a sound at the position (0-9) specified 
 //Effects

@@ -1,4 +1,4 @@
-﻿//Get the last error in the dll
+//Get the last error in the dll
 //Call only if the result of anthe call returns 0nothe FMOD call returns 0;
 
 //errnumber = FMODGetLastError();

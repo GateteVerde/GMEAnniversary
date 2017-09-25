@@ -1,4 +1,4 @@
-﻿//export double FMODGroupStop(double group)
+//export double FMODGroupStop(double group)
 
 //This stops a group and frees all instances used by it.
 

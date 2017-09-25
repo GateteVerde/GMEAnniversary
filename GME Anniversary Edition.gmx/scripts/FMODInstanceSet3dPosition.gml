@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSet3dPosition(double instance,double x,double y,double z)
+//export double FMODInstanceSet3dPosition(double instance,double x,double y,double z)
 //Chages the position of a sound instance
 
 //returns 0 on error

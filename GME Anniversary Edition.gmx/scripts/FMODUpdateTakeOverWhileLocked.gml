@@ -1,4 +1,4 @@
-﻿//export double FMODUpdateTakeOverWhileLocked()
+//export double FMODUpdateTakeOverWhileLocked()
 //returns 0 on error
 //returns 1 on success
 

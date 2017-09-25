@@ -1,4 +1,4 @@
-﻿//FMODGroupFadePitch(group,targetfreq,numframes)
+//FMODGroupFadePitch(group,targetfreq,numframes)
 //group 0 for all, 1-4 for a specific group
 //target Frequency the Frequency to go to
 //numframes. The number of frames the effect will take place

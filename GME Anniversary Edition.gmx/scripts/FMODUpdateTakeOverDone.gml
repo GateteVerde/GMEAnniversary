@@ -1,4 +1,4 @@
-﻿//export double FMODUpdateTakeOverDone()
+//export double FMODUpdateTakeOverDone()
 //returns 0 on error
 //returns 1 on success
 

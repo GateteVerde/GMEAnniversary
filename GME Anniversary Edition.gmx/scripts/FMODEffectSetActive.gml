@@ -1,4 +1,4 @@
-﻿//export double FMODEffectSetActive(double effect, double active)
+//export double FMODEffectSetActive(double effect, double active)
 //This function sets the effect active or disabled
 
 //FMODEffectSetActive(effect, true/false);

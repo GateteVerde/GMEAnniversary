@@ -1,4 +1,4 @@
-﻿//export double FMODGetSpectrumBuffer(double start, double size)
+//export double FMODGetSpectrumBuffer(double start, double size)
 //returns 0 on error
 //returns 1 on success 
 

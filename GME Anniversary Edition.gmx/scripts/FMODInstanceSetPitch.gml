@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSetPitch(double instance, double pitch)
+//export double FMODInstanceSetPitch(double instance, double pitch)
 
 //Set the instance pitch. 0 to 10, 1 is default
 //some sounds can have negative pitch, reversed/rewinding effect if not streamed

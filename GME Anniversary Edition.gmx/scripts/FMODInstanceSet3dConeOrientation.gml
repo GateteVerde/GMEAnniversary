@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSet3dConeOrientation(double instance, double dx, double dy, double dz)
+//export double FMODInstanceSet3dConeOrientation(double instance, double dx, double dy, double dz)
 
 //Should work like GM's sound_3d_set_sound_cone, the actual cone definition is done with the sound
 //using FMODSoundSet3dMinMaxDistance()

@@ -134,6 +134,90 @@ barrier = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Warn the player that the time is running out
+
+//Play 'Hurry' sound
+audio_play_sound(snd_hurry, 0, false);
+
+//Play music
+alarm[0] = 120;
+
+//Stop music
+alarm[1] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Decrement time variable
+
+//If the player object exists
+if (instance_exists(obj_playerparent)) {
+
+    //If there's time left
+    if (global.time &gt; 0) {
+    
+        //Decrement
+        global.time--;
+        
+        //Decrement again
+        alarm[2] = 50;
+        
+        //Play the hurry up sound at 100 seconds
+        if (global.time == 101)
+            alarm[3] = 50;
+            
+        //Kill the player at 0 seconds
+        else if (global.time == 1)
+            alarm[4] = 50;
+    }
+}
+
+//Otherwise, hold.
+else {
+
+    alarm[2] = 50;
+    exit;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -207,6 +291,35 @@ if (!FMODInstanceIsPlaying(global._stream_starman))
       </action>
     </event>
     <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Deals with the music speed
+
+//Set all music at a higher speed if time is running out.
+if ((global.time &gt; 0) &amp;&amp; (global.time &lt; 101))
+    FMODGroupSetPitch(3,1.3);
+
+//Otherwise, set all music speed to default.
+else
+    FMODGroupSetPitch(3,1);
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -346,6 +459,44 @@ if (global.coins &gt; 99) {
 //Restart level colours
 if (global.skin != 0)
     global.skin = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handles Mario Start! text, room warping, music and timer.
+
+//Set up the time for the level.
+if (leveltime &gt; 0) { //If the timer has been set.
+
+    //If the global time for the level is equal to 0.
+    if (global.time = 0) {
+    
+        global.time = leveltime;
+        alarm[2] = 50;
+    }
+    
+    //Otherwise, if the time has been set before.
+    else if (global.time &gt; 0)    
+        alarm[2] = 50;
+}
 </string>
           </argument>
         </arguments>

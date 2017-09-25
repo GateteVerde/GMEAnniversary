@@ -1,4 +1,4 @@
-﻿//export double FMODSoundGetMusicChannelVolume(double sound, double channel)
+//export double FMODSoundGetMusicChannelVolume(double sound, double channel)
 //Retrieves volume (0 to 1) of a channel for MOD/S3M/XM/IT/MIDI sounds. 
 //A Music channel is basically an instrument in a midi file
 //channel specifies the midi instrument track you want to get the volume for.

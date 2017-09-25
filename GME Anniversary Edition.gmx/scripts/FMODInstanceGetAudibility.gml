@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceGetAudibility(double instance)
+//export double FMODInstanceGetAudibility(double instance)
 //returns the audibility of the sound instance
 //to determine if the instance can be heard over the speakers
 

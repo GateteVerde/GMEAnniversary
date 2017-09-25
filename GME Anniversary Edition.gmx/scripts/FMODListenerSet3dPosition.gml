@@ -1,4 +1,4 @@
-﻿//export double FMODListenerSet3dPosition(double number, double x, double y, double z)
+//export double FMODListenerSet3dPosition(double number, double x, double y, double z)
 //Sets the litenner position in the room
 //number is the listenner id (1 to 4) to position
 //See FMODUpdate for important information

@@ -1,4 +1,4 @@
-﻿//export double FMODSoundGetMaxVolume(double sound)
+//export double FMODSoundGetMaxVolume(double sound)
 
 //returns 0 on error
 //returns volume on success

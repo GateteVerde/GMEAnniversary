@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceGetMaxDist(double instance)
+//export double FMODInstanceGetMaxDist(double instance)
 
 //returns 0 on error
 //returns max dist on success

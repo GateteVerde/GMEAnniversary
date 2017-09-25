@@ -1,4 +1,4 @@
-﻿//export double FMODSoundSetEffects(double sound, double effects)
+//export double FMODSoundSetEffects(double sound, double effects)
 
 //adds sound effects to the sound, just like GM
 //sound = FMODSoundAdd("gunshot.wav")

@@ -1,4 +1,4 @@
-﻿//export double FMODEffectGetParamValueStr(double effect, double p)
+//export double FMODEffectGetParamValueStr(double effect, double p)
 //This function gets the parameter value of the effect in a string 
 
 //n = FMODEffectGetParamValueStr(effect,0);

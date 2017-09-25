@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceGetWaveSnapshot(double instance, double channel, double size)
+//export double FMODInstanceGetWaveSnapshot(double instance, double channel, double size)
 //returns 0 on error
 //returns 1 success
 //Instance is the sound instance

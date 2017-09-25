@@ -1,4 +1,4 @@
-﻿//export double FMODNormalizeSpectrumData(double startpos, double size)
+//export double FMODNormalizeSpectrumData(double startpos, double size)
 //Normalizes the spectrum data from start to start+size to increase the data range values
 //which is useful for better display of the data
 //The effect is that values that are very small will stretch according to the

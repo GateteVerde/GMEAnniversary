@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSet3DPanLevel(double instance, double panlevel)
+//export double FMODInstanceSet3DPanLevel(double instance, double panlevel)
 //returns 1 on succes, 0 on error
 
 //A 3d sound instance pan level can be changed from 0 up to 1

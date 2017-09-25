@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceStop(double instance)
+//export double FMODInstanceStop(double instance)
 
 //Use this to stop and free an instance when done with a 
 //looped instance for example

@@ -1,4 +1,4 @@
-﻿//GM7 ONLY, GM8 see bottom
+//GM7 ONLY, GM8 see bottom
 //export double FMODSnapShotToDsList(double startpos, double size, double ds)
 //returns 0 on error; probable error because...
 //... returns the variation of the data (maxv-minv) which can be used to normalise the data 

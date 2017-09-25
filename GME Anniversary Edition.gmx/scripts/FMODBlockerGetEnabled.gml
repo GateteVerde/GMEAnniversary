@@ -1,4 +1,4 @@
-﻿//export double FMODBlockerGetEnabled(double blocker)
+//export double FMODBlockerGetEnabled(double blocker)
 //Blockers block sounds in the game, useful for walls, windows and other things
 
 //Returns true if a blocker is ON, false if not.

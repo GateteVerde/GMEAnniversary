@@ -1,4 +1,4 @@
-﻿//export double FMODSoundSet3dDopplerMax(double sound, double dopplerval)
+//export double FMODSoundSet3dDopplerMax(double sound, double dopplerval)
 //Call this to set the sound doppler setting
 
 //doppler settings 0 to 5) 0 - none 1 - normal, 5 is maximum

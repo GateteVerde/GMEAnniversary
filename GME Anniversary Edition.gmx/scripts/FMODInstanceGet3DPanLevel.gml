@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceGet3DPanLevel(double instance)
+//export double FMODInstanceGet3DPanLevel(double instance)
 
 //Returns the pan level of the instance
 

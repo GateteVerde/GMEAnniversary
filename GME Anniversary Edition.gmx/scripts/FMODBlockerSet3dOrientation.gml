@@ -1,4 +1,4 @@
-﻿//export double FMODBlockerSet3dOrientation(double blocker, double fx, double fy, double fz, double ux, double uy, double uz)
+//export double FMODBlockerSet3dOrientation(double blocker, double fx, double fy, double fz, double ux, double uy, double uz)
 //Blockers block sounds in the game, useful for walls, windows and other things
 
 //Sets the orientation of a blocker in the room. Useful to rotate doors

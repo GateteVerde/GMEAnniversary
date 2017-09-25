@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSetSpeakerMix(
+//export double FMODInstanceSetSpeakerMix(
 //  double instance,  
 //  double  frontleft, 
 //  double  frontright, 

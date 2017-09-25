@@ -1,4 +1,4 @@
-﻿//export double FMODSoundGetMaxDist(double sound)
+//export double FMODSoundGetMaxDist(double sound)
 
 //returns 0 on error
 //returns max dist on success

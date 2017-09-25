@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSet3DSpread(double instance, double spreadangle)
+//export double FMODInstanceSet3DSpread(double instance, double spreadangle)
 //Return 1 on success, 0 on error
 //Spread angle is the angle the sound is distributed over the speakers
 //This is more complicated, Quoting FMOD Documentation

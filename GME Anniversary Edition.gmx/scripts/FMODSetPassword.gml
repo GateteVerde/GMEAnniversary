@@ -1,4 +1,4 @@
-﻿//export double FMODSetPassword(LPCSTR password)
+//export double FMODSetPassword(LPCSTR password)
 //Sets the password to use for encrypted sound files
 //Call this from the start if all your sounds have the same password
 //or before SoundAdd if your sounds have different passwords

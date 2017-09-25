@@ -1,4 +1,4 @@
-﻿//export double FMODBlockerSet3dScale(double blocker, double sx, double sy, double sz)
+//export double FMODBlockerSet3dScale(double blocker, double sx, double sy, double sz)
 //Blockers block sounds in the game, useful for walls, windows and other things
 
 //Sets the size of a blocker. You can match your image_x/yscale Just make sure you 

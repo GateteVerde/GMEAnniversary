@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSet3dCone(double sound, double insideconeangle, double outsideconeangle, double outsidevolume)
+//export double FMODInstanceSet3dCone(double sound, double insideconeangle, double outsideconeangle, double outsidevolume)
 
 //I have not tested this feature
 

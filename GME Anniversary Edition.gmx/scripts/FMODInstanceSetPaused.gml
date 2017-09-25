@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSetPaused(double instance, double pause)
+//export double FMODInstanceSetPaused(double instance, double pause)
 
 //Use this to pause/unpause an instance
 

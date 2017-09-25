@@ -1,4 +1,4 @@
-﻿//export double FMODSetDopplerFPS(double fps)
+//export double FMODSetDopplerFPS(double fps)
 
 //Sets the sound system's framespersecond value to use in doppler effect calculations
 //fps is the frame per second of your game. (room_speed or fps)

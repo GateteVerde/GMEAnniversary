@@ -1,4 +1,4 @@
-﻿//export double FMODMicStop()
+//export double FMODMicStop()
 //Stop the recorder
 
 //see FMODMicStart

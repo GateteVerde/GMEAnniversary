@@ -1,4 +1,4 @@
-﻿//export double FMODEffectSetBypass(double effect, double bypass)
+//export double FMODEffectSetBypass(double effect, double bypass)
 //This function disables the effect without turning off the playing chain
 
 //FMODEffectSetBypass(effect, true/false); //true means OFF realy

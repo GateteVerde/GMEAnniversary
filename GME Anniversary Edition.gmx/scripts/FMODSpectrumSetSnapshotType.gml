@@ -1,4 +1,4 @@
-﻿//export double FMODSpectrumSetSnapshotType(double snapshottype)
+//export double FMODSpectrumSetSnapshotType(double snapshottype)
 //sets the shape of the spectrum data. Affects all get spectrum data functions
 //argument
 //0 (default)   FMOD_DSP_FFT_WINDOW_RECT,            /* w[n] = 1.0                                                                                            */

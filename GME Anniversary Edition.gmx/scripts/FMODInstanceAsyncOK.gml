@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceAsyncOK(double instance)
+//export double FMODInstanceAsyncOK(double instance)
 
 //This is hard core. 
 //Refer to the VisualMusic demo for proper use

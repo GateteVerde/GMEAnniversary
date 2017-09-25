@@ -1,4 +1,4 @@
-﻿//export double FMODGroupGetSpectrumSnapshot(double group, double channel, double size, LPSTR Buffer)
+//export double FMODGroupGetSpectrumSnapshot(double group, double channel, double size, LPSTR Buffer)
 //returns 0 on error
 //returns maxv on success (so, the return of 0 could be an error or maxv)
 

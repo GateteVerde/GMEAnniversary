@@ -1,4 +1,4 @@
-﻿//export double FMODEffectGetSpeakerActive(double effect, double speaker)
+//export double FMODEffectGetSpeakerActive(double effect, double speaker)
 //This function gets the if the effect is active on the speaker
 
 //true/false = FMODEffectGetSpeakerActive(effect,speaker 0 to number of speakers);

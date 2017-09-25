@@ -1,4 +1,4 @@
-﻿//export double FMODBlockerSet3dPosition(double blocker, double x, double y, double z)
+//export double FMODBlockerSet3dPosition(double blocker, double x, double y, double z)
 //Blockers block sounds in the game, useful for walls, windows and other things
 
 //Sets the position of a blocker in the room. Useful to slide doors

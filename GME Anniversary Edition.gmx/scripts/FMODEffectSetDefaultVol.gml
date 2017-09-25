@@ -1,4 +1,4 @@
-﻿//export double FMODEffectSetDefaultVol(double effect, double vol)
+//export double FMODEffectSetDefaultVol(double effect, double vol)
 //This function gets the pan of the effect
 
 //success = FMODEffectGetDefaultVol(effect, 0 to 1);

@@ -1,4 +1,4 @@
-﻿//returns the number of instances playing
+//returns the number of instances playing
 //You can add watch and paste
 //FMODGetNumInstances();
 //in the debug window

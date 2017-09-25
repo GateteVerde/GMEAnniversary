@@ -1,4 +1,4 @@
-﻿//export double FMODSetWorldScale(double scale)
+//export double FMODSetWorldScale(double scale)
 //Sets the scale of the worls.
 //Default scale is 1 meter per pixel
 //it affects the doppler effect

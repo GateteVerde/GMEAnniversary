@@ -1,4 +1,4 @@
-﻿//export double FMODEffectSetParamValue(double effect, double p, double v)
+//export double FMODEffectSetParamValue(double effect, double p, double v)
 //This function set the parameter value of the effect to the value specified (v)
 
 //n = FMODEffectGetParamValue(effect,0);

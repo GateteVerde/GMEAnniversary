@@ -1,4 +1,4 @@
-﻿//export double FMODinit(double maxsounds, double supportwebmusic)
+//export double FMODinit(double maxsounds, double supportwebmusic)
 //maxsounds is the maximum number of concurrent sound instances playing
 
 //Initiates the FMOD sound system

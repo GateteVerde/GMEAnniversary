@@ -1,4 +1,4 @@
-﻿//export double FMODSoundGetLength(double sound)
+//export double FMODSoundGetLength(double sound)
 //returns 0 on error
 //returns the length of the sound in millisecs
 

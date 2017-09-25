@@ -1,4 +1,4 @@
-﻿//FMODInstanceFadeVolume(instance, curvolume, targetvolume,numframes, updatecode)
+//FMODInstanceFadeVolume(instance, curvolume, targetvolume,numframes, updatecode)
 //instance is the instance to fade
 //target volume the volume to go to
 //numframes. The number of frames the effect will take place

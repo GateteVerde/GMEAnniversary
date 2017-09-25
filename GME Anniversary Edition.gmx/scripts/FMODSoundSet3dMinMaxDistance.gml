@@ -1,4 +1,4 @@
-﻿//export double FMODSoundSet3dMinMaxDistance(double sound, double Min, double Max)
+//export double FMODSoundSet3dMinMaxDistance(double sound, double Min, double Max)
 //returns 0 on error
 //returns 1 on success
 

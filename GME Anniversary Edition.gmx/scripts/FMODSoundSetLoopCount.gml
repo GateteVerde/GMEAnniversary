@@ -1,4 +1,4 @@
-﻿//export double FMODSoundSetLoopCount(double sound, double count)
+//export double FMODSoundSetLoopCount(double sound, double count)
 
 //returns 0 on error
 //returns 1 on success

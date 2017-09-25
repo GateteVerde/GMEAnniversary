@@ -1,4 +1,4 @@
-﻿//export double FMODGetSnapshotEntry(double pos)
+//export double FMODGetSnapshotEntry(double pos)
 //returns the data point value at position pos
 
 //FMODInstanceGetWaveSnapshot2(instance,0, 1024);

@@ -1,4 +1,4 @@
-﻿//FMODInstanceFadeFrequency(instance,targetfr, time)
+//FMODInstanceFadeFrequency(instance,targetfr, time)
 //instance is the sound instance, 
 //targetfr, is the target frequency, 
 //time is the time to do the effect for 2 seconds, use room_speed*2

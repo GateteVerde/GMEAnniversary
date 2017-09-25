@@ -1,4 +1,4 @@
-﻿//export double FMODSoundAddAsyncStream(url/file, threed)
+//export double FMODSoundAddAsyncStream(url/file, threed)
 //This is hard core. 
 //Refer to the VisualMusic demo for proper use
 //Adds a sound (from a web stream usually, but can be used for regular files)

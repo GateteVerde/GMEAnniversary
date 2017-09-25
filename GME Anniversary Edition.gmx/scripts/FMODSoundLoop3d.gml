@@ -1,4 +1,4 @@
-﻿//export double FMODSoundLoop3d(double sound, double x, double y, double z, double paused)
+//export double FMODSoundLoop3d(double sound, double x, double y, double z, double paused)
 
 //Plays (Loops) a sound relative to the player or listenner position
 

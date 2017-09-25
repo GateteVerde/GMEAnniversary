@@ -1,4 +1,4 @@
-﻿//export double FMODNormalizeWaveData(double startpos, double size)
+//export double FMODNormalizeWaveData(double startpos, double size)
 //Normalizes the wave data from start to start+size to increase the data range values
 //which is useful for better display of the data though the accuracy of the wave form
 //will be affected... Not that it matters in this case.

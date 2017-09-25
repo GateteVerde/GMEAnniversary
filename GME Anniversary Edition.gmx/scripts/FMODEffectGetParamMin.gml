@@ -1,4 +1,4 @@
-﻿//export double FMODEffectGetParamMin(double effect, double p)
+//export double FMODEffectGetParamMin(double effect, double p)
 //This function gets the parameter min value of the effect
 
 //n = FMODEffectGetParamMin(effect,0);

@@ -1,4 +1,4 @@
-﻿//export double FMODBlockersInit(double NumBlockers, double xs, double ys, double zs)
+//export double FMODBlockersInit(double NumBlockers, double xs, double ys, double zs)
 
 //Blockers block sounds in the game, useful for walls, windows and other things
 

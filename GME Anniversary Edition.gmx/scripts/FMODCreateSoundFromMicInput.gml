@@ -1,4 +1,4 @@
-﻿//export double FMODCreateSoundFromMicInput()
+//export double FMODCreateSoundFromMicInput()
 //Creates a sound object from the standard mic
 
 //See FMODMicStart

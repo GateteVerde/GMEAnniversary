@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceGetPaused(double instance)
+//export double FMODInstanceGetPaused(double instance)
 
 //Get the instance paused setting. It must be playing (valid) or you will get 0
 

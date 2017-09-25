@@ -1,4 +1,4 @@
-﻿//export double FMODBlockerSetStrength(double blocker,double strength)
+//export double FMODBlockerSetStrength(double blocker,double strength)
 //Blockers block sounds in the game, useful for walls, windows and other things
 
 //Sets the strength of a blocker. 0-no blocking, .5 half blocking 1 full blocking

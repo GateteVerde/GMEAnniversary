@@ -1,4 +1,4 @@
-﻿//export double FMODGroupGetWaveSnapshot(double group, double channel, double size, LPSTR Buffer)
+//export double FMODGroupGetWaveSnapshot(double group, double channel, double size, LPSTR Buffer)
 //returns 0 on error
 //returns  on success
 //Group is the sound group, 0 Master, 1- priority, 2 Effect, 3 Ambiant Music, 4 Ambiant effects

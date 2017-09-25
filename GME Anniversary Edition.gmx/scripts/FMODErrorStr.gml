@@ -1,4 +1,4 @@
-﻿//argument0 is a value from FMODGetLastError()
+//argument0 is a value from FMODGetLastError()
 ///FMOD_ErrorString
 return external_call(global.dll_FMODGetErrorString,argument0);
 //show_debug_message(FMODErrorStr(FMODGetLastError()))

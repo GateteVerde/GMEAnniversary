@@ -1,4 +1,4 @@
-﻿//export double FMODGetTagData()
+//export double FMODGetTagData()
 //Gets the tag data from a stream
 //Refer to Visual Music Demo
 var buf;

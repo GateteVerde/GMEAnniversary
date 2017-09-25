@@ -1,4 +1,4 @@
-﻿//export double FMODGetTagName()
+//export double FMODGetTagName()
 //Gets the tag name from the stream
 //Refer to Visual Music Demo
 

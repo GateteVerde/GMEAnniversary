@@ -1,4 +1,4 @@
-﻿//export double FMODSoundGetLoopCount(double sound)
+//export double FMODSoundGetLoopCount(double sound)
 
 //returns the loops count set for the sound
 

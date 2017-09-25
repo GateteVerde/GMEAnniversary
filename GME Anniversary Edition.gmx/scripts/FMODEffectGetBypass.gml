@@ -1,4 +1,4 @@
-﻿//export double FMODEffectGetBypass(double effect)
+//export double FMODEffectGetBypass(double effect)
 //This function checks if the effect is bypassed
 
 //true/false = FMODEffectGetBypass(effect);

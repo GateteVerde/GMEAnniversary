@@ -1,4 +1,4 @@
-﻿//export double FMODEffectGetDefaultPan(double effect)
+//export double FMODEffectGetDefaultPan(double effect)
 //This function gets the pan of the effect
 
 //-1(left) to 1 right = FMODEffectGetDefaultPan(effect);

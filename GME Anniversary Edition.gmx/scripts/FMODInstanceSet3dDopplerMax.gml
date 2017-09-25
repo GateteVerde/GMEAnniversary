@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSet3dDopplerMax(double sound, double dopplerval)
+//export double FMODInstanceSet3dDopplerMax(double sound, double dopplerval)
 //Call this to set the instance doppler setting
 
 //FMODSetDopplerFPS(room_speed) must have been called for doppler to work 

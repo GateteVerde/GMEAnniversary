@@ -1,4 +1,4 @@
-﻿//export double FMODEffectReset(double effect)
+//export double FMODEffectReset(double effect)
 //Resets the effect
 
 //FMODEffectReset(effect);

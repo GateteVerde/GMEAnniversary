@@ -1,4 +1,4 @@
-﻿//export double FMODEffectGetDefaultFr(double effect)
+//export double FMODEffectGetDefaultFr(double effect)
 //This function gets the frequency of the effect
 
 //-1(left) to 1 right = FMODEffectGetDefaultFr(effect);

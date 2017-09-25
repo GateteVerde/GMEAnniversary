@@ -1,4 +1,4 @@
-﻿//export double FMODListenerSet3dPositionEx(double number, double x, double y, double z, double fx, double fy, double fz, double ux, double uy, double uz)
+//export double FMODListenerSet3dPositionEx(double number, double x, double y, double z, double fx, double fy, double fz, double ux, double uy, double uz)
 
 //the extended version of FMODListenerSet3dPosition so you can do your 3d FPS setup
 

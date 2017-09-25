@@ -1,4 +1,4 @@
-﻿//export double FMODSoundSetLoopPoints(double sound, double start, double end)
+//export double FMODSoundSetLoopPoints(double sound, double start, double end)
 
 //returns 0 on error
 //returns 1 on success

@@ -1,4 +1,4 @@
-﻿//export double FMODSoundGetMusicNumChannels(double sound)
+//export double FMODSoundGetMusicNumChannels(double sound)
 //Retrieves number of music channel for MOD/S3M/XM/IT/MIDI sounds. 
 //A Music channel is basically an instrument in a midi file
 

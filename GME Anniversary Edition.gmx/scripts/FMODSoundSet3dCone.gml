@@ -1,4 +1,4 @@
-﻿//export double FMODSoundSet3dCone(double sound, double insideconeangle, double outsideconeangle, double outsidevolume)
+//export double FMODSoundSet3dCone(double sound, double insideconeangle, double outsideconeangle, double outsidevolume)
 
 //Call before you play the sound
 //Should work the same as GM sound_3d_set_sound_cone

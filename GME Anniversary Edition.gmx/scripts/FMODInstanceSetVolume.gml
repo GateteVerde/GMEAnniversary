@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceSetVolume(double instance, double volume)
+//export double FMODInstanceSetVolume(double instance, double volume)
 //returns 0 on error
 //returns 1 on success
 

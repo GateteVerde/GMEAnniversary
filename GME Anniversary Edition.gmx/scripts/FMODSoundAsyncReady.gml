@@ -1,4 +1,4 @@
-﻿//export double FMODSoundAsyncReady(double sound)
+//export double FMODSoundAsyncReady(double sound)
 
 //This is hard core. 
 //Refer to the VisualMusic demo for proper use

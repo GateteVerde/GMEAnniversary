@@ -1,4 +1,4 @@
-﻿var t;
+var t;
 t = "
 Question-In the demo, something is off with to police siren, it clips out or something
 Answer-I used the same code as in the regular horn beep. The police beeps the horn to play

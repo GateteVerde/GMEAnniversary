@@ -1,4 +1,4 @@
-﻿//export double FMODEffectFree(double effect)
+//export double FMODEffectFree(double effect)
 //This function stops and frees an effect from memory
 
 //FMODEffectFree(effect);

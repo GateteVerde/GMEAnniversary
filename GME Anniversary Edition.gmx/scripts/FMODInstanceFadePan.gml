@@ -1,4 +1,4 @@
-﻿//FMODGroupFadePan(instance, targetpan,numframes)
+//FMODGroupFadePan(instance, targetpan,numframes)
 //instance is the instance to fade
 //target pan the pan to go to
 //numframes. The number of frames the effect will take place

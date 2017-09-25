@@ -1,4 +1,4 @@
-﻿//export double FMODInstanceGetSpectrumSnapshot(double instance, double channel, double size)
+//export double FMODInstanceGetSpectrumSnapshot(double instance, double channel, double size)
 //returns 0 on error
 //returns maxv on success (so, the return of 0 could be an error or maxv)
 

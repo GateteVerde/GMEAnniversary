@@ -1,4 +1,4 @@
-﻿//export double FMODEffectGetNumParams(double effect)
+//export double FMODEffectGetNumParams(double effect)
 //This function gets the number of parameters of the effect
 
 //n = FMODEffectGetNumParams(effect);

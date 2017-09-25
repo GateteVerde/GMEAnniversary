@@ -553,7 +553,7 @@ if (state == 2)
             else {
             
                 if (yspeed < 0)
-                    yspeed  = max(yspeed + 0.5, 0);
+                    yspeed  = max(yspeed + 0.05, 0);
                 else
                     yspeed = 0;
             }

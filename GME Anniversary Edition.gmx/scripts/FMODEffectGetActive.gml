@@ -1,4 +1,4 @@
-﻿//export double FMODEffectGetActive(double effect)
+//export double FMODEffectGetActive(double effect)
 //This function checks if the effect is active
 
 //true/false = FMODEffectGetActive(effect);

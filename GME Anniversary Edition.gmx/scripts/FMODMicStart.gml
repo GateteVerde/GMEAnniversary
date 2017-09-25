@@ -1,4 +1,4 @@
-﻿//export double FMODMicStart(double sound)
+//export double FMODMicStart(double sound)
 //Starts recording on a sound...
 //Returns an instance of the sound recorded my the mic
 

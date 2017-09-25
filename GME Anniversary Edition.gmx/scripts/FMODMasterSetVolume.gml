@@ -1,4 +1,4 @@
-﻿//export double FMODMasterSetVolume(double volume)
+//export double FMODMasterSetVolume(double volume)
 
 //This sets the global volume. changes are relative to the sounds max volume and 
 //the group they belong too

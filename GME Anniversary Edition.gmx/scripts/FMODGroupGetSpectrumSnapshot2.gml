@@ -1,4 +1,4 @@
-﻿//export double FMODGroupGetSpectrumSnapshot2(double group, double channel, double size)
+//export double FMODGroupGetSpectrumSnapshot2(double group, double channel, double size)
 //This function stores data to a memory buffer which you can manipulate for better
 //range using FMODNormalizeSpectrumData and read using 
 //FMODGetSpectrumBuffer and FMODGetSnapshotEntry

@@ -1,4 +1,4 @@
-﻿//export double FMODListenerHearsDistanceOnly(double listener, double truefalse)
+//export double FMODListenerHearsDistanceOnly(double listener, double truefalse)
 
 //Call this if you want to enable x,y,z relative 3d sounds
 //listener is the id (1-4) of the listener
