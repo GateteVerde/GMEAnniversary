@@ -109,10 +109,38 @@ ready = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Move back down
+            <string>///Reverse direction
 
-vspeed = 2;
+vspeed = -vspeed;
 alarm[1] = 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set depth
+
+if (speed == 0)
+    depth = 9;
+else
+    depth = -2;
 </string>
           </argument>
         </arguments>

@@ -118,7 +118,10 @@ if (!disablecontrol) && (!inwall) {
     && (keyboard_check(global.upkey)) 
     && (!stompstyle) 
     && (!crouch) 
-    && (holding == 0))) {
+    && (holding == 0))
+    
+    //Do not allow jump if the player is bouncing on a note block. 
+    && (!collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_noteblock,0,1))) {
     
         //Jump high if you have the frog powerup, and you are not riding anything
         if (global.powerup == cs_frog)        

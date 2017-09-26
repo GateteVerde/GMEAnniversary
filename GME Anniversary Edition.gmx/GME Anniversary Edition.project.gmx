@@ -91,6 +91,7 @@
     <sounds name="Item">
       <sound>sound\snd_1up</sound>
       <sound>sound\snd_coin</sound>
+      <sound>sound\snd_trampoline</sound>
     </sounds>
     <sounds name="Menu">
       <sound>sound\snd_hurry</sound>
@@ -498,6 +499,9 @@
         <sprite>sprites\spr_graybrick_th</sprite>
         <sprite>sprites\spr_flipblock</sprite>
       </sprites>
+      <sprite>sprites\spr_noteblock</sprite>
+      <sprite>sprites\spr_noteblock_blue</sprite>
+      <sprite>sprites\spr_noteblock_warp</sprite>
     </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
@@ -952,6 +956,7 @@
         <object>objects\obj_brick</object>
         <object>objects\obj_flipblock</object>
       </objects>
+      <object>objects\obj_noteblock</object>
     </objects>
     <objects name="Items">
       <objects name="Collectables">
@@ -963,6 +968,9 @@
     <objects name="Special">
       <objects name="Parents">
         <objects name="Collision">
+          <objects name="Moving">
+            <object>objects\obj_platformparent</object>
+          </objects>
           <object>objects\obj_slopeparent</object>
           <object>objects\obj_ceilslopeparent</object>
         </objects>

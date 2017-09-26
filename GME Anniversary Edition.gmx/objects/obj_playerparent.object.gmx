@@ -790,7 +790,7 @@ else if ((swimming) &amp;&amp; (!water)) {
 }
 
 //Free the player is he is stuck on a solid.
-if (state &lt;= 1) 
+if (state &lt; 2) 
 &amp;&amp; (!crouch) 
 &amp;&amp; (!inwall) {
 
