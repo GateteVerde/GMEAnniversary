@@ -474,6 +474,7 @@
       </sprites>
       <sprite>sprites\spr_mask</sprite>
       <sprite>sprites\spr_bigmask</sprite>
+      <sprite>sprites\spr_shellmask</sprite>
       <sprite>sprites\spr_mario_dead</sprite>
     </sprites>
     <sprites name="Blocks">
@@ -962,6 +963,7 @@
       <objects name="Collectables">
         <objects name="Coins">
           <object>objects\obj_coin</object>
+          <object>objects\obj_coin_p</object>
         </objects>
       </objects>
     </objects>

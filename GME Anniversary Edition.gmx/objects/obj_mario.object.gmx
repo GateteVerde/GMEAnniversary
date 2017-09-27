@@ -876,8 +876,22 @@ else {
         else if (global.powerup == cs_shell) 
         || (global.powerup == cs_penguin) {
         
-            if (sliding)
-                mask_index = spr_mask;
+            //If Mario is sliding down a slope
+            if (sliding) {
+            
+                //If Mario does not have the shell powerup
+                if (global.powerup != cs_shell)
+                    mask_index = spr_mask;
+                else {
+                
+                    if (xspeed == 0)
+                        mask_index = spr_mask;
+                    else
+                        mask_index = spr_shellmask;
+                }
+            }
+            
+            //Otherwise, set the default mask
             else
                 mask_index = spr_bigmask;
         }
