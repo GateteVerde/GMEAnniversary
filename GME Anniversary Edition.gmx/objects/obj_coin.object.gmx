@@ -34,6 +34,36 @@ image_speed = 0.15;
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_blockparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect the coin
+
+if (other.vspeed &lt;&gt; 0) {
+
+    instance_create(x,ystart,obj_blockcoin);
+    instance_destroy();
+    exit;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_playerparent">
       <action>
         <libid>1</libid>

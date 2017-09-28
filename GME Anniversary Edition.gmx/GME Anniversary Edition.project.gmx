@@ -507,6 +507,34 @@
     <sprites name="Items">
       <sprites name="Collectables">
         <sprites name="Powerups">
+          <sprites name="Mounts">
+            <sprites name="Yoshi">
+              <sprites name="Main">
+                <sprites name="Normal">
+                  <sprite>sprites\spr_yoshi</sprite>
+                  <sprite>sprites\spr_yoshi_jump</sprite>
+                  <sprite>sprites\spr_yoshi_flutter</sprite>
+                  <sprite>sprites\spr_yoshi_wait</sprite>
+                </sprites>
+                <sprites name="Fullmouth">
+                  <sprite>sprites\spr_yoshi_fm</sprite>
+                  <sprite>sprites\spr_yoshi_fm_jump</sprite>
+                  <sprite>sprites\spr_yoshi_fm_flutter</sprite>
+                  <sprite>sprites\spr_yoshi_fm_wait</sprite>
+                </sprites>
+                <sprite>sprites\spr_yoshi_warp</sprite>
+                <sprite>sprites\spr_yoshi_lick</sprite>
+                <sprite>sprites\spr_yoshi_swallow</sprite>
+              </sprites>
+              <sprites name="Parts">
+                <sprite>sprites\spr_wing</sprite>
+                <sprite>sprites\spr_tongue</sprite>
+              </sprites>
+              <sprite>sprites\spr_egg</sprite>
+              <sprite>sprites\spr_egg_bits</sprite>
+              <sprite>sprites\spr_yoshi_hatch</sprite>
+            </sprites>
+          </sprites>
           <sprite>sprites\spr_mushroom</sprite>
           <sprite>sprites\spr_fireflower</sprite>
           <sprite>sprites\spr_iceflower</sprite>
@@ -527,6 +555,7 @@
           <sprite>sprites\spr_starman</sprite>
           <sprite>sprites\spr_1up</sprite>
           <sprite>sprites\spr_poison</sprite>
+          <sprite>sprites\spr_goldshroom</sprite>
         </sprites>
         <sprites name="Coins">
           <sprites name="Block">
@@ -634,6 +663,9 @@
           <sprite>sprites\spr_palette_qblock</sprite>
           <sprite>sprites\spr_palette_qblock_empty</sprite>
           <sprite>sprites\spr_palette_brick</sprite>
+        </sprites>
+        <sprites name="NPCs">
+          <sprite>sprites\spr_palette_yoshi</sprite>
         </sprites>
         <sprite>sprites\pal_null</sprite>
       </sprites>
@@ -1022,7 +1054,7 @@
     <room>rooms\rm_load</room>
     <room>rooms\rm_enginetest</room>
   </rooms>
-  <constants number="36">
+  <constants number="35">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
     <constant name="cs_fire">2</constant>
@@ -1057,8 +1089,7 @@
     <constant name="cs_spring">-22</constant>
     <constant name="cs_pswitch">-23</constant>
     <constant name="cs_gswitch">-24</constant>
-    <constant name="cs_propellerblock">-25</constant>
-    <constant name="cs_beanstalk">-26</constant>
+    <constant name="cs_beanstalk">-25</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
