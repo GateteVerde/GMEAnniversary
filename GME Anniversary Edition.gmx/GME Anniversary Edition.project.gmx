@@ -534,6 +534,10 @@
               <sprite>sprites\spr_egg_bits</sprite>
               <sprite>sprites\spr_yoshi_hatch</sprite>
             </sprites>
+            <sprite>sprites\spr_kuriboshoe</sprite>
+            <sprite>sprites\spr_baburushoe</sprite>
+            <sprite>sprites\spr_dossunshoe</sprite>
+            <sprite>sprites\spr_jugemushoe</sprite>
           </sprites>
           <sprite>sprites\spr_mushroom</sprite>
           <sprite>sprites\spr_fireflower</sprite>
@@ -572,11 +576,67 @@
           <sprite>sprites\spr_starcoin</sprite>
           <sprite>sprites\spr_starcoin_get</sprite>
         </sprites>
+        <sprite>sprites\spr_plusclock_10</sprite>
+        <sprite>sprites\spr_plusclock_100</sprite>
+        <sprite>sprites\spr_holdbubble</sprite>
+        <sprite>sprites\spr_3upmoon</sprite>
       </sprites>
-      <sprite>sprites\spr_plusclock_10</sprite>
-      <sprite>sprites\spr_plusclock_100</sprite>
-      <sprite>sprites\spr_holdbubble</sprite>
-      <sprite>sprites\spr_3upmoon</sprite>
+      <sprites name="Holdables">
+        <sprite>sprites\spr_key</sprite>
+        <sprite>sprites\spr_pswitch</sprite>
+        <sprite>sprites\spr_gswitch</sprite>
+        <sprite>sprites\spr_trampoline</sprite>
+        <sprite>sprites\spr_trampoline_p</sprite>
+        <sprite>sprites\spr_trampoline_timed</sprite>
+        <sprite>sprites\spr_propellerblock</sprite>
+        <sprite>sprites\spr_boomerang_blue</sprite>
+      </sprites>
+      <sprites name="Platforms">
+        <sprites name="Common">
+          <sprites name="Paths">
+            <sprite>sprites\spr_path</sprite>
+            <sprite>sprites\spr_path_hor</sprite>
+            <sprite>sprites\spr_path_vert</sprite>
+            <sprite>sprites\spr_path_diagonal_r</sprite>
+            <sprite>sprites\spr_path_diagonal_l</sprite>
+            <sprite>sprites\spr_path_circle_1x_a</sprite>
+            <sprite>sprites\spr_path_circle_1x_b</sprite>
+            <sprite>sprites\spr_path_circle_1x_c</sprite>
+            <sprite>sprites\spr_path_circle_1x_d</sprite>
+            <sprite>sprites\spr_path_circle_2x_a</sprite>
+            <sprite>sprites\spr_path_circle_2x_b</sprite>
+            <sprite>sprites\spr_path_circle_2x_c</sprite>
+            <sprite>sprites\spr_path_circle_2x_d</sprite>
+          </sprites>
+          <sprites name="Complex">
+            <sprite>sprites\spr_rope</sprite>
+            <sprite>sprites\spr_circleplatform</sprite>
+            <sprite>sprites\spr_circleplatform_segment</sprite>
+          </sprites>
+          <sprite>sprites\spr_platform</sprite>
+          <sprite>sprites\spr_platform_p</sprite>
+        </sprites>
+        <sprites name="SMB2">
+          <sprite>sprites\spr_log</sprite>
+        </sprites>
+        <sprites name="SMB3">
+          <sprite>sprites\spr_arrowplatform</sprite>
+          <sprite>sprites\spr_rotaryplatform</sprite>
+          <sprite>sprites\spr_donut</sprite>
+          <sprite>sprites\spr_donut_red</sprite>
+        </sprites>
+        <sprites name="SMW">
+          <sprite>sprites\spr_accordion</sprite>
+          <sprite>sprites\spr_blocktrain</sprite>
+          <sprite>sprites\spr_fortblock</sprite>
+          <sprite>sprites\spr_skullraft</sprite>
+          <sprite>sprites\spr_timedplatform</sprite>
+          <sprite>sprites\spr_weightplatform</sprite>
+        </sprites>
+        <sprite>sprites\spr_mushroomplatform</sprite>
+        <sprite>sprites\spr_pulleyplatform</sprite>
+        <sprite>sprites\spr_yoshiplatform</sprite>
+      </sprites>
     </sprites>
     <sprites name="Masks">
       <sprites name="Collision">
