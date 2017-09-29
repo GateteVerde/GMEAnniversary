@@ -796,21 +796,7 @@
         <script>scripts\scr_player_behaviour_wall.gml</script>
       </scripts>
     </scripts>
-    <scripts name="GUI">
-      <script>scripts\draw_text_colour_shadowed.gml</script>
-    </scripts>
-    <scripts name="Shaders">
-      <scripts name="Palettes">
-        <scripts name="Palette Swap System">
-          <script>scripts\pal_swap_init_system.gml</script>
-          <script>scripts\pal_swap_set.gml</script>
-          <script>scripts\pal_swap_reset.gml</script>
-          <script>scripts\pal_swap_get_pal_count.gml</script>
-        </scripts>
-        <script>scripts\palette_get.gml</script>
-      </scripts>
-    </scripts>
-    <scripts name="Music Scripts">
+    <scripts name="Music">
       <scripts name="GMFMOD">
         <script>scripts\HowToUse.gml</script>
         <script>scripts\Known_Problems_and_Questions.gml</script>
@@ -1003,11 +989,30 @@
       <script>scripts\music_add.gml</script>
       <script>scripts\music_setup.gml</script>
     </scripts>
-    <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
-    <script>scripts\init_globals.gml</script>
-    <script>scripts\init_globals_music.gml</script>
-    <script>scripts\string_add_zeros.gml</script>
-    <script>scripts\wrap.gml</script>
+    <scripts name="Shaders">
+      <scripts name="Palettes">
+        <scripts name="Palette Swap System">
+          <script>scripts\pal_swap_init_system.gml</script>
+          <script>scripts\pal_swap_set.gml</script>
+          <script>scripts\pal_swap_reset.gml</script>
+          <script>scripts\pal_swap_get_pal_count.gml</script>
+        </scripts>
+        <script>scripts\palette_get.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="System">
+      <scripts name="Text">
+        <script>scripts\draw_text_colour_shadowed.gml</script>
+      </scripts>
+      <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
+      <script>scripts\init_globals.gml</script>
+      <script>scripts\init_globals_music.gml</script>
+      <script>scripts\string_add_zeros.gml</script>
+      <script>scripts\wrap.gml</script>
+    </scripts>
+    <script>scripts\constant_get_sprite.gml</script>
+    <script>scripts\sprite_get_constant.gml</script>
+    <script>scripts\sprite_make_object.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
@@ -1064,9 +1069,14 @@
         <objects name="Collision">
           <objects name="Moving">
             <object>objects\obj_platformparent</object>
+            <object>objects\obj_platformparent_solid</object>
           </objects>
           <object>objects\obj_slopeparent</object>
           <object>objects\obj_ceilslopeparent</object>
+        </objects>
+        <objects name="NPC">
+          <object>objects\obj_physicsparent</object>
+          <object>objects\obj_powerupparent</object>
         </objects>
         <object>objects\obj_playerparent</object>
         <object>objects\obj_blockparent</object>
@@ -1114,7 +1124,7 @@
     <room>rooms\rm_load</room>
     <room>rooms\rm_enginetest</room>
   </rooms>
-  <constants number="35">
+  <constants number="38">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
     <constant name="cs_fire">2</constant>
@@ -1142,14 +1152,17 @@
     <constant name="cs_baburushoe">-15</constant>
     <constant name="cs_dossunshoe">-16</constant>
     <constant name="cs_jugemushoe">-17</constant>
-    <constant name="cs_1up">-18</constant>
-    <constant name="cs_3up">-19</constant>
-    <constant name="cs_poison">-20</constant>
-    <constant name="cs_goldshroom">-21</constant>
-    <constant name="cs_spring">-22</constant>
-    <constant name="cs_pswitch">-23</constant>
-    <constant name="cs_gswitch">-24</constant>
-    <constant name="cs_beanstalk">-25</constant>
+    <constant name="cs_goldshroom">-18</constant>
+    <constant name="cs_1up">-19</constant>
+    <constant name="cs_3up">-20</constant>
+    <constant name="cs_poison">-21</constant>
+    <constant name="cs_star">-22</constant>
+    <constant name="cs_key">-23</constant>
+    <constant name="cs_trampoline">-24</constant>
+    <constant name="cs_pswitch">-25</constant>
+    <constant name="cs_gswitch">-26</constant>
+    <constant name="cs_propellerblock">-27</constant>
+    <constant name="cs_beanstalk">-28</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
