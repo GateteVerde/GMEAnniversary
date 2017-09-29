@@ -419,7 +419,7 @@ if ((state == 2) || (delay > 0)) {
         if ((stompstyle) && (global.mount == 0)) {
            
             //Lower the gravity
-            ygrav = ygrav/2;
+            ygrav = ygrav/2.25;
 
             //Allow the player to charge downwards
             if ((keyboard_check(global.downkey)) && (yspeed > 0)) {
@@ -432,7 +432,7 @@ if ((state == 2) || (delay > 0)) {
                 
                 //Cap vertical speed
                 if (yspeed < 4)
-                    yspeed += 0.5;            
+                    yspeed += 0.25;            
             }
             else {
             

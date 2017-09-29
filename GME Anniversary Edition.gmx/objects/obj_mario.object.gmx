@@ -370,7 +370,7 @@ else {
                                     sprite_index = scr_mario_spin2();
                                     
                                     //Animate it
-                                    image_speed = 0.5;
+                                    image_speed = 0.065+abs(yspeed)/7.5;;
                                 }
                                 else {
                                 

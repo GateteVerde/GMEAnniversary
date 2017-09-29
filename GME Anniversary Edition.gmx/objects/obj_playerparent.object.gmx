@@ -1091,6 +1091,11 @@ else {
             <string>///Draw player
 
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_white,1);
+
+//Draw a tornado if spinning down with the propeller suit
+if (global.powerup == cs_propeller)
+&amp;&amp; (stompstyle == 1)
+    draw_sprite_ext(spr_tornado,-1,round(x),round(y)+1,1,1,0,c_white,0.5);
 </string>
           </argument>
         </arguments>

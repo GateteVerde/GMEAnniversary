@@ -111,7 +111,7 @@ mysolid = instance_create(x,y,obj_solid);
             <string>///Finish block bump
 
 //Deny the following code if the beanstalk was set
-if ((sprout &gt; cs_coin) 
+if ((sprout &gt; cs_greenyoshi) 
 &amp;&amp; (global.persistence))
     ds_map_add(global.modified, id, 1);
 
