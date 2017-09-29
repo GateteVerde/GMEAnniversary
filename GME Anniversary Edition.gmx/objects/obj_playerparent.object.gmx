@@ -389,13 +389,12 @@ if (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slo
             y--;
 }
 
-/*
 //Left conveyor belt collision
 lconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_conveyor_l,0,0);
 if ((lconv) &amp;&amp; (lconv.image_speed != 0)) {
 
     if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0))
-        x--;
+        x -= 0.75;
 }
 
 //Right conveyor belt collision
@@ -403,9 +402,8 @@ rconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_c
 if ((rconv) &amp;&amp; (rconv.image_speed != 0)) {
 
     if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0))
-        x++;
+        x += 0.75;
 }
-*/
 
 //If the player is not swimming
 if (!swimming) {

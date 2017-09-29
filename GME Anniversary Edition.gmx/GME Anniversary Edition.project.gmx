@@ -516,7 +516,7 @@
                   <sprite>sprites\spr_yoshi_flutter</sprite>
                   <sprite>sprites\spr_yoshi_wait</sprite>
                 </sprites>
-                <sprites name="Fullmouth">
+                <sprites name="Full Mouth">
                   <sprite>sprites\spr_yoshi_fm</sprite>
                   <sprite>sprites\spr_yoshi_fm_jump</sprite>
                   <sprite>sprites\spr_yoshi_fm_flutter</sprite>
@@ -578,6 +578,8 @@
         </sprites>
         <sprite>sprites\spr_plusclock_10</sprite>
         <sprite>sprites\spr_plusclock_100</sprite>
+        <sprite>sprites\spr_berry</sprite>
+        <sprite>sprites\spr_berry_g</sprite>
         <sprite>sprites\spr_holdbubble</sprite>
         <sprite>sprites\spr_3upmoon</sprite>
       </sprites>
@@ -637,6 +639,49 @@
         <sprite>sprites\spr_pulleyplatform</sprite>
         <sprite>sprites\spr_yoshiplatform</sprite>
       </sprites>
+      <sprites name="Subcon">
+        <sprites name="Vegetables">
+          <sprite>sprites\spr_turnip</sprite>
+          <sprite>sprites\spr_turnip_large</sprite>
+          <sprite>sprites\spr_turnip_bomb</sprite>
+          <sprite>sprites\spr_turnip_shell</sprite>
+        </sprites>
+        <sprites name="Collectibles">
+          <sprite>sprites\spr_sorcerer</sprite>
+          <sprite>sprites\spr_cherry</sprite>
+          <sprite>sprites\spr_cherry_get</sprite>
+          <sprite>sprites\spr_vegkey</sprite>
+          <sprite>sprites\spr_vegshroom</sprite>
+          <sprite>sprites\spr_vegshroom_1up</sprite>
+        </sprites>
+        <sprites name="Decor">
+          <sprite>sprites\spr_digsand</sprite>
+        </sprites>
+        <sprite>sprites\spr_grass</sprite>
+        <sprite>sprites\spr_mblock</sprite>
+        <sprite>sprites\spr_powblock</sprite>
+        <sprite>sprites\spr_powblock_th</sprite>
+        <sprite>sprites\spr_powblock_large</sprite>
+        <sprite>sprites\spr_powblock_large_th</sprite>
+        <sprite>sprites\spr_basket</sprite>
+        <sprite>sprites\spr_basket_up</sprite>
+        <sprite>sprites\spr_basket_shard</sprite>
+      </sprites>
+      <sprite>sprites\spr_icecoin</sprite>
+      <sprite>sprites\spr_iceplant</sprite>
+      <sprite>sprites\spr_conveyor</sprite>
+      <sprite>sprites\spr_flipper_top</sprite>
+      <sprite>sprites\spr_flipper_bottom</sprite>
+      <sprite>sprites\spr_flipper_left</sprite>
+      <sprite>sprites\spr_flipper_right</sprite>
+      <sprite>sprites\spr_door</sprite>
+      <sprite>sprites\spr_door_lock</sprite>
+      <sprite>sprites\spr_door_inside</sprite>
+      <sprite>sprites\spr_door_block</sprite>
+      <sprite>sprites\spr_walltriangle_r</sprite>
+      <sprite>sprites\spr_walltriangle_l</sprite>
+      <sprite>sprites\spr_walltriangle_cr</sprite>
+      <sprite>sprites\spr_walltriangle_cl</sprite>
     </sprites>
     <sprites name="Masks">
       <sprites name="Collision">
@@ -727,7 +772,8 @@
         <sprites name="NPCs">
           <sprite>sprites\spr_palette_yoshi</sprite>
         </sprites>
-        <sprite>sprites\pal_null</sprite>
+        <sprite>sprites\spr_palette_door</sprite>
+        <sprite>sprites\spr_palette_null</sprite>
       </sprites>
       <sprite>sprites\spr_pit</sprite>
     </sprites>
@@ -1063,6 +1109,8 @@
           <object>objects\obj_coin_p</object>
         </objects>
       </objects>
+      <object>objects\obj_conveyor_r</object>
+      <object>objects\obj_conveyor_l</object>
     </objects>
     <objects name="Special">
       <objects name="Parents">

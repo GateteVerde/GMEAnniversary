@@ -35,4 +35,4 @@ if (global.skin != 0) {
 
 //Otherwise, return the default palette
 else
-    return pal_null;
+    return spr_palette_null;

@@ -87,6 +87,9 @@ global.carrieditem = noone;
 //The sprite used by an item carried between rooms
 global.carriedsprite = noone;
 
+//The frame used by an item carried between rooms
+global.carriedframe = noone;
+
 //Whether Mario should hold/carry an object
 //0: No hold
 //1: Carry

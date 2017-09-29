@@ -110,6 +110,11 @@ mysolid = instance_create(x,y,obj_solid);
             <kind>1</kind>
             <string>///Finish block bump
 
+//Deny the following code if the beanstalk was set
+if ((sprout &gt; cs_coin) 
+&amp;&amp; (global.persistence))
+    ds_map_add(global.modified, id, 1);
+
 //Stop vertical movement
 vspeed = 0;
 y = ystart;
