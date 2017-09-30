@@ -34,6 +34,7 @@ switch (argument[0]) {
     case (cs_baburushoe): return spr_baburushoe;
     case (cs_dossunshoe): return spr_dossunshoe;
     case (cs_jugemushoe): return spr_jugemushoe;
+    case (cs_golden): return spr_goldshroom;
     case (cs_1up): return spr_1up;
     case (cs_3up): return spr_3upmoon;
     case (cs_poison): return spr_poison;

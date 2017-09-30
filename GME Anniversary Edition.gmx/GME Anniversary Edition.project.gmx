@@ -612,11 +612,18 @@
           </sprites>
           <sprites name="Complex">
             <sprite>sprites\spr_rope</sprite>
-            <sprite>sprites\spr_circleplatform</sprite>
-            <sprite>sprites\spr_circleplatform_segment</sprite>
+            <sprite>sprites\spr_platform_ferris</sprite>
+            <sprite>sprites\spr_platform_ferris_segment</sprite>
           </sprites>
           <sprite>sprites\spr_platform</sprite>
-          <sprite>sprites\spr_platform_p</sprite>
+          <sprite>sprites\spr_platform_32x</sprite>
+          <sprite>sprites\spr_platform_64x</sprite>
+          <sprite>sprites\spr_platform_blue</sprite>
+          <sprite>sprites\spr_platform_blue_32x</sprite>
+          <sprite>sprites\spr_platform_blue_64x</sprite>
+          <sprite>sprites\spr_platform_touch</sprite>
+          <sprite>sprites\spr_platform_touch_32x</sprite>
+          <sprite>sprites\spr_platform_touch_64x</sprite>
         </sprites>
         <sprites name="SMB2">
           <sprite>sprites\spr_log</sprite>
@@ -635,9 +642,11 @@
           <sprite>sprites\spr_timedplatform</sprite>
           <sprite>sprites\spr_weightplatform</sprite>
         </sprites>
-        <sprite>sprites\spr_mushroomplatform</sprite>
-        <sprite>sprites\spr_pulleyplatform</sprite>
         <sprite>sprites\spr_yoshiplatform</sprite>
+        <sprite>sprites\spr_pulleyplatform</sprite>
+        <sprite>sprites\spr_pulleyplatform_32x</sprite>
+        <sprite>sprites\spr_pulleyplatform_64x</sprite>
+        <sprite>sprites\spr_mushroomplatform</sprite>
       </sprites>
       <sprites name="Subcon">
         <sprites name="Vegetables">
@@ -1116,16 +1125,38 @@
           <object>objects\obj_coin_p</object>
         </objects>
       </objects>
+      <objects name="Platforms">
+        <objects name="Common">
+          <objects name="Ferris">
+            <object>objects\obj_ferrisplatform</object>
+            <object>objects\obj_ferrisplatform_2x</object>
+            <object>objects\obj_ferrisplatform_3x</object>
+          </objects>
+          <objects name="Paths">
+            <object>objects\obj_path</object>
+            <object>objects\obj_path_hor</object>
+            <object>objects\obj_path_ver</object>
+            <object>objects\obj_path_diagonal_r</object>
+            <object>objects\obj_path_diagonal_l</object>
+            <object>objects\obj_path_circle_a1</object>
+            <object>objects\obj_path_circle_a2</object>
+            <object>objects\obj_path_circle_a3</object>
+            <object>objects\obj_path_circle_a4</object>
+            <object>objects\obj_path_circle_b1</object>
+            <object>objects\obj_path_circle_b2</object>
+            <object>objects\obj_path_circle_b3</object>
+            <object>objects\obj_path_circle_b4</object>
+          </objects>
+          <object>objects\obj_platform</object>
+          <object>objects\obj_platform_touch</object>
+        </objects>
+      </objects>
       <object>objects\obj_conveyor_r</object>
       <object>objects\obj_conveyor_l</object>
     </objects>
     <objects name="Special">
       <objects name="Parents">
         <objects name="Collision">
-          <objects name="Moving">
-            <object>objects\obj_platformparent</object>
-            <object>objects\obj_platformparent_solid</object>
-          </objects>
           <object>objects\obj_slopeparent</object>
           <object>objects\obj_ceilslopeparent</object>
         </objects>
@@ -1135,6 +1166,7 @@
         </objects>
         <object>objects\obj_playerparent</object>
         <object>objects\obj_blockparent</object>
+        <object>objects\obj_pathparent</object>
       </objects>
       <objects name="Don't Use">
         <objects name="Player">
@@ -1149,6 +1181,9 @@
             <object>objects\obj_blockcoin</object>
             <object>objects\obj_shard</object>
             <object>objects\obj_flipblock_flip</object>
+          </objects>
+          <objects name="Platforms">
+            <object>objects\obj_ferrisplatform_platform</object>
           </objects>
         </objects>
         <objects name="Effects">
@@ -1207,7 +1242,7 @@
     <constant name="cs_baburushoe">-15</constant>
     <constant name="cs_dossunshoe">-16</constant>
     <constant name="cs_jugemushoe">-17</constant>
-    <constant name="cs_goldshroom">-18</constant>
+    <constant name="cs_golden">-18</constant>
     <constant name="cs_1up">-19</constant>
     <constant name="cs_3up">-20</constant>
     <constant name="cs_poison">-21</constant>
