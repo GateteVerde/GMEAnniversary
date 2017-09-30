@@ -632,6 +632,7 @@
         <sprites name="SMB3">
           <sprite>sprites\spr_arrowplatform</sprite>
           <sprite>sprites\spr_rotaryplatform</sprite>
+          <sprite>sprites\spr_boltlift</sprite>
           <sprite>sprites\spr_donut</sprite>
           <sprite>sprites\spr_donut_red</sprite>
         </sprites>
@@ -726,6 +727,7 @@
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_slopemask_l</sprite>
       <sprite>sprites\spr_spinmask</sprite>
+      <sprite>sprites\spr_boltlift_mask</sprite>
     </sprites>
     <sprites name="Special">
       <sprites name="Eyecandy">
@@ -1163,6 +1165,9 @@
         <objects name="SMB3">
           <object>objects\obj_arrowplatform</object>
           <object>objects\obj_rotaryplatform</object>
+          <object>objects\obj_boltlift</object>
+          <object>objects\obj_donut</object>
+          <object>objects\obj_donut_red</object>
         </objects>
         <objects name="SMW">
           <object>objects\obj_slopeplatform_r</object>
@@ -1192,6 +1197,8 @@
             <object>objects\obj_mario</object>
           </objects>
           <object>objects\obj_spinner</object>
+          <object>objects\obj_marker_head</object>
+          <object>objects\obj_marker_bottom</object>
         </objects>
         <objects name="Items">
           <objects name="Blocks">
@@ -1210,6 +1217,8 @@
             <objects name="SMB3">
               <object>objects\obj_arrowplatform_platform</object>
               <object>objects\obj_spinmask</object>
+              <object>objects\obj_boltlift_top</object>
+              <object>objects\obj_boltlift_fall</object>
             </objects>
           </objects>
         </objects>

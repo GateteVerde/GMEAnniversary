@@ -144,6 +144,10 @@ holddown = false;
 //Initialize important alarms
 alarm[8] = 1; 
 alarm[10] = 1; //This one is found on player skins
+
+//Create markers
+instance_create(0,0,obj_marker_head);
+instance_create(0,0,obj_marker_bottom);
 </string>
           </argument>
         </arguments>
