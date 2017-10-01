@@ -3,7 +3,7 @@
   <spriteName>spr_log</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>10</depth>
+  <depth>13</depth>
   <persistent>0</persistent>
   <parentName>obj_semisolid</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -34,7 +34,7 @@ image_speed = 0.15;
 vspeed = -0.25;
 
 //Fall down
-alarm[0] = 60;
+alarm[0] = 56;
 </string>
           </argument>
         </arguments>

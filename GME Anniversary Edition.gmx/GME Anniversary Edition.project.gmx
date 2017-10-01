@@ -505,6 +505,48 @@
       <sprite>sprites\spr_noteblock_blue</sprite>
       <sprite>sprites\spr_noteblock_warp</sprite>
     </sprites>
+    <sprites name="Decoration">
+      <sprites name="Water">
+        <sprite>sprites\spr_watertop</sprite>
+        <sprite>sprites\spr_waterfall_top</sprite>
+        <sprite>sprites\spr_waterfall_bottom</sprite>
+        <sprite>sprites\spr_waterfall2_top</sprite>
+        <sprite>sprites\spr_waterfall2_bottom</sprite>
+      </sprites>
+      <sprites name="Lava">
+        <sprites name="Slopes">
+          <sprites name="Inverted">
+            <sprite>sprites\spr_ilavaslope_l</sprite>
+            <sprite>sprites\spr_ilavaslope_r</sprite>
+            <sprite>sprites\spr_ilavaslope_sl</sprite>
+            <sprite>sprites\spr_ilavaslope_sr</sprite>
+          </sprites>
+          <sprites name="Corners">
+            <sprite>sprites\spr_lavacorner_a</sprite>
+            <sprite>sprites\spr_lavacorner_b</sprite>
+            <sprite>sprites\spr_lavacorner_c</sprite>
+            <sprite>sprites\spr_lavacorner_d</sprite>
+          </sprites>
+          <sprites name="Edges">
+            <sprite>sprites\spr_lavaedge_a</sprite>
+            <sprite>sprites\spr_lavaedge_b</sprite>
+            <sprite>sprites\spr_lavaedge_c</sprite>
+            <sprite>sprites\spr_lavaedge_d</sprite>
+          </sprites>
+          <sprite>sprites\spr_lavaslope_l</sprite>
+          <sprite>sprites\spr_lavaslope_r</sprite>
+          <sprite>sprites\spr_lavaslope_sl</sprite>
+          <sprite>sprites\spr_lavaslope_sr</sprite>
+        </sprites>
+        <sprite>sprites\spr_lava</sprite>
+        <sprite>sprites\spr_lava_b</sprite>
+        <sprite>sprites\spr_lava_c</sprite>
+        <sprite>sprites\spr_lava_d</sprite>
+        <sprite>sprites\spr_lava_e</sprite>
+        <sprite>sprites\spr_lavafall_a</sprite>
+        <sprite>sprites\spr_lavafall_b</sprite>
+      </sprites>
+    </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
         <sprites name="Powerups">
@@ -1126,6 +1168,13 @@
       </objects>
       <object>objects\obj_noteblock</object>
     </objects>
+    <objects name="Decoration">
+      <objects name="Water">
+        <object>objects\obj_watertop</object>
+        <object>objects\obj_waterfall</object>
+        <object>objects\obj_waterfall_noswim</object>
+      </objects>
+    </objects>
     <objects name="Items">
       <objects name="Collectables">
         <objects name="Coins">
@@ -1170,6 +1219,8 @@
           <object>objects\obj_donut_red</object>
         </objects>
         <objects name="SMW">
+          <object>objects\obj_accordion_h</object>
+          <object>objects\obj_accordion_v</object>
           <object>objects\obj_slopeplatform_r</object>
           <object>objects\obj_slopeplatform_l</object>
         </objects>
@@ -1219,6 +1270,9 @@
               <object>objects\obj_spinmask</object>
               <object>objects\obj_boltlift_top</object>
               <object>objects\obj_boltlift_fall</object>
+            </objects>
+            <objects name="SMW">
+              <object>objects\obj_expandplatblock</object>
             </objects>
           </objects>
         </objects>
