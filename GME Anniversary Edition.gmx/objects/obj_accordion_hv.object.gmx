@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Horizontal Accordion Platform
+            <string>///Multidirection Accordion Platform
 
 //Expand platform
 alarm[0] = 120;
@@ -39,6 +39,138 @@ myblock[3] = instance_create(x,y,obj_expandplatblock);
     myblock[3].depth = 1;
 myblock[4] = instance_create(x,y,obj_expandplatblock);
     myblock[4].depth = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop it
+
+with (myblock[1]) vspeed = 0;
+with (myblock[2]) vspeed = 0;
+with (myblock[3]) vspeed = 0;
+with (myblock[4]) vspeed = 0;
+with (myblock[1]) y = ystart;
+with (myblock[2]) y = ystart;
+with (myblock[3]) y = ystart;
+with (myblock[4]) y = ystart;
+
+//Expand platform
+alarm[0] = 120;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Shorten platform
+
+with (myblock[1]) vspeed = -1;
+with (myblock[2]) vspeed = -0.5;
+with (myblock[3]) vspeed = 0.5;
+with (myblock[4]) vspeed = 1;
+
+//Stop it
+alarm[7] = 32;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop it
+
+with (myblock[1]) vspeed = 0;
+with (myblock[2]) vspeed = 0;
+with (myblock[3]) vspeed = 0;
+with (myblock[4]) vspeed = 0;
+with (myblock[1]) y = ystart+32;
+with (myblock[2]) y = ystart+16;
+with (myblock[3]) y = ystart-16;
+with (myblock[4]) y = ystart-32;
+
+//Shorten platform
+alarm[6] = 120;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Expand platform
+
+with (myblock[1]) vspeed = 1;
+with (myblock[2]) vspeed = 0.5;
+with (myblock[3]) vspeed = -0.5;
+with (myblock[4]) vspeed = -1;
+
+//Stop it
+alarm[5] = 32;
 </string>
           </argument>
         </arguments>
@@ -73,7 +205,7 @@ with (myblock[3]) x = xstart;
 with (myblock[4]) x = xstart;
 
 //Expand platform
-alarm[0] = 120;
+alarm[4] = 120;
 </string>
           </argument>
         </arguments>

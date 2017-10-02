@@ -206,7 +206,7 @@ if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerpa
         exit;
 
     //Snap the player vertically
-    obj_playerparent.y = ceil(bbox_top-15);
+    obj_playerparent.y = ceil(bbox_top-16);
 }
 </string>
           </argument>
