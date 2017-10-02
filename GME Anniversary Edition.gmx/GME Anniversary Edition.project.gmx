@@ -681,7 +681,7 @@
         <sprites name="SMW">
           <sprite>sprites\spr_accordion</sprite>
           <sprite>sprites\spr_blocktrain</sprite>
-          <sprite>sprites\spr_fortblock</sprite>
+          <sprite>sprites\spr_stoneblock</sprite>
           <sprite>sprites\spr_skullraft</sprite>
           <sprite>sprites\spr_timedplatform</sprite>
           <sprite>sprites\spr_weightplatform</sprite>
@@ -1222,6 +1222,7 @@
           <object>objects\obj_accordion_h</object>
           <object>objects\obj_accordion_v</object>
           <object>objects\obj_accordion_hv</object>
+          <object>objects\obj_blocktrain</object>
           <object>objects\obj_slopeplatform_r</object>
           <object>objects\obj_slopeplatform_l</object>
         </objects>
@@ -1274,6 +1275,10 @@
             </objects>
             <objects name="SMW">
               <object>objects\obj_expandplatblock</object>
+              <object>objects\obj_blocktrain_front</object>
+              <object>objects\obj_blocktrain_middle</object>
+              <object>objects\obj_blocktrain_back</object>
+              <object>objects\obj_blocktrain_killer</object>
             </objects>
           </objects>
         </objects>

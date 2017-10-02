@@ -704,7 +704,7 @@ if (state != 3) {
             crouch = false;
             
             //Check if there's a ceiling above the player and make him move until it's not embed in a solid
-            if (collision_rectangle(bbox_left,bbox_top-16,bbox_right,bbox_top-16,obj_solid,0,0))
+            if (collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top-4,obj_solid,0,0))
             &amp;&amp; (global.powerup != cs_small)
                 inwall = true;
         }            
@@ -797,7 +797,7 @@ if (state &lt; 2)
 &amp;&amp; (!inwall) {
 
     //Check for a nearby solid block.
-    var stuck = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,1);
+    var stuck = collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,0,0);
     
     //If the player is embed on a wall and it's not overlapping a mushblock.
     if (stuck) {
@@ -884,7 +884,7 @@ else if (inwall) {
     x += 2*sign(direct);
     
     //If the player is not longer embed on a wall, make him able to move.
-    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,1,0))
+    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0))
         inwall = false;
 }
 
@@ -895,7 +895,7 @@ else
     wiggle = 0;
 
 //If the player is not in contact with water.
-if (!collision_rectangle(bbox_left,y,bbox_right,bbox_bottom,obj_swim,1,1)) {
+if (!collision_rectangle(bbox_left,y,bbox_right,bbox_bottom,obj_swim,0,0)) {
 
     //If the player is swimming.
     if (swimming)  
