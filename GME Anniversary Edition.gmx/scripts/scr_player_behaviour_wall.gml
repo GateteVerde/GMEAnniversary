@@ -36,7 +36,7 @@ if (yspeed > 0)
     
     //Otherwise, if the 'Left' key is pressed and the player is facing left.
     else if ((keyboard_check(global.leftkey)) && (xscale == -1)) {
-        
+    
         //If the player hugs a wall at the left
         if (collision_line(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,1)) {
             
@@ -63,8 +63,8 @@ if (wallkick == 1) {
         wallkick = 0;
         
     //End manually wall kick when not in contact with a wall.
-    if ((xscale < 0) && (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,1)))
-    || ((xscale > 0) && (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,0,1)))
+    if ((xscale < 0) && (!collision_line(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,1)))
+    || ((xscale > 0) && (!collision_line(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,0,1)))
         wallkick = 0;
 
     //If the player does have the cat powerup.
