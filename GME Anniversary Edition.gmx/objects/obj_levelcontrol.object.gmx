@@ -432,7 +432,7 @@ if (global.coins &gt; 99) {
 instance_deactivate_object(obj_deactivateparent);
 
 //Activate deactivated instances inside the view
-instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_xview[0]+view_wview[0]+32,view_yview[0]+view_hview[0]+32,true);
+instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view_hview[0]+64,true);
 </string>
           </argument>
         </arguments>
