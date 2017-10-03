@@ -14,3 +14,7 @@
 //Plains
 global._theme_plains = music_add("Plains");
 music_setup(global._theme_plains, "Plains", 3);
+
+//Athletic
+global._theme_athletic = music_add("Athletic");
+music_setup(global._theme_athletic, "Athletic", 3);
