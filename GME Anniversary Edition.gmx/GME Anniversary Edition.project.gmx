@@ -105,6 +105,9 @@
       <sound>sound\snd_stomp</sound>
       <sound>sound\snd_swim</sound>
     </sounds>
+    <sounds name="Enemy">
+      <sound>sound\snd_podoboo</sound>
+    </sounds>
     <sounds name="Item">
       <sound>sound\snd_1up</sound>
       <sound>sound\snd_coin</sound>
@@ -699,11 +702,11 @@
           <sprite>sprites\spr_accordion</sprite>
           <sprite>sprites\spr_blocktrain</sprite>
           <sprite>sprites\spr_stoneblock</sprite>
-          <sprite>sprites\spr_skullraft</sprite>
           <sprite>sprites\spr_timedplatform</sprite>
           <sprite>sprites\spr_weightplatform</sprite>
           <sprite>sprites\spr_slopeplatform_r</sprite>
           <sprite>sprites\spr_slopeplatform_l</sprite>
+          <sprite>sprites\spr_skullraft</sprite>
         </sprites>
         <sprite>sprites\spr_yoshiplatform</sprite>
         <sprite>sprites\spr_pulleyplatform</sprite>
@@ -1221,6 +1224,8 @@
         <object>objects\obj_lava_b</object>
         <object>objects\obj_lava_c</object>
         <object>objects\obj_lava_d</object>
+        <object>objects\obj_lava_e</object>
+        <object>objects\obj_lavafall</object>
       </objects>
     </objects>
     <objects name="Items">
@@ -1275,6 +1280,7 @@
           <object>objects\obj_timedplatform</object>
           <object>objects\obj_slopeplatform_r</object>
           <object>objects\obj_slopeplatform_l</object>
+          <object>objects\obj_skullraft</object>
         </objects>
       </objects>
       <object>objects\obj_conveyor_r</object>
