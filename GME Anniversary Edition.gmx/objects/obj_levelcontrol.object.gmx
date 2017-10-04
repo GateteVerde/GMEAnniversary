@@ -290,7 +290,7 @@ if (!FMODInstanceIsPlaying(global._stream_starman))
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -341,7 +341,7 @@ else
 //Follow main player
 if (instance_exists(obj_playerparent)) {
 
-    //Snap into the player position
+    //Make the camera follow the player
     x = obj_playerparent.x;
     y = obj_playerparent.y;
     
@@ -399,8 +399,8 @@ if (instance_exists(obj_playerparent)) {
 }
 
 //Round position variables
-x = round(x);
-y = round(y);
+view_xview[0] = floor(x);
+view_yview[0] = floor(y);
 
 //Get a extra life if 100 coins are collected
 if (global.coins &gt; 99) {

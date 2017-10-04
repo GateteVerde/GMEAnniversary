@@ -91,8 +91,9 @@ if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerpa
         obj_playerparent.y = ceil(bbox_top-16);
     
         //Move the player horizontally if there is no solid in his way
-        if (x &lt; x-xprevious) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_left-1,obj_playerparent.bbox_top+4,obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
-        || (x &gt; x-xprevious) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_right,obj_playerparent.bbox_top+4,obj_playerparent.bbox_right+1,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
+        if ((x != x-xprevious) 
+        &amp;&amp; ((!collision_rectangle(obj_playerparent.bbox_left-1,obj_playerparent.bbox_top+4,obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
+        || (!collision_rectangle(obj_playerparent.bbox_right,obj_playerparent.bbox_top+4,obj_playerparent.bbox_right+1,obj_playerparent.bbox_bottom-1,obj_solid,0,0))))
             obj_playerparent.x += x-xprevious;
     }
 }
@@ -129,7 +130,7 @@ if (myright == noone) {
         event_user(0)
 
     //Stop the raft when running into a solid
-    else if (hspeed &gt; 1)
+    else if (hspeed == 0.5)
     &amp;&amp; (collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,0,1)) {
     
         x = collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,0,1).x-16;
@@ -138,20 +139,30 @@ if (myright == noone) {
 }
 
 //Ride the lava
-if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-3,obj_lava,1,0)) {
+if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+4,obj_lava,1,0)) 
+&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_lava,1,0)))
+&amp;&amp; (hspeed != 0)
+    y += 4;
 
-    //Stop vertical movement
-    vspeed = 0;
-    gravity = 0;    
+//Handle lava collision
+if (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_lava,1,0)) 
+&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj_lava,1,0)) {
+
+    //If the player is moving down onto a slope.
+    if (vspeed &gt; 0) {
     
-    //Prevent getting embed on lava
-    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_lava,1,0))
-        y--;
+        //Stop vertical movement
+        vspeed = 0;
+        gravity = 0;
+    }
+    
+    //Prevent the player from getting embed inside a slope.
+    if (vspeed &gt; -0.85)
+        while (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_lava,1,0))        
+            y--;
 }
-else {
-
+else
     gravity = 0.15;
-}
 
 //Cap fall speed
 if (vspeed &gt; 2.5)
