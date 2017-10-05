@@ -77,7 +77,7 @@ if (myright == noone) {
 
 //If the player is on this moving platform
 if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerparent,0,0))
-&amp;&amp; (obj_playerparent.y &lt; y-11)
+&amp;&amp; (obj_playerparent.bbox_bottom &lt; yprevious+5)
 &amp;&amp; (obj_playerparent.state &lt; 2)) {
 
     //Check for other skull rafts
@@ -130,18 +130,27 @@ if (myright == noone) {
         event_user(0)
 
     //Stop the raft when running into a solid
-    else if (hspeed == 0.5)
-    &amp;&amp; (collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,0,1)) {
+    else if (hspeed != 0) {
     
-        x = collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,0,1).x-16;
-        event_user(1);
+        //If there's a solid to the right
+        if (collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,0,1)) {
+        
+            x = collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom,obj_solid,0,1).x-16;
+            event_user(1);
+        }
+        
+        //otherwise, if there's a solid to the left
+        else if (collision_rectangle(bbox_left,bbox_top,bbox_left,bbox_bottom,obj_solid,0,1)) {
+        
+            x = collision_rectangle(bbox_left,bbox_top,bbox_left,bbox_bottom,obj_solid,0,1).x+1;
+            event_user(2);
+        }
     }
 }
 
 //Ride the lava
 if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+4,obj_lava,1,0)) 
 &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_lava,1,0)))
-&amp;&amp; (hspeed != 0)
     y += 4;
 
 //Handle lava collision
@@ -193,6 +202,39 @@ if (vspeed &gt; 2.5)
 
 if (bbox_top &gt; room_height+32)
     instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop moving raft parts
+
+//Stop horizontal speed
+hspeed = 0;
+
+//Snap them
+if (myleft != noone) {
+
+    myleft.x = x+1;
+    with (myleft) event_user(1);
+}
 </string>
           </argument>
         </arguments>
@@ -251,7 +293,10 @@ if (myleft != noone) {
             <string>///Start moving raft parts
 
 //Set the horizontal speed
-hspeed = 0.5;
+if (!place_meeting(x,y,obj_left))
+    hspeed = 0.5;
+else
+    hspeed = -0.5;
 
 //Start moving all raft parts
 ready = 1;

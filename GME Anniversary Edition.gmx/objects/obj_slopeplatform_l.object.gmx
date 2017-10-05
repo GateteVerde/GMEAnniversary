@@ -175,6 +175,7 @@ alarm[1] = 160;
             <kind>1</kind>
             <string>//If the player is on this moving platform
 if ((collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_bottom-4,obj_playerparent,1,0))
+&amp;&amp; (obj_playerparent.bbox_bottom &lt; bbox_bottom+5)
 &amp;&amp; (obj_playerparent.state &lt; 2)) {
 
     //Make sure the player does not get embed with the slope

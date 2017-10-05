@@ -703,9 +703,9 @@
           <sprite>sprites\spr_blocktrain</sprite>
           <sprite>sprites\spr_stoneblock</sprite>
           <sprite>sprites\spr_timedplatform</sprite>
-          <sprite>sprites\spr_weightplatform</sprite>
           <sprite>sprites\spr_slopeplatform_r</sprite>
           <sprite>sprites\spr_slopeplatform_l</sprite>
+          <sprite>sprites\spr_weightplatform</sprite>
           <sprite>sprites\spr_skullraft</sprite>
         </sprites>
         <sprite>sprites\spr_yoshiplatform</sprite>
@@ -1280,8 +1280,10 @@
           <object>objects\obj_timedplatform</object>
           <object>objects\obj_slopeplatform_r</object>
           <object>objects\obj_slopeplatform_l</object>
+          <object>objects\obj_weightplatform</object>
           <object>objects\obj_skullraft</object>
         </objects>
+        <object>objects\obj_yoshiplatform</object>
       </objects>
       <object>objects\obj_conveyor_r</object>
       <object>objects\obj_conveyor_l</object>
@@ -1336,6 +1338,7 @@
               <object>objects\obj_blocktrain_middle</object>
               <object>objects\obj_blocktrain_back</object>
               <object>objects\obj_blocktrain_killer</object>
+              <object>objects\obj_weightplatform_right</object>
             </objects>
           </objects>
         </objects>

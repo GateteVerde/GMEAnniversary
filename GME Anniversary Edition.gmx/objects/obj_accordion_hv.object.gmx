@@ -329,7 +329,7 @@ alarm[1] = 32;
 
 //If the player is on this moving platform
 if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerparent,0,0))
-&amp;&amp; (obj_playerparent.y &lt; y-11)
+&amp;&amp; (obj_playerparent.bbox_bottom &lt; yprevious+5)
 &amp;&amp; (obj_playerparent.state &lt; 2)) {
 
     //Check for a moving platform
