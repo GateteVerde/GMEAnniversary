@@ -369,7 +369,7 @@ if (instance_exists(obj_playerparent)) {
                     sliding = false;
                     
                     //Free 'Down' key
-                    keyboard_clear(vk_down);
+                    keyboard_clear(global.downkey);
                 }
             }
         }
@@ -393,7 +393,7 @@ if (instance_exists(obj_playerparent)) {
                     sliding = false;
                     
                     //Free 'Down' key
-                    keyboard_clear(vk_down);
+                    keyboard_clear(global.downkey);
                 }
             }
         }

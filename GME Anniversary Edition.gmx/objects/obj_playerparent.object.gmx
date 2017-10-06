@@ -364,17 +364,17 @@ if (yspeed &gt;= 0) { //If the player is moving down and the gravity is not disa
 }
     
 //Embed the player into the slope if he is walking or sliding down a slope to ensure correct slope physics.
-if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+4,obj_slopeparent,1,0)) 
-&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)))
+if ((collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
+&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0)))
 &amp;&amp; (state == 1) {
 
-    if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
+    if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_semisolid,0,0))
         y += 4;
 }
 
 //Handle Slope collision
-if (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slopeparent,1,0)) 
-&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-8,bbox_right,bbox_bottom-8,obj_slopeparent,1,0)) {
+if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0)) 
+&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
 
     //If the player is moving down onto a slope.
     if (yspeed &gt;= 0) {
@@ -389,7 +389,7 @@ if (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slo
     
     //Prevent the player from getting embed inside a slope.
     if (yspeed &gt; -0.85)
-        while (collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-1,obj_slopeparent,1,0))        
+        while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0))        
             y--;
 }
 

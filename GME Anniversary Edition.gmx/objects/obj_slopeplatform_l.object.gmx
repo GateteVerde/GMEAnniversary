@@ -179,7 +179,7 @@ if ((collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_bottom-4,obj_playe
 &amp;&amp; (obj_playerparent.state &lt; 2)) {
 
     //Make sure the player does not get embed with the slope
-    obj_playerparent.y += 2;
+    obj_playerparent.y++;
     
     //Move the player horizontally if there is no solid in his way
     if ((x != x-xprevious) 

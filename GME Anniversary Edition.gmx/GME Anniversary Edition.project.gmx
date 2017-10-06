@@ -771,8 +771,6 @@
           <sprite>sprites\spr_slope_l</sprite>
           <sprite>sprites\spr_slope_sr</sprite>
           <sprite>sprites\spr_slope_sl</sprite>
-          <sprite>sprites\spr_slope_ssr</sprite>
-          <sprite>sprites\spr_slope_ssl</sprite>
         </sprites>
         <sprites name="Slopes (Ceiling)">
           <sprite>sprites\spr_cslope_r</sprite>
@@ -1284,6 +1282,8 @@
           <object>objects\obj_skullraft</object>
         </objects>
         <object>objects\obj_yoshiplatform</object>
+        <object>objects\obj_pulleyplatform</object>
+        <object>objects\obj_mushroomplatform</object>
       </objects>
       <object>objects\obj_conveyor_r</object>
       <object>objects\obj_conveyor_l</object>
@@ -1340,6 +1340,8 @@
               <object>objects\obj_blocktrain_killer</object>
               <object>objects\obj_weightplatform_right</object>
             </objects>
+            <object>objects\obj_pulleyplatform_right</object>
+            <object>objects\obj_pulleyplatform_rope</object>
           </objects>
         </objects>
         <objects name="Effects">

@@ -10,14 +10,14 @@
 
 //Figure out the player's state.
 if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
-|| (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_slopeparent,1,0)))
+|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)))
 && (ygrav == 0) {
 
     //If the player is flying, do a special check
     if ((flying) && (yspeed < 0)) {
     
         //If the player is overlapping a slope, set up jumping state.
-        if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,1))      
+        if (collision_rectangle(x-1,bbox_top,x+1,bbox_bottom,obj_slopeparent,1,1))      
             state = 2;
     }
     
@@ -504,7 +504,7 @@ if (keyboard_check_pressed(global.downkey))
         sliding = true;
 
     //If the player is on a slope, and the above didn't happen, slide normally
-    else if (collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+2,obj_slopeparent,1,0))
+    else if (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+2,obj_slopeparent,1,0))
     && (global.powerup != cs_frog) {
             
         //If the player can slide and it's not holding anything.
