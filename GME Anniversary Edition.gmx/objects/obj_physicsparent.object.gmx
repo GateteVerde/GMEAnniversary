@@ -29,9 +29,6 @@
 
 //Whether the object is swimming
 swimming = false;
-
-//Whether the object is immune to lava
-lavaimmune = false
 </string>
           </argument>
         </arguments>
@@ -115,7 +112,7 @@ image_speed = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -132,7 +129,10 @@ image_speed = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handle here various NPC effects
+            <string>///Default end step script
+
+//Moving platform collision
+event_user(5);
 
 //Destroy in contact with lava
 if (collision_rectangle(bbox_left,bbox_bottom+6,bbox_right,bbox_bottom+7,obj_lava,0,0)) {
@@ -147,6 +147,22 @@ if (collision_rectangle(bbox_left,bbox_bottom+6,bbox_right,bbox_bottom+7,obj_lav
     
     //Destroy
     instance_destroy();
+}
+
+//Move in contact with a left-moving conveyor belt
+lconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_conveyor_l,0,0);
+if ((lconv) &amp;&amp; (lconv.image_speed != 0)) {
+
+    if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0))
+        x -= 0.75;
+}
+
+//Move in contact with a right-moving conveyor belt
+rconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_conveyor_r,0,0);
+if ((rconv) &amp;&amp; (rconv.image_speed != 0)) {
+
+    if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0))
+        x += 0.75;
 }
 </string>
           </argument>
@@ -202,7 +218,62 @@ event_user(4);
             <string>///Bumped by a block
 
 if (other.vspeed &lt; 0)
-    other.vspeed = -4;
+    other.vspeed = -2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="15">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collision with moving platforms
+
+/*
+//  IMPORTANT NOTE:
+//
+//  This event must be called in a 'End Step' event, otherwise it will not work properly.
+*/
+
+var moving = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_platformparent,0,0);
+if (moving) 
+&amp;&amp; (moving.speed != 0) {
+
+    //With this platform
+    with (moving) {
+    
+        //If this instance is on the platform
+        if (collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_bottom+4,other.id,0,0)) {
+        
+            //Make sure the NPC is not overlapping another platform
+            var check = collision_rectangle(other.id.bbox_left,other.id.bbox_bottom-1,other.id.bbox_right,other.id.bbox_bottom+1,obj_semisolid,0,1);
+            if (check)
+                exit;
+                
+            //Snap the instance vertically
+            other.id.y = ceil(bbox_top-15);
+            
+            //Move the player horizontally if there is no solid in his way
+            if (x &lt; x-xprevious) &amp;&amp; (!collision_rectangle(other.id.bbox_left-1,other.id.bbox_top+4,other.id.bbox_left,other.id.bbox_bottom-1,obj_solid,0,0))
+            || (x &gt; x-xprevious) &amp;&amp; (!collision_rectangle(other.id.bbox_right,other.id.bbox_top+4,other.id.bbox_right+1,other.id.bbox_bottom-1,obj_solid,0,0))
+                other.id.x += x-xprevious;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -226,6 +297,94 @@ if (other.vspeed &lt; 0)
           <argument>
             <kind>1</kind>
             <string>///Default floor collision
+
+//When moving down
+if (vspeed &gt; 0) {
+
+    //Check for a semisolid below
+    var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_semisolid,0,0);
+    
+    //If the semisolid exists, snap above it.
+    if (semisolid)
+    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5)
+        y = semisolid.bbox_top-16;
+}
+
+//Embed the NPC into the slope to ensure correct slope physics.
+if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
+&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0))
+&amp;&amp; (vspeed == 0) {
+
+    //Make sure it's not in contact with a semisolid
+    if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_semisolid,0,0))
+        y += 4;
+}
+    
+//Handle slope collision
+if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
+&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
+
+    //Stay embed on the slope.
+    while collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0)
+        y--;
+}
+
+//Check for floor objects
+if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
+&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_semisolid,0,0)))
+|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
+
+    //Stop vertical movement
+    gravity = 0;
+    if (vspeed &gt; 0)
+        vspeed = 0;
+}
+else {
+
+    //Set the gravity when not underwater
+    if (!swimming) {
+    
+        //Gravity
+        gravity = 0.25;
+        
+        //Cap vertical speed
+        if (vspeed &gt; 4)
+            vspeed = 4;
+    }
+    
+    //Otherwise, set the gravity when underwater
+    else {
+    
+        //Gravity
+        gravity = 0.0625;
+        
+        //Cap vertical speed
+        if (vspeed &gt; 1)
+            vspeed = 1;
+    }
+}
+
+//If the player is moving up
+if (vspeed &lt;= 0)
+&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)) 
+|| (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
+    
+    //Prevent the player's head from getting stuck on a ceiling.
+    if (vspeed != 0) {
+
+        while ((collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0))
+        || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
+            y++;
+    }
+    
+    //Stop vertical speed
+    vspeed = 0;
+}
+
+//Make sure that the player does not get embed on ceiling slopes
+if (vspeed != 0)
+    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
+        y++;
 </string>
           </argument>
         </arguments>
@@ -250,7 +409,43 @@ if (other.vspeed &lt; 0)
             <kind>1</kind>
             <string>///Default wall collision
 
+if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-hspeed,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)))
+|| ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+hspeed,bbox_bottom-1,obj_solid,1,0))) {
 
+    //Reverse horizontal speed
+    hspeed = -hspeed;
+    
+    //Prevent getting embed on walls
+    while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,0))
+        x++;
+    while (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,0))
+        x--;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw NPC
+
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,1,1,0,c_white,1);
 </string>
           </argument>
         </arguments>

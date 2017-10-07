@@ -59,11 +59,11 @@ for (i=0; i&lt;8; i++;) {
 }
 alarm[7] = 1;
 
-//Make sure the view follows this object.
-view_object[0] = id;
-
 //Camera orientation
 orientation = 1
+
+//Make sure the view follows this object.
+view_object[0] = id;
 
 //Create HUD object
 instance_create(0,0,obj_hud);

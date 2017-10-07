@@ -1228,6 +1228,9 @@
     </objects>
     <objects name="Items">
       <objects name="Collectables">
+        <objects name="Powerups">
+          <object>objects\obj_mushroom</object>
+        </objects>
         <objects name="Coins">
           <object>objects\obj_coin</object>
           <object>objects\obj_coin_p</object>
@@ -1291,6 +1294,9 @@
     <objects name="Special">
       <objects name="Parents">
         <objects name="Collision">
+          <objects name="Platform">
+            <object>objects\obj_platformparent</object>
+          </objects>
           <object>objects\obj_slopeparent</object>
           <object>objects\obj_ceilslopeparent</object>
         </objects>
