@@ -27,6 +27,10 @@
             <kind>1</kind>
             <string>///Mario's initial position
 
+//Snap camera
+obj_levelcontrol.x = x;
+obj_levelcontrol.y = y;
+
 //Create a new object based on Mario's position
 if (global.postchange == -1) {
 

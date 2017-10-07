@@ -105,6 +105,8 @@ draw_sprite_ext(spr_hud_starcoin, 0, view_xview[0]+4, view_yview[0]+45, 1, 1, 0,
 
 //Reserve Box
 draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+18, 1, 1, 0, c_white, 1);
+if (global.reserve != cs_small)
+    draw_sprite_ext(constant_get_sprite(global.reserve),-1,view_xview[0]+view_wview[0]/2, view_yview[0]+10, 1, 1, 0, c_white,1);
 
 //Set font
 draw_set_font(global.numbers_b);
