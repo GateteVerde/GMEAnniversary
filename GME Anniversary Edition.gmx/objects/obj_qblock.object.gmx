@@ -47,6 +47,7 @@
 **      cs_lightning
 **      cs_penguin
 **      cs_propeller
+**      cs_cat
 **      cs_greenyoshi
 **      cs_redyoshi
 **      cs_yellowyoshi
@@ -67,13 +68,6 @@
 **      cs_propellerblock
 **      cs_beanstalk
 */
-
-//First, check if this block was hit before.
-if (ds_map_find_value(global.modified, id) == 1) {
-
-    instance_change(obj_emptyblock, false);
-    exit;
-}
 
 //Default value
 sprout = cs_coin;
@@ -110,19 +104,30 @@ mysolid = instance_create(x,y,obj_solid);
             <kind>1</kind>
             <string>///Finish block bump
 
-//Deny the following code if the beanstalk was set
-if ((sprout &gt; cs_greenyoshi) 
-&amp;&amp; (global.persistence))
-    ds_map_add(global.modified, id, 1);
+//Make sure this block does not give an item anymore, unless you exit or clear the level.
+if ((global.persistence) &amp;&amp; (sprout &gt; cs_coin))
+ds_map_add(global.modified, id, 1);
 
 //Stop vertical movement
 vspeed = 0;
 y = ystart;
 
-/*
-//  ITEMS GO HERE!
-*/ 
+//Change the contents to mushroom if a powerup is inside, and Mario is small
+if ((sprout &gt; cs_big) &amp;&amp; (global.powerup == cs_small))
+    sprout = cs_big;
 
+//Make an item come out, if there is one
+if (sprout != cs_coin) {
+
+    //If health mode is not enabled and the item inside is a golden mushroom, change it into a mushroom
+    if ((sprout == cs_golden) &amp;&amp; (!global.healthmode))
+        sprout = cs_big;
+
+    //Create the item
+    with (instance_create(x+8,y,obj_powerupsprout))
+        sprite_index = constant_get_sprite(other.sprout);
+}
+    
 //Change into a empty block
 instance_change(obj_emptyblock, false);
 </string>
@@ -149,6 +154,12 @@ instance_change(obj_emptyblock, false);
             <kind>1</kind>
             <string>///Create a coin if no item was selected
 
+//Check if this block was hit before.
+if (ds_map_find_value(global.modified, id) == 1)
+&amp;&amp; (sprout &gt; cs_coin)
+    sprout = cs_coin;
+
+//Create a coin
 if (sprout == cs_coin)
     instance_create(x,ystart-16,obj_blockcoin);
 </string>

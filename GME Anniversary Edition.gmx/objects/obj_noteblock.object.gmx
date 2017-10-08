@@ -47,25 +47,7 @@
 **      cs_lightning
 **      cs_penguin
 **      cs_propeller
-**      cs_greenyoshi
-**      cs_redyoshi
-**      cs_yellowyoshi
-**      cs_blueyoshi
-**      cs_kuriboshoe
-**      cs_baburushoe
-**      cs_dossunshoe
-**      cs_jugemushoe
-**      cs_1up
-**      cs_3up
-**      cs_poison
-**      cs_star
-**      cs_key
-**      cs_spring
-**      cs_superspring
-**      cs_pswitch
-**      cs_gswitch
-**      cs_propellerblock
-**      cs_beanstalk
+**      cs_cat
 */
 
 //Default value
@@ -114,9 +96,24 @@ vspeed = 0;
 y = ystart;
 ready = 0;
 
-/*
-//  ITEMS GO HERE!
-*/ 
+//Change the contents to mushroom if a powerup is inside, and Mario is small
+if ((sprout &gt; cs_big) &amp;&amp; (global.powerup == cs_small))
+    sprout = cs_big;
+
+//Make an item come out, if there is one
+if (sprout != cs_coin) {
+
+    //If health mode is not enabled and the item inside is a golden mushroom, change it into a mushroom
+    if ((sprout == cs_golden) &amp;&amp; (!global.healthmode))
+        sprout = cs_big;
+
+    //Create the item
+    with (instance_create(x+8,y,obj_powerupsprout))    
+        sprite_index = constant_get_sprite(other.sprout);
+        
+    //Do not sprout anymore
+    sprout = cs_coin;
+}
 </string>
           </argument>
         </arguments>
@@ -140,6 +137,10 @@ ready = 0;
           <argument>
             <kind>1</kind>
             <string>///Note block bumping
+
+//If this block was hit on a previous run of the room
+if (ds_map_find_value(global.modified, id) == 1)
+sprout = cs_coin;
 
 //If the block can be bumped
 if (!ready) {
@@ -181,42 +182,32 @@ if (!ready) {
             else
                 jumping = 2;      
         }
+        
+        //Make an item sprout
+        if (sprout != cs_coin) {
+            
+            //If there's a leaf inside this block
+            if (sprout == cs_leaf) {
+            
+                with (instance_create(x+8,ystart+16,obj_pickup_leaf))
+                    alarm[0] = 5;
+            }
+            else {
+            
+                //Create the item
+                var sprite = constant_get_sprite(sprout);
+                sprite_make_object(x+8,ystart+16,sprite);
+            }
+                
+            //Do not sprout more
+            sprout = cs_coin;
+        }
     }
 }
 
-//Make sure the solid moves
-if (y &gt; ystart)
-    mysolid.y = y;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///If this block gave a item in the previous room, do not allow giving another item.
-
-//First, check if this block was hit before.
-if (ds_map_find_value(global.modified, id) == 1) {
-
-    if (sprout != noone)
-        sprout = noone;
-}
+//Prevent other items to spawn out from this block
+if (sprout &lt; cs_coin)
+    sprout = cs_coin;
 </string>
           </argument>
         </arguments>

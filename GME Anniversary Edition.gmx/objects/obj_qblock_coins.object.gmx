@@ -27,13 +27,6 @@
             <kind>1</kind>
             <string>///Multi-Coin Question Block
 
-//First, check if this block was hit before.
-if (ds_map_find_value(global.modified, id) == 1) {
-
-    instance_change(obj_emptyblock, false);
-    exit;
-}
-
 //Animate
 image_speed = 0.15;
 
@@ -99,15 +92,15 @@ vspeed = 0;
 y = ystart;
 
 //Change into a empty block
-if (coiny == 2) {
+if (ds_map_find_value(global.modified,id) == 1)
+|| (coiny == 2) {
 
-    //Make sure this block cannot be hit again, unless you exit or clear the level.
+    //Remember the state 
     if (global.persistence) {
     
         ds_map_add(global.modified, id, 1);
     }
     
-    //Change into a empty block
     instance_change(obj_emptyblock, false);
 }
 else

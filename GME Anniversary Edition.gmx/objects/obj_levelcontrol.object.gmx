@@ -397,6 +397,11 @@ if (instance_exists(obj_playerparent)) {
                 }
             }
         }
+        
+        //Drop the reserve item
+        if (keyboard_check_pressed(global.spacekey))
+        &amp;&amp; (!obj_playerparent.disablecontrol)
+            event_user(0);        
     }
     
     //Always stay relative to the player's Y position.
@@ -432,6 +437,13 @@ if (global.coins &gt; 99) {
         }
     }
 }
+
+//Drop the reserve item
+if (instance_exists(obj_mario))
+&amp;&amp; (barrier == 0)
+&amp;&amp; (obj_mario.disablecontrol = false)
+&amp;&amp; (keyboard_check_pressed(vk_space))
+    event_user(0);
 
 //Deactivate instances outside the view
 instance_deactivate_object(obj_deactivateparent);
@@ -502,6 +514,41 @@ else if ((orientation = -1) &amp;&amp; (obj_playerparent.x &lt; x+32))
     //...and lock the camera in place.
     else 
         x = obj_playerparent.x-32;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Drop the reserve item
+
+if (global.reserve != cs_small) {
+
+    //Create a reserve item
+    with (instance_create(view_xview[0]+view_wview[0]/2, view_yview[0]+10, obj_reserveitem)) {
+    
+        sprite_index = constant_get_sprite(global.reserve);
+    }
+        
+    //Empty the reserve box
+    global.reserve = cs_small;
 }
 </string>
           </argument>

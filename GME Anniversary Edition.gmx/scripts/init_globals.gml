@@ -30,7 +30,7 @@ lives = 5;
 score = 0;
 
 //Health
-health = 3;
+health = 0;
 
 //Skin
 //0: No skin

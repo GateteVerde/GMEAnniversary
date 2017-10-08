@@ -29,84 +29,9 @@
 
 //Whether the object is swimming
 swimming = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Force begin movement
 
-//Retrieve horizontal speed
-hspeed = prevhspeed;
-prevhspeed = 0;
-
-//Retrieve vertical speed
-vspeed = prevvspeed;
-prevvspeed = 0;
-
-//Retrieve gravity
-gravity = prevgravity;
-prevgravity = 0;
-
-//Retrieve animation speed
-image_speed = previmgspd;
-previmgspd = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Force stop movement
-
-//Remember horizontal speed
-var prevhspeed = hspeed;
-hspeed = 0;
-
-//Remember vertical speed
-var prevvspeed = vspeed;
-vspeed = 0;
-
-//Remember gravity
-var prevgravity = gravity;
-gravity = 0;
-
-//Remember animation speed
-var previmgspd = image_speed;
-image_speed = 0;
+//Whether the object came out from a block
+permission = 0;
 </string>
           </argument>
         </arguments>
@@ -218,7 +143,7 @@ event_user(4);
             <string>///Bumped by a block
 
 if (other.vspeed &lt; 0)
-    other.vspeed = -3;
+    vspeed = -3;
 </string>
           </argument>
         </arguments>
@@ -345,7 +270,7 @@ else {
     if (!swimming) {
     
         //Gravity
-        gravity = 0.25;
+        gravity = 0.2;
         
         //Cap vertical speed
         if (vspeed &gt; 4)
@@ -356,7 +281,7 @@ else {
     else {
     
         //Gravity
-        gravity = 0.0625;
+        gravity = 0.05;
         
         //Cap vertical speed
         if (vspeed &gt; 1)
