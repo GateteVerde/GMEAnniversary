@@ -27,32 +27,8 @@
             <kind>1</kind>
             <string>///Gatete Mario Engine: Anniversary Edition Persistent Object
 
-/*  
-//  - IMPORTANT NOTE -
-//
-//  This engine has a persistency mode that can be enabled / disabled with the variable below.
-//
-//  If you keep this enabled some items will maintain it's current state when changing rooms.
-//  
-//  This variable will not affect the following items
-//
-//  -   Green Stars
-//  -   3-Up Moons
-//  -   Enemies
-//  -   Every item that has the following parents set on it.
-//
-//      -   obj_carryparent
-//      -   obj_holdparent
-//      -   obj_pullparent
-//
-//  This is a very important variable, do not delete it.
-*/
-
 //Initialize palette system
 pal_swap_init_system(shd_palette_swapper);
-
-//Persistence mode
-global.persistence = true;
 
 //Flight time
 global.flighttime = 4;

@@ -129,7 +129,8 @@ else if (!water)
             <kind>1</kind>
             <string>///Bumped by a block
 
-if (other.vspeed &lt; 0) {
+if (other.vspeed &lt; 0) 
+&amp;&amp; (bbox_bottom &lt; other.yprevious+5) {
 
     //Set the vertical speed
     vspeed = -3;

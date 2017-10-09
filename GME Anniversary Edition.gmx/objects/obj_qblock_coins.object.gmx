@@ -92,17 +92,8 @@ vspeed = 0;
 y = ystart;
 
 //Change into a empty block
-if (ds_map_find_value(global.modified,id) == 1)
-|| (coiny == 2) {
-
-    //Remember the state 
-    if (global.persistence) {
-    
-        ds_map_add(global.modified, id, 1);
-    }
-    
+if (coiny == 2)
     instance_change(obj_emptyblock, false);
-}
 else
     ready = 0;
 </string>

@@ -143,6 +143,7 @@ event_user(4);
             <string>///Bumped by a block
 
 if (other.vspeed &lt; 0)
+&amp;&amp; (bbox_bottom &lt; other.yprevious+5)
     vspeed = -3;
 </string>
           </argument>

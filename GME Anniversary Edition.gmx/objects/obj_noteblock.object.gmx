@@ -85,33 +85,23 @@ mysolid = instance_create(x,y,obj_solid);
             <kind>1</kind>
             <string>///Finish block bump
 
-//Make sure this block cannot be hit again, unless you exit or clear the level.
-if (global.persistence) {
-
-    ds_map_add(global.modified, id, 1);
-}
-
 //Stop vertical movement
 vspeed = 0;
 y = ystart;
 ready = 0;
 
-//Change the contents to mushroom if a powerup is inside, and Mario is small
-if ((sprout &gt; cs_big) &amp;&amp; (global.powerup == cs_small))
-    sprout = cs_big;
-
 //Make an item come out, if there is one
 if (sprout != cs_coin) {
 
-    //If health mode is not enabled and the item inside is a golden mushroom, change it into a mushroom
-    if ((sprout == cs_golden) &amp;&amp; (!global.healthmode))
+    //If there is a powerup inside this block and the player is small, or there's a golden mushroom and health mode is not enabled.
+    if ((sprout &gt; cs_big) &amp;&amp; (global.powerup == cs_small)) 
+    || ((sprout == cs_golden) &amp;&amp; (global.healthmode == false))
         sprout = cs_big;
-
-    //Create the item
-    with (instance_create(x+8,y,obj_powerupsprout))    
-        sprite_index = constant_get_sprite(other.sprout);
         
-    //Do not sprout anymore
+    //Create the item
+    with (instance_create(x+8,y,obj_powerupsprout)) sprite_index = constant_get_sprite(other.sprout);
+        
+    //Do not sprout another item
     sprout = cs_coin;
 }
 </string>
@@ -138,10 +128,6 @@ if (sprout != cs_coin) {
             <kind>1</kind>
             <string>///Note block bumping
 
-//If this block was hit on a previous run of the room
-if (ds_map_find_value(global.modified, id) == 1)
-sprout = cs_coin;
-
 //If the block can be bumped
 if (!ready) {
 
@@ -149,7 +135,7 @@ if (!ready) {
     if (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_playerparent,0,0)) {
 
         //Play 'Bump' sound
-        audio_play_sound(snd_bump, 0, false);        
+        audio_play_sound(snd_bump, 0, false);
         
         //This block is hit
         ready = 1;
@@ -183,31 +169,64 @@ if (!ready) {
                 jumping = 2;      
         }
         
-        //Make an item sprout
-        if (sprout != cs_coin) {
-            
-            //If there's a leaf inside this block
-            if (sprout == cs_leaf) {
-            
-                with (instance_create(x+8,ystart+16,obj_pickup_leaf))
-                    alarm[0] = 5;
-            }
-            else {
-            
-                //Create the item
-                var sprite = constant_get_sprite(sprout);
-                sprite_make_object(x+8,ystart+16,sprite);
-            }
-                
-            //Do not sprout more
-            sprout = cs_coin;
-        }
+        //Make an item appear downwards
+        event_user(1);
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make an item sprout downwards
 
-//Prevent other items to spawn out from this block
-if (sprout &lt; cs_coin)
+//If there is a powerup inside this block and the player is small, or there's a golden mushroom and health mode is not enabled.
+if ((sprout &gt; cs_big) &amp;&amp; (global.powerup == cs_small)) 
+|| ((sprout == cs_golden) &amp;&amp; (global.healthmode == false))
+    sprout = cs_big;
+        
+//Make an item sprout
+if (sprout != cs_coin) {
+    
+    //If there's a leaf inside this block
+    if (sprout == cs_leaf) {
+    
+        with (instance_create(x+8,ystart+16,obj_pickup_leaf))
+            alarm[1] = 1;
+    }
+    else {
+        
+        //Check the sprite...
+        var sprite = constant_get_sprite(sprout);
+        
+        //...and get a powerup
+        with (sprite_make_object(x+8,ystart+16,sprite)) {
+        
+            hspeed = 0;
+            permission = 1;
+        }        
+    }
+        
+    //Do not create another item
     sprout = cs_coin;
+}
 </string>
           </argument>
         </arguments>
