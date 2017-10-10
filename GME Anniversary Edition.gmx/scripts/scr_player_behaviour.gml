@@ -9,7 +9,7 @@
 */
 
 //Figure out the player's state.
-if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
+if ((collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
 || (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)))
 && (ygrav == 0) {
 
@@ -58,16 +58,16 @@ if (!flying) { //If the player is not flying
         if (global.powerup == cs_frog) {
         
             if (holding == 0)
-                xspeedmax = 1.5;
+                xspeedmax = walkspeed;
             else {
                             
                 //If the P-Meter is filled up.
                 if (run)  
-                    xspeedmax = 3;
+                    xspeedmax = fullrunspeed;
                 
                 //Otherwise, if the P-Meter is not filled up.
                 else    
-                    xspeedmax = 2.5;                
+                    xspeedmax = runspeed;                
             }
         }
         
@@ -76,17 +76,17 @@ if (!flying) { //If the player is not flying
             
             //If the P-Meter is filled up.
             if (run)  
-                xspeedmax = 3;
+                xspeedmax = fullrunspeed;
             
             //Otherwise, if the P-Meter is not filled up.
             else    
-                xspeedmax = 2.5;
+                xspeedmax = runspeed;
         }
     }               
     
     //Otherwise, do not reduce speed until the player makes contact with the ground.  
     else  
-        xspeedmax = 1.5;
+        xspeedmax = walkspeed;
 }
 
 //Otherwise, if the player is flying.
@@ -94,9 +94,9 @@ else {
 
     xspeedmax = 2;
     if (xspeed > 2)
-        xspeed -= 0.1;
+        xspeed -= acc;
     if (xspeed < -2)
-        xspeed += 0.1;
+        xspeed += acc;
 }
     
 //If controls are not disabled or the player is not stuck in a wall
@@ -395,7 +395,7 @@ if (state != 2) {
 }
 
 //If the player is jumping
-if ((state == 2) || (delay > 0)) {
+if ((state == 2) || (delay != 0)) {
     
     //Variable jumping
     if (yspeed < -2) && (jumping == 1)
@@ -404,9 +404,17 @@ if ((state == 2) || (delay > 0)) {
     //Otherwise, use default gravity.     
     else {
     
+        //Boost fall
+        if (boost == false) 
+        && (abs(xspeed) < runspeed) {
+        
+            y += 2;
+            boost = true;
+        }        
+        
         //Use default gravity
         ygrav = grav;
-        
+                
         //End variable jumping if it never ends manually.
         if (jumping = 1)
             jumping = 2;

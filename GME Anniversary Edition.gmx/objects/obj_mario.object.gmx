@@ -31,7 +31,7 @@
 event_inherited();
 
 //Maximum horizontal speed
-xspeedmax = 1.5;
+xspeedmax = 1.35;
 
 //Jump strength
 jumpstr = 3.4675;
@@ -69,6 +69,15 @@ dec_swim = 0.007;
 
 //Gravity (when swimming)
 grav_swim = 0.03;
+
+//Max. walk speed
+walkspeed = 1.35;
+
+//Max. run speed
+runspeed = 2.7;
+
+//Max. full run speed
+fullrunspeed = 3.3;
 </string>
           </argument>
         </arguments>

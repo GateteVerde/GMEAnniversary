@@ -18,9 +18,13 @@ if (yspeed > 0)
         
     //If the 'Right' key is pressed and the player is facing right.
     if ((keyboard_check(global.rightkey)) && (xscale == 1)) {
+    
+        //Check for a wall at the right
+        wall_r = collision_line(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,0,1);
         
         //If the player hugs a wall at the right
-        if (collision_line(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,0,1)) {
+        if (wall_r) 
+        && (wall_r.image_yscale >= 2) {
             
             //Enable wallkick
             wallkick = 1;
@@ -37,8 +41,12 @@ if (yspeed > 0)
     //Otherwise, if the 'Left' key is pressed and the player is facing left.
     else if ((keyboard_check(global.leftkey)) && (xscale == -1)) {
     
+        //Check for a wall to the left
+        wall_l = collision_line(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,1);
+    
         //If the player hugs a wall at the left
-        if (collision_line(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,1)) {
+        if (wall_l) 
+        && (wall_l.image_yscale >= 2) {
             
             //Enable wallkick
             wallkick = 1;

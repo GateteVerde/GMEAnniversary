@@ -141,6 +141,9 @@ noisy = 0;
 //Allows the player to end sliding manually when releasing the 'Down' key.
 holddown = false;
 
+//Boost player's fall
+boost = 0;
+
 //Initialize important alarms
 alarm[8] = 1; 
 alarm[10] = 1; //This one is found on player skins
@@ -349,7 +352,7 @@ if (yspeed &gt;= 0) { //If the player is moving down and the gravity is not disa
     //If the semisolid exists and the player is above it.
     if (semisolid)
     &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+4)
-    &amp;&amp; (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,semisolid.y-1,obj_solid,0,0)) {
+    &amp;&amp; (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,semisolid.y-1,obj_solid,1,0)) {
     
         //Snap above the semisolid platform
         y = semisolid.y-16;
@@ -425,7 +428,7 @@ if (!swimming) {
             scr_player_behaviour_wall()
             
             //If the player's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
-            if (abs(xspeed) &gt; 2.4) {
+            if (abs(xspeed) &gt; runspeed-0.1) {
             
                 //If the player is not jumping.
                 if (state &lt; 2) {
@@ -458,7 +461,7 @@ if (!swimming) {
             }
             
             //Otherwise, if the player's horizontal speed is lower than 2.4
-            else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; 2.5))) { 
+            else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; runspeed))) { 
             
                 //If the player is flying and lands on the floor.
                 if (flying) {
@@ -704,7 +707,7 @@ if (state != 3) {
             crouch = false;
             
             //Check if there's a ceiling above the player and make him move until it's not embed in a solid
-            if (collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top-4,obj_solid,0,0))
+            if (collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top-4,obj_solid,1,0))
             &amp;&amp; (global.powerup != cs_small)
                 inwall = true;
         }            
@@ -752,7 +755,7 @@ if ((!swimming) &amp;&amp; (water)) {
 else if ((swimming) &amp;&amp; (!water)) {
 
     //If there's not water above and there's not a solid on the way out
-    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,0,0)) {
+    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)) {
     
         //If the player is moving up
         if ((state == 2) &amp;&amp; (yspeed &lt; 0)) {
@@ -797,7 +800,7 @@ if (state &lt; 2)
 &amp;&amp; (!inwall) {
 
     //Check for a nearby solid block.
-    var stuck = collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,0,0);
+    var stuck = collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,1,0);
     
     //If the player is embed on a wall and it's not overlapping a mushblock.
     if (stuck) {
@@ -884,7 +887,7 @@ else if (inwall) {
     x += 2*sign(direct);
     
     //If the player is not longer embed on a wall, make him able to move.
-    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0))
+    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,1,0))
         inwall = false;
 }
 
@@ -939,6 +942,9 @@ else {
 
 //Enable gravity
 disablegrav = 0;
+
+//Reset boost
+boost = 0;
 
 //Reset bee flight
 beefly = 0;
@@ -1070,6 +1076,13 @@ else {
           <argument>
             <kind>1</kind>
             <string>///Default hurt script
+
+if (!invulnerable) {
+
+    invulnerable = true;
+    alarm[0] = 90;
+    alarm[1] = 1;
+}
 </string>
           </argument>
         </arguments>
@@ -1094,7 +1107,7 @@ else {
             <kind>1</kind>
             <string>///Draw player
 
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_white,1);
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_white,image_alpha);
 
 //Draw a tornado if spinning down with the propeller suit
 if (global.powerup == cs_propeller)

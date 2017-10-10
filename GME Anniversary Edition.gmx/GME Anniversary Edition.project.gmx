@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="5" name="datafiles">
-    <datafiles number="5" name="music">
+  <datafiles number="6" name="datafiles">
+    <datafiles number="6" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -92,7 +92,9 @@
       <filename>GMFMODSimple.dll</filename>
     </datafile>
   </datafiles>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\Color Coding Files</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sounds name="Action">
       <sound>sound\snd_break</sound>
@@ -531,10 +533,12 @@
       <sprites name="Item Blocks">
         <sprite>sprites\spr_qblock</sprite>
         <sprite>sprites\spr_qblock_empty</sprite>
-        <sprite>sprites\spr_qblock_2x</sprite>
-        <sprite>sprites\spr_qblock_2x_empty</sprite>
-        <sprite>sprites\spr_qblock_3x</sprite>
-        <sprite>sprites\spr_qblock_3x_empty</sprite>
+        <sprite>sprites\spr_qblock_triple</sprite>
+        <sprite>sprites\spr_qblock_triple_empty</sprite>
+        <sprite>sprites\spr_qblock_big</sprite>
+        <sprite>sprites\spr_qblock_big_empty</sprite>
+        <sprite>sprites\spr_qblock_spiked</sprite>
+        <sprite>sprites\spr_qblock_winged</sprite>
       </sprites>
       <sprites name="Bricks">
         <sprites name="Shards">
@@ -1178,6 +1182,7 @@
       <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
       <script>scripts\wrap.gml</script>
     </scripts>
+    <script>scripts\outside_view.gml</script>
     <script>scripts\constant_get_sprite.gml</script>
     <script>scripts\sprite_get_constant.gml</script>
     <script>scripts\sprite_make_object.gml</script>
@@ -1217,7 +1222,14 @@
     <objects name="Blocks">
       <objects name="Item Blocks">
         <object>objects\obj_qblock</object>
-        <object>objects\obj_qblock_coins</object>
+        <object>objects\obj_qblock_multicoin</object>
+        <object>objects\obj_qblock_multicoin_shroom</object>
+        <object>objects\obj_qblock_hidden</object>
+        <object>objects\obj_qblock_triple</object>
+        <object>objects\obj_qblock_hidden_triple</object>
+        <object>objects\obj_qblock_big</object>
+        <object>objects\obj_qblock_spiked</object>
+        <object>objects\obj_qblock_winged</object>
       </objects>
       <objects name="Bricks">
         <object>objects\obj_brick</object>

@@ -27,12 +27,6 @@
             <kind>1</kind>
             <string>///The player is evolving, ok no :)
 
-//Sets and starts the animation sequences.
-ready = 0;
-
-//How many times does the animation loop?
-loop = 0;
-
 //Sets the animation to reproduce.
 //0: Small to big
 //1: Big to small
@@ -40,6 +34,12 @@ loop = 0;
 //3: Powerdown
 //4: Poof
 sequence = 0;
+
+//Sets and starts the animation sequences.
+ready = 0;
+
+//How many times does the animation loop?
+loop = 0;
 
 //Make Mario invisible
 if (instance_exists(obj_playerparent)) {
@@ -60,9 +60,9 @@ if (instance_exists(obj_playerparent)) {
 
 //Make the tides invisible
 if (instance_exists(obj_tides))
-    with (obj_tides) visible = false;
+    obj_tides.visible = false;
 
-//Start animations
+//Start animation
 alarm[0] = 1;
 </string>
           </argument>
@@ -111,7 +111,7 @@ obj_playerparent.visible = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Set up animation sequence and take up a screenshot.
+            <string>///Start animation
 
 //Take a screenshot.
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0);
@@ -119,13 +119,10 @@ back = background_create_from_surface(application_surface,0,0,room_width,room_he
 //Deactivate all instances.
 instance_deactivate_all(true);
 
-//Activate Tides
+//Activate tide object
 instance_activate_object(obj_tides);
-if (instance_exists(obj_tides)) {
-
-    with (obj_tides) 
-        visible = 1;
-}
+if (instance_exists(obj_tides))
+    obj_tides.visible = true;
 
 //Activate persistent object.
 instance_activate_object(obj_persistent);
@@ -248,26 +245,20 @@ if (ready) {
             <string>///Draw the player
 
 //If the animation has been set.
-if (ready) {
+if (background_exists(back)) {
 
-    if (background_exists(back)) {
+    //Disable alpha blending.
+    draw_enable_alphablend(0);
     
-        //Disable alpha blending.
-        draw_enable_alphablend(0);
-        
-        //Draw the screenshot
-        draw_background(back,view_xview[0],view_yview[0]);
-        
-        //Enable alpha blending.
-        draw_enable_alphablend(1);
-    }
+    //Draw the screenshot
+    draw_background(back,view_xview[0],view_yview[0]);
+    
+    //Enable alpha blending.
+    draw_enable_alphablend(1);
 }
 
 //Draw the player
-if (sequence == 3)
-    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,1,1,0,c_white,image_alpha);
-else
-    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);
 </string>
           </argument>
         </arguments>
