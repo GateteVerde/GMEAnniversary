@@ -92,9 +92,7 @@
       <filename>GMFMODSimple.dll</filename>
     </datafile>
   </datafiles>
-  <NewExtensions>
-    <extension index="0">extensions\Color Coding Files</extension>
-  </NewExtensions>
+  <NewExtensions/>
   <sounds name="sound">
     <sounds name="Action">
       <sound>sound\snd_break</sound>
@@ -117,6 +115,7 @@
       <sound>sound\snd_powerup</sound>
       <sound>sound\snd_sprout</sound>
       <sound>sound\snd_trampoline</sound>
+      <sound>sound\snd_vinesprout</sound>
     </sounds>
     <sounds name="Menu">
       <sound>sound\snd_drop</sound>
@@ -544,8 +543,10 @@
         <sprites name="Shards">
           <sprite>sprites\spr_shard</sprite>
           <sprite>sprites\spr_shard_y</sprite>
+          <sprite>sprites\spr_shard_big</sprite>
         </sprites>
         <sprite>sprites\spr_brick</sprite>
+        <sprite>sprites\spr_bigbrick</sprite>
         <sprite>sprites\spr_bluebrick</sprite>
         <sprite>sprites\spr_bluebrick_th</sprite>
         <sprite>sprites\spr_redbrick</sprite>
@@ -601,6 +602,7 @@
         <sprite>sprites\spr_lavafall_b</sprite>
       </sprites>
       <sprite>sprites\spr_tides</sprite>
+      <sprite>sprites\spr_vine</sprite>
     </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
@@ -1233,6 +1235,7 @@
       </objects>
       <objects name="Bricks">
         <object>objects\obj_brick</object>
+        <object>objects\obj_bigbrick</object>
         <object>objects\obj_flipblock</object>
       </objects>
       <object>objects\obj_noteblock</object>
@@ -1277,6 +1280,7 @@
         <object>objects\obj_lavafall</object>
       </objects>
       <object>objects\obj_tides</object>
+      <object>objects\obj_vine</object>
     </objects>
     <objects name="Items">
       <objects name="Collectables">
@@ -1400,6 +1404,7 @@
             <object>objects\obj_blockcoin</object>
             <object>objects\obj_shard</object>
             <object>objects\obj_flipblock_flip</object>
+            <object>objects\obj_beanstalk</object>
           </objects>
           <objects name="Platforms">
             <objects name="Common">

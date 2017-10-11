@@ -194,11 +194,11 @@ if (bbox_top &gt; room_height)
 //If the reserve item is a mushroom
 if (sprite_index == spr_mushroom) {
 
-    //Play 'Powerup' sound.
-    audio_play_sound(snd_powerup, 0, false);
-
     //If Mario is small.
     if (global.powerup == cs_small) {
+    
+        //Play 'Powerup' sound.
+        audio_play_sound(snd_powerup, 0, false);
     
         //Turn Mario into 'Super' Mario.
         global.powerup = cs_big;
@@ -210,6 +210,9 @@ if (sprite_index == spr_mushroom) {
     
     //Otherwise, get a reserve mushroom
     else {
+    
+        //Play 'Powerup' sound.
+        audio_play_sound(snd_reserve, 0, false);
     
         //If NO item is in reserve.
         if (global.reserve == cs_small)

@@ -149,22 +149,20 @@ else if (sprite_index == spr_superbell) {
 //Otherwise
 else {
 
-    /*If the sprite is a beanstalk
+    //If the sprite is a beanstalk
     if (sprite_index == spr_beanstalk) {
-    
-        //Play 'Vine Sprout' sound.
-        audio_play_sound(snd_vinesprout, 0, false);
         
         //Replace it with a real beanstalk.
-        instance_create(xstart,ystart,obj_beanstalk);
+        instance_create(xstart-8,ystart,obj_beanstalk);
     }
-    */
+    else {
 
-    //Play sprout sound
-    audio_play_sound(snd_sprout, 0, false);
-
-    //Exit this event.
-    exit;
+        //Play sprout sound
+        audio_play_sound(snd_sprout, 0, false);
+    
+        //Exit this event.
+        exit;
+    }
 }
 
 //Destroy

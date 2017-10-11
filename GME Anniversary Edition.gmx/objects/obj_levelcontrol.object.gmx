@@ -474,46 +474,54 @@ instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view
             <kind>1</kind>
             <string>///Camera orientation
 
-//If the player is moving to the left and the camera is panning to the right
-if ((obj_playerparent.xspeed &lt; 0) 
-|| (obj_playerparent.x-xprevious &lt; 0))
-&amp;&amp; (obj_playerparent.x &lt; x-56) {
-
-    //Make the camera pan to the left
-    orientation = -1;
-}
+//If the barrier is active
+if (barrier)
+    x = obj_playerparent.x;
     
-//Otherwise, if the player is moving to the right and the camera is panning to the left
-else if ((obj_playerparent.xspeed &gt; 0) 
-|| (obj_playerparent.x-xprevious &gt; 0))
-&amp;&amp; (obj_playerparent.x &gt; x+56) {
+//Otherwise, do a special follow up
+else {
 
-    //Make the camera pan to the right
-    orientation = 1;
-}
+    //If the player is moving to the left and the camera is panning to the right
+    if ((obj_playerparent.xspeed &lt; 0) 
+    || (obj_playerparent.x-xprevious &lt; 0))
+    &amp;&amp; (obj_playerparent.x &lt; x-56) {
     
-//If the camera is to the right and the player is from a certain distance from the camera...
-if ((orientation == 1) &amp;&amp; (obj_playerparent.x &gt; x-32)) {
-
-    //...scroll at a certain speed until the camera catches up...
-    if (obj_playerparent.x &gt; x-28) 
-        x += 4+obj_playerparent.xspeed;
+        //Make the camera pan to the left
+        orientation = -1;
+    }
+        
+    //Otherwise, if the player is moving to the right and the camera is panning to the left
+    else if ((obj_playerparent.xspeed &gt; 0) 
+    || (obj_playerparent.x-xprevious &gt; 0))
+    &amp;&amp; (obj_playerparent.x &gt; x+56) {
     
-    //...and lock the camera in place.
-    else 
-        x = obj_playerparent.x+32
-}
-
-//Otherwise, if the camera is to the left and the player is from a certain distance from the camera...
-else if ((orientation = -1) &amp;&amp; (obj_playerparent.x &lt; x+32))
-{
-    //...scroll at a certain speed until the camera catches up...
-    if (obj_playerparent.x &lt; x+28) 
-        x -= 4-obj_playerparent.xspeed;
+        //Make the camera pan to the right
+        orientation = 1;
+    }
+        
+    //If the camera is to the right and the player is from a certain distance from the camera...
+    if ((orientation == 1) &amp;&amp; (obj_playerparent.x &gt; x-32)) {
     
-    //...and lock the camera in place.
-    else 
-        x = obj_playerparent.x-32;
+        //...scroll at a certain speed until the camera catches up...
+        if (obj_playerparent.x &gt; x-28) 
+            x += 4+obj_playerparent.xspeed;
+        
+        //...and lock the camera in place.
+        else 
+            x = obj_playerparent.x+32
+    }
+    
+    //Otherwise, if the camera is to the left and the player is from a certain distance from the camera...
+    else if ((orientation = -1) &amp;&amp; (obj_playerparent.x &lt; x+32))
+    {
+        //...scroll at a certain speed until the camera catches up...
+        if (obj_playerparent.x &lt; x+28) 
+            x -= 4-obj_playerparent.xspeed;
+        
+        //...and lock the camera in place.
+        else 
+            x = obj_playerparent.x-32;
+    }
 }
 </string>
           </argument>

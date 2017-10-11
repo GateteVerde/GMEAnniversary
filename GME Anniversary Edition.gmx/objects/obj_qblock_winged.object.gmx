@@ -124,7 +124,7 @@ else {
     if (backnforth == false) {
     
         if (!instance_exists(obj_playerparent))
-        || (obj_playerparent.x &lt; x)
+        || (obj_playerparent.x &lt; x+8)
             hspeed = -1;
         else
             hspeed = 1;
@@ -136,7 +136,7 @@ else {
     
         //Move towards the player
         if (!instance_exists(obj_playerparent))
-        || (obj_playerparent.x &lt; x)
+        || (obj_playerparent.x &lt; x+8)
             dir = -1;
         else
             dir = 1;
@@ -217,7 +217,8 @@ var player = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,
 
 //If the player is in position
 if (player)
-&amp;&amp; (player.state = 2) {
+&amp;&amp; (player.state = 2) 
+&amp;&amp; (player.yspeed &lt;= 0) {
 
     //Create a new block, give it the same item and bump it.
     with (instance_create(x,y,obj_qblock)) {
@@ -253,8 +254,8 @@ event_user(0);
 //Push the player when below the block
 if (other.y &gt; y-11) {
 
-    if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-2-hspeed,bbox_top+4,bbox_left-2,bbox_bottom-1,obj_playerparent,0,0)))
-    || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right+2,bbox_top+4,bbox_right+2+hspeed,bbox_bottom-1,obj_playerparent,0,0)))
+    if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-2-hspeed,bbox_top,bbox_left,bbox_bottom-1,obj_playerparent,0,0)))
+    || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top,bbox_right+2+hspeed,bbox_bottom-1,obj_playerparent,0,0)))
         obj_playerparent.x += hspeed;
 }
 </string>
@@ -283,7 +284,7 @@ if (other.y &gt; y-11) {
 
 if ((backnforth == true) &amp;&amp; (ready)) {
 
-    //If the parakoopa is moving to the right.
+    //If the block is moving to the right.
     if (dir == 1) {
         
         //Cap horizontal speed.
@@ -291,11 +292,11 @@ if ((backnforth == true) &amp;&amp; (ready)) {
         hspeed = 1;
             
         //Change direction.
-        if (x &gt; xstart+40)
+        if (x &gt; xstart+32)
             dir = -1;
     }
     
-    //Otherwise, if the parakoopa is moving to the left.
+    //Otherwise, if the block is moving to the left.
     else if (dir == -1) {
     
         //Cap horizontal speed.
@@ -303,7 +304,7 @@ if ((backnforth == true) &amp;&amp; (ready)) {
         hspeed = -1;
             
         //Change direction.
-        if (x &lt; xstart-40)    
+        if (x &lt; xstart-32)    
             dir = 1;
     }
     
