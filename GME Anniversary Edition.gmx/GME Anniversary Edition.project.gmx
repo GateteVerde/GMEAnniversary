@@ -98,11 +98,14 @@
       <sound>sound\snd_break</sound>
       <sound>sound\snd_bump</sound>
       <sound>sound\snd_climb</sound>
+      <sound>sound\snd_fireball</sound>
       <sound>sound\snd_frog</sound>
+      <sound>sound\snd_iceball</sound>
       <sound>sound\snd_jump</sound>
       <sound>sound\snd_skid</sound>
       <sound>sound\snd_spin</sound>
       <sound>sound\snd_stomp</sound>
+      <sound>sound\snd_superball</sound>
       <sound>sound\snd_swim</sound>
       <sound>sound\snd_transform</sound>
     </sounds>
@@ -539,10 +542,26 @@
         <sprite>sprites\spr_qblock_spiked</sprite>
         <sprite>sprites\spr_qblock_winged</sprite>
       </sprites>
+      <sprites name="Gray Blocks">
+        <sprite>sprites\spr_grayblock_flower</sprite>
+        <sprite>sprites\spr_grayblock_leaf</sprite>
+        <sprite>sprites\spr_grayblock_hammer</sprite>
+        <sprite>sprites\spr_grayblock_boomerang</sprite>
+        <sprite>sprites\spr_grayblock_bomb</sprite>
+        <sprite>sprites\spr_grayblock_shell</sprite>
+        <sprite>sprites\spr_grayblock_cat</sprite>
+        <sprite>sprites\spr_grayblock_star</sprite>
+        <sprite>sprites\spr_grayblock_kuribo</sprite>
+        <sprite>sprites\spr_grayblock_pswitch</sprite>
+      </sprites>
       <sprites name="Bricks">
         <sprites name="Shards">
           <sprite>sprites\spr_shard</sprite>
           <sprite>sprites\spr_shard_y</sprite>
+          <sprite>sprites\spr_shard_g</sprite>
+          <sprite>sprites\spr_shard_th_a</sprite>
+          <sprite>sprites\spr_shard_th_b</sprite>
+          <sprite>sprites\spr_shard_th_c</sprite>
           <sprite>sprites\spr_shard_big</sprite>
         </sprites>
         <sprite>sprites\spr_brick</sprite>
@@ -555,6 +574,7 @@
         <sprite>sprites\spr_graybrick_th</sprite>
         <sprite>sprites\spr_flipblock</sprite>
       </sprites>
+      <sprite>sprites\spr_viewblock</sprite>
       <sprite>sprites\spr_noteblock</sprite>
       <sprite>sprites\spr_noteblock_blue</sprite>
       <sprite>sprites\spr_noteblock_warp</sprite>
@@ -830,6 +850,14 @@
       <sprite>sprites\spr_slopemask_l</sprite>
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
+    </sprites>
+    <sprites name="Projectiles">
+      <sprite>sprites\spr_fireball</sprite>
+      <sprite>sprites\spr_snowball</sprite>
+      <sprite>sprites\spr_hammer</sprite>
+      <sprite>sprites\spr_boomerang</sprite>
+      <sprite>sprites\spr_superball</sprite>
+      <sprite>sprites\spr_iceblock</sprite>
     </sprites>
     <sprites name="Special">
       <sprites name="Eyecandy">
@@ -1238,6 +1266,7 @@
         <object>objects\obj_bigbrick</object>
         <object>objects\obj_flipblock</object>
       </objects>
+      <object>objects\obj_viewblock</object>
       <object>objects\obj_noteblock</object>
       <object>objects\obj_noteblock_blue</object>
     </objects>
@@ -1371,6 +1400,9 @@
     </objects>
     <objects name="Special">
       <objects name="Parents">
+        <objects name="Players">
+          <object>objects\obj_playerparent</object>
+        </objects>
         <objects name="Collision">
           <objects name="Platform">
             <object>objects\obj_platformparent</object>
@@ -1382,9 +1414,9 @@
           <object>objects\obj_physicsparent</object>
           <object>objects\obj_powerupparent</object>
         </objects>
-        <object>objects\obj_playerparent</object>
-        <object>objects\obj_blockparent</object>
         <object>objects\obj_pathparent</object>
+        <object>objects\obj_blockparent</object>
+        <object>objects\obj_grayblockparent</object>
         <object>objects\obj_deactivateparent</object>
       </objects>
       <objects name="Don't Use">
@@ -1437,6 +1469,7 @@
             </objects>
             <object>objects\obj_powerupsprout</object>
             <object>objects\obj_reserveitem</object>
+            <object>objects\obj_fireball</object>
           </objects>
         </objects>
         <objects name="Effects">

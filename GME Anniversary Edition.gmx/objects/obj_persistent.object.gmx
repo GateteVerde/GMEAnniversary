@@ -245,6 +245,10 @@ view_hport[0] = global.gh;
 view_wview[0] = global.gw;
 view_hview[0] = global.gh;
 
+//Set the view borders
+view_hborder[0] = global.gw/2;
+view_vborder[0] = global.gh/2;
+
 //Enable views
 view_enabled = true;
 

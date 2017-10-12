@@ -125,6 +125,9 @@ if (sprout != cs_coin) {
     
 //Change into a empty block
 with (instance_create(x,y,obj_emptyblock)) sprite_index = spr_qblock_big_empty;
+
+//Destroy
+instance_destroy();
 </string>
           </argument>
         </arguments>

@@ -83,6 +83,50 @@ fullrunspeed = 3.3;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle Mario's projectiles
+
+//If controls are not disabled and Mario is not holding or doing a spinjump.
+if (disablecontrol == false)
+&amp;&amp; (holding == 0)
+&amp;&amp; (stompstyle != 1) {
+
+    //Tanooki
+    
+    //If Mario is not crouched down
+    if (!crouch) {
+    
+        //Fireball
+        if (global.powerup == cs_fire)
+        &amp;&amp; (instance_number(obj_fireball) &lt; 2) {
+        
+            firing = 9;
+            with (instance_create(x,y,obj_fireball))
+                hspeed = 3*sign(other.xscale);
+        }            
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="10">
       <action>
         <libid>1</libid>
@@ -167,6 +211,11 @@ else
             <kind>1</kind>
             <string>///Mario's animation
 
+//Reset up firing
+if (firing &gt; 0)
+&amp;&amp; (state == 1)
+    firing = 0;
+
 //If Mario is crouched down
 if (crouch == true) {
 
@@ -216,15 +265,6 @@ if (crouch == true) {
 }
 else {
 
-    //Check if Mario does have a shooting frame
-    if (firing &gt; 0) {
-    
-        if (sprite_index == scr_mario_shoot())   
-            firing--;
-        else   
-            firing = 0;
-    }
-        
     //If Mario is not holding anything
     if (holding == 0) {
     
@@ -246,11 +286,14 @@ else {
                         //Do not animate
                         image_speed = 0;
                         
+                        //Decrement fire
+                        firing--;
+                        
                         //...but set the appropiate frame
                         if (firing &gt; 4)
-                            image_index = 1;
+                            image_index = 0;
                         else
-                            image_index = 2;
+                            image_index = 1;
                     }
                     else {
                     
@@ -362,132 +405,73 @@ else {
                 //Otherwise, if Mario is jumping
                 else if (state == 2) {
                 
-                    //If Mario is not swimming
-                    if (!swimming) {
+                    //If Mario is shooting a projectile
+                    if (firing &gt; 0) {
                     
-                        //If Mario is doing a spinjump
-                        if (stompstyle &gt; 0) {
+                        //Set the sprite
+                        sprite_index = scr_mario_swim();
                         
-                            //If Mario does have the propeller suit
-                            if (global.powerup == cs_propeller) {
-                            
-                                //Check if the 'Down' key is pressed
-                                if ((yspeed &lt; 0)
-                                || (keyboard_check(global.downkey))) {
-                                
-                                    //Set the special spinning sprite
-                                    sprite_index = scr_mario_spin2();
-                                    
-                                    //Animate it
-                                    image_speed = 0.065+abs(yspeed)/7.5;;
-                                }
-                                else {
-                                
-                                    //Set the walking sprite
-                                    sprite_index = scr_mario_walk();
-                                    
-                                    //Animate it
-                                    image_speed = 0.2;
-                                }
-                            }
-                            
-                            //If Mario does not have the propeller or cat suit
-                            else {
-                            
-                                //Set the spinning sprite
-                                sprite_index = scr_mario_spin();
-                                
-                                //Animate it
-                                image_speed = 0.5;
-                            }
-                        }
+                        //Do not animate
+                        image_speed = 0;
                         
-                        //If Mario is not doing a spin jump
-                        else {
-                         
-                            //If Mario does have the carrot powerup
-                            if (global.powerup == cs_carrot) {
+                        //Decrement fire
+                        firing--;
+                        
+                        //...but set the appropiate frame
+                        if (firing &gt; 4)
+                            image_index = 0;
+                        else
+                            image_index = 2;                    
+                    }
+                
+                    //Otherwise, if Mario is not shooting a projectile.
+                    else {
+                        
+                        //If Mario is not swimming
+                        if (!swimming) {
+                        
+                            //If Mario is doing a spinjump
+                            if (stompstyle &gt; 0) {
                             
-                                //If Mario is wallclimbing
-                                if (wallkick == 1) {
+                                //If Mario does have the propeller suit
+                                if (global.powerup == cs_propeller) {
                                 
-                                    //Set the sprite
-                                    sprite_index = scr_mario_walljump();
+                                    //Check if the 'Down' key is pressed
+                                    if ((yspeed &lt; 0)
+                                    || (keyboard_check(global.downkey))) {
                                     
-                                    //Do not animate
-                                    image_speed = 0;
-                                    image_index = 0;
-                                }
-                                
-                                //Otherwise, if it's not
-                                else {
-                            
-                                    //If Mario is moving up
-                                    if (yspeed &lt; 0)
-                                        image_index = 0;
-                                    else {
-                                    
-                                        if (floatnow &gt; 0)
-                                            image_speed = 0.15;
-                                        else {
+                                        //Set the special spinning sprite
+                                        sprite_index = scr_mario_spin2();
                                         
-                                            if (run)
-                                                image_index = 0;
-                                            else
-                                                image_index = 1;
-                                        }
+                                        //Animate it
+                                        image_speed = 0.065+abs(yspeed)/7.5;;
                                     }
-                                    
-                                    //If Mario is running
-                                    if (!run)
-                                        sprite_index = scr_mario_jump();
-                                    else
-                                        sprite_index = scr_mario_runjump();
-                                }
-                            }
-                            
-                            //Else, if Mario does have the bee powerup
-                            else if (global.powerup == cs_bee) {
-                            
-                                //If Mario is wallclimbing
-                                if (wallkick == 1) {
-                                
-                                    //Set the sprite
-                                    sprite_index = scr_mario_walljump();
-                                    
-                                    //Do not animate
-                                    image_speed = 0;
-                                    image_index = 0;                                
-                                }
-                                else {
-                                
-                                    //If Mario is moving down
-                                    if (yspeed &gt; 0)
-                                        image_index = 1;
                                     else {
                                     
-                                        if (floatnow &gt; 0)
-                                            image_speed = 0.15;
-                                        else if (yspeed &lt; -1.1)
-                                            image_index = 0;
+                                        //Set the walking sprite
+                                        sprite_index = scr_mario_walk();
+                                        
+                                        //Animate it
+                                        image_speed = 0.2;
                                     }
-                                                                        
-                                    //If Mario is running
-                                    if (!run)
-                                        sprite_index = scr_mario_jump();
-                                    else
-                                        sprite_index = scr_mario_runjump();
+                                }
+                                
+                                //If Mario does not have the propeller or cat suit
+                                else {
+                                
+                                    //Set the spinning sprite
+                                    sprite_index = scr_mario_spin();
+                                    
+                                    //Animate it
+                                    image_speed = 0.5;
                                 }
                             }
                             
-                            //Otherwise, if Mario does not have any of the above powerups
+                            //If Mario is not doing a spin jump
                             else {
-                            
-                                //Do not animate
-                                image_speed = 0;
-                                
-                                //If Mario does have the frog powerup
-                                if (global.powerup == cs_frog) {
+                             
+                                //If Mario does have the carrot powerup
+                                if (global.powerup == cs_carrot) {
                                 
                                     //If Mario is wallclimbing
                                     if (wallkick == 1) {
@@ -500,139 +484,221 @@ else {
                                         image_index = 0;
                                     }
                                     
-                                    //Otherwise, if it's not wallclimbing
+                                    //Otherwise, if it's not
                                     else {
-                            
-                                        //Set the sprite
-                                        sprite_index = scr_mario_walk();
-                                    
-                                        //Set up the frame
-                                        image_index = 2;
+                                
+                                        //If Mario is moving up
+                                        if (yspeed &lt; 0)
+                                            image_index = 0;
+                                        else {
+                                        
+                                            if (floatnow &gt; 0)
+                                                image_speed = 0.15;
+                                            else {
+                                            
+                                                if (run)
+                                                    image_index = 0;
+                                                else
+                                                    image_index = 1;
+                                            }
+                                        }
+                                        
+                                        //If Mario is running
+                                        if (!run)
+                                            sprite_index = scr_mario_jump();
+                                        else
+                                            sprite_index = scr_mario_runjump();
                                     }
                                 }
                                 
-                                //Otherwise, if Mario does not have the frog powerup
-                                else {
+                                //Else, if Mario does have the bee powerup
+                                else if (global.powerup == cs_bee) {
                                 
                                     //If Mario is wallclimbing
                                     if (wallkick == 1) {
                                     
-                                        //If Mario does have the Cat powerup
-                                        if (global.powerup == cs_cat) {
+                                        //Set the sprite
+                                        sprite_index = scr_mario_walljump();
                                         
-                                            //Set the alt climbing sprite
-                                            sprite_index = spr_mario_cat_climb2;
-                                            
-                                            //Animate
-                                            if (yspeed &lt; 0) 
-                                                image_speed = 0.15;
-                                            else {
-                                            
-                                                image_speed = 0;
-                                                image_index = 0;
-                                            }
-                                        }
+                                        //Do not animate
+                                        image_speed = 0;
+                                        image_index = 0;                                
+                                    }
+                                    else {
+                                    
+                                        //If Mario is moving down
+                                        if (yspeed &gt; 0)
+                                            image_index = 1;
                                         else {
                                         
-                                            //Set the skid sprite
+                                            if (floatnow &gt; 0)
+                                                image_speed = 0.15;
+                                            else if (yspeed &lt; -1.1)
+                                                image_index = 0;
+                                        }
+                                                                            
+                                        //If Mario is running
+                                        if (!run)
+                                            sprite_index = scr_mario_jump();
+                                        else
+                                            sprite_index = scr_mario_runjump();
+                                    }
+                                }
+                                
+                                //Otherwise, if Mario does not have any of the above powerups
+                                else {
+                                
+                                    //Do not animate
+                                    image_speed = 0;
+                                    
+                                    //If Mario does have the frog powerup
+                                    if (global.powerup == cs_frog) {
+                                    
+                                        //If Mario is wallclimbing
+                                        if (wallkick == 1) {
+                                        
+                                            //Set the sprite
                                             sprite_index = scr_mario_walljump();
                                             
                                             //Do not animate
                                             image_speed = 0;
                                             image_index = 0;
                                         }
-                                    }
-                                    else {    
-                            
-                                        //...but set the appropiate frame
-                                        if (yspeed &lt; 0) {
                                         
-                                            if ((global.powerup == cs_leaf)
-                                            || (global.powerup == cs_tanooki))
-                                                image_index = 0+(wiggle/4);
-                                            else
-                                                image_index = 0;
-                                        }
+                                        //Otherwise, if it's not wallclimbing
                                         else {
+                                
+                                            //Set the sprite
+                                            sprite_index = scr_mario_walk();
                                         
-                                            //If Mario is running
-                                            if (run)
-                                                image_index = 0+(wiggle/4);
-                                            else
-                                                image_index = 1+(wiggle/4);
+                                            //Set up the frame
+                                            image_index = 2;
                                         }
-                                        
-                                        //Set the appropiate sprite
-                                        if (!run)
-                                            sprite_index = scr_mario_jump();
-                                        else
-                                            sprite_index = scr_mario_runjump(); 
                                     }
-                                }
-                            }                 
+                                    
+                                    //Otherwise, if Mario does not have the frog powerup
+                                    else {
+                                    
+                                        //If Mario is wallclimbing
+                                        if (wallkick == 1) {
+                                        
+                                            //If Mario does have the Cat powerup
+                                            if (global.powerup == cs_cat) {
+                                            
+                                                //Set the alt climbing sprite
+                                                sprite_index = spr_mario_cat_climb2;
+                                                
+                                                //Animate
+                                                if (yspeed &lt; 0) 
+                                                    image_speed = 0.15;
+                                                else {
+                                                
+                                                    image_speed = 0;
+                                                    image_index = 0;
+                                                }
+                                            }
+                                            else {
+                                            
+                                                //Set the skid sprite
+                                                sprite_index = scr_mario_walljump();
+                                                
+                                                //Do not animate
+                                                image_speed = 0;
+                                                image_index = 0;
+                                            }
+                                        }
+                                        else {    
+                                
+                                            //...but set the appropiate frame
+                                            if (yspeed &lt; 0) {
+                                            
+                                                if ((global.powerup == cs_leaf)
+                                                || (global.powerup == cs_tanooki))
+                                                    image_index = 0+(wiggle/4);
+                                                else
+                                                    image_index = 0;
+                                            }
+                                            else {
+                                            
+                                                //If Mario is running
+                                                if (run)
+                                                    image_index = 0+(wiggle/4);
+                                                else
+                                                    image_index = 1+(wiggle/4);
+                                            }
+                                            
+                                            //Set the appropiate sprite
+                                            if (!run)
+                                                sprite_index = scr_mario_jump();
+                                            else
+                                                sprite_index = scr_mario_runjump(); 
+                                        }
+                                    }
+                                }                 
+                            }
                         }
-                    }
-                    
-                    //Otherwise, if Mario is swimming
-                    else if (swimming) {
-                    
-                        //If Mario does have either the frog or penguin powerups.
-                        if (global.powerup == cs_frog)
-                        || (global.powerup == cs_penguin) {
                         
-                            //If Mario is swimming to the sides
-                            if (swimtype == 0) {
+                        //Otherwise, if Mario is swimming
+                        else if (swimming) {
+                        
+                            //If Mario does have either the frog or penguin powerups.
+                            if (global.powerup == cs_frog)
+                            || (global.powerup == cs_penguin) {
+                            
+                                //If Mario is swimming to the sides
+                                if (swimtype == 0) {
+                                
+                                    //Set up the sprite
+                                    sprite_index = scr_mario_swim();
+                                
+                                    //...and animate it
+                                    if (xspeed == 0)
+                                        image_speed = 0.1;
+                                    else
+                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
+                                }
+                                
+                                //Otherwise, if Mario is swimming upwards
+                                else if (swimtype == 1) {
+                                
+                                    //Set up the sprite
+                                    sprite_index = scr_mario_swim2();
+                                    
+                                    //Set the speed
+                                    if ((x != xprevious) || (y != yprevious))
+                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
+                                    else
+                                        image_speed = 0;
+                                }
+                                
+                                //Otherwise, if Mario is swimming downwards
+                                else if (swimtype == 2) {
+                                
+                                    //Set up the sprite
+                                    sprite_index = scr_mario_swim3();
+                                    
+                                    //Set the speed
+                                    if ((x != xprevious) || (y != yprevious))
+                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
+                                    else
+                                        image_speed = 0;
+                                }
+                            }
+                            
+                            //Otherwise, if Mario does not have any of the above powerups
+                            else {
                             
                                 //Set up the sprite
                                 sprite_index = scr_mario_swim();
-                            
-                                //...and animate it
-                                if (xspeed == 0)
-                                    image_speed = 0.1;
-                                else
-                                    image_speed = 0.1+(0.1*keyboard_check(vk_control));
-                            }
-                            
-                            //Otherwise, if Mario is swimming upwards
-                            else if (swimtype == 1) {
-                            
-                                //Set up the sprite
-                                sprite_index = scr_mario_swim2();
                                 
                                 //Set the speed
-                                if ((x != xprevious) || (y != yprevious))
-                                    image_speed = 0.1+(0.1*keyboard_check(vk_control));
-                                else
-                                    image_speed = 0;
-                            }
-                            
-                            //Otherwise, if Mario is swimming downwards
-                            else if (swimtype == 2) {
-                            
-                                //Set up the sprite
-                                sprite_index = scr_mario_swim3();
+                                if (yspeed &lt; 0)
+                                    image_speed = 0.15;
+                                else {
                                 
-                                //Set the speed
-                                if ((x != xprevious) || (y != yprevious))
-                                    image_speed = 0.1+(0.1*keyboard_check(vk_control));
-                                else
                                     image_speed = 0;
-                            }
-                        }
-                        
-                        //Otherwise, if Mario does not have any of the above powerups
-                        else {
-                        
-                            //Set up the sprite
-                            sprite_index = scr_mario_swim();
-                            
-                            //Set the speed
-                            if (yspeed &lt; 0)
-                                image_speed = 0.15;
-                            else {
-                            
-                                image_speed = 0;
-                                image_index = 0;
+                                    image_index = 0;
+                                }
                             }
                         }
                     }

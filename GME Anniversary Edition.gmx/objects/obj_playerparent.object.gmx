@@ -712,6 +712,11 @@ if (state != 3) {
                 inwall = true;
         }            
     }
+    
+    //Handles powerup specific projectiles, tail spinning, cat scratching and statue morphing.
+    if (keyboard_check_pressed(global.controlkey)) 
+    &amp;&amp; (!obj_levelcontrol.barrier)
+        alarm[11] = 1;
 }
 else {
 

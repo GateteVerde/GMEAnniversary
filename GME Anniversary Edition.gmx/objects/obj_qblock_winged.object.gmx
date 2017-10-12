@@ -213,12 +213,13 @@ if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerpa
             <string>///Winged block logic
 
 //Check for the player
-var player = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_playerparent,0,0);
+var player = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_playerparent,0,0);
 
 //If the player is in position
 if (player)
 &amp;&amp; (player.state = 2) 
-&amp;&amp; (player.yspeed &lt;= 0) {
+&amp;&amp; (player.yspeed &lt;= 0)
+&amp;&amp; (player.bbox_top &gt; bbox_bottom+player.yspeed-1) {
 
     //Create a new block, give it the same item and bump it.
     with (instance_create(x,y,obj_qblock)) {
