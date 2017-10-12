@@ -102,6 +102,7 @@
       <sound>sound\snd_frog</sound>
       <sound>sound\snd_iceball</sound>
       <sound>sound\snd_jump</sound>
+      <sound>sound\snd_scratch</sound>
       <sound>sound\snd_skid</sound>
       <sound>sound\snd_spin</sound>
       <sound>sound\snd_stomp</sound>
@@ -850,6 +851,7 @@
       <sprite>sprites\spr_slopemask_l</sprite>
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
+      <sprite>sprites\spr_scratchmask</sprite>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_fireball</sprite>
@@ -878,6 +880,7 @@
         <sprite>sprites\spr_bubble</sprite>
         <sprite>sprites\spr_castlesmoke</sprite>
         <sprite>sprites\spr_cinder</sprite>
+        <sprite>sprites\spr_icespark</sprite>
         <sprite>sprites\spr_smoke</sprite>
         <sprite>sprites\spr_smoke_b</sprite>
         <sprite>sprites\spr_smoke_c</sprite>
@@ -1426,7 +1429,9 @@
           </objects>
           <object>objects\obj_player_transform</object>
           <object>objects\obj_puller</object>
+          <object>objects\obj_statue</object>
           <object>objects\obj_spinner</object>
+          <object>objects\obj_dropdown</object>
           <object>objects\obj_marker_head</object>
           <object>objects\obj_marker_bottom</object>
         </objects>
@@ -1470,6 +1475,7 @@
             <object>objects\obj_powerupsprout</object>
             <object>objects\obj_reserveitem</object>
             <object>objects\obj_fireball</object>
+            <object>objects\obj_iceball</object>
           </objects>
         </objects>
         <objects name="Effects">

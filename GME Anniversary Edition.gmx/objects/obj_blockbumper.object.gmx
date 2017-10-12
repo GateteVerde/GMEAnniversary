@@ -3,7 +3,7 @@
   <spriteName>spr_24mask</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>0</depth>
+  <depth>-6</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>///Opens nearby blocks
+
+//Whether the block hit a block
+ready = 0;
 
 //Destroy
 alarm[0] = 2;
@@ -79,7 +82,8 @@ instance_destroy();
             <string>///Bump the block
 
 //If the block is not ready
-if (other.ready == 0) {
+if (ready == 0)
+&amp;&amp; (other.ready == 0) {
 
     //With the block
     with (other) {
@@ -95,6 +99,9 @@ if (other.ready == 0) {
         event_user(0);
         event_user(1);
     }
+    
+    //Make this object unable to hit more boxes
+    ready = 1;
 }
 </string>
           </argument>
