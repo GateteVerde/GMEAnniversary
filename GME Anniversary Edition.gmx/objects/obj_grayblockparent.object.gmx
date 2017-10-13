@@ -5,9 +5,118 @@
   <visible>-1</visible>
   <depth>9</depth>
   <persistent>0</persistent>
-  <parentName>obj_solid</parentName>
-  <maskName>spr_square</maskName>
-  <events/>
+  <parentName>&lt;undefined&gt;</parentName>
+  <maskName>&lt;undefined&gt;</maskName>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///The parent object for all weapon specific blocks
+
+//Set up the mask
+mask_index = spr_graymask;
+
+//Make it solid
+mysolid = instance_create(x,y,obj_solid);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy solid mask
+
+with (mysolid) instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy
+
+//Play 'Break' sound
+audio_play_sound(snd_break, 0, false);
+    
+//Get 50 points
+score += 50;
+
+//Destroy
+instance_destroy();
+
+//Create shards
+with (instance_create(x+8,y+8,obj_shard)) {
+
+    motion_set(45, 6);
+    sprite_index = spr_shard_g;
+}
+with (instance_create(x+8,y+8,obj_shard)) {
+
+    motion_set(60, 6);
+    sprite_index = spr_shard_g;
+}
+with (instance_create(x+8,y+8,obj_shard)) {
+
+    motion_set(120, 6);
+    sprite_index = spr_shard_g;
+}
+with (instance_create(x+8,y+8,obj_shard)) {
+
+    motion_set(135, 6);
+    sprite_index = spr_shard_g;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

@@ -482,9 +482,24 @@ instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view
             <kind>1</kind>
             <string>///Camera orientation
 
-//If the barrier is active
-if (barrier)
-    x = obj_playerparent.x;
+//If the player is sliding
+if (((global.powerup == cs_shell) 
+|| (global.powerup == cs_penguin)) 
+&amp;&amp; (obj_playerparent.sliding)) {
+
+    //If the camera is panned to the right, pan it to the center.
+    if (x &gt; obj_playerparent.x+4) then x -= 4-obj_playerparent.xspeed;
+    
+    //Otherwise, If the camera is panned to the left, pan it to the center.
+    else if (x &lt; obj_playerparent.x-4) then x += 4+obj_playerparent.xspeed;
+
+    //Otherwise, do not move it.
+    else {
+    
+        //Stay at the same position of the player.
+        x = obj_playerparent.x;
+    }
+}
     
 //Otherwise, do a special follow up
 else {
@@ -520,8 +535,8 @@ else {
     }
     
     //Otherwise, if the camera is to the left and the player is from a certain distance from the camera...
-    else if ((orientation = -1) &amp;&amp; (obj_playerparent.x &lt; x+32))
-    {
+    else if ((orientation = -1) &amp;&amp; (obj_playerparent.x &lt; x+32)) {
+    
         //...scroll at a certain speed until the camera catches up...
         if (obj_playerparent.x &lt; x+28) 
             x -= 4-obj_playerparent.xspeed;

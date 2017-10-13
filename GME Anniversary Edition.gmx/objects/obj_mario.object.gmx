@@ -131,7 +131,8 @@ if (disablecontrol == false)
     &amp;&amp; (instance_number(obj_dropdown) &lt; 1) {
     
         //Create drop down
-        instance_create(x,y,obj_dropdown);
+        with (instance_create(x,y,obj_dropdown))
+            image_xscale = 1*sign(other.xscale);
     }
     
     //If Mario is not crouched down
@@ -156,9 +157,40 @@ if (disablecontrol == false)
         }
         
         //Raccoon / Tanooki or Cat
-        if (((global.powerup == cs_leaf) || (global.powerup == cs_tanooki)) || ((global.powerup == cs_cat) &amp;&amp; (state &lt; 2)))
-        &amp;&amp; (instance_number(obj_spinner) &lt; 1)
-            instance_create(x,y,obj_spinner);
+        else if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki) || (global.powerup == cs_cat))
+        &amp;&amp; (instance_number(obj_spinner) &lt; 1) 
+        &amp;&amp; (instance_number(obj_dropdown) == 0) {
+        
+            with (instance_create(x,y,obj_spinner))
+                image_xscale = 1*sign(other.xscale);
+        }
+            
+        //Hammer
+        else if (global.powerup == cs_hammer)
+        &amp;&amp; (instance_number(obj_hammer) &lt; 2) {
+        
+            firing = 9;
+            with (instance_create(x,y,obj_hammer))
+                hspeed = other.xspeed+(1*sign(other.xscale));
+        }
+        
+        //Boomerang
+        else if (global.powerup == cs_boomerang)
+        &amp;&amp; (instance_number(obj_boomerang) &lt; 2) {
+        
+            firing = 9;
+            with (instance_create(x,y-10,obj_boomerang))
+                hspeed = 2*sign(other.xscale);
+        }
+        
+        //Superball
+        else if (global.powerup == cs_super)
+        &amp;&amp; (instance_number(obj_superball) &lt; 2) {
+        
+            firing = 9;
+            with (instance_create(x,y,obj_superball))
+                hspeed = 3*sign(other.xscale);
+        }
     }
 }
 </string>

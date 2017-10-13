@@ -92,7 +92,7 @@ if (x &lt; view_xview[0]-32)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Default floor collision
+            <string>///Custom floor collision
 
 //When moving down
 if (vspeed &gt; 0) {
@@ -217,9 +217,14 @@ if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-hspeed,bbox_top+4,
             <kind>1</kind>
             <string>///Destroy
 
+//Play 'Bump' sound
+audio_play_sound(snd_bump, 0, false)
+
+//Create smoke effect
 instance_create(x-8,y-4,obj_smoke);
+
+//Destroy
 instance_destroy();
-exit;
 </string>
           </argument>
         </arguments>

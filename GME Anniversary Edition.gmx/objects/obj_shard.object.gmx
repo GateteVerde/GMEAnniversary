@@ -27,6 +27,13 @@
             <kind>1</kind>
             <string>///Shard logic
 
+//Destroy if outside the view
+if (outside_view()) {
+
+    instance_destroy();
+    exit;
+}
+
 //Cap horizontal speed
 hspeed = 1*sign(hspeed);
 

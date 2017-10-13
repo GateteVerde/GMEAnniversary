@@ -28,7 +28,7 @@
             <string>///The player is doing a drop-down attack
 
 //Animate
-image_speed = 0.5;
+image_speed = 0.35;
 
 //Make the player invincible, disable his controls and stop him.
 with (obj_playerparent) {
@@ -111,7 +111,7 @@ with (obj_playerparent) {
             <kind>1</kind>
             <string>///Leave a trail
 
-alarm[0] = 2;
+alarm[0] = 1;
 with (instance_create(x-(12*sign(hspeed)),y-8+random_range(-4,4),obj_smoke))
     sprite_index = spr_smoke_c;
 </string>
@@ -148,20 +148,30 @@ if (image_speed == 0)
 //If the player does exist.
 if (instance_exists(obj_playerparent)) {
 
-    //If the player does have the cat suit
-    if (global.powerup == cs_cat) {
+    //If the player does have the cat suit and the 'Down' key is still held.
+    if ((global.powerup == cs_cat) &amp;&amp; (keyboard_check(vk_down))) {
     
         //Snap the player onto this object
-        obj_playerparent.x = round(x);
-        obj_playerparent.y = round(y);
+        obj_playerparent.x = x;
+        obj_playerparent.y = y;
             
         //Stop the player
         xspeed = 0;
         yspeed = 0;
         disablegrav = 1;
     }
-    else
+    else {
+    
+        //Hereby both hspeed and vspeed
+        with (obj_playerparent) {
+        
+            xspeed = other.hspeed;
+            yspeed = other.vspeed;
+        }
+    
+        //Destroy
         instance_destroy();
+    }
 }
 else
     instance_destroy();
@@ -239,8 +249,8 @@ else {
         gravity = 0.2;
         
         //Cap vertical speed
-        if (vspeed &gt; 2.5)
-            vspeed = 2.5;
+        if (vspeed &gt; 3)
+            vspeed = 3;
     }
     
     //Otherwise, set the gravity when underwater
@@ -329,10 +339,10 @@ ready = 1;
 alarm[0] = 4;
 
 //Set the vertical speed
-vspeed = 2.5;
+vspeed = 3;
 
 //Set the horizontal speed
-hspeed = 2.5*sign(obj_playerparent.xscale);
+hspeed = 3*sign(obj_playerparent.xscale);
 </string>
           </argument>
         </arguments>

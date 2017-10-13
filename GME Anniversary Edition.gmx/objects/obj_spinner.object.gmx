@@ -27,58 +27,56 @@
             <kind>1</kind>
             <string>///The player is spinning it's tail.
 
-//Animate
-image_speed = 0.3;
-
 //Check powerup
 switch (global.powerup) {
 
     //Tanooki
     case (cs_tanooki): {
-    
-        //Set the sprite
-        sprite_index = spr_mario_tanooki_attack;
         
         //Play 'Spin' sound
         audio_play_sound(snd_spin, 0, false);
+        
+        //Set the speed
+        image_speed = 0.3;
+                
+        //Set the sprite
+        sprite_index = spr_mario_tanooki_attack;
     } break;
     
     //Cat
     case (cs_cat): {
     
+        //Play 'Scratch' sound
+        audio_play_sound(snd_scratch, 0, false);
+        
+        //Set the speed
+        image_speed = 0.2;
+        
         //Set the sprite
         sprite_index = spr_mario_cat_attack2;
         
-        //Play 'Scratch' sound
-        audio_play_sound(snd_scratch, 0, false);
+        
     } break;
     
     //Default
     default: {
-    
+        
         //Play 'Spin' sound
         audio_play_sound(snd_spin, 0, false);
+        
+        //Set the speed
+        image_speed = 0.3;
     } break;
 }
 
 //Combo
 hitcombo = 0;
 
+//Whether this block hit a block
+ready = 0;
+
 //Make the player invisible
 obj_playerparent.visible = false;
-
-//Create a block bumper
-bumper = (instance_create(x-8,y,obj_blockbumper));
-with (bumper) {
-
-    alarm[0] = -1;
-    if (global.powerup == cs_cat) {
-    
-        x += 8;
-        sprite_index = spr_scratchmask;
-        image_xscale = obj_playerparent.xscale;        
-    }
-}
 </string>
           </argument>
         </arguments>
@@ -101,14 +99,10 @@ with (bumper) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Make the player visible and destroy the bumper
+            <string>///Make the player visible
 
 //Make player visible
 with (obj_playerparent) visible = true;
-
-//Destroy bumper
-if (instance_exists(bumper))
-    with (bumper) instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -149,6 +143,52 @@ if (instance_exists(obj_playerparent)) {
 }
 else
     instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_blockparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Bump the block
+
+//If the block is not ready
+if (ready == 0)
+&amp;&amp; (other.ready == 0) {
+
+    //With the block
+    with (other) {
+    
+        //Block is hit
+        ready = 1;
+        
+        //Set vertical speed
+        vspeed = -2;
+        alarm[0] = 4;
+        
+        //Block specific events
+        event_user(0);
+        event_user(1);
+    }
+    
+    //Make this object unable to hit more boxes
+    ready = 1;
+}
 </string>
           </argument>
         </arguments>

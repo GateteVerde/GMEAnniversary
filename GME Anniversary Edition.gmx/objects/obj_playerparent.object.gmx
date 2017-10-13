@@ -568,6 +568,9 @@ if (xspeed &gt; 0)
         
         //Create shell thump effect
         instance_create(x+5,y+8,obj_shellbump);
+        
+        //Create block bumper object
+        instance_create(x-8,y,obj_blockbumper);
     }
         
     //Otherwise, stop it and stop slide if necessary.
@@ -605,6 +608,9 @@ else if (xspeed &lt; 0)
         
         //Create shell thump effect
         instance_create(x-5,y+8,obj_shellbump);
+                
+        //Create block bumper object
+        instance_create(x-8,y,obj_blockbumper);
     }
 
     //Otherwise, stop it and stop slide if necessary.    

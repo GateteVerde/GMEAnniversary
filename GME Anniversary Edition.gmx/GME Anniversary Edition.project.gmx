@@ -115,6 +115,7 @@
     </sounds>
     <sounds name="Item">
       <sound>sound\snd_1up</sound>
+      <sound>sound\snd_boomerang</sound>
       <sound>sound\snd_coin</sound>
       <sound>sound\snd_powerup</sound>
       <sound>sound\snd_sprout</sound>
@@ -683,10 +684,6 @@
           <sprite>sprites\spr_goldshroom</sprite>
         </sprites>
         <sprites name="Coins">
-          <sprites name="Block">
-            <sprite>sprites\spr_blockcoin</sprite>
-            <sprite>sprites\spr_blockcoin_b</sprite>
-          </sprites>
           <sprites name="Rings">
             <sprite>sprites\spr_redring</sprite>
             <sprite>sprites\spr_redring_get</sprite>
@@ -847,11 +844,11 @@
         <sprite>sprites\spr_squaremask</sprite>
       </sprites>
       <sprite>sprites\spr_24mask</sprite>
+      <sprite>sprites\spr_graymask</sprite>
       <sprite>sprites\spr_liftmask</sprite>
       <sprite>sprites\spr_slopemask_l</sprite>
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
-      <sprite>sprites\spr_scratchmask</sprite>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_fireball</sprite>
@@ -1264,6 +1261,15 @@
         <object>objects\obj_qblock_spiked</object>
         <object>objects\obj_qblock_winged</object>
       </objects>
+      <objects name="Gray Blocks">
+        <object>objects\obj_flowerblock</object>
+        <object>objects\obj_leafblock</object>
+        <object>objects\obj_hammerblock</object>
+        <object>objects\obj_boomerangblock</object>
+        <object>objects\obj_bombblock</object>
+        <object>objects\obj_shellblock</object>
+        <object>objects\obj_bellblock</object>
+      </objects>
       <objects name="Bricks">
         <object>objects\obj_brick</object>
         <object>objects\obj_bigbrick</object>
@@ -1476,6 +1482,9 @@
             <object>objects\obj_reserveitem</object>
             <object>objects\obj_fireball</object>
             <object>objects\obj_iceball</object>
+            <object>objects\obj_hammer</object>
+            <object>objects\obj_boomerang</object>
+            <object>objects\obj_superball</object>
           </objects>
         </objects>
         <objects name="Effects">
