@@ -125,6 +125,7 @@
     <sounds name="Menu">
       <sound>sound\snd_drop</sound>
       <sound>sound\snd_hurry</sound>
+      <sound>sound\snd_message</sound>
       <sound>sound\snd_move</sound>
       <sound>sound\snd_pmeter</sound>
       <sound>sound\snd_reserve</sound>
@@ -581,6 +582,7 @@
       <sprite>sprites\spr_noteblock</sprite>
       <sprite>sprites\spr_noteblock_blue</sprite>
       <sprite>sprites\spr_noteblock_warp</sprite>
+      <sprite>sprites\spr_messageblock</sprite>
       <sprite>sprites\spr_beanstalk</sprite>
     </sprites>
     <sprites name="Decoration">
@@ -913,6 +915,19 @@
           <sprite>sprites\spr_hud_health</sprite>
           <sprite>sprites\spr_hud_pmeter</sprite>
         </sprites>
+        <sprites name="Text">
+          <sprites name="Dialog">
+            <sprites name="Mugshots">
+              <sprite>sprites\spr_dialog_mugshot</sprite>
+            </sprites>
+            <sprites name="Cursors">
+              <sprite>sprites\spr_dialog_end</sprite>
+              <sprite>sprites\spr_dialog_continue</sprite>
+            </sprites>
+            <sprite>sprites\spr_dialog</sprite>
+          </sprites>
+          <sprite>sprites\spr_messagebox</sprite>
+        </sprites>
         <sprite>sprites\spr_hud_reserve</sprite>
         <sprite>sprites\spr_hud_starcoin</sprite>
         <sprite>sprites\spr_hud_starcoin_get</sprite>
@@ -1209,6 +1224,7 @@
       <scripts name="Text">
         <script>scripts\draw_text_colour_shadowed.gml</script>
         <script>scripts\string_add_zeros.gml</script>
+        <script>scripts\string_make_width.gml</script>
       </scripts>
       <script>scripts\init_globals.gml</script>
       <script>scripts\init_globals_music.gml</script>
@@ -1223,9 +1239,6 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
   </shaders>
-  <fonts name="fonts">
-    <font>fonts\fnt_debug</font>
-  </fonts>
   <objects name="objects">
     <object>objects\obj_player_start</object>
     <objects name="Level Control">
@@ -1282,6 +1295,7 @@
       <object>objects\obj_viewblock</object>
       <object>objects\obj_noteblock</object>
       <object>objects\obj_noteblock_blue</object>
+      <object>objects\obj_messageblock</object>
     </objects>
     <objects name="Decoration">
       <objects name="Water">
@@ -1504,6 +1518,10 @@
         <objects name="System">
           <objects name="Music">
             <object>objects\obj_musicplayer_persistent</object>
+          </objects>
+          <objects name="Dialogues">
+            <object>objects\obj_dialog</object>
+            <object>objects\obj_message</object>
           </objects>
           <object>objects\obj_foreground</object>
           <object>objects\obj_hud</object>

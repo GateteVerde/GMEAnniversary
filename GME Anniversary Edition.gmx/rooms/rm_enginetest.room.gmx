@@ -164,8 +164,6 @@
     <instance objName="obj_qblock_multicoin" x="624" y="176" name="inst_276811D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_beeshroom" x="280" y="192" name="inst_49618F2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_beeshroom" x="488" y="192" name="inst_B9321F97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_viewblock" x="352" y="336" name="inst_0AACE5F5" locked="0" code="sprout[0] = cs_penguin;&#xA;sprout[1] = cs_1up;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_viewblock" x="400" y="336" name="inst_777F0B85" locked="0" code="sprout[0] = cs_propeller;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_voltshroom" x="184" y="272" name="inst_EF5C9AD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_voltshroom" x="584" y="272" name="inst_6A93EF12" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="368" y="176" name="inst_C83A030C" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
@@ -180,6 +178,8 @@
     <instance objName="obj_boltblock" x="384" y="208" name="inst_CE672DDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boltblock" x="368" y="224" name="inst_F1F18349" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boltblock" x="384" y="224" name="inst_FBC07CEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="352" y="336" name="inst_D15EF303" locked="0" code="varmsg = &quot;     - TOURIST TIPS -#&#xA; &#xA;P-Switches will turn coins#&#xA;into bricks,  bricks  into#&#xA;coins and will also reveal#&#xA;a secret spring.  But only#&#xA;until the song ends.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="400" y="336" name="inst_8FA8896B" locked="0" code="varmsg = &quot;P-Switches will turn coins into bricks, bricks into coins and will also reveal a secret spring. But only until the song ends.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="112" y="240" w="16" h="16" xo="672" yo="0" id="10001595" name="inst_FBD03D33" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
