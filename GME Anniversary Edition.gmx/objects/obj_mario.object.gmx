@@ -128,6 +128,7 @@ if (disablecontrol == false)
     &amp;&amp; (keyboard_check(global.downkey))
     &amp;&amp; (global.mount == 0)
     &amp;&amp; (state == 2)
+    &amp;&amp; (instance_number(obj_spinner) == 0)
     &amp;&amp; (instance_number(obj_dropdown) &lt; 1) {
     
         //Create drop down
@@ -158,8 +159,8 @@ if (disablecontrol == false)
         
         //Raccoon / Tanooki or Cat
         else if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki) || (global.powerup == cs_cat))
-        &amp;&amp; (instance_number(obj_spinner) &lt; 1) 
-        &amp;&amp; (instance_number(obj_dropdown) == 0) {
+        &amp;&amp; (instance_number(obj_dropdown) == 0)
+        &amp;&amp; (instance_number(obj_spinner) &lt; 1) {
         
             with (instance_create(x,y,obj_spinner))
                 image_xscale = 1*sign(other.xscale);

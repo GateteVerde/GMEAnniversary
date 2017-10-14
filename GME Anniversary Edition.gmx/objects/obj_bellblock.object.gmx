@@ -8,7 +8,7 @@
   <parentName>obj_grayblockparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="4" ename="obj_dropdown">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,9 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Destroy
+            <string>///Destroy if the player is doing a dropdown attack
 
-event_user(0);
+var drop = collision_rectangle(bbox_left-2,bbox_top-2,bbox_right+2,bbox_bottom+2,obj_dropdown,0,0);
+if (drop)
+&amp;&amp; (drop.ready)
+    event_user(0);
 </string>
           </argument>
         </arguments>

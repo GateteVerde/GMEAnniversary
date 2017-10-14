@@ -30,6 +30,9 @@
 //Animate
 image_speed = 0.35;
 
+//Whether the player can cancel the dropdown
+ready = 0;
+
 //Make the player invincible, disable his controls and stop him.
 with (obj_playerparent) {
     
@@ -149,16 +152,33 @@ if (image_speed == 0)
 if (instance_exists(obj_playerparent)) {
 
     //If the player does have the cat suit and the 'Down' key is still held.
-    if ((global.powerup == cs_cat) &amp;&amp; (keyboard_check(vk_down))) {
+    if (global.powerup == cs_cat) {
     
-        //Snap the player onto this object
-        obj_playerparent.x = x;
-        obj_playerparent.y = y;
+        //Force end drop-down if the 'Down' key is not longer pressed.
+        if ((ready == 1) &amp;&amp; (!keyboard_check(vk_down))) {
             
-        //Stop the player
-        xspeed = 0;
-        yspeed = 0;
-        disablegrav = 1;
+            //Hereby both hspeed and vspeed
+            with (obj_playerparent) {
+            
+                xspeed = other.hspeed;
+                yspeed = other.vspeed;
+            }
+        
+            //Destroy
+            instance_destroy();            
+        }
+        
+        else {
+    
+            //Snap the player onto this object
+            obj_playerparent.x = x;
+            obj_playerparent.y = y;
+                
+            //Stop the player
+            xspeed = 0;
+            yspeed = 0;
+            disablegrav = 1;
+        }
     }
     else {
     

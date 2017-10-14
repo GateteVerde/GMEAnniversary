@@ -102,7 +102,8 @@ if (ready == false) {
     numb++;
     
     //Play a sound if not outside the view
-    if (!outside_view())    
+    if (!outside_view())
+    &amp;&amp; (array_length_1d(sprout) &gt; 0)    
         audio_play_sound(snd_move, 0, false);
 }
 
@@ -173,7 +174,11 @@ instance_destroy();
             <string>///Draw the block
 
 //Draw the item inside
-draw_sprite(constant_get_sprite(sprout[numb]),0,round(x)+8,round(y));
+if (sprout[numb] == cs_bomb)
+|| (sprout[numb] == cs_propeller)
+    draw_sprite_part(constant_get_sprite(sprout[numb]),0,0,5,16,21,round(x),round(y));
+else
+    draw_sprite(constant_get_sprite(sprout[numb]),0,round(x)+8,round(y));
 
 //Draw the block
 draw_sprite(sprite_index,-1,round(x),round(y));
