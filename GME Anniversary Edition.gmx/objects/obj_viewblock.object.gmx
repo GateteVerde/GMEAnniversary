@@ -103,7 +103,7 @@ if (ready == false) {
     
     //Play a sound if not outside the view
     if (!outside_view())
-    &amp;&amp; (array_length_1d(sprout) &gt; 0)    
+    &amp;&amp; (array_length_1d(sprout) &gt; 1)    
         audio_play_sound(snd_move, 0, false);
 }
 

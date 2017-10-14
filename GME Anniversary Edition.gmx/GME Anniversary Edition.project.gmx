@@ -857,6 +857,7 @@
       <sprite>sprites\spr_hammer</sprite>
       <sprite>sprites\spr_boomerang</sprite>
       <sprite>sprites\spr_superball</sprite>
+      <sprite>sprites\spr_bolt</sprite>
       <sprite>sprites\spr_iceblock</sprite>
     </sprites>
     <sprites name="Special">
@@ -879,14 +880,15 @@
         <sprite>sprites\spr_castlesmoke</sprite>
         <sprite>sprites\spr_cinder</sprite>
         <sprite>sprites\spr_icespark</sprite>
+        <sprite>sprites\spr_boltspark</sprite>
+        <sprite>sprites\spr_shellthump</sprite>
+        <sprite>sprites\spr_shellthump_st</sprite>
         <sprite>sprites\spr_smoke</sprite>
         <sprite>sprites\spr_smoke_b</sprite>
         <sprite>sprites\spr_smoke_c</sprite>
         <sprite>sprites\spr_sparkle</sprite>
         <sprite>sprites\spr_sparkle_b</sprite>
         <sprite>sprites\spr_spinthump</sprite>
-        <sprite>sprites\spr_shellthump</sprite>
-        <sprite>sprites\spr_shellbump_st</sprite>
         <sprite>sprites\spr_splash</sprite>
         <sprite>sprites\spr_splash_lava</sprite>
         <sprite>sprites\spr_splash_lava_up</sprite>
@@ -1269,6 +1271,7 @@
         <object>objects\obj_boomerangblock</object>
         <object>objects\obj_bombblock</object>
         <object>objects\obj_shellblock</object>
+        <object>objects\obj_boltblock</object>
         <object>objects\obj_bellblock</object>
       </objects>
       <objects name="Bricks">
@@ -1486,6 +1489,7 @@
             <object>objects\obj_hammer</object>
             <object>objects\obj_boomerang</object>
             <object>objects\obj_superball</object>
+            <object>objects\obj_bolt</object>
           </objects>
         </objects>
         <objects name="Effects">

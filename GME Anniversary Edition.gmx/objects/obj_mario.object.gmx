@@ -192,6 +192,15 @@ if (disablecontrol == false)
             with (instance_create(x,y,obj_superball))
                 hspeed = 3*sign(other.xscale);
         }
+        
+        //Lightning
+        else if (global.powerup == cs_lightning)
+        &amp;&amp; (instance_number(obj_bolt) &lt; 2) {
+        
+            firing = 9;
+            with (instance_create(x,y+2,obj_bolt))
+                hspeed = 6*sign(other.xscale);
+        }
     }
 }
 </string>

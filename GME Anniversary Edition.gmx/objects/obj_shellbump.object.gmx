@@ -112,10 +112,10 @@ ready = 1;
             <string>///Draw both stars and thump effect
 
 //Stars
-draw_sprite(spr_shellbump_st,star,x-star,y-star);
-draw_sprite(spr_shellbump_st,star,x+star,y-star);
-draw_sprite(spr_shellbump_st,star,x-star,y+star);
-draw_sprite(spr_shellbump_st,star,x+star,y+star);
+draw_sprite(spr_shellthump_st,star,x-star,y-star);
+draw_sprite(spr_shellthump_st,star,x+star,y-star);
+draw_sprite(spr_shellthump_st,star,x-star,y+star);
+draw_sprite(spr_shellthump_st,star,x+star,y+star);
 
 //Thump
 if (!ready)
