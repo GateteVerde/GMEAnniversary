@@ -171,7 +171,12 @@ if (!disablecontrol) && (!inwall) {
     //Handle Horizontal Movement.
     if ((keyboard_check(global.rightkey)) && (move) && (wallkick < 1) && (!keyboard_check(global.leftkey))) { //If the player holds the 'Right' key and the 'Left' key is not being held.
         
-        //Set the facing direction.
+        //Set the facing direction
+        if ((holding == 2) && (xscale != 1)) {
+        
+            turning = 1;
+            alarm[2] = 6;
+        }
         xscale = 1;
         
         //If there's NOT a wall on the way.
@@ -234,8 +239,13 @@ if (!disablecontrol) && (!inwall) {
     
     //Otherwise, if the player holds the 'Left' key and the 'Right' key is not being held.
     else if ((keyboard_check(global.leftkey)) && (move) && (wallkick == 0) && (!keyboard_check(global.rightkey))) {
+                
+        //Set the facing direction
+        if ((holding == 2) && (xscale != -1)) {
         
-        //Set the facing direction.
+            turning = 1;
+            alarm[2] = 6;
+        }
         xscale = -1;
         
         //If there's NOT a wall on the way.
@@ -592,6 +602,7 @@ if (state == 2)
     else if ((global.powerup == cs_carrot) 
     || ((global.powerup == cs_bee) && (beefly < 128)))
     && (!crouch)
+    && (jumping == 2)
     && (wallkick < 1)
     && (keyboard_check(global.shiftkey)) {
 

@@ -102,6 +102,7 @@
       <sound>sound\snd_frog</sound>
       <sound>sound\snd_iceball</sound>
       <sound>sound\snd_jump</sound>
+      <sound>sound\snd_kick</sound>
       <sound>sound\snd_scratch</sound>
       <sound>sound\snd_skid</sound>
       <sound>sound\snd_spin</sound>
@@ -709,8 +710,11 @@
         <sprite>sprites\spr_pswitch</sprite>
         <sprite>sprites\spr_gswitch</sprite>
         <sprite>sprites\spr_trampoline</sprite>
+        <sprite>sprites\spr_trampoline_end</sprite>
         <sprite>sprites\spr_trampoline_p</sprite>
+        <sprite>sprites\spr_trampoline_p_end</sprite>
         <sprite>sprites\spr_trampoline_timed</sprite>
+        <sprite>sprites\spr_trampoline_timed_end</sprite>
         <sprite>sprites\spr_propellerblock</sprite>
         <sprite>sprites\spr_boomerang_blue</sprite>
       </sprites>
@@ -1015,6 +1019,7 @@
         <script>scripts\scr_player_behaviour_slide.gml</script>
         <script>scripts\scr_player_behaviour_wall.gml</script>
       </scripts>
+      <script>scripts\canhold.gml</script>
     </scripts>
     <scripts name="System">
       <scripts name="Music">
@@ -1370,6 +1375,9 @@
           <object>objects\obj_coin_p</object>
         </objects>
       </objects>
+      <objects name="Interactive">
+        <object>objects\obj_trampoline</object>
+      </objects>
       <objects name="Platforms">
         <objects name="Common">
           <objects name="Ferris">
@@ -1438,6 +1446,11 @@
           <object>objects\obj_ceilslopeparent</object>
         </objects>
         <objects name="NPC">
+          <objects name="Holdables">
+            <object>objects\obj_parpull</object>
+            <object>objects\obj_parhold</object>
+            <object>objects\obj_parcarry</object>
+          </objects>
           <object>objects\obj_physicsparent</object>
           <object>objects\obj_powerupparent</object>
         </objects>

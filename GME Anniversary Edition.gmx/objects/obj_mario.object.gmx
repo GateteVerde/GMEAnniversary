@@ -906,9 +906,6 @@ else {
     
     //Otherwise, if Mario is holding something at his front
     else if (holding == 2) {
-    
-        //Set up the sprite
-        sprite_index = scr_mario_hold();
         
         //If Mario is not walking
         if (state == 0) {
@@ -921,8 +918,16 @@ else {
         //Otherwise, if Mario is walking
         else if (state == 1) {
         
-            //Set the animation speed
-            image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+            //If Mario is not turning
+            if (!turning)
+                image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                
+            //Otherwise, if Mario is turning
+            else {
+            
+                image_speed = 0;
+                image_index = 0;
+            }
         }
         
         //Otherwise, if Mario is jumping
@@ -957,6 +962,12 @@ else {
                 image_index = 1;
             }
         }
+        
+        //Set the sprite
+        if (!turning)
+            sprite_index = scr_mario_hold();
+        else
+            sprite_index = scr_mario_spin();
     }
     
     //Otherwise, if Mario is carrying a boomerang

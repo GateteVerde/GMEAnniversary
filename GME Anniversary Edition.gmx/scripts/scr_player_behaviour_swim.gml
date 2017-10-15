@@ -183,20 +183,18 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
                 
             //Set the state
             state = 2;
-                
-            /*Move the player a few pixels upwards when on contact with a moving platform or a slope.
-            var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);
-            if (platform)
-            && (platform.yspeed < 0)
-                y -= 4;
-            */
         }
         
         //Handle horizontal movement.
         //If the player presses the 'Right' key and the 'Left' key is not held.
         if ((keyboard_check(global.rightkey)) && (!keyboard_check(global.leftkey)) && (!crouch) ) {
             
-            //Set the facing direction.
+            //Set the facing direction
+            if ((holding == 2) && (xscale != 1)) {
+            
+                turning = 1;
+                alarm[2] = 12;
+            }
             xscale = 1;
             
             //If there's NOT a wall on the way.
@@ -216,6 +214,11 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         else if ((keyboard_check(global.leftkey)) && (!keyboard_check(global.rightkey)) && (!crouch)) {
             
             //Set the facing direction
+            if ((holding == 2) && (xscale != -1)) {
+            
+                turning = 1;
+                alarm[2] = 12;
+            }
             xscale = -1;
             
             //If there's NOT a wall on the way.
