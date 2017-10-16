@@ -159,7 +159,7 @@ if (held) {
             if (obj_playerparent.crouch)
                 y = obj_playerparent.y;
             else
-                y = obj_playerparent.y-6;
+                y = obj_playerparent.y-2;
         }
         else {
                     

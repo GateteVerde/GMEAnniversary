@@ -1377,6 +1377,8 @@
       </objects>
       <objects name="Interactive">
         <object>objects\obj_trampoline</object>
+        <object>objects\obj_trampoline_p</object>
+        <object>objects\obj_trampoline_timed</object>
       </objects>
       <objects name="Platforms">
         <objects name="Common">
@@ -1462,6 +1464,14 @@
       <objects name="Don't Use">
         <objects name="Player">
           <objects name="Skins">
+            <objects name="Projectiles">
+              <object>objects\obj_fireball</object>
+              <object>objects\obj_iceball</object>
+              <object>objects\obj_hammer</object>
+              <object>objects\obj_boomerang</object>
+              <object>objects\obj_superball</object>
+              <object>objects\obj_bolt</object>
+            </objects>
             <object>objects\obj_mario</object>
           </objects>
           <object>objects\obj_player_transform</object>
@@ -1472,13 +1482,26 @@
           <object>objects\obj_marker_head</object>
           <object>objects\obj_marker_bottom</object>
         </objects>
+        <objects name="Blocks">
+          <object>objects\obj_emptyblock</object>
+          <object>objects\obj_blockcoin</object>
+          <object>objects\obj_shard</object>
+          <object>objects\obj_flipblock_flip</object>
+          <object>objects\obj_beanstalk</object>
+        </objects>
         <objects name="Items">
-          <objects name="Blocks">
-            <object>objects\obj_emptyblock</object>
-            <object>objects\obj_blockcoin</object>
-            <object>objects\obj_shard</object>
-            <object>objects\obj_flipblock_flip</object>
-            <object>objects\obj_beanstalk</object>
+          <objects name="Collectibles">
+            <objects name="Powerups">
+              <objects name="Pickup">
+                <object>objects\obj_pickup_leaf</object>
+                <object>objects\obj_pickup_propeller</object>
+              </objects>
+              <object>objects\obj_powerupsprout</object>
+              <object>objects\obj_reserveitem</object>
+            </objects>
+          </objects>
+          <objects name="Interactive">
+            <object>objects\obj_trampoline_p_active</object>
           </objects>
           <objects name="Platforms">
             <objects name="Common">
@@ -1504,40 +1527,26 @@
             <object>objects\obj_pulleyplatform_right</object>
             <object>objects\obj_pulleyplatform_rope</object>
           </objects>
-          <objects name="Powerups">
-            <objects name="Pickup">
-              <object>objects\obj_pickup_leaf</object>
-              <object>objects\obj_pickup_propeller</object>
-            </objects>
-            <object>objects\obj_powerupsprout</object>
-            <object>objects\obj_reserveitem</object>
-            <object>objects\obj_fireball</object>
-            <object>objects\obj_iceball</object>
-            <object>objects\obj_hammer</object>
-            <object>objects\obj_boomerang</object>
-            <object>objects\obj_superball</object>
-            <object>objects\obj_bolt</object>
-          </objects>
         </objects>
-        <objects name="Effects">
-          <objects name="Score">
-            <object>objects\obj_score</object>
-          </objects>
-          <object>objects\obj_bubble</object>
-          <object>objects\obj_bubble_v</object>
-          <object>objects\obj_smoke</object>
-          <object>objects\obj_shellbump</object>
-        </objects>
-        <objects name="System">
-          <objects name="Music">
-            <object>objects\obj_musicplayer_persistent</object>
-          </objects>
+        <objects name="Special">
           <objects name="Dialogues">
             <object>objects\obj_dialog</object>
             <object>objects\obj_message</object>
           </objects>
-          <object>objects\obj_foreground</object>
+          <objects name="Effects">
+            <objects name="Score">
+              <object>objects\obj_score</object>
+            </objects>
+            <object>objects\obj_bubble</object>
+            <object>objects\obj_bubble_v</object>
+            <object>objects\obj_smoke</object>
+            <object>objects\obj_shellbump</object>
+          </objects>
+          <objects name="Music">
+            <object>objects\obj_musicplayer_persistent</object>
+          </objects>
           <object>objects\obj_hud</object>
+          <object>objects\obj_foreground</object>
         </objects>
         <object>objects\obj_blockbumper</object>
       </objects>

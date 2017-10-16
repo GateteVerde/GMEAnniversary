@@ -371,7 +371,7 @@ if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_
             <kind>1</kind>
             <string>///Draw NPC
 
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,1,1,0,c_white,1);
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,1,1,0,c_white,image_alpha);
 </string>
           </argument>
         </arguments>
