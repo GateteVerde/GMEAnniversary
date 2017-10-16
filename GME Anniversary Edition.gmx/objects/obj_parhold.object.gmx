@@ -30,6 +30,9 @@
 //Inherit the parent event
 event_inherited();
 
+//Direction of the item
+dir = 1;
+
 //Whether the item is held
 held = 0;
 
@@ -158,8 +161,13 @@ if (held) {
             //Snap into the player's y position
             if (obj_playerparent.crouch)
                 y = obj_playerparent.y;
-            else
-                y = obj_playerparent.y-2;
+            else {
+            
+                if (obj_playerparent.mask_index != spr_bigmask)
+                    y = obj_playerparent.y;
+                else
+                    y = obj_playerparent.y-4;
+            }
         }
         else {
                     
@@ -326,7 +334,7 @@ if (!held) {
     //Otherwise, if the player can hold the item
     else if (canhold()) 
     &amp;&amp; (!inwall)
-    &amp;&amp; (other.bbox_bottom &gt; bbox_top+2) {
+    &amp;&amp; (other.bbox_bottom &gt; bbox_top) {
     
         //Make the player hold it
         other.holding = 2;

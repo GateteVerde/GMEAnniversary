@@ -119,6 +119,7 @@
       <sound>sound\snd_boomerang</sound>
       <sound>sound\snd_coin</sound>
       <sound>sound\snd_powerup</sound>
+      <sound>sound\snd_scatter</sound>
       <sound>sound\snd_sprout</sound>
       <sound>sound\snd_trampoline</sound>
       <sound>sound\snd_vinesprout</sound>
@@ -693,6 +694,7 @@
             <sprite>sprites\spr_redring_get</sprite>
           </sprites>
           <sprite>sprites\spr_coin</sprite>
+          <sprite>sprites\spr_coin2</sprite>
           <sprite>sprites\spr_pcoin</sprite>
           <sprite>sprites\spr_redcoin</sprite>
           <sprite>sprites\spr_starcoin</sprite>
@@ -1273,6 +1275,7 @@
     <objects name="Blocks">
       <objects name="Item Blocks">
         <object>objects\obj_qblock</object>
+        <object>objects\obj_qblock_scatter</object>
         <object>objects\obj_qblock_multicoin</object>
         <object>objects\obj_qblock_multicoin_shroom</object>
         <object>objects\obj_qblock_hidden</object>
@@ -1376,6 +1379,7 @@
         </objects>
       </objects>
       <objects name="Interactive">
+        <object>objects\obj_key</object>
         <object>objects\obj_trampoline</object>
         <object>objects\obj_trampoline_p</object>
         <object>objects\obj_trampoline_timed</object>
@@ -1483,11 +1487,16 @@
           <object>objects\obj_marker_bottom</object>
         </objects>
         <objects name="Blocks">
-          <object>objects\obj_emptyblock</object>
-          <object>objects\obj_blockcoin</object>
-          <object>objects\obj_shard</object>
-          <object>objects\obj_flipblock_flip</object>
-          <object>objects\obj_beanstalk</object>
+          <objects name="Item Blocks">
+            <object>objects\obj_emptyblock</object>
+            <object>objects\obj_blockcoin</object>
+            <object>objects\obj_blockcoin2</object>
+            <object>objects\obj_beanstalk</object>
+          </objects>
+          <objects name="Bricks">
+            <object>objects\obj_flipblock_flip</object>
+            <object>objects\obj_shard</object>
+          </objects>
         </objects>
         <objects name="Items">
           <objects name="Collectibles">
