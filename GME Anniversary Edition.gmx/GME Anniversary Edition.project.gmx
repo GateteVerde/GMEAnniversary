@@ -132,6 +132,7 @@
       <sound>sound\snd_pmeter</sound>
       <sound>sound\snd_reserve</sound>
     </sounds>
+    <sound>sound\snd_pop</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Mario">
@@ -658,6 +659,9 @@
                 <sprite>sprites\spr_tongue</sprite>
               </sprites>
               <sprite>sprites\spr_egg</sprite>
+              <sprite>sprites\spr_egg_r</sprite>
+              <sprite>sprites\spr_egg_y</sprite>
+              <sprite>sprites\spr_egg_b</sprite>
               <sprite>sprites\spr_egg_bits</sprite>
               <sprite>sprites\spr_yoshi_hatch</sprite>
             </sprites>
@@ -700,12 +704,12 @@
           <sprite>sprites\spr_starcoin</sprite>
           <sprite>sprites\spr_starcoin_get</sprite>
         </sprites>
-        <sprite>sprites\spr_3upmoon</sprite>
         <sprite>sprites\spr_berry</sprite>
         <sprite>sprites\spr_berry_g</sprite>
         <sprite>sprites\spr_holdbubble</sprite>
         <sprite>sprites\spr_plusclock_10</sprite>
         <sprite>sprites\spr_plusclock_100</sprite>
+        <sprite>sprites\spr_3upmoon</sprite>
       </sprites>
       <sprites name="Holdables">
         <sprite>sprites\spr_key</sprite>
@@ -1377,9 +1381,14 @@
           <object>objects\obj_coin</object>
           <object>objects\obj_coin_p</object>
         </objects>
+        <object>objects\obj_berry</object>
+        <object>objects\obj_berry_g</object>
+        <object>objects\obj_holdbubble</object>
       </objects>
       <objects name="Interactive">
         <object>objects\obj_key</object>
+        <object>objects\obj_pswitch</object>
+        <object>objects\obj_gswitch</object>
         <object>objects\obj_trampoline</object>
         <object>objects\obj_trampoline_p</object>
         <object>objects\obj_trampoline_timed</object>
@@ -1499,7 +1508,7 @@
           </objects>
         </objects>
         <objects name="Items">
-          <objects name="Collectibles">
+          <objects name="Collectables">
             <objects name="Powerups">
               <objects name="Pickup">
                 <object>objects\obj_pickup_leaf</object>
@@ -1508,6 +1517,7 @@
               <object>objects\obj_powerupsprout</object>
               <object>objects\obj_reserveitem</object>
             </objects>
+            <object>objects\obj_holdbubble_respawn</object>
           </objects>
           <objects name="Interactive">
             <object>objects\obj_trampoline_p_active</object>
@@ -1591,10 +1601,10 @@
     <constant name="cs_propeller">16</constant>
     <constant name="cs_cat">17</constant>
     <constant name="cs_coin">-1</constant>
-    <constant name="cs_greenyoshi">-10</constant>
-    <constant name="cs_redyoshi">-11</constant>
-    <constant name="cs_yellowyoshi">-12</constant>
-    <constant name="cs_blueyoshi">-13</constant>
+    <constant name="cs_yoshi">-10</constant>
+    <constant name="cs_yoshi_r">-11</constant>
+    <constant name="cs_yoshi_y">-12</constant>
+    <constant name="cs_yoshi_b">-13</constant>
     <constant name="cs_kuriboshoe">-14</constant>
     <constant name="cs_baburushoe">-15</constant>
     <constant name="cs_dossunshoe">-16</constant>
@@ -1602,12 +1612,12 @@
     <constant name="cs_golden">-18</constant>
     <constant name="cs_1up">-19</constant>
     <constant name="cs_3up">-20</constant>
-    <constant name="cs_poison">-21</constant>
-    <constant name="cs_star">-22</constant>
+    <constant name="cs_star">-21</constant>
+    <constant name="cs_poison">-22</constant>
     <constant name="cs_key">-23</constant>
-    <constant name="cs_trampoline">-24</constant>
-    <constant name="cs_pswitch">-25</constant>
-    <constant name="cs_gswitch">-26</constant>
+    <constant name="cs_pswitch">-24</constant>
+    <constant name="cs_gswitch">-25</constant>
+    <constant name="cs_trampoline">-26</constant>
     <constant name="cs_propellerblock">-27</constant>
     <constant name="cs_beanstalk">-28</constant>
   </constants>
