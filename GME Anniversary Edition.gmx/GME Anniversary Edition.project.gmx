@@ -118,6 +118,7 @@
       <sound>sound\snd_1up</sound>
       <sound>sound\snd_boomerang</sound>
       <sound>sound\snd_coin</sound>
+      <sound>sound\snd_collect</sound>
       <sound>sound\snd_powerup</sound>
       <sound>sound\snd_scatter</sound>
       <sound>sound\snd_sprout</sound>
@@ -922,6 +923,7 @@
           <sprite>sprites\spr_hud_mario</sprite>
           <sprite>sprites\spr_hud_coin</sprite>
           <sprite>sprites\spr_hud_time</sprite>
+          <sprite>sprites\spr_hud_timeb</sprite>
           <sprite>sprites\spr_hud_health</sprite>
           <sprite>sprites\spr_hud_pmeter</sprite>
         </sprites>
@@ -1302,6 +1304,9 @@
       <objects name="Bricks">
         <object>objects\obj_brick</object>
         <object>objects\obj_bigbrick</object>
+        <object>objects\obj_bluebrick</object>
+        <object>objects\obj_redbrick</object>
+        <object>objects\obj_graybrick</object>
         <object>objects\obj_flipblock</object>
       </objects>
       <object>objects\obj_viewblock</object>
@@ -1384,6 +1389,9 @@
         <object>objects\obj_berry</object>
         <object>objects\obj_berry_g</object>
         <object>objects\obj_holdbubble</object>
+        <object>objects\obj_plusclock_10</object>
+        <object>objects\obj_plusclock_100</object>
+        <object>objects\obj_3upmoon</object>
       </objects>
       <objects name="Interactive">
         <object>objects\obj_key</object>
@@ -1503,8 +1511,10 @@
             <object>objects\obj_beanstalk</object>
           </objects>
           <objects name="Bricks">
+            <object>objects\obj_bluebrick_th</object>
             <object>objects\obj_flipblock_flip</object>
             <object>objects\obj_shard</object>
+            <object>objects\obj_shard_th</object>
           </objects>
         </objects>
         <objects name="Items">

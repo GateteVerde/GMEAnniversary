@@ -101,15 +101,8 @@ if (obj_persistent.addlives == 0) {
         alarm[2] = 30;
     }
 }
-else {
-
-    //Add a spare life
-    with (obj_persistent) {
-    
-        addlives += 3;
-        alarm[2] = 30;
-    }
-}
+else
+    with (obj_persistent) addlives += 3;
 </string>
           </argument>
         </arguments>
@@ -153,15 +146,8 @@ if (obj_persistent.addlives == 0) {
         alarm[2] = 30;
     }
 }
-else {
-
-    //Add a spare life
-    with (obj_persistent) {
-    
-        addlives += 2;
-        alarm[2] = 30;
-    }
-}
+else
+    with (obj_persistent) addlives += 2;
 </string>
           </argument>
         </arguments>
@@ -198,15 +184,8 @@ if (obj_persistent.addlives == 0) {
     //Add a life instantly
     lives++;
 }
-else {
-
-    //Add a spare life
-    with (obj_persistent) {
-    
-        addlives++;
-        alarm[2] = 30;
-    }
-}
+else
+    with (obj_persistent) addlives += 1;
 </string>
           </argument>
         </arguments>

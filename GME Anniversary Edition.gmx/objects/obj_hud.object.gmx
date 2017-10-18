@@ -30,6 +30,9 @@
 //P-Meter flash
 flash = 0;
 alarm[0] = 7;
+
+//Shows up if the player collected a plus clock
+extratime = 0;
 </string>
           </argument>
         </arguments>
@@ -120,6 +123,18 @@ draw_set_font(global.numbers_w);
 //Time
 draw_sprite_ext(spr_hud_time, 0, view_xview[0]+view_wview[0]-50, view_yview[0]+9, 1, 1, 0, c_white, 1);
 draw_text_colour_shadowed(view_xview[0]+view_wview[0]-35, view_yview[0]+9, string_add_zeros(global.time, 3), c_black, c_white, 1, 1, 1, 1);
+
+//Extra time
+if (extratime &gt; 0) {
+
+    draw_sprite_ext(spr_hud_timeb, extratime-1, view_xview[0]+view_wview[0]-5, view_yview[0]+23, 1, 1, 0, c_white, timealpha);
+    if (timealpha &gt; 0) {
+    
+        timealpha -= 0.0125;
+        if (timealpha &lt; 0.0125)
+            extratime = 0;
+    }
+}
 
 //P-Meter
 if (instance_exists(obj_playerparent)) {
