@@ -117,6 +117,9 @@ else if (sprout != cs_coin) {
     }
 }
 
+//Create 'Pop' effect
+with (instance_create(x,y,obj_smoke)) sprite_index = spr_pop;
+
 //Destroy
 instance_destroy();
 </string>

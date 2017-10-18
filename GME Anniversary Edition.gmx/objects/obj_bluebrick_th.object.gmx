@@ -74,7 +74,7 @@ event_inherited();
             <kind>1</kind>
             <string>///Destroy
 
-instance_create(x,y,obj_smoke);
+instance_create(x-8,y,obj_smoke);
 instance_destroy();
 exit;
 </string>
@@ -291,7 +291,7 @@ if (!ready) {
         with (instance_create(x,y,obj_smoke)) sprite_index = spr_spinthump;
         
         //Set the horizontal speed
-        if (obj_playerparent.x &lt; x+8)
+        if (obj_playerparent.x &lt; x)
             hspeed = 2.7;
         else
             hspeed = -2.7;

@@ -587,6 +587,10 @@
       <sprite>sprites\spr_noteblock_blue</sprite>
       <sprite>sprites\spr_noteblock_warp</sprite>
       <sprite>sprites\spr_messageblock</sprite>
+      <sprite>sprites\spr_area_y</sprite>
+      <sprite>sprites\spr_area_g</sprite>
+      <sprite>sprites\spr_area_r</sprite>
+      <sprite>sprites\spr_area_b</sprite>
       <sprite>sprites\spr_beanstalk</sprite>
     </sprites>
     <sprites name="Decoration">
@@ -889,11 +893,12 @@
           <sprite>sprites\spr_2uppts</sprite>
           <sprite>sprites\spr_3uppts</sprite>
         </sprites>
+        <sprite>sprites\spr_boltspark</sprite>
         <sprite>sprites\spr_bubble</sprite>
         <sprite>sprites\spr_castlesmoke</sprite>
         <sprite>sprites\spr_cinder</sprite>
         <sprite>sprites\spr_icespark</sprite>
-        <sprite>sprites\spr_boltspark</sprite>
+        <sprite>sprites\spr_pop</sprite>
         <sprite>sprites\spr_shellthump</sprite>
         <sprite>sprites\spr_shellthump_st</sprite>
         <sprite>sprites\spr_smoke</sprite>
@@ -1313,6 +1318,10 @@
       <object>objects\obj_noteblock</object>
       <object>objects\obj_noteblock_blue</object>
       <object>objects\obj_messageblock</object>
+      <object>objects\obj_area_y</object>
+      <object>objects\obj_area_g</object>
+      <object>objects\obj_area_r</object>
+      <object>objects\obj_area_b</object>
     </objects>
     <objects name="Decoration">
       <objects name="Water">
@@ -1591,7 +1600,7 @@
     <room>rooms\rm_load</room>
     <room>rooms\rm_enginetest</room>
   </rooms>
-  <constants number="38">
+  <constants number="42">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
     <constant name="cs_fire">2</constant>
@@ -1611,6 +1620,10 @@
     <constant name="cs_propeller">16</constant>
     <constant name="cs_cat">17</constant>
     <constant name="cs_coin">-1</constant>
+    <constant name="cs_area_y">-2</constant>
+    <constant name="cs_area_g">-3</constant>
+    <constant name="cs_area_r">-4</constant>
+    <constant name="cs_area_b">-5</constant>
     <constant name="cs_yoshi">-10</constant>
     <constant name="cs_yoshi_r">-11</constant>
     <constant name="cs_yoshi_y">-12</constant>
