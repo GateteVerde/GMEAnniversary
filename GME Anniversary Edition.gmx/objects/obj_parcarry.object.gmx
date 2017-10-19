@@ -3,9 +3,9 @@
   <spriteName>spr_turnip</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>10</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,8 +27,299 @@
             <kind>1</kind>
             <string>///The parent object for all carryable SMB2 items
 
+//Do not animate
+image_speed = 0;
+image_index = 0;
+
 //This item is held by default
 held = 1;
+
+//Whether the object is thrown.
+ready = 0;
+
+//How many hits did the object?
+hitcombo = 0;
+
+//Whether the object is swimming
+event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Protect the player from the horrors of holding nothing
+
+if (held) {
+
+    //If the player was holding something
+    if (instance_exists(obj_playerparent))
+    &amp;&amp; (obj_playerparent.holding == 1)
+        obj_playerparent.holding = 0; 
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Vegetable logic (Player)
+
+//If this object is being held.
+if (held) {
+
+    //If the player does exist.
+    if (instance_exists(obj_playerparent)) {
+    
+        //Set the x position.
+        x = obj_playerparent.x-8;
+        
+        //Set the y position.
+        if (ready == 0) {
+        
+            if (instance_exists(obj_puller)) {
+            
+                //Make the item able to be thrown 
+                if ((global.powerup == cs_small) &amp;&amp; (y &lt; obj_playerparent.y-11)) 
+                || (y &lt; obj_playerparent.y-13) {
+                    
+                    //Make it able to be thrown
+                    ready = 1;
+                    
+                    //Destroy puller
+                    with (obj_puller) instance_destroy();                  
+                }
+                
+                //Move up
+                y -= 2;
+                
+                //Disable the player controls
+                with (obj_playerparent) disablecontrol = true;
+            }            
+        }
+        else {
+        
+            //If the player is crouched down.
+            if (obj_playerparent.crouch) {
+            
+                //If the player is small.
+                if (global.powerup == cs_small)
+                    y = obj_playerparent.y-9;
+                else
+                    y = obj_playerparent.y-12;
+            }
+            
+            //Otherwise, if it's not.
+            else {
+            
+                //If the player is small.
+                if (global.powerup == cs_small)
+                    y = obj_playerparent.y-12;
+                else
+                    y = obj_playerparent.y-20;
+            }
+            
+            //Set the depth
+            depth = -6;
+            
+            //Enable the player's controls
+            with (obj_playerparent) disablecontrol = false;
+        }
+                
+        //Make it visible
+        visible = 1;
+        
+        //Force the player to hold it
+        obj_playerparent.holding = 1;
+    }
+    
+    //Otherwise, stop being held.
+    else {
+    
+        instance_create(x,y,obj_smoke);
+        instance_destroy();
+        exit;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Vegetable logic
+
+//If the object is being held.
+if (held) {
+
+    //If the control key is being pressed and the vegetable can be thrown.
+    if (keyboard_check_pressed(global.controlkey))
+    &amp;&amp; (ready == 1) {
+    
+        //If the player does exist.
+        if (instance_exists(obj_playerparent)) {
+        
+            //Play 'Throw' sound
+            audio_play_sound(snd_throw, 0, false);
+            
+            //With the player
+            with (obj_playerparent) {
+            
+                //Stop holding
+                holding = 0;
+                
+                //Toss
+                event_user(3);
+            }
+            
+            //Check if 'Up' is pressed and throw the object upwards if so.
+            if (keyboard_check(global.upkey)) {
+
+                //Set the vertical speed
+                vspeed = -6;
+                gravity = 0.2;
+                
+                //Set the horizontal speed
+                hspeed = obj_playerparent.xspeed/2;
+            }
+            
+            //Otherwise, if it's not.
+            else {
+            
+                //Set the vertical speed
+                vspeed = 1;
+                gravity = 0.2;
+                
+                //Set the horizontal speed
+                if (obj_playerparent.xscale == 1)
+                    hspeed = obj_playerparent.xspeed+2;
+                else
+                    hspeed = obj_playerparent.xspeed-2;
+            }
+            
+            //Stop holding.
+            held = false;
+        }
+    }
+}
+else {
+
+    //Set the gravity when not underwater
+    if (!swimming) {
+    
+        //Gravity
+        gravity = 0.2;
+        
+        //Cap vertical speed
+        if (vspeed &gt; 4)
+            vspeed = 4;
+    }
+    
+    //Otherwise, set the gravity when underwater
+    else {
+    
+        //Gravity
+        gravity = 0.05;
+        
+        //Cap vertical speed
+        if (vspeed &gt; 1)
+            vspeed = 1;
+    }
+
+    //Check for a water object
+    var water = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0);
+    
+    //If the object is not underwater and makes contact with water
+    if (water) 
+    &amp;&amp; (!swimming) {
+    
+        //Make the object go underwater
+        swimming = true;
+        
+        //Stop vertical movement
+        gravity = 0;
+        if (vspeed &gt; 0)
+            vspeed = 0;
+    }
+    
+    //Otherwise, if the object is underwater and it's not underwater, end swimming.
+    else if (!water) 
+    &amp;&amp; (swimming)
+        swimming = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw vegetable
+
+draw_sprite(sprite_index,-1,round(x),round(y));
 </string>
           </argument>
         </arguments>

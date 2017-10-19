@@ -139,7 +139,7 @@ if (held) {
                 with (obj_playerparent) {
                 
                     //Set the kicking pose
-                    event_user(2);
+                    event_user(4);
                     
                     //Do not hold
                     holding = 0;
@@ -175,7 +175,7 @@ if (held) {
             with (obj_playerparent) {
             
                 //Set the kicking pose
-                event_user(2);
+                event_user(4);
                 
                 //Do not hold
                 holding = 0;

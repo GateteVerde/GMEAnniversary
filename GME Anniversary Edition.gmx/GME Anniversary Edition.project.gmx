@@ -103,12 +103,14 @@
       <sound>sound\snd_iceball</sound>
       <sound>sound\snd_jump</sound>
       <sound>sound\snd_kick</sound>
+      <sound>sound\snd_pickup</sound>
       <sound>sound\snd_scratch</sound>
       <sound>sound\snd_skid</sound>
       <sound>sound\snd_spin</sound>
       <sound>sound\snd_stomp</sound>
       <sound>sound\snd_superball</sound>
       <sound>sound\snd_swim</sound>
+      <sound>sound\snd_throw</sound>
       <sound>sound\snd_transform</sound>
     </sounds>
     <sounds name="Enemy">
@@ -119,6 +121,7 @@
       <sound>sound\snd_boomerang</sound>
       <sound>sound\snd_coin</sound>
       <sound>sound\snd_collect</sound>
+      <sound>sound\snd_pop</sound>
       <sound>sound\snd_powerup</sound>
       <sound>sound\snd_scatter</sound>
       <sound>sound\snd_sprout</sound>
@@ -133,7 +136,6 @@
       <sound>sound\snd_pmeter</sound>
       <sound>sound\snd_reserve</sound>
     </sounds>
-    <sound>sound\snd_pop</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Mario">
@@ -1032,6 +1034,7 @@
         <script>scripts\scr_player_behaviour_slide.gml</script>
         <script>scripts\scr_player_behaviour_wall.gml</script>
       </scripts>
+      <script>scripts\canpull.gml</script>
       <script>scripts\canhold.gml</script>
     </scripts>
     <scripts name="System">
@@ -1464,6 +1467,11 @@
         <object>objects\obj_pulleyplatform</object>
         <object>objects\obj_mushroomplatform</object>
       </objects>
+      <objects name="Subcon">
+        <objects name="Grass">
+          <object>objects\obj_grass</object>
+        </objects>
+      </objects>
       <object>objects\obj_conveyor_r</object>
       <object>objects\obj_conveyor_l</object>
     </objects>
@@ -1507,6 +1515,7 @@
             <object>objects\obj_mario</object>
           </objects>
           <object>objects\obj_player_transform</object>
+          <object>objects\obj_player_dead</object>
           <object>objects\obj_puller</object>
           <object>objects\obj_statue</object>
           <object>objects\obj_spinner</object>
@@ -1566,6 +1575,11 @@
             </objects>
             <object>objects\obj_pulleyplatform_right</object>
             <object>objects\obj_pulleyplatform_rope</object>
+          </objects>
+          <objects name="Subcon">
+            <objects name="Grass">
+              <object>objects\obj_turnip</object>
+            </objects>
           </objects>
         </objects>
         <objects name="Special">
