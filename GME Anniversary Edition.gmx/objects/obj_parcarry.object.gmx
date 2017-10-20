@@ -3,7 +3,7 @@
   <spriteName>spr_turnip</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>10</depth>
+  <depth>-6</depth>
   <persistent>0</persistent>
   <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -33,9 +33,6 @@ image_index = 0;
 
 //This item is held by default
 held = 1;
-
-//Whether the object is thrown.
-ready = 0;
 
 //How many hits did the object?
 hitcombo = 0;
@@ -102,67 +99,35 @@ if (held) {
 
     //If the player does exist.
     if (instance_exists(obj_playerparent)) {
-    
-        //Set the x position.
-        x = obj_playerparent.x-8;
         
-        //Set the y position.
-        if (ready == 0) {
+        //Force player hold
+        obj_playerparent.holding = 1;
         
-            if (instance_exists(obj_puller)) {
-            
-                //Make the item able to be thrown 
-                if ((global.powerup == cs_small) &amp;&amp; (y &lt; obj_playerparent.y-11)) 
-                || (y &lt; obj_playerparent.y-13) {
-                    
-                    //Make it able to be thrown
-                    ready = 1;
-                    
-                    //Destroy puller
-                    with (obj_puller) instance_destroy();                  
-                }
-                
-                //Move up
-                y -= 2;
-                
-                //Disable the player controls
-                with (obj_playerparent) disablecontrol = true;
-            }            
-        }
-        else {
-        
-            //If the player is crouched down.
-            if (obj_playerparent.crouch) {
-            
-                //If the player is small.
-                if (global.powerup == cs_small)
-                    y = obj_playerparent.y-9;
-                else
-                    y = obj_playerparent.y-12;
-            }
-            
-            //Otherwise, if it's not.
-            else {
-            
-                //If the player is small.
-                if (global.powerup == cs_small)
-                    y = obj_playerparent.y-12;
-                else
-                    y = obj_playerparent.y-20;
-            }
-            
-            //Set the depth
-            depth = -6;
-            
-            //Enable the player's controls
-            with (obj_playerparent) disablecontrol = false;
-        }
-                
         //Make it visible
         visible = 1;
         
-        //Force the player to hold it
-        obj_playerparent.holding = 1;
+        //Snap onto the player's x position
+        x = obj_playerparent.x-8;
+        
+        //Snap onto the player's y position        
+        if (obj_playerparent.crouch) { //If the player is crouched down.
+        
+            //If the player is small.
+            if (global.powerup == cs_small)
+                y = obj_playerparent.y-9;
+            else
+                y = obj_playerparent.y-12;
+        }
+        
+        //Otherwise, if it's not.
+        else {
+        
+            //If the player is small.
+            if (global.powerup == cs_small)
+                y = obj_playerparent.y-12;
+            else
+                y = obj_playerparent.y-20;
+        }
     }
     
     //Otherwise, stop being held.
@@ -201,8 +166,7 @@ if (held) {
 if (held) {
 
     //If the control key is being pressed and the vegetable can be thrown.
-    if (keyboard_check_pressed(global.controlkey))
-    &amp;&amp; (ready == 1) {
+    if (keyboard_check_pressed(global.controlkey)) {
     
         //If the player does exist.
         if (instance_exists(obj_playerparent)) {
@@ -240,9 +204,9 @@ if (held) {
                 
                 //Set the horizontal speed
                 if (obj_playerparent.xscale == 1)
-                    hspeed = obj_playerparent.xspeed+2;
+                    hspeed = obj_playerparent.xspeed+2.5;
                 else
-                    hspeed = obj_playerparent.xspeed-2;
+                    hspeed = obj_playerparent.xspeed-2.5;
             }
             
             //Stop holding.
@@ -256,7 +220,7 @@ else {
     if (!swimming) {
     
         //Gravity
-        gravity = 0.2;
+        gravity = 0.15;
         
         //Cap vertical speed
         if (vspeed &gt; 4)
@@ -267,7 +231,7 @@ else {
     else {
     
         //Gravity
-        gravity = 0.05;
+        gravity = 0.0375;
         
         //Cap vertical speed
         if (vspeed &gt; 1)

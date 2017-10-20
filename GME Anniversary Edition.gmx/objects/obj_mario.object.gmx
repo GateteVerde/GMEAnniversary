@@ -104,7 +104,9 @@ fullrunspeed = 3.3;
 
 //If controls are not disabled and Mario is not holding or doing a spinjump.
 if (disablecontrol == false)
+&amp;&amp; (sliding == 0)
 &amp;&amp; (holding == 0)
+&amp;&amp; (kicking == 0)
 &amp;&amp; (stompstyle != 1) {
 
     //Tanooki

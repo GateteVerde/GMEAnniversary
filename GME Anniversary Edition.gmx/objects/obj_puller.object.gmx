@@ -25,98 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///The player is pulling something!
+            <string>///The player is pulling out a item
 
 //Do not animate
 image_speed = 0;
 image_index = 0;
 
-//Pull up
-alarm[0] = 95;
-
-//Animate
-alarm[2] = 1;
-
 //Frame
 frame = 0;
+alarm[1] = 1;
 
-//Is the player pulling something heavy?
-isheavy = 0;
-
-//Whether the player pulled up the item
-pullout = 0;
-
-//Make the player stop and make him invisible
+//Stop movement
 with (obj_playerparent) {
 
-    //Stop moving
-    speed = 0;
-    
-    //Make him invisible
-    visible = false;
-    
-    //Disable controls
+    xspeed = 0;
+    yspeed = 0;
     disablecontrol = true;
 }
 
-//Make the player stop spinning
-with (obj_spinner) instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Make the player visible
-
-with (obj_playerparent) {
-
-    visible = 1;
-    holding = 0;
-    disablecontrol = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Change frame
-
-frame = !frame;
-alarm[2] = 7;
+//Destroy spinner
+if (instance_exists(obj_spinner))
+    with (obj_spinner) instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -139,9 +68,10 @@ alarm[2] = 7;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Pull out
+            <string>///Change frame
 
-pullout = 1;
+frame = !frame;
+alarm[1] = 7;
 </string>
           </argument>
         </arguments>
@@ -164,14 +94,18 @@ pullout = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///The player is done pulling.
+            <string>///Make the player visible and destroy
 
-//Do not animate
-alarm[2] = -1;
-frame = 0;
+//Force visibility of the player
+with (obj_playerparent) {
 
-//Pull out
-alarm[1] = 8;
+    visible = 1;
+    holding = 0;
+    disablecontrol = false;
+}
+
+//Destroy
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -196,42 +130,18 @@ alarm[1] = 8;
             <kind>1</kind>
             <string>///Puller logic
 
-//If the player has died while pulling.
-if (instance_exists(obj_player_dead)) {
+//Snap onto the player's position
+x = round(obj_playerparent.x);
+y = round(obj_playerparent.y);
 
-    instance_destroy();
-    exit;
+//Check if control is not longer pressed
+if (!keyboard_check(global.controlkey)) {
+
+    //If the vegetable is not being pulled
+    if (!instance_exists(obj_turnip_out))
+    &amp;&amp; (sprite_index == spr_mario_pull)
+        alarm[0] = 1;
 }
-
-//Snap into position
-x = obj_playerparent.x;
-y = obj_playerparent.y;
-
-//Keep the player invisible
-if (obj_playerparent.y &gt; ystart) {
-
-    //With the player
-    with (obj_playerparent) {
-    
-        //Make him invisible
-        visible = false;
-        
-        //Stop him
-        xspeed = 0;
-        yspeed = 0;
-        
-        //Snap in place
-        y = other.ystart;
-        
-        //Disable controls
-        disablecontrol = true;
-    }
-}
-
-//If the object is heavy enough and the control key is not longer held.
-if (isheavy) 
-&amp;&amp; (!keyboard_check(global.controlkey))
-    instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -256,7 +166,10 @@ if (isheavy)
             <kind>1</kind>
             <string>///Draw the player
 
-draw_sprite_ext(sprite_index,(global.powerup*2)+frame,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha);
+if (sprite_index == spr_mario_pull)
+    draw_sprite_ext(spr_mario_pull,(global.powerup*2)+frame,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha);
+else
+    draw_sprite_ext(scr_mario_duck(),1,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha);
 </string>
           </argument>
         </arguments>

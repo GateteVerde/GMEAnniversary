@@ -792,6 +792,7 @@
       <sprites name="Subcon">
         <sprites name="Vegetables">
           <sprite>sprites\spr_turnip</sprite>
+          <sprite>sprites\spr_turnip_mini</sprite>
           <sprite>sprites\spr_turnip_large</sprite>
           <sprite>sprites\spr_turnip_bomb</sprite>
           <sprite>sprites\spr_turnip_shell</sprite>
@@ -1470,6 +1471,8 @@
       <objects name="Subcon">
         <objects name="Grass">
           <object>objects\obj_grass</object>
+          <object>objects\obj_grass_mini</object>
+          <object>objects\obj_grass_large</object>
         </objects>
       </objects>
       <object>objects\obj_conveyor_r</object>
@@ -1490,8 +1493,8 @@
         <objects name="NPC">
           <objects name="Holdables">
             <object>objects\obj_parpull</object>
-            <object>objects\obj_parhold</object>
             <object>objects\obj_parcarry</object>
+            <object>objects\obj_parhold</object>
           </objects>
           <object>objects\obj_physicsparent</object>
           <object>objects\obj_powerupparent</object>
@@ -1577,9 +1580,13 @@
             <object>objects\obj_pulleyplatform_rope</object>
           </objects>
           <objects name="Subcon">
-            <objects name="Grass">
+            <objects name="Vegetables">
               <object>objects\obj_turnip</object>
+              <object>objects\obj_turnip_mini</object>
+              <object>objects\obj_turnip_large</object>
+              <object>objects\obj_turnip_bomb</object>
             </objects>
+            <object>objects\obj_turnip_out</object>
           </objects>
         </objects>
         <objects name="Special">
