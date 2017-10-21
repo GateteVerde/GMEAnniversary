@@ -83,7 +83,7 @@ if (instance_exists(obj_playerparent))
 &amp;&amp; (keyboard_check(global.controlkey)) {
     
     //Create coin
-    with (instance_create(x,y,obj_blockcoin)) vspeed = -6;
+    with (instance_create(x,y,obj_blockcoin)) vspeed = -4;
     
     //Change the puller sprite
     with (obj_puller) sprite_index = scr_mario_duck();

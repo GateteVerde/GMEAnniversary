@@ -128,13 +128,20 @@ if (instance_exists(obj_puller)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Vegetable logic (Physics2 + Player)
+            <string>///Vegetable logic (Player + obj_physicsparent Physics)
 
 //Make sure is not held
 if (!held) {
 
     //Moving platform collision
     event_user(5);
+    
+    //Make sure the semisolid follows
+    if (instance_exists(mytop)) {
+        
+        mytop.x = x;
+        mytop.y = y+4;
+    }
     
     //Destroy in contact with lava
     if (collision_rectangle(bbox_left,bbox_bottom+6,bbox_right,bbox_bottom+7,obj_lava,0,0)) {
@@ -168,14 +175,18 @@ if (!held) {
     }
 }
 
-//Inherit End Step event
-event_inherited();
+//Otherwise, inherit default End Step event and make the solidtop go away
+else {
 
-//Make sure the semisolid follows
-if (instance_exists(mytop)) {
+    //Check if my top exists
+    if (instance_exists(mytop)) {
     
-    mytop.x = x;
-    mytop.y = y+1;
+        mytop.x = -1000;
+        mytop.y = -1000;
+    }
+    
+    //Inherit End Step event    
+    event_inherited();
 }
 </string>
           </argument>
@@ -289,13 +300,15 @@ else {
         swimming = false;
 }
 
-//Decrement 'aa' and explode when hits 0.
-if (aa &gt; 0) {
+//Decrement timer
+if (aa &gt; 0) { //If the timer is still going...
 
     aa--;
     if (aa &lt; 120)
         image_speed = 0.3;
 }
+
+//Otherwise, explode.
 else {
 
     instance_create(x,y,obj_explosion);
@@ -327,7 +340,7 @@ else {
             <string>///Make the player interact with the item
 
 if (keyboard_check_pressed(global.controlkey))
-&amp;&amp; (other.y &lt; mytop.yprevious+5)
+&amp;&amp; (other.bbox_bottom &lt; mytop.yprevious+5)
 &amp;&amp; (canpull()) {
 
     //Force player hold
