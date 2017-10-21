@@ -73,7 +73,8 @@ alarm[8] = 1;
             <kind>1</kind>
             <string>///Check up the sprite
 
-if (sprite_index == spr_turnip_large) {
+if (sprite_index == spr_turnip_large) 
+|| (sprite_index == spr_powblock_large) {
 
     drawpiece = 1;
     drawpiece2 = 0;

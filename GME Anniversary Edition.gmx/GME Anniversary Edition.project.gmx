@@ -115,6 +115,7 @@
     </sounds>
     <sounds name="Enemy">
       <sound>sound\snd_podoboo</sound>
+      <sound>sound\snd_thwomp</sound>
     </sounds>
     <sounds name="Item">
       <sound>sound\snd_1up</sound>
@@ -866,12 +867,13 @@
         <sprite>sprites\spr_squaremask</sprite>
       </sprites>
       <sprite>sprites\spr_24mask</sprite>
+      <sprite>sprites\spr_explosionmask</sprite>
       <sprite>sprites\spr_graymask</sprite>
       <sprite>sprites\spr_liftmask</sprite>
+      <sprite>sprites\spr_screenmask</sprite>
       <sprite>sprites\spr_slopemask_l</sprite>
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
-      <sprite>sprites\spr_explosionmask</sprite>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_fireball</sprite>
@@ -1481,7 +1483,11 @@
           <object>objects\obj_grass_multicoin</object>
           <object>objects\obj_grass_sprout</object>
           <object>objects\obj_grass_bomb</object>
+          <object>objects\obj_grass_pow</object>
+          <object>objects\obj_grass_pow_large</object>
         </objects>
+        <object>objects\obj_mblock</object>
+        <object>objects\obj_powblock</object>
       </objects>
       <object>objects\obj_conveyor_r</object>
       <object>objects\obj_conveyor_l</object>
@@ -1588,13 +1594,16 @@
             <object>objects\obj_pulleyplatform_rope</object>
           </objects>
           <objects name="Subcon">
-            <objects name="Vegetables">
+            <objects name="Grass">
               <object>objects\obj_turnip</object>
               <object>objects\obj_turnip_mini</object>
               <object>objects\obj_turnip_large</object>
               <object>objects\obj_turnip_bomb</object>
             </objects>
             <object>objects\obj_turnip_out</object>
+            <object>objects\obj_mblock_up</object>
+            <object>objects\obj_powblock_up</object>
+            <object>objects\obj_powblock_up_large</object>
           </objects>
           <object>objects\obj_explosion</object>
         </objects>
@@ -1619,6 +1628,7 @@
           <object>objects\obj_hud</object>
           <object>objects\obj_foreground</object>
         </objects>
+        <object>objects\obj_powkiller</object>
         <object>objects\obj_blockbumper</object>
       </objects>
       <object>objects\obj_persistent</object>

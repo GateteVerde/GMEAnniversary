@@ -418,7 +418,7 @@ if ((state == 2) || (delay != 0)) {
         if (boost == false) 
         && (abs(xspeed) < runspeed) {
         
-            y += 2;
+            y++;
             boost = true;
         }        
         

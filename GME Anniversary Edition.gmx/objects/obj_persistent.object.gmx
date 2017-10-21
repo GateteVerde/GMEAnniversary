@@ -54,6 +54,10 @@ addlives = 0;
 //Screenshot of the game, if it exists
 back = -1;
 
+//Screen shaking
+port_x = 0;
+port_y = 0;
+
 //Message to display to the screen
 message = "";
 
@@ -123,6 +127,44 @@ global.font_interface = font_add_sprite(spr_hud_font_interface,ord('!'),0,0);
 
 //Disable application surface automatic drawing
 application_surface_draw_enable(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make the screen shake when certain sounds are playing.
+
+if (audio_is_playing(snd_thwomp)) {
+    
+    //Repeat
+    alarm[11] = 1;    
+    
+    //Shake the screen...    
+    port_x = random_range(8,-8);
+    port_y = random_range(8,-8);
+}
+else {
+
+    port_x = 0;
+    port_y = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -255,6 +297,30 @@ view_enabled = true;
 //Make sure view 0 is always visible
 if (!view_visible[0])
     view_visible[0] = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make the screen shake when the 'Thwomp' sound plays
+
+if (!audio_is_playing(snd_thwomp))
+    alarm[11] = 2;
 </string>
           </argument>
         </arguments>
@@ -664,16 +730,25 @@ alarm[1] = 1;
 draw_enable_alphablend(false)
 
 //No Filter
-if (filter = 0)
-    draw_surface(application_surface,0,0);
+if (filter = 0) {
+
+    draw_rectangle_colour(0,0,global.gw,global.gh,c_black,c_black,c_black,c_black,0);
+    draw_surface(application_surface,port_x,port_y);
+}
 
 //2x Filtering 
-else if (filter = 1)
-    draw_surface_stretched(application_surface,0,0,global.gw*2,global.gh*2);
+else if (filter = 1) {
+
+    draw_rectangle_colour(0,0,global.gw*2,global.gh*2,c_black,c_black,c_black,c_black,0);
+    draw_surface_stretched(application_surface,port_x,port_y,global.gw*2,global.gh*2);
+}
 
 //3x Filtering
-else if (filter = 2)
-    draw_surface_stretched(application_surface,0,0,global.gw*3,global.gh*3);
+else if (filter = 2) {
+
+    draw_rectangle_colour(0,0,global.gw*3,global.gh*3,c_black,c_black,c_black,c_black,0);
+    draw_surface_stretched(application_surface,port_x,port_y,global.gw*3,global.gh*3);
+}
 
 //Enable alpha blending
 draw_enable_alphablend(true)
