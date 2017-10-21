@@ -27,6 +27,10 @@
             <kind>1</kind>
             <string>///A vegetable that is being turned out
 
+//Do not animate
+image_speed = 0;
+image_index = 0;
+
 //Whether the vegetable is pulled out
 ready = 0;
 
@@ -39,6 +43,9 @@ drawpiece2 = 0;
 
 //Whether the vegetable can respawn
 turnback = 0;
+
+//Timer for bombs
+aa = 0;
 
 //Check up the sprite
 alarm[8] = 1;

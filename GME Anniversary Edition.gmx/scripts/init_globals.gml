@@ -72,7 +72,7 @@ global.palacered = 0;
 global.palaceblue = 0;
 
 //Yellow Switch Palace
-global.palaceyellow = 1;
+global.palaceyellow = 0;
 
 //Green Switch Palace
 global.palacegreen = 0;

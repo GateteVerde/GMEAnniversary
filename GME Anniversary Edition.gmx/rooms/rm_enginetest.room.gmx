@@ -54,7 +54,6 @@
     <instance objName="obj_levelcontrol" x="0" y="0" name="inst_138588C7" locked="0" code="levelmusic = global._theme_plains;&#xA;leveltime = 500;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bganimator" x="16" y="0" name="inst_8E206239" locked="0" code="bg_index = 0;&#xA;bg_frame[0] = bgr_darkhills;&#xA;bg_frame[1] = bgr_darkhills_b;&#xA;bg_frame[2] = bgr_darkhills_c;&#xA;bg_frame[3] = bgr_darkhills_b;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="32" y="400" name="inst_F25A5931" locked="0" code="" scaleX="44" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player_start" x="384" y="384" name="inst_1FF94319" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="208" y="-80" name="inst_5C8B3DAB" locked="0" code="" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="544" y="-80" name="inst_3EAD1176" locked="0" code="" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="528" y="32" name="inst_9B3BCC66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -141,8 +140,6 @@
     <instance objName="obj_boltblock" x="384" y="208" name="inst_CE672DDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boltblock" x="368" y="224" name="inst_F1F18349" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boltblock" x="384" y="224" name="inst_FBC07CEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="352" y="336" name="inst_D15EF303" locked="0" code="varmsg = &quot;This thing at my left is a trampoline, jump on it to reach higher areas. If you press 'BUTTON 2' next to it, you can pick it up. You can even toss the item upwards like in SMW.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="400" y="336" name="inst_8FA8896B" locked="0" code="varmsg = &quot;This thing at my right is a timed trampoline, it shares the same function as a regular trampoline but you can only use for a fixed amount of seconds after picking it up.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sr" x="464" y="240" name="inst_0A050A6C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sr" x="448" y="256" name="inst_74A7E69E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sl" x="288" y="240" name="inst_239013EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -151,8 +148,6 @@
     <instance objName="obj_up" x="528" y="224" name="inst_A9F657EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="192" y="144" name="inst_D2F799C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="528" y="144" name="inst_57773C30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_trampoline_timed" x="440" y="384" name="inst_0F8BA357" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_trampoline" x="328" y="384" name="inst_2A879078" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_scatter" x="288" y="336" name="inst_FBE31EB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_scatter" x="464" y="336" name="inst_B6DEFC7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="0" y="368" name="inst_50567826" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -178,18 +173,13 @@
     <instance objName="obj_noteblock_hidden" x="512" y="304" name="inst_F1267097" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock_blue_hidden" x="176" y="352" name="inst_9A0048BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock_blue_hidden" x="576" y="352" name="inst_07A417BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="256" y="384" name="inst_17011C85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="272" y="384" name="inst_ADCF0464" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="496" y="384" name="inst_322FBF6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="480" y="384" name="inst_D0EDC304" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass" x="256" y="384" name="inst_57DD9703" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass" x="288" y="384" name="inst_8D3273E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass" x="464" y="384" name="inst_A0E3A78B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass" x="496" y="384" name="inst_E2E465D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass_mini" x="176" y="272" name="inst_5DE95120" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass_mini" x="576" y="272" name="inst_878C3132" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass_large" x="144" y="384" name="inst_008A29FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass_large" x="608" y="384" name="inst_DC5F3F50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_multicoin" x="320" y="384" name="inst_A2F5FF3F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_multicoin" x="432" y="384" name="inst_971F63F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player_start" x="384" y="384" name="inst_0C9A60D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_sprout" x="352" y="384" name="inst_6CCFA638" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_sprout" x="400" y="384" name="inst_83B546A7" locked="0" code="sprout = cs_propeller;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_bomb" x="144" y="384" name="inst_E7F1D373" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_bomb" x="608" y="384" name="inst_546085AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="112" y="240" w="16" h="16" xo="672" yo="0" id="10001595" name="inst_FBD03D33" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
