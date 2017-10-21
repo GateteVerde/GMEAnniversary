@@ -132,6 +132,9 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
             //Shake the entire screen
             instance_create(view_xview,view_yview,obj_powkiller);
             
+            //Create a big smoke effect
+            with (instance_create(x,y,obj_smoke)) sprite_index = spr_supersmash;
+            
             //Set smashed sprite
             sprite_index = spr_powblock_large_th;
             
@@ -147,6 +150,9 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
         
             //Shake the entire screen
             instance_create(view_xview,view_yview,obj_powkiller);
+                        
+            //Create a big smoke effect
+            with (instance_create(x,y,obj_smoke)) sprite_index = spr_supersmash;
             
             //Create a big smoke effect
             with (instance_create(x-8,y-16,obj_smoke)) {

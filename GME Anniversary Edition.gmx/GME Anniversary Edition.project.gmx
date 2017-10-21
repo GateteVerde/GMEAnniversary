@@ -918,6 +918,7 @@
         <sprite>sprites\spr_splash_lava</sprite>
         <sprite>sprites\spr_splash_lava_up</sprite>
         <sprite>sprites\spr_star</sprite>
+        <sprite>sprites\spr_supersmash</sprite>
         <sprite>sprites\spr_tornado</sprite>
       </sprites>
       <sprites name="GUI">
@@ -1485,6 +1486,7 @@
           <object>objects\obj_grass_bomb</object>
           <object>objects\obj_grass_pow</object>
           <object>objects\obj_grass_pow_large</object>
+          <object>objects\obj_grass_shell</object>
         </objects>
         <object>objects\obj_mblock</object>
         <object>objects\obj_powblock</object>
@@ -1599,6 +1601,7 @@
               <object>objects\obj_turnip_mini</object>
               <object>objects\obj_turnip_large</object>
               <object>objects\obj_turnip_bomb</object>
+              <object>objects\obj_turnip_shell</object>
             </objects>
             <object>objects\obj_turnip_out</object>
             <object>objects\obj_mblock_up</object>
@@ -1628,8 +1631,9 @@
           <object>objects\obj_hud</object>
           <object>objects\obj_foreground</object>
         </objects>
-        <object>objects\obj_powkiller</object>
         <object>objects\obj_blockbumper</object>
+        <object>objects\obj_powkiller</object>
+        <object>objects\obj_semisolid_temp</object>
       </objects>
       <object>objects\obj_persistent</object>
     </objects>

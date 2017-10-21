@@ -397,15 +397,19 @@ if (ready) {
         if (hspeed &lt; 0) 
         &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)) {
         
-            //Play 'Bump' sound
-            audio_play_sound(snd_bump, 0, false);
+            //If not outside view
+            if (!outside_view()) {
+            
+                //Play 'Bump' sound
+                audio_play_sound(snd_bump, 0, false);
+                    
+                //Bump nearby blocks
+                instance_create(x-5,y+8,obj_shellbump);
+                instance_create(x-8,y,obj_blockbumper);
+            }
             
             //Reverse speed
-            hspeed = -hspeed;
-            
-            //Bump nearby blocks
-            instance_create(x-5,y+8,obj_shellbump);
-            instance_create(x-8,y,obj_blockbumper);
+            hspeed = -hspeed;    
             
             //Prevent getting embed on a wall
             while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,0))
@@ -416,15 +420,19 @@ if (ready) {
         else if (hspeed &gt; 0)
         &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)) {
         
-            //Play 'Bump' sound
-            audio_play_sound(snd_bump, 0, false);
+            //If not outside view
+            if (!outside_view()) {
+            
+                //Play 'Bump' sound
+                audio_play_sound(snd_bump, 0, false);
+                    
+                //Bump nearby blocks
+                instance_create(x+5,y+8,obj_shellbump);
+                instance_create(x-8,y,obj_blockbumper);
+            }
             
             //Reverse speed
             hspeed = -hspeed;
-            
-            //Bump nearby blocks
-            instance_create(x+5,y+8,obj_shellbump);
-            instance_create(x-8,y,obj_blockbumper);
             
             //Prevent getting embed on a wall
             while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,0))
