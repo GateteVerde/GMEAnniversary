@@ -121,6 +121,7 @@
       <sound>sound\snd_boomerang</sound>
       <sound>sound\snd_coin</sound>
       <sound>sound\snd_collect</sound>
+      <sound>sound\snd_explode</sound>
       <sound>sound\snd_pop</sound>
       <sound>sound\snd_powerup</sound>
       <sound>sound\snd_scatter</sound>
@@ -870,6 +871,7 @@
       <sprite>sprites\spr_slopemask_l</sprite>
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
+      <sprite>sprites\spr_explosionmask</sprite>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_fireball</sprite>
@@ -1592,6 +1594,7 @@
             </objects>
             <object>objects\obj_turnip_out</object>
           </objects>
+          <object>objects\obj_explosion</object>
         </objects>
         <objects name="Special">
           <objects name="Dialogues">
@@ -1604,8 +1607,9 @@
             </objects>
             <object>objects\obj_bubble</object>
             <object>objects\obj_bubble_v</object>
-            <object>objects\obj_smoke</object>
             <object>objects\obj_shellbump</object>
+            <object>objects\obj_smoke</object>
+            <object>objects\obj_star</object>
           </objects>
           <objects name="Music">
             <object>objects\obj_musicplayer_persistent</object>
