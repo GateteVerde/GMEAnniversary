@@ -35,7 +35,7 @@ image_speed = 0;
 image_index = 0;
 
 //Create semisolid
-mytop = instance_create(x,y,obj_semisolid_temp);
+mytop = instance_create(x,y,obj_semisolid);
 </string>
           </argument>
         </arguments>
@@ -140,6 +140,37 @@ if (!held) {
         
         mytop.x = bbox_left;
         mytop.y = round(y)+2;
+        
+        //If the player is on this moving platform
+        if (collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerparent,0,0))
+        &amp;&amp; (obj_playerparent.bbox_bottom &lt; yprevious+5)
+        &amp;&amp; (obj_playerparent.state &lt; 2) {
+        
+            //Make the player able to pull
+            if (canpull()) {
+
+                //Force player hold
+                with (obj_playerparent) {
+                
+                    holding = 1;
+                    visible = 0;
+                }
+                
+                //Create puller
+                instance_create(other.x,other.y,obj_puller);
+                
+                //Finish pull
+                alarm[0] = 10;
+            }
+        
+            //Snap the player vertically
+            obj_playerparent.y = ceil(bbox_top-15);
+        
+            //Move the player horizontally if there is no solid in his way
+            if (hspeed &lt; 0) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_left-hspeed-2.5,obj_playerparent.bbox_top+4,obj_playerparent.bbox_left-hspeed,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
+            || (hspeed &gt; 0) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_right+hspeed,obj_playerparent.bbox_top+4,obj_playerparent.bbox_right+hspeed+2.5,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
+                obj_playerparent.x += hspeed;
+        }
     }
     
     //Destroy in contact with lava
@@ -297,47 +328,6 @@ else {
     else if (!water) 
     &amp;&amp; (swimming)
         swimming = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_playerparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Make the player interact with the item
-
-if (keyboard_check_pressed(global.controlkey))
-&amp;&amp; (other.bbox_bottom+1 &lt; mytop.yprevious+5)
-&amp;&amp; (canpull()) {
-
-    //Force player hold
-    with (obj_playerparent) {
-    
-        holding = 1;
-        visible = 0;
-    }
-    
-    //Create puller
-    instance_create(other.x,other.y,obj_puller);
-    
-    //Finish pull
-    alarm[0] = 10;
 }
 </string>
           </argument>
@@ -519,6 +509,31 @@ else if (hspeed &gt; 0)
     while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,0))
         x--;             
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw shell
+
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,1,1,0,c_white,1);
 </string>
           </argument>
         </arguments>

@@ -438,6 +438,17 @@ if (ready == 2) {
     if (myveggie == obj_turnip_bomb) 
         with (instance_create(obj_playerparent.x,obj_playerparent.y-5,obj_turnip_bomb)) aa = other.aa;
         
+    //Otherwise, if the vegetable is a basket sphere
+    else if (myveggie == obj_basket_up) {
+    
+        //Create a held basket sphere
+        with (instance_create(obj_playerparent.x,obj_playerparent.y-5,obj_basket_up)) {
+        
+            image_speed = other.image_speed;
+            image_index = other.image_index;
+        }
+    }
+        
     //Otherwise, pull a veggie
     else {
     
