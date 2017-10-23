@@ -820,6 +820,7 @@
         <sprite>sprites\spr_basket</sprite>
         <sprite>sprites\spr_basket_up</sprite>
         <sprite>sprites\spr_basket_shard</sprite>
+        <sprite>sprites\spr_itembubble</sprite>
       </sprites>
       <sprite>sprites\spr_icecoin</sprite>
       <sprite>sprites\spr_iceplant</sprite>
@@ -906,6 +907,8 @@
         <sprite>sprites\spr_bubble</sprite>
         <sprite>sprites\spr_castlesmoke</sprite>
         <sprite>sprites\spr_cinder</sprite>
+        <sprite>sprites\spr_glass</sprite>
+        <sprite>sprites\spr_glass_h</sprite>
         <sprite>sprites\spr_icespark</sprite>
         <sprite>sprites\spr_pop</sprite>
         <sprite>sprites\spr_shellthump</sprite>
@@ -1493,6 +1496,7 @@
         <object>objects\obj_mblock</object>
         <object>objects\obj_powblock</object>
         <object>objects\obj_basket</object>
+        <object>objects\obj_itembubble</object>
       </objects>
       <object>objects\obj_conveyor_r</object>
       <object>objects\obj_conveyor_l</object>
@@ -1612,6 +1616,7 @@
             <object>objects\obj_powblock_up_large</object>
             <object>objects\obj_basket_up</object>
             <object>objects\obj_basket_shard</object>
+            <object>objects\obj_basket_shard_bottom</object>
           </objects>
           <object>objects\obj_explosion</object>
         </objects>

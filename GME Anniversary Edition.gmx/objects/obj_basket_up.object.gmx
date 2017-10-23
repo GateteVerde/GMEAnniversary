@@ -423,41 +423,22 @@ if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_
             <kind>1</kind>
             <string>///Create shards
 
-with (instance_create(x+8,y,obj_basket_shard)) {
+//Create glass shards
+repeat (32) {
 
-    //Do not animate
-    image_speed = 0;
-    image_index = 3;
+    with (instance_create(x-8+random(24),y-16+random(8),obj_basket_shard)) {
     
-    //Motion
-    motion_set(45,6);    
+        motion_set(random_range(60,120),random_range(4,6));
+        if (choose(0,1) == 0)
+            sprite_index = spr_glass_h;
+    }
 }
-with (instance_create(x+8,y-16,obj_basket_shard)) {
 
-    //Do not animate
-    image_speed = 0;
-    image_index = 3;
-    
-    //Motion
-    motion_set(60,6);    
-}
-with (instance_create(x-8,y,obj_basket_shard)) {
+//Create bottom part
+with (instance_create(x+8,y+8,obj_basket_shard_bottom)) {
 
-    //Do not animate
-    image_speed = 0;
-    image_index = 0;
-    
-    //Motion
-    motion_set(120,6);    
-}
-with (instance_create(x-8,y+16,obj_basket_shard)) {
-
-    //Do not animate
-    image_speed = 0;
-    image_index = 2;
-    
-    //Motion
-    motion_set(135,6);    
+    vspeed = -3;
+    hspeed = other.hspeed/2;
 }
 </string>
           </argument>
