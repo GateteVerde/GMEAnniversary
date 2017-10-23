@@ -77,6 +77,36 @@ newsize = 1;
 
 //Whether this block can be hit
 ready = 0;
+
+//Slope collision
+myslope = instance_create(x,bbox_top,obj_slopeparent);
+with (myslope)
+    sprite_index = spr_itembubblemask;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy slope
+
+with (myslope) instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -130,8 +160,18 @@ ready = 0;
 if (ready) {
 
     //If the size is greater than the objective size, shrink it.
-    if (size &gt; newsize)
+    if (size &gt; newsize) {
+    
+        //Reduce size
         size -= 0.05;
+        
+        //Move down
+        y++;
+        
+        //Move slope down
+        if (instance_exists(myslope))
+            with (myslope) y++;   
+    }
         
     //Otherwise, make it able to be hit
     else
@@ -141,6 +181,13 @@ if (ready) {
 //Set the same size
 image_xscale = size;
 image_yscale = size;
+
+//Make sure the slope gets the same size
+with (myslope) {
+
+    image_xscale = other.size;
+    image_yscale = other.size;
+}
 </string>
           </argument>
         </arguments>
@@ -165,7 +212,8 @@ image_yscale = size;
             <kind>1</kind>
             <string>///Collision with a thrown vegetable
 
-if (other.held == 0) {
+//If the vegetable is not being held and it's moving down
+if ((other.held == 0) &amp;&amp; (other.vspeed &gt;= 0)) {
 
     //Switch size
     if (ready == 0) {
@@ -174,13 +222,11 @@ if (other.held == 0) {
         
             newsize = 0.75;
             ready = 1;
-            y += 4;
         }
         else if (size == 0.75) {
         
             newsize = 0.5;
             ready = 1;
-            y += 4;
         }
         else {
         
@@ -192,7 +238,7 @@ if (other.held == 0) {
             
                 repeat(5) {
                 
-                    with (instance_create(x,y,obj_blockcoin2)) {
+                    with (instance_create(x,y-8,obj_blockcoin2)) {
                     
                         hspeed = random_range(1,-1);
                         vspeed = random_range(-2,-6);
@@ -204,7 +250,7 @@ if (other.held == 0) {
             else if (sprout != cs_coin) {
             
                 //Create a item out of the sprite.
-                with (sprite_make_object(x+8+(sprite_get_xoffset(constant_get_sprite(sprout))),y+10,constant_get_sprite(sprout))) {
+                with (sprite_make_object(x+8+(sprite_get_xoffset(constant_get_sprite(sprout))),y-8,constant_get_sprite(sprout))) {
                 
                     vspeed = -4;
                     if (other.sprout &gt; cs_coin)
@@ -213,19 +259,21 @@ if (other.held == 0) {
             }
             
             //Create 'Pop' effect
-            with (instance_create(x,y,obj_smoke)) sprite_index = spr_pop;
+            with (instance_create(x-16,y-16,obj_smoke)) sprite_index = spr_pop;
             
             //Destroy
             instance_destroy();
         }
     }
+    
+    //With veggie
+    other.vspeed = -3;
+    other.hspeed /= 2;
+    
+    //Create a spinthump
+    with (instance_create(other.x+8,other.y,obj_smoke)) 
+        sprite_index = spr_spinthump;
 }
-
-//Make the vegetable bounce
-other.vspeed = -3;
-
-//Create a spinthump
-with (instance_create(other.x+8,other.y,obj_smoke)) sprite_index = spr_spinthump;
 </string>
           </argument>
         </arguments>
@@ -248,13 +296,19 @@ with (instance_create(other.x+8,other.y,obj_smoke)) sprite_index = spr_spinthump
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw the item
+            <string>///Draw the item and the bubble
+
+//Draw the item
+if (sprout = cs_coin) {
+
+    draw_sprite_ext(spr_coin,0,x-8,y-8,1,1,0,c_white,1)
+}
+else {
+
+    draw_sprite_ext(constant_get_sprite(sprout),0,x,y-8,1,1,0,c_white,1)
+}
 
 draw_sprite_ext(sprite_index,-1,round(x),round(y),image_xscale,image_xscale,0,c_white,1);
-if (sprout = cs_coin)
-    draw_sprite_ext(spr_coin,0,x-8,y-8,1,1,0,c_white,1)
-else
-    draw_sprite_ext(constant_get_sprite(sprout),0,x,y-8,1,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

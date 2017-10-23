@@ -90,7 +90,7 @@ if (vspeed &gt; 0) {
     //If the semisolid exists, snap above it.
     if (semisolid)
     &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5)
-        y = semisolid.bbox_top-16;
+        y = semisolid.y+floor(y-bbox_bottom-0.9)
 }
 
 //Embed the NPC into the slope to ensure correct slope physics.
