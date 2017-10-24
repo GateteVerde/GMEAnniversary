@@ -768,6 +768,8 @@
         </sprites>
         <sprites name="SMB2">
           <sprite>sprites\spr_log</sprite>
+          <sprite>sprites\spr_carrotlift</sprite>
+          <sprite>sprites\spr_carrotlift_32x</sprite>
         </sprites>
         <sprites name="SMB3">
           <sprite>sprites\spr_arrowplatform</sprite>
@@ -1457,6 +1459,8 @@
         </objects>
         <objects name="SMB2">
           <object>objects\obj_generator_log</object>
+          <object>objects\obj_carrotlift</object>
+          <object>objects\obj_carrotlift_32x</object>
         </objects>
         <objects name="SMB3">
           <object>objects\obj_arrowplatform</object>
