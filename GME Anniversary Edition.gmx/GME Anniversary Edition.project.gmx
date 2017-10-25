@@ -112,6 +112,7 @@
       <sound>sound\snd_swim</sound>
       <sound>sound\snd_throw</sound>
       <sound>sound\snd_transform</sound>
+      <sound>sound\snd_warp</sound>
     </sounds>
     <sounds name="Enemy">
       <sound>sound\snd_podoboo</sound>
@@ -120,6 +121,7 @@
     <sounds name="Item">
       <sound>sound\snd_1up</sound>
       <sound>sound\snd_boomerang</sound>
+      <sound>sound\snd_bubble</sound>
       <sound>sound\snd_coin</sound>
       <sound>sound\snd_collect</sound>
       <sound>sound\snd_explode</sound>
@@ -804,7 +806,7 @@
         </sprites>
         <sprites name="Collectibles">
           <sprite>sprites\spr_sorcerer</sprite>
-          <sprite>sprites\spr_vegkey</sprite>
+          <sprite>sprites\spr_pullkey</sprite>
           <sprite>sprites\spr_heart</sprite>
           <sprite>sprites\spr_cherry</sprite>
           <sprite>sprites\spr_cherry_get</sprite>
@@ -1487,20 +1489,26 @@
         <object>objects\obj_mushroomplatform</object>
       </objects>
       <objects name="Subcon">
+        <objects name="Collectibles">
+          <object>objects\obj_pullkey</object>
+          <object>objects\obj_heart</object>
+        </objects>
+        <objects name="Decor">
+          <object>objects\obj_digsand</object>
+        </objects>
         <objects name="Grass">
+          <objects name="Item">
+            <object>objects\obj_grass_coin</object>
+            <object>objects\obj_grass_multicoin</object>
+            <object>objects\obj_grass_sprout</object>
+            <object>objects\obj_grass_pow</object>
+            <object>objects\obj_grass_pow_large</object>
+            <object>objects\obj_grass_bomb</object>
+            <object>objects\obj_grass_shell</object>
+          </objects>
           <object>objects\obj_grass</object>
           <object>objects\obj_grass_mini</object>
           <object>objects\obj_grass_large</object>
-          <object>objects\obj_grass_coin</object>
-          <object>objects\obj_grass_multicoin</object>
-          <object>objects\obj_grass_sprout</object>
-          <object>objects\obj_grass_bomb</object>
-          <object>objects\obj_grass_pow</object>
-          <object>objects\obj_grass_pow_large</object>
-          <object>objects\obj_grass_shell</object>
-        </objects>
-        <objects name="Collectibles">
-          <object>objects\obj_vegkey</object>
         </objects>
         <object>objects\obj_mblock</object>
         <object>objects\obj_powblock</object>
@@ -1612,18 +1620,20 @@
             <object>objects\obj_pulleyplatform_rope</object>
           </objects>
           <objects name="Subcon">
-            <objects name="Grass">
+            <objects name="Collectibles">
+              <object>objects\obj_sorcerer</object>
+              <object>objects\obj_pullkey_up</object>
+            </objects>
+            <objects name="Turnips">
+              <objects name="Important">
+                <object>objects\obj_turnip_out</object>
+              </objects>
               <object>objects\obj_turnip</object>
               <object>objects\obj_turnip_mini</object>
               <object>objects\obj_turnip_large</object>
               <object>objects\obj_turnip_bomb</object>
               <object>objects\obj_turnip_shell</object>
             </objects>
-            <objects name="Collectibles">
-              <object>objects\obj_sorcerer</object>
-              <object>objects\obj_vegkey_up</object>
-            </objects>
-            <object>objects\obj_turnip_out</object>
             <object>objects\obj_mblock_up</object>
             <object>objects\obj_powblock_up</object>
             <object>objects\obj_powblock_up_large</object>

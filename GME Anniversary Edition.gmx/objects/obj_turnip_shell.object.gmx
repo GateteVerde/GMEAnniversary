@@ -34,6 +34,9 @@ event_inherited();
 image_speed = 0;
 image_index = 0;
 
+//Whether this object can harm the player
+harmplayer = 0;
+
 //Create semisolid
 mytop = instance_create(x,y,obj_semisolid);
 </string>
@@ -65,6 +68,31 @@ event_inherited();
 
 //Destroy semisolid
 with (mytop) instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make the shell able to harm the player
+
+harmplayer = 1;
 </string>
           </argument>
         </arguments>
@@ -294,6 +322,9 @@ if (held) {
             
             //Animate
             image_speed = 0.3;
+            
+            //Make the shell able to harm the player after a while
+            alarm[1] = 30;
         }
     }
 }
@@ -329,6 +360,33 @@ else {
     &amp;&amp; (swimming)
         swimming = false;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_playerparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make the shell harm the player
+
+if (harmplayer)
+&amp;&amp; (other.bbox_bottom &gt; yprevious+5)
+    with (other) event_user(0);
 </string>
           </argument>
         </arguments>

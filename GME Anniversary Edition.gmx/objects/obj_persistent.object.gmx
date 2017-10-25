@@ -34,7 +34,7 @@ pal_swap_init_system(shd_palette_swapper);
 global.flighttime = 4;
 
 //Health Mode
-global.healthmode = 0;
+global.healthmode = 1;
 
 //Cat climb time
 global.cattime = 3;
@@ -490,6 +490,36 @@ alarm[0] = 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Check if health mode is active
+
+if (global.healthmode) {
+
+    if (health &gt; 1)
+    &amp;&amp; (global.powerup = cs_small)
+        global.powerup = cs_big;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="3">
       <action>
         <libid>1</libid>
@@ -724,6 +754,7 @@ draw_enable_alphablend(true)
 
 //Show FPS if below 60
 draw_set_font(global.font_interface);
+draw_set_colour(c_white);
 if (fps &lt; 60)
     draw_text(2,2,"FPS: " + string(fps) + "/ FPS REAL: " + string(fps_real));
 </string>

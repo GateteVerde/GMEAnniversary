@@ -1190,9 +1190,138 @@ else {
             <kind>1</kind>
             <string>///Default hurt script
 
-if (!invulnerable) {
+//If not invulnerable
+if (invulnerable == false) {
 
-    invulnerable = true;
+    //If the player is riding something
+    if (global.mount &gt; 0) {
+        
+        exit;
+    }
+    
+    else {
+    
+        //If health mode is active
+        if (global.healthmode == true) {
+        
+            //If the player does have a higher grade powerup
+            if (global.powerup &gt; cs_big) {
+            
+                //Play 'Warp' sound
+                audio_play_sound(snd_warp, 0, false);
+            
+                //If the health is greater than 1
+                if (health &gt; 1) {
+        
+                    //Turn the player into 'Super'.
+                    global.powerup = cs_big;
+                    
+                    //Perform animation sequence
+                    with (instance_create(0,0,obj_player_transform))
+                        sequence = 3;
+                }
+                
+                //Otherwise, if health is equal to 1
+                else if (health == 1) {
+                
+                    //Turn the player into 'Super'.
+                    global.powerup = cs_small;
+                    
+                    //Perform animation sequence
+                    with (instance_create(0,0,obj_player_transform))
+                        sequence = 1;            
+                }
+            }
+            
+            //Otherwise, reduce health
+            else {
+            
+                //If health is greater than 1
+                if (health &gt; 1) {
+                
+                    //Play 'Warp' sound
+                    audio_play_sound(snd_warp, 0, false);
+            
+                    //If health is equal to 2
+                    if (health == 2) {
+                    
+                        //Turn the player into 'Small'.
+                        global.powerup = cs_small;
+                        
+                        //Set health to 1
+                        health = 1;
+                        
+                        //Perform animation sequence
+                        with (instance_create(0,0,obj_player_transform))
+                            sequence = 1;            
+                    }
+                    
+                    //Otherwise, decrement health
+                    else
+                        health--;
+                }
+                
+                //Otherwise, kill the player
+                else {
+                
+                    //Kill the player
+                    exit;            
+                }
+            }
+            
+            //Do a involuntary jump when hurt
+            if (state &lt; 2) {
+            
+                jumping = 2;
+                yspeed = -1.5;
+                xspeed = -1.5*sign(xscale);
+            }
+        }
+        
+        //Otherwise, if health mode is not enabled
+        else if (global.healthmode == false) {
+        
+            //If the player has a higher grade powerup
+            if (global.powerup &gt; cs_big) {
+            
+                //Play 'Warp' sound
+                audio_play_sound(snd_warp, 0, false);
+        
+                //Turn the player into 'Super'.
+                global.powerup = cs_big;
+                
+                //Perform animation sequence
+                with (instance_create(0,0,obj_player_transform))
+                    sequence = 3;    
+            }
+            
+            //Otherwise, turn into small
+            else if (global.powerup == cs_big) {
+            
+                //Play 'Warp' sound
+                audio_play_sound(snd_warp, 0, false);
+                
+                //Turn the player into 'Super'.
+                global.powerup = cs_small;
+                
+                //Perform animation sequence
+                with (instance_create(0,0,obj_player_transform))
+                    sequence = 1;        
+            }
+            
+            //Otherwise, kill the player
+            else {
+            
+                //Kill player
+                exit;
+            }
+        }
+    }
+    
+    //Become invulnerable
+    invulnerable = 1;
+    
+    //Become vulnerable
     alarm[0] = 90;
     alarm[1] = 1;
 }

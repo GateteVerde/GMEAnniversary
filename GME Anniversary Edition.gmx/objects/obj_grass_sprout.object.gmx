@@ -150,11 +150,11 @@ if (instance_exists(obj_playerparent))
     if (sprout == cs_propeller) {
     
         //Create propeller mushroom
-        instance_create(x+8,y,obj_pickup_propeller);
+        instance_create(x+8,obj_playerparent.bbox_top-16,obj_pickup_propeller);
     }
     else {
     
-        with (sprite_make_object(x+8,y,constant_get_sprite(sprout))) {
+        with (sprite_make_object(x+8,obj_playerparent.bbox_top-16,constant_get_sprite(sprout))) {
         
             //Set the horizontal speed
             hspeed = 1*obj_playerparent.xscale;

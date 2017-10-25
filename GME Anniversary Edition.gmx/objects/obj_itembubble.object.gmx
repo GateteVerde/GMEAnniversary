@@ -218,6 +218,9 @@ if ((other.held == 0) &amp;&amp; (other.vspeed &gt;= 0)) {
     //Switch size
     if (ready == 0) {
     
+        //Play 'Bumped' sound
+        audio_play_sound(snd_bubble, 0, false);
+    
         if (size == 1) {
         
             newsize = 0.75;
@@ -249,12 +252,10 @@ if ((other.held == 0) &amp;&amp; (other.vspeed &gt;= 0)) {
             //Otherwise, create a item.
             else if (sprout != cs_coin) {
             
-                //Create a item out of the sprite.
                 with (sprite_make_object(x-8+(sprite_get_xoffset(constant_get_sprite(sprout))),y-8,constant_get_sprite(sprout))) {
                 
                     vspeed = -4;
-                    if (other.sprout &gt; cs_coin)
-                        permission = 1;
+                    permission = 1;
                 }
             }
             
@@ -267,8 +268,7 @@ if ((other.held == 0) &amp;&amp; (other.vspeed &gt;= 0)) {
     }
     
     //With veggie
-    other.vspeed = -3;
-    other.hspeed /= 2;
+    other.vspeed = -1.5;
     
     //Create a spinthump
     with (instance_create(other.x+8,other.y,obj_smoke)) 

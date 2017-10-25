@@ -34,6 +34,17 @@ audio_play_sound(snd_powerup, 0, false);
 with (instance_create(x-8,y,obj_score)) event_user(5);
 
 //Restore all health
+if (health == 0) {
+    
+    //Turn Mario into 'Super' Mario.
+    global.powerup = cs_big;
+    
+    //Perform animation sequence
+    with (instance_create(0,0,obj_player_transform))
+        sequence = 0;    
+}
+
+//Recover all health
 health = 3;
 
 //Destroy
