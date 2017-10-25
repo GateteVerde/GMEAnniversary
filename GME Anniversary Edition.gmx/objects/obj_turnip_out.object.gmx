@@ -37,6 +37,9 @@ ready = 0;
 //Whether the vegetable is a enemy
 enemy = 0;
 
+//Whether the vegetable is a powerup
+powerup = 0;
+
 //Whether the vegetable is drawn
 drawpiece = 0;
 drawpiece2 = 0;
@@ -74,7 +77,8 @@ alarm[8] = 1;
             <string>///Check up the sprite
 
 if (sprite_index == spr_turnip_large) 
-|| (sprite_index == spr_powblock_large) {
+|| (sprite_index == spr_powblock_large) 
+|| (powerup) {
 
     drawpiece = 1;
     drawpiece2 = 0;

@@ -53,6 +53,9 @@ global.ms = false;
 //2: Clear (Secret Exit)
 global.clear = 0;
 
+//Cherries
+global.cherries = 0;
+
 //Powerup
 global.powerup = cs_small;
 

@@ -804,9 +804,10 @@
         </sprites>
         <sprites name="Collectibles">
           <sprite>sprites\spr_sorcerer</sprite>
+          <sprite>sprites\spr_vegkey</sprite>
+          <sprite>sprites\spr_heart</sprite>
           <sprite>sprites\spr_cherry</sprite>
           <sprite>sprites\spr_cherry_get</sprite>
-          <sprite>sprites\spr_vegkey</sprite>
           <sprite>sprites\spr_vegshroom</sprite>
           <sprite>sprites\spr_vegshroom_1up</sprite>
         </sprites>
@@ -1498,6 +1499,9 @@
           <object>objects\obj_grass_pow_large</object>
           <object>objects\obj_grass_shell</object>
         </objects>
+        <objects name="Collectibles">
+          <object>objects\obj_vegkey</object>
+        </objects>
         <object>objects\obj_mblock</object>
         <object>objects\obj_powblock</object>
         <object>objects\obj_basket</object>
@@ -1614,6 +1618,10 @@
               <object>objects\obj_turnip_large</object>
               <object>objects\obj_turnip_bomb</object>
               <object>objects\obj_turnip_shell</object>
+            </objects>
+            <objects name="Collectibles">
+              <object>objects\obj_sorcerer</object>
+              <object>objects\obj_vegkey_up</object>
             </objects>
             <object>objects\obj_turnip_out</object>
             <object>objects\obj_mblock_up</object>

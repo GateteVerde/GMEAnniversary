@@ -250,7 +250,7 @@ if ((other.held == 0) &amp;&amp; (other.vspeed &gt;= 0)) {
             else if (sprout != cs_coin) {
             
                 //Create a item out of the sprite.
-                with (sprite_make_object(x+8+(sprite_get_xoffset(constant_get_sprite(sprout))),y-8,constant_get_sprite(sprout))) {
+                with (sprite_make_object(x-8+(sprite_get_xoffset(constant_get_sprite(sprout))),y-8,constant_get_sprite(sprout))) {
                 
                     vspeed = -4;
                     if (other.sprout &gt; cs_coin)
