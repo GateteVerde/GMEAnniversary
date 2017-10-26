@@ -233,7 +233,7 @@ else {
     //Otherwise, if Mario does have a powerup.
     else if (global.powerup &gt; cs_big) {
     
-        //Set the previous powerup as a reserve item.
+        //Set the previous powerup as a reserve item
         global.reserve = global.powerup;
     }
     

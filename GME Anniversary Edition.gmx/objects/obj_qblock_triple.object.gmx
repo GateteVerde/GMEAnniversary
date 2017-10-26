@@ -120,8 +120,14 @@ for (var i=0; i&lt;3; i++;) {
     if (sprout[i] != cs_coin) {
     
         //If there is a powerup inside this block and the player is small, or there's a golden mushroom and health mode is not enabled.
-        if ((sprout[i] &gt; cs_big) &amp;&amp; (global.powerup == cs_small)) 
-        || ((sprout[i] == cs_golden) &amp;&amp; (global.healthmode == false))
+        if (sprout[i] &gt; cs_big) {
+        
+            if (global.healthmode == false)
+            &amp;&amp; (global.powerup == cs_small)
+                sprout[i] = cs_big;
+        }
+        else if (sprout[i] == cs_golden)
+        &amp;&amp; (global.healthmode == false)
             sprout[i] = cs_big;
             
         //Create the item

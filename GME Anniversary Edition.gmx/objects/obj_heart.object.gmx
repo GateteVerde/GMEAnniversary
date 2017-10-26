@@ -140,14 +140,6 @@ if (ready &lt; 2) {
             with (instance_create(0,0,obj_player_transform))
                 sequence = 0;
         }
-        
-        //Otherwise, get a reserve mushroom
-        else {
-        
-            //If NO item is in reserve.
-            if (global.reserve = cs_small)
-                global.reserve = cs_big;
-        }
     }
     
     //Otherwise, if health mode is active.
@@ -165,8 +157,8 @@ if (ready &lt; 2) {
         }
         
         health++;
-        if (health &gt; 3)
-            health = 3;
+        if (health &gt; global.healthmax)
+            health = global.healthmax;
     }
     
     //Collect it

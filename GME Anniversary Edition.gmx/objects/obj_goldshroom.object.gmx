@@ -45,7 +45,8 @@ if (health == 0) {
 }
 
 //Recover all health
-health = 3;
+global.healthmax = 6;
+health = global.healthmax;
 
 //Destroy
 instance_destroy();

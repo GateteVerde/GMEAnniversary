@@ -110,9 +110,6 @@ math_set_epsilon(0.00001);
 //Regular Numbers
 global.numbers_w = font_add_sprite_ext(spr_numbers,"0123456789",0,0);
 
-//Regular Blk Numbers
-global.numbers_b = font_add_sprite_ext(spr_numbersblk,"0123456789",0,0);
-
 //Regular Gold Numbers
 global.numbers_g = font_add_sprite_ext(spr_numbersgold,"0123456789",0,0);
 

@@ -30,7 +30,8 @@ lives = 5;
 score = 0;
 
 //Health
-health = 1;
+health = 3;
+global.healthmax = 3;
 
 //Skin
 //0: No skin

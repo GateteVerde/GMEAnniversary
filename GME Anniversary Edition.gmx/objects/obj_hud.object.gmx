@@ -83,69 +83,59 @@ alarm[0] = 7;
             <kind>1</kind>
             <string>///Draw the HUD
 
-//Draw the health bar
-if (global.healthmode) {
-
-    draw_sprite_ext(spr_hud_health, health, view_xview[0]+4,view_yview[0]+4,1,1,0,c_white,1);
-}
+//HUD (Left)
+draw_sprite_ext(spr_hud, 0, view_xview[0]+5, view_yview[0]+5, 1, 1, 0, c_white, 1);
 
 //Set font
 draw_set_font(global.numbers_w);
 
 //Lives
-draw_sprite_ext(spr_hud_mario, 0, view_xview[0]+(4+(41*global.healthmode)), view_yview[0]+5, 1, 1, 0, c_white, 1);
-draw_text_colour_shadowed(view_xview[0]+(15+(41*global.healthmode)), view_yview[0]+9, string_format(lives, 2, 0), c_black, c_white, 1, 1, 1, 1);
+draw_text_colour_shadowed(view_xview[0]+23, view_yview[0]+10, string_format(lives, 2, 0), c_black, c_white, 1, 1, 1, 1);
 
 //Set font
 draw_set_font(global.numbers_g);
 
 //Coins
-draw_sprite_ext(spr_hud_coin, 0, view_xview[0]+(4+(41*global.healthmode)), view_yview[0]+25, 1, 1, 0, c_white, 1);
-draw_text_colour_shadowed(view_xview[0]+(15+(41*global.healthmode)), view_yview[0]+29, string_format(global.coins, 2, 0), c_black, c_white, 1, 1, 1, 1);;
+draw_text_colour_shadowed(view_xview[0]+68, view_yview[0]+10, string_format(global.coins, 2, 0), c_black, c_white, 1, 1, 1, 1);
 
-//Star Coins
-draw_sprite_ext(spr_hud_starcoin, 0, view_xview[0]+4, view_yview[0]+45, 1, 1, 0, c_white, 1);
+//Reserve Box / Health Meter
+if (global.healthmode == 0) {
 
-//Reserve Box
-draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+18, 1, 1, 0, c_white, 1);
-if (global.reserve != cs_small)
-    draw_sprite_ext(constant_get_sprite(global.reserve),-1,view_xview[0]+view_wview[0]/2, view_yview[0]+10, 1, 1, 0, c_white,1);
+    //Box
+    draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+19, 1, 1, 0, c_white, 1);
+    
+    //Reserve item
+    if (global.reserveitem &gt; cs_small)
+        draw_sprite_ext(constant_get_sprite(global.reserveitem), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+11, 1, 1, 0, c_white, 1);
+}
+else {
 
-//Set font
-draw_set_font(global.numbers_b);
+    //Draw health
+    draw_sprite_ext(spr_hud_health, health, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, 1);
+}
 
-//Score
-draw_text_colour_shadowed(view_xview[0]+view_wview[0]-156, view_yview[0]+9, string_add_zeros(score, 9), c_black, c_white, 1, 1, 1, 1);
+//HUD (Right)
+draw_sprite_ext(spr_hud_r, 0, view_xview[0]+view_wview[0]-83, view_yview[0]+5, 1, 1, 0, c_white, 1);
 
 //Set font
 draw_set_font(global.numbers_w);
 
 //Time
-draw_sprite_ext(spr_hud_time, 0, view_xview[0]+view_wview[0]-50, view_yview[0]+9, 1, 1, 0, c_white, 1);
-draw_text_colour_shadowed(view_xview[0]+view_wview[0]-35, view_yview[0]+9, string_add_zeros(global.time, 3), c_black, c_white, 1, 1, 1, 1);
+draw_text_colour_shadowed(view_xview[0]+view_wview[0]-34, view_yview[0]+10, string_add_zeros(global.time, 3), c_black, c_white, 1, 1, 1, 1);
 
-//Extra time
-if (extratime &gt; 0) {
-
-    draw_sprite_ext(spr_hud_timeb, extratime-1, view_xview[0]+view_wview[0]-5, view_yview[0]+23, 1, 1, 0, c_white, timealpha);
-    if (timealpha &gt; 0) {
-    
-        timealpha -= 0.0125;
-        if (timealpha &lt; 0.0125)
-            extratime = 0;
-    }
-}
+//Score
+draw_text_colour_shadowed(view_xview[0]+view_wview[0]-84, view_yview[0]+27, string_add_zeros(score, 8), c_black, c_white, 1, 1, 1, 1);
 
 //P-Meter
 if (instance_exists(obj_playerparent)) {
 
     if (obj_playerparent.pmeter &gt; 111)
-        draw_sprite_ext(spr_hud_pmeter, 8+flash, view_xview[0]+4, view_yview[0]+view_hview[0]-13, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_hud_pmeter, 6+flash, view_xview[0]+5, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
     else
-        draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/14), view_xview[0]+4, view_yview[0]+view_hview[0]-13, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/16), view_xview[0]+5, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
 }
 else
-    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+4, view_yview[0]+view_hview[0]-13, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+4, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
 </string>
           </argument>
         </arguments>

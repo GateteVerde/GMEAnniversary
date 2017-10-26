@@ -113,8 +113,14 @@ y = ystart;
 if (sprout != cs_coin) {
 
     //If there is a powerup inside this block and the player is small, or there's a golden mushroom and health mode is not enabled.
-    if ((sprout &gt; cs_big) &amp;&amp; (global.powerup == cs_small)) 
-    || ((sprout == cs_golden) &amp;&amp; (global.healthmode == false))
+    if (sprout &gt; cs_big) {
+    
+        if (global.healthmode == false)
+        &amp;&amp; (global.powerup == cs_small)
+            sprout = cs_big;
+    }
+    else if (sprout == cs_golden)
+    &amp;&amp; (global.healthmode == false)
         sprout = cs_big;
         
     //Create the item

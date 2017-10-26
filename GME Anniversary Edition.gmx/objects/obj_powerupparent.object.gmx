@@ -114,7 +114,7 @@ else if (!water)
 //Get 1000 points
 with (instance_create(x-8,y,obj_score)) event_user(5);
 
-//If Mario is big and there's NOT an item on reserve.
+//If the player is big and there's NOT an item on reserve.
 if (global.powerup == cs_big) 
 &amp;&amp; (global.reserve == cs_small) { 
 
@@ -123,17 +123,18 @@ if (global.powerup == cs_big)
         global.reserve = cs_big;
 }
 
-//Otherwise, if Mario does have a powerup.
+//Otherwise, if the player does have a powerup.
 else if (global.powerup &gt; cs_big) {
 
-    //Set the previous powerup as a reserve item.
-    global.reserve = global.powerup;
+    //Set the previous powerup as a reserve item if health mode is not active
+    if (global.healthmode == false)
+        global.reserve = global.powerup;
 }
 
-//If Mario is NOT Fire Mario.
+//If the player does not have the correct powerup.
 if (global.powerup != sprite_get_constant(sprite_index)) {
 
-    //Turn Mario into Fire Mario.
+    //Give out the correct powerup
     global.powerup = sprite_get_constant(sprite_index);
     
     //Perform animation sequence and play sound
