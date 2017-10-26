@@ -1,8 +1,8 @@
-///wrap(value,min,max;
+///wrap(value,min,max);
 
 /*
 **  Usage:
-**      wrap(value,min,max;
+**      wrap(value,min,max);
 **
 **  Arguments:
 **      value: Variable to use.
@@ -14,8 +14,8 @@
 */
 
 var _val = argument[0];
-var _max = argument[2];
 var _min = argument[1];
+var _max = argument[2];
 
 if (_val mod 1 == 0) {
 

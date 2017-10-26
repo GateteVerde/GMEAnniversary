@@ -144,7 +144,11 @@ holddown = false;
 //Boost player's fall
 boost = 0;
 
+//Player colour
+colour = c_white;
+
 //Initialize important alarms
+alarm[5] = 1;
 alarm[8] = 1; 
 alarm[10] = 1; //This one is found on player skins
 
@@ -265,6 +269,59 @@ wallkick = 0;
             <string>///Stop kicking
 
 kicking = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Cycle between colours
+
+//If the player is invincible
+if (instance_exists(obj_invincibility)) {
+
+    //Make the player flash
+    switch (colour) {
+    
+        case (c_white): colour = c_red; break;
+        case (c_red): colour = c_orange; break;
+        case (c_orange): colour = c_yellow; break;
+        case (c_yellow): colour = c_lime; break;
+        case (c_lime): colour = c_teal; break;
+        case (c_teal): colour = c_blue; break;
+        case (c_blue): colour = c_fuchsia; break;
+        case (c_fuchsia): colour = c_red; break;
+    }
+    
+    //Repeat the process
+    if (obj_invincibility.alarm[0] &gt; 120)
+        alarm[5] = 2;
+    else
+        alarm[5] = 8;
+}
+
+//Otherwise, set the default colour
+else {
+
+    colour = c_white;
+    alarm[5] = 1;
+}
 </string>
           </argument>
         </arguments>
@@ -1349,7 +1406,17 @@ if (invulnerable == false) {
             <kind>1</kind>
             <string>///Draw player
 
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_white,image_alpha);
+//Check if the player is invincible
+if (instance_exists(obj_invincibility)) {
+
+    //Draw blended pose
+    draw_set_blend_mode(bm_add);
+    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_black,1);
+    draw_set_blend_mode(bm_normal);
+}
+
+//Draw
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,merge_colour(colour,c_white,0.5),image_alpha);
 
 //Draw a tornado if spinning down with the propeller suit
 if (global.powerup == cs_propeller)

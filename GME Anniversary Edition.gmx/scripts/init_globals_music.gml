@@ -18,3 +18,7 @@ music_setup(global._theme_plains, "Plains", 3);
 //Athletic
 global._theme_athletic = music_add("Athletic");
 music_setup(global._theme_athletic, "Athletic", 3);
+
+//Starman
+global._theme_starman = music_add("Starman");
+music_setup(global._theme_starman, "Starman", 3);

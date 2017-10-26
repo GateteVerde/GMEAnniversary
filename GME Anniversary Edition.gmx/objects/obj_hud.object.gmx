@@ -105,8 +105,8 @@ if (global.healthmode == 0) {
     draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+19, 1, 1, 0, c_white, 1);
     
     //Reserve item
-    if (global.reserveitem &gt; cs_small)
-        draw_sprite_ext(constant_get_sprite(global.reserveitem), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+11, 1, 1, 0, c_white, 1);
+    if (global.reserve &gt; cs_small)
+        draw_sprite_ext(constant_get_sprite(global.reserve), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+11, 1, 1, 0, c_white, 1);
 }
 else {
 

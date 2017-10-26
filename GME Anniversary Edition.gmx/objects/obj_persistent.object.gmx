@@ -34,7 +34,7 @@ pal_swap_init_system(shd_palette_swapper);
 global.flighttime = 4;
 
 //Health Mode
-global.healthmode = 1;
+global.healthmode = 0;
 
 //Cat climb time
 global.cattime = 3;
@@ -154,8 +154,8 @@ if (audio_is_playing(snd_thwomp)) {
     alarm[11] = 1;    
     
     //Shake the screen...    
-    port_x = random_range(8,-8);
-    port_y = random_range(8,-8);
+    port_x = random_range(4,-4);
+    port_y = random_range(4,-4);
 }
 else {
 
@@ -338,12 +338,20 @@ if (!audio_is_playing(snd_thwomp))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Make sure lives and score does not surpass 99 and 999999990 respectively
+            <string>///Make sure certain values don't go too high
 
-if (lives &gt; 99)
+//Lives limit
+if (lives &gt; 99) 
     lives = 99;
-if (score &gt; 999999990)
-    score = 999999990;
+
+//Score limit
+if (score &gt; 99999990) 
+    score = 99999990;
+
+//Set default health limit if below 4
+if (health &lt; 4)
+&amp;&amp; (global.healthmax == 6)
+    global.healthmax = 3;
 </string>
           </argument>
         </arguments>
@@ -736,14 +744,14 @@ if (filter = 0) {
 else if (filter = 1) {
 
     draw_rectangle_colour(0,0,global.gw*2,global.gh*2,c_black,c_black,c_black,c_black,0);
-    draw_surface_stretched(application_surface,port_x,port_y,global.gw*2,global.gh*2);
+    draw_surface_stretched(application_surface,port_x*2,port_y*2,global.gw*2,global.gh*2);
 }
 
 //3x Filtering
 else if (filter = 2) {
 
     draw_rectangle_colour(0,0,global.gw*3,global.gh*3,c_black,c_black,c_black,c_black,0);
-    draw_surface_stretched(application_surface,port_x,port_y,global.gw*3,global.gh*3);
+    draw_surface_stretched(application_surface,port_x*3,port_y*3,global.gw*3,global.gh*3);
 }
 
 //Enable alpha blending

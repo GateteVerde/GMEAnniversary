@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="6" name="datafiles">
-    <datafiles number="6" name="music">
+  <datafiles number="7" name="datafiles">
+    <datafiles number="7" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -38,6 +38,23 @@
           </Config>
         </ConfigOptions>
         <filename>plains.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>starman.ogg</name>
+        <exists>-1</exists>
+        <size>156286</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>starman.ogg</filename>
       </datafile>
     </datafiles>
     <datafile>
@@ -1585,6 +1602,7 @@
               </objects>
               <object>objects\obj_powerupsprout</object>
               <object>objects\obj_reserveitem</object>
+              <object>objects\obj_invincibility</object>
             </objects>
             <object>objects\obj_holdbubble_respawn</object>
           </objects>

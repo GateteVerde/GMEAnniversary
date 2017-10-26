@@ -70,7 +70,7 @@ background_hspeed[2] = -0.1;</code>
     <instance objName="obj_semisolid" x="496" y="400" name="inst_B205043A" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="576" y="400" name="inst_D046AEEE" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass_multicoin" x="432" y="384" name="inst_DF3CFF29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grass_coin" x="512" y="384" name="inst_F6F7B9E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_coin" x="528" y="384" name="inst_F6F7B9E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="400" y="320" name="inst_03EEF637" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="384" y="336" name="inst_71BCC2AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="416" y="304" name="inst_484B63C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -117,9 +117,6 @@ background_hspeed[2] = -0.1;</code>
     <instance objName="obj_coin" x="864" y="192" name="inst_AADFB963" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="880" y="208" name="inst_9DF26BC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="896" y="224" name="inst_556E7615" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pullkey" x="560" y="336" name="inst_3076D2C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pullkey" x="400" y="352" name="inst_095B0C55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tides" x="0" y="416" name="inst_D576A484" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_heart" x="40" y="264" name="inst_D69B8EF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_heart" x="264" y="216" name="inst_F727B994" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_heart" x="312" y="216" name="inst_DD093D00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -131,7 +128,18 @@ background_hspeed[2] = -0.1;</code>
     <instance objName="obj_digsand" x="288" y="384" name="inst_4040D6D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_digsand" x="272" y="384" name="inst_4864BDD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_digsand" x="256" y="384" name="inst_E0B0F069" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_goldshroom" x="672" y="272" name="inst_81D446A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="480" y="304" name="inst_FC636F6D" locked="0" code="varmsg = &quot;Did you know that if you press 'BUTTON 2' on this grass sprouts, you can pick them up!.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_area_y" x="688" y="400" name="inst_C397B4F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_area_y" x="704" y="400" name="inst_3256427B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_area_y" x="720" y="400" name="inst_551B80AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_area_y" x="736" y="400" name="inst_18BC0D02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_area_y" x="752" y="400" name="inst_E31C274C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_area_y" x="768" y="400" name="inst_815727A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_area_y" x="848" y="400" name="inst_C09EAA5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_area_y" x="864" y="400" name="inst_C9E0F170" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_area_y" x="880" y="400" name="inst_F88516AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="80" y="336" name="inst_2E6A7191" locked="0" code="sprout = cs_star;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="208" y="336" name="inst_D6BACC97" locked="0" code="sprout = cs_star;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb2" x="16" y="384" w="48" h="16" xo="0" yo="16" id="10002076" name="inst_05B7D29F" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

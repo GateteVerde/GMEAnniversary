@@ -34,7 +34,7 @@ audio_play_sound(snd_powerup, 0, false);
 with (instance_create(x-8,y,obj_score)) event_user(5);
 
 //Restore all health
-if (health == 0) {
+if (health == 1) {
     
     //Turn Mario into 'Super' Mario.
     global.powerup = cs_big;
@@ -44,8 +44,10 @@ if (health == 0) {
         sequence = 0;    
 }
 
-//Recover all health
+//Set new max health
 global.healthmax = 6;
+
+//Recover all health
 health = global.healthmax;
 
 //Destroy
