@@ -76,6 +76,7 @@ alarm[8] = 1;
             <kind>1</kind>
             <string>///Check up the sprite
 
+//If the vegetable is a big one
 if (sprite_index == spr_turnip_large) 
 || (sprite_index == spr_powblock_large) 
 || (powerup) {
@@ -90,8 +91,8 @@ if (sprite_index == spr_turnip_large)
 else {
 
     if (enemy)
-    || (sprite_index == spr_powblock)
     || (sprite_index == spr_mblock)
+    || (sprite_index == spr_powblock)
     || (sprite_index == spr_vegshroom)
     || (sprite_index == spr_vegshroom_1up) {
     
@@ -455,7 +456,7 @@ if (ready == 2) {
         
     //Otherwise, pull a veggie
     else {
-    
+        
         //Create a new vegetable and give them a sprite if necesary
         with (instance_create(obj_playerparent.x,obj_playerparent.y-5,myveggie)) {
         
@@ -504,7 +505,7 @@ if (((bbox_bottom &lt; obj_playerparent.bbox_top+14) &amp;&amp; (global.powerup 
     }
     
     //Set the plucking sprite
-    with (obj_puller) sprite_index = scr_mario_duck();
+    with (obj_puller) sprite_index = scr_global_duck();
 }
 
 //If the player does not exist...

@@ -239,19 +239,16 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw
+            <string>///Draw statue
 
-//Draw
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,obj_playerparent.xscale,1,0,obj_playerparent.colour,obj_playerparent.image_alpha);
+//Set the shader
+pal_swap_set(player_palette_get(),obj_playerparent.isflashing)
 
-//Draw blended
-if (instance_exists(obj_invincibility)) {
+//Draw statue
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,image_alpha);
 
-    //Draw blended
-    draw_set_blend_mode_ext(bm_src_alpha, bm_inv_src_colour);
-    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,obj_playerparent.xscale,1,0,obj_playerparent.colour,1);
-    draw_set_blend_mode(bm_normal);
-}    
+//Reset shader
+pal_swap_reset();
 </string>
           </argument>
         </arguments>

@@ -55,7 +55,7 @@ if (instance_exists(obj_playerparent)) {
     depth = obj_playerparent.depth;
     
     //Hereby Mario's colour
-    colour = obj_playerparent.colour;
+    isflashing = obj_playerparent.isflashing;
     
     //Hereby Mario's facing direction.
     image_xscale = obj_playerparent.xscale;    
@@ -131,45 +131,7 @@ if (instance_exists(obj_tides))
 instance_activate_object(obj_persistent);
 
 //Set the animation sequence.
-switch (sequence) {
-
-    //Small to Big
-    case (0): { 
-    
-        sprite_index = spr_mario_grow;
-        image_speed = 0.25;
-    } break;
-    
-    //Big to Small
-    case (1): {
-    
-        sprite_index = spr_mario_shrink;
-        image_speed = 0.25;
-    } break;
-    
-    //Power up
-    case (2): {
-    
-        sprite_index = spr_mario_powerup;
-        image_speed = 0.25;
-        loop = 3;
-    } break;
-    
-    //Power down
-    case (3): {
-    
-        sprite_index = spr_mario_powerdown;
-        image_speed = 0.3;
-        loop = 6;
-    } break;
-    
-    //Transform
-    case (4): {
-    
-        sprite_index = spr_mario_transform;
-        image_speed = 0.3;
-    } break;
-}
+scr_global_transform();
 
 //Animation has been set.
 ready = true;
@@ -261,16 +223,7 @@ if (background_exists(back)) {
 }
 
 //Draw
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,colour,image_alpha);
-
-//Check if the player is invincible
-if (colour != c_white) {
-
-    //Draw blended pose
-    draw_set_blend_mode_ext(bm_src_alpha, bm_inv_src_colour);
-    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,colour,1);
-    draw_set_blend_mode(bm_normal);
-}
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);
 </string>
           </argument>
         </arguments>

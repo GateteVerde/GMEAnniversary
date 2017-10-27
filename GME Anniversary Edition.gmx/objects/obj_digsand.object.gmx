@@ -27,65 +27,8 @@
             <kind>1</kind>
             <string>///Diggable sand
 
-//Do not animate
+//Animate
 image_speed = 0;
-image_index = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Finish pull
-
-//If the puller object exists
-if (instance_exists(obj_puller)) {
-
-    //With the player
-    with (obj_playerparent) {
-    
-        visible = 1;
-        holding = 0;
-        disablecontrol = false;
-    }
-    
-    //Destroy puller
-    with (obj_puller) instance_destroy();
-    
-    //Destroy
-    instance_destroy();
-}
-
-//Otherwise, generate a coin
-else {
-
-    //Create smoke effect
-    with (instance_create(x,y,obj_smoke)) {
-    
-        sprite_index = other.sprite_index;
-        image_speed = 0.15;
-        vspeed = -1;
-    }
-    
-    //Destroy
-    instance_destroy();
-}
 </string>
           </argument>
         </arguments>
@@ -108,28 +51,33 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Dig, dig, diiiiiiiig
+            <string>///Finish pull
 
 //If the puller object does exist
-if (instance_exists(obj_playerparent)) 
-&amp;&amp; (keyboard_check(global.controlkey)) {
+if (instance_exists(obj_puller)) {
+
+    //Play 'Pickup' sound
+    audio_play_sound(snd_pickup, 0, false);
     
-    //Create smoke effect
+    with (obj_playerparent) {
+    
+        visible = 1;
+        holding = 0;
+        disablecontrol = false;
+    }
+    
+    //Create vegetable
     with (instance_create(x,y,obj_smoke)) {
     
-        sprite_index = other.sprite_index;
-        image_speed = 0.15;
+        sprite_index = spr_digsand;
         vspeed = -1;
     }
     
-    //Change the puller sprite
-    with (obj_puller) sprite_index = scr_mario_duck();
-    
-    //End pull
-    alarm[1] = 15;
+    //Destroy puller
+    with (obj_puller) instance_destroy();
     
     //Destroy
-    visible = 0;
+    instance_destroy();
 }
 </string>
           </argument>
@@ -153,7 +101,7 @@ if (instance_exists(obj_playerparent))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Diggable sand logic
+            <string>///Stackable mushroom logic
 
 //Check for the player above
 var player = collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerparent,0,0);
@@ -163,9 +111,6 @@ if (instance_number(obj_puller) == 0)
 &amp;&amp; (canpull())
 &amp;&amp; (player)
 &amp;&amp; (player.bbox_bottom &lt; yprevious+5) {
-
-    //Play 'Pickup' sound
-    audio_play_sound(snd_pickup, 0, false);
 
     //Force player hold
     with (obj_playerparent) {

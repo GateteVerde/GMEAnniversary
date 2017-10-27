@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="7" name="datafiles">
-    <datafiles number="7" name="music">
+  <datafiles number="11" name="datafiles">
+    <datafiles number="11" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -40,9 +40,26 @@
         <filename>plains.ogg</filename>
       </datafile>
       <datafile>
+        <name>pswitch.ogg</name>
+        <exists>-1</exists>
+        <size>420741</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>pswitch.ogg</filename>
+      </datafile>
+      <datafile>
         <name>starman.ogg</name>
         <exists>-1</exists>
-        <size>156286</size>
+        <size>739368</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -983,6 +1000,9 @@
         <sprite>sprites\spr_hud_starcoin_get</sprite>
       </sprites>
       <sprites name="Palettes">
+        <sprites name="Players">
+          <sprite>sprites\spr_palette_mario</sprite>
+        </sprites>
         <sprites name="Blocks">
           <sprite>sprites\spr_palette_qblock</sprite>
           <sprite>sprites\spr_palette_qblock_empty</sprite>
@@ -1057,6 +1077,17 @@
           <script>scripts\scr_mario_clear.gml</script>
           <script>scripts\scr_mario_walljump.gml</script>
           <script>scripts\scr_mario_ride.gml</script>
+        </scripts>
+        <scripts name="Global">
+          <scripts name="Palettes">
+            <script>scripts\player_palette_get.gml</script>
+          </scripts>
+          <script>scripts\scr_global_dropdown.gml</script>
+          <script>scripts\scr_global_duck.gml</script>
+          <script>scripts\scr_global_pull.gml</script>
+          <script>scripts\scr_global_ride.gml</script>
+          <script>scripts\scr_global_tailspin.gml</script>
+          <script>scripts\scr_global_transform.gml</script>
         </scripts>
         <script>scripts\scr_inice.gml</script>
       </scripts>
@@ -1283,7 +1314,6 @@
       <script>scripts\init_globals.gml</script>
       <script>scripts\init_globals_music.gml</script>
       <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
-      <script>scripts\wrap.gml</script>
     </scripts>
     <script>scripts\outside_view.gml</script>
     <script>scripts\constant_get_sprite.gml</script>
