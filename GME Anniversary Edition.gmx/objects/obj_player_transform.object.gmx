@@ -54,6 +54,9 @@ if (instance_exists(obj_playerparent)) {
     //Set the depth
     depth = obj_playerparent.depth;
     
+    //Hereby Mario's colour
+    colour = obj_playerparent.colour;
+    
     //Hereby Mario's facing direction.
     image_xscale = obj_playerparent.xscale;    
 }
@@ -257,8 +260,17 @@ if (background_exists(back)) {
     draw_enable_alphablend(1);
 }
 
-//Draw the player
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);
+//Draw
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,colour,image_alpha);
+
+//Check if the player is invincible
+if (colour != c_white) {
+
+    //Draw blended pose
+    draw_set_blend_mode_ext(bm_src_alpha, bm_inv_src_colour);
+    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,colour,1);
+    draw_set_blend_mode(bm_normal);
+}
 </string>
           </argument>
         </arguments>

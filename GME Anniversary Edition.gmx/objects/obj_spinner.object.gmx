@@ -238,7 +238,17 @@ instance_destroy();
             <kind>1</kind>
             <string>///Draw
 
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha);
+//Draw
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,obj_playerparent.xscale,1,0,obj_playerparent.colour,obj_playerparent.image_alpha);
+
+//Draw blended
+if (instance_exists(obj_invincibility)) {
+
+    //Draw blended
+    draw_set_blend_mode_ext(bm_src_alpha, bm_inv_src_colour);
+    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,obj_playerparent.xscale,1,0,obj_playerparent.colour,1);
+    draw_set_blend_mode(bm_normal);
+}    
 </string>
           </argument>
         </arguments>

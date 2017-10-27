@@ -182,12 +182,13 @@ audio_play_sound(snd_powerup, 0, false);
 if (instance_exists(obj_invincibility)) {
 
     //Extend the timer on his invincibility
-    obj_invincibility.alarm[0] = 540;
-    obj_invincibility.alarm[2] = 1;
+    obj_invincibility.alarm[0] = 720;
+    obj_invincibility.alarm[1] = 600;
+    obj_invincibility.alarm[3] = 1;
     
     //Deny invincibility end.
-    if (obj_invincibility.alarm[1] &gt; 0)    
-        obj_invincibility.alarm[1] = -1;
+    if (obj_invincibility.alarm[2] &gt; 0)    
+        obj_invincibility.alarm[2] = -1;
 }
 
 //Otherwise, if it's not invincible.
