@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="11" name="datafiles">
-    <datafiles number="11" name="music">
+  <datafiles number="12" name="datafiles">
+    <datafiles number="12" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -59,7 +59,7 @@
       <datafile>
         <name>starman.ogg</name>
         <exists>-1</exists>
-        <size>739368</size>
+        <size>382293</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -644,6 +644,7 @@
         <sprite>sprites\spr_waterfall_bottom</sprite>
         <sprite>sprites\spr_waterfall2_top</sprite>
         <sprite>sprites\spr_waterfall2_bottom</sprite>
+        <sprite>sprites\spr_tides</sprite>
       </sprites>
       <sprites name="Lava">
         <sprites name="Slopes">
@@ -678,8 +679,10 @@
         <sprite>sprites\spr_lavafall_a</sprite>
         <sprite>sprites\spr_lavafall_b</sprite>
       </sprites>
-      <sprite>sprites\spr_tides</sprite>
       <sprite>sprites\spr_vine</sprite>
+      <sprite>sprites\spr_muncher</sprite>
+      <sprite>sprites\spr_muncher_pipe</sprite>
+      <sprite>sprites\spr_muncher_pipe2</sprite>
     </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
@@ -757,21 +760,8 @@
         <sprite>sprites\spr_berry_g</sprite>
         <sprite>sprites\spr_holdbubble</sprite>
         <sprite>sprites\spr_plusclock_10</sprite>
-        <sprite>sprites\spr_plusclock_100</sprite>
+        <sprite>sprites\spr_plusclock_50</sprite>
         <sprite>sprites\spr_3upmoon</sprite>
-      </sprites>
-      <sprites name="Holdables">
-        <sprite>sprites\spr_key</sprite>
-        <sprite>sprites\spr_pswitch</sprite>
-        <sprite>sprites\spr_gswitch</sprite>
-        <sprite>sprites\spr_trampoline</sprite>
-        <sprite>sprites\spr_trampoline_end</sprite>
-        <sprite>sprites\spr_trampoline_p</sprite>
-        <sprite>sprites\spr_trampoline_p_end</sprite>
-        <sprite>sprites\spr_trampoline_timed</sprite>
-        <sprite>sprites\spr_trampoline_timed_end</sprite>
-        <sprite>sprites\spr_propellerblock</sprite>
-        <sprite>sprites\spr_boomerang_blue</sprite>
       </sprites>
       <sprites name="Platforms">
         <sprites name="Common">
@@ -832,6 +822,19 @@
         <sprite>sprites\spr_pulleyplatform_32x</sprite>
         <sprite>sprites\spr_pulleyplatform_64x</sprite>
         <sprite>sprites\spr_mushroomplatform</sprite>
+      </sprites>
+      <sprites name="Interactive">
+        <sprite>sprites\spr_key</sprite>
+        <sprite>sprites\spr_pswitch</sprite>
+        <sprite>sprites\spr_gswitch</sprite>
+        <sprite>sprites\spr_trampoline</sprite>
+        <sprite>sprites\spr_trampoline_end</sprite>
+        <sprite>sprites\spr_trampoline_p</sprite>
+        <sprite>sprites\spr_trampoline_p_end</sprite>
+        <sprite>sprites\spr_trampoline_timed</sprite>
+        <sprite>sprites\spr_trampoline_timed_end</sprite>
+        <sprite>sprites\spr_propellerblock</sprite>
+        <sprite>sprites\spr_boomerang_blue</sprite>
       </sprites>
       <sprites name="Subcon">
         <sprites name="Vegetables">
@@ -927,12 +930,18 @@
       <sprite>sprites\spr_hammer</sprite>
       <sprite>sprites\spr_boomerang</sprite>
       <sprite>sprites\spr_superball</sprite>
+      <sprite>sprites\spr_mbomb</sprite>
       <sprite>sprites\spr_bolt</sprite>
       <sprite>sprites\spr_iceblock</sprite>
     </sprites>
     <sprites name="Special">
       <sprites name="Eyecandy">
         <sprites name="Score">
+          <sprites name="Time">
+            <sprite>sprites\spr_10sec</sprite>
+            <sprite>sprites\spr_20sec</sprite>
+            <sprite>sprites\spr_50sec</sprite>
+          </sprites>
           <sprite>sprites\spr_10pts</sprite>
           <sprite>sprites\spr_100pts</sprite>
           <sprite>sprites\spr_200pts</sprite>
@@ -1350,6 +1359,7 @@
         <object>objects\obj_ceilslope_sr</object>
         <object>objects\obj_ceilslope_sl</object>
       </objects>
+      <object>objects\obj_hurtmask</object>
     </objects>
     <objects name="Blocks">
       <objects name="Item Blocks">
@@ -1398,6 +1408,7 @@
         <object>objects\obj_watertop</object>
         <object>objects\obj_waterfall</object>
         <object>objects\obj_waterfall_noswim</object>
+        <object>objects\obj_tides</object>
       </objects>
       <objects name="Lava">
         <objects name="Slopes">
@@ -1431,8 +1442,10 @@
         <object>objects\obj_lava_e</object>
         <object>objects\obj_lavafall</object>
       </objects>
-      <object>objects\obj_tides</object>
       <object>objects\obj_vine</object>
+      <object>objects\obj_muncher</object>
+      <object>objects\obj_muncher_pipe</object>
+      <object>objects\obj_muncher_pipe2</object>
     </objects>
     <objects name="Items">
       <objects name="Collectables">
@@ -1469,16 +1482,8 @@
         <object>objects\obj_berry_g</object>
         <object>objects\obj_holdbubble</object>
         <object>objects\obj_plusclock_10</object>
-        <object>objects\obj_plusclock_100</object>
+        <object>objects\obj_plusclock_50</object>
         <object>objects\obj_3upmoon</object>
-      </objects>
-      <objects name="Interactive">
-        <object>objects\obj_key</object>
-        <object>objects\obj_pswitch</object>
-        <object>objects\obj_gswitch</object>
-        <object>objects\obj_trampoline</object>
-        <object>objects\obj_trampoline_p</object>
-        <object>objects\obj_trampoline_timed</object>
       </objects>
       <objects name="Platforms">
         <objects name="Common">
@@ -1534,6 +1539,14 @@
         <object>objects\obj_pulleyplatform</object>
         <object>objects\obj_mushroomplatform</object>
       </objects>
+      <objects name="Interactive">
+        <object>objects\obj_key</object>
+        <object>objects\obj_pswitch</object>
+        <object>objects\obj_gswitch</object>
+        <object>objects\obj_trampoline</object>
+        <object>objects\obj_trampoline_p</object>
+        <object>objects\obj_trampoline_timed</object>
+      </objects>
       <objects name="Subcon">
         <objects name="Collectibles">
           <object>objects\obj_pullkey</object>
@@ -1542,9 +1555,6 @@
           <object>objects\obj_vegshroom</object>
           <object>objects\obj_vegshroom_1up</object>
           <object>objects\obj_basket</object>
-        </objects>
-        <objects name="Decor">
-          <object>objects\obj_digsand</object>
         </objects>
         <objects name="Grass">
           <objects name="Item">
@@ -1563,6 +1573,7 @@
         <object>objects\obj_mblock</object>
         <object>objects\obj_powblock</object>
         <object>objects\obj_itembubble</object>
+        <object>objects\obj_digsand</object>
       </objects>
       <object>objects\obj_conveyor_r</object>
       <object>objects\obj_conveyor_l</object>
@@ -1602,6 +1613,7 @@
               <object>objects\obj_hammer</object>
               <object>objects\obj_boomerang</object>
               <object>objects\obj_superball</object>
+              <object>objects\obj_bomb</object>
               <object>objects\obj_bolt</object>
             </objects>
             <object>objects\obj_mario</object>
@@ -1642,9 +1654,6 @@
             </objects>
             <object>objects\obj_holdbubble_respawn</object>
           </objects>
-          <objects name="Interactive">
-            <object>objects\obj_trampoline_p_active</object>
-          </objects>
           <objects name="Platforms">
             <objects name="Common">
               <object>objects\obj_ferrisplatform_platform</object>
@@ -1668,6 +1677,9 @@
             </objects>
             <object>objects\obj_pulleyplatform_right</object>
             <object>objects\obj_pulleyplatform_rope</object>
+          </objects>
+          <objects name="Interactive">
+            <object>objects\obj_trampoline_p_active</object>
           </objects>
           <objects name="Subcon">
             <objects name="Collectibles">

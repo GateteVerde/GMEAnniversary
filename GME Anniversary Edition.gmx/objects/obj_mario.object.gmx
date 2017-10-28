@@ -195,6 +195,14 @@ if (disablecontrol == false)
                 hspeed = 3*sign(other.xscale);
         }
         
+        //Bomb
+        else if (global.powerup == cs_bomb)
+        &amp;&amp; (instance_number(obj_bomb) &lt; 1) {
+        
+            with (instance_create(x-8,y,obj_bomb))
+                held = 1;
+        }
+        
         //Lightning
         else if (global.powerup == cs_lightning)
         &amp;&amp; (instance_number(obj_bolt) &lt; 2) {
