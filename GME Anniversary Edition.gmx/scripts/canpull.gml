@@ -14,6 +14,7 @@ if (keyboard_check_pressed(vk_control))
 && (obj_playerparent.holding = 0)
 && (obj_playerparent.sliding = 0)
 && (obj_playerparent.kicking = 0)
+&& (obj_playerparent.wallkick == 0)
 && (obj_playerparent.disablecontrol = 0)
     return true;
 else

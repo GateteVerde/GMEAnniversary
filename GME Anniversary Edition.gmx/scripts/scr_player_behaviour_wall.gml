@@ -23,8 +23,7 @@ if (yspeed > 0)
         wall_r = collision_line(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,0,1);
         
         //If the player hugs a wall at the right
-        if (wall_r) 
-        && (wall_r.image_yscale >= 2) {
+        if (wall_r) {
             
             //Enable wallkick
             wallkick = 1;
@@ -45,8 +44,7 @@ if (yspeed > 0)
         wall_l = collision_line(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,1);
     
         //If the player hugs a wall at the left
-        if (wall_l) 
-        && (wall_l.image_yscale >= 2) {
+        if (wall_l) {
             
             //Enable wallkick
             wallkick = 1;

@@ -1043,6 +1043,8 @@
       <background>background\bgr_darkhills</background>
       <background>background\bgr_darkhills_b</background>
       <background>background\bgr_darkhills_c</background>
+      <background>background\bgr_desert_bg</background>
+      <background>background\bgr_desert_fg</background>
       <background>background\bgr_subcon_bg</background>
       <background>background\bgr_subcon_fg</background>
     </backgrounds>
@@ -1383,6 +1385,7 @@
         <object>objects\obj_shellblock</object>
         <object>objects\obj_boltblock</object>
         <object>objects\obj_bellblock</object>
+        <object>objects\obj_starblock</object>
       </objects>
       <objects name="Bricks">
         <object>objects\obj_brick</object>
@@ -1575,6 +1578,8 @@
         <object>objects\obj_itembubble</object>
         <object>objects\obj_digsand</object>
       </objects>
+      <object>objects\obj_icecoin</object>
+      <object>objects\obj_iceplant</object>
       <object>objects\obj_conveyor_r</object>
       <object>objects\obj_conveyor_l</object>
     </objects>

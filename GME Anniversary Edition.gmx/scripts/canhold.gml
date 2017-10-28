@@ -12,6 +12,7 @@ if (keyboard_check(global.controlkey))
 && (global.mount == 0)
 && (obj_playerparent.holding = 0)
 && (obj_playerparent.sliding = 0)
+&& (obj_playerparent.wallkick == 0)
 && (obj_playerparent.disablecontrol = 0)
     return true;
 else

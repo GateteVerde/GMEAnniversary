@@ -450,11 +450,22 @@ if (global.coins &gt; 99) {
 }
 
 //Drop the reserve item
-if (instance_exists(obj_mario))
-&amp;&amp; (barrier == 0)
-&amp;&amp; (obj_mario.disablecontrol = false)
-&amp;&amp; (keyboard_check_pressed(vk_space))
-    event_user(0);
+if (barrier == 0) 
+&amp;&amp; (instance_exists(obj_playerparent)) {
+
+    //If 'Space' is pressed and the player's controls are not disabled...
+    if ((keyboard_check_pressed(global.spacekey)) 
+    &amp;&amp; (!obj_playerparent.disablecontrol))
+    
+    //...or the player turned into the small form and there's a reserve item saved
+    || ((obj_playerparent.invulnerable)
+    &amp;&amp; (global.powerup == 0)
+    &amp;&amp; (global.reserve &gt; cs_small)) {
+    
+        //Drop the reserve item
+        event_user(0);
+    }
+}
 
 //Deactivate instances outside the view
 instance_deactivate_object(obj_deactivateparent);
