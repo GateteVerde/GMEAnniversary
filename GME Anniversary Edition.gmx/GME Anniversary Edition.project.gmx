@@ -156,6 +156,7 @@
       <sound>sound\snd_1up</sound>
       <sound>sound\snd_boomerang</sound>
       <sound>sound\snd_bubble</sound>
+      <sound>sound\snd_cherry</sound>
       <sound>sound\snd_coin</sound>
       <sound>sound\snd_collect</sound>
       <sound>sound\snd_explode</sound>
@@ -171,6 +172,7 @@
     <sounds name="Menu">
       <sound>sound\snd_drop</sound>
       <sound>sound\snd_hurry</sound>
+      <sound>sound\snd_inventory</sound>
       <sound>sound\snd_message</sound>
       <sound>sound\snd_move</sound>
       <sound>sound\snd_pmeter</sound>
@@ -847,6 +849,9 @@
           <sprite>sprites\spr_cherry_get</sprite>
           <sprite>sprites\spr_vegshroom</sprite>
           <sprite>sprites\spr_vegshroom_1up</sprite>
+          <sprite>sprites\spr_basket</sprite>
+          <sprite>sprites\spr_basket_up</sprite>
+          <sprite>sprites\spr_basket_shard</sprite>
         </sprites>
         <sprites name="Decor">
           <sprite>sprites\spr_digsand</sprite>
@@ -857,9 +862,6 @@
         <sprite>sprites\spr_powblock_th</sprite>
         <sprite>sprites\spr_powblock_large</sprite>
         <sprite>sprites\spr_powblock_large_th</sprite>
-        <sprite>sprites\spr_basket</sprite>
-        <sprite>sprites\spr_basket_up</sprite>
-        <sprite>sprites\spr_basket_shard</sprite>
         <sprite>sprites\spr_itembubble</sprite>
       </sprites>
       <sprite>sprites\spr_icecoin</sprite>
@@ -1536,6 +1538,10 @@
         <objects name="Collectibles">
           <object>objects\obj_pullkey</object>
           <object>objects\obj_heart</object>
+          <object>objects\obj_cherry</object>
+          <object>objects\obj_vegshroom</object>
+          <object>objects\obj_vegshroom_1up</object>
+          <object>objects\obj_basket</object>
         </objects>
         <objects name="Decor">
           <object>objects\obj_digsand</object>
@@ -1556,7 +1562,6 @@
         </objects>
         <object>objects\obj_mblock</object>
         <object>objects\obj_powblock</object>
-        <object>objects\obj_basket</object>
         <object>objects\obj_itembubble</object>
       </objects>
       <object>objects\obj_conveyor_r</object>
