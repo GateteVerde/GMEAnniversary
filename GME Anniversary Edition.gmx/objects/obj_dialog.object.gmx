@@ -290,7 +290,7 @@ if (showing) {
     }
     
     //Draw continue / finish arrow.
-    if (a = string_length(text)) {
+    if (a &gt;= string_length(text)) {
     
         if (newtext = "")
             draw_sprite_ext(spr_dialog_end,anim2,view_xview[0]+(view_wview[0]/2)+128,view_yview[0]+view_hview[0]-32,1,1,0,c_white,1);

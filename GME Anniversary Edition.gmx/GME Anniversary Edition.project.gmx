@@ -683,6 +683,7 @@
       <sprite>sprites\spr_muncher</sprite>
       <sprite>sprites\spr_muncher_pipe</sprite>
       <sprite>sprites\spr_muncher_pipe2</sprite>
+      <sprite>sprites\spr_signpost</sprite>
     </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
@@ -997,7 +998,8 @@
         <sprites name="Text">
           <sprites name="Dialog">
             <sprites name="Mugshots">
-              <sprite>sprites\spr_dialog_mugshot</sprite>
+              <sprite>sprites\spr_mugshot</sprite>
+              <sprite>sprites\spr_mugshot_signpost</sprite>
             </sprites>
             <sprites name="Cursors">
               <sprite>sprites\spr_dialog_end</sprite>
@@ -1026,6 +1028,7 @@
         <sprite>sprites\spr_palette_null</sprite>
       </sprites>
       <sprite>sprites\spr_pit</sprite>
+      <sprite>sprites\spr_talk</sprite>
     </sprites>
     <sprite>sprites\spr_up</sprite>
     <sprite>sprites\spr_down</sprite>
@@ -1449,6 +1452,7 @@
       <object>objects\obj_muncher</object>
       <object>objects\obj_muncher_pipe</object>
       <object>objects\obj_muncher_pipe2</object>
+      <object>objects\obj_signpost</object>
     </objects>
     <objects name="Items">
       <objects name="Collectables">
