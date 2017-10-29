@@ -413,14 +413,6 @@ if ((state == 2) || (delay != 0)) {
     
     //Otherwise, use default gravity.     
     else {
-    
-        //Boost fall
-        if (boost == false) 
-        && (abs(xspeed) < runspeed) {
-        
-            y++;
-            boost = true;
-        }        
         
         //Use default gravity
         ygrav = grav;

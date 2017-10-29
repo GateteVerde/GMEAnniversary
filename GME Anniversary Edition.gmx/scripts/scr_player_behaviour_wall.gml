@@ -20,7 +20,7 @@ if (yspeed > 0)
     if ((keyboard_check(global.rightkey)) && (xscale == 1)) {
     
         //Check for a wall at the right
-        wall_r = collision_line(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,0,1);
+        wall_r = collision_line(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-4,obj_solid,0,1);
         
         //If the player hugs a wall at the right
         if (wall_r) {
@@ -41,7 +41,7 @@ if (yspeed > 0)
     else if ((keyboard_check(global.leftkey)) && (xscale == -1)) {
     
         //Check for a wall to the left
-        wall_l = collision_line(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,1);
+        wall_l = collision_line(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-4,obj_solid,0,1);
     
         //If the player hugs a wall at the left
         if (wall_l) {

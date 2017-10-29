@@ -60,7 +60,7 @@ shardsprite = spr_shard_th_a;
             <string>///Pick it up
 
 //If the 'control' key is pressed.
-if (keyboard_check_pressed(global.controlkey))  
+if (keyboard_check(global.controlkey))  
 &amp;&amp; (collision_rectangle(bbox_left-2,bbox_top-1,bbox_right+2,bbox_bottom-2,obj_playerparent,0,0))
 &amp;&amp; (canhold()) {
 
