@@ -162,6 +162,15 @@
       <sound>sound\snd_explode</sound>
       <sound>sound\snd_pop</sound>
       <sound>sound\snd_powerup</sound>
+      <sound>sound\snd_redcoin</sound>
+      <sound>sound\snd_redcoin2</sound>
+      <sound>sound\snd_redcoin3</sound>
+      <sound>sound\snd_redcoin4</sound>
+      <sound>sound\snd_redcoin5</sound>
+      <sound>sound\snd_redcoin6</sound>
+      <sound>sound\snd_redcoin7</sound>
+      <sound>sound\snd_redcoin8</sound>
+      <sound>sound\snd_ring</sound>
       <sound>sound\snd_scatter</sound>
       <sound>sound\snd_shatter</sound>
       <sound>sound\snd_sprout</sound>
@@ -177,6 +186,8 @@
       <sound>sound\snd_move</sound>
       <sound>sound\snd_pmeter</sound>
       <sound>sound\snd_reserve</sound>
+      <sound>sound\snd_timer</sound>
+      <sound>sound\snd_timer_end</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -748,7 +759,7 @@
         <sprites name="Coins">
           <sprites name="Rings">
             <sprite>sprites\spr_redring</sprite>
-            <sprite>sprites\spr_redring_get</sprite>
+            <sprite>sprites\spr_redring_active</sprite>
           </sprites>
           <sprite>sprites\spr_coin</sprite>
           <sprite>sprites\spr_coin2</sprite>
@@ -938,6 +949,9 @@
     <sprites name="Special">
       <sprites name="Eyecandy">
         <sprites name="Score">
+          <sprites name="Coins">
+            <sprite>sprites\spr_coinpts</sprite>
+          </sprites>
           <sprites name="Time">
             <sprite>sprites\spr_10sec</sprite>
             <sprite>sprites\spr_20sec</sprite>
@@ -971,6 +985,7 @@
         <sprite>sprites\spr_smoke_c</sprite>
         <sprite>sprites\spr_sparkle</sprite>
         <sprite>sprites\spr_sparkle_b</sprite>
+        <sprite>sprites\spr_sparkle_c</sprite>
         <sprite>sprites\spr_spinthump</sprite>
         <sprite>sprites\spr_splash</sprite>
         <sprite>sprites\spr_splash_lava</sprite>
@@ -1025,6 +1040,7 @@
           <sprite>sprites\spr_palette_yoshi</sprite>
         </sprites>
         <sprite>sprites\spr_palette_door</sprite>
+        <sprite>sprites\spr_palette_score</sprite>
         <sprite>sprites\spr_palette_null</sprite>
       </sprites>
       <sprite>sprites\spr_pit</sprite>
@@ -1482,6 +1498,11 @@
           </objects>
         </objects>
         <objects name="Coins">
+          <objects name="Special">
+            <objects name="Red Coins">
+              <object>objects\obj_redring</object>
+            </objects>
+          </objects>
           <object>objects\obj_coin</object>
           <object>objects\obj_coin_p</object>
         </objects>
@@ -1665,6 +1686,11 @@
               <object>objects\obj_reserveitem</object>
               <object>objects\obj_invincibility</object>
             </objects>
+            <objects name="Coins">
+              <objects name="Special">
+                <object>objects\obj_coin_r</object>
+              </objects>
+            </objects>
             <object>objects\obj_holdbubble_respawn</object>
           </objects>
           <objects name="Platforms">
@@ -1727,6 +1753,7 @@
           <objects name="Effects">
             <objects name="Score">
               <object>objects\obj_score</object>
+              <object>objects\obj_score_coins</object>
             </objects>
             <object>objects\obj_bubble</object>
             <object>objects\obj_bubble_v</object>

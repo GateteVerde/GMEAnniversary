@@ -42,6 +42,9 @@ global.skin = 0;
 //Coins
 global.coins = 0;
 
+//Red Coins
+global.redcoins = 0;
+
 //Current Player
 global.player = 0;
 
@@ -124,8 +127,8 @@ global.prize[2] = 0;
 //Map pipe area type
 global.pipetype = 0;
 
-//Data structure for modified items. (Will work only if persistance is active).
-global.modified = ds_map_create();
+//Data structure for collected red coin rings
+global.redrings = ds_map_create();
 
 //Map inventory variables
 for(var i=0; i<16; i++)
