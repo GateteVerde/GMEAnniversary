@@ -73,7 +73,7 @@ global.coins += 2;
 score += 20;
 
 //Create a sparkle
-with (instance_create(x,y,obj_smoke)) sprite_index = spr_sparkle_b;
+with (instance_create(x,y,obj_smoke)) sprite_index = spr_sparkle_c;
 
 //Increment coins
 global.redcoins++;

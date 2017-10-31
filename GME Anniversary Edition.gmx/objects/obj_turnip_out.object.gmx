@@ -94,7 +94,8 @@ else {
     || (sprite_index == spr_mblock)
     || (sprite_index == spr_powblock)
     || (sprite_index == spr_vegshroom)
-    || (sprite_index == spr_vegshroom_1up) {
+    || (sprite_index == spr_vegshroom_1up) 
+    || (sprite_index == spr_propellerblock) {
     
         drawpiece2 = 3;
         if ((sprite_width &gt; 16) &amp;&amp; (sprite_height &gt; 16))
@@ -359,7 +360,9 @@ else if (drawpiece2 == 2) {
             <string>///Check the frame of the puller object
 
 //If the sprite height is greater than 20, play a 'Pickup' sound
-if (sprite_height &gt; 20) then audio_play_sound(snd_pickup, 0, false);
+if (sprite_height &gt; 20)
+&amp;&amp; (sprite_index != spr_propellerblock)
+    audio_play_sound(snd_pickup, 0, false);
 
 //If the vegetable is being drawn
 if (drawpiece) {

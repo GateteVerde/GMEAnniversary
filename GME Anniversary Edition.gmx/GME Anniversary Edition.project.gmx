@@ -760,6 +760,8 @@
           <sprites name="Rings">
             <sprite>sprites\spr_redring</sprite>
             <sprite>sprites\spr_redring_active</sprite>
+            <sprite>sprites\spr_yellowring</sprite>
+            <sprite>sprites\spr_yellowring_active</sprite>
           </sprites>
           <sprite>sprites\spr_coin</sprite>
           <sprite>sprites\spr_coin2</sprite>
@@ -1499,9 +1501,8 @@
         </objects>
         <objects name="Coins">
           <objects name="Special">
-            <objects name="Red Coins">
-              <object>objects\obj_redring</object>
-            </objects>
+            <object>objects\obj_redring</object>
+            <object>objects\obj_yellowring</object>
           </objects>
           <object>objects\obj_coin</object>
           <object>objects\obj_coin_p</object>
@@ -1574,6 +1575,7 @@
         <object>objects\obj_trampoline</object>
         <object>objects\obj_trampoline_p</object>
         <object>objects\obj_trampoline_timed</object>
+        <object>objects\obj_propellerblock</object>
       </objects>
       <objects name="Subcon">
         <objects name="Collectibles">
@@ -1683,6 +1685,7 @@
                 <object>objects\obj_pickup_propeller</object>
               </objects>
               <object>objects\obj_powerupsprout</object>
+              <object>objects\obj_powerupprize</object>
               <object>objects\obj_reserveitem</object>
               <object>objects\obj_invincibility</object>
             </objects>
@@ -1719,6 +1722,7 @@
           </objects>
           <objects name="Interactive">
             <object>objects\obj_trampoline_p_active</object>
+            <object>objects\obj_propellerblock_up</object>
           </objects>
           <objects name="Subcon">
             <objects name="Collectibles">

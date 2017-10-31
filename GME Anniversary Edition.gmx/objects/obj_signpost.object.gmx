@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>8</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -88,7 +88,7 @@ ready = 1;
             <string>///Make the player interact with the signpost
 
 //Check for the player
-var player = collision_rectangle(bbox_left-16,bbox_top,bbox_right+16,bbox_bottom,obj_playerparent,0,0);
+var player = collision_rectangle(bbox_left-16,bbox_top-16,bbox_right+16,bbox_bottom,obj_playerparent,0,0);
 
 //If the sign is readable and the player is on the ground
 if (ready)
@@ -139,8 +139,7 @@ if (ready)
 //If the player does exist
 if (instance_exists(obj_playerparent)) {
 
-    if (obj_playerparent.x &gt; bbox_left-16)
-    &amp;&amp; (obj_playerparent.x &lt; bbox_right+16)
+    if (collision_rectangle(bbox_left-16,bbox_top-16,bbox_right+16,bbox_bottom,obj_playerparent,0,0))
         draw_sprite(spr_talk, 0, x, bbox_top-16);
 }
 

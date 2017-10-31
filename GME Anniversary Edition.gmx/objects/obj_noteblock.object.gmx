@@ -117,7 +117,12 @@ if (sprout != cs_coin) {
         sprout = cs_big;
         
     //Create the item
-    with (instance_create(x+8,y,obj_powerupsprout)) sprite_index = constant_get_sprite(other.sprout);
+    with (instance_create(x+8,y,obj_powerupsprout)) {
+         
+        sprite_index = constant_get_sprite(other.sprout);
+        if (other.sprout == cs_propellerblock)
+            x -= 8;
+    }
         
     //Do not sprout another item
     sprout = cs_coin;
@@ -239,6 +244,8 @@ if (sprout != cs_coin) {
         
             hspeed = 0;
             permission = 1;
+            if (sprite_index == spr_propellerblock)
+                x -= 8;
         }        
     }
         

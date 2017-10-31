@@ -122,7 +122,7 @@ if (ready)
     alarm[0] = 2;
     
     //Create a new vine
-    with (instance_create(x,y,obj_vine)) 
+    with (instance_create(x-8,y,obj_vine)) 
         image_speed = 0;
 }
 

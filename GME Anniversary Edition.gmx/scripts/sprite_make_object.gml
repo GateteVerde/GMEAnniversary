@@ -135,6 +135,12 @@ switch (argument[2]) {
     case (spr_trampoline): return instance_create(argument[0],argument[1],obj_trampoline);
     
     //Propeller Block
-    //case (spr_propellerblock): return instance_create(argument[0],argument[1],obj_propellerblock);
+    case (spr_propellerblock): {
+    
+        var i;
+        i = instance_create(argument[0],argument[1],obj_propellerblock_up);
+            i.held = false;
+    }
+    return i;
 }
 

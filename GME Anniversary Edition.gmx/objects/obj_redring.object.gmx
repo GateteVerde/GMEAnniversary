@@ -3,7 +3,7 @@
   <spriteName>spr_redring</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -65,10 +65,7 @@ if (ds_map_find_value(global.redrings,id)) {
 }
 
 //Animate
-image_speed = 0.5;
-
-//Whether this object has been activated
-ready = 0;
+image_speed = 0.3;
 </string>
           </argument>
         </arguments>
@@ -178,7 +175,7 @@ audio_stop_sound(snd_timer);
             <string>///Check if the player collected all coins and give him a prize for doing so.
 
 //If the ring is active.
-if (ready) {
+if (sprite_index == spr_redring_active) {
 
     //If there's not red coins.
     if (instance_number(obj_coin_r) == 0) {
@@ -191,7 +188,6 @@ if (ready) {
         audio_stop_sound(snd_timer);
         
         //Create prize
-        /*
         with (instance_create(0,0,obj_powerupprize)) {
         
             //If the player is small
@@ -200,13 +196,12 @@ if (ready) {
             
             //Otherwise, if the player is big
             else if (global.powerup == cs_big)            
-                sprite_index = constant_get_sprite(sprout);
+                sprite_index = constant_get_sprite(other.sprout);
             
             //Otherwise, get a life.
             else
                 sprite_index = spr_1up;
         }
-        */
         
         //Destroy the ring
         instance_destroy();
@@ -237,40 +232,33 @@ if (ready) {
             <string>///Activate the coins
 
 //If the ring has not been activated.
-if (!ready) {
+if (sprite_index != spr_redring_active) {
 
-    if ((other.xspeed &gt; 0) &amp;&amp; (other.x &gt; x)) 
-    || ((other.xspeed &lt; 0) &amp;&amp; (other.x &lt; x)) {
-
-        //Play 'Ring' and 'Timer' sound
-        audio_play_sound(snd_ring, 0, false);
-        audio_play_sound(snd_timer, 0, true);
-        
-        //Get 1000 points
-        with (instance_create(x-8,y,obj_score)) event_user(5);
+    //Play 'Ring' and 'Timer' sound
+    audio_play_sound(snd_ring, 0, false);
+    audio_play_sound(snd_timer, 0, true);
     
-        //Create the coins
-        for (i=0; i&lt;array_length_1d(coin_x); i++;) {
-        
-            coin[i] = instance_create(coin_x[i],coin_y[i],obj_coin_r);
-        }
-        
-        //Activate
-        ready = 1;
-        
-        //Countdown
-        alarm[0] = 720;
-        
-        //Destroy all not collected coins
-        alarm[1] = 900;
-        
-        //Change the sprite
-        sprite_index = spr_redring_active;
-        image_index = 0;
-        
-        //Prevent the coins from re-appearing
-        ds_map_add(global.redrings,id,1);
+    //Get 1000 points
+    with (instance_create(x-8,y,obj_score)) event_user(5);
+
+    //Create the coins
+    for (i=0; i&lt;array_length_1d(coin_x); i++;) {
+    
+        coin[i] = instance_create(coin_x[i],coin_y[i],obj_coin_r);
     }
+    
+    //Countdown
+    alarm[0] = 720;
+    
+    //Destroy all not collected coins
+    alarm[1] = 900;
+    
+    //Change the sprite
+    sprite_index = spr_redring_active;
+    image_index = 0;
+    
+    //Prevent the coins from re-appearing
+    ds_map_add(global.redrings,id,1);
 }
 </string>
           </argument>
