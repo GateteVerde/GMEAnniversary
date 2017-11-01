@@ -174,6 +174,7 @@
       <sound>sound\snd_scatter</sound>
       <sound>sound\snd_shatter</sound>
       <sound>sound\snd_sprout</sound>
+      <sound>sound\snd_switch</sound>
       <sound>sound\snd_trampoline</sound>
       <sound>sound\snd_vinesprout</sound>
       <sound>sound\snd_warning</sound>
@@ -616,6 +617,20 @@
         <sprite>sprites\spr_grayblock_star</sprite>
         <sprite>sprites\spr_grayblock_kuribo</sprite>
         <sprite>sprites\spr_grayblock_pswitch</sprite>
+      </sprites>
+      <sprites name="Area Blocks">
+        <sprite>sprites\spr_onoffblock_y</sprite>
+        <sprite>sprites\spr_onoffplatform_y</sprite>
+        <sprite>sprites\spr_onoffblock_g</sprite>
+        <sprite>sprites\spr_onoffplatform_g</sprite>
+        <sprite>sprites\spr_onoffblock_r</sprite>
+        <sprite>sprites\spr_onoffplatform_r</sprite>
+        <sprite>sprites\spr_onoffblock_b</sprite>
+        <sprite>sprites\spr_onoffplatform_b</sprite>
+        <sprite>sprites\spr_onoffblock_p</sprite>
+        <sprite>sprites\spr_onoffplatform_p</sprite>
+        <sprite>sprites\spr_onoffblock_o</sprite>
+        <sprite>sprites\spr_onoffplatform_o</sprite>
       </sprites>
       <sprites name="Bricks">
         <sprites name="Shards">
@@ -1407,6 +1422,20 @@
         <object>objects\obj_boltblock</object>
         <object>objects\obj_bellblock</object>
         <object>objects\obj_starblock</object>
+      </objects>
+      <objects name="Area Blocks">
+        <object>objects\obj_onoffblock_y</object>
+        <object>objects\obj_onoffplatform_y</object>
+        <object>objects\obj_onoffblock_g</object>
+        <object>objects\obj_onoffplatform_g</object>
+        <object>objects\obj_onoffblock_r</object>
+        <object>objects\obj_onoffplatform_r</object>
+        <object>objects\obj_onoffblock_b</object>
+        <object>objects\obj_onoffplatform_b</object>
+        <object>objects\obj_onoffblock_p</object>
+        <object>objects\obj_onoffplatform_p</object>
+        <object>objects\obj_onoffblock_o</object>
+        <object>objects\obj_onoffplatform_o</object>
       </objects>
       <objects name="Bricks">
         <object>objects\obj_brick</object>

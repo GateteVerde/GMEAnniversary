@@ -72,17 +72,19 @@ global.checkpoint = noone;
 //Checkpoint Room
 global.checkpointroom = noone;
 
-//Red Switch Palace
+//Switch Palaces
+global.palaceyellow = 0;
+global.palacegreen = 0;
 global.palacered = 0;
-
-//Blue Switch Palace
 global.palaceblue = 0;
 
-//Yellow Switch Palace
-global.palaceyellow = 0;
-
-//Green Switch Palace
-global.palacegreen = 0;
+//On / Off Blocks
+global.onoffyellow = 1;
+global.onoffgreen = 1;
+global.onoffred = 1;
+global.onoffblue = 1;
+global.onoffpurple = 1;
+global.onofforange = 1;
 
 //Position change object type
 //-1: No Change
