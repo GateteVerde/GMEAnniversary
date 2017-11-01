@@ -3,12 +3,12 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="12" name="datafiles">
-    <datafiles number="12" name="music">
+  <datafiles number="15" name="datafiles">
+    <datafiles number="15" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
-        <size>894051</size>
+        <size>548402</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -23,9 +23,9 @@
         <filename>athletic.ogg</filename>
       </datafile>
       <datafile>
-        <name>plains.ogg</name>
+        <name>overworld.ogg</name>
         <exists>-1</exists>
-        <size>870570</size>
+        <size>450436</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -37,29 +37,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>plains.ogg</filename>
-      </datafile>
-      <datafile>
-        <name>pswitch.ogg</name>
-        <exists>-1</exists>
-        <size>420741</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>pswitch.ogg</filename>
+        <filename>overworld.ogg</filename>
       </datafile>
       <datafile>
         <name>starman.ogg</name>
         <exists>-1</exists>
-        <size>382293</size>
+        <size>52956</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>

@@ -527,11 +527,16 @@ if (keyboard_check_pressed(global.downkey))
     }
 }
 
-//If the player is jumping, not ducking, not spin jumping, can control himself, and is not riding anything
+//If the player is jumping, not ducking, not spin jumping, can control himself, is not riding anything and it's not holding a propeller block
 if (state == 2)
 && (!stompstyle)
 && (!disablecontrol)
 && (global.mount == 0) {
+
+    //If a propeller block is being held, do not use powerups
+    if (instance_exists(obj_propellerblock_up)) 
+    && (obj_propellerblock_up.held)
+        exit;
 
     //If the player does have either the raccoon or the tanooki powerup
     if ((global.powerup == cs_leaf) || (global.powerup == cs_tanooki))
@@ -594,7 +599,6 @@ if (state == 2)
     else if ((global.powerup == cs_carrot) 
     || ((global.powerup == cs_bee) && (beefly < 128)))
     && (!crouch)
-    && (jumping == 2)
     && (wallkick < 1)
     && (keyboard_check(global.shiftkey)) {
 

@@ -124,8 +124,12 @@ if (sprout != cs_coin) {
         sprout = cs_big;
         
     //Create the item
-    with (instance_create(x+16,y,obj_powerupsprout))     
+    with (instance_create(x+16,y,obj_powerupsprout)) {
+    
         sprite_index = constant_get_sprite(other.sprout);
+        if (other.sprout == cs_propellerblock)
+            x -= 8;
+    }
 }
     
 //Change into a empty block

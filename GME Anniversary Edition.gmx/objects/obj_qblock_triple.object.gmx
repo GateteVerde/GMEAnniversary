@@ -131,8 +131,12 @@ for (var i=0; i&lt;3; i++;) {
             sprout[i] = cs_big;
             
         //Create the item
-        with (instance_create(x+8+(i*16),y,obj_powerupsprout))     
+        with (instance_create(x+8+(i*16),y,obj_powerupsprout)) {
+        
             sprite_index = constant_get_sprite(other.sprout[i]);
+            if (other.sprout[i] == cs_propellerblock)
+                x -= 8;
+        }
     }
 }
     
