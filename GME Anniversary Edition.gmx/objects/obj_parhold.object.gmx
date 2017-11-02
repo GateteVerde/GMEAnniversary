@@ -27,8 +27,9 @@
             <kind>1</kind>
             <string>///The parent object for all holdable SMB3 / SMW items
 
-//Inherit the parent event
-event_inherited();
+//Do not animate
+image_speed = 0;
+image_index = 0;
 
 //Direction of the item
 dir = 1;
@@ -39,8 +40,8 @@ held = 0;
 //Whether the item is on a wall
 inwall = 0;
 
-//Whether the item is underwater
-swimming = false;
+//Inherit create event
+event_inherited();
 </string>
           </argument>
         </arguments>

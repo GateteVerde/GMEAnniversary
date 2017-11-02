@@ -72,7 +72,7 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_solid" x="128" y="336" name="inst_BC5CE825" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="160" y="368" name="inst_5297E3D3" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="240" y="336" name="inst_ED2D9A77" locked="0" code="sprout[1] = cs_propellerblock;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock_triple" x="208" y="272" name="inst_23FD37C4" locked="0" code="sprout[1] = cs_fire;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_triple" x="208" y="272" name="inst_23FD37C4" locked="0" code="sprout[1] = cs_carrot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="480" y="336" name="inst_FDB38956" locked="0" code="sprout[1] = cs_trampoline;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="512" y="272" name="inst_6FAA0376" locked="0" code="sprout[1] = cs_leaf;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="176" y="240" name="inst_33A4D585" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -98,8 +98,23 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_onoffplatform_y" x="688" y="240" name="inst_0A6F107D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform_y" x="688" y="256" name="inst_EBEF57A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffblock_y" x="376" y="336" name="inst_20479B17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="384" y="320" name="inst_4A6239A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock_winged" x="376" y="272" name="inst_D51E534C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mushroom" x="416" y="752" name="inst_4A6239A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_winged" x="376" y="272" name="inst_D51E534C" locked="0" code="sprout = cs_fire;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_semisolid" x="704" y="240" name="inst_FC2B2A14" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boomerang_blue" x="256" y="384" name="inst_048F86FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boomerang_blue" x="496" y="384" name="inst_AFED88D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="256" y="208" name="inst_49BEA6AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="464" y="208" name="inst_F7E3CF51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_right" x="256" y="208" name="inst_3DC4BCB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_right" x="416" y="208" name="inst_13B9F1A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_left" x="496" y="208" name="inst_E904DD3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_left" x="336" y="208" name="inst_1A3E8331" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_bomb" x="176" y="352" name="inst_7A23A437" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_bomb" x="576" y="352" name="inst_817C3693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_bomb" x="608" y="320" name="inst_ED43C711" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_bomb" x="144" y="320" name="inst_5A68A70D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_hidden" x="16" y="144" name="inst_55785BFF" locked="0" code="sprout = cs_star;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_hidden" x="736" y="144" name="inst_86D1D180" locked="0" code="sprout = cs_1up;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="0" y="240" w="32" h="16" xo="800" yo="0" id="10003168" name="inst_4F581D3F" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

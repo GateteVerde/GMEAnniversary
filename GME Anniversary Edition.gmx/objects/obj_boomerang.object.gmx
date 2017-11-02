@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///A boomerang thrown by a boomerang bro.
+            <string>///A boomerang thrown by the player.
 
-//Play a sound
-audio_play_sound(snd_fireball, 0, false);
+//Default values
+canpick = 0;
 
 //Animate
 image_speed = 0.3;
@@ -43,6 +43,9 @@ parent = -1;
 
 //Go up
 alarm[0] = 32;
+
+//Play a sound
+alarm[3] = 2;
 
 //Set the vertical speed
 vspeed = -0.75;
@@ -71,6 +74,33 @@ vspeed = -0.75;
             <string>///Stop boomerang sound
 
 audio_stop_sound(snd_boomerang);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Play 'Fireball' sound if the player generated it
+
+if (canpick)
+exit;
+    audio_play_sound(snd_fireball, 0, false);
 </string>
           </argument>
         </arguments>
@@ -241,10 +271,23 @@ if (ready2 != 0) {
 
 //If the boomerang is outside the view...
 if (outside_view())
+    instance_destroy();
 
 //...or the boomerang is retreating and makes contact with the player
-|| ((ready3) &amp;&amp; (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_playerparent,0,0))) 
-    instance_destroy();
+else if (ready3) 
+&amp;&amp; (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_playerparent,0,0)) {
+
+    if (canpick == 0)
+        instance_destroy();
+    else {
+    
+        //Create new throwable boomerang
+        instance_create(x,y,obj_boomerang_blue_up);
+    
+        //Destroy
+        instance_destroy();
+    }
+}
 </string>
           </argument>
         </arguments>
