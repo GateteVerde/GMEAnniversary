@@ -274,18 +274,31 @@ if (outside_view())
     instance_destroy();
 
 //...or the boomerang is retreating and makes contact with the player
-else if (ready3) 
-&amp;&amp; (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_playerparent,0,0)) {
+else if (ready3) {
 
-    if (canpick == 0)
-        instance_destroy();
-    else {
+    //Check for a player object
+    var player = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_playerparent,0,0);
     
-        //Create new throwable boomerang
-        instance_create(x,y,obj_boomerang_blue_up);
+    //If the player exists
+    if (player) {
     
-        //Destroy
-        instance_destroy();
+        //If the boomerang cannot be picked up
+        if (!canpick) {
+        
+            instance_create(x-8,y,obj_smoke);
+            instance_destroy();
+            exit;
+        }
+        
+        //Otherwise, if the 
+        else if (player.holding == 0) {
+        
+            //Create a new held boomerang
+            instance_create(x+8,y,obj_boomerang_blue_up);
+            
+            //Destroy
+            instance_destroy();
+        }
     }
 }
 </string>

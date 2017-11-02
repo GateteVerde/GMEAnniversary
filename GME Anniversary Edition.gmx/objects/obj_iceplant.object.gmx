@@ -39,6 +39,9 @@ instance_create(x,y,obj_smoke);
 
 //Destroy the projectile
 with (other) event_user(0);
+
+//Destroy
+instance_destroy();
 </string>
           </argument>
         </arguments>

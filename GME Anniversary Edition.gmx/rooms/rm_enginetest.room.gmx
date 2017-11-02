@@ -58,7 +58,6 @@ background_hspeed[2] = -0.2;</code>
   </views>
   <instances>
     <instance objName="obj_levelcontrol" x="0" y="0" name="inst_2AD0ECB5" locked="0" code="levelmusic = global._theme_overworld;&#xA;leveltime = 500;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_semisolid" x="192" y="400" name="inst_C04CB90D" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player_start" x="384" y="384" name="inst_E7865AC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="32" y="240" name="inst_667F99DA" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="0" y="208" name="inst_92AE5E33" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
@@ -115,6 +114,27 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_grass_bomb" x="144" y="320" name="inst_5A68A70D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_hidden" x="16" y="144" name="inst_55785BFF" locked="0" code="sprout = cs_star;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_hidden" x="736" y="144" name="inst_86D1D180" locked="0" code="sprout = cs_1up;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="192" y="400" name="inst_6304F253" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_scatter" x="272" y="144" name="inst_A821D1B6" locked="0" code="coins = 50;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_scatter" x="480" y="144" name="inst_2BA0FE38" locked="0" code="coins = 50;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fireflower" x="24" y="256" name="inst_AC49F381" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fireflower" x="744" y="256" name="inst_C74A81D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="272" y="384" name="inst_8CC00E7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="272" y="368" name="inst_FAF363C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="240" y="368" name="inst_2FEF2196" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="256" y="368" name="inst_D33BAF42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="240" y="384" name="inst_F4569225" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="480" y="384" name="inst_0116332A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="496" y="368" name="inst_7AFE134D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="512" y="384" name="inst_1108C048" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="512" y="368" name="inst_29A58847" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icecoin" x="480" y="368" name="inst_A603E431" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_iceplant" x="160" y="352" name="inst_5D15A806" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_iceplant" x="128" y="320" name="inst_024FC70B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_iceplant" x="96" y="288" name="inst_79CB848E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_iceplant" x="592" y="352" name="inst_2B983F9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_iceplant" x="624" y="320" name="inst_A15EA275" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_iceplant" x="656" y="288" name="inst_B811636E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="0" y="240" w="32" h="16" xo="800" yo="0" id="10003168" name="inst_4F581D3F" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
