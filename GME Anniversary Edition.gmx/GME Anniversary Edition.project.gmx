@@ -773,6 +773,8 @@
         <sprite>sprites\spr_holdbubble</sprite>
         <sprite>sprites\spr_plusclock_10</sprite>
         <sprite>sprites\spr_plusclock_50</sprite>
+        <sprite>sprites\spr_icecoin</sprite>
+        <sprite>sprites\spr_iceplant</sprite>
         <sprite>sprites\spr_3upmoon</sprite>
       </sprites>
       <sprites name="Platforms">
@@ -829,6 +831,7 @@
           <sprite>sprites\spr_weightplatform</sprite>
           <sprite>sprites\spr_skullraft</sprite>
         </sprites>
+        <sprite>sprites\spr_conveyor</sprite>
         <sprite>sprites\spr_yoshiplatform</sprite>
         <sprite>sprites\spr_pulleyplatform</sprite>
         <sprite>sprites\spr_pulleyplatform_32x</sprite>
@@ -845,6 +848,14 @@
         <sprite>sprites\spr_trampoline_p_end</sprite>
         <sprite>sprites\spr_trampoline_timed</sprite>
         <sprite>sprites\spr_trampoline_timed_end</sprite>
+        <sprite>sprites\spr_flipper_top</sprite>
+        <sprite>sprites\spr_flipper_bottom</sprite>
+        <sprite>sprites\spr_flipper_left</sprite>
+        <sprite>sprites\spr_flipper_right</sprite>
+        <sprite>sprites\spr_walltriangle_r</sprite>
+        <sprite>sprites\spr_walltriangle_l</sprite>
+        <sprite>sprites\spr_walltriangle_cr</sprite>
+        <sprite>sprites\spr_walltriangle_cl</sprite>
         <sprite>sprites\spr_propellerblock</sprite>
         <sprite>sprites\spr_boomerang_blue</sprite>
       </sprites>
@@ -879,21 +890,10 @@
         <sprite>sprites\spr_powblock_large_th</sprite>
         <sprite>sprites\spr_itembubble</sprite>
       </sprites>
-      <sprite>sprites\spr_icecoin</sprite>
-      <sprite>sprites\spr_iceplant</sprite>
-      <sprite>sprites\spr_conveyor</sprite>
-      <sprite>sprites\spr_flipper_top</sprite>
-      <sprite>sprites\spr_flipper_bottom</sprite>
-      <sprite>sprites\spr_flipper_left</sprite>
-      <sprite>sprites\spr_flipper_right</sprite>
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_door_lock</sprite>
       <sprite>sprites\spr_door_inside</sprite>
       <sprite>sprites\spr_door_block</sprite>
-      <sprite>sprites\spr_walltriangle_r</sprite>
-      <sprite>sprites\spr_walltriangle_l</sprite>
-      <sprite>sprites\spr_walltriangle_cr</sprite>
-      <sprite>sprites\spr_walltriangle_cl</sprite>
     </sprites>
     <sprites name="Masks">
       <sprites name="Player">
@@ -1111,15 +1111,21 @@
           <script>scripts\scr_mario_ride.gml</script>
         </scripts>
         <scripts name="Global">
-          <scripts name="Palettes">
-            <script>scripts\player_palette_get.gml</script>
+          <scripts name="Attacks">
+            <script>scripts\scr_global_dropdown.gml</script>
+            <script>scripts\scr_global_tailspin.gml</script>
           </scripts>
-          <script>scripts\scr_global_dropdown.gml</script>
+          <scripts name="Misc">
+            <script>scripts\scr_global_transform.gml</script>
+          </scripts>
+          <script>scripts\scr_global_walk.gml</script>
+          <script>scripts\scr_global_jump.gml</script>
+          <script>scripts\scr_global_run.gml</script>
+          <script>scripts\scr_global_climb.gml</script>
+          <script>scripts\scr_global_hold.gml</script>
           <script>scripts\scr_global_duck.gml</script>
           <script>scripts\scr_global_pull.gml</script>
           <script>scripts\scr_global_ride.gml</script>
-          <script>scripts\scr_global_tailspin.gml</script>
-          <script>scripts\scr_global_transform.gml</script>
         </scripts>
         <script>scripts\scr_inice.gml</script>
       </scripts>
@@ -1336,6 +1342,7 @@
             <script>scripts\pal_swap_get_pal_count.gml</script>
           </scripts>
           <script>scripts\palette_get.gml</script>
+          <script>scripts\player_palette_get.gml</script>
         </scripts>
       </scripts>
       <scripts name="Text">
@@ -1524,6 +1531,8 @@
         <object>objects\obj_holdbubble</object>
         <object>objects\obj_plusclock_10</object>
         <object>objects\obj_plusclock_50</object>
+        <object>objects\obj_icecoin</object>
+        <object>objects\obj_iceplant</object>
         <object>objects\obj_3upmoon</object>
       </objects>
       <objects name="Platforms">
@@ -1576,6 +1585,8 @@
           <object>objects\obj_weightplatform</object>
           <object>objects\obj_skullraft</object>
         </objects>
+        <object>objects\obj_conveyor_l</object>
+        <object>objects\obj_conveyor_r</object>
         <object>objects\obj_yoshiplatform</object>
         <object>objects\obj_pulleyplatform</object>
         <object>objects\obj_mushroomplatform</object>
@@ -1587,6 +1598,14 @@
         <object>objects\obj_trampoline</object>
         <object>objects\obj_trampoline_p</object>
         <object>objects\obj_trampoline_timed</object>
+        <object>objects\obj_flipper_top</object>
+        <object>objects\obj_flipper_bottom</object>
+        <object>objects\obj_flipper_left</object>
+        <object>objects\obj_flipper_right</object>
+        <object>objects\obj_walltriangle_r</object>
+        <object>objects\obj_walltriangle_l</object>
+        <object>objects\obj_walltriangle_ir</object>
+        <object>objects\obj_walltriangle_il</object>
         <object>objects\obj_propellerblock</object>
         <object>objects\obj_boomerang_blue</object>
       </objects>
@@ -1618,14 +1637,6 @@
         <object>objects\obj_itembubble</object>
         <object>objects\obj_digsand</object>
       </objects>
-      <object>objects\obj_icecoin</object>
-      <object>objects\obj_iceplant</object>
-      <object>objects\obj_conveyor_r</object>
-      <object>objects\obj_conveyor_l</object>
-      <object>objects\obj_flipper_top</object>
-      <object>objects\obj_flipper_bottom</object>
-      <object>objects\obj_flipper_left</object>
-      <object>objects\obj_flipper_right</object>
     </objects>
     <objects name="Special">
       <objects name="Parents">
