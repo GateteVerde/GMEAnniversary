@@ -96,6 +96,9 @@ netsmack = false;
 //Makes the player able or not able to move.
 move = false;
 
+//Angle of the player after wall run
+angle = 0;
+
 //Handle P-Meter
 pmeter = 0;
 pmeterready = false;
@@ -330,6 +333,31 @@ else {
     isflashing = 0;
     alarm[5] = 1;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reset angle
+
+angle = 0;
 </string>
           </argument>
         </arguments>
@@ -1414,8 +1442,8 @@ if (invulnerable == false) {
 //Set the shader
 pal_swap_set(player_palette_get(), isflashing);
 
-//Draw Mario
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,0,c_white,image_alpha);
+//Draw player
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,angle,c_white,image_alpha);
 
 //End shader
 pal_swap_reset();

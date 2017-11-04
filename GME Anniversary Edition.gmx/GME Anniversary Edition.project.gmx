@@ -901,7 +901,7 @@
         <sprite>sprites\spr_mask</sprite>
         <sprite>sprites\spr_bigmask</sprite>
         <sprite>sprites\spr_shellmask</sprite>
-        <sprite>sprites\spr_wallrunmask</sprite>
+        <sprite>sprites\spr_warpmask</sprite>
       </sprites>
       <sprites name="NPCs">
         <sprite>sprites\spr_sproutmask</sprite>
@@ -1133,11 +1133,15 @@
         <script>scripts\scr_inice.gml</script>
       </scripts>
       <scripts name="Behaviour">
+        <scripts name="Special">
+          <scripts name="Mario">
+            <script>scripts\scr_player_behaviour_wall.gml</script>
+          </scripts>
+        </scripts>
         <script>scripts\scr_player_behaviour.gml</script>
         <script>scripts\scr_player_behaviour_climb.gml</script>
         <script>scripts\scr_player_behaviour_swim.gml</script>
         <script>scripts\scr_player_behaviour_slide.gml</script>
-        <script>scripts\scr_player_behaviour_wall.gml</script>
       </scripts>
       <script>scripts\canpull.gml</script>
       <script>scripts\canhold.gml</script>
