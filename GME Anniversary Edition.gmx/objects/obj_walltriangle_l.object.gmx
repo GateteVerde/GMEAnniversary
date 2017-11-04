@@ -6,7 +6,7 @@
   <depth>9</depth>
   <persistent>0</persistent>
   <parentName>obj_deactivateparent</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_square</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -28,6 +28,52 @@
             <string>///Left wall triangle
 
 instance_create(x,y,obj_slope_sl);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_playerparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make the player run on walls
+
+//If the player is not riding anything
+if (global.mount == 0) {
+
+    //If the player meets the following conditions
+    if (other.state == 1)
+    &amp;&amp; (other.crouch == 0)
+    &amp;&amp; (other.holding == 0)
+    &amp;&amp; (other.swimming == 0) 
+    &amp;&amp; (other.disablecontrol == 0) {
+    
+        //If the player is moving right and there's a wall at the right, run upwards
+        if (other.xspeed &lt; -2.6)
+        &amp;&amp; (position_meeting(x-8,y-8,obj_solid))        
+            with (instance_create(x+16,y,obj_wallrunner)) direct = -1;
+            
+        //Otherwise, if the player is moving left and there's a downwards wall there and no floor, run downwards.
+        else if (other.xspeed &gt; 2.6)
+        &amp;&amp; (position_meeting(x+8,y+24,obj_solid))
+        &amp;&amp; (!position_meeting(x+24,y+24,obj_semisolid))        
+            with (instance_create(x+32,y+16,obj_wallrunner)) direction = 270;
+    }
+}
 </string>
           </argument>
         </arguments>

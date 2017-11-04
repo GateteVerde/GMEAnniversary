@@ -572,9 +572,6 @@
         </sprites>
         <sprite>sprites\spr_mario_pull</sprite>
       </sprites>
-      <sprite>sprites\spr_mask</sprite>
-      <sprite>sprites\spr_bigmask</sprite>
-      <sprite>sprites\spr_shellmask</sprite>
       <sprite>sprites\spr_mario_dead</sprite>
     </sprites>
     <sprites name="Blocks">
@@ -897,8 +894,14 @@
     </sprites>
     <sprites name="Masks">
       <sprites name="Player">
-        <sprite>sprites\spr_topmarker</sprite>
-        <sprite>sprites\spr_bottommarker</sprite>
+        <sprites name="Markers">
+          <sprite>sprites\spr_topmarker</sprite>
+          <sprite>sprites\spr_bottommarker</sprite>
+        </sprites>
+        <sprite>sprites\spr_mask</sprite>
+        <sprite>sprites\spr_bigmask</sprite>
+        <sprite>sprites\spr_shellmask</sprite>
+        <sprite>sprites\spr_wallrunmask</sprite>
       </sprites>
       <sprites name="NPCs">
         <sprite>sprites\spr_sproutmask</sprite>
@@ -1684,6 +1687,7 @@
           <object>objects\obj_statue</object>
           <object>objects\obj_spinner</object>
           <object>objects\obj_dropdown</object>
+          <object>objects\obj_wallrunner</object>
           <object>objects\obj_marker_head</object>
           <object>objects\obj_marker_bottom</object>
         </objects>

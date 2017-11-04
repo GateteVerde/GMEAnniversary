@@ -699,7 +699,7 @@ if (xspeed &gt; 0)
     }
     
     //Prevent the player from getting embed into the wall
-    while (collision_rectangle(x,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,1,0))
+    while (collision_rectangle(x,bbox_top+4,bbox_right,bbox_bottom-4,obj_solid,1,0))
     &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,1,0))
         x--;
 }
@@ -739,7 +739,7 @@ else if (xspeed &lt; 0)
     }        
     
     //Prevent the player from getting embed into the wall
-    while (collision_rectangle(bbox_left,bbox_top+4,x,bbox_bottom-1,obj_solid,1,0))
+    while (collision_rectangle(bbox_left,bbox_top+4,x,bbox_bottom-4,obj_solid,1,0))
     &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,1,0))
         x++;
 }

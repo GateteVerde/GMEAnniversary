@@ -496,10 +496,12 @@ instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view
             <kind>1</kind>
             <string>///Camera orientation
 
-//If the player is sliding
-if (((global.powerup == cs_shell) 
-|| (global.powerup == cs_penguin)) 
-&amp;&amp; (obj_playerparent.sliding)) {
+//If the player is wallrunning...
+if (instance_exists(obj_wallrunner))
+
+//...or it's sliding with either the shell or penguin powerup
+|| (((global.powerup == cs_shell) &amp;&amp; (obj_playerparent.sliding))
+|| ((global.powerup == cs_penguin) &amp;&amp; (obj_playerparent.sliding))) {
 
     //If the camera is panned to the right, pan it to the center.
     if (x &gt; obj_playerparent.x+4) then x -= 4-obj_playerparent.xspeed;

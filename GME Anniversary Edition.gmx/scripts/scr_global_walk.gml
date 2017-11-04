@@ -10,5 +10,5 @@
 
 switch (global.player) {
 
-    case (0): scr_mario_walk(); break;
+    case (0): sprite_index = scr_mario_walk(); break;
 }
