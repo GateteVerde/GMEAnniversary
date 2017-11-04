@@ -53,7 +53,8 @@ instance_create(x,y,obj_slope_sl);
             <string>///Make the player run on walls
 
 //If the player is not riding anything
-if (global.mount == 0) {
+if (global.mount == 0) 
+&amp;&amp; (global.powerup != cs_cat) {
 
     //If the player meets the following conditions
     if (other.state == 1)

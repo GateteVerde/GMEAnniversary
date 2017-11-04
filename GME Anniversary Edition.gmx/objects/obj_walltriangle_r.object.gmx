@@ -52,8 +52,9 @@ instance_create(x,y,obj_slope_sr);
             <kind>1</kind>
             <string>///Make the player run on walls
 
-//If the player is not riding anything
-if (global.mount == 0) {
+//If the player is not riding anything and does not have the cat powerup
+if (global.mount == 0) 
+&amp;&amp; (global.powerup != cs_cat) {
 
     //If the player meets the following conditions
     if (other.state == 1)

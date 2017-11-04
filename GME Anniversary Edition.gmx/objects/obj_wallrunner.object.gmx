@@ -181,6 +181,8 @@ else if (direct == 1) {
         //Destroy self if there is no solid to the right
         if (!place_meeting(x+8,y,obj_solid)) {
         
+            x += 16;
+            y -= 32;
             obj_playerparent.xspeed = -vspeed;
             instance_destroy();
         }
@@ -245,7 +247,9 @@ else if (direct == -1) {
 
         //Destroy self if there is no solid to the left
         if (!place_meeting(x-8,y,obj_solid)) {
-        
+                
+            x -= 16;
+            y -= 32;        
             obj_playerparent.xspeed = vspeed;
             instance_destroy();
         }
@@ -411,7 +415,7 @@ if (((direct == 1) &amp;&amp; (direction == 270)) &amp;&amp; (y &gt; other.y)) {
 
     //Snap in position
     x = other.x+16;
-    y = other.y;
+    y = other.y-16;
     
     //Hereby horizontal speed
     obj_playerparent.xspeed = speed;
@@ -447,7 +451,7 @@ if (((direct == -1) &amp;&amp; (direction == 270)) &amp;&amp; (y &gt; other.y)) 
 
     //Snap in position
     x = other.x;
-    y = other.y;
+    y = other.y-16;
     
     //Hereby horizontal speed
     obj_playerparent.xspeed = -speed;
