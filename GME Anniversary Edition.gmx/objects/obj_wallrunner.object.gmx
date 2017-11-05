@@ -286,12 +286,12 @@ else if (xscale &gt; 0) {
         }
         
         //Check for a inverted right wall triangle
-        var col = instance_position(x-8,y-16,obj_walltriangle_ir);
+        var col = collision_line(bbox_left,y-20,bbox_right,y-16,obj_walltriangle_ir,0,0);
         if (col) {
         
             //Snap on triangle
             x = col.x-15;
-            y = col.y;
+            y = col.y+15;
             
             //Direction
             direction = 90;
@@ -330,12 +330,11 @@ else if (xscale &gt; 0) {
         }
         
         //Check for a inverted left wall triangle
-        var col = instance_position(x-16,y,obj_walltriangle_il);
-        if (col)
-        &amp;&amp; (y &gt; col.y) {
+        var col = collision_line(x-20,y,x-16,y,obj_walltriangle_il,0,0);
+        if (col) {
         
             //Snap on triangle
-            x = col.x;
+            x = col.x+31;
             y = col.y+31;
             
             //Direction
@@ -343,7 +342,6 @@ else if (xscale &gt; 0) {
             
             //Disallow turn
             ready = false;
-            canready = false;
             
             //Angle
             angle = 225;
@@ -353,6 +351,27 @@ else if (xscale &gt; 0) {
             
             //Allow turn
             alarm[1] = 24;
+        }
+        
+        //Check for a left wall triangle
+        var col = collision_rectangle(x-16,y,x,y,obj_walltriangle_l,0,0);
+        if (col)
+        &amp;&amp; (ready) {
+    
+            //Snap onto triangle
+            x = col.xstart+15;
+            y = col.ystart;
+        
+            //With the player
+            with (obj_playerparent) {
+            
+                xspeed = other.speed;
+                angle = 315;
+                alarm[4] = 4;
+            }
+            
+            //Destroy
+            instance_destroy();        
         }
     }
 }
@@ -406,7 +425,7 @@ else if (xscale &lt; 0) {
         }
         
         //Check for a inverted right wall triangle
-        var col = instance_position(x+8,y-16,obj_walltriangle_il);
+        var col = collision_line(x,y-20,x,y-16,obj_walltriangle_il,0,0);
         if (col) {
         
             //Snap on triangle
@@ -450,12 +469,11 @@ else if (xscale &lt; 0) {
         }
         
         //Check for a inverted left wall triangle
-        var col = instance_position(x+16,y+8,obj_walltriangle_ir);
-        if (col)
-        &amp;&amp; (y &gt; col.y) {
+        var col = collision_line(x+16,y,x+20,y,obj_walltriangle_ir,0,0);
+        if (col) {
         
             //Snap on triangle
-            x = col.x+15;
+            x = col.x-15;
             y = col.y+31;
             
             //Direction
@@ -472,6 +490,27 @@ else if (xscale &lt; 0) {
             
             //Allow turn
             alarm[1] = 24;
+        }
+        
+        //Check for a right wall triangle
+        var col = collision_line(x,y,x+16,y,obj_walltriangle_r,0,0);
+        if (col) 
+        &amp;&amp; (ready) {
+        
+            //Snap onto the triangle
+            x = col.xstart;
+            y = col.ystart;
+            
+            //With the player
+            with (obj_playerparent) {
+            
+                xspeed = other.speed*-1;
+                angle = 225;
+                alarm[4] = 4;
+            }
+        
+            //Destroy
+            instance_destroy();
         }
     }    
 }
@@ -641,92 +680,6 @@ if (ready) {
         //Allow turning
         alarm[1] = 24;        
     }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_walltriangle_l">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Make the player interact with this item
-
-//If the player is 16 pixels below the top of the triangle and can turn on it.
-if ((y &gt;= other.y-16) &amp;&amp; (ready)) {
-
-    //If the player is facing right and it's moving down.
-    if (xscale &gt; 0)
-    &amp;&amp; (direction == 270) {
-    
-        //Snap onto triangle
-        x = other.xstart+15;
-        y = other.ystart-15;
-    
-        //With the player
-        obj_playerparent.xspeed = speed;
-        obj_playerparent.y += 8;
-        
-        //Destroy
-        instance_destroy();
-    }   
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_walltriangle_r">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Make the player interact with this item
-
-//If the player is 16 pixels below the top of the triangle and can turn on it.
-if ((y &gt;= other.y-16) &amp;&amp; (ready)) {
-
-    //If the player is facing left and it's moving down.
-    if (xscale &lt; 0)
-    &amp;&amp; (direction == 270) {
-    
-        //Snap onto the triangle
-        x = other.xstart;
-        y = other.ystart-15;
-    
-        //With the player
-        obj_playerparent.xspeed = speed*-1;
-        obj_playerparent.y += 8;
-        
-        //Destroy
-        instance_destroy();
-    }   
 }
 </string>
           </argument>

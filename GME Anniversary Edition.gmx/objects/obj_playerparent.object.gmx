@@ -570,75 +570,104 @@ if (!swimming) {
             //Execute the wall collision checking script
             scr_player_behaviour_wall()
             
-            //If the player's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
-            if (abs(xspeed) &gt; runspeed-0.1) {
+            //If the player is running on walls or ceilings
+            if (instance_exists(obj_wallrunner)) {
             
-                //If the player is not jumping.
-                if (state &lt; 2) {
+                //If the P-Meter is full.
+                if (pmeter &gt; 112) {
                 
-                    //If the P-Meter is full.
-                    if (pmeter &gt; 112) {
+                    //Play 'P-Meter' sound
+                    if (!audio_is_playing(snd_pmeter)) {
                     
-                        //Play 'P-Meter' sound
-                        if (!audio_is_playing(snd_pmeter)) {
-                        
-                            audio_play_sound(snd_pmeter, 0, true);
-                        }
-                        
-                        //Keep P-Meter full.
-                        pmeter = 112;
-                    
-                        //Make the player able to run.
-                        run = true;
+                        audio_play_sound(snd_pmeter, 0, true);
                     }
-                    else {
                     
-                        //Fill P-Meter.
-                        pmeter += 2;
-                    }
+                    //Keep P-Meter full.
+                    pmeter = 112;
+                
+                    //Make the player able to run.
+                    run = true;
                 }
+                else {
                 
-                //If the player is on the ground and not running.
-                else if ((!run) &amp;&amp; (pmeter &gt; 0))
-                    pmeter--;
+                    //Fill P-Meter.
+                    pmeter += 2;
+                }
             }
             
-            //Otherwise, if the player's horizontal speed is lower than 2.4
-            else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; runspeed))) { 
+            //Otherwise...
+            else {
             
-                //If the player is flying and lands on the floor.
-                if (flying) {
+                //If the player's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
+                if (abs(xspeed) &gt; runspeed-0.1) {
                 
-                    //Stop 'P-Meter' sound
-                    audio_stop_sound(snd_pmeter);
+                    //If the player is not jumping.
+                    if (state &lt; 2) {
                     
-                    //Allow the player to fly again.
-                    flying = false;
+                        //If the P-Meter is full.
+                        if (pmeter &gt; 112) {
+                        
+                            //Play 'P-Meter' sound
+                            if (!audio_is_playing(snd_pmeter)) {
+                            
+                                audio_play_sound(snd_pmeter, 0, true);
+                            }
+                            
+                            //Keep P-Meter full.
+                            pmeter = 112;
+                        
+                            //Make the player able to run.
+                            run = true;
+                        }
+                        else {
+                        
+                            //Fill P-Meter.
+                            pmeter += 2;
+                        }
+                    }
                     
-                    //Make the player walk
-                    run = false;
-                    
-                    //Empty P-Meter.
-                    if (pmeter &gt; 0)        
-                        pmeter --;
+                    //If the player is on the ground and not running.
+                    else if ((!run) &amp;&amp; (pmeter &gt; 0))
+                        pmeter--;
                 }
                 
-                //If the player is not flying.
-                else if (!flying) {
+                //Otherwise, if the player's horizontal speed is lower than 2.4
+                else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; runspeed))) { 
                 
-                    //Stop 'P-Meter' sound
-                    audio_stop_sound(snd_pmeter);
-                                        
-                    //Make the player walk
-                    run = false;
+                    //If the player is flying and lands on the floor.
+                    if (flying) {
                     
-                    //Restart flying.
-                    alarm[9] = 0;
+                        //Stop 'P-Meter' sound
+                        audio_stop_sound(snd_pmeter);
+                        
+                        //Allow the player to fly again.
+                        flying = false;
+                        
+                        //Make the player walk
+                        run = false;
+                        
+                        //Empty P-Meter.
+                        if (pmeter &gt; 0)        
+                            pmeter --;
+                    }
                     
-                    //Empty P-Meter.
-                    if (pmeter &gt; 0)       
-                        pmeter --;
-                }   
+                    //If the player is not flying.
+                    else if (!flying) {
+                    
+                        //Stop 'P-Meter' sound
+                        audio_stop_sound(snd_pmeter);
+                                            
+                        //Make the player walk
+                        run = false;
+                        
+                        //Restart flying.
+                        alarm[9] = 0;
+                        
+                        //Empty P-Meter.
+                        if (pmeter &gt; 0)       
+                            pmeter --;
+                    }   
+                }
             }
         }
         
