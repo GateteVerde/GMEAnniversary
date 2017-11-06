@@ -792,11 +792,6 @@
             <sprite>sprites\spr_path_circle_2x_c</sprite>
             <sprite>sprites\spr_path_circle_2x_d</sprite>
           </sprites>
-          <sprites name="Complex">
-            <sprite>sprites\spr_rope</sprite>
-            <sprite>sprites\spr_platform_ferris</sprite>
-            <sprite>sprites\spr_platform_ferris_segment</sprite>
-          </sprites>
           <sprite>sprites\spr_platform</sprite>
           <sprite>sprites\spr_platform_32x</sprite>
           <sprite>sprites\spr_platform_64x</sprite>
@@ -820,6 +815,14 @@
           <sprite>sprites\spr_donut_red</sprite>
         </sprites>
         <sprites name="SMW">
+          <sprites name="Ferris">
+            <sprite>sprites\spr_ferrisplatform</sprite>
+            <sprite>sprites\spr_ferrisplatform_segment</sprite>
+          </sprites>
+          <sprites name="Balance">
+            <sprite>sprites\spr_balanceplatform</sprite>
+            <sprite>sprites\spr_balanceplatform_segment</sprite>
+          </sprites>
           <sprite>sprites\spr_accordion</sprite>
           <sprite>sprites\spr_blocktrain</sprite>
           <sprite>sprites\spr_stoneblock</sprite>
@@ -835,6 +838,7 @@
         </sprites>
         <sprite>sprites\spr_conveyor</sprite>
         <sprite>sprites\spr_yoshiplatform</sprite>
+        <sprite>sprites\spr_rope</sprite>
         <sprite>sprites\spr_pulleyplatform</sprite>
         <sprite>sprites\spr_pulleyplatform_32x</sprite>
         <sprite>sprites\spr_pulleyplatform_64x</sprite>
@@ -1549,11 +1553,6 @@
       </objects>
       <objects name="Platforms">
         <objects name="Common">
-          <objects name="Ferris">
-            <object>objects\obj_ferrisplatform</object>
-            <object>objects\obj_ferrisplatform_2x</object>
-            <object>objects\obj_ferrisplatform_3x</object>
-          </objects>
           <objects name="Paths">
             <object>objects\obj_path</object>
             <object>objects\obj_path_hor</object>
@@ -1586,6 +1585,14 @@
           <object>objects\obj_donut_red</object>
         </objects>
         <objects name="SMW">
+          <objects name="Ferris">
+            <object>objects\obj_ferrisplatform</object>
+            <object>objects\obj_ferrisplatform_2x</object>
+            <object>objects\obj_ferrisplatform_3x</object>
+          </objects>
+          <objects name="Balance">
+            <object>objects\obj_balanceplatform</object>
+          </objects>
           <object>objects\obj_accordion_h</object>
           <object>objects\obj_accordion_v</object>
           <object>objects\obj_accordion_hv</object>
@@ -1736,9 +1743,6 @@
             <object>objects\obj_holdbubble_respawn</object>
           </objects>
           <objects name="Platforms">
-            <objects name="Common">
-              <object>objects\obj_ferrisplatform_platform</object>
-            </objects>
             <objects name="SMB2">
               <object>objects\obj_log</object>
             </objects>
@@ -1749,6 +1753,12 @@
               <object>objects\obj_boltlift_fall</object>
             </objects>
             <objects name="SMW">
+              <objects name="Ferris">
+                <object>objects\obj_ferrisplatform_platform</object>
+              </objects>
+              <objects name="Balance">
+                <object>objects\obj_balanceplatform_platform</object>
+              </objects>
               <object>objects\obj_expandplatblock</object>
               <object>objects\obj_blocktrain_front</object>
               <object>objects\obj_blocktrain_middle</object>
