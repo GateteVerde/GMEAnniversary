@@ -142,6 +142,7 @@
       <sound>sound\snd_cherry</sound>
       <sound>sound\snd_coin</sound>
       <sound>sound\snd_collect</sound>
+      <sound>sound\snd_engine</sound>
       <sound>sound\snd_explode</sound>
       <sound>sound\snd_pop</sound>
       <sound>sound\snd_powerup</sound>
@@ -826,6 +827,10 @@
           <sprite>sprites\spr_slopeplatform_r</sprite>
           <sprite>sprites\spr_slopeplatform_l</sprite>
           <sprite>sprites\spr_weightplatform</sprite>
+          <sprite>sprites\spr_movingengine</sprite>
+          <sprite>sprites\spr_movingrope</sprite>
+          <sprite>sprites\spr_movingsaw</sprite>
+          <sprite>sprites\spr_movingsaw_down</sprite>
           <sprite>sprites\spr_skullraft</sprite>
         </sprites>
         <sprite>sprites\spr_conveyor</sprite>
@@ -1590,6 +1595,8 @@
           <object>objects\obj_slopeplatform_r</object>
           <object>objects\obj_slopeplatform_l</object>
           <object>objects\obj_weightplatform</object>
+          <object>objects\obj_movingrope</object>
+          <object>objects\obj_movingsaw</object>
           <object>objects\obj_skullraft</object>
         </objects>
         <object>objects\obj_conveyor_l</object>
@@ -1748,6 +1755,8 @@
               <object>objects\obj_blocktrain_back</object>
               <object>objects\obj_blocktrain_killer</object>
               <object>objects\obj_weightplatform_right</object>
+              <object>objects\obj_rope</object>
+              <object>objects\obj_saw</object>
             </objects>
             <object>objects\obj_pulleyplatform_right</object>
             <object>objects\obj_pulleyplatform_rope</object>
