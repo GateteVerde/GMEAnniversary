@@ -101,12 +101,12 @@ if (platform.passenger) {
         }
         
         //Otherwise, turn below origin.
-        else            
-            dirspd += 0.015;
+        else
+            dirspd += 0.03;
     }
     
     //Counter Clockwise
-    else {
+    else if (platform.x &gt;= self.x) {
     
         //Turn above origin
         if (!over_y) {
@@ -124,8 +124,8 @@ if (platform.passenger) {
         }
         
         //Otherwise, turn below origin.
-        else        
-            dirspd -= 0.015;
+        else
+            dirspd -= 0.03;
     }
     
     //Turn smooth
@@ -134,24 +134,24 @@ if (platform.passenger) {
 }
 
 else { //if there is NOT a passenger on the platform, slow down turning
-       
+
     //Slow down until it stops
-    dirspd = max(0,abs(dirspd)-0.03)*sign(dirspd);
-    if ((dirspd &lt; 0.03) &amp;&amp; (dirspd &gt; -0.03))
+    dirspd = max(0,abs(dirspd)-0.015)*sign(dirspd);
+    if ((dirspd &lt; 0.015) &amp;&amp; (dirspd &gt; -0.015))
         dirspd = 0;
     
     //Turn smooth
-    if (abs(dirspd) &gt; 4.375)
-        dirspd /= 2.1875;
-
+    if (abs(dirspd) &gt; 3.875)
+        dirspd /= 1.9375;
+        
     //Set position
     if ((direction &lt; 90) &amp;&amp; (direction &gt; 270))
         direct = 1; //right side
     else
         direct = -1; //left side
-        
+
     //Less the 360 degree turn limit if it's low
-    if (platform.y+8 &gt; self.y+8)
+    if (platform.y &gt; self.y+8)
         over_y = 1;
 }
 
@@ -163,7 +163,45 @@ if (bbox_right &lt; view_xview[0] - 160)
 || (bbox_left &gt; view_xview[0] + view_wview[0] + 160)
 || (bbox_bottom &lt; view_yview[0] - 160)
 || (bbox_top &gt; view_yview[0] + view_hview[0] + 160)
-    event_user(0);
+    event_user(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reset to default
+
+//Direction
+direction = 90;
+
+//Speed
+dirspd = 0;
+
+//Platform variables
+over_y = false;
+dx = 0;
+dy = 0;
+new_x = 0;
+new_y = 0;
+old_x = 0;
+old_y = 0;
 </string>
           </argument>
         </arguments>
@@ -186,22 +224,23 @@ if (bbox_right &lt; view_xview[0] - 160)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Reset to default.
+            <string>///Handle platform position
 
-//Direction
-direction = 90;
+//Set platform position
+new_x = x+lengthdir_x(chainlength*16,direction);
+new_y = y+lengthdir_y(chainlength*16,direction)-18;
 
-//Speed
-dirspd = 0;
+//Let platform stay
+platform.x = new_x;
+platform.y = new_y;
 
-//Platform variables
-over_y = false;
-dx = 0;
-dy = 0;
-new_x = 0;
-new_y = 0;
-old_x = 0;
-old_y = 0;
+//Set speed of platform
+platform.hspeed = new_x-old_x;
+platform.vspeed = new_y-old_y;
+
+//Set latest speed of the platform
+old_x = new_x;
+old_y = new_y;
 </string>
           </argument>
         </arguments>
@@ -233,21 +272,8 @@ for (var i=1; i&lt;=chainlength; i++;) {
     draw_sprite(spr_balanceplatform_segment,0,dx,dy)
 }
 
-//Set platform position
-new_x = x+lengthdir_x(chainlength*16,direction);
-new_y = y+lengthdir_y(chainlength*16,direction)-18;
-
-//Let platform stay
-platform.x = new_x;
-platform.y = new_y;
-
-//Set speed of platform
-platform.hspeed = new_x-old_x;
-platform.vspeed = new_y-old_y;
-
-//Set latest speed of the platform
-old_x = new_x;
-old_y = new_y;
+//Handle platform variables
+event_user(0);
 </string>
           </argument>
         </arguments>

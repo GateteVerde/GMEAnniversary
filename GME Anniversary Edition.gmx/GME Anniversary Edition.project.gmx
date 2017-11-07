@@ -846,6 +846,7 @@
       </sprites>
       <sprites name="Interactive">
         <sprite>sprites\spr_key</sprite>
+        <sprite>sprites\spr_key_timed</sprite>
         <sprite>sprites\spr_pswitch</sprite>
         <sprite>sprites\spr_gswitch</sprite>
         <sprite>sprites\spr_trampoline</sprite>
@@ -1614,6 +1615,7 @@
       </objects>
       <objects name="Interactive">
         <object>objects\obj_key</object>
+        <object>objects\obj_key_timed</object>
         <object>objects\obj_pswitch</object>
         <object>objects\obj_gswitch</object>
         <object>objects\obj_trampoline</object>
