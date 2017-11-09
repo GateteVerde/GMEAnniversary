@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>10</depth>
   <persistent>0</persistent>
-  <parentName>obj_semisolid</parentName>
+  <parentName>obj_solid</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///A moving pipe
+            <string>///SMW Moving Pipe
 
 /*
 //  IMPORTANT NOTE:
-//      Do not place this object above semisolid platforms, otherwise, it will find the bottom-est one
 //
+//      Do not use this object above semisolid platforms, use it above solid ground.
 */
 
 //Do not animate
@@ -39,13 +39,6 @@ image_index = 0;
 
 //Start moving
 alarm[0] = 120;
-
-//Check if the floor exists
-myfloor = noone;
-
-//Make it solid
-mysolid = instance_create(x,bbox_bottom+room_height,obj_solid);
-    mysolid.sprite_index = spr_pipemask;
 </string>
           </argument>
         </arguments>
@@ -71,11 +64,11 @@ mysolid = instance_create(x,bbox_bottom+room_height,obj_solid);
             <string>///Start moving
 
 //If there's a 'Up' modifier in place, move up.
-if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_up,0,0))
+if (collision_rectangle(bbox_left,bbox_top,bbox_right,y+15,obj_up,0,0))
     vspeed = -1;
     
 //Otherwise, there's a 'Down' modifier in place, move down.
-else if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_down,0,0))
+else if (collision_rectangle(bbox_left,bbox_top,bbox_right,y+15,obj_down,0,0))
     vspeed = 1;
 </string>
           </argument>
@@ -121,45 +114,22 @@ if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerpa
         obj_playerparent.x += x-xprevious;
 }
 
-//Set the position of the solid
-mysolid.y = y;
+//Stop if moving
+if (vspeed != 0) 
+&amp;&amp; (collision_rectangle(bbox_left,y,bbox_right,y+15,obj_endmarker,0,0)) {
+
+    //Snap to grid
+    move_snap(16,16)
+    
+    //Stop movement
+    vspeed = 0;
+    
+    //Move again
+    alarm[0] = 120;
+}
 
 //Set the position of the solid and make sure it strecthes
-var myfloor = collision_rectangle(x,y+16,x+31,y+room_height,obj_semisolid,0,0);
-if (myfloor)
-    mysolid.image_yscale = myfloor.y-y;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_endmarker">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Stop and move it again
-
-//Snap to grid
-move_snap(16,16)
-
-//Stop movement
-vspeed = 0;
-
-//Move again
-alarm[0] = 120;
+image_yscale = room_height-y;
 </string>
           </argument>
         </arguments>
@@ -188,9 +158,7 @@ alarm[0] = 120;
 draw_sprite(sprite_index,0,round(x),round(y));
 
 //Draw bottom
-var myfloor = collision_rectangle(x,y+16,x+31,y+room_height,obj_semisolid,0,0);
-if (myfloor)
-    draw_sprite_stretched_ext(sprite_index,1,x,y+16,sprite_width,((myfloor.y)-(y+16)),c_white,1); 
+draw_sprite_ext(sprite_index,1,x,y+16,1,room_height,0,c_white,1); 
 </string>
           </argument>
         </arguments>

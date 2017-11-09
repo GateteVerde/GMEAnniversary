@@ -221,7 +221,12 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_endmarker" x="2496" y="368" name="inst_386C96A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_endmarker" x="2496" y="256" name="inst_2BCAAB42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_endmarker" x="2448" y="256" name="inst_B7FE86FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player_start" x="2320" y="368" name="inst_CA958DE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player_start" x="40" y="368" name="inst_50B58282" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_movingpipe" x="224" y="352" name="inst_479090D1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_up" x="224" y="352" name="inst_0EAECB36" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_endmarker" x="224" y="368" name="inst_5A2D5BE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_endmarker" x="224" y="240" name="inst_C0697076" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_down" x="224" y="256" name="inst_DD464C0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="48" y="256" w="16" h="16" xo="800" yo="0" id="10000320" name="inst_C5F3A550" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -750,14 +755,6 @@ background_hspeed[2] = -0.2;</code>
     <tile bgName="bgr_tileset_smb3" x="2544" y="144" w="16" h="16" xo="320" yo="416" id="10001583" name="inst_0F9C7DA9" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="2560" y="144" w="16" h="16" xo="320" yo="416" id="10001584" name="inst_C3768FFF" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="272" y="368" w="16" h="16" xo="688" yo="192" id="10000688" name="inst_CB7CA6E6" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="224" y="368" w="32" h="16" xo="704" yo="240" id="10000689" name="inst_97C0D620" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="224" y="352" w="32" h="16" xo="704" yo="240" id="10000690" name="inst_7892BD35" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="224" y="336" w="32" h="16" xo="704" yo="240" id="10000691" name="inst_1DBBE7A3" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="224" y="320" w="32" h="16" xo="704" yo="240" id="10000692" name="inst_CC800310" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="224" y="304" w="32" h="16" xo="704" yo="240" id="10000693" name="inst_536AAA17" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="224" y="288" w="32" h="16" xo="704" yo="240" id="10000694" name="inst_CA82D895" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="224" y="272" w="32" h="16" xo="704" yo="240" id="10000695" name="inst_67502678" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="224" y="256" w="32" h="16" xo="704" yo="208" id="10000696" name="inst_4CFB450B" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="576" y="144" w="32" h="16" xo="704" yo="208" id="10000697" name="inst_C4D161AB" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="576" y="176" w="32" h="16" xo="704" yo="240" id="10000698" name="inst_6D134EB6" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="576" y="192" w="32" h="16" xo="704" yo="240" id="10000699" name="inst_7214C560" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
