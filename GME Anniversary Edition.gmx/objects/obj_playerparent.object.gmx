@@ -923,17 +923,19 @@ if ((!swimming) &amp;&amp; (water)) {
             
     //Stop vertical movement
     ygrav = 0;
-    if (yspeed &gt; 0)
+    if (yspeed &gt; 0) {
+    
+        //Stop vertical movement
         yspeed = 0;
         
-    //Create splash effect if moving down
-    if (vspeed &gt; 0) 
-    &amp;&amp; (water.object_index != obj_waterbubble) {
-    
-        with (instance_create(x-8,y-15,obj_smoke)) {
+        //Create a splash effect if not in contact with a bubble
+        if (water.object_index != obj_waterbubble) {
         
-            depth = -4;
-            sprite_index = spr_splash;
+            with (instance_create(x-8,water.y-15,obj_smoke)) {
+            
+                depth = -4;
+                sprite_index = spr_splash;
+            }            
         }
     }
 }
