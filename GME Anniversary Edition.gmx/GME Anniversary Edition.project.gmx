@@ -642,6 +642,10 @@
       <sprite>sprites\spr_area_g</sprite>
       <sprite>sprites\spr_area_r</sprite>
       <sprite>sprites\spr_area_b</sprite>
+      <sprite>sprites\spr_arrowblock</sprite>
+      <sprite>sprites\spr_arrowblock_left</sprite>
+      <sprite>sprites\spr_arrowblock_right</sprite>
+      <sprite>sprites\spr_arrowblock_reset</sprite>
       <sprite>sprites\spr_beanstalk</sprite>
     </sprites>
     <sprites name="Decoration">
@@ -856,6 +860,8 @@
         <sprite>sprites\spr_trampoline_p_end</sprite>
         <sprite>sprites\spr_trampoline_timed</sprite>
         <sprite>sprites\spr_trampoline_timed_end</sprite>
+        <sprite>sprites\spr_wallspring</sprite>
+        <sprite>sprites\spr_wallspring_end</sprite>
         <sprite>sprites\spr_flipper_top</sprite>
         <sprite>sprites\spr_flipper_bottom</sprite>
         <sprite>sprites\spr_flipper_left</sprite>
@@ -866,6 +872,7 @@
         <sprite>sprites\spr_walltriangle_cl</sprite>
         <sprite>sprites\spr_propellerblock</sprite>
         <sprite>sprites\spr_boomerang_blue</sprite>
+        <sprite>sprites\spr_waterbubble</sprite>
       </sprites>
       <sprites name="Subcon">
         <sprites name="Vegetables">
@@ -1464,6 +1471,10 @@
       <object>objects\obj_area_g</object>
       <object>objects\obj_area_r</object>
       <object>objects\obj_area_b</object>
+      <object>objects\obj_arrowblock</object>
+      <object>objects\obj_arrowblock_left</object>
+      <object>objects\obj_arrowblock_right</object>
+      <object>objects\obj_arrowblock_reset</object>
     </objects>
     <objects name="Decoration">
       <objects name="Water">
@@ -1624,6 +1635,7 @@
         <object>objects\obj_trampoline</object>
         <object>objects\obj_trampoline_p</object>
         <object>objects\obj_trampoline_timed</object>
+        <object>objects\obj_wallspring</object>
         <object>objects\obj_flipper_top</object>
         <object>objects\obj_flipper_bottom</object>
         <object>objects\obj_flipper_left</object>
@@ -1634,6 +1646,7 @@
         <object>objects\obj_walltriangle_il</object>
         <object>objects\obj_propellerblock</object>
         <object>objects\obj_boomerang_blue</object>
+        <object>objects\obj_waterbubble</object>
       </objects>
       <objects name="Subcon">
         <objects name="Collectibles">

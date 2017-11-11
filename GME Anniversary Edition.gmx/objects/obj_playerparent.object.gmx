@@ -906,7 +906,7 @@ else {
 }
 
 //Check for a nearby swimming surface
-var water = collision_rectangle(bbox_left,y,bbox_right,y,obj_swim,0,0);
+var water = collision_rectangle(bbox_left,y,bbox_right,y,obj_swim,1,0);
 
 //If the player is not swimming and makes contact with a water surface
 if ((!swimming) &amp;&amp; (water)) {
@@ -926,11 +926,15 @@ if ((!swimming) &amp;&amp; (water)) {
     if (yspeed &gt; 0)
         yspeed = 0;
         
-    //Create splash effect
-    with (instance_create(x-8,water.y-15,obj_smoke)) {
+    //Create splash effect if moving down
+    if (vspeed &gt; 0) 
+    &amp;&amp; (water.object_index != obj_waterbubble) {
     
-        depth = -4;
-        sprite_index = spr_splash;
+        with (instance_create(x-8,y-15,obj_smoke)) {
+        
+            depth = -4;
+            sprite_index = spr_splash;
+        }
     }
 }
 
@@ -959,10 +963,13 @@ else if ((swimming) &amp;&amp; (!water)) {
                 yspeed = -3.4675;
                 
                 //Create splash effect
-                with (instance_create(x-8,y-15,obj_smoke)) {
+                if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_waterbubble,1,0)) {
                 
-                    depth = -4;
-                    sprite_index = spr_splash;
+                    with (instance_create(x-8,y-15,obj_smoke)) {
+                    
+                        depth = -4;
+                        sprite_index = spr_splash;
+                    }
                 }
             }
             
@@ -1099,32 +1106,6 @@ else {
     if (bbox_bottom &gt; room_height+32)
         room_restart();
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Move Mario alongside the mouse
-
-x = mouse_x;
-y = mouse_y;
 </string>
           </argument>
         </arguments>
