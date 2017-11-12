@@ -129,6 +129,9 @@ global.prize[2] = 0;
 //Map pipe area type
 global.pipetype = 0;
 
+//Data structure for collected ace coins
+global.acecoins = ds_map_create();
+
 //Data structure for collected red coin rings
 global.redrings = ds_map_create();
 
