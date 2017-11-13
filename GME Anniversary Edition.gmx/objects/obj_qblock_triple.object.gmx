@@ -134,7 +134,7 @@ for (var i=0; i&lt;3; i++;) {
         with (instance_create(x+8+(i*16),y,obj_powerupsprout)) {
         
             sprite_index = constant_get_sprite(other.sprout[i]);
-            if (other.sprout[i] == cs_propellerblock)
+            if (sprite_get_xoffset(sprite_index) == 0)
                 x -= 8;
         }
     }

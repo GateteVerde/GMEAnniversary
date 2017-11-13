@@ -63,7 +63,6 @@ switch (argument[2]) {
     //Super Bell
     case (spr_superbell): return instance_create(argument[0],argument[1],obj_superbell);
     
-    /*
     //Green Yoshi
     case (spr_egg): return instance_create(argument[0],argument[1],obj_egg);
 
@@ -77,7 +76,7 @@ switch (argument[2]) {
     return i;
     
     //Yellow Yoshi
-    case (spr_egg_r): {
+    case (spr_egg_y): {
     
         var i;
         i = instance_create(argument[0],argument[1],obj_egg);
@@ -86,7 +85,7 @@ switch (argument[2]) {
     return i;
     
     //Blue Yoshi
-    case (spr_egg_r): {
+    case (spr_egg_b): {
     
         var i;
         i = instance_create(argument[0],argument[1],obj_egg);
@@ -94,6 +93,7 @@ switch (argument[2]) {
     }
     return i;
     
+    /*
     //Kuribo Shoe
     case (spr_kuriboshoe): return instance_create(argument[0],argument[1],obj_kuriboshoe);
     

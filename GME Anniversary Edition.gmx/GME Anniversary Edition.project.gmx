@@ -145,6 +145,7 @@
       <sound>sound\snd_door</sound>
       <sound>sound\snd_engine</sound>
       <sound>sound\snd_explode</sound>
+      <sound>sound\snd_hatch</sound>
       <sound>sound\snd_pop</sound>
       <sound>sound\snd_powerup</sound>
       <sound>sound\snd_redcoin</sound>
@@ -175,6 +176,9 @@
       <sound>sound\snd_timer</sound>
       <sound>sound\snd_timer_end</sound>
     </sounds>
+    <sound>sound\snd_yoshi</sound>
+    <sound>sound\snd_yoshi_lick</sound>
+    <sound>sound\snd_yoshi_spit</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Mario">
@@ -951,6 +955,7 @@
         <sprite>sprites\spr_squaremask</sprite>
       </sprites>
       <sprite>sprites\spr_24mask</sprite>
+      <sprite>sprites\spr_32mask</sprite>
       <sprite>sprites\spr_basketmask</sprite>
       <sprite>sprites\spr_explosionmask</sprite>
       <sprite>sprites\spr_graymask</sprite>
@@ -961,6 +966,8 @@
       <sprite>sprites\spr_slopemask_l</sprite>
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
+      <sprite>sprites\spr_warp_h</sprite>
+      <sprite>sprites\spr_warp_v</sprite>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_fireball</sprite>
@@ -1393,10 +1400,13 @@
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
   </shaders>
   <objects name="objects">
-    <object>objects\obj_player_start</object>
-    <objects name="Level Control">
-      <object>objects\obj_levelcontrol</object>
-      <object>objects\obj_bganimator</object>
+    <objects name="Main">
+      <objects name="Controllers">
+        <object>objects\obj_levelcontrol</object>
+        <object>objects\obj_bganimator</object>
+      </objects>
+      <object>objects\obj_player</object>
+      <object>objects\obj_player_warp</object>
     </objects>
     <objects name="Collision">
       <object>objects\obj_solid</object>
@@ -1643,6 +1653,7 @@
         <object>objects\obj_flipper_bottom</object>
         <object>objects\obj_flipper_left</object>
         <object>objects\obj_flipper_right</object>
+        <object>objects\obj_blowpipe</object>
         <object>objects\obj_walltriangle_r</object>
         <object>objects\obj_walltriangle_l</object>
         <object>objects\obj_walltriangle_ir</object>
@@ -1712,15 +1723,6 @@
       <objects name="Don't Use">
         <objects name="Player">
           <objects name="Skins">
-            <objects name="Projectiles">
-              <object>objects\obj_fireball</object>
-              <object>objects\obj_iceball</object>
-              <object>objects\obj_hammer</object>
-              <object>objects\obj_boomerang</object>
-              <object>objects\obj_superball</object>
-              <object>objects\obj_bomb</object>
-              <object>objects\obj_bolt</object>
-            </objects>
             <object>objects\obj_mario</object>
           </objects>
           <object>objects\obj_player_transform</object>
@@ -1754,9 +1756,25 @@
                 <object>objects\obj_pickup_leaf</object>
                 <object>objects\obj_pickup_propeller</object>
               </objects>
+              <objects name="Mounts">
+                <objects name="Yoshi">
+                  <objects name="Hatch">
+                    <object>objects\obj_egg</object>
+                    <object>objects\obj_egg_hatch</object>
+                  </objects>
+                  <object>objects\obj_yoshi</object>
+                </objects>
+              </objects>
               <object>objects\obj_powerupsprout</object>
               <object>objects\obj_powerupprize</object>
               <object>objects\obj_reserveitem</object>
+              <object>objects\obj_fireball</object>
+              <object>objects\obj_iceball</object>
+              <object>objects\obj_hammer</object>
+              <object>objects\obj_boomerang</object>
+              <object>objects\obj_superball</object>
+              <object>objects\obj_bomb</object>
+              <object>objects\obj_bolt</object>
               <object>objects\obj_invincibility</object>
             </objects>
             <objects name="Coins">
@@ -1837,6 +1855,7 @@
             </objects>
             <object>objects\obj_bubble</object>
             <object>objects\obj_bubble_v</object>
+            <object>objects\obj_bubble_blown</object>
             <object>objects\obj_shellbump</object>
             <object>objects\obj_smoke</object>
             <object>objects\obj_star</object>
