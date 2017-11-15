@@ -1087,6 +1087,7 @@
     <sprite>sprites\spr_right</sprite>
     <sprite>sprites\spr_endmarker</sprite>
     <sprite>sprites\spr_eventmarker</sprite>
+    <sprite>sprites\spr_mysterymarker</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Level Backgrounds">
@@ -1717,6 +1718,7 @@
           </objects>
           <object>objects\obj_physicsparent</object>
           <object>objects\obj_powerupparent</object>
+          <object>objects\obj_projectileparent</object>
         </objects>
         <object>objects\obj_pathparent</object>
         <object>objects\obj_blockparent</object>

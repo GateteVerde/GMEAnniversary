@@ -29,9 +29,70 @@
 
 //Animate
 image_speed = 0.15;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_projectileparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Ignore collision with quicksand
 
-//Surface
-surf = noone;
+exit;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_physicsparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make NPCs sink slowly
+
+//If the object is affected by gravity.
+if (other.gravity &gt; 0) {
+    
+    with (other) {
+    
+        //Stop vertical speed
+        vspeed = 0;
+        gravity = 0;
+    
+        //Sink slowly and stop vertical movement
+        if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
+        &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+2,obj_slopeparent,1,0))
+            y += 0.1;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -141,7 +202,7 @@ for (var j = 0; j&lt;sprite_height/16; j++;) {
         draw_sprite_ext(spr_quicksandb,-1,x+i*16,y+16+(j*16),1,1,0,c_white,1);
 }
 
-//Draw the player
+//Draw player position
 var left = bbox_left;
 var top = bbox_top;
 var right = bbox_right;
