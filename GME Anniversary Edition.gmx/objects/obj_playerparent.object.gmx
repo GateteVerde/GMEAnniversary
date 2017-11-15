@@ -839,9 +839,6 @@ if (yspeed &lt;= 0)
         }
     }
     
-    //Stop vertical speed
-    yspeed = 0;
-    
     //If the player does not have either the frog and penguin suit, and it's not climbing.
     if ((state &gt; 1) &amp;&amp; (!noisy)) {
     
@@ -853,9 +850,13 @@ if (yspeed &lt;= 0)
             jumpnow = 2;        
         
         //Play 'Bump' sound
+        if (yspeed &lt; 0)
         if (!audio_is_playing(snd_bump))        
             audio_play_sound(snd_bump, 0, false);        
     }
+    
+    //Stop vertical speed
+    yspeed = 0;
 }
 
 //Make sure that the player does not get embed on ceiling slopes
@@ -987,9 +988,9 @@ else if ((swimming) &amp;&amp; (!water)) {
 }
 
 //Free the player is he is stuck on a solid.
-if (state &lt; 2) 
-&amp;&amp; (!crouch) 
-&amp;&amp; (!inwall) {
+if (yspeed == 0)
+&amp;&amp; (crouch == false)
+&amp;&amp; (inwall == false) {
 
     //Check for a nearby solid block.
     var stuck = collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,1,0);

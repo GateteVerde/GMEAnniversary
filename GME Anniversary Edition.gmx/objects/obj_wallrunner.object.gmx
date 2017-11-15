@@ -38,7 +38,7 @@ with (obj_playerparent) {
 }
 
 //Sprite
-scr_global_run();
+scr_global_wallrun();
 
 //Angle
 angle = 0;
@@ -180,7 +180,7 @@ if (!instance_exists(obj_playerparent))
 }
 
 //Update sprite
-scr_global_run();
+scr_global_wallrun();
 
 //Animation
 image_speed = 0.4;

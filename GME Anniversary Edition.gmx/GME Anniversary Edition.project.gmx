@@ -1151,17 +1151,11 @@
             <script>scripts\scr_global_dropdown.gml</script>
             <script>scripts\scr_global_tailspin.gml</script>
           </scripts>
-          <scripts name="Misc">
-            <script>scripts\scr_global_transform.gml</script>
-          </scripts>
-          <script>scripts\scr_global_walk.gml</script>
-          <script>scripts\scr_global_jump.gml</script>
-          <script>scripts\scr_global_run.gml</script>
-          <script>scripts\scr_global_climb.gml</script>
-          <script>scripts\scr_global_hold.gml</script>
-          <script>scripts\scr_global_duck.gml</script>
+          <script>scripts\scr_global_warp.gml</script>
           <script>scripts\scr_global_pull.gml</script>
-          <script>scripts\scr_global_ride.gml</script>
+          <script>scripts\scr_global_pull2.gml</script>
+          <script>scripts\scr_global_wallrun.gml</script>
+          <script>scripts\scr_global_transform.gml</script>
         </scripts>
         <script>scripts\scr_inice.gml</script>
       </scripts>
@@ -1178,6 +1172,7 @@
       </scripts>
       <script>scripts\canpull.gml</script>
       <script>scripts\canhold.gml</script>
+      <script>scripts\player_retrieve.gml</script>
     </scripts>
     <scripts name="System">
       <scripts name="Music">
@@ -1697,6 +1692,14 @@
       <object>objects\obj_key</object>
       <object>objects\obj_key_timed</object>
       <object>objects\obj_keygate</object>
+    </objects>
+    <objects name="Warps">
+      <objects name="Pipes">
+        <object>objects\obj_warptop</object>
+        <object>objects\obj_warpbottom</object>
+        <object>objects\obj_warpleft</object>
+        <object>objects\obj_warpright</object>
+      </objects>
     </objects>
     <objects name="Special">
       <objects name="Parents">

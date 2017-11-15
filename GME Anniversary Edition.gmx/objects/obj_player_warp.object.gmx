@@ -6,8 +6,379 @@
   <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <maskName>spr_warpmask</maskName>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///The player when it's warping through a pipe
+
+//Animate it.
+image_speed = 0.2;
+
+//Make Mario able to exit the pipe.
+ready = false;
+alarm[0] = 16;
+
+//Set the depth
+depth = 10;
+
+//Play a sound when Mario is about to exit the pipe.
+ready2 = false;
+
+//Set up Mario's top boundary.
+boundary = -8;
+
+//Is Mario flashing?
+isflashing = 0;
+alarm[1] = 1;
+
+//Is Mario holding?
+holding = 0;
+myitem = -1;
+myframe = 0;
+
+//Set up the sprite to use
+scr_global_warp();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Cycle between palettes
+
+//Make the player flash if he's under the effects of the starman.
+if (instance_exists(obj_invincibility)) {
+
+    //Make the player flash.
+    isflashing++;
+    if (isflashing &gt; pal_swap_get_pal_count(player_palette_get())-1)
+        isflashing = 0;
+    
+    //Repeat the process.
+    if (obj_invincibility.alarm[0] &gt; 120)
+        alarm[1] = 4;
+    else
+        alarm[1] = 8;
+}
+else {
+
+    isflashing = 0;
+    alarm[1] = 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make the player able to exit the pipes
+
+ready = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Player pipe logic
+
+//Update sprite
+scr_global_warp();
+
+//Make the player exit the pipe.
+if (ready == 1) 
+&amp;&amp; (!collision_rectangle(x-8,y+boundary,x+7,bbox_bottom,obj_solid,0,0)) {
+
+    //Create the player
+    with (player_retrieve(x,y)) {
+    
+        //Set jump state
+        if (other.vspeed &gt; 0) {
+        
+            state = 2
+            yspeed = other.vspeed;
+        }
+    
+        //Hereby facing direction
+        xscale = other.image_xscale;
+        
+        //If the player is flashing, hereby the colour
+        isflashing = other.isflashing;
+    }
+    
+    //Destroy this object
+    instance_destroy();
+}
+
+//Make the player move slower/faster.
+if (collision_point(x-8,bbox_top,obj_solid,0,0))
+&amp;&amp; (collision_point(x+7,bbox_top,obj_solid,0,0))
+&amp;&amp; (collision_point(x-8,bbox_bottom,obj_solid,0,0))
+&amp;&amp; (collision_point(x+7,bbox_bottom,obj_solid,0,0)) {
+
+    speed = 2;
+    visible = false;
+}
+else {
+
+    //Play a sound if the player is about to exit a pipe.
+    if (ready == true) 
+    &amp;&amp; (ready2 == false) {
+    
+        ready2 = true;
+        audio_play_sound(snd_warp, 0, false);
+    }
+    
+    //Make it visible
+    visible = true;
+
+    //Set the speed of the player
+    if ((direction == 90) || (direction == 270))
+        speed = 1;
+    else
+        speed = 0.5;
+}
+
+//Set the boundary
+if (global.mount &gt; 0)
+    boundary = -8;
+else {
+    
+    if (global.powerup == cs_small)
+        boundary = 0;
+    else
+        boundary = -8;
+}
+
+//Change the facing direction of the player.
+if (hspeed &gt; 0)
+    image_xscale = 1;
+else if (hspeed &lt; 0)
+    image_xscale = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_right">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Go right!
+
+//Set the direction.
+direction = 0;
+
+//Snap to position.
+move_snap(16,16);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_left">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Go left!
+
+//Set the direction.
+direction = 180;
+
+//Snap to position.
+move_snap(16,16);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_down">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Go down!
+
+//Set the direction.
+direction = 270;
+
+//Snap to position.
+move_snap(16,16);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_up">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Go up!
+
+//Set the direction.
+direction = 90;
+
+//Snap to position.
+move_snap(16,16);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw player and item
+
+//Draw the item behind the player if moving horizontally
+if ((holding &gt; 0) &amp;&amp; (vspeed == 0)) then draw_sprite_ext(myitem,myframe,round(x)-8+(10*image_xscale),round(y)-6,1,1,0,c_white,1);
+
+//Set the palette
+pal_swap_set(player_palette_get(), isflashing);
+
+//Draw the player
+draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);
+
+//Reset the palette
+pal_swap_reset();
+
+//Draw the item in front of the player if moving vertically
+if ((holding &gt; 0) &amp;&amp; (vspeed != 0)) then draw_sprite_ext(myitem,myframe,round(x)-8,round(y)-6,1,1,0,c_white,1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

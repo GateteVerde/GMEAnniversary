@@ -422,6 +422,26 @@ if (instance_exists(obj_playerparent)) {
     y = obj_playerparent.y;
 }
 
+//Follow player when warping through a pipe
+else if (instance_exists(obj_player_warp)) {
+
+    //If the camera is panned to the right, pan it to the center.
+    if (x &gt; obj_player_warp.x+4) then x -= 4-obj_player_warp.hspeed;
+    
+    //Otherwise, If the camera is panned to the left, pan it to the center.
+    else if (x &lt; obj_player_warp.x-4) then x += 4+obj_player_warp.hspeed;
+
+    //Otherwise, do not move it.
+    else {
+    
+        //Stay at the same position of the player.
+        x = obj_player_warp.x;
+    }
+    
+    //Always stay relative to the player's Y position.
+    y = obj_player_warp.y;    
+}
+
 //Round position
 x = round(x);
 y = round(y);

@@ -1,8 +1,8 @@
-///scr_global_pull()
+///scr_global_pull2()
 
 /*
 **  Usage:
-**      scr_global_pull()
+**      scr_global_pull2()
 **
 **  Purpose:
 **      Calls the appropiate pull sprite for the player
@@ -14,5 +14,5 @@
 switch (global.player) {
 
     //Mario
-    case (0): return spr_mario_pull;
+    case (0): sprite_index = scr_mario_duck();
 }
