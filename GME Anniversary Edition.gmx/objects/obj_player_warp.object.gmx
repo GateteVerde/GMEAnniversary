@@ -360,7 +360,26 @@ move_snap(16,16);
             <string>///Draw player and item
 
 //Draw the item behind the player if moving horizontally
-if ((holding &gt; 0) &amp;&amp; (vspeed == 0)) then draw_sprite_ext(myitem,myframe,round(x)-8+(10*image_xscale),round(y)-6,1,1,0,c_white,1);
+if ((holding &gt; 0) &amp;&amp; (vspeed == 0)) {
+
+    //If the player is small
+    if (global.powerup == cs_small) {
+    
+        if (sprite_get_xoffset(myitem) == sprite_get_width(myitem)/2)
+            draw_sprite_ext(myitem,myframe,round(x)+(10*image_xscale),round(y),1,1,0,c_white,1);
+        else
+            draw_sprite_ext(myitem,myframe,round(x)-8+(10*image_xscale),round(y),1,1,0,c_white,1);
+    }
+    
+    //Otherwise, if the player is not small
+    else {
+        
+        if (sprite_get_xoffset(myitem) == sprite_get_width(myitem)/2)
+            draw_sprite_ext(myitem,myframe,round(x)+(10*image_xscale),round(y)-4,1,1,0,c_white,1);
+        else
+            draw_sprite_ext(myitem,myframe,round(x)-8+(10*image_xscale),round(y)-4,1,1,0,c_white,1);        
+    }
+}
 
 //Set the palette
 pal_swap_set(player_palette_get(), isflashing);
@@ -372,7 +391,26 @@ draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,ima
 pal_swap_reset();
 
 //Draw the item in front of the player if moving vertically
-if ((holding &gt; 0) &amp;&amp; (vspeed != 0)) then draw_sprite_ext(myitem,myframe,round(x)-8,round(y)-6,1,1,0,c_white,1);
+if ((holding &gt; 0) &amp;&amp; (vspeed != 0)) {
+
+    //If the player is small
+    if (global.powerup == cs_small) {
+        
+        if (sprite_get_xoffset(myitem) == sprite_get_width(myitem)/2)
+            draw_sprite_ext(myitem,myframe,round(x),round(y),1,1,0,c_white,1);
+        else
+            draw_sprite_ext(myitem,myframe,round(x)-8,round(y),1,1,0,c_white,1);
+    }
+    
+    //Otherwise, if the player is not small
+    else {
+        
+        if (sprite_get_xoffset(myitem) == sprite_get_width(myitem)/2)
+            draw_sprite_ext(myitem,myframe,round(x),round(y)-4,1,1,0,c_white,1);
+        else
+            draw_sprite_ext(myitem,myframe,round(x)-8,round(y)-4,1,1,0,c_white,1);    
+    }
+}
 </string>
           </argument>
         </arguments>

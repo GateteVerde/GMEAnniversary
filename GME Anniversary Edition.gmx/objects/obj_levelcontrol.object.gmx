@@ -68,6 +68,9 @@ shake = 0;
 //Camera orientation
 orientation = 1
 
+//Object to follow
+follow = noone;
+
 //Make sure the view follows this object.
 view_object[0] = id;
 
@@ -347,11 +350,14 @@ else
             <kind>1</kind>
             <string>///Deals with various game logic stuff
 
+//Check what object to follow
+event_user(2);
+
 //Follow main player
 if (instance_exists(obj_playerparent)) {
 
     //Handle camera position
-    event_user(2);
+    event_user(3);
         
     //Make sure the barrier is not active
     if (!barrier) {
@@ -422,24 +428,53 @@ if (instance_exists(obj_playerparent)) {
     y = obj_playerparent.y;
 }
 
-//Follow player when warping through a pipe
-else if (instance_exists(obj_player_warp)) {
+//Follow rest of player objects
+else if (instance_exists(follow)) {
 
-    //If the camera is panned to the right, pan it to the center.
-    if (x &gt; obj_player_warp.x+4) then x -= 4-obj_player_warp.hspeed;
+    //If the player is moving to the left and the camera is panning to the right
+    if ((follow.hspeed &lt; 0) 
+    || (follow.x-xprevious &lt; 0))
+    &amp;&amp; (follow.x &lt; x-56) {
     
-    //Otherwise, If the camera is panned to the left, pan it to the center.
-    else if (x &lt; obj_player_warp.x-4) then x += 4+obj_player_warp.hspeed;
-
-    //Otherwise, do not move it.
-    else {
+        //Make the camera pan to the left
+        orientation = -1;
+    }
+        
+    //Otherwise, if the player is moving to the right and the camera is panning to the left
+    else if ((follow.hspeed &gt; 0) 
+    || (follow.x-xprevious &gt; 0))
+    &amp;&amp; (follow.x &gt; x+56) {
     
-        //Stay at the same position of the player.
-        x = obj_player_warp.x;
+        //Make the camera pan to the right
+        orientation = 1;
+    }
+        
+    //If the camera is to the right and the player is from a certain distance from the camera...
+    if ((orientation == 1) &amp;&amp; (follow.x &gt; x-32)) {
+    
+        //...scroll at a certain speed until the camera catches up...
+        if (follow.x &gt; x-28) 
+            x += 4+follow.hspeed;
+        
+        //...and lock the camera in place.
+        else 
+            x = follow.x+32
+    }
+    
+    //Otherwise, if the camera is to the left and the player is from a certain distance from the camera...
+    else if ((orientation = -1) &amp;&amp; (follow.x &lt; x+32)) {
+    
+        //...scroll at a certain speed until the camera catches up...
+        if (follow.x &lt; x+28) 
+            x -= 4-follow.hspeed;
+        
+        //...and lock the camera in place.
+        else 
+            x = follow.x-32;
     }
     
     //Always stay relative to the player's Y position.
-    y = obj_player_warp.y;    
+    y = follow.y;
 }
 
 //Round position
@@ -500,7 +535,7 @@ instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="12">
+    <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -584,6 +619,41 @@ else {
         else 
             x = obj_playerparent.x-32;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set the object to follow
+
+//If the main player object exists, ignore other player objects
+if (instance_exists(obj_playerparent))
+    follow = noone;
+    
+//Otherwise, check for a existing object
+else {
+
+    //Check for 'Warp'
+    if (instance_exists(obj_player_warp))
+        follow = obj_player_warp;
 }
 </string>
           </argument>

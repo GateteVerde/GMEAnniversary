@@ -101,13 +101,37 @@ if (held) {
         }
     }
     
-    //Otherwise, stop being held.
+    //Otherwise
     else {
-    
-        instance_create(x,y,obj_smoke);
-        instance_destroy();
-        exit;
+            
+        //Check what object is holding first
+        event_user(5);
+        
+        //Then check if it exists
+        if (instance_exists(follow)) {
+            
+            //Set the position of the item.
+            x = follow.x;
+            y = follow.y;
+            
+            //Make it invisible.
+            visible = 0;
+            
+            //Make said object hold the item
+            follow.holding = 1;
+            
+            //Set up the item's sprite
+            follow.myitem = sprite_index;
+            
+            //Set up the item's frame.
+            follow.myframe = image_index;            
+        }            
     }
+    
+    //Destroy if the player object does not exist
+    if (!instance_exists(obj_playerparent))
+    &amp;&amp; (follow == noone)
+        instance_destroy();
 }
 </string>
           </argument>
@@ -167,6 +191,37 @@ if (held) {
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="15">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Check what item is holding the item
+
+//Check 'Warp'
+if (instance_exists(obj_player_warp))
+    follow = obj_player_warp;
+    
+//Reset to default
+else
+    follow = false;
 </string>
           </argument>
         </arguments>

@@ -9,6 +9,7 @@
 */
 
 if (keyboard_check(global.controlkey))
+&& (instance_exists(obj_playerparent))
 && (global.mount == 0)
 && (obj_playerparent.holding = 0)
 && (obj_playerparent.sliding = 0)

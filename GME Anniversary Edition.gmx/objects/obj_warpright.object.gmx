@@ -44,6 +44,9 @@ if (player)
         //Set direction
         direction = 180;
         
+        //Facing direction
+        image_xscale = -1;
+        
         //Flashing
         isflashing = other.player.isflashing;
     }

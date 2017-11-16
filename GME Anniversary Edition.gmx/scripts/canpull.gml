@@ -9,6 +9,7 @@
 */
 
 if (keyboard_check_pressed(vk_control))
+&& (instance_exists(obj_playerparent))
 && (global.mount == 0)
 && (obj_playerparent.state < 2)
 && (obj_playerparent.holding = 0)
