@@ -46,7 +46,7 @@ myloopS = 0;
 myloopE = 0;
 
 //Forces the room to play its specified music (TRUE)
-music_init = false;   //
+music_init = false;
 
 //Changes the music when the room is exited
 music_change = false;
@@ -289,8 +289,6 @@ UnloadFMOD();
 
 LoadFMOD();
 FMODinit(32, false);
-
-FMODAllStop();
 </string>
           </argument>
         </arguments>

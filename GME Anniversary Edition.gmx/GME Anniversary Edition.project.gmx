@@ -1105,6 +1105,12 @@
       <background>background\bgr_desert_fg</background>
       <background>background\bgr_subcon_bg</background>
       <background>background\bgr_subcon_fg</background>
+      <background>background\bgr_underground_bg</background>
+      <background>background\bgr_underground_fg</background>
+      <background>background\bgr_underground_fg_b</background>
+      <background>background\bgr_underground_fg_c</background>
+      <background>background\bgr_underground_fg_d</background>
+      <background>background\bgr_underground_fg_e</background>
     </backgrounds>
     <backgrounds name="Tile Sets">
       <backgrounds name="Decoration">
@@ -1872,9 +1878,6 @@
             <object>objects\obj_smoke</object>
             <object>objects\obj_star</object>
           </objects>
-          <objects name="Music">
-            <object>objects\obj_musicplayer_persistent</object>
-          </objects>
           <objects name="Transitions">
             <object>objects\obj_fadein</object>
             <object>objects\obj_fadeout</object>
@@ -1889,6 +1892,7 @@
       </objects>
       <object>objects\obj_mariostart</object>
       <object>objects\obj_persistent</object>
+      <object>objects\obj_persistent_musicplayer</object>
     </objects>
     <object>objects\obj_up</object>
     <object>objects\obj_down</object>

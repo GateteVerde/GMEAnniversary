@@ -58,8 +58,8 @@ back = -1;
 port_x = 0;
 port_y = 0;
 
-//Message to display to the screen
-message = "";
+//Is the game being restarted
+restart = 0;
 
 //Item that is being carried between rooms
 global.carrieditem = noone;
@@ -304,10 +304,20 @@ if (!view_visible[0])
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Make the screen shake when the 'Thwomp' sound plays
+            <string>///Make sure certain values don't go too high
 
-if (!audio_is_playing(snd_thwomp))
-    alarm[11] = 2;
+//Lives limit
+if (lives &gt; 99) 
+    lives = 99;
+
+//Score limit
+if (score &gt; 99999990) 
+    score = 99999990;
+
+//Set default health limit if below 4
+if (health &lt; 4)
+&amp;&amp; (global.healthmax == 6)
+    global.healthmax = 3;
 </string>
           </argument>
         </arguments>
@@ -328,20 +338,10 @@ if (!audio_is_playing(snd_thwomp))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Make sure certain values don't go too high
+            <string>///Make the screen shake when the 'Thwomp' sound plays
 
-//Lives limit
-if (lives &gt; 99) 
-    lives = 99;
-
-//Score limit
-if (score &gt; 99999990) 
-    score = 99999990;
-
-//Set default health limit if below 4
-if (health &lt; 4)
-&amp;&amp; (global.healthmax == 6)
-    global.healthmax = 3;
+if (!audio_is_playing(snd_thwomp))
+    alarm[11] = 2;
 </string>
           </argument>
         </arguments>
@@ -373,21 +373,24 @@ if (keyboard_check_pressed(vk_f4))
 //Restart the game when ALT+R are pressed.
 else if (keyboard_check_pressed(ord('R'))) {
 
-    //Do not remember music
-    global.levelmusic = noone;
+    //Reset all stream variables
+    with (obj_persistent_musicplayer) {
     
-    //Initialize globals
+        event_perform(ev_game_start, 2);
+        FMODAllStop();
+    }
+    
+    //Restart?
+    restart = 1;
+
+    //Reset all global variables
     init_globals();
     
-    //Stop all sound
+    //Stop all audio
     audio_stop_all();
-    FMODAllStop();
-    
-    //Stop adding lives
-    addlives = 0;
     
     //Go to disclaimer screen
-    if (instance_number(obj_fadein) == 0) 
+    if (instance_number(obj_fadein) == 0)    
         with (instance_create(0,0,obj_fadein)) target = rm_enginetest;
 }
 
@@ -507,14 +510,18 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Check if health mode is active and fade the screen to black
+            <string>///Check various in-game values
 
+//Make sure to give the player the big state if health is greater than 1
 if (global.healthmode) {
 
     if (health &gt; 1)
     &amp;&amp; (global.powerup = cs_small)
         global.powerup = cs_big;
 }
+
+//Allow restart
+restart = 0;
 </string>
           </argument>
         </arguments>
@@ -756,7 +763,7 @@ draw_enable_alphablend(true)
 draw_set_font(global.font_interface);
 draw_set_colour(c_white);
 if (fps &lt; 60)
-    draw_text(2,2,"FPS: " + string(fps) + "/ FPS REAL: " + string(fps_real));
+    draw_text_ext_transformed(2,2,string("LAG"),0,0,filter+1,filter+1,0);
 </string>
           </argument>
         </arguments>

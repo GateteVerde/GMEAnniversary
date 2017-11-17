@@ -121,8 +121,8 @@ global.gswitch = 0;
 //Star time limit
 global.starman = 0;
 
-//Star used in map
-global.mapstar = 0;
+//Star used in map?
+global.mapstar = false;
 
 //Mushroom house prizes
 global.prize[0] = 0;

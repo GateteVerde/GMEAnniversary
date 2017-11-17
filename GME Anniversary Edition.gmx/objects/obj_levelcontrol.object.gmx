@@ -341,7 +341,7 @@ if (!FMODInstanceIsPlaying(global._stream_starman))
         
         //Play new stream
         global._stream = FMODSoundLoop(levelmusic, 0);
-    }
+    }   
 }
 </string>
           </argument>
@@ -852,8 +852,16 @@ if (global.reserve != cs_small) {
             <kind>1</kind>
             <string>///Reset values
 
-///Remember previous music
-global.levelmusic = levelmusic;
+///If the main level theme was playing, remember it
+if (FMODInstanceIsPlaying(global._stream)) 
+    global.levelmusic = levelmusic;
+
+//Otherwise, reset.
+else {
+
+    global.levelmusic = noone;
+    global._stream = -1;
+}
 
 //Restart level colours
 if (global.skin != 0)
@@ -1013,14 +1021,7 @@ if (global.gswitch &gt; 0) {
 if (global.starman &gt; 0) {
 
     //Create a new starman object.
-    with (instance_create(0,0,obj_invincibility)) {
-        
-        alarm[0] = max(global.starman,30);
-        if (global.starman &gt; 120)
-            alarm[1] = max(global.starman,120);
-        else
-            alarm[1] = -1;
-    }
+    with (instance_create(0,0,obj_invincibility)) alarm[0] = max(global.starman,30);
     
     //Reset the variable
     global.starman = 0;

@@ -57,7 +57,7 @@ background_hspeed[2] = -0.2;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_243CB980" locked="0" code="levelmusic = global._theme_overworld;&#xA;leveltime = 400;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_243CB980" locked="0" code="levelmusic = global._theme_overworld;&#xA;leveltime = 400;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="0" y="384" name="inst_1787B48C" locked="0" code="" scaleX="18" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="288" y="384" name="inst_04363D6B" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="368" y="304" name="inst_44B59812" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -233,7 +233,6 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_acecoin" x="2528" y="304" name="inst_ECFBD069" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_acecoin" x="3600" y="48" name="inst_7E663520" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_acecoin" x="4608" y="224" name="inst_E6D3AA48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_acecoin" x="912" y="304" name="inst_FF45FF6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_quicksand" x="304" y="384" name="inst_69E150AC" locked="0" code="" scaleX="14" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_quicksand" x="656" y="384" name="inst_06328FBC" locked="0" code="" scaleX="11" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_quicksand" x="992" y="384" name="inst_F53F0DE0" locked="0" code="" scaleX="11" scaleY="3" colour="4294967295" rotation="0"/>

@@ -133,7 +133,7 @@ if (held) {
     else {
             
         //Check what object is holding first
-        event_user(5);
+        event_user(15);
         
         //Then check if it exists
         if (instance_exists(follow)) {
@@ -287,7 +287,7 @@ else {
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="15">
+    <event eventtype="7" enumb="25">
       <action>
         <libid>1</libid>
         <id>603</id>
