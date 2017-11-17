@@ -146,6 +146,52 @@ barrier = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn off Gray P-Switch events
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn off P-Switch events
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="3">
       <action>
         <libid>1</libid>
@@ -356,11 +402,14 @@ event_user(2);
 //Follow main player
 if (instance_exists(obj_playerparent)) {
 
-    //Handle camera position
-    event_user(3);
+    //Always stay relative to the player's Y position.
+    y = obj_playerparent.y;
         
     //Make sure the barrier is not active
     if (!barrier) {
+    
+        //Handle camera position
+        event_user(3);
          
         //Prevent the player from going outside the left boundary
         if (obj_playerparent.x &lt; view_xview[0]+5) {
@@ -421,60 +470,77 @@ if (instance_exists(obj_playerparent)) {
         //Drop the reserve item
         if (keyboard_check_pressed(global.spacekey))
         &amp;&amp; (!obj_playerparent.disablecontrol)
-            event_user(0);        
+            event_user(1);        
     }
     
-    //Always stay relative to the player's Y position.
-    y = obj_playerparent.y;
+    //Otherwise, snap normally and set no orientation
+    else {
+    
+        x = obj_playerparent.x;
+        if (orientation != 0)
+            orientation = 0;
+    }        
 }
 
 //Follow rest of player objects
 else if (instance_exists(follow)) {
 
-    //If the player is moving to the left and the camera is panning to the right
-    if ((follow.hspeed &lt; 0) 
-    || (follow.x-xprevious &lt; 0))
-    &amp;&amp; (follow.x &lt; x-56) {
-    
-        //Make the camera pan to the left
-        orientation = -1;
-    }
-        
-    //Otherwise, if the player is moving to the right and the camera is panning to the left
-    else if ((follow.hspeed &gt; 0) 
-    || (follow.x-xprevious &gt; 0))
-    &amp;&amp; (follow.x &gt; x+56) {
-    
-        //Make the camera pan to the right
-        orientation = 1;
-    }
-        
-    //If the camera is to the right and the player is from a certain distance from the camera...
-    if ((orientation == 1) &amp;&amp; (follow.x &gt; x-32)) {
-    
-        //...scroll at a certain speed until the camera catches up...
-        if (follow.x &gt; x-28) 
-            x += 4+follow.hspeed;
-        
-        //...and lock the camera in place.
-        else 
-            x = follow.x+32
-    }
-    
-    //Otherwise, if the camera is to the left and the player is from a certain distance from the camera...
-    else if ((orientation = -1) &amp;&amp; (follow.x &lt; x+32)) {
-    
-        //...scroll at a certain speed until the camera catches up...
-        if (follow.x &lt; x+28) 
-            x -= 4-follow.hspeed;
-        
-        //...and lock the camera in place.
-        else 
-            x = follow.x-32;
-    }
-    
     //Always stay relative to the player's Y position.
     y = follow.y;
+
+    //If the barrier is not activated
+    if (!barrier) {
+
+        //If the player is moving to the left and the camera is panning to the right
+        if ((follow.hspeed &lt; 0) 
+        || (follow.x-xprevious &lt; 0))
+        &amp;&amp; (follow.x &lt; x-56) {
+        
+            //Make the camera pan to the left
+            orientation = -1;
+        }
+            
+        //Otherwise, if the player is moving to the right and the camera is panning to the left
+        else if ((follow.hspeed &gt; 0) 
+        || (follow.x-xprevious &gt; 0))
+        &amp;&amp; (follow.x &gt; x+56) {
+        
+            //Make the camera pan to the right
+            orientation = 1;
+        }
+            
+        //If the camera is to the right and the player is from a certain distance from the camera...
+        if ((orientation == 1) &amp;&amp; (follow.x &gt; x-32)) {
+        
+            //...scroll at a certain speed until the camera catches up...
+            if (follow.x &gt; x-28) 
+                x += 4+follow.hspeed;
+            
+            //...and lock the camera in place.
+            else 
+                x = follow.x+32
+        }
+        
+        //Otherwise, if the camera is to the left and the player is from a certain distance from the camera...
+        else if ((orientation = -1) &amp;&amp; (follow.x &lt; x+32)) {
+        
+            //...scroll at a certain speed until the camera catches up...
+            if (follow.x &lt; x+28) 
+                x -= 4-follow.hspeed;
+            
+            //...and lock the camera in place.
+            else 
+                x = follow.x-32;
+        }
+    }
+    
+    //Otherwise, snap normally and set no orientation
+    else {
+    
+        x = follow.x;
+        if (orientation != 0)
+            orientation = 0;
+    }      
 }
 
 //Round position
@@ -530,6 +596,78 @@ instance_deactivate_object(obj_deactivateparent);
 
 //Activate deactivated instances inside the view
 instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view_hview[0]+64,true);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn on Gray P-Switch events
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="15">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn on P-Switch events
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="14">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy player objects
+
+with (obj_player) instance_destroy();
+with (obj_player_warp) instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -660,7 +798,7 @@ else {
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="10">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -714,10 +852,8 @@ if (global.reserve != cs_small) {
             <kind>1</kind>
             <string>///Reset values
 
-
-
-
-
+///Remember previous music
+global.levelmusic = levelmusic;
 
 //Restart level colours
 if (global.skin != 0)
@@ -744,7 +880,7 @@ if (global.skin != 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handles Mario Start! text, room warping, music and timer.
+            <string>///Handles the Mario Start! text, room warping, music and timer.
 
 //Set up the time for the level.
 if (leveltime &gt; 0) { //If the timer has been set.
@@ -759,6 +895,135 @@ if (leveltime &gt; 0) { //If the timer has been set.
     //Otherwise, if the time has been set before.
     else if (global.time &gt; 0)    
         alarm[2] = 50;
+}
+
+//If the player just started the level
+if (global.mariostart == 0) {
+
+    //The level has started
+    global.mariostart = 1
+
+    //Create the Mario Start! effect
+    instance_create(view_xview[0],view_yview[0],obj_mariostart)
+}
+else {
+
+    //Fade out
+    instance_create(0,0,obj_fadeout);
+}
+
+//If the player came from another room.
+if (global.postchange != -1) {
+
+    //Destroy all player objects
+    event_user(4);
+    
+    //Create the appropiate the player object at the desired location.
+    switch (global.postchange) {
+    
+        //Main
+        case (0): player_retrieve(global.postx,global.posty); break;
+        
+        //Warp
+        case (1): with (instance_create(global.postx,global.posty,obj_player_warp)) break;
+    }
+    
+    //Make the player able to warp between rooms.
+    global.postchange = -1;
+}
+
+//If the player was riding a shoe on the previous room, create one.
+if (global.mount == 2) {
+
+}
+
+//Otherwise, if the player was riding a yoshi, create one.
+else if (global.mount == 1)
+    with (instance_create(x,y,obj_yoshi)) state = 1;
+
+//If the player carried an item through a pipe in the last room.
+else if (global.carrieditem != noone) {
+
+    //Create it
+    with (instance_create(x,y,global.carrieditem)) {
+    
+        //Hold the item
+        held = 1;
+        
+        //Set up the sprite
+        if (global.carriedsprite != noone) {
+        
+            //Change the sprite of the held item
+            sprite_index = global.carriedsprite;
+            
+            //Reset the sprite
+            global.carriedsprite = noone;
+        }
+    }
+    
+    //Check if the player exists and make it hold if so.
+    if (instance_exists(obj_playerparent)) {
+    
+        //If the item held was a SMB2 one
+        if (object_get_parent(global.carrieditem) == obj_parcarry) {
+        
+            //If the item held was a blue boomerang
+            if (global.carrieditem == obj_boomerang_blue_up)
+                obj_playerparent.holding = 3;
+            else
+                obj_playerparent.holding = 1;
+        }
+        
+        //Otherwise, if the item held was a SMB3 / SMW one
+        else if (object_get_parent(global.carrieditem) == obj_parhold)
+            obj_playerparent.holding = 2;
+    }
+
+    //Reset held object
+    global.carrieditem = noone;
+}
+
+//Turn on P-Switch if it was activated on the previous room.
+if (global.pswitch &gt; 0) {
+
+    //Turn on the P-Switch
+    event_user(5);
+    
+    //Set the timer
+    alarm[4] = max(global.pswitch,30);
+    
+    //Reset the variable
+    global.pswitch = 0;
+}
+
+//Turn on gray P-Switch if it was activated on the previous room.
+if (global.gswitch &gt; 0) {
+
+    //Turn on the gray P-Switch
+    event_user(6);
+    
+    //Set the timer
+    alarm[5] = max(global.gswitch,30);
+    
+    //Reset the variable
+    global.gswitch = 0;
+}
+
+//If a star was active on the previous room.
+if (global.starman &gt; 0) {
+
+    //Create a new starman object.
+    with (instance_create(0,0,obj_invincibility)) {
+        
+        alarm[0] = max(global.starman,30);
+        if (global.starman &gt; 120)
+            alarm[1] = max(global.starman,120);
+        else
+            alarm[1] = -1;
+    }
+    
+    //Reset the variable
+    global.starman = 0;
 }
 </string>
           </argument>
@@ -793,12 +1058,22 @@ repeat (8) {
     if (background_foreground[i] == false) {
     
         //Draw main background if it exists
-        if ((i = 0) &amp;&amp; (background_index[0] != noone))
-            draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0]+(view_yview[0]*(room_height-background_height[0])/(room_height-view_hview[0])),1,1,0,c_white,background_alpha[0]);
+        if ((i = 0) &amp;&amp; (background_index[0] != noone)) {
+        
+            if (room_height &lt; 384)
+				            draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0],1,1,0,c_white,background_alpha[0]);
+			         else
+                draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0]+(view_yview[0]*(room_height-background_height[0])/(room_height-view_hview[0])),1,1,0,c_white,background_alpha[0]);
+        }
         
         //Draw rest of backgrounds if it exists
-        else if ((i &gt; 0) &amp;&amp; (background_index[i] != noone))
-            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i]+(view_yview[0]*(room_height-background_height[i])/(room_height-view_hview[0])),1,1,0,c_white,background_alpha[i]);
+        else if ((i &gt; 0) &amp;&amp; (background_index[i] != noone)) {
+		
+			         if (room_height &lt; 384)
+				            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i],1,1,0,c_white,background_alpha[i]);
+			         else
+				            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i]+(view_yview[0]*(room_height-background_height[i])/(room_height-view_hview[0])),1,1,0,c_white,background_alpha[i]);
+		      }
     }
     i++;
 }

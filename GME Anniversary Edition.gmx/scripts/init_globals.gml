@@ -49,7 +49,7 @@ global.redcoins = 0;
 global.player = 0;
 
 //Display 'Mario Start!'
-global.ms = false;
+global.mariostart = false;
 
 //Checks whether a level is cleared
 //0: No clear
@@ -115,6 +115,9 @@ global.mountcolour = 0;
 //P-Switch time limit
 global.pswitch = 0;
 
+//G-Switch time limit
+global.gswitch = 0;
+
 //Star time limit
 global.starman = 0;
 
@@ -128,6 +131,9 @@ global.prize[2] = 0;
 
 //Map pipe area type
 global.pipetype = 0;
+
+//Remember level music
+global.levelmusic = noone;
 
 //Data structure for collected ace coins
 global.acecoins = ds_map_create();

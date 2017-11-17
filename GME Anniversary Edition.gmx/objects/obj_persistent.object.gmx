@@ -3,7 +3,7 @@
   <spriteName>spr_eventmarker</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-99</depth>
+  <depth>-100</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -69,16 +69,6 @@ global.carriedsprite = noone;
 
 //The frame used by an item carried between rooms
 global.carriedframe = noone;
-
-//Whether Mario should hold/carry an object
-//0: No hold
-//1: Carry
-//2: Hold
-//3: Hold Boomerang
-global.shallihold = 0;
-
-//Remember level music
-global.levelmusic = noone;
 
 //Initialize star coin system
 //0: Not collected
@@ -383,17 +373,22 @@ if (keyboard_check_pressed(vk_f4))
 //Restart the game when ALT+R are pressed.
 else if (keyboard_check_pressed(ord('R'))) {
 
-    //Stop all playing sounds
-    audio_stop_all();
+    //Do not remember music
+    global.levelmusic = noone;
     
-    //Reset globals
+    //Initialize globals
     init_globals();
     
-    //Do not add lives
+    //Stop all sound
+    audio_stop_all();
+    FMODAllStop();
+    
+    //Stop adding lives
     addlives = 0;
     
-    //Force reset the game
-    room_goto(rm_enginetest)
+    //Go to disclaimer screen
+    if (instance_number(obj_fadein) == 0) 
+        with (instance_create(0,0,obj_fadein)) target = rm_enginetest;
 }
 
 //Fullscreen (Handled by GM: Studio)
@@ -512,7 +507,7 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Check if health mode is active
+            <string>///Check if health mode is active and fade the screen to black
 
 if (global.healthmode) {
 

@@ -1080,6 +1080,7 @@
       </sprites>
       <sprite>sprites\spr_pit</sprite>
       <sprite>sprites\spr_talk</sprite>
+      <sprite>sprites\spr_mariostart</sprite>
     </sprites>
     <sprite>sprites\spr_up</sprite>
     <sprite>sprites\spr_down</sprite>
@@ -1098,6 +1099,8 @@
       <background>background\bgr_darkhills</background>
       <background>background\bgr_darkhills_b</background>
       <background>background\bgr_darkhills_c</background>
+      <background>background\bgr_cave_bg</background>
+      <background>background\bgr_cave_fg</background>
       <background>background\bgr_desert_bg</background>
       <background>background\bgr_desert_fg</background>
       <background>background\bgr_subcon_bg</background>
@@ -1388,6 +1391,7 @@
       <script>scripts\init_globals.gml</script>
       <script>scripts\init_globals_music.gml</script>
       <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
+      <script>scripts\draw_circle_colour_precise.gml</script>
     </scripts>
     <script>scripts\outside_view.gml</script>
     <script>scripts\constant_get_sprite.gml</script>
@@ -1698,6 +1702,8 @@
         <object>objects\obj_warpleft</object>
         <object>objects\obj_warpright</object>
       </objects>
+      <object>objects\obj_warppost</object>
+      <object>objects\obj_warproom</object>
     </objects>
     <objects name="Special">
       <objects name="Parents">
@@ -1869,12 +1875,19 @@
           <objects name="Music">
             <object>objects\obj_musicplayer_persistent</object>
           </objects>
+          <objects name="Transitions">
+            <object>objects\obj_fadein</object>
+            <object>objects\obj_fadeout</object>
+            <object>objects\obj_curtainin</object>
+            <object>objects\obj_curtainout</object>
+          </objects>
           <object>objects\obj_hud</object>
           <object>objects\obj_foreground</object>
         </objects>
         <object>objects\obj_blockbumper</object>
         <object>objects\obj_powkiller</object>
       </objects>
+      <object>objects\obj_mariostart</object>
       <object>objects\obj_persistent</object>
     </objects>
     <object>objects\obj_up</object>
@@ -1886,6 +1899,7 @@
   <rooms name="rooms">
     <room>rooms\rm_load</room>
     <room>rooms\rm_enginetest</room>
+    <room>rooms\rm_enginetest_b</room>
   </rooms>
   <constants number="42">
     <constant name="cs_small">0</constant>

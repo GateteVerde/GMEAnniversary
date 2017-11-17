@@ -197,10 +197,7 @@ else {
     visible = true;
 
     //Set the speed of the player
-    if ((direction == 90) || (direction == 270))
-        speed = 1;
-    else
-        speed = 0.5;
+    speed = 0.5;
 }
 
 //Set the boundary
@@ -335,6 +332,95 @@ direction = 90;
 
 //Snap to position.
 move_snap(16,16);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_warproom">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Warp to another room.
+
+//With the warp object.
+with (other) {
+
+    //If the position needs to be changed in the new room.
+    if (postchange != -1) {
+    
+        //Remember the spawn type
+        global.postchange = postchange;
+        
+        //Remember the x spawn position.
+        global.postx = postx+16;
+        
+        //Remember the y spawn position.
+        global.posty = posty+16;
+    }
+    
+    //Go to the assigned room
+    if (instance_number(obj_fadein) == 0)
+        with (instance_create(0,0,obj_fadein)) target = other.myroom;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_warppost">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Warp to another coordinate
+
+//Snap the camera on the new coordinates
+if (instance_exists(obj_levelcontrol)) {
+
+    //Activate barrier
+    with (obj_levelcontrol) {
+    
+        //Manage barrier
+        barrier = 1;
+        
+        //Deactivate barrier
+        alarm[6] = 3;
+    }
+    
+    //Set position
+    obj_levelcontrol.x = other.postx+16;
+    obj_levelcontrol.y = other.posty+16;
+}
+
+//Go to the new position
+x = other.postx+16;
+y = other.posty+16;
 </string>
           </argument>
         </arguments>
