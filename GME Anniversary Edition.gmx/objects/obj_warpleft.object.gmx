@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_deactivateparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="3" enumb="0">
@@ -37,9 +37,6 @@ if (player)
     
     //Create pipe player
     with (instance_create(x-8,y+16,obj_player_warp)) {
-    
-        //Make the player able to exit pipes
-        alarm[0] = 64;
         
         //Set direction
         direction = 0;

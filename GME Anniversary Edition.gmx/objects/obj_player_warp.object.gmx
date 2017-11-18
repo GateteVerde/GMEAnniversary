@@ -30,25 +30,32 @@
 //Animate it.
 image_speed = 0.2;
 
-//Make Mario able to exit the pipe.
-ready = false;
-alarm[0] = 32;
-
 //Set the depth
 depth = 10;
 
-//Play a sound when Mario is about to exit the pipe.
-ready2 = false;
+//Don't stop warping yet
+ready = 0;
 
-//Set up Mario's top boundary.
+//Give it time before he can stop
+alarm[0] = 10;
+
+//Default speed
+speed = 1;
+
+//Whether the player is being launched out of a cannon
+cannon = 0;
+
+//Set up the player top boundary.
 boundary = -8;
 
-//Is Mario flashing?
+//Is the player invincible?
 isflashing = 0;
-alarm[1] = 1;
+alarm[4] = 1;
 
-//Is Mario holding?
+//Is the player holding something?
 holding = 0;
+
+//Draw the item held
 myitem = -1;
 myframe = 0;
 
@@ -59,7 +66,7 @@ scr_global_warp();
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="2" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -88,14 +95,14 @@ if (instance_exists(obj_invincibility)) {
     
     //Repeat the process.
     if (obj_invincibility.alarm[0] &gt; 120)
-        alarm[1] = 4;
+        alarm[4] = 4;
     else
-        alarm[1] = 8;
+        alarm[4] = 8;
 }
 else {
 
     isflashing = 0;
-    alarm[1] = 1;
+    alarm[4] = 1;
 }
 </string>
           </argument>
@@ -146,76 +153,52 @@ ready = true;
             <kind>1</kind>
             <string>///Player pipe logic
 
-//Update sprite
+//Update sprite to be used
 scr_global_warp();
 
-//Make the player exit the pipe.
-if (ready == 1) 
-&amp;&amp; (!collision_rectangle(x-8,y+boundary,x+7,bbox_bottom,obj_solid,0,0)) {
+//Update boundary and facing direction
+event_user(1);
 
-    //Create the player
-    with (player_retrieve(x,y)) {
+//If not in cannon mode
+if (cannon == 0) {
     
-        //Set jump state
-        if (other.vspeed &gt; 0) {
-        
-            state = 2
-            yspeed = other.vspeed;
+    //Make the player move slower/faster.
+    if (collision_point(x-8,y+boundary,obj_solid,0,0))
+    &amp;&amp; (collision_point(x+7,y+boundary,obj_solid,0,0))
+    &amp;&amp; (collision_point(x-8,bbox_bottom,obj_solid,0,0))
+    &amp;&amp; (collision_point(x+7,bbox_bottom,obj_solid,0,0)) {
+    
+        speed = 2;
+        visible = false;
+    }
+    else {
+    
+        //Play a sound if the player is about to exit a pipe.
+        if (speed == 2) {
+            
+            //Play 'Warp' sound
+            audio_play_sound(snd_warp, 0, false);
         }
-    
-        //Hereby facing direction
-        xscale = other.image_xscale;
         
-        //If the player is flashing, hereby the colour
-        isflashing = other.isflashing;
+        //Make it visible
+        visible = true;
+    
+        //Set the speed of the player
+        if ((direction == 90) || (direction == 270))
+            speed = 1;
+        else
+            speed = 0.5;
     }
     
-    //Destroy this object
-    instance_destroy();
+    //Make the player exit the pipe.
+    if (ready)
+    &amp;&amp; (!collision_rectangle(x-8,y+boundary,x+7,bbox_bottom,obj_solid,0,0))
+        event_user(0);
 }
 
-//Make the player move slower/faster.
-if (collision_point(x-8,bbox_top,obj_solid,0,0))
-&amp;&amp; (collision_point(x+7,bbox_top,obj_solid,0,0))
-&amp;&amp; (collision_point(x-8,bbox_bottom,obj_solid,0,0))
-&amp;&amp; (collision_point(x+7,bbox_bottom,obj_solid,0,0)) {
-
-    speed = 2;
-    visible = false;
-}
-else {
-
-    //Play a sound if the player is about to exit a pipe.
-    if (ready == true) 
-    &amp;&amp; (ready2 == false) {
-    
-        ready2 = true;
-        audio_play_sound(snd_warp, 0, false);
-    }
-    
-    //Make it visible
-    visible = true;
-
-    //Set the speed of the player
-    speed = 0.5;
-}
-
-//Set the boundary
-if (global.mount &gt; 0)
-    boundary = -8;
-else {
-    
-    if (global.powerup == cs_small)
-        boundary = 0;
-    else
-        boundary = -8;
-}
-
-//Change the facing direction of the player.
-if (hspeed &gt; 0)
-    image_xscale = 1;
-else if (hspeed &lt; 0)
-    image_xscale = -1;
+//If he is in diagonal cannon mode, and moving down, turn into Mario
+else if ((cannon == 2) &amp;&amp; (vspeed &gt; 0))
+    event_user(0);
 </string>
           </argument>
         </arguments>
@@ -376,6 +359,12 @@ with (other) {
     if (instance_number(obj_fadein) == 0)
         with (instance_create(0,0,obj_fadein)) target = other.myroom;
 }
+
+//Stop
+speed = 0;
+
+//Snap in grid
+move_snap(16,16);
 </string>
           </argument>
         </arguments>
@@ -421,6 +410,107 @@ if (instance_exists(obj_levelcontrol)) {
 //Go to the new position
 x = other.postx+16;
 y = other.posty+16;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Update boundary and facing direction
+
+//Set the boundary
+if (global.mount &gt; 0)
+    boundary = -8;
+else {
+    
+    if (global.powerup == cs_small)
+        boundary = 0;
+    else
+        boundary = -8;
+}
+
+//Change the facing direction of the player.
+if (hspeed &gt; 0)
+    image_xscale = 1;
+else if (hspeed &lt; 0)
+    image_xscale = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create player
+
+with (player_retrieve(x,y)) {
+
+    //If the pipe is used as a cannon
+    if (other.cannon &gt; 0) {
+    
+        //If the player came from a diagonal cannon
+        if (other.cannon == 2) {
+        
+            //Set the horizontal speed
+            xspeed = other.hspeed;
+        }
+        
+        //Set the vertical speed
+        yspeed = other.vspeed;
+        
+        //Set jump state
+        state = 2;
+    }
+    else {
+    
+        //If the object was moving down, hereby vertical speed
+        if (other.vspeed &gt; 0) {
+        
+            //Set vertical speed
+            yspeed = other.vspeed;
+            
+            //Set jump state
+            state = 2;
+        }
+    }
+    
+    //Facing direction
+    xscale = other.image_xscale;
+}
+
+//Destroy
+instance_destroy();
 </string>
           </argument>
         </arguments>

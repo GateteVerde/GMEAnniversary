@@ -121,6 +121,15 @@ if (other.yspeed &gt;= 0)
 || (other.yspeed &lt; -2) {
 
     with (other) {
+    
+        //Stop 'P-Meter' sound
+        audio_stop_sound(snd_pmeter);
+                    
+        //Decrement P-Meter
+        flying = false;
+        run = false;
+        if (pmeter &gt; 0)
+            pmeter--;
 
         //Stop vertical speed
         yspeed = 0;

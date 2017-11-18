@@ -10,36 +10,47 @@ if !file_exists('GMFMODSimple.dll') show_debug_message("File not found: GMFMODSi
 
 var WTF;
 WTF = false;
+
 //export double FMODfree(void)
 global.dll_FMODfree=external_define("GMFMODSimple.dll","FMODfree",dll_cdecl,ty_real,0);
 if(WTF) show_debug_message("Defined: FMODfree")
+
 //export double FMODinit(double maxsounds, supportwebmusic)
 global.dll_FMODinit=external_define("GMFMODSimple.dll","FMODinit",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODinit")
+
 //export double FMODSoundSetEffects(double sound, double effects)
 global.dll_FMODSoundSetEffects=external_define("GMFMODSimple.dll","FMODSoundSetEffects",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundSetEffects")
+
 //export double FMODSoundSetGroup(double sound, double group)
 global.dll_FMODSoundSetGroup=external_define("GMFMODSimple.dll","FMODSoundSetGroup",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundSetGroup")
+
 //export double FMODGroupSetVolume(double group, double volume)
 global.dll_FMODGroupSetVolume=external_define("GMFMODSimple.dll","FMODGroupSetVolume",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupSetVolume")
+
 //export double FMODSoundSetMaxVolume(double sound, double volume)
 global.dll_FMODSoundSetMaxVolume=external_define("GMFMODSimple.dll","FMODSoundSetMaxVolume",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundSetMaxVolume")
+
 //export double FMODSoundLoop(double sound,paused)
 global.dll_FMODSoundLoop=external_define("GMFMODSimple.dll","FMODSoundLoop",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundLoop")
+
 //export double FMODSoundPlay(double sound,paused)
 global.dll_FMODSoundPlay=external_define("GMFMODSimple.dll","FMODSoundPlay",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundPlay")
+
 //export double FMODSoundLoop3d(double sound, double x, double y, double z,paused)
-global.dll_FMODSoundLoop3d=external_define("GMFMODSimple.dll","FMODSoundLoop3d",dll_cdecl,ty_real,5,ty_real,ty_real,ty_real,ty_real,ty_real);
+//global.dll_FMODSoundLoop3d=external_define("GMFMODSimple.dll","FMODSoundLoop3d",dll_cdecl,ty_real,5,ty_real,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundLoop3d")
+
 //export double FMODSoundPlay3d(double sound, double x, double y, double z,paused)
-global.dll_FMODSoundPlay3d=external_define("GMFMODSimple.dll","FMODSoundPlay3d",dll_cdecl,ty_real,5,ty_real,ty_real,ty_real,ty_real,ty_real);
+//global.dll_FMODSoundPlay3d=external_define("GMFMODSimple.dll","FMODSoundPlay3d",dll_cdecl,ty_real,5,ty_real,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundPlay3d")
+
 //export double FMODInstanceSet3dPosition(double channel,double x,double y,double z)
 global.dll_FMODInstanceSet3dPosition=external_define("GMFMODSimple.dll","FMODInstanceSet3dPosition",dll_cdecl,ty_real,4,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSet3dPosition")
@@ -48,82 +59,106 @@ if(WTF) show_debug_message("Defined: FMODInstanceSet3dPosition")
 global.dll_FMODSoundAdd=external_define("GMFMODSimple.dll","FMODSoundAdd",dll_cdecl,ty_real,3,ty_string,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundAdd")
 
-
 //export double FMODMasterSetVolume(double volume)
 global.dll_FMODMasterSetVolume=external_define("GMFMODSimple.dll","FMODMasterSetVolume",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODMasterSetVolume")
+
 //export double FMODListenerSetNumber(double number)
 global.dll_FMODListenerSetNumber=external_define("GMFMODSimple.dll","FMODListenerSetNumber",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODListenerSetNumber")
+
 //export double FMODListenerSet3dPosition(double number, double x, double y, double z)
 global.dll_FMODListenerSet3dPosition=external_define("GMFMODSimple.dll","FMODListenerSet3dPosition",dll_cdecl,ty_real,4,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODListenerSet3dPosition")
+
 //export double FMODSetWorldScale(double scale)
 global.dll_FMODSetWorldScale=external_define("GMFMODSimple.dll","FMODSetWorldScale",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODSetWorldScale")
+
 //export double FMODSoundSet3dMinMaxDistance(double sound, double Min, double Max)
 global.dll_FMODSoundSet3dMinMaxDistance=external_define("GMFMODSimple.dll","FMODSoundSet3dMinMaxDistance",dll_cdecl,ty_real,3,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundSet3dMinMaxDistance")
+
 //export double FMODUpdate()
 global.dll_FMODUpdate=external_define("GMFMODSimple.dll","FMODUpdate",dll_cdecl,ty_real,0);
 if(WTF) show_debug_message("Defined: FMODUpdate")
+
 //export double FMODSoundFree(double sound)
 global.dll_FMODSoundFree=external_define("GMFMODSimple.dll","FMODSoundFree",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundFree")
+
 //export double FMODGroupStop(double group)
 global.dll_FMODGroupStop=external_define("GMFMODSimple.dll","FMODGroupStop",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupStop")
+
 //export double FMODAllStop()
 global.dll_FMODAllStop=external_define("GMFMODSimple.dll","FMODAllStop",dll_cdecl,ty_real,0);
 if(WTF) show_debug_message("Defined: FMODAllStop")
+
 //export double FMODInstanceStop(double instance)
 global.dll_FMODInstanceStop=external_define("GMFMODSimple.dll","FMODInstanceStop",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceStop")
+
 //export double FMODInstanceIsPlaying(double instance)
 global.dll_FMODInstanceIsPlaying=external_define("GMFMODSimple.dll","FMODInstanceIsPlaying",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceIsPlaying")
+
 //export double FMODGroupSetMuted(double group, double mute)
 global.dll_FMODGroupSetMuted=external_define("GMFMODSimple.dll","FMODGroupSetMuted",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupSetMuted")
+
 //export double FMODInstanceSetMuted(double instance, double mute)
 global.dll_FMODInstanceSetMuted=external_define("GMFMODSimple.dll","FMODInstanceSetMuted",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSetMuted")
+
 //export double FMODInstanceSetVolume(double instance, double volume)
 global.dll_FMODInstanceSetVolume=external_define("GMFMODSimple.dll","FMODInstanceSetVolume",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSetVolume")
+
 //export double FMODGroupSetPaused(double group, double mute)
 global.dll_FMODGroupSetPaused=external_define("GMFMODSimple.dll","FMODGroupSetPaused",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupSetPaused")
+
 //export double FMODInstanceSetPaused(double instance, double mute)
 global.dll_FMODInstanceSetPaused=external_define("GMFMODSimple.dll","FMODInstanceSetPaused",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSetPaused")
+
 //export double FMODGetLastError(void)
 global.dll_FMODGetLastError=external_define("GMFMODSimple.dll","FMODGetLastError",dll_cdecl,ty_real,0);
 if(WTF) show_debug_message("Defined: FMODGetLastError")
+
 //export double FMODListenerHearsDistanceOnly(double number, double t)
 global.dll_FMODListenerHearsDistanceOnly=external_define("GMFMODSimple.dll","FMODListenerHearsDistanceOnly",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODListenerHearsDistanceOnly")
+
 //export double FMODSetDopplerFPS(double fps)
 global.dll_FMODSetDopplerFPS=external_define("GMFMODSimple.dll","FMODSetDopplerFPS",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODSetDopplerFPS")
+
 //export double FMODListenerSet3dPositionEx(double number, double x, double y, double z, double fx, double fy, double fz, double ux, double uy, double uz)
-global.dll_FMODListenerSet3dPositionEx=external_define("GMFMODSimple.dll","FMODListenerSet3dPositionEx",dll_cdecl,ty_real,10,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real);
+//global.dll_FMODListenerSet3dPositionEx=external_define("GMFMODSimple.dll","FMODListenerSet3dPositionEx",dll_cdecl,ty_real,10,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODListenerSet3dPositionEx")
+
 //export double FMODSoundSet3dDopplerMax(double sound, double max)
 global.dll_FMODSoundSet3dDopplerMax=external_define("GMFMODSimple.dll","FMODSoundSet3dDopplerMax",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundSet3dDopplerMax")
+
 //export double FMODInstanceSetFrequency(double instance, double freq)
 global.dll_FMODInstanceSetFrequency=external_define("GMFMODSimple.dll","FMODInstanceSetFrequency",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSetFrequency")
+
 //export double FMODInstanceGetFrequency(double instance)
 global.dll_FMODInstanceGetFrequency=external_define("GMFMODSimple.dll","FMODInstanceGetFrequency",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceGetFrequency")
+
 //export double FMODSoundSet3dCone(double sound, double insideconeangle, double outsideconeangle, double outsidevolume)
 global.dll_FMODSoundSet3dCone=external_define("GMFMODSimple.dll","FMODSoundSet3dCone",dll_cdecl,ty_real,4,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundSet3dCone")
+
 //export double FMODInstanceSet3dConeOrientation(double instance, double x, double y, double z)
 global.dll_FMODInstanceSet3dConeOrientation=external_define("GMFMODSimple.dll","FMODInstanceSet3dConeOrientation",dll_cdecl,ty_real,4,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSet3dConeOrientation")
+
 //export double FMODGroupSetFrequency(double group, double freq)
 global.dll_FMODGroupSetFrequency=external_define("GMFMODSimple.dll","FMODGroupSetFrequency",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupSetFrequency")
@@ -131,18 +166,23 @@ if(WTF) show_debug_message("Defined: FMODGroupSetFrequency")
 //export double FMODGroupGetVolume(double group)
 global.dll_FMODGroupGetVolume=external_define("GMFMODSimple.dll","FMODGroupGetVolume",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupGetVolume")
+
 //export double FMODGroupGetPitch(double group)
 global.dll_FMODGroupGetPitch=external_define("GMFMODSimple.dll","FMODGroupGetPitch",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupGetPitch")
+
 //export double FMODGroupGetPaused(double group)
 global.dll_FMODGroupGetPaused=external_define("GMFMODSimple.dll","FMODGroupGetPaused",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupGetPaused")
+
 //export double FMODGroupGetMuted(double group)
 global.dll_FMODGroupGetMuted=external_define("GMFMODSimple.dll","FMODGroupGetMuted",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupGetMuted")
+
 //export double FMODGroupSetPitch(double group,double pitch)
 global.dll_FMODGroupSetPitch=external_define("GMFMODSimple.dll","FMODGroupSetPitch",dll_cdecl,ty_real,2,ty_real, ty_real);
 if(WTF) show_debug_message("Defined: FMODGroupSetPitch")
+
 //export double FMODInstanceGetVolume(double instance)
 global.dll_FMODInstanceGetVolume=external_define("GMFMODSimple.dll","FMODInstanceGetVolume",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceGetVolume")
@@ -154,9 +194,11 @@ if(WTF) show_debug_message("Defined: FMODInstanceGetSound")
 //export double FMODSoundGetMaxVolume(double sound)
 global.dll_FMODSoundGetMaxVolume=external_define("GMFMODSimple.dll","FMODSoundGetMaxVolume",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundGetMaxVolume")
+
 //export double FMODInstanceGetPaused(double instance)
 global.dll_FMODInstanceGetPaused=external_define("GMFMODSimple.dll","FMODInstanceGetPaused",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceGetPaused")
+
 //export double FMODInstanceGetMuted(double instance)
 global.dll_FMODInstanceGetMuted=external_define("GMFMODSimple.dll","FMODInstanceGetMuted",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceGetMuted")
@@ -172,7 +214,6 @@ if(WTF) show_debug_message("Defined: FMODInstanceGetPosition")
 //export double FMODInstanceSetPosition(double instance, double p)
 global.dll_FMODInstanceSetPosition=external_define("GMFMODSimple.dll","FMODInstanceSetPosition",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSetPosition")
-
 
 //export double FMODGroupSetPan(double group, double pan)
 global.dll_FMODGroupSetPan=external_define("GMFMODSimple.dll","FMODGroupSetPan",dll_cdecl,ty_real,2,ty_real,ty_real);
@@ -203,7 +244,7 @@ global.dll_FMODBlockersFree=external_define("GMFMODSimple.dll","FMODBlockersFree
 if(WTF) show_debug_message("Defined: FMODBlockersFree")
 
 //export double FMODBlockerAdd(double x, double y, double z, double xs, double ys, double zs, double xe, double ye, double ze)
-global.dll_FMODBlockerAdd=external_define("GMFMODSimple.dll","FMODBlockerAdd",dll_cdecl,ty_real,9,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real);
+//global.dll_FMODBlockerAdd=external_define("GMFMODSimple.dll","FMODBlockerAdd",dll_cdecl,ty_real,9,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODBlockerAdd")
 
 //export double FMODBlockerSet3dPosition(double blocker, double x, double y, double z)
@@ -211,7 +252,7 @@ global.dll_FMODBlockerSet3dPosition=external_define("GMFMODSimple.dll","FMODBloc
 if(WTF) show_debug_message("Defined: FMODBlockerSet3dPosition")
 
 //export double FMODBlockerSet3dOrientation(double blocker, double fx, double fy, double fz, double ux, double uy, double uz)
-global.dll_FMODBlockerSet3dOrientation=external_define("GMFMODSimple.dll","FMODBlockerSet3dOrientation",dll_cdecl,ty_real,7,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real);
+//global.dll_FMODBlockerSet3dOrientation=external_define("GMFMODSimple.dll","FMODBlockerSet3dOrientation",dll_cdecl,ty_real,7,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODBlockerSet3dOrientation")
 
 //export double FMODBlockerSet3dScale(double blocker, double sx, double sy, double sz)
@@ -270,7 +311,6 @@ if(WTF) show_debug_message("Defined: FMODInstanceSet3dDopplerMax")
 global.dll_FMODInstanceSet3dCone=external_define("GMFMODSimple.dll","FMODInstanceSet3dCone",dll_cdecl,ty_real,4,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSet3dCone")
 
-
 //export double FMODSoundGetNumChannels(double sound)
 global.dll_FMODSoundGetNumChannels=external_define("GMFMODSimple.dll","FMODSoundGetNumChannels",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundGetNumChannels")
@@ -294,9 +334,6 @@ if(WTF) show_debug_message("Defined: FMODGroupGetWaveSnapshot")
 //export double FMODGroupGetSpectrumSnapshot(double group, double channel, double size, LPSTR Buffer)
 global.dll_FMODGroupGetSpectrumSnapshot=external_define("GMFMODSimple.dll","FMODGroupGetSpectrumSnapshot",dll_cdecl,ty_real,4,ty_real,ty_real,ty_real,ty_string);
 if(WTF) show_debug_message("Defined: FMODGroupGetSpectrumSnapshot")
-
-
-
 
 //export double FMODInstanceGetWaveSnapshot2(double instance, double channel, double size)
 global.dll_FMODInstanceGetWaveSnapshot2=external_define("GMFMODSimple.dll","FMODInstanceGetWaveSnapshot2",dll_cdecl,ty_real,3,ty_real,ty_real,ty_real);
@@ -358,7 +395,6 @@ if(WTF) show_debug_message("Defined: FMODGroupAddEffect")
 global.dll_FMODEffectFree=external_define("GMFMODSimple.dll","FMODEffectFree",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectFree")
 
-
 //export double FMODSoundSetLoopCount(double sound, double count)
 global.dll_FMODSoundSetLoopCount=external_define("GMFMODSimple.dll","FMODSoundSetLoopCount",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundSetLoopCount")
@@ -371,21 +407,9 @@ if(WTF) show_debug_message("Defined: FMODSoundGetLoopCount")
 global.dll_FMODSoundSetLoopPoints=external_define("GMFMODSimple.dll","FMODSoundSetLoopPoints",dll_cdecl,ty_real,3,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundSetLoopPoints")
 
-
-//export double FMODInstanceSetSpeakerMix(
-//  double instance,  
-//  double  frontleft, 
-//  double  frontright, 
-//  double  center, 
-//  double  lfe, 
-//  double  backleft, 
-//  double  backright, 
-//  double  sideleft, 
-//  double  sideright)
-  
-global.dll_FMODInstanceSetSpeakerMix=external_define("GMFMODSimple.dll","FMODInstanceSetSpeakerMix",dll_cdecl,ty_real,9,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real);
+//export double FMODInstanceSetSpeakerMix(double instance, double frontleft, double frontright, double center, double lfe, double backleft, double backright, double sideleft, double sideright)
+//global.dll_FMODInstanceSetSpeakerMix=external_define("GMFMODSimple.dll","FMODInstanceSetSpeakerMix",dll_cdecl,ty_real,9,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSetSpeakerMix")
-
 
 //export double FMODInstanceSetLoopPoints(double instance, double start, double end)
 global.dll_FMODInstanceSetLoopPoints=external_define("GMFMODSimple.dll","FMODInstanceSetLoopPoints",dll_cdecl,ty_real,3,ty_real,ty_real,ty_real);
@@ -419,16 +443,13 @@ if(WTF) show_debug_message("Defined: FMODGetTagName")
 global.dll_FMODGetTagData=external_define("GMFMODSimple.dll","FMODGetTagData",dll_cdecl,ty_real,1,ty_string);
 if(WTF) show_debug_message("Defined: FMODGetTagData")
 
-
 //export double FMODSoundAddAsyncStream(LPCSTR soundfile, double threed)
 global.dll_FMODSoundAddAsyncStream=external_define("GMFMODSimple.dll","FMODSoundAddAsyncStream",dll_cdecl,ty_real,2,ty_string,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundAddAsyncStream")
 
-
 //export double FMODSoundAsyncReady(double sound)
 global.dll_FMODSoundAsyncReady=external_define("GMFMODSimple.dll","FMODSoundAsyncReady",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundAsyncReady")
-
 
 //export double FMODInstanceAsyncOK(double instance)
 global.dll_FMODInstanceAsyncOK=external_define("GMFMODSimple.dll","FMODInstanceAsyncOK",dll_cdecl,ty_real,1,ty_real);
@@ -442,11 +463,9 @@ if(WTF) show_debug_message("Defined: FMODSoundGetMusicNumChannels")
 global.dll_FMODSoundGetMusicChannelVolume=external_define("GMFMODSimple.dll","FMODSoundGetMusicChannelVolume",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundGetMusicChannelVolume")
 
-
 //export double FMODSoundSetMusicChannelVolume(double sound, double channel, double volume)
 global.dll_FMODSoundSetMusicChannelVolume=external_define("GMFMODSimple.dll","FMODSoundSetMusicChannelVolume",dll_cdecl,ty_real,3,ty_real,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODSoundSetMusicChannelVolume")
-
 
 //export double FMODEffectGetActive(double effect)
 global.dll_FMODEffectGetActive=external_define("GMFMODSimple.dll","FMODEffectGetActive",dll_cdecl,ty_real,1,ty_real);
@@ -472,7 +491,6 @@ if(WTF) show_debug_message("Defined: FMODEffectGetDefaultPan")
 global.dll_FMODEffectSetDefaultPan=external_define("GMFMODSimple.dll","FMODEffectSetDefaultPan",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectSetDefaultPan")
 
-
 //export double FMODEffectGetDefaultVol(double effect)
 global.dll_FMODEffectGetDefaultVol=external_define("GMFMODSimple.dll","FMODEffectGetDefaultVol",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectGetDefaultVol")
@@ -481,7 +499,6 @@ if(WTF) show_debug_message("Defined: FMODEffectGetDefaultVol")
 global.dll_FMODEffectSetDefaultVol=external_define("GMFMODSimple.dll","FMODEffectSetDefaultVol",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectSetDefaultVol")
 
-
 //export double FMODEffectGetDefaultFr(double effect)
 global.dll_FMODEffectGetDefaultFr=external_define("GMFMODSimple.dll","FMODEffectGetDefaultFr",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectGetDefaultFr")
@@ -489,8 +506,6 @@ if(WTF) show_debug_message("Defined: FMODEffectGetDefaultFr")
 //export double FMODEffectSetDefaultFr(double effect, double val)
 global.dll_FMODEffectSetDefaultFr=external_define("GMFMODSimple.dll","FMODEffectSetDefaultFr",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectSetDefaultFr")
-
-
 
 //export double FMODEffectGetNumParams(double effect)
 global.dll_FMODEffectGetNumParams=external_define("GMFMODSimple.dll","FMODEffectGetNumParams",dll_cdecl,ty_real,1,ty_real);
@@ -508,7 +523,6 @@ if(WTF) show_debug_message("Defined: FMODEffectSetParamValue")
 global.dll_FMODEffectGetParamMin=external_define("GMFMODSimple.dll","FMODEffectGetParamMin",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectGetParamMin")
 
-
 //export double FMODEffectGetParamMax(double effect, double p)
 global.dll_FMODEffectGetParamMax=external_define("GMFMODSimple.dll","FMODEffectGetParamMax",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectGetParamMax")
@@ -521,22 +535,17 @@ if(WTF) show_debug_message("Defined: FMODEffectGetParamValueStr")
 global.dll_FMODEffectGetParamName=external_define("GMFMODSimple.dll","FMODEffectGetParamName",dll_cdecl,ty_real,3,ty_real,ty_real,ty_string);
 if(WTF) show_debug_message("Defined: FMODEffectGetParamName")
 
-
 //export double FMODEffectGetParamLabel(double effect, double p, LPSTR str)
 global.dll_FMODEffectGetParamLabel=external_define("GMFMODSimple.dll","FMODEffectGetParamLabel",dll_cdecl,ty_real,3,ty_real,ty_real,ty_string);
 if(WTF) show_debug_message("Defined: FMODEffectGetParamLabel")
-
 
 //export double FMODEffectGetParamDesc(double effect, double p, LPSTR str)
 global.dll_FMODEffectGetParamDesc=external_define("GMFMODSimple.dll","FMODEffectGetParamDesc",dll_cdecl,ty_real,3,ty_real,ty_real,ty_string);
 if(WTF) show_debug_message("Defined: FMODEffectGetParamDesc")
 
-
-
 //export double FMODEffectGetSpeakerActive(double effect, double speaker)
 global.dll_FMODEffectGetSpeakerActive=external_define("GMFMODSimple.dll","FMODEffectGetSpeakerActive",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectGetSpeakerActive")
-
 
 //export double FMODEffectSetSpeakerActive(double effect, double speaker, double active)
 global.dll_FMODEffectSetSpeakerActive=external_define("GMFMODSimple.dll","FMODEffectSetSpeakerActive",dll_cdecl,ty_real,3,ty_real,ty_real,ty_real);
@@ -545,7 +554,6 @@ if(WTF) show_debug_message("Defined: FMODEffectSetSpeakerActive")
 //export double FMODEffectReset(double effect)
 global.dll_FMODEffectReset=external_define("GMFMODSimple.dll","FMODEffectReset",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODEffectReset")
-
 
 //export double FMODInstanceGetPitch(double instance)
 global.dll_FMODInstanceGetPitch=external_define("GMFMODSimple.dll","FMODInstanceGetPitch",dll_cdecl,ty_real,1,ty_real);
@@ -571,7 +579,6 @@ if(WTF) show_debug_message("Defined: FMODRecordStart")
 global.dll_FMODRecordStop=external_define("GMFMODSimple.dll","FMODRecordStop",dll_cdecl,ty_real,0);
 if(WTF) show_debug_message("Defined: FMODRecordStop")
 
-
 //export double FMODInstanceSet3DSpread(double instance, double spreadangle)
 global.dll_FMODInstanceSet3DSpread=external_define("GMFMODSimple.dll","FMODInstanceSet3DSpread",dll_cdecl,ty_real,2,ty_real,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceSet3DSpread")
@@ -587,7 +594,6 @@ if(WTF) show_debug_message("Defined: FMODInstanceSet3DPanLevel")
 //export double FMODInstanceGet3DPanLevel(double instance)
 global.dll_FMODInstanceGet3DPanLevel=external_define("GMFMODSimple.dll","FMODInstanceGet3DPanLevel",dll_cdecl,ty_real,1,ty_real);
 if(WTF) show_debug_message("Defined: FMODInstanceGet3DPanLevel")
-
 
 //export string FMODGetErrorString(double error_code)
 global.dll_FMODGetErrorString=external_define("GMFMODSimple.dll","FMODGetErrorString",dll_cdecl,ty_string,1,ty_real);

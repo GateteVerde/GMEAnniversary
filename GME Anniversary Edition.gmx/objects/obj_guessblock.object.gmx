@@ -245,9 +245,6 @@ if (parent.count == 0) {
         //Play 'Wrong' sound
         audio_play_sound(snd_wrong, 0, false);
         
-        //Create a coin
-        instance_create(x,y-16,obj_blockcoin);
-        
         //Turn into a empty block
         alarm[1] = 8;
         
@@ -261,9 +258,6 @@ if (parent.count == 0) {
     
         //Play 'Wrong' sound
         audio_play_sound(snd_wrong, 0, false);
-        
-        //Create a coin
-        instance_create(x,y-16,obj_blockcoin);
         
         //Turn into a empty block
         alarm[1] = 8;
@@ -295,9 +289,6 @@ else if (parent.count == 1) {
     
         //Play 'Wrong' sound
         audio_play_sound(snd_wrong, 0, false);
-        
-        //Create a coin
-        instance_create(x,y-16,obj_blockcoin);
         
         //Turn into a empty block
         alarm[1] = 8;

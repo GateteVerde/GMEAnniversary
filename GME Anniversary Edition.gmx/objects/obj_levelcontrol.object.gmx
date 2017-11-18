@@ -927,15 +927,13 @@ if (global.postchange != -1) {
     //Destroy all player objects
     event_user(4);
     
-    //Create the appropiate the player object at the desired location.
-    switch (global.postchange) {
-    
-        //Main
-        case (0): player_retrieve(global.postx,global.posty); break;
+    //Main
+    if (global.postchange == 0)
+        player_retrieve(global.postx, global.posty); 
         
-        //Warp
-        case (1): with (instance_create(global.postx,global.posty,obj_player_warp)) break;
-    }
+    //Warp
+    else if (global.postchange = 1)
+        with (instance_create(global.postx, global.posty, obj_player_warp)) ready = 1;
     
     //Make the player able to warp between rooms.
     global.postchange = -1;

@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_deactivateparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="3" enumb="0">
@@ -36,10 +36,7 @@ if (player)
     audio_play_sound(snd_warp, 0, false);
     
     //Create pipe player
-    with (instance_create(x+16,y+16,obj_player_warp)) {
-    
-        //Make the player able to exit pipes
-        alarm[0] = 64;
+    with (instance_create(x+16,y+14,obj_player_warp)) {
         
         //Set direction
         direction = 90;
