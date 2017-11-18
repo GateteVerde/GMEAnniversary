@@ -853,7 +853,8 @@ if (global.reserve != cs_small) {
             <string>///Reset values
 
 ///If the main level theme was playing, remember it
-if (FMODInstanceIsPlaying(global._stream)) 
+if (FMODInstanceIsPlaying(global._stream))
+&amp;&amp; (obj_persistent.restart == false)
     global.levelmusic = levelmusic;
 
 //Otherwise, reset.

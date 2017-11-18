@@ -391,7 +391,7 @@ else if (keyboard_check_pressed(ord('R'))) {
     
     //Go to disclaimer screen
     if (instance_number(obj_fadein) == 0)    
-        with (instance_create(0,0,obj_fadein)) target = rm_enginetest;
+        with (instance_create(0,0,obj_fadein)) target = rm_disclaimer;
 }
 
 //Fullscreen (Handled by GM: Studio)
@@ -763,7 +763,7 @@ draw_enable_alphablend(true)
 draw_set_font(global.font_interface);
 draw_set_colour(c_white);
 if (fps &lt; 60)
-    draw_text_ext_transformed(2,2,string("LAG"),0,0,filter+1,filter+1,0);
+    draw_text(2,2,string("LAG"));
 </string>
           </argument>
         </arguments>
