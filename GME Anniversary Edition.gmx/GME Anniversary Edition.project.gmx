@@ -175,6 +175,7 @@
       <sound>sound\snd_reserve</sound>
       <sound>sound\snd_timer</sound>
       <sound>sound\snd_timer_end</sound>
+      <sound>sound\snd_wrong</sound>
     </sounds>
     <sound>sound\snd_yoshi</sound>
     <sound>sound\snd_yoshi_lick</sound>
@@ -651,6 +652,7 @@
       <sprite>sprites\spr_arrowblock_left</sprite>
       <sprite>sprites\spr_arrowblock_right</sprite>
       <sprite>sprites\spr_arrowblock_reset</sprite>
+      <sprite>sprites\spr_guessblock</sprite>
       <sprite>sprites\spr_beanstalk</sprite>
     </sprites>
     <sprites name="Decoration">
@@ -1096,11 +1098,12 @@
         <background>background\bgr_cloudblanket</background>
       </backgrounds>
       <background>background\bgr_blocks</background>
+      <background>background\bgr_bonus</background>
+      <background>background\bgr_cave_bg</background>
+      <background>background\bgr_cave_fg</background>
       <background>background\bgr_darkhills</background>
       <background>background\bgr_darkhills_b</background>
       <background>background\bgr_darkhills_c</background>
-      <background>background\bgr_cave_bg</background>
-      <background>background\bgr_cave_fg</background>
       <background>background\bgr_desert_bg</background>
       <background>background\bgr_desert_fg</background>
       <background>background\bgr_subcon_bg</background>
@@ -1766,6 +1769,7 @@
             <object>objects\obj_shard</object>
             <object>objects\obj_shard_th</object>
           </objects>
+          <object>objects\obj_guessblock</object>
         </objects>
         <objects name="Items">
           <objects name="Collectables">
@@ -1894,6 +1898,7 @@
       <object>objects\obj_disclaimer</object>
       <object>objects\obj_persistent</object>
       <object>objects\obj_persistent_musicplayer</object>
+      <object>objects\obj_guessblock_manager</object>
     </objects>
     <object>objects\obj_up</object>
     <object>objects\obj_down</object>
@@ -1902,10 +1907,21 @@
     <object>objects\obj_endmarker</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_load</room>
+    <room>rooms\rm_gamestart</room>
     <room>rooms\rm_disclaimer</room>
-    <room>rooms\rm_enginetest</room>
-    <room>rooms\rm_enginetest_b</room>
+    <rooms name="Levels">
+      <rooms name="Level 1">
+        <room>rooms\rm_enginetest</room>
+        <room>rooms\rm_enginetest_b</room>
+      </rooms>
+    </rooms>
+    <rooms name="Special">
+      <rooms name="Minigames">
+        <rooms name="SMW">
+          <room>rooms\rm_minigame_smw_a</room>
+        </rooms>
+      </rooms>
+    </rooms>
   </rooms>
   <constants number="42">
     <constant name="cs_small">0</constant>
