@@ -109,6 +109,136 @@ else {
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Enable gravity
+
+gravity = 0.25;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Launch the player out of a diagonal pipe cannon
+
+//Play 'Explode' sound
+audio_play_sound(snd_explode, 0, false);
+
+//Create particles
+repeat (16) {
+
+    with (instance_create(x-8,y-8,obj_smoke)) {
+    
+        //Friction
+        friction = 0.05;
+        
+        //Depth
+        depth = 11;        
+        
+        //Set motion
+        if (other.image_xscale == 1)
+            motion_set(random_range(35,55), random(6));
+        else
+            motion_set(random_range(125,145), random(6));
+    }
+}
+
+//Set the horizontal speed
+hspeed = 4*sign(image_xscale);
+
+//Set the vertical speed
+vspeed = -4;
+
+//Make it visible
+visible = 1;
+
+//Enable gravity
+alarm[3] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Launch the player out of a pipe cannon
+
+//Play 'Explode' sound
+audio_play_sound(snd_explode, 0, false);
+
+//Create particles
+repeat (16) {
+
+    with (instance_create(x-8,y-8,obj_smoke)) {
+    
+        //Set motion
+        motion_set(random_range(80,100), random(6));
+        
+        //Depth
+        depth = 11;
+        
+        //Friction
+        friction = 0.05;
+    }
+}
+
+//Move up
+vspeed = -4;
+
+//Make it visible
+visible = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -204,6 +334,81 @@ else if ((cannon == 2) &amp;&amp; (vspeed &gt; 0))
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_warpcannon_big">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Giant warp cannon
+
+//If the player is not in cannon mode
+if (cannon == 0) {
+
+    //Enable cannon mode
+    cannon = 2;
+    
+    //Stop moving
+    speed = 0;
+    
+    //Set the facing direction
+    image_xscale = other.direct;
+    
+    //Prepare to launch
+    alarm[2] = 30;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_warpcannon">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Regular warp cannon
+
+//If the player is not in cannon mode
+if (cannon == 0) {
+
+    //Enable cannon mode
+    cannon = 1;
+    
+    //Stop moving
+    speed = 0;
+    
+    //Prepare to launch
+    alarm[1] = 16;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_right">
       <action>
         <libid>1</libid>
@@ -281,11 +486,18 @@ move_snap(16,16);
             <kind>1</kind>
             <string>///Go down!
 
-//Set the direction.
-direction = 270;
+//If the player is on cannon mode, turn into a controllable player.
+if (cannon == 1)
+    event_user(0);
 
-//Snap to position.
-move_snap(16,16);
+else {
+
+    //Set the direction.
+    direction = 270;
+    
+    //Snap to position.
+    move_snap(16,16);
+}
 </string>
           </argument>
         </arguments>

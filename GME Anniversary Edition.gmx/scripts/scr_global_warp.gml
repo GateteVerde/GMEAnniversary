@@ -17,27 +17,45 @@ switch (global.player) {
     //Mario
     case (0): {
     
-        //If the player is moving vertically
-        if (vspeed != 0) {
-        
-            sprite_index = scr_mario_spin();
-            image_speed = 0;
-            image_index = 0;
-        }
+        //If the player is not in cannon mode
+        if (cannon < 2) {
+    
+            //If the player is moving vertically
+            if (vspeed != 0) {
             
-        //Otherwise, if the player is moving horizontally
+                sprite_index = scr_mario_spin();
+                image_speed = 0;
+                image_index = 0;
+            }
+                
+            //Otherwise, if the player is moving horizontally
+            else {
+            
+                //Set the animation
+                image_speed = 0.2;
+            
+                //If the player is holding something
+                if (holding)
+                    sprite_index = scr_mario_hold();
+                    
+                //Otherwise
+                else
+                    sprite_index = scr_mario_walk();
+            }
+        }
+        
+        //Otherwise, if the player is on diagonal cannon mode
         else {
         
-            //Set the animation
-            image_speed = 0.2;
-        
+            //Do not animate
+            image_speed = 0;
+            image_index = 0;
+            
             //If the player is holding something
             if (holding)
                 sprite_index = scr_mario_hold();
-                
-            //Otherwise
             else
-                sprite_index = scr_mario_walk();
+                sprite_index = scr_mario_runjump();
         }
     }
 }

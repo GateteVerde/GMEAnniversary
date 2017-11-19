@@ -943,6 +943,7 @@
         <sprite>sprites\spr_square_d</sprite>
         <sprite>sprites\spr_square_e</sprite>
         <sprite>sprites\spr_square_f</sprite>
+        <sprite>sprites\spr_square_g</sprite>
         <sprites name="Slopes">
           <sprite>sprites\spr_slope_r</sprite>
           <sprite>sprites\spr_slope_l</sprite>
@@ -961,6 +962,7 @@
       <sprite>sprites\spr_24mask</sprite>
       <sprite>sprites\spr_32mask</sprite>
       <sprite>sprites\spr_basketmask</sprite>
+      <sprite>sprites\spr_cannonmask</sprite>
       <sprite>sprites\spr_explosionmask</sprite>
       <sprite>sprites\spr_graymask</sprite>
       <sprite>sprites\spr_itembubblemask</sprite>
@@ -1713,6 +1715,8 @@
       </objects>
       <object>objects\obj_warppost</object>
       <object>objects\obj_warproom</object>
+      <object>objects\obj_warpcannon</object>
+      <object>objects\obj_warpcannon_big</object>
     </objects>
     <objects name="Special">
       <objects name="Parents">
