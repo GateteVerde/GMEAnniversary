@@ -334,81 +334,6 @@ else if ((cannon == 2) &amp;&amp; (vspeed &gt; 0))
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_warpcannon_big">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Giant warp cannon
-
-//If the player is not in cannon mode
-if (cannon == 0) {
-
-    //Enable cannon mode
-    cannon = 2;
-    
-    //Stop moving
-    speed = 0;
-    
-    //Set the facing direction
-    image_xscale = other.direct;
-    
-    //Prepare to launch
-    alarm[2] = 30;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_warpcannon">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Regular warp cannon
-
-//If the player is not in cannon mode
-if (cannon == 0) {
-
-    //Enable cannon mode
-    cannon = 1;
-    
-    //Stop moving
-    speed = 0;
-    
-    //Prepare to launch
-    alarm[1] = 16;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_right">
       <action>
         <libid>1</libid>
@@ -527,6 +452,81 @@ direction = 90;
 
 //Snap to position.
 move_snap(16,16);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_warpcannon_big">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Giant warp cannon
+
+//If the player is not in cannon mode
+if (cannon == 0) {
+
+    //Enable cannon mode
+    cannon = 2;
+    
+    //Stop moving
+    speed = 0;
+    
+    //Set the facing direction
+    image_xscale = other.direct;
+    
+    //Prepare to launch
+    alarm[2] = 30;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_warpcannon">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Regular warp cannon
+
+//If the player is not in cannon mode
+if (cannon == 0) {
+
+    //Enable cannon mode
+    cannon = 1;
+    
+    //Stop moving
+    speed = 0;
+    
+    //Prepare to launch
+    alarm[1] = 16;
+}
 </string>
           </argument>
         </arguments>
