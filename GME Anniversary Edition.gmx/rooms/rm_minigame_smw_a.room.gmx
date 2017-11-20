@@ -18,7 +18,16 @@
 //  If you want to add as a bonus area, just do a copy of this room
 //  and modify the 'obj_warproom' located at the top pipe via
 //  Creation Code
-*/</code>
+*/
+
+//Create end warp
+with (instance_create(336,64,obj_warproom)) {
+
+    postchange = -1;
+    postx = -1;
+    posty = -1;
+    myroom = room_next(room);
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -93,7 +102,6 @@
     <instance objName="obj_guessblock_manager" x="144" y="144" name="inst_918BC763" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_guessblock_manager" x="128" y="80" name="inst_E738C742" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="288" y="32" name="inst_7957E2AC" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="336" y="64" name="inst_962010D6" locked="-1" code="postchange = -1;&#xA;postx = -1;&#xA;posty = -1;&#xA;myroom = room_next(room);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpleft" x="288" y="48" name="inst_507F70A7" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

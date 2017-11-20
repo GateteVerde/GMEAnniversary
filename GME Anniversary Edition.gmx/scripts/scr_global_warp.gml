@@ -8,7 +8,7 @@
 **      Calls the appropiate warp sprite for the player
 **
 **  Notes:
-**      Use only on obj_mario_warp
+**      Use only on obj_player_warp
 */
 
 //Check what player is being used

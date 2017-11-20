@@ -1103,6 +1103,7 @@
       <background>background\bgr_bonus</background>
       <background>background\bgr_cave_bg</background>
       <background>background\bgr_cave_fg</background>
+      <background>background\bgr_clouds</background>
       <background>background\bgr_darkhills</background>
       <background>background\bgr_darkhills_b</background>
       <background>background\bgr_darkhills_c</background>
@@ -1165,10 +1166,13 @@
             <script>scripts\scr_global_dropdown.gml</script>
             <script>scripts\scr_global_tailspin.gml</script>
           </scripts>
+          <scripts name="States">
+            <script>scripts\scr_global_pull.gml</script>
+            <script>scripts\scr_global_pull2.gml</script>
+            <script>scripts\scr_global_wallrun.gml</script>
+          </scripts>
           <script>scripts\scr_global_warp.gml</script>
-          <script>scripts\scr_global_pull.gml</script>
-          <script>scripts\scr_global_pull2.gml</script>
-          <script>scripts\scr_global_wallrun.gml</script>
+          <script>scripts\scr_global_jump.gml</script>
           <script>scripts\scr_global_transform.gml</script>
         </scripts>
         <script>scripts\scr_inice.gml</script>
@@ -1420,6 +1424,7 @@
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_player_warp</object>
+      <object>objects\obj_player_jump</object>
     </objects>
     <objects name="Collision">
       <object>objects\obj_solid</object>
@@ -1493,6 +1498,8 @@
       <object>objects\obj_noteblock_hidden</object>
       <object>objects\obj_noteblock_blue</object>
       <object>objects\obj_noteblock_blue_hidden</object>
+      <object>objects\obj_noteblock_warp</object>
+      <object>objects\obj_noteblock_warp_hidden</object>
       <object>objects\obj_messageblock</object>
       <object>objects\obj_area_y</object>
       <object>objects\obj_area_g</object>
@@ -1750,8 +1757,11 @@
           <objects name="Skins">
             <object>objects\obj_mario</object>
           </objects>
+          <objects name="States">
+            <object>objects\obj_player_dead</object>
+            <object>objects\obj_player_warpnote</object>
+          </objects>
           <object>objects\obj_player_transform</object>
-          <object>objects\obj_player_dead</object>
           <object>objects\obj_puller</object>
           <object>objects\obj_statue</object>
           <object>objects\obj_spinner</object>
@@ -1917,6 +1927,7 @@
       <rooms name="Level 1">
         <room>rooms\rm_enginetest</room>
         <room>rooms\rm_enginetest_b</room>
+        <room>rooms\rm_enginetest_c</room>
       </rooms>
     </rooms>
     <rooms name="Special">
