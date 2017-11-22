@@ -976,6 +976,12 @@
       <sprite>sprites\spr_warp_v</sprite>
     </sprites>
     <sprites name="Projectiles">
+      <sprites name="Ice Blocks">
+        <sprite>sprites\spr_iceblock</sprite>
+        <sprite>sprites\spr_iceblock_16x32</sprite>
+        <sprite>sprites\spr_iceblock_32x16</sprite>
+        <sprite>sprites\spr_iceblock_32x32</sprite>
+      </sprites>
       <sprite>sprites\spr_fireball</sprite>
       <sprite>sprites\spr_snowball</sprite>
       <sprite>sprites\spr_hammer</sprite>
@@ -983,7 +989,6 @@
       <sprite>sprites\spr_superball</sprite>
       <sprite>sprites\spr_mbomb</sprite>
       <sprite>sprites\spr_bolt</sprite>
-      <sprite>sprites\spr_iceblock</sprite>
     </sprites>
     <sprites name="Special">
       <sprites name="Eyecandy">
@@ -1877,6 +1882,7 @@
             <object>objects\obj_basket_shard</object>
             <object>objects\obj_basket_shard_bottom</object>
           </objects>
+          <object>objects\obj_iceblock</object>
           <object>objects\obj_explosion</object>
         </objects>
         <objects name="Special">

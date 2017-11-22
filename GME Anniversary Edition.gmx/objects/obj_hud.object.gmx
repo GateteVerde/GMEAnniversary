@@ -135,7 +135,7 @@ if (instance_exists(obj_playerparent)) {
         draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/16), view_xview[0]+5, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
 }
 else
-    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+4, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+5, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
 </string>
           </argument>
         </arguments>
