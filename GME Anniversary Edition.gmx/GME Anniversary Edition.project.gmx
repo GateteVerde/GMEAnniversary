@@ -1021,6 +1021,7 @@
         <sprite>sprites\spr_glass</sprite>
         <sprite>sprites\spr_glass_h</sprite>
         <sprite>sprites\spr_icespark</sprite>
+        <sprite>sprites\spr_notespark</sprite>
         <sprite>sprites\spr_pop</sprite>
         <sprite>sprites\spr_shellthump</sprite>
         <sprite>sprites\spr_shellthump_st</sprite>
@@ -1079,6 +1080,7 @@
           <sprite>sprites\spr_palette_qblock</sprite>
           <sprite>sprites\spr_palette_qblock_empty</sprite>
           <sprite>sprites\spr_palette_brick</sprite>
+          <sprite>sprites\spr_palette_warpnoteblock</sprite>
         </sprites>
         <sprites name="NPCs">
           <sprite>sprites\spr_palette_yoshi</sprite>
@@ -1901,6 +1903,7 @@
             <object>objects\obj_shellbump</object>
             <object>objects\obj_smoke</object>
             <object>objects\obj_star</object>
+            <object>objects\obj_notespark</object>
           </objects>
           <objects name="Transitions">
             <object>objects\obj_fadein</object>

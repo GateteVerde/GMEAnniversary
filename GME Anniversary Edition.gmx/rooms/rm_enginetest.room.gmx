@@ -58,8 +58,8 @@ background_hspeed[2] = -0.2;</code>
   </views>
   <instances>
     <instance objName="obj_levelcontrol" x="0" y="0" name="inst_243CB980" locked="0" code="levelmusic = global._theme_overworld;&#xA;leveltime = 400;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_semisolid" x="0" y="384" name="inst_1787B48C" locked="0" code="" scaleX="18" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid" x="288" y="384" name="inst_04363D6B" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="obj_semisolid" x="0" y="384" name="inst_1787B48C" locked="0" code="" scaleX="17" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="288" y="400" name="inst_04363D6B" locked="0" code="" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="368" y="304" name="inst_44B59812" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="400" y="304" name="inst_B1AA0F0C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="384" y="304" name="inst_F65C1E67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -250,13 +250,13 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_up" x="2208" y="336" name="inst_0974DB75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="1760" y="384" name="inst_F26FD682" locked="0" code="myroom = rm_enginetest_b;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="40" y="368" name="inst_6488D086" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_noteblock_warp_hidden" x="240" y="320" name="inst_DCA35B4D" locked="0" code="myroom = rm_enginetest_c;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_noteblock_warp_hidden" x="176" y="80" name="inst_DCA35B4D" locked="0" code="myroom = rm_enginetest_c;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_trampoline" x="152" y="304" name="inst_ACD01518" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="192" y="112" name="inst_445918B5" locked="0" code="w = 16;&#xA;h = 32;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="272" y="96" name="inst_5FDEF46D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_iceblock" x="192" y="352" name="inst_2790B83D" locked="0" code="sprite_index = spr_iceblock_32x32;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_iceblock" x="96" y="304" name="inst_B845B362" locked="0" code="sprite_index = spr_iceblock_32x16;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_iceblock" x="272" y="352" name="inst_94729DFE" locked="0" code="sprite_index = spr_iceblock_16x32;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="272" y="352" name="inst_03D0F034" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warpcannon" x="288" y="400" name="inst_F73B3A66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_down" x="272" y="112" name="inst_0E1A8779" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warptop" x="272" y="352" name="inst_0690B5CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_iceblock" x="232" y="352" name="inst_0BEB16F5" locked="0" code="sprite_index = spr_iceblock_32x32;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="48" y="256" w="16" h="16" xo="800" yo="0" id="10000320" name="inst_C5F3A550" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1660,6 +1660,8 @@ background_hspeed[2] = -0.2;</code>
     <tile bgName="bgr_tileset_smb3" x="1744" y="336" w="32" h="16" xo="736" yo="416" id="10002054" name="inst_5E7FDE9E" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="1744" y="352" w="32" h="16" xo="736" yo="432" id="10002055" name="inst_8FF026F1" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="1744" y="368" w="32" h="16" xo="736" yo="432" id="10002056" name="inst_5DD03341" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="272" y="352" w="32" h="16" xo="736" yo="352" id="10004028" name="inst_41CB3B56" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="272" y="368" w="32" h="16" xo="736" yo="368" id="10004029" name="inst_147442CB" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
