@@ -883,6 +883,8 @@
         <sprite>sprites\spr_walltriangle_cl</sprite>
         <sprite>sprites\spr_propellerblock</sprite>
         <sprite>sprites\spr_boomerang_blue</sprite>
+        <sprite>sprites\spr_warpbox</sprite>
+        <sprite>sprites\spr_mysterybox</sprite>
         <sprite>sprites\spr_waterbubble</sprite>
       </sprites>
       <sprites name="Subcon">
@@ -1018,9 +1020,11 @@
         <sprite>sprites\spr_bubble</sprite>
         <sprite>sprites\spr_castlesmoke</sprite>
         <sprite>sprites\spr_cinder</sprite>
+        <sprite>sprites\spr_confetti</sprite>
         <sprite>sprites\spr_glass</sprite>
         <sprite>sprites\spr_glass_h</sprite>
         <sprite>sprites\spr_icespark</sprite>
+        <sprite>sprites\spr_light</sprite>
         <sprite>sprites\spr_notespark</sprite>
         <sprite>sprites\spr_pop</sprite>
         <sprite>sprites\spr_shellthump</sprite>
@@ -1180,6 +1184,7 @@
           </scripts>
           <script>scripts\scr_global_warp.gml</script>
           <script>scripts\scr_global_jump.gml</script>
+          <script>scripts\scr_global_climb.gml</script>
           <script>scripts\scr_global_transform.gml</script>
         </scripts>
         <script>scripts\scr_inice.gml</script>
@@ -1432,6 +1437,7 @@
       <object>objects\obj_player</object>
       <object>objects\obj_player_warp</object>
       <object>objects\obj_player_jump</object>
+      <object>objects\obj_player_climb</object>
     </objects>
     <objects name="Collision">
       <object>objects\obj_solid</object>
@@ -1731,6 +1737,7 @@
       <object>objects\obj_warproom</object>
       <object>objects\obj_warpcannon</object>
       <object>objects\obj_warpcannon_big</object>
+      <object>objects\obj_warpbox</object>
     </objects>
     <objects name="Special">
       <objects name="Parents">
@@ -1898,12 +1905,13 @@
               <object>objects\obj_score_coins</object>
             </objects>
             <object>objects\obj_bubble</object>
-            <object>objects\obj_bubble_v</object>
             <object>objects\obj_bubble_blown</object>
+            <object>objects\obj_bubble_v</object>
+            <object>objects\obj_confetti</object>
+            <object>objects\obj_notespark</object>
             <object>objects\obj_shellbump</object>
             <object>objects\obj_smoke</object>
             <object>objects\obj_star</object>
-            <object>objects\obj_notespark</object>
           </objects>
           <objects name="Transitions">
             <object>objects\obj_fadein</object>

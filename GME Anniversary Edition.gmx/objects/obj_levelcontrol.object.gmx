@@ -1114,25 +1114,25 @@ repeat (8) {
         if ((i = 0) &amp;&amp; (background_index[0] != noone)) {
         
             if (room_height &lt; 384)
-				            draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0],1,1,0,c_white,background_alpha[0]);
-			         else
-                draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0]+(view_yview[0]*(room_height-background_height[0])/(room_height-view_hview[0])),1,1,0,c_white,background_alpha[0]);
+            draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0],1,1,0,background_blend[0],background_alpha[0]);
+         else
+                draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0]+(view_yview[0]*(room_height-background_height[0])/(room_height-view_hview[0])),1,1,0,background_blend[0],background_alpha[0]);
         }
         
         //Draw rest of backgrounds if it exists
         else if ((i &gt; 0) &amp;&amp; (background_index[i] != noone)) {
-		
-			         if (room_height &lt; 384)
-				            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i],1,1,0,c_white,background_alpha[i]);
-			         else
-				            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i]+(view_yview[0]*(room_height-background_height[i])/(room_height-view_hview[0])),1,1,0,c_white,background_alpha[i]);
-		      }
+
+         if (room_height &lt; 384)
+            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i],1,1,0,background_blend[i],background_alpha[i]);
+         else
+            draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i]+(view_yview[0]*(room_height-background_height[i])/(room_height-view_hview[0])),1,1,0,background_blend[i],background_alpha[i]);
+      }
     }
     i++;
 }
 
 //Draw pit marker
-draw_sprite_ext(spr_pit, 0, 0, room_height-24, room_width/16, 1, 0, c_white, 1);
+draw_sprite_ext(spr_pit, 0, 0, room_height-24, room_width/16, 1, 0, background_blend[0], 0.5);
 </string>
           </argument>
         </arguments>
