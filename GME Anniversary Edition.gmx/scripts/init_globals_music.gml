@@ -16,9 +16,13 @@ global._theme_athletic = music_add("Athletic");
 music_setup(global._theme_athletic, "Athletic", 3);
 
 //Overworld
-global._theme_overworld = music_add("Overworld");
-music_setup(global._theme_overworld, "Overworld", 3);
+global._theme_land = music_add("Land");
+music_setup(global._theme_land, "Land", 3);
 
 //Starman
 global._theme_starman = music_add("Starman");
 music_setup(global._theme_starman, "Starman", 3);
+
+//Underground
+global._theme_underground = music_add("Underground");
+music_setup(global._theme_underground, "Underground", 3);

@@ -42,7 +42,7 @@ background_hspeed[2] = -0.2;</code>
   <backgrounds>
     <background visible="-1" foreground="0" name="bgr_subcon_bg" x="0" y="0" htiled="-1" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="-1" foreground="0" name="bgr_desert_fg" x="0" y="0" htiled="-1" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
-    <background visible="-1" foreground="0" name="bgr_cloudblanket" x="0" y="-16" htiled="-1" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -60,7 +60,7 @@ background_hspeed[2] = -0.2;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_243CB980" locked="0" code="levelmusic = global._theme_overworld;&#xA;leveltime = 400;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_243CB980" locked="0" code="levelmusic = global._theme_land;&#xA;leveltime = 400;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="0" y="384" name="inst_1787B48C" locked="0" code="" scaleX="18" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="288" y="384" name="inst_04363D6B" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="368" y="304" name="inst_44B59812" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -255,7 +255,8 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_player" x="40" y="368" name="inst_6488D086" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="240" y="320" name="inst_C21CCC6D" locked="0" code="sprout = cs_beanstalk;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="240" y="320" name="inst_AF0A3A79" locked="0" code="myroom = rm_enginetest_c;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warpbox" x="304" y="112" name="inst_CECFB3EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="304" y="96" name="inst_CECFB3EB" locked="0" code="postx = 176;&#xA;posty = 80;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="1216" y="96" name="inst_0F5132F4" locked="0" code="postx = 272;&#xA;posty = 128;&#xA;myroom = rm_enginetest_c;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="48" y="256" w="16" h="16" xo="800" yo="0" id="10000320" name="inst_C5F3A550" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

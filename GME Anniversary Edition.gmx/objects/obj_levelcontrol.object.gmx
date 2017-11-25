@@ -707,6 +707,8 @@ else
 
 with (obj_player) instance_destroy();
 with (obj_player_warp) instance_destroy();
+with (obj_player_jump) instance_destroy();
+with (obj_player_climb) instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -835,6 +837,14 @@ else {
     //Check for 'Jump'
     else if (instance_exists(obj_player_jump))
         follow = obj_player_jump;
+                
+    //Check for 'Climb'
+    else if (instance_exists(obj_player_climb))
+        follow = obj_player_climb;
+                
+    //Check for 'Warp Box'
+    else if (instance_exists(obj_player_warpbox))
+        follow = obj_player_warpbox;
 }
 </string>
           </argument>
@@ -977,6 +987,14 @@ if (global.postchange != -1) {
     //Warp
     else if (global.postchange = 1)
         with (instance_create(global.postx, global.posty, obj_player_warp)) ready = 1;
+        
+    //Jump
+    else if (global.postchange = 2)
+        instance_create(global.postx, global.posty, obj_player_jump);
+        
+    //Climb
+    else if (global.postchange = 3)
+        instance_create(global.postx, global.posty, obj_player_climb);
     
     //Make the player able to warp between rooms.
     global.postchange = -1;

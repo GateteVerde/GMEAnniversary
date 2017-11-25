@@ -3,12 +3,12 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="15" name="datafiles">
-    <datafiles number="15" name="music">
+  <datafiles number="20" name="datafiles">
+    <datafiles number="20" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
-        <size>548402</size>
+        <size>474211</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -23,9 +23,9 @@
         <filename>athletic.ogg</filename>
       </datafile>
       <datafile>
-        <name>overworld.ogg</name>
+        <name>land.ogg</name>
         <exists>-1</exists>
-        <size>450436</size>
+        <size>307104</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -37,12 +37,12 @@
             <CopyToMask>9223372036854775807</CopyToMask>
           </Config>
         </ConfigOptions>
-        <filename>overworld.ogg</filename>
+        <filename>land.ogg</filename>
       </datafile>
       <datafile>
         <name>starman.ogg</name>
         <exists>-1</exists>
-        <size>52956</size>
+        <size>72301</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -55,6 +55,23 @@
           </Config>
         </ConfigOptions>
         <filename>starman.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>underground.ogg</name>
+        <exists>-1</exists>
+        <size>250420</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>underground.ogg</filename>
       </datafile>
     </datafiles>
     <datafile>
@@ -146,6 +163,7 @@
       <sound>sound\snd_engine</sound>
       <sound>sound\snd_explode</sound>
       <sound>sound\snd_hatch</sound>
+      <sound>sound\snd_mystery</sound>
       <sound>sound\snd_pop</sound>
       <sound>sound\snd_powerup</sound>
       <sound>sound\snd_redcoin</sound>
@@ -883,8 +901,6 @@
         <sprite>sprites\spr_walltriangle_cl</sprite>
         <sprite>sprites\spr_propellerblock</sprite>
         <sprite>sprites\spr_boomerang_blue</sprite>
-        <sprite>sprites\spr_warpbox</sprite>
-        <sprite>sprites\spr_mysterybox</sprite>
         <sprite>sprites\spr_waterbubble</sprite>
       </sprites>
       <sprites name="Subcon">
@@ -1737,7 +1753,6 @@
       <object>objects\obj_warproom</object>
       <object>objects\obj_warpcannon</object>
       <object>objects\obj_warpcannon_big</object>
-      <object>objects\obj_warpbox</object>
     </objects>
     <objects name="Special">
       <objects name="Parents">
