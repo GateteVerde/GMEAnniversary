@@ -176,8 +176,7 @@ if (other.vspeed &lt; 0)
 */
 
 var moving = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_platformparent,0,0);
-if (moving) 
-&amp;&amp; (moving.speed != 0) {
+if (moving) {
 
     //With this platform
     with (moving) {

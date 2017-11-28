@@ -131,7 +131,11 @@ if (ready) {
     instance_activate_all();
     
     //Create a idle Yoshi
-    with (instance_create(x,y,obj_yoshi)) state = "idle";
+    with (instance_create(x,y,obj_yoshi_abandon)) {
+    
+        colour = other.colour;
+        vspeed = -1.5;
+    }
     
     //Destroy
     instance_destroy();

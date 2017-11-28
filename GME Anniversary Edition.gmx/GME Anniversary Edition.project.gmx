@@ -196,6 +196,8 @@
       <sound>sound\snd_wrong</sound>
     </sounds>
     <sound>sound\snd_yoshi</sound>
+    <sound>sound\snd_yoshi_eat</sound>
+    <sound>sound\snd_yoshi_hurt</sound>
     <sound>sound\snd_yoshi_lick</sound>
     <sound>sound\snd_yoshi_spit</sound>
   </sounds>
@@ -744,6 +746,7 @@
                 <sprite>sprites\spr_yoshi_warp</sprite>
                 <sprite>sprites\spr_yoshi_lick</sprite>
                 <sprite>sprites\spr_yoshi_swallow</sprite>
+                <sprite>sprites\spr_yoshi_runaway</sprite>
               </sprites>
               <sprites name="Parts">
                 <sprite>sprites\spr_wing</sprite>
@@ -992,6 +995,7 @@
       <sprite>sprites\spr_spinmask</sprite>
       <sprite>sprites\spr_warp_h</sprite>
       <sprite>sprites\spr_warp_v</sprite>
+      <sprite>sprites\spr_yoshimask</sprite>
     </sprites>
     <sprites name="Projectiles">
       <sprites name="Ice Blocks">
@@ -1828,6 +1832,9 @@
                     <object>objects\obj_egg_hatch</object>
                   </objects>
                   <object>objects\obj_yoshi</object>
+                  <object>objects\obj_yoshi_runaway</object>
+                  <object>objects\obj_yoshi_abandon</object>
+                  <object>objects\obj_tongue</object>
                 </objects>
               </objects>
               <object>objects\obj_powerupsprout</object>

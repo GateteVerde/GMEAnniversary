@@ -85,7 +85,7 @@ if (!flying) { //If the player is not flying
     }               
     
     //Otherwise, do not reduce speed until the player makes contact with the ground.  
-    else  
+    else     
         xspeedmax = walkspeed;
 }
 
@@ -136,15 +136,39 @@ if (!disablecontrol) && (!inwall) {
         //Make the player spin jump
         if ((keyboard_check(global.upkey))
         && (!crouch)
-        && (global.powerup != cs_frog)
-        && ((holding == 0) || (global.mount != 0)))
+        && (global.powerup != cs_frog))
         || (state == 2) {
+            
+            //If a Yoshi is being ridden, dismount from it.
+            if (global.mount == 1) {
+            
+                with (obj_yoshi) event_user(1);
+                if (state < 2) {
+                
+                    //Set spin jump variable
+                    stompstyle = true;
+                    
+                    //Set horizontal speed
+                    xspeed = 1*(xscale*-1)
     
-            //Set spin jump variable
-            stompstyle = true;
-    
-            //Play spin jump sound
-            audio_play_sound(snd_spin, 0, false);
+                    //Play 'Spin' sound
+                    audio_play_sound(snd_spin, 0, false);
+                }
+                else {
+                
+                    //Play 'Jump' sound
+                    audio_play_sound(snd_jump, 0, false);
+                }
+            }
+            
+            else {
+            
+                //Set spin jump variable
+                stompstyle = true;
+
+                //Play spin jump sound
+                audio_play_sound(snd_spin, 0, false);
+            }
         }
     
         //Play the jump sound if he is not spin jumping
@@ -530,8 +554,7 @@ if (keyboard_check_pressed(global.downkey))
 //If the player is jumping, not ducking, not spin jumping, can control himself, is not riding anything and it's not holding a propeller block
 if (state == 2)
 && (!stompstyle)
-&& (!disablecontrol)
-&& (global.mount == 0) {
+&& (!disablecontrol) {
 
     //If a propeller block is being held, do not use powerups
     if (instance_exists(obj_propellerblock_up)) 
@@ -600,6 +623,7 @@ if (state == 2)
     || ((global.powerup == cs_bee) && (beefly < 128)))
     && (!crouch)
     && (wallkick < 1)
+    && (global.mount == 0)
     && (keyboard_check(global.shiftkey)) {
 
         //If Mario is moving downwards

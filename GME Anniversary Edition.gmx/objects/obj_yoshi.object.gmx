@@ -3,7 +3,7 @@
   <spriteName>spr_yoshi</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,19 +28,890 @@
             <string>///Yoshi
 
 //Default colour
+colour = 0;
 if (global.mountcolour != 0) {
 
     colour = global.mountcolour;
-    global.mountcolour = 0;
 }
-else
-colour = 0;
 
-//Yoshi current state
-//0: Idle
-//1: Ridden
-//2: Scared
-state = 0;
+//On yoshi
+global.mount = 1;
+
+//Is Yoshi licking?
+licking = 0;
+
+//Is Yoshi's tongue locked in position
+locked = false;
+
+//Facing direction
+xscale = 1;
+
+//What's inside Yoshi's mouth?
+mouthholder = noone;
+
+//Sprite of the item inside Yoshi's mouth
+mouthsprite = noone;
+
+//Whether Yoshi has ate a powerup
+powerup = noone;
+
+//Animation
+anim = 0;
+
+//Is Yoshi jumping?
+jumping = 0;
+
+//Is Yoshi flying?
+flying = 0;
+
+//Flying animation
+flyanim = 1;
+
+//Player's current frame
+f = 0;
+
+//If an item was carried from the previous room.
+if (global.carrieditem != noone) {
+
+    //Remember the item and reset it.
+    mouthholder = global.carrieditem;
+    global.carrieditem = noone;
+    
+    //Remember the sprite and reset it.
+    mouthsprite = global.carriedsprite;
+    global.carritedsprite = noone;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy Yoshi
+
+//Dismount Yoshi
+global.mount = 0;
+
+//Destroy Yoshi's tongue if it exists
+with (obj_tongue) instance_destroy();
+
+//Make both the player and yoshi do stuff
+if (instance_exists(obj_playerparent)) {
+
+    obj_playerparent.holding = 0;
+    obj_playerparent.visible = 1;
+    if (mouthholder != noone)
+        event_user(0);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make flying noises for blue Yoshi
+
+if (flying) {
+
+    //Play 'Lick' sound.
+    audio_play_sound(snd_yoshi_lick, 0, false)
+    
+    //Repeat the process.
+    alarm[4] = 15;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create eaten powerup
+
+instance_create(x,y,powerup);
+powerup = noone;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Finish licking
+
+//End licking
+licking = 0;
+
+//If Yoshi ate a powerup, create it.
+if (powerup != noone)
+    alarm[3] = 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Begin finishing the licking process
+
+anim = 0;
+alarm[2] = 5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Start licking
+
+//Set animation
+anim = 1;
+
+//Create tongue
+instance_create(x,y,obj_tongue);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Yoshi logic
+
+//If the player does exist.
+if (instance_exists(obj_playerparent)) {
+
+    //Snap into the player
+    x = obj_playerparent.x;
+    y = obj_playerparent.y;
+    
+    //Force the player to be invisible
+    obj_playerparent.visible = 0;
+    
+    //Force the player to hold something
+    obj_playerparent.holding = 4;
+        
+    //If Yoshi is not licking and control is pressed.
+    if (keyboard_check_pressed(global.controlkey))
+    &amp;&amp; (licking == 0)
+    &amp;&amp; (obj_playerparent.disablecontrol == 0) {
+    
+        //If the mouth is empty, start licking.
+        if (mouthholder == noone) {
+        
+            //Play 'Lick' sound
+            if (!audio_is_playing(snd_yoshi_lick)) {
+            
+                audio_play_sound(snd_yoshi_lick, 0, false);
+            }
+            
+            //Start licking
+            licking = 1;
+            alarm[0] = 5;
+            
+            //Animation
+            anim = 0;
+            
+            //Lock the tounge in position
+            if ((keyboard_check(global.upkey)) || (jumping &gt; 0)) {
+            
+                //If the player is not crouched down
+                if (!obj_playerparent.crouch)
+                    locked = 1;
+                else
+                    locked = 2;
+            }
+            else
+                locked = 2;
+        }
+        
+        //Otherwise, spit out the item.
+        else
+            event_user(0);
+    }
+    
+    //Depth
+    depth = -4;
+    
+    //Mask
+    obj_playerparent.mask_index = spr_bigmask;
+    
+    //Check if the player is jumping and make yoshi set up his jump pose if so.
+    if ((obj_playerparent.state == 2) || (obj_playerparent.delay &gt; 0))
+        jumping = 1;
+    else
+        jumping = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Yoshi animation
+
+//If the player does exist.
+if (instance_exists(obj_playerparent)) {
+
+    //If yoshi is licking.
+    if (licking) {
+    
+        //If the 'Up' key is being held or Yoshi is jumping.
+        if (locked == 1) {
+            
+            //Set the sprite
+            sprite_index = spr_yoshi_swallow;
+            
+            //Do not animate
+            image_speed = 0;
+            
+            //Set the frame
+            if (obj_playerparent.yspeed != 0) {
+            
+                if (obj_playerparent.yspeed &lt; 0)
+                    image_index = 1;
+                else if (obj_playerparent.yspeed &gt; 0)
+                    image_index = 2;
+            }
+            else
+                image_index = 0;
+        }
+            
+        //Otherwise, if the player is not moving vertically
+        else {
+            
+            //Set the sprite
+            sprite_index = spr_yoshi_lick;
+            
+            //Do not animate
+            image_speed = 0;
+            
+            //Set the frame
+            image_index = anim;
+        }
+    }
+    
+    //Otherwise, if Yoshi is not licking.
+    else if (!licking) {
+    
+        //If the player is crouched down or it's sliding down a slope.
+        if (obj_playerparent.crouch) 
+        || (obj_playerparent.sliding) {
+        
+            //If Yoshi is holding something on his mouth.
+            if (mouthholder != noone) {
+            
+                //Set the sprite
+                sprite_index = spr_yoshi_fm_wait;
+        
+                //Do not animate
+                image_speed = 0;
+                image_index = 2;
+            }
+            
+            //Otherwise, if Yoshi is not holding anything on his mouth.
+            else if (mouthholder == noone) {
+            
+                //Set the sprite
+                sprite_index = spr_yoshi_wait;
+                
+                //Do not animate
+                image_speed = 0;
+                image_index = 0;
+            }
+        }
+        
+        //Otherwise, if the player is not crouched down.
+        else {
+    
+            //If the player is idle.
+            if (obj_playerparent.state == 0) {
+            
+                //If Yoshi is holding something on his mouth.
+                if (mouthholder != noone) {
+                
+                    //Set the sprite
+                    sprite_index = spr_yoshi_fm;
+                    
+                    //Do not animate
+                    image_speed = 0;
+                    image_index = 0;
+                }
+                
+                //Otherwise, if Yoshi is not holding anything on his mouth.
+                else if (mouthholder == noone) {
+                
+                    //Set the sprite
+                    sprite_index = spr_yoshi;
+                    
+                    //Do not animate
+                    image_speed = 0;
+                    image_index = 0;                
+                }
+            }
+            
+            //Otherwise, if the player is moving.
+            else if (obj_playerparent.state == 1) {
+            
+                //If Yoshi is holding something on his mouth.
+                if (mouthholder != noone) {
+                
+                    //Set the sprite
+                    sprite_index = spr_yoshi_fm;
+                    
+                    //Animate
+                    if (!collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom,obj_slippery,0,1))
+                        image_speed = 0.065+abs(obj_playerparent.xspeed)/7.5;
+                    else
+                        image_speed = 0.130+abs(obj_playerparent.xspeed)/7.5;
+                }
+                
+                //Otherwise, if Yoshi is not holding anything on his mouth.
+                else if (mouthholder == noone) {
+                
+                    //Set the sprite
+                    sprite_index = spr_yoshi;
+                    
+                    //Animate
+                    if (!collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom,obj_slippery,0,1))
+                        image_speed = 0.065+abs(obj_playerparent.xspeed)/7.5;
+                    else
+                        image_speed = 0.130+abs(obj_playerparent.xspeed)/7.5;                    
+                }
+            }
+            
+            //Otherwise, if the player is moving upwards.
+            else if (obj_playerparent.state == 2) {
+            
+                //If Yoshi is holding something on his mouth.
+                if (mouthholder != noone) {
+                
+                    //Set the sprite
+                    sprite_index = spr_yoshi_fm_jump;
+                    
+                    //Do not animate
+                    image_speed = 0;
+                    
+                    //Set the frame
+                    if (obj_playerparent.yspeed &lt; 0)
+                        image_index = 0;
+                    else
+                        image_index = 1;
+                }
+                
+                //Otherwise, if Yoshi is not holding anything on his mouth.
+                else if (mouthholder == noone) {
+                
+                    //Set the sprite
+                    sprite_index = spr_yoshi_jump;
+                    
+                    //Do not animate
+                    image_speed = 0;
+                    
+                    //Set the frame
+                    if (obj_playerparent.yspeed &lt; 0)
+                        image_index = 0;
+                    else
+                        image_index = 1;                                    
+                }
+            }
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Player animation
+
+//If the player does exist
+if (instance_exists(obj_playerparent)) {
+
+    //Set the position
+    x = obj_playerparent.x;
+    y = obj_playerparent.y;
+    
+    //If Yoshi is extending it's tongue
+    if (licking) {
+    
+        //If the player has either the raccoon or tanooki powerup
+        if (global.powerup == cs_leaf) || (global.powerup == cs_tanooki) {
+        
+            //If Yoshi is jumping
+            if (jumping == 0) {
+            
+                //If Yoshi is crouching to lick something
+                if (sprite_index == spr_yoshi_lick)
+                    f = 4+obj_playerparent.wiggle/4;
+                else
+                    f = 0+obj_playerparent.wiggle/4;
+            }
+            
+            //Otherwise
+            else {
+            
+                if (locked == 2)
+                    f = 4+obj_playerparent.wiggle/4;
+                else
+                    f = 0+obj_playerparent.wiggle/4;
+            }
+        }
+        
+        //Otherwise, if the player does not have any of the above powerups.
+        else {
+        
+            //If Yoshi is not jumping
+            if (jumping == 0) {
+                
+                //If Yoshi is crouching to lick something
+                if (sprite_index == spr_yoshi_lick)
+                    f = 1;
+                else
+                    f = 0;
+            }
+            
+            //Otherwise
+            else {
+            
+                if (locked == 2)
+                    f = 1;
+                else
+                    f = 0;
+            }
+        }
+    }
+    
+    //Otherwise, if Yoshi is not extending it's tongue
+    else {
+    
+        //If the player has either the raccoon or tanooki powerup.
+        if (global.powerup == cs_leaf) || (global.powerup == cs_tanooki) {
+        
+            //If the player is crouched down or sliding down a slope
+            if (obj_playerparent.crouch) || (obj_playerparent.sliding)
+                f = 4+obj_playerparent.wiggle/4;
+            
+            //Otherwise...
+            else            
+                f = 0+obj_playerparent.wiggle/4;
+        }
+    
+        else {
+        
+            //If the player is crouched down or sliding down a slope
+            if (obj_playerparent.crouch) || (obj_playerparent.sliding) 
+                f = 1;
+    
+            //Otherwise, set the default frame
+            else          
+                f = 0;
+        }
+    }
+    
+    //Set the depth
+    depth = -5;
+    
+    //Set the facing direction
+    image_xscale = obj_playerparent.xscale;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="20">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw the player
+
+//Set the palette
+pal_swap_set(player_palette_get(), obj_playerparent.isflashing);
+
+//Draw the player
+switch (global.player) {
+
+    //Mario
+    case (0): draw_sprite_ext(scr_mario_ride(),f,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha); break;
+}
+
+//Reset palette
+pal_swap_reset();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Abandon yoshi
+
+with (instance_create(x,y,obj_yoshi_abandon)) {
+
+    //Hereby the same colour
+    colour = other.colour;
+
+    //If Yoshi was holding an item on his mouth
+    if (other.mouthholder != noone) {
+    
+        image_index = 1;
+        alarm[1] = 16;
+    }
+    
+    //Vertical speed
+    vspeed = -1.5;
+
+    //Set the frame
+    if (instance_exists(obj_playerparent))    
+        xscale = obj_playerparent.xscale;
+}
+
+//Destroy
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Spit out an item
+
+//Play 'Spit' sound
+audio_play_sound(snd_yoshi_spit, 0, false);
+
+//Spit out the item
+if (obj_playerparent.crouch) 
+|| (obj_playerparent.sliding) {
+
+    //Create up an item
+    with (instance_create(x-8+(10*obj_playerparent.xscale),y-12,mouthholder)) {
+    
+        //Use the correct sprite
+        sprite_index = other.mouthsprite;
+        
+        //Set the horizontal speed
+        hspeed = 0.5*obj_playerparent.xscale;
+    }
+}
+else {
+
+    //Create up an item
+    with (instance_create(x-8+(10*obj_playerparent.xscale),y-16,mouthholder)) {
+    
+        //Use the correct sprite
+        sprite_index = other.mouthsprite;
+        
+        //If the eaten item is a throwable brick.
+        if (sprite_index == spr_bluebrick_th) 
+        || (sprite_index == spr_redbrick_th) 
+        || (sprite_index == spr_graybrick_th) {
+            
+            //Set the horizontal speed.
+            hspeed = 3*obj_playerparent.xscale;
+            
+            //Set the animation speed
+            image_speed = 1;
+            
+            //Get thrown
+            ready = 1;
+            
+            //If the object is in contact with a solid.
+            if (place_meeting(x,y,obj_solid))
+                event_user(0);
+        }
+        else {
+
+            //If the eaten item is not overlapping a solid.
+            if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
+            
+                //Set the motion when swimming.
+                if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0)) {
+                
+                    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))
+                        hspeed = obj_playerparent.xspeed+0.75*obj_playerparent.xscale;
+                    else
+                        hspeed = 1*obj_playerparent.xscale;                
+                }
+                
+                //Otherwise, set the motion when NOT swimming.
+                else {
+                
+                    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))
+                        hspeed = obj_playerparent.xspeed+1.5*obj_playerparent.xscale;
+                    else
+                        hspeed = 2*obj_playerparent.xscale;                
+                }
+            }
+            
+            //Make the item get not stuck on a solid.
+            else
+                inwall = true;
+        }
+    }
+}
+
+//Reset mouth item
+mouthholder = noone;
+
+//Reset item sprite
+mouthsprite = noone;
+
+//Licking
+licking = 1;
+
+//Stop licking
+alarm[2] = 5;
+
+//Lick animation
+anim = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Remember colour and held item
+
+global.mountcolour = colour;
+global.carrieditem = mouthholder;
+global.carriedsprite = mouthsprite;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw Yoshi and the current player
+
+//If the player exists
+if (instance_exists(obj_playerparent)) {
+    
+    //Set palette
+    pal_swap_set(spr_palette_yoshi, colour);
+    
+    //Draw Yoshi
+    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,1);
+    
+    //Reset shader
+    pal_swap_reset();
+
+    //Draw the player
+    event_user(10);
+}
 </string>
           </argument>
         </arguments>
