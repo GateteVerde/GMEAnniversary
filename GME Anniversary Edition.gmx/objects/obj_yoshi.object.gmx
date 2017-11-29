@@ -67,8 +67,17 @@ flying = 0;
 //Flying animation
 flyanim = 1;
 
+//Flutter
+flutter = 0;
+
+//Flutter limit
+fluttertime = 0;
+
 //Player's current frame
 f = 0;
+
+//Sweat if fluttering
+alarm[6] = 1;
 
 //If an item was carried from the previous room.
 if (global.carrieditem != noone) {
@@ -119,6 +128,76 @@ if (instance_exists(obj_playerparent)) {
     if (mouthholder != noone)
         event_user(0);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Sweat if Yoshi is fluttering
+
+if (flutter == 1) {
+
+    //Create sweat effect
+    with (instance_create(x+8*sign(image_xscale),y-12,obj_smoke)) {
+    
+        //Motion
+        motion_set(random_range(45,135), random_range(0.5,1));
+        
+        //Animation
+        image_speed = 0.1;
+        
+        //Gravity
+        gravity = 0.05;
+        
+        //Sprite
+        sprite_index = spr_sweat;
+    }
+}
+alarm[6] = 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Allow flutter
+
+flutter = 0;
+if (fluttertime &gt; 0)
+    fluttertime = 0;
 </string>
           </argument>
         </arguments>
@@ -338,6 +417,74 @@ if (instance_exists(obj_playerparent)) {
             event_user(0);
     }
     
+    //Make Yoshi flutter if moving down and if the player does not have either the raccoon or tanooki powerup
+    if (keyboard_check(global.shiftkey))
+    &amp;&amp; (global.powerup != cs_leaf)
+    &amp;&amp; (global.powerup != cs_tanooki)
+    &amp;&amp; (obj_playerparent.swimming == false) {
+    
+        //If Yoshi can flutter
+        if (flutter == 0) 
+        &amp;&amp; (obj_playerparent.yspeed &gt; 2) {
+        
+            //Play 'Hover' sound
+            audio_play_sound(snd_yoshi_hover, 0, false);
+         
+            //Allow fluttering   
+            flutter = 1;
+        }
+            
+        //If Yoshi is fluttering
+        else if (flutter = 1) {
+        
+            //Increment flutter time
+            fluttertime += 2;
+            
+            //If flutter time is lower than 120
+            if (fluttertime &lt; 120) {
+            
+                //Make the player ascend
+                with (obj_playerparent) {
+                
+                    //Disable gravity
+                    ygrav = 0;
+                
+                    //Increment vertical movement
+                    if (yspeed &gt; 0)
+                        yspeed -= 0.15;
+                    else {
+                    
+                        yspeed -= 0.05;
+                        if (yspeed &lt; -1.5)
+                            yspeed = -1.5;
+                    }
+                }
+            }
+            else {
+            
+                //Stop 'Hover' sound
+                audio_stop_sound(snd_yoshi_hover);
+            
+                //End flutter
+                flutter = 2;
+                
+                //Allow flutter after a while
+                alarm[5] = 30;
+            }
+        }
+    }
+    else if (flutter == 1) {
+            
+        //Stop 'Hover' sound
+        audio_stop_sound(snd_yoshi_hover);
+            
+        //End flutter
+        flutter = 2;
+        
+        //Allow flutter after a while
+        alarm[5] = 30;
+    }
+    
     //Depth
     depth = -4;
     
@@ -347,8 +494,17 @@ if (instance_exists(obj_playerparent)) {
     //Check if the player is jumping and make yoshi set up his jump pose if so.
     if ((obj_playerparent.state == 2) || (obj_playerparent.delay &gt; 0))
         jumping = 1;
-    else
+    else {
+    
+        //Stop 'Hover' sound
+        audio_stop_sound(snd_yoshi_hover);
+        
+        //End jumping
         jumping = 0;
+        
+        //Allow flutter
+        flutter = 0;
+    }
 }
 </string>
           </argument>
@@ -508,33 +664,58 @@ if (instance_exists(obj_playerparent)) {
                 //If Yoshi is holding something on his mouth.
                 if (mouthholder != noone) {
                 
-                    //Set the sprite
-                    sprite_index = spr_yoshi_fm_jump;
+                    //If Yoshi is fluttering
+                    if (flutter == 1) {
                     
-                    //Do not animate
-                    image_speed = 0;
-                    
-                    //Set the frame
-                    if (obj_playerparent.yspeed &lt; 0)
-                        image_index = 0;
-                    else
-                        image_index = 1;
+                        //Set the sprite
+                        sprite_index = spr_yoshi_fm_flutter;
+                        
+                        //Animate
+                        image_speed = 0.3;
+                    }
+                    else {
+                
+                        //Set the sprite
+                        sprite_index = spr_yoshi_fm_jump;
+                        
+                        //Do not animate
+                        image_speed = 0;
+                        
+                        //Set the frame
+                        if (obj_playerparent.yspeed &lt; 0)
+                            image_index = 0;
+                        else
+                            image_index = 1;
+                    }
                 }
                 
                 //Otherwise, if Yoshi is not holding anything on his mouth.
                 else if (mouthholder == noone) {
                 
-                    //Set the sprite
-                    sprite_index = spr_yoshi_jump;
+                    //If Yoshi is fluttering
+                    if (flutter == 1) {
                     
-                    //Do not animate
-                    image_speed = 0;
+                        //Set the sprite
+                        sprite_index = spr_yoshi_flutter;
+                        
+                        //Animate
+                        image_speed = 0.3;                    
+                    }
                     
-                    //Set the frame
-                    if (obj_playerparent.yspeed &lt; 0)
-                        image_index = 0;
-                    else
-                        image_index = 1;                                    
+                    else {
+                    
+                        //Set the sprite
+                        sprite_index = spr_yoshi_jump;
+                        
+                        //Do not animate
+                        image_speed = 0;
+                        
+                        //Set the frame
+                        if (obj_playerparent.yspeed &lt; 0)
+                            image_index = 0;
+                        else
+                            image_index = 1;   
+                    }                                 
                 }
             }
         }
@@ -765,11 +946,23 @@ audio_play_sound(snd_yoshi_spit, 0, false);
 if (obj_playerparent.crouch) 
 || (obj_playerparent.sliding) {
 
+    //Lock it
+    locked = 2;
+
     //Create up an item
-    with (instance_create(x-8+(10*obj_playerparent.xscale),y-12,mouthholder)) {
+    with (instance_create(x+(10*obj_playerparent.xscale),y-12,mouthholder)) {
     
         //Use the correct sprite
         sprite_index = other.mouthsprite;
+        
+        //If the eaten item is a throwable brick.
+        if (sprite_index == spr_bluebrick_th) 
+        || (sprite_index == spr_redbrick_th) 
+        || (sprite_index == spr_graybrick_th) {
+            
+            //Set the animation speed
+            image_speed = 0.5;
+        }
         
         //Set the horizontal speed
         hspeed = 0.5*obj_playerparent.xscale;
@@ -777,8 +970,11 @@ if (obj_playerparent.crouch)
 }
 else {
 
+    //Lock it
+    locked = 1;
+
     //Create up an item
-    with (instance_create(x-8+(10*obj_playerparent.xscale),y-16,mouthholder)) {
+    with (instance_create(x+(10*obj_playerparent.xscale),y-16,mouthholder)) {
     
         //Use the correct sprite
         sprite_index = other.mouthsprite;
@@ -789,10 +985,10 @@ else {
         || (sprite_index == spr_graybrick_th) {
             
             //Set the horizontal speed.
-            hspeed = 3*obj_playerparent.xscale;
+            hspeed = 2.7*obj_playerparent.xscale;
             
             //Set the animation speed
-            image_speed = 1;
+            image_speed = 0.5;
             
             //Get thrown
             ready = 1;

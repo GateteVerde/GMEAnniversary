@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Hurt player
 
-//If the player is riding something, exit this event
+//If the player is riding something, exit
 if (global.mount &gt; 0)
 exit;
     with (other) event_user(0);
