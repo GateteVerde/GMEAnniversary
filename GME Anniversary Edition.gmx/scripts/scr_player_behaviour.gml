@@ -13,8 +13,14 @@ if ((collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semi
 || (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)))
 && (ygrav == 0) {
 
-    //If the player is flying, do a special check
-    if ((flying) && (yspeed < 0)) {
+    //If the player is flying...
+    if ((flying) && (yspeed < 0)) 
+    
+    //...or the player is floating...
+    || ((isfloating) && (yspeed < 0))
+    
+    //...or the player is riding yoshi and fluttering
+    || ((instance_exists(obj_yoshi)) && (obj_yoshi.flutter == 1) && (yspeed < 0)) {
     
         //If the player is overlapping a slope, set up jumping state.
         if (collision_rectangle(x-1,bbox_top,x+1,bbox_bottom,obj_slopeparent,1,1))      
@@ -24,14 +30,22 @@ if ((collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semi
     //Otherwise, do the normal check
     else {
     
-        //Figure out if the player is standing or walking
-        if (xspeed == 0)
-            state = 0;
-        else 
-            state = 1;
+        //If the player is not moving vertically
+        if (yspeed >= 0) {
     
-        //Reset state delay
-        delay = 0;
+            //Figure out if the player is standing or walking
+            if (xspeed == 0)
+                state = 0;
+            else 
+                state = 1;
+        
+            //Reset state delay
+            delay = 0;
+        }
+        
+        //Otherwise, set 'Jump' state
+        else if (yspeed < 0)
+            state = 2;
     }
 }
 
@@ -138,9 +152,34 @@ if (!disablecontrol) && (!inwall) {
         && (!crouch)
         && (global.powerup != cs_frog))
         || (state == 2) {
+        
+            //If a kuribo shoe is being ridden, dismount from it.
+            if (global.mount == 2) {
+            
+                with (obj_kuriboshoe) event_user(0);
+                if (state < 2) {
+                
+                    //Set spin jump variable
+                    stompstyle = true;
+                    
+                    //Set horizontal speed
+                    xspeed = 1*(xscale*-1)
+    
+                    //Play 'Spin' sound
+                    audio_play_sound(snd_spin, 0, false);
+                }
+                else {
+                
+                    //Do not set spin jump
+                    stompstyle = false;
+                
+                    //Play 'Jump' sound
+                    audio_play_sound(snd_jump, 0, false);
+                }            
+            }
             
             //If a Yoshi is being ridden, dismount from it.
-            if (global.mount == 1) {
+            else if (global.mount == 1) {
             
                 with (obj_yoshi) event_user(1);
                 if (state < 2) {
@@ -156,6 +195,9 @@ if (!disablecontrol) && (!inwall) {
                 }
                 else {
                 
+                    //Do not set spin jump
+                    stompstyle = false;
+                                    
                     //Play 'Jump' sound
                     audio_play_sound(snd_jump, 0, false);
                 }
@@ -173,7 +215,11 @@ if (!disablecontrol) && (!inwall) {
     
         //Play the jump sound if he is not spin jumping
         else {
+                
+            //Do not set spin jump
+            stompstyle = false;
         
+            //Play 'Jump' sound
             audio_play_sound(snd_jump, 0, false);
         }
     
@@ -412,6 +458,8 @@ if (state != 2) {
 
     //Check if the pmeter is full and enter the shell if so.
     if (global.powerup == cs_shell)
+    && (global.mount == 0)
+    && (holding = 0)
     && (pmeter >= 112) {
     
         //Force sliding
@@ -532,9 +580,10 @@ if (keyboard_check_pressed(global.downkey))
     //If the player does have the penguin suit
     if ((global.powerup == cs_shell)
     || (global.powerup == cs_penguin))
+    && (global.mount == 0)
     && (state == 1)
     && (!sliding)
-    && (!holding)
+    && ((holding == 0) || (holding == 4))
         sliding = true;
 
     //If the player is on a slope, and the above didn't happen, slide normally
@@ -542,7 +591,7 @@ if (keyboard_check_pressed(global.downkey))
     && (global.powerup != cs_frog) {
             
         //If the player can slide and it's not holding anything.
-        if (holding == 0)
+        if ((holding == 0) || (holding == 4))
             sliding = true;
             
         //Otherwise, just crouch down if the player can do it.
@@ -566,7 +615,8 @@ if (state == 2)
     && (jumping != 1)
     && (wallkick < 1)
     && (swimming == false)
-    && (keyboard_check_pressed(global.shiftkey)) {
+    && (keyboard_check_pressed(global.shiftkey)) 
+    && (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_quicksand,0,0)) {
     
         //If the player is running.
         if (run) {

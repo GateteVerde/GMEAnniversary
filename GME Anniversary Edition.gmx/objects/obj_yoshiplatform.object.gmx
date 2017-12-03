@@ -31,6 +31,9 @@
 image_speed = 0;
 image_index = 0;
 
+//Colour
+colour = 0;
+
 //Create a solid
 mytop = instance_create(x,y,obj_semisolid);
 </string>
@@ -58,6 +61,12 @@ mytop = instance_create(x,y,obj_semisolid);
             <string>///Yoshi platform logic
 
 if (global.mount == 1) {
+
+    //Check if yoshi exists and get it's colour
+    if (instance_exists(obj_yoshi)) {
+    
+        colour = obj_yoshi.colour;
+    }
 
     //Set activated frame
     image_index = 1;
@@ -100,10 +109,7 @@ else {
             <string>///Draw the platform
 
 //Set the palette
-if (global.mountcolour &gt; 0) {
-
-    pal_swap_set(spr_palette_yoshi,global.mountcolour);
-}
+pal_swap_set(spr_palette_yoshi, colour);
 
 //Draw it
 draw_sprite(sprite_index,-1,round(x),round(y));

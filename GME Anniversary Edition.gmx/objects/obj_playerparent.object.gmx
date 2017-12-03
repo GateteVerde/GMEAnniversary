@@ -753,6 +753,7 @@ if (xspeed &gt; 0)
 
     //If the player is sliding with the shell
     if (global.powerup == cs_shell)
+    &amp;&amp; (global.mount == 0)
     &amp;&amp; (sliding) {
     
         //Play 'Bump' sound
@@ -793,6 +794,7 @@ else if (xspeed &lt; 0)
 
     //If the player is sliding with the shell
     if (global.powerup == cs_shell)
+    &amp;&amp; (global.mount == 0)
     &amp;&amp; (sliding) {
         
         //Play 'Bump' sound

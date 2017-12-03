@@ -34,6 +34,7 @@
 **  sprout[1] = Pick from below, appears at the center.
 **  sprout[2] = Pick from below, appears at the right.
 **
+**      cs_coin_s
 **      cs_big
 **      cs_fire
 **      cs_ice
@@ -116,28 +117,36 @@ y = ystart;
 //Create multiple items
 for (var i=0; i&lt;3; i++;) {
 
-    //Make an item come out, if there is one
-    if (sprout[i] != cs_coin) {
+    //If this block contains a star and the player is invulnerable
+    if (sprout[i] == cs_coin_s) {
     
-        //If there is a powerup inside this block and the player is small, or there's a golden mushroom and health mode is not enabled.
-        if (sprout[i] &gt; cs_big) {
-        
-            if (global.healthmode == false)
-            &amp;&amp; (global.powerup == cs_small)
-                sprout[i] = cs_big;
-        }
-        else if (sprout[i] == cs_golden)
-        &amp;&amp; (global.healthmode == false)
+        if (instance_exists(obj_invincibility))
+            sprout[i] = cs_star;
+        else
+            sprout[i] = cs_coin;
+    }
+    
+    //If there is a powerup inside this block and the player is small, or there's a golden mushroom and health mode is not enabled.
+    else if (sprout[i] &gt; cs_big) {
+    
+        if (global.healthmode == false)
+        &amp;&amp; (global.powerup == cs_small)
             sprout[i] = cs_big;
-            
-        //Create the item
+    }
+    else if (sprout[i] == cs_golden)
+    &amp;&amp; (global.healthmode == false)
+        sprout[i] = cs_big;
+        
+    //Create the item
+    if (sprout != cs_coin) {
+    
         with (instance_create(x+8+(i*16),y,obj_powerupsprout)) {
         
-            sprite_index = constant_get_sprite(other.sprout[i]);
+            sprite_index = constant_get_sprite(other.sprout);
             if (sprite_get_xoffset(sprite_index) == 0)
                 x -= 8;
         }
-    }
+    }    
 }
     
 //Change into a empty block
@@ -172,7 +181,13 @@ instance_destroy();
 //Create a coin
 for (var i=0; i&lt;3; i++;) {
 
+    //Create a coin
     if (sprout[i] == cs_coin)
+        instance_create(x+(i*16),ystart-16,obj_blockcoin);
+        
+    //Create a coin if the player is not invincible
+    else if (sprout == cs_coin_s)
+    &amp;&amp; (instance_number(obj_invincibility) == 0)
         instance_create(x+(i*16),ystart-16,obj_blockcoin);
 }
 </string>

@@ -60,22 +60,6 @@ mycol = instance_create(x,y,obj_semisolid);
             <kind>1</kind>
             <string>///Lava logic
 
-//If a collision exist
-if (mycol != noone) {
-
-    //Make sure the collision appear when the player is not wearing a baburu's shoe.
-    if ((global.mount == 2) &amp;&amp; (global.mountcolor = 1)) {
-    
-        mycol.x = xstart;
-        mycol.y = ystart;
-    }
-    else {
-    
-        mycol.x = -1000000
-        mycol.y = -1000000
-    }
-}
-
 //Depth
 depth = -6;
 

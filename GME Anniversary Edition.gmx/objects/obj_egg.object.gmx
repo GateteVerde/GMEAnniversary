@@ -64,7 +64,9 @@ event_inherited();
             <string>///A Yoshi has born
 
 //If there's not a yoshi in the room
-if (instance_number(obj_yoshi) == 0) {
+if (instance_number(obj_yoshi) == 0) 
+&amp;&amp; (instance_number(obj_yoshi_abandon) == 0) 
+&amp;&amp; (instance_number(obj_yoshi_runaway) == 0) {
 
     //Hatch the egg
     with (instance_create(x+8,y,obj_egg_hatch)) {

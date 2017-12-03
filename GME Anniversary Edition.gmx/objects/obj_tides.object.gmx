@@ -196,12 +196,9 @@ if (push) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw the water
+            <string>///Draw tides
 
-//Set the blending mode.
-draw_set_blend_mode(bm_add);
-
-//Draw the ocean.
+//Check the length of the room
 var i;
 i = 0;
 for (i=0; i&lt;room_width/16+1; i++;) {

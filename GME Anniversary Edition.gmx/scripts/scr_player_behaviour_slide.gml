@@ -16,14 +16,22 @@ if ((collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semi
 || (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)))
 && (ygrav == 0) {
 
-    //Figure out if the player is standing or walking
-    if (xspeed == 0)
-        state = 0;
-    else 
-        state = 1;
+    //If the player is not moving vertically
+    if (yspeed >= 0) {
 
-    //Reset state delay
-    delay = 0;
+        //Figure out if the player is standing or walking
+        if (xspeed == 0)
+            state = 0;
+        else 
+            state = 1;
+    
+        //Reset state delay
+        delay = 0;
+    }
+    
+    //Otherwise, set 'Jump' state
+    else if (yspeed < 0)
+        state = 2;
 }
 
 //the player is jumping if there's no ground below him.
@@ -103,11 +111,10 @@ if (!disablecontrol) { //If the player's controls are not disabled.
         //Play 'Jump' sound
         audio_play_sound(snd_jump, 0, false);
                 
-        /*Move the player a few pixels upwards when on contact with a moving platform or a slope.
+        //Move the player a few pixels upwards when on contact with a moving platform or a slope.
         var platform = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0);
-        if ((platform) && (platform.yspeed < 0))
+        if ((platform) && (platform.vspeed < 0))
             y -= 4;
-        */
     }
     
     //Check if the player should still be variable jumping
@@ -148,15 +155,9 @@ else if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,
     //If the player is on contact with the floor.
     if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0)) {
     
-        //If the player does have the shell or penguin powerups and the horizontal speed is not equal to the maximum speed.
-        if (((global.powerup == cs_shell) 
-        || (global.powerup == cs_penguin)) 
-        && (abs(xspeed) != xspeedmax)) 
+        //If the player is mounted in a yoshi, ignore special slides
+        if (global.mount != 0) {
         
-        //Or the player does not have either the shell or penguin powerup.
-        || ((global.powerup != cs_shell)
-        && (global.powerup != cs_penguin)) {
-    
             //If the player is not on contact with a slippery surface.
             if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
             
@@ -191,6 +192,56 @@ else if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,
                     //Stop sliding behaviour
                     sliding = false;
                 }        
+            }        
+        }
+        
+        //Otherwise, do normal slide
+        else {
+    
+            //If the player does have the shell or penguin powerups and the horizontal speed is not equal to the maximum speed.
+            if (((global.powerup == cs_shell) 
+            || (global.powerup == cs_penguin))
+            && (abs(xspeed) != xspeedmax)) 
+            
+            //Or the player does not have either the shell or penguin powerup.
+            || ((global.powerup != cs_shell)
+            && (global.powerup != cs_penguin)) {
+        
+                //If the player is not on contact with a slippery surface.
+                if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
+                
+                    //Slowdown
+                    xspeed = max(0,abs(xspeed)-0.05)*sign(xspeed);
+                    if ((xspeed > -0.05) && (xspeed < 0.05)) {
+                    
+                        //Stop horizontal speed.
+                        xspeed = 0;
+                        
+                        //End combo
+                        hitcombo = 0;
+                        
+                        //Stop sliding behaviour
+                        sliding = false;
+                    }
+                }
+                
+                //Otherwise, if the player is on contact with a slippery surface.
+                else if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
+                
+                    //Slowdown
+                    xspeed = max(0,abs(xspeed)-0.0125)*sign(xspeed);
+                    if ((xspeed > -0.0125) && (xspeed < 0.0125)) {
+                    
+                        //Stop horizontal speed.
+                        xspeed = 0;
+                        
+                        //End combo
+                        hitcombo = 0;
+                        
+                        //Stop sliding behaviour
+                        sliding = false;
+                    }        
+                }
             }
         }
     }

@@ -16,14 +16,16 @@ switch (global.powerup) {
     case (cs_ice): return spr_mario_ice_carry;
     case (cs_carrot): {
     
-        if (state == 2)
+        if (instance_exists(obj_playerparent))
+        && (obj_playerparent.state == 2)
             return spr_mario_carrot_carry_jump;
         else
             return spr_mario_carrot_carry;
     }
     case (cs_leaf): {
     
-        if (state == 2)
+        if (instance_exists(obj_playerparent))
+        && (obj_playerparent.state == 2)
             return spr_mario_raccoon_carry_jump;
         else
             return spr_mario_raccoon_carry;
@@ -31,7 +33,8 @@ switch (global.powerup) {
     case (cs_frog): return spr_mario_frog_carry;
     case (cs_tanooki): {
     
-        if (state == 2)
+        if (instance_exists(obj_playerparent))
+        && (obj_playerparent.state == 2)
             return spr_mario_tanooki_carry_jump;
         else
             return spr_mario_tanooki_carry;
@@ -43,7 +46,8 @@ switch (global.powerup) {
     case (cs_shell): return spr_mario_shell_carry;
     case (cs_bee): {
     
-        if (state == 2)
+        if (instance_exists(obj_playerparent))
+        && (obj_playerparent.state == 2)
             return spr_mario_bee_carry_jump;
         else
             return spr_mario_bee_carry;

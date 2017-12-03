@@ -61,6 +61,21 @@ if (instance_exists(obj_playerparent)) {
     image_xscale = obj_playerparent.xscale;    
 }
 
+//Make Yoshi invisible
+if (instance_exists(obj_yoshi)) {
+
+    //Hereby both sprite and colour from a existing yoshi
+    yoshisprite = obj_yoshi.sprite_index;
+    yoshicolour = obj_yoshi.colour;
+    
+    //Make Yoshi invisible
+    with (obj_yoshi) visible = 0;
+}
+
+//Make Kuribo shoe invisible
+if (instance_exists(obj_kuriboshoe))
+    with (obj_kuriboshoe) visible = 0;
+
 //Make the tides invisible
 if (instance_exists(obj_tides))
     obj_tides.visible = false;
@@ -92,6 +107,10 @@ alarm[0] = 1;
             <string>///Make the player visible
 
 obj_playerparent.visible = true;
+if (global.mount == 1)
+    obj_yoshi.visible = true;
+else if (global.mount == 2)
+    obj_kuriboshoe.visible = true;
 </string>
           </argument>
         </arguments>
@@ -223,8 +242,61 @@ if (background_exists(back)) {
     draw_enable_alphablend(1);
 }
 
-//Draw
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);
+//If the player is inside a kuribo shoe, draw him inside a kuribo shoe
+if (global.mount == 2) {
+        
+    //Draw the player
+    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);
+    
+    //Draw the shoe on front
+    switch (global.mountcolour) {
+    
+        //Kuribo Shoe
+        case (0): draw_sprite_ext(spr_kuriboshoe,0,round(x),round(y)+1,image_xscale,1,0,c_white,1); break;
+        
+        //Baburu Shoe
+        case (1): draw_sprite_ext(spr_baburushoe,0,round(x),round(y)+1,image_xscale,1,0,c_white,1); break;
+        
+        //Kuribo Shoe
+        case (2): draw_sprite_ext(spr_dossunshoe,0,round(x),round(y)+1,image_xscale,1,0,c_white,1); break;
+        
+        //Jugemu Shoe
+        case (3): draw_sprite_ext(spr_jugemushoe,0,round(x),round(y)+1,image_xscale,1,0,c_white,1); break;
+    }
+}
+
+//Otherwise if the player is riding a yoshi, draw him mounted on yoshi.
+else if (global.mount == 1) {
+
+    //Set the palette
+    pal_swap_set(spr_palette_yoshi, yoshicolour);
+    
+    //Draw Yoshi
+    draw_sprite_ext(yoshisprite,0,round(x),round(y)+1,image_xscale,1,0,c_white,1);
+    
+    //Reset the shader
+    pal_swap_reset();
+    
+    //Draw the player
+    if (sequence == 3) {
+    
+        if (image_xscale == 1)
+            draw_sprite_ext(sprite_index,-1,round(x)-4,round(y)-9,1,1,0,c_white,1);
+        else if (image_xscale == -1)
+            draw_sprite_ext(sprite_index,-1,round(x)+4,round(y)-9,1,1,0,c_white,1);
+    }
+    else {
+    
+        if (image_xscale == 1)
+            draw_sprite_ext(sprite_index,-1,round(x)-4,round(y)-9,1,1,0,c_white,1);
+        else if (image_xscale == -1)
+            draw_sprite_ext(sprite_index,-1,round(x)+4,round(y)-9,-1,1,0,c_white,1);
+    }    
+}
+
+//Otherwise, draw normally
+else
+    draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);
 </string>
           </argument>
         </arguments>

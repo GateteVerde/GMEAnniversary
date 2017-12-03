@@ -738,7 +738,8 @@ if (instance_exists(obj_wallrunner))
 
 //...or it's sliding with either the shell or penguin powerup
 || (((global.powerup == cs_shell) &amp;&amp; (obj_playerparent.sliding))
-|| ((global.powerup == cs_penguin) &amp;&amp; (obj_playerparent.sliding))) {
+|| ((global.powerup == cs_penguin) &amp;&amp; (obj_playerparent.sliding))) 
+&amp;&amp; (global.mount == 0) {
 
     //If the camera is panned to the right, pan it to the center.
     if (x &gt; obj_playerparent.x+4) then x -= 4-obj_playerparent.xspeed;
@@ -841,10 +842,6 @@ else {
     //Check for 'Climb'
     else if (instance_exists(obj_player_climb))
         follow = obj_player_climb;
-                
-    //Check for 'Warp Box'
-    else if (instance_exists(obj_player_warpbox))
-        follow = obj_player_warpbox;
 }
 </string>
           </argument>
@@ -1001,13 +998,12 @@ if (global.postchange != -1) {
 }
 
 //If the player was riding a shoe on the previous room, create one.
-if (global.mount == 2) {
-
-}
+if (global.mount == 2)
+    instance_create(x,y,obj_kuriboshoe);
 
 //Otherwise, if the player was riding a yoshi, create one.
 else if (global.mount == 1)
-    with (instance_create(x,y,obj_yoshi)) state = 1;
+    instance_create(x,y,obj_yoshi);
 
 //If the player carried an item through a pipe in the last room.
 else if (global.carrieditem != noone) {

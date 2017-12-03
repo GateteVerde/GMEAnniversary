@@ -263,6 +263,9 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
         else
             vspeed = -0.75;
     }
+    
+    //Stop horizontal movement
+    hspeed = 0;
 }
 else {
 

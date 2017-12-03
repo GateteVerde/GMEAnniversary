@@ -33,14 +33,22 @@ if ((collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semi
 || (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)))
 && (ygrav == 0) {
 
-    //Figure out if the player is standing or walking
-    if (xspeed == 0)
-        state = 0;
-    else 
-        state = 1;
+    //If the player is not moving vertically
+    if (yspeed >= 0) {
 
-    //Reset state delay
-    delay = 0;
+        //Figure out if the player is standing or walking
+        if (xspeed == 0)
+            state = 0;
+        else 
+            state = 1;
+    
+        //Reset state delay
+        delay = 0;
+    }
+    
+    //Otherwise, set 'Jump' state
+    else if (yspeed < 0)
+        state = 2;
 }
 
 //the player is jumping if there's no ground below him.

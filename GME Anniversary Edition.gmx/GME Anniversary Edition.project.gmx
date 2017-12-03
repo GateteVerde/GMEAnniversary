@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="20" name="datafiles">
-    <datafiles number="20" name="music">
+  <datafiles number="21" name="datafiles">
+    <datafiles number="21" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -21,6 +21,23 @@
           </Config>
         </ConfigOptions>
         <filename>athletic.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>bonus.ogg</name>
+        <exists>-1</exists>
+        <size>364359</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>bonus.ogg</filename>
       </datafile>
       <datafile>
         <name>land.ogg</name>
@@ -142,6 +159,7 @@
       <sound>sound\snd_skid</sound>
       <sound>sound\snd_spin</sound>
       <sound>sound\snd_stomp</sound>
+      <sound>sound\snd_stomp2</sound>
       <sound>sound\snd_superball</sound>
       <sound>sound\snd_swim</sound>
       <sound>sound\snd_throw</sound>
@@ -599,6 +617,7 @@
           <sprite>sprites\spr_mario_transform</sprite>
         </sprites>
         <sprite>sprites\spr_mario_pull</sprite>
+        <sprite>sprites\spr_mario_shoe</sprite>
       </sprites>
       <sprite>sprites\spr_mario_dead</sprite>
     </sprites>
@@ -945,19 +964,6 @@
       <sprite>sprites\spr_door_key</sprite>
     </sprites>
     <sprites name="Masks">
-      <sprites name="Player">
-        <sprites name="Markers">
-          <sprite>sprites\spr_topmarker</sprite>
-          <sprite>sprites\spr_bottommarker</sprite>
-        </sprites>
-        <sprite>sprites\spr_mask</sprite>
-        <sprite>sprites\spr_bigmask</sprite>
-        <sprite>sprites\spr_shellmask</sprite>
-        <sprite>sprites\spr_warpmask</sprite>
-      </sprites>
-      <sprites name="NPCs">
-        <sprite>sprites\spr_sproutmask</sprite>
-      </sprites>
       <sprites name="Collision">
         <sprite>sprites\spr_square</sprite>
         <sprite>sprites\spr_square_b</sprite>
@@ -981,6 +987,19 @@
         <sprite>sprites\spr_linemask</sprite>
         <sprite>sprites\spr_squaremask</sprite>
       </sprites>
+      <sprites name="NPCs">
+        <sprite>sprites\spr_sproutmask</sprite>
+      </sprites>
+      <sprites name="Player">
+        <sprites name="Markers">
+          <sprite>sprites\spr_topmarker</sprite>
+          <sprite>sprites\spr_bottommarker</sprite>
+        </sprites>
+        <sprite>sprites\spr_mask</sprite>
+        <sprite>sprites\spr_bigmask</sprite>
+        <sprite>sprites\spr_shellmask</sprite>
+        <sprite>sprites\spr_warpmask</sprite>
+      </sprites>
       <sprite>sprites\spr_24mask</sprite>
       <sprite>sprites\spr_32mask</sprite>
       <sprite>sprites\spr_basketmask</sprite>
@@ -994,6 +1013,7 @@
       <sprite>sprites\spr_slopemask_l</sprite>
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
+      <sprite>sprites\spr_stompmask</sprite>
       <sprite>sprites\spr_warp_h</sprite>
       <sprite>sprites\spr_warp_v</sprite>
       <sprite>sprites\spr_yoshimask</sprite>
@@ -1225,6 +1245,7 @@
       <script>scripts\canpull.gml</script>
       <script>scripts\canhold.gml</script>
       <script>scripts\player_retrieve.gml</script>
+      <script>scripts\player_draw_yoshi.gml</script>
     </scripts>
     <scripts name="System">
       <scripts name="Music">
@@ -1838,6 +1859,12 @@
                   <object>objects\obj_yoshi_abandon</object>
                   <object>objects\obj_tongue</object>
                 </objects>
+                <objects name="Shoes">
+                  <object>objects\obj_getshoe</object>
+                  <object>objects\obj_kuriboshoe</object>
+                  <object>objects\obj_kuriboshoe_movement</object>
+                </objects>
+                <object>objects\obj_stomp</object>
               </objects>
               <object>objects\obj_powerupsprout</object>
               <object>objects\obj_powerupprize</object>
@@ -1965,11 +1992,8 @@
     <room>rooms\rm_gamestart</room>
     <room>rooms\rm_disclaimer</room>
     <rooms name="Levels">
-      <rooms name="Level 1">
-        <room>rooms\rm_enginetest</room>
-        <room>rooms\rm_enginetest_b</room>
-        <room>rooms\rm_enginetest_c</room>
-      </rooms>
+      <room>rooms\rm_enginetest</room>
+      <room>rooms\rm_enginetest_b</room>
     </rooms>
     <rooms name="Special">
       <rooms name="Minigames">
@@ -1979,7 +2003,7 @@
       </rooms>
     </rooms>
   </rooms>
-  <constants number="42">
+  <constants number="43">
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
     <constant name="cs_fire">2</constant>
@@ -1999,10 +2023,11 @@
     <constant name="cs_propeller">16</constant>
     <constant name="cs_cat">17</constant>
     <constant name="cs_coin">-1</constant>
-    <constant name="cs_area_y">-2</constant>
-    <constant name="cs_area_g">-3</constant>
-    <constant name="cs_area_r">-4</constant>
-    <constant name="cs_area_b">-5</constant>
+    <constant name="cs_coin_s">-2</constant>
+    <constant name="cs_area_y">-3</constant>
+    <constant name="cs_area_g">-4</constant>
+    <constant name="cs_area_r">-5</constant>
+    <constant name="cs_area_b">-6</constant>
     <constant name="cs_yoshi">-10</constant>
     <constant name="cs_yoshi_r">-11</constant>
     <constant name="cs_yoshi_y">-12</constant>

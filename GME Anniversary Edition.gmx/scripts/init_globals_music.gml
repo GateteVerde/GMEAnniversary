@@ -15,6 +15,10 @@
 global._theme_athletic = music_add("Athletic");
 music_setup(global._theme_athletic, "Athletic", 3);
 
+//Bonus
+global._theme_bonus = music_add("Bonus");
+music_setup(global._theme_bonus, "Bonus", 3);
+
 //Overworld
 global._theme_land = music_add("Land");
 music_setup(global._theme_land, "Land", 3);
