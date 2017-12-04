@@ -120,7 +120,7 @@ if (!disablecontrol) && (!inwall) {
     if (keyboard_check_pressed(global.shiftkey))
     
     //Make sure that the player can jump
-    && (((jumping == 0) && (state < 2))
+    && (((jumping == 0) && (state < 2) && (yspeed < 2))
     
     //Allow the player to jump off of Yoshi or a shoe while in midair
     || ((keyboard_check(global.upkey))

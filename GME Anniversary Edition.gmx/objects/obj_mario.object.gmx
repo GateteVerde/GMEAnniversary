@@ -529,8 +529,7 @@ else {
                                 if (global.powerup == cs_propeller) {
                                 
                                     //Check if the 'Down' key is pressed
-                                    if ((yspeed &lt; 0)
-                                    || (keyboard_check(global.downkey))) {
+                                    if ((yspeed &lt; 0) || (keyboard_check(global.downkey))) {
                                     
                                         //Set the special spinning sprite
                                         sprite_index = scr_mario_spin2();
