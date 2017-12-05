@@ -36,6 +36,8 @@
 //Whether this can push Mario.
 push = false;
 
+
+
 //Animate
 image_speed = 0.15;
 
@@ -55,6 +57,10 @@ with (water) {
     image_xscale = room_width/16;
     image_yscale = room_height/16;
 }
+
+//Create a background surface
+with (instance_create(x,y+4,obj_tides_surface))
+    parent = other.id;
 </string>
           </argument>
         </arguments>
@@ -198,10 +204,11 @@ if (push) {
             <kind>1</kind>
             <string>///Draw tides
 
+//Draw the blend mode
+draw_set_blend_mode(bm_add);
+
 //Check the length of the room
-var i;
-i = 0;
-for (i=0; i&lt;room_width/16+1; i++;) {
+for (var i=0; i&lt;room_width/16+1; i++) {
 
     draw_sprite_ext(sprite_index,-1,i*16,y,1,1,0,c_white,0.7);
 }

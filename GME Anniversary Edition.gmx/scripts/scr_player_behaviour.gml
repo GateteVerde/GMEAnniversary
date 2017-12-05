@@ -120,11 +120,12 @@ if (!disablecontrol) && (!inwall) {
     if (keyboard_check_pressed(global.shiftkey))
     
     //Make sure that the player can jump
-    && (((jumping == 0) && (state < 2) && (yspeed < 2))
+    && (((jumping == 0) && (state < 2))
     
     //Allow the player to jump off of Yoshi or a shoe while in midair
     || ((keyboard_check(global.upkey))
     && (!crouch)
+    && (holding == 4)
     && (global.mount != 0))
     
     //Allow propeller the player to do his special jump
@@ -134,24 +135,19 @@ if (!disablecontrol) && (!inwall) {
     && (!crouch) 
     && (holding == 0))
     
+    //Allow the player to jump in mid-air while riding a kuribo shoe
+    || ((global.mount == 2) 
+    && (state == 2) 
+    && (yspeed > 0)
+    && (jumping == 0))
+    
     //Do not allow jump if the player is bouncing on a note block. 
     && (!collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_noteblock,0,1))) {
-    
-        //Jump high if you have the frog powerup, and you are not riding anything
-        if (global.powerup == cs_frog)        
-            yspeed = -frogjumpstr;
-    
-        //Jump depending of the horizontal speed.
-        else {
-        
-            yspeed = -jumpstr+abs(xspeed)/7.5*-1;
-        }
     
         //Make the player spin jump
         if ((keyboard_check(global.upkey))
         && (!crouch)
-        && (global.powerup != cs_frog))
-        || (state == 2) {
+        && (global.powerup != cs_frog)) {
         
             //If a kuribo shoe is being ridden, dismount from it.
             if (global.mount == 2) {
@@ -227,7 +223,15 @@ if (!disablecontrol) && (!inwall) {
         state = 2;     
         
         //Enable variable jumping
-        jumping = 1;   
+        jumping = 1;
+        
+        //Jump high if you have the frog powerup, and you are not riding anything
+        if (global.powerup == cs_frog)        
+            yspeed = -frogjumpstr;
+    
+        //Jump depending of the horizontal speed.
+        else     
+            yspeed = -jumpstr+abs(xspeed)/7.5*-1;   
     }
     
     //Check if the player should still be variable jumping

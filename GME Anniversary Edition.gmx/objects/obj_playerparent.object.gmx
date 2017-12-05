@@ -597,7 +597,8 @@ if (!swimming) {
             scr_player_behaviour_wall()
             
             //If the player is running on walls or ceilings
-            if (instance_exists(obj_wallrunner)) {
+            if (instance_exists(obj_wallrunner)) 
+            &amp;&amp; (global.mount != 2) {
             
                 //If the P-Meter is full.
                 if (pmeter &gt; 112) {
@@ -625,7 +626,8 @@ if (!swimming) {
             else {
             
                 //If the player's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
-                if (abs(xspeed) &gt; runspeed-0.1) {
+                if (abs(xspeed) &gt; runspeed-0.1) 
+                &amp;&amp; (global.mount != 2) {
                 
                     //If the player is not jumping.
                     if (state &lt; 2) {

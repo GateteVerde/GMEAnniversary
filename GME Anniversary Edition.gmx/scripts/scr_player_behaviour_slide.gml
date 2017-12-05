@@ -97,8 +97,8 @@ if (!disablecontrol) { //If the player's controls are not disabled.
         //Stop slide
         if (global.powerup != cs_shell)
         && (global.powerup != cs_penguin)             
-            sliding = false;
-                    
+            sliding = false;    
+                
         //Set the vertical speed.
         yspeed = -jumpstr+abs(xspeed)/7.5*-1;
                 
