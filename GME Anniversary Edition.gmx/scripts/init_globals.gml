@@ -135,6 +135,9 @@ global.pipetype = 0;
 //Remember level music
 global.levelmusic = noone;
 
+//Data structure for opened doors
+global.doors = ds_map_create();
+
 //Data structure for collected ace coins
 global.acecoins = ds_map_create();
 

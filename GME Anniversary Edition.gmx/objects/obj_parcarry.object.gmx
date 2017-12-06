@@ -310,6 +310,10 @@ else {
 if (instance_exists(obj_player_warp))
     follow = obj_player_warp;
     
+//Check 'Door'
+else if (instance_exists(obj_player_door))
+    follow = obj_player_door;
+    
 //Check 'Jump'
 else if (instance_exists(obj_player_jump))
     follow = obj_player_jump;

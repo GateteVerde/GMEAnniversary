@@ -175,6 +175,7 @@
       <sound>sound\snd_boomerang</sound>
       <sound>sound\snd_bubble</sound>
       <sound>sound\snd_cherry</sound>
+      <sound>sound\snd_chest</sound>
       <sound>sound\snd_coin</sound>
       <sound>sound\snd_collect</sound>
       <sound>sound\snd_door</sound>
@@ -1226,6 +1227,7 @@
             <script>scripts\scr_global_wallrun.gml</script>
           </scripts>
           <script>scripts\scr_global_warp.gml</script>
+          <script>scripts\scr_global_door.gml</script>
           <script>scripts\scr_global_jump.gml</script>
           <script>scripts\scr_global_climb.gml</script>
           <script>scripts\scr_global_transform.gml</script>
@@ -1471,6 +1473,7 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
+    <shader type="GLSLES">shaders\shd_underwater.shader</shader>
   </shaders>
   <objects name="objects">
     <objects name="Main">
@@ -1772,6 +1775,10 @@
       <object>objects\obj_keygate</object>
     </objects>
     <objects name="Warps">
+      <objects name="Doors">
+        <object>objects\obj_door</object>
+        <object>objects\obj_door_p</object>
+      </objects>
       <objects name="Pipes">
         <object>objects\obj_warptop</object>
         <object>objects\obj_warpbottom</object>
@@ -1817,6 +1824,7 @@
           </objects>
           <objects name="States">
             <object>objects\obj_player_dead</object>
+            <object>objects\obj_player_door</object>
             <object>objects\obj_player_warpnote</object>
           </objects>
           <object>objects\obj_player_transform</object>
