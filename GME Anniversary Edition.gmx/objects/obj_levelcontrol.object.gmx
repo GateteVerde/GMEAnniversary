@@ -186,7 +186,34 @@ barrier = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Turn off P-Switch events
+            <string>///Deactivate P-Switch events.
+
+//If the switch is on already.
+if (switchon) {
+
+    //Turn off the P-Switch.
+    switchon = false;
+    
+    //Change items.
+    pswitch_deactivate();
+    
+    //Stop the switch song
+    FMODInstanceStop(global._stream_pswitch);
+    global._stream_pswitch = -1;
+    
+    //Restart the invincibility music if it was stopped due to overlap.
+    if (instance_exists(obj_invincibility)) {
+    
+        if (obj_invincibility.alarm[0] &gt; -1)    
+            obj_invincibility.alarm[2] = 2;
+        else
+            alarm[0] = 2;
+    }
+    
+    //Otherwise, restart
+    else
+        alarm[0] = 2;
+}
 </string>
           </argument>
         </arguments>
@@ -680,7 +707,27 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Turn on P-Switch events
+            <string>///Activate P-Switch events
+
+//If the switch is not turned on yet.
+if (!switchon) {
+
+    //Turn the switch on.
+    switchon = true;
+    
+    //Change items
+    pswitch_activate();
+    
+    //Start the switch song if it's not playing.
+    alarm[1] = 1;
+    if (!FMODInstanceIsPlaying(global._stream_pswitch)) {
+    
+        global._stream_pswitch = FMODSoundLoop(global._theme_pswitch,0);
+    }
+    
+    //Prevent the starman theme from overlapping
+    with (obj_invincibility) FMODInstanceStop(global._stream_starman);
+}
 </string>
           </argument>
         </arguments>
@@ -902,16 +949,26 @@ if (global.reserve != cs_small) {
             <kind>1</kind>
             <string>///Reset values
 
-///If the main level theme was playing, remember it
-if (FMODInstanceIsPlaying(global._stream))
-&amp;&amp; (obj_persistent.restart == false)
-    global.levelmusic = levelmusic;
+//If the game is not restarting
+if (obj_persistent.restart == false) {
 
-//Otherwise, reset.
-else {
-
-    global.levelmusic = noone;
-    global._stream = -1;
+    //If the main level theme was playing, remember it
+    if (FMODInstanceIsPlaying(global._stream))
+        global.levelmusic = levelmusic;
+    
+    //Otherwise, reset.
+    else {
+    
+        global.levelmusic = noone;
+        global._stream = -1;
+    }
+    
+    //Remember pswitch time limit if enabled
+    if (switchon) {
+    
+        //Remember P-Switch time
+        global.pswitch = alarm[4]; 
+    }
 }
 
 //Restart level colours

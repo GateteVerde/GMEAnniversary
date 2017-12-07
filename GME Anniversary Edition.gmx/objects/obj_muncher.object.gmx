@@ -56,7 +56,7 @@ myhurt = instance_create(x,y-16,obj_hurtmask);
             <kind>1</kind>
             <string>///Destroy hurt mask
 
-with (mytop) instance_destroy();
+with (myhurt) instance_destroy();
 </string>
           </argument>
         </arguments>

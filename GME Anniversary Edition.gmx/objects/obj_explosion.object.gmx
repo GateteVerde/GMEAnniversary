@@ -278,7 +278,11 @@ if (harmplayer)
             <kind>1</kind>
             <string>///Open blocked doors
 
-if (other.locked == 2) {
+//If the door is blocked with planks...
+if (other.locked == 2) 
+
+//...and the door is visible...
+&amp;&amp; (visible) {
 
     //Open up the door with style?
     with (other) {

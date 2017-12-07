@@ -53,10 +53,7 @@ sprout = cs_coin;
             <kind>1</kind>
             <string>///Respawn
 
-if (xstart &lt; view_xview[0]-32)
-|| (ystart &lt; view_yview[0]-32)
-|| (xstart &gt; view_xview[0]+view_wview[0]+32)
-|| (ystart &gt; view_yview[0]+view_hview[0]+32) {
+if (!outside_view()) {
 
     //Create the new bubble
     with (instance_create(x,y,obj_holdbubble)) sprout = other.sprout;

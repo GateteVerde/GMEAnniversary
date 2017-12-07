@@ -30,6 +30,9 @@
 //If the door is locked with a key...
 if (other.locked == 1)
 
+//...and the door is visible...
+&amp;&amp; (other.visible)
+
 ///...and the key is being held
 &amp;&amp; (held) {
 

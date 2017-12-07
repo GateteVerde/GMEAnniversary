@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="21" name="datafiles">
-    <datafiles number="21" name="music">
+  <datafiles number="22" name="datafiles">
+    <datafiles number="22" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -55,6 +55,23 @@
           </Config>
         </ConfigOptions>
         <filename>land.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>pswitch.ogg</name>
+        <exists>-1</exists>
+        <size>156209</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>pswitch.ogg</filename>
       </datafile>
       <datafile>
         <name>starman.ogg</name>
@@ -1250,6 +1267,10 @@
       <script>scripts\player_retrieve.gml</script>
       <script>scripts\player_draw_yoshi.gml</script>
     </scripts>
+    <scripts name="Events">
+      <script>scripts\pswitch_activate.gml</script>
+      <script>scripts\pswitch_deactivate.gml</script>
+    </scripts>
     <scripts name="System">
       <scripts name="Music">
         <scripts name="GMFMOD">
@@ -1463,8 +1484,8 @@
       </scripts>
       <script>scripts\init_globals.gml</script>
       <script>scripts\init_globals_music.gml</script>
-      <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
       <script>scripts\draw_circle_colour_precise.gml</script>
+      <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
     </scripts>
     <script>scripts\outside_view.gml</script>
     <script>scripts\constant_get_sprite.gml</script>
@@ -1473,7 +1494,6 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
-    <shader type="GLSLES">shaders\shd_underwater.shader</shader>
   </shaders>
   <objects name="objects">
     <objects name="Main">
@@ -1853,6 +1873,7 @@
         </objects>
         <objects name="Decoration">
           <object>objects\obj_tides_surface</object>
+          <object>objects\obj_coin_m</object>
         </objects>
         <objects name="Items">
           <objects name="Collectables">
@@ -1896,6 +1917,7 @@
               <objects name="Special">
                 <object>objects\obj_coin_r</object>
               </objects>
+              <object>objects\obj_coinchange</object>
             </objects>
             <object>objects\obj_holdbubble_respawn</object>
           </objects>
@@ -2007,7 +2029,6 @@
     <room>rooms\rm_disclaimer</room>
     <rooms name="Levels">
       <room>rooms\rm_enginetest</room>
-      <room>rooms\rm_enginetest_b</room>
     </rooms>
     <rooms name="Special">
       <rooms name="Minigames">

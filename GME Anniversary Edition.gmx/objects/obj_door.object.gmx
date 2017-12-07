@@ -47,11 +47,11 @@
 */
 
 //Default Values:
-postchange = -1;
-postx = 0;
-posty = 0;
+postchange = 0;
+postx = x;
+posty = y;
 locked = 0;
-myroom = room_next(room);
+myroom = room;
 
 //Do not animate
 image_speed = 0;
