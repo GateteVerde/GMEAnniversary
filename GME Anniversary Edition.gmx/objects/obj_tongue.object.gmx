@@ -38,6 +38,9 @@ foodoffset = 0;
 //Eaten powerup
 powerup = noone;
 
+//Eaten berry
+berry = noone;
+
 //State variable
 ready = 0;
 
@@ -168,13 +171,37 @@ if (instance_exists(obj_playerparent))
                 //If a powerup was eaten, place it in Yoshi
                 if (powerup != noone) {
                 
+                    //Play 'Eat' sound
+                    audio_play_sound(snd_yoshi_eat, 0, false);
+                    
+                    //Remember eaten powerup
                     obj_yoshi.powerup = powerup;
                     powerup = noone;
                 }
+                
+                //Otherwise, if a berry was eaten.
+                else if (berry != noone) {
+                
+                    //Play 'Eat' sound
+                    audio_play_sound(snd_yoshi_eat, 0, false);
+                    
+                    //Remember eaten berry
+                    obj_yoshi.berry = berry;
+                    berry = noone;
+                }
 
                 //If Yoshi's mouth is not full, swallow
-                else if (obj_yoshi.mouthholder == noone)                
+                else if (obj_yoshi.mouthholder == noone) {
+                               
+                    //Play 'Eat' sound
                     audio_play_sound(snd_yoshi_eat, 0, false);
+                    
+                    //Play 'Coin' sound
+                    audio_play_sound(snd_coin, 0, false);
+                    
+                    //Increment coins
+                    global.coins++;
+                }
             }
 
             //Destroy
@@ -284,6 +311,51 @@ if (!hunger)
 
     //Food offset
     foodoffset = 0;
+
+    //Destroy food
+    with (other) instance_destroy()
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_berry">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Eat red berry
+
+if (!hunger) {
+
+    //Item eaten
+    hunger = 1;
+
+    //Move tongue back
+    ready = 1;
+    alarm[0] = 8;
+
+    //Food sprite
+    foodsprite = other.sprite_index;
+
+    //Food offset
+    foodoffset = 8;
+    
+    //Remember berry eaten
+    berry = other.sprite_index;
 
     //Destroy food
     with (other) instance_destroy()

@@ -55,6 +55,9 @@ mouthsprite = noone;
 //Whether Yoshi has ate a powerup
 powerup = noone;
 
+//Whether Yoshi has ate a berry
+berry = noone;
+
 //Animation
 anim = 0;
 
@@ -80,7 +83,7 @@ f = 0;
 stateprev = 0;
 
 //Sweat if fluttering
-alarm[6] = 1;
+alarm[5] = 1;
 
 //If an item was carried from the previous room.
 if (global.carrieditem != noone) {
@@ -136,7 +139,7 @@ if (instance_exists(obj_playerparent)) {
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="6">
+    <event eventtype="2" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -173,13 +176,13 @@ if (flutter == 1) {
         sprite_index = spr_sweat;
     }
 }
-alarm[6] = 4;
+alarm[5] = 8;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="5">
+    <event eventtype="2" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -206,7 +209,7 @@ if (fluttertime &gt; 0)
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="4">
+    <event eventtype="2" enumb="3">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -231,34 +234,8 @@ if (flying) {
     audio_play_sound(snd_yoshi_lick, 0, false)
     
     //Repeat the process.
-    alarm[4] = 15;
+    alarm[3] = 15;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Create eaten powerup
-
-instance_create(x,y,powerup);
-powerup = noone;
 </string>
           </argument>
         </arguments>
@@ -287,8 +264,69 @@ powerup = noone;
 licking = 0;
 
 //If Yoshi ate a powerup, create it.
-if (powerup != noone)
-    alarm[3] = 4;
+if (powerup != noone) {
+
+    //Create eaten powerup
+    instance_create(x,y,powerup);
+    
+    //Reset eaten powerup
+    powerup = noone;
+}
+    
+//If Yoshi are a berry, count up until he eats 10
+else if (berry != noone) {
+
+    //If the berry eaten is a green one, extend time for 20 seconds.
+    if (berry == spr_berry_g) {
+    
+        //Play 'Collect' sound
+        audio_play_sound(snd_collect, 0, false);
+    
+        //Extend time
+        with (instance_create(x-8,y-26,obj_score)) event_user(13);       
+    }
+    
+    //Otherwise if the berry eaten is a red one, increment count till 5 berries are eaten.
+    else if (berry == spr_berry) {
+    
+        //Increment berry number
+        global.berries++;
+        
+        //Make yoshi lay a egg if he eats enough berries
+        if (global.berries == 5) {
+        
+            //Make Yoshi lay a egg
+            event_user(3);
+        
+            //Show how many berries yoshi ate
+            with (instance_create(x,y-26,obj_score_coins)) {
+            
+                amount = global.berries;
+                alarm[0] = 12;
+            }
+            
+            //Reset berry counter
+            global.berries = 0;
+        }
+        
+        //Create a number and make it flash if 5 berries were eaten
+        else {
+                    
+            //Show how many berries yoshi ate
+            with (instance_create(x,y-26,obj_score_coins)) 
+                amount = global.berries;
+        }
+    }
+    
+    //Play 'Coin' sound
+    audio_play_sound(snd_coin, 0, false);
+    
+    //Increment coins
+    global.coins++;
+    
+    //Reset eaten berry
+    berry = noone;
+}
 </string>
           </argument>
         </arguments>
@@ -424,6 +462,7 @@ if (instance_exists(obj_playerparent)) {
     if (keyboard_check(global.shiftkey))
     &amp;&amp; (global.powerup != cs_leaf)
     &amp;&amp; (global.powerup != cs_tanooki)
+    &amp;&amp; (obj_playerparent.crouch == false)
     &amp;&amp; (obj_playerparent.swimming == false) {
     
         //If Yoshi can flutter
@@ -472,7 +511,7 @@ if (instance_exists(obj_playerparent)) {
                 flutter = 2;
                 
                 //Allow flutter after a while
-                alarm[5] = 30;
+                alarm[4] = 30;
             }
         }
     }
@@ -485,7 +524,7 @@ if (instance_exists(obj_playerparent)) {
         flutter = 2;
         
         //Allow flutter after a while
-        alarm[5] = 30;
+        alarm[4] = 30;
     }
     
     //Depth
@@ -895,6 +934,51 @@ else if (instance_exists(obj_player_warpnote))
 //Reset to default
 else
     follow = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make yoshi lay a egg
+
+with (instance_create(x-8,y,obj_egg_pow)) {
+
+    //Check of what colour is yoshi and set up the sprite of the egg
+    switch (obj_yoshi.colour) {
+    
+        //Green Yoshi
+        case (0): sprite_index = spr_egg; break;
+        
+        //Red Yoshi
+        case (1): sprite_index = spr_egg_r; break;
+        
+        //Yellow Yoshi
+        case (2): sprite_index = spr_egg_y; break;
+        
+        //Blue Yoshi
+        case (3): sprite_index = spr_egg_b; break;
+    }
+    
+    //Set the horizontal speed
+    hspeed = -1*sign(other.image_xscale);
+}
 </string>
           </argument>
         </arguments>

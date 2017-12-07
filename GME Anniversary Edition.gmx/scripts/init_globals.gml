@@ -57,6 +57,9 @@ global.mariostart = false;
 //2: Clear (Secret Exit)
 global.clear = 0;
 
+//Berries
+global.berries = 0;
+
 //Cherries
 global.cherries = 0;
 
