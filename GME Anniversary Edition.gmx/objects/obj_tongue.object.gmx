@@ -262,7 +262,9 @@ if (hunger = 0) {
             <kind>1</kind>
             <string>///Eat held items
 
-if (!hunger) {
+if (!hunger) 
+&amp;&amp; (other.object_index != obj_trampoline_timed)
+&amp;&amp; (other.object_index != obj_trampoline_p_active) {
 
     //Item eaten
     hunger = 1;
