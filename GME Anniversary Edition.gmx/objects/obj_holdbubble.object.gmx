@@ -112,8 +112,16 @@ else if (sprout != cs_coin) {
     //Create a item out of the sprite.
     with (sprite_make_object(x+8+(sprite_get_xoffset(constant_get_sprite(sprout))),y+10,constant_get_sprite(sprout))) {
     
+        //Set the vertical speed
+        vspeed = 1;
+    
+        //If the item is a powerup, do not move until it lands.
         if (other.sprout &gt; cs_coin)
             permission = 1;
+            
+        //If the item is a jugemu shoe, move it 8 pixels to the left
+        else if (other.sprout == cs_jugemushoe)
+            x -= 8;
     }
 }
 
@@ -285,7 +293,10 @@ alarm[1] = 1;
             <string>///Draw bubble
 
 //Draw item
-draw_sprite_ext(constant_get_sprite(sprout),0,x+8+(sprite_get_xoffset(constant_get_sprite(sprout))),y+10,1,1,0,c_white,1);
+if (sprout == cs_jugemushoe)
+    draw_sprite_ext(constant_get_sprite(sprout),0,x+(sprite_get_xoffset(constant_get_sprite(sprout))),y+10,1,1,0,c_white,1);
+else
+    draw_sprite_ext(constant_get_sprite(sprout),0,x+8+(sprite_get_xoffset(constant_get_sprite(sprout))),y+10,1,1,0,c_white,1);
 
 //Draw bubble
 draw_sprite_ext(sprite_index,-1,x,y,1,1,0,c_white,image_alpha);

@@ -249,8 +249,7 @@ alarm[1] = 16;
 event_inherited();
 
 //Check if the egg is on the ground
-if (!ready) 
-&amp;&amp; (vspeed == 0) {
+if (!ready) &amp;&amp; (vspeed == 0) {
 
     //Hatch it
     ready = 1;
