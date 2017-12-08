@@ -27,9 +27,6 @@
             <kind>1</kind>
             <string>///A Brick
 
-//Animate
-image_speed = 0.15;
-
 //Whether this block can be hit
 ready = 0;
 
@@ -74,25 +71,25 @@ if (global.powerup != cs_small) {
     instance_destroy();
     
     //Create shards
-    with (instance_create(x+16,y+16,obj_shard)) {
+    with (instance_create(x+8,y+8,obj_shard)) {
     
         motion_set(45, 6);
-        sprite_index = spr_shard_big;
+        sprite_index = spr_brick;
     }
-    with (instance_create(x+16,y+16,obj_shard)) {
+    with (instance_create(x+8,y+8,obj_shard)) {
     
         motion_set(60, 6);
-        sprite_index = spr_shard_big;
+        sprite_index = spr_brick;
     }
-    with (instance_create(x+16,y+16,obj_shard)) {
+    with (instance_create(x+8,y+8,obj_shard)) {
     
         motion_set(120, 6);
-        sprite_index = spr_shard_big;
+        sprite_index = spr_brick;
     }
-    with (instance_create(x+16,y+16,obj_shard)) {
+    with (instance_create(x+8,y+8,obj_shard)) {
     
         motion_set(135, 6);
-        sprite_index = spr_shard_big;
+        sprite_index = spr_brick;
     }
 }
 
@@ -132,25 +129,26 @@ score += 50;
 instance_destroy();
 
 //Create shards
-with (instance_create(x+16,y+16,obj_shard)) {
+    //Create shards
+with (instance_create(x+8,y+8,obj_shard)) {
 
     motion_set(45, 6);
-    sprite_index = spr_shard_big;
+    sprite_index = spr_brick;
 }
-with (instance_create(x+16,y+16,obj_shard)) {
+with (instance_create(x+8,y+8,obj_shard)) {
 
     motion_set(60, 6);
-    sprite_index = spr_shard_big;
+    sprite_index = spr_brick;
 }
-with (instance_create(x+16,y+16,obj_shard)) {
+with (instance_create(x+8,y+8,obj_shard)) {
 
     motion_set(120, 6);
-    sprite_index = spr_shard_big;
+    sprite_index = spr_brick;
 }
-with (instance_create(x+16,y+16,obj_shard)) {
+with (instance_create(x+8,y+8,obj_shard)) {
 
     motion_set(135, 6);
-    sprite_index = spr_shard_big;
+    sprite_index = spr_brick;
 }
 </string>
           </argument>

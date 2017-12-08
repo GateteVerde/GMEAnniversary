@@ -686,7 +686,6 @@
           <sprite>sprites\spr_shard_th_a</sprite>
           <sprite>sprites\spr_shard_th_b</sprite>
           <sprite>sprites\spr_shard_th_c</sprite>
-          <sprite>sprites\spr_shard_big</sprite>
         </sprites>
         <sprite>sprites\spr_brick</sprite>
         <sprite>sprites\spr_bigbrick</sprite>
@@ -703,6 +702,11 @@
       <sprite>sprites\spr_noteblock_blue</sprite>
       <sprite>sprites\spr_noteblock_warp</sprite>
       <sprite>sprites\spr_messageblock</sprite>
+      <sprite>sprites\spr_pswitchblock</sprite>
+      <sprite>sprites\spr_qswitchblock</sprite>
+      <sprite>sprites\spr_eswitchblock</sprite>
+      <sprite>sprites\spr_eoutline</sprite>
+      <sprite>sprites\spr_eblock</sprite>
       <sprite>sprites\spr_area_y</sprite>
       <sprite>sprites\spr_area_g</sprite>
       <sprite>sprites\spr_area_r</sprite>
@@ -1582,6 +1586,9 @@
       <object>objects\obj_noteblock_warp</object>
       <object>objects\obj_noteblock_warp_hidden</object>
       <object>objects\obj_messageblock</object>
+      <object>objects\obj_pswitchblock</object>
+      <object>objects\obj_eswitchblock</object>
+      <object>objects\obj_eblock</object>
       <object>objects\obj_area_y</object>
       <object>objects\obj_area_g</object>
       <object>objects\obj_area_r</object>

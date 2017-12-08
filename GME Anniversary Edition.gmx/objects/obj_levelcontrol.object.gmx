@@ -81,6 +81,72 @@ instance_create(0,0,obj_hud);
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="9">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn off E-Switch events
+
+//Stop 'Timer End' sound
+audio_stop_sound(snd_timer_end);
+
+//Enable all switches
+with (obj_eswitchblock) {
+
+    //Make it solid if needed
+    if (mysolid == noone) then mysolid = instance_create(x,y,obj_solid);
+
+    //Do not animate
+    image_speed = 0;
+    image_index = 0;
+}
+
+//Disable all blocks
+with (obj_eblock) event_user(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Warn the player that the switch effect is about to end
+
+audio_play_sound(snd_timer_end, 0, false);
+audio_stop_sound(snd_timer);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="7">
       <action>
         <libid>1</libid>
@@ -684,7 +750,18 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Turn on Gray P-Switch events
+            <string>///Activate E-Switch events
+
+//Stop 'Timer End' sound if playing
+if (audio_is_playing(snd_timer_end)) then audio_stop_sound(snd_timer_end);
+
+//Play 'Timer' sound if not playing
+if (!audio_is_playing(snd_timer)) then audio_play_sound(snd_timer, 0, true);
+
+//Activate E-Switch events
+with (obj_eblock) event_user(0);
+alarm[8] = 720;
+alarm[9] = 900; 
 </string>
           </argument>
         </arguments>
@@ -948,6 +1025,10 @@ if (global.reserve != cs_small) {
           <argument>
             <kind>1</kind>
             <string>///Reset values
+
+//Stop the following sounds from playing
+audio_stop_sound(snd_timer_end);
+audio_stop_sound(snd_timer);
 
 //If the game is not restarting
 if (obj_persistent.restart == false) {

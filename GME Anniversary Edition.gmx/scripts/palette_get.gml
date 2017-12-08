@@ -27,7 +27,6 @@ if (global.skin != 0) {
             
         //Brick Shards
         case (spr_shard):
-        case (spr_shard_big):
             return spr_palette_brick;
         
         //Empty Blocks

@@ -27,8 +27,9 @@
             <kind>1</kind>
             <string>///Destroy
 
-instance_create(x,y,obj_smoke);
+instance_create(x-8,y,obj_smoke);
 instance_destroy();
+exit;
 </string>
           </argument>
         </arguments>

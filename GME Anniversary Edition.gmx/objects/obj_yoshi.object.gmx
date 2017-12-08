@@ -139,6 +139,60 @@ if (instance_exists(obj_playerparent)) {
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make yoshi lay a egg
+
+//Make sure the player state is not the jumping one
+if (instance_exists(obj_playerparent))
+&amp;&amp; (obj_playerparent.state &lt; 2) {
+
+    with (instance_create(x-8,y,obj_egg_pow)) {
+    
+        //Check of what colour is yoshi and set up the sprite of the egg
+        switch (obj_yoshi.colour) {
+        
+            //Green Yoshi
+            case (0): sprite_index = spr_egg; break;
+            
+            //Red Yoshi
+            case (1): sprite_index = spr_egg_r; break;
+            
+            //Yellow Yoshi
+            case (2): sprite_index = spr_egg_y; break;
+            
+            //Blue Yoshi
+            case (3): sprite_index = spr_egg_b; break;
+        }
+        
+        //Set the horizontal speed
+        hspeed = -1*sign(other.image_xscale);
+    }
+}
+
+//Otherwise, wait...
+else
+    alarm[6] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="5">
       <action>
         <libid>1</libid>
@@ -296,7 +350,7 @@ else if (berry != noone) {
         if (global.berries == 5) {
         
             //Make Yoshi lay a egg
-            event_user(3);
+            alarm[6] = 1;
         
             //Show how many berries yoshi ate
             with (instance_create(x,y-26,obj_score_coins)) {
@@ -934,51 +988,6 @@ else if (instance_exists(obj_player_warpnote))
 //Reset to default
 else
     follow = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Make yoshi lay a egg
-
-with (instance_create(x-8,y,obj_egg_pow)) {
-
-    //Check of what colour is yoshi and set up the sprite of the egg
-    switch (obj_yoshi.colour) {
-    
-        //Green Yoshi
-        case (0): sprite_index = spr_egg; break;
-        
-        //Red Yoshi
-        case (1): sprite_index = spr_egg_r; break;
-        
-        //Yellow Yoshi
-        case (2): sprite_index = spr_egg_y; break;
-        
-        //Blue Yoshi
-        case (3): sprite_index = spr_egg_b; break;
-    }
-    
-    //Set the horizontal speed
-    hspeed = -1*sign(other.image_xscale);
-}
 </string>
           </argument>
         </arguments>

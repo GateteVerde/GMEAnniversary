@@ -192,9 +192,11 @@ if (vspeed &lt; 0)
             <string>///Draw blocks
 
 //Set the palette shader
-var pal = 0;
-pal = palette_get();
-pal_swap_set(pal, global.skin);
+var pal = palette_get();
+if (pal != spr_palette_null) {
+
+    pal_swap_set(pal, global.skin);
+}
 
 //Draw the block
 draw_sprite(sprite_index,-1,round(x),round(y));

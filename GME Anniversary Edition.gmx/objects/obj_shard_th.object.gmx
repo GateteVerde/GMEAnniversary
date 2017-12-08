@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Throwable Brick Shard
+            <string>///A thrown brick shard
 
 //Animate
-image_speed = 0.5;
+image_speed = 0.45;
 </string>
           </argument>
         </arguments>
@@ -53,7 +53,7 @@ image_speed = 0.5;
             <kind>1</kind>
             <string>///Draw shard
 
-draw_sprite_ext(sprite_index,-1,round(x),round(y), 1, 1, image_angle, c_white, 1);
+draw_sprite_ext(sprite_index,-1,round(x),round(y), 1, 1, 0, c_white, 1);
 </string>
           </argument>
         </arguments>
