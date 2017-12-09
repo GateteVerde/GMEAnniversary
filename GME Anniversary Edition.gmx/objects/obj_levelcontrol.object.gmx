@@ -81,7 +81,7 @@ instance_create(0,0,obj_hud);
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="9">
+    <event eventtype="2" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -116,6 +116,53 @@ with (obj_eswitchblock) {
 
 //Disable all blocks
 with (obj_eblock) event_user(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="9">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn off ?-Switch events
+
+//Stop 'Timer End' sound
+audio_stop_sound(snd_timer_end);
+
+//Enable all switches
+with (obj_qswitchblock) {
+
+    //If a timeline exists
+    if (timelineS != noone) {
+    
+        //Stop given timeline
+        timeline_running = false;
+        
+        //Reset timeline
+        timeline_position = 899;
+    }
+
+    //Make it solid if needed
+    if (mysolid == noone) then mysolid = instance_create(x,y,obj_solid);
+
+    //Do not animate
+    image_speed = 0;
+    image_index = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -733,7 +780,7 @@ else
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="16">
+    <event eventtype="7" enumb="17">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -760,6 +807,39 @@ if (!audio_is_playing(snd_timer)) then audio_play_sound(snd_timer, 0, true);
 
 //Activate E-Switch events
 with (obj_eblock) event_user(0);
+alarm[8] = 720;
+alarm[10] = 900; 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Activate ?-Switch events
+
+//Stop 'Timer End' sound if playing
+if (audio_is_playing(snd_timer_end)) then audio_stop_sound(snd_timer_end);
+
+//Play 'Timer' sound if not playing
+if (!audio_is_playing(snd_timer)) then audio_play_sound(snd_timer, 0, true);
+
+//Activate ?-Switch events
 alarm[8] = 720;
 alarm[9] = 900; 
 </string>

@@ -1587,6 +1587,7 @@
       <object>objects\obj_noteblock_warp_hidden</object>
       <object>objects\obj_messageblock</object>
       <object>objects\obj_pswitchblock</object>
+      <object>objects\obj_qswitchblock</object>
       <object>objects\obj_eswitchblock</object>
       <object>objects\obj_eblock</object>
       <object>objects\obj_area_y</object>
@@ -2031,6 +2032,12 @@
     <object>objects\obj_right</object>
     <object>objects\obj_endmarker</object>
   </objects>
+  <timelines name="timelines">
+    <timelines name="? Switch Events">
+      <timeline>timelines\tml_template</timeline>
+      <timeline>timelines\tml_qswitch_water</timeline>
+    </timelines>
+  </timelines>
   <rooms name="rooms">
     <room>rooms\rm_gamestart</room>
     <room>rooms\rm_disclaimer</room>
