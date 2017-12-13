@@ -267,7 +267,7 @@ if (held) {
     audio_play_sound(snd_kick, 0, false);
 
     //Get 800 points
-    with (instance_create(x,y,obj_score)) event_user(5);
+    with (instance_create(x-8,y,obj_score)) event_user(5);
     
     //Create spin thump
     with (instance_create(bbox_left+bbox_right/2,bbox_top+bbox_bottom/2,obj_smoke)) sprite_index = spr_spinthump;
@@ -481,8 +481,19 @@ if (keyboard_check(global.upkey)) {
     //If the item is not overlapping a solid.
     if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
         
+        //Set the horizontal speed
         hspeed = obj_playerparent.xspeed/2;
-        vspeed = -7;
+        
+        //If the item is not in a water surface
+        if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0))
+            vspeed = -7;
+            
+        //Otherwise
+        else {
+
+            vspeed = -3.5;
+            swimming = true;
+        }
     }
     else
         inwall = true;

@@ -718,6 +718,77 @@
       <sprite>sprites\spr_guessblock</sprite>
       <sprite>sprites\spr_beanstalk</sprite>
     </sprites>
+    <sprites name="Masks">
+      <sprites name="Collision">
+        <sprite>sprites\spr_square</sprite>
+        <sprite>sprites\spr_square_b</sprite>
+        <sprite>sprites\spr_square_c</sprite>
+        <sprite>sprites\spr_square_d</sprite>
+        <sprite>sprites\spr_square_e</sprite>
+        <sprite>sprites\spr_square_f</sprite>
+        <sprite>sprites\spr_square_g</sprite>
+        <sprites name="Slopes">
+          <sprite>sprites\spr_slope_r</sprite>
+          <sprite>sprites\spr_slope_l</sprite>
+          <sprite>sprites\spr_slope_sr</sprite>
+          <sprite>sprites\spr_slope_sl</sprite>
+        </sprites>
+        <sprites name="Slopes (Ceiling)">
+          <sprite>sprites\spr_cslope_r</sprite>
+          <sprite>sprites\spr_cslope_l</sprite>
+          <sprite>sprites\spr_cslope_sr</sprite>
+          <sprite>sprites\spr_cslope_sl</sprite>
+        </sprites>
+        <sprite>sprites\spr_linemask</sprite>
+        <sprite>sprites\spr_squaremask</sprite>
+      </sprites>
+      <sprites name="NPCs">
+        <sprite>sprites\spr_sproutmask</sprite>
+      </sprites>
+      <sprites name="Player">
+        <sprites name="Markers">
+          <sprite>sprites\spr_topmarker</sprite>
+          <sprite>sprites\spr_bottommarker</sprite>
+        </sprites>
+        <sprite>sprites\spr_mask</sprite>
+        <sprite>sprites\spr_bigmask</sprite>
+        <sprite>sprites\spr_shellmask</sprite>
+        <sprite>sprites\spr_warpmask</sprite>
+      </sprites>
+      <sprite>sprites\spr_24mask</sprite>
+      <sprite>sprites\spr_32mask</sprite>
+      <sprite>sprites\spr_basketmask</sprite>
+      <sprite>sprites\spr_cannonmask</sprite>
+      <sprite>sprites\spr_explosionmask</sprite>
+      <sprite>sprites\spr_graymask</sprite>
+      <sprite>sprites\spr_itembubblemask</sprite>
+      <sprite>sprites\spr_liftmask</sprite>
+      <sprite>sprites\spr_pipemask</sprite>
+      <sprite>sprites\spr_screenmask</sprite>
+      <sprite>sprites\spr_slopemask_l</sprite>
+      <sprite>sprites\spr_slopemask_r</sprite>
+      <sprite>sprites\spr_spinmask</sprite>
+      <sprite>sprites\spr_stompmask</sprite>
+      <sprite>sprites\spr_warp_h</sprite>
+      <sprite>sprites\spr_warp_v</sprite>
+      <sprite>sprites\spr_yoshimask</sprite>
+    </sprites>
+    <sprites name="World Map">
+      <sprites name="Mario">
+        <sprite>sprites\spr_mapmario</sprite>
+        <sprite>sprites\spr_mapmario_water</sprite>
+        <sprite>sprites\spr_mapmario_yoshi</sprite>
+        <sprite>sprites\spr_mapmario_yoshi_water</sprite>
+      </sprites>
+      <sprites name="Decoration">
+        <sprites name="Liquids">
+          <sprite>sprites\spr_mapwater</sprite>
+        </sprites>
+        <sprite>sprites\spr_maptree</sprite>
+        <sprite>sprites\spr_maptree_alt</sprite>
+        <sprite>sprites\spr_maptree_alt_b</sprite>
+      </sprites>
+    </sprites>
     <sprites name="Decoration">
       <sprites name="Water">
         <sprite>sprites\spr_watertop</sprite>
@@ -986,61 +1057,6 @@
       <sprite>sprites\spr_door_block</sprite>
       <sprite>sprites\spr_door_key</sprite>
     </sprites>
-    <sprites name="Masks">
-      <sprites name="Collision">
-        <sprite>sprites\spr_square</sprite>
-        <sprite>sprites\spr_square_b</sprite>
-        <sprite>sprites\spr_square_c</sprite>
-        <sprite>sprites\spr_square_d</sprite>
-        <sprite>sprites\spr_square_e</sprite>
-        <sprite>sprites\spr_square_f</sprite>
-        <sprite>sprites\spr_square_g</sprite>
-        <sprites name="Slopes">
-          <sprite>sprites\spr_slope_r</sprite>
-          <sprite>sprites\spr_slope_l</sprite>
-          <sprite>sprites\spr_slope_sr</sprite>
-          <sprite>sprites\spr_slope_sl</sprite>
-        </sprites>
-        <sprites name="Slopes (Ceiling)">
-          <sprite>sprites\spr_cslope_r</sprite>
-          <sprite>sprites\spr_cslope_l</sprite>
-          <sprite>sprites\spr_cslope_sr</sprite>
-          <sprite>sprites\spr_cslope_sl</sprite>
-        </sprites>
-        <sprite>sprites\spr_linemask</sprite>
-        <sprite>sprites\spr_squaremask</sprite>
-      </sprites>
-      <sprites name="NPCs">
-        <sprite>sprites\spr_sproutmask</sprite>
-      </sprites>
-      <sprites name="Player">
-        <sprites name="Markers">
-          <sprite>sprites\spr_topmarker</sprite>
-          <sprite>sprites\spr_bottommarker</sprite>
-        </sprites>
-        <sprite>sprites\spr_mask</sprite>
-        <sprite>sprites\spr_bigmask</sprite>
-        <sprite>sprites\spr_shellmask</sprite>
-        <sprite>sprites\spr_warpmask</sprite>
-      </sprites>
-      <sprite>sprites\spr_24mask</sprite>
-      <sprite>sprites\spr_32mask</sprite>
-      <sprite>sprites\spr_basketmask</sprite>
-      <sprite>sprites\spr_cannonmask</sprite>
-      <sprite>sprites\spr_explosionmask</sprite>
-      <sprite>sprites\spr_graymask</sprite>
-      <sprite>sprites\spr_itembubblemask</sprite>
-      <sprite>sprites\spr_liftmask</sprite>
-      <sprite>sprites\spr_pipemask</sprite>
-      <sprite>sprites\spr_screenmask</sprite>
-      <sprite>sprites\spr_slopemask_l</sprite>
-      <sprite>sprites\spr_slopemask_r</sprite>
-      <sprite>sprites\spr_spinmask</sprite>
-      <sprite>sprites\spr_stompmask</sprite>
-      <sprite>sprites\spr_warp_h</sprite>
-      <sprite>sprites\spr_warp_v</sprite>
-      <sprite>sprites\spr_yoshimask</sprite>
-    </sprites>
     <sprites name="Projectiles">
       <sprites name="Ice Blocks">
         <sprite>sprites\spr_iceblock</sprite>
@@ -1171,39 +1187,52 @@
     <sprite>sprites\spr_mysterymarker</sprite>
   </sprites>
   <backgrounds name="background">
-    <backgrounds name="Level Backgrounds">
-      <backgrounds name="Foregrounds">
-        <background>background\bgr_cloudblanket</background>
+    <backgrounds name="Levels">
+      <backgrounds name="Backgrounds">
+        <backgrounds name="Foregrounds">
+          <background>background\bgr_cloudblanket</background>
+        </backgrounds>
+        <background>background\bgr_blocks</background>
+        <background>background\bgr_bonus</background>
+        <background>background\bgr_cave_bg</background>
+        <background>background\bgr_cave_fg</background>
+        <background>background\bgr_clouds</background>
+        <background>background\bgr_darkhills</background>
+        <background>background\bgr_darkhills_b</background>
+        <background>background\bgr_darkhills_c</background>
+        <background>background\bgr_desert_bg</background>
+        <background>background\bgr_desert_fg</background>
+        <background>background\bgr_subcon_bg</background>
+        <background>background\bgr_subcon_fg</background>
+        <background>background\bgr_underground_bg</background>
+        <background>background\bgr_underground_fg</background>
+        <background>background\bgr_underground_fg_b</background>
+        <background>background\bgr_underground_fg_c</background>
+        <background>background\bgr_underground_fg_d</background>
+        <background>background\bgr_underground_fg_e</background>
       </backgrounds>
-      <background>background\bgr_blocks</background>
-      <background>background\bgr_bonus</background>
-      <background>background\bgr_cave_bg</background>
-      <background>background\bgr_cave_fg</background>
-      <background>background\bgr_clouds</background>
-      <background>background\bgr_darkhills</background>
-      <background>background\bgr_darkhills_b</background>
-      <background>background\bgr_darkhills_c</background>
-      <background>background\bgr_desert_bg</background>
-      <background>background\bgr_desert_fg</background>
-      <background>background\bgr_subcon_bg</background>
-      <background>background\bgr_subcon_fg</background>
-      <background>background\bgr_underground_bg</background>
-      <background>background\bgr_underground_fg</background>
-      <background>background\bgr_underground_fg_b</background>
-      <background>background\bgr_underground_fg_c</background>
-      <background>background\bgr_underground_fg_d</background>
-      <background>background\bgr_underground_fg_e</background>
+      <backgrounds name="Tile Sets">
+        <backgrounds name="Decoration">
+          <background>background\bgr_tileset_bush</background>
+          <background>background\bgr_tileset_bush_large</background>
+        </backgrounds>
+        <background>background\bgr_tileset_smb</background>
+        <background>background\bgr_tileset_smb2</background>
+        <background>background\bgr_tileset_smb3</background>
+        <background>background\bgr_tileset_smw</background>
+        <background>background\bgr_tileset_smw_pipes</background>
+      </backgrounds>
     </backgrounds>
-    <backgrounds name="Tile Sets">
-      <backgrounds name="Decoration">
-        <background>background\bgr_tileset_bush</background>
-        <background>background\bgr_tileset_bush_large</background>
+    <backgrounds name="Map">
+      <backgrounds name="Tile Sets">
+        <background>background\bgr_tileset_map</background>
       </backgrounds>
-      <background>background\bgr_tileset_smb</background>
-      <background>background\bgr_tileset_smb2</background>
-      <background>background\bgr_tileset_smb3</background>
-      <background>background\bgr_tileset_smw</background>
-      <background>background\bgr_tileset_smw_pipes</background>
+      <background>background\bgr_mapwater</background>
+      <background>background\bgr_mapwater_b</background>
+      <background>background\bgr_mapwater_c</background>
+      <background>background\bgr_mappoison</background>
+      <background>background\bgr_mappoison_b</background>
+      <background>background\bgr_mappoison_c</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths">
@@ -1598,6 +1627,16 @@
       <object>objects\obj_arrowblock_left</object>
       <object>objects\obj_arrowblock_right</object>
       <object>objects\obj_arrowblock_reset</object>
+    </objects>
+    <objects name="World Map">
+      <objects name="Decoration">
+        <objects name="Liquids">
+          <object>objects\obj_mapwater</object>
+        </objects>
+        <object>objects\obj_maptree</object>
+        <object>objects\obj_maptree_alt</object>
+        <object>objects\obj_maptree_alt_b</object>
+      </objects>
     </objects>
     <objects name="Decoration">
       <objects name="Water">
@@ -2033,14 +2072,15 @@
     <object>objects\obj_endmarker</object>
   </objects>
   <timelines name="timelines">
+    <timeline>timelines\tml_template</timeline>
     <timelines name="? Switch Events">
-      <timeline>timelines\tml_template</timeline>
-      <timeline>timelines\tml_qswitch_water</timeline>
+      <timeline>timelines\tml_water_rise</timeline>
     </timelines>
   </timelines>
   <rooms name="rooms">
     <room>rooms\rm_gamestart</room>
     <room>rooms\rm_disclaimer</room>
+    <room>rooms\rm_map</room>
     <rooms name="Levels">
       <room>rooms\rm_enginetest</room>
     </rooms>

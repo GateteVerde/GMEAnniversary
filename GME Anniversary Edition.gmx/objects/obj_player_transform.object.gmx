@@ -138,6 +138,9 @@ else if (global.mount == 2)
 //Take a screenshot.
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0);
 
+//Deactivate all timelines
+timeline_running = 0;
+
 //Deactivate all instances.
 instance_deactivate_all(true);
 
@@ -196,10 +199,13 @@ if (ready) {
         if (background_exists(back)) {
         
             background_delete(back);
-        }
+        }        
         
         //Activate all instances.
         instance_activate_all();
+        
+        //Activate all timelines
+        timeline_running = 1;
         
         //Destroy
         instance_destroy();
