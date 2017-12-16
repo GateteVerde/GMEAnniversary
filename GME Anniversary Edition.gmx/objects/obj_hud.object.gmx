@@ -90,13 +90,13 @@ draw_sprite_ext(spr_hud, 0, view_xview[0]+5, view_yview[0]+5, 1, 1, 0, c_white, 
 draw_set_font(global.numbers_w);
 
 //Lives
-draw_text_colour_shadowed(view_xview[0]+23, view_yview[0]+10, string_format(lives, 2, 0), c_black, c_white, 1, 1, 1, 1);
+draw_text_colour_shadowed(view_xview[0]+26, view_yview[0]+10, string_format(lives, 2, 0), c_black, c_white, 1, 1, 1, 1);
 
 //Set font
 draw_set_font(global.numbers_g);
 
 //Coins
-draw_text_colour_shadowed(view_xview[0]+68, view_yview[0]+10, string_format(global.coins, 2, 0), c_black, c_white, 1, 1, 1, 1);
+draw_text_colour_shadowed(view_xview[0]+71, view_yview[0]+10, string_format(global.coins, 2, 0), c_black, c_white, 1, 1, 1, 1);
 
 //Reserve Box / Health Meter
 if (global.healthmode == 0) {
@@ -121,10 +121,10 @@ draw_sprite_ext(spr_hud_r, 0, view_xview[0]+view_wview[0]-83, view_yview[0]+5, 1
 draw_set_font(global.numbers_w);
 
 //Time
-draw_text_colour_shadowed(view_xview[0]+view_wview[0]-34, view_yview[0]+10, string_add_zeros(global.time, 3), c_black, c_white, 1, 1, 1, 1);
+draw_text_colour_shadowed(view_xview[0]+view_wview[0]-29, view_yview[0]+10, string_add_zeros(global.time, 3), c_black, c_white, 1, 1, 1, 1);
 
 //Score
-draw_text_colour_shadowed(view_xview[0]+view_wview[0]-84, view_yview[0]+27, string_add_zeros(score, 8), c_black, c_white, 1, 1, 1, 1);
+draw_text_colour_shadowed(view_xview[0]+view_wview[0]-85, view_yview[0]+28, string_add_zeros(score, 10), c_black, c_white, 1, 1, 1, 1);
 
 //P-Meter
 if (instance_exists(obj_playerparent)) {

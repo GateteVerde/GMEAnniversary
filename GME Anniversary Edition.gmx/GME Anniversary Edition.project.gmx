@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="22" name="datafiles">
-    <datafiles number="22" name="music">
+  <datafiles number="24" name="datafiles">
+    <datafiles number="24" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -55,6 +55,40 @@
           </Config>
         </ConfigOptions>
         <filename>land.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>map1.ogg</name>
+        <exists>-1</exists>
+        <size>181997</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>map1.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>map2.ogg</name>
+        <exists>-1</exists>
+        <size>53912</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>map2.ogg</filename>
       </datafile>
       <datafile>
         <name>pswitch.ogg</name>
@@ -225,6 +259,7 @@
       <sound>sound\snd_inventory</sound>
       <sound>sound\snd_message</sound>
       <sound>sound\snd_move</sound>
+      <sound>sound\snd_openpath</sound>
       <sound>sound\snd_pmeter</sound>
       <sound>sound\snd_reserve</sound>
       <sound>sound\snd_timer</sound>
@@ -763,6 +798,8 @@
       <sprite>sprites\spr_graymask</sprite>
       <sprite>sprites\spr_itembubblemask</sprite>
       <sprite>sprites\spr_liftmask</sprite>
+      <sprite>sprites\spr_modifier</sprite>
+      <sprite>sprites\spr_opener</sprite>
       <sprite>sprites\spr_pipemask</sprite>
       <sprite>sprites\spr_screenmask</sprite>
       <sprite>sprites\spr_slopemask_l</sprite>
@@ -774,12 +811,6 @@
       <sprite>sprites\spr_yoshimask</sprite>
     </sprites>
     <sprites name="World Map">
-      <sprites name="Mario">
-        <sprite>sprites\spr_mapmario</sprite>
-        <sprite>sprites\spr_mapmario_water</sprite>
-        <sprite>sprites\spr_mapmario_yoshi</sprite>
-        <sprite>sprites\spr_mapmario_yoshi_water</sprite>
-      </sprites>
       <sprites name="Decoration">
         <sprites name="Liquids">
           <sprite>sprites\spr_mapwater</sprite>
@@ -787,7 +818,35 @@
         <sprite>sprites\spr_maptree</sprite>
         <sprite>sprites\spr_maptree_alt</sprite>
         <sprite>sprites\spr_maptree_alt_b</sprite>
+        <sprite>sprites\spr_maphill</sprite>
+        <sprite>sprites\spr_maphilltrio</sprite>
       </sprites>
+      <sprites name="Paths">
+        <sprites name="Misc">
+          <sprite>sprites\spr_mapbridge_h</sprite>
+          <sprite>sprites\spr_mapbridge_v</sprite>
+          <sprite>sprites\spr_mappath_ladder</sprite>
+          <sprite>sprites\spr_mappath_beanstalk</sprite>
+        </sprites>
+        <sprite>sprites\spr_mappath_h</sprite>
+        <sprite>sprites\spr_mappath_v</sprite>
+        <sprite>sprites\spr_mappath_up</sprite>
+        <sprite>sprites\spr_mappath_down</sprite>
+        <sprite>sprites\spr_mappath_left</sprite>
+        <sprite>sprites\spr_mappath_right</sprite>
+        <sprite>sprites\spr_mappath_upleft</sprite>
+        <sprite>sprites\spr_mappath_upright</sprite>
+        <sprite>sprites\spr_mappath_downleft</sprite>
+        <sprite>sprites\spr_mappath_downright</sprite>
+        <sprite>sprites\spr_mappath_water</sprite>
+        <sprite>sprites\spr_mappath_levelnode</sprite>
+        <sprite>sprites\spr_mappath_emptynode</sprite>
+      </sprites>
+      <sprite>sprites\spr_mapmario</sprite>
+      <sprite>sprites\spr_mapmario_water</sprite>
+      <sprite>sprites\spr_mapmario_yoshi</sprite>
+      <sprite>sprites\spr_mapmario_yoshi_water</sprite>
+      <sprite>sprites\spr_mapmario_arrows</sprite>
     </sprites>
     <sprites name="Decoration">
       <sprites name="Water">
@@ -1636,7 +1695,33 @@
         <object>objects\obj_maptree</object>
         <object>objects\obj_maptree_alt</object>
         <object>objects\obj_maptree_alt_b</object>
+        <object>objects\obj_maphill</object>
+        <object>objects\obj_maphilltrio</object>
       </objects>
+      <objects name="Modifiers">
+        <object>objects\obj_modifier</object>
+      </objects>
+      <objects name="Paths">
+        <objects name="Miscellaneous">
+          <object>objects\obj_mapbridge_h</object>
+          <object>objects\obj_mapbridge_v</object>
+          <object>objects\obj_mappath_ladder</object>
+          <object>objects\obj_mappath_beanstalk</object>
+        </objects>
+        <object>objects\obj_mappath_h</object>
+        <object>objects\obj_mappath_v</object>
+        <object>objects\obj_mappath_up</object>
+        <object>objects\obj_mappath_down</object>
+        <object>objects\obj_mappath_left</object>
+        <object>objects\obj_mappath_right</object>
+        <object>objects\obj_mappath_upleft</object>
+        <object>objects\obj_mappath_upright</object>
+        <object>objects\obj_mappath_downleft</object>
+        <object>objects\obj_mappath_downright</object>
+        <object>objects\obj_mappath_levelnode</object>
+        <object>objects\obj_mappath_emptynode</object>
+      </objects>
+      <object>objects\obj_mapplayer</object>
     </objects>
     <objects name="Decoration">
       <objects name="Water">
@@ -1883,6 +1968,7 @@
         <object>objects\obj_blockparent</object>
         <object>objects\obj_grayblockparent</object>
         <object>objects\obj_deactivateparent</object>
+        <object>objects\obj_mappathparent</object>
       </objects>
       <objects name="Don't Use">
         <objects name="Player">
@@ -1917,6 +2003,9 @@
             <object>objects\obj_shard_th</object>
           </objects>
           <object>objects\obj_guessblock</object>
+        </objects>
+        <objects name="World Map">
+          <object>objects\obj_opener</object>
         </objects>
         <objects name="Decoration">
           <object>objects\obj_tides_surface</object>
@@ -2046,6 +2135,9 @@
             <object>objects\obj_shellbump</object>
             <object>objects\obj_smoke</object>
             <object>objects\obj_star</object>
+          </objects>
+          <objects name="Menus">
+            <object>objects\obj_savemenu</object>
           </objects>
           <objects name="Transitions">
             <object>objects\obj_fadein</object>

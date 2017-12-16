@@ -61,38 +61,8 @@ port_y = 0;
 //Is the game being restarted
 restart = 0;
 
-//Item that is being carried between rooms
-global.carrieditem = noone;
-
-//The sprite used by an item carried between rooms
-global.carriedsprite = noone;
-
-//The frame used by an item carried between rooms
-global.carriedframe = noone;
-
-//Initialize star coin system
-//0: Not collected
-//1: Collected, not saved
-//2: Collected, saved with checkpoint
-//3: Collected, saved with level completion. (Adds to global.sc_count)
-for (i=0; i&lt;99; i++;) {
-
-    global.starcoin[i,0] = 0;
-    global.starcoin[i,1] = 0;
-    global.starcoin[i,2] = 0;
-}
-
 //Data structure for picked up 3up moons
 global.moons = ds_map_create();
-
-//Data structure for picked up star medals
-global.sc_get = ds_map_create();
-
-//Data structure for collected star medals (This will be displayed on map.)
-global.sc_count = ds_map_create();
-
-//Data structure for storing the state of the world map.
-global.worldmap = ds_map_create();
 
 //Set the epsilon value for floating point numbers
 math_set_epsilon(0.00001);

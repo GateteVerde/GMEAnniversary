@@ -127,6 +127,9 @@ global.starman = 0;
 //Star used in map?
 global.mapstar = false;
 
+//Warp used in map
+global.mapwarpchange = false;
+
 //Mushroom house prizes
 global.prize[0] = 0;
 global.prize[1] = 0;
@@ -146,6 +149,33 @@ global.acecoins = ds_map_create();
 
 //Data structure for collected red coin rings
 global.redrings = ds_map_create();
+
+//Item that is being carried between rooms
+global.carrieditem = noone;
+
+//The sprite used by an item carried between rooms
+global.carriedsprite = noone;
+
+//Initialize star coin system
+//0: Not collected
+//1: Collected, not saved
+//2: Collected, saved with checkpoint
+//3: Collected, saved with level completion. (Adds to global.sc_count)
+for (i=0; i<99; i++;) {
+
+    global.starcoin[i,0] = 0;
+    global.starcoin[i,1] = 0;
+    global.starcoin[i,2] = 0;
+}
+
+//Data structure for picked up star medals
+global.sc_get = ds_map_create();
+
+//Data structure for collected star medals (This will be displayed on map.)
+global.sc_count = ds_map_create();
+
+//Data structure for storing the state of the world map.
+global.mapscreen = ds_map_create();
 
 //Map inventory variables
 for(var i=0; i<16; i++)

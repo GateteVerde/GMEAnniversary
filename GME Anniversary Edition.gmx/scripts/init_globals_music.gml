@@ -23,6 +23,14 @@ music_setup(global._theme_bonus, "Bonus", 3);
 global._theme_land = music_add("Land");
 music_setup(global._theme_land, "Land", 3);
 
+//Map 1
+global._theme_map1 = music_add("Map 1");
+music_setup(global._theme_map1, "Map 1", 1);
+
+//Map 2
+global._theme_map2 = music_add("Map 2");
+music_setup(global._theme_map2, "Map 2", 1);
+
 //PSwitch
 global._theme_pswitch = music_add("PSwitch");
 music_setup(global._theme_pswitch, "PSwitch", 3);
