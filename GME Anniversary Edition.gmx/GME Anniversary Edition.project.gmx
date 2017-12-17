@@ -798,7 +798,6 @@
       <sprite>sprites\spr_graymask</sprite>
       <sprite>sprites\spr_itembubblemask</sprite>
       <sprite>sprites\spr_liftmask</sprite>
-      <sprite>sprites\spr_modifier</sprite>
       <sprite>sprites\spr_opener</sprite>
       <sprite>sprites\spr_pipemask</sprite>
       <sprite>sprites\spr_screenmask</sprite>
@@ -811,16 +810,11 @@
       <sprite>sprites\spr_yoshimask</sprite>
     </sprites>
     <sprites name="World Map">
-      <sprites name="Decoration">
-        <sprites name="Liquids">
-          <sprite>sprites\spr_mapwater</sprite>
-        </sprites>
-        <sprite>sprites\spr_maptree</sprite>
-        <sprite>sprites\spr_maptree_alt</sprite>
-        <sprite>sprites\spr_maptree_alt_b</sprite>
-        <sprite>sprites\spr_maphill</sprite>
-        <sprite>sprites\spr_maphilltrio</sprite>
-      </sprites>
+      <sprite>sprites\spr_mapmario</sprite>
+      <sprite>sprites\spr_mapmario_water</sprite>
+      <sprite>sprites\spr_mapmario_yoshi</sprite>
+      <sprite>sprites\spr_mapmario_yoshi_water</sprite>
+      <sprite>sprites\spr_mapmario_arrows</sprite>
       <sprites name="Paths">
         <sprites name="Misc">
           <sprite>sprites\spr_mapbridge_h</sprite>
@@ -842,11 +836,21 @@
         <sprite>sprites\spr_mappath_levelnode</sprite>
         <sprite>sprites\spr_mappath_emptynode</sprite>
       </sprites>
-      <sprite>sprites\spr_mapmario</sprite>
-      <sprite>sprites\spr_mapmario_water</sprite>
-      <sprite>sprites\spr_mapmario_yoshi</sprite>
-      <sprite>sprites\spr_mapmario_yoshi_water</sprite>
-      <sprite>sprites\spr_mapmario_arrows</sprite>
+      <sprites name="Panels">
+        <sprite>sprites\spr_mapstart</sprite>
+      </sprites>
+      <sprites name="Decoration">
+        <sprites name="Liquids">
+          <sprite>sprites\spr_mapwater</sprite>
+        </sprites>
+        <sprite>sprites\spr_maptree</sprite>
+        <sprite>sprites\spr_maptree_alt</sprite>
+        <sprite>sprites\spr_maptree_alt_b</sprite>
+        <sprite>sprites\spr_maphill</sprite>
+        <sprite>sprites\spr_maphilltrio</sprite>
+      </sprites>
+      <sprite>sprites\spr_modifier</sprite>
+      <sprite>sprites\spr_modifier_water</sprite>
     </sprites>
     <sprites name="Decoration">
       <sprites name="Water">
@@ -1198,6 +1202,9 @@
           <sprite>sprites\spr_hud_r</sprite>
           <sprite>sprites\spr_hud_health</sprite>
           <sprite>sprites\spr_hud_pmeter</sprite>
+        </sprites>
+        <sprites name="In-Map">
+          <sprite>sprites\spr_mapborder</sprite>
         </sprites>
         <sprites name="Text">
           <sprites name="Dialog">
@@ -1643,6 +1650,7 @@
         <object>objects\obj_bellblock</object>
         <object>objects\obj_starblock</object>
         <object>objects\obj_shoeblock</object>
+        <object>objects\obj_switchblock</object>
       </objects>
       <objects name="Area Blocks">
         <object>objects\obj_onoffblock_y</object>
@@ -1688,19 +1696,8 @@
       <object>objects\obj_arrowblock_reset</object>
     </objects>
     <objects name="World Map">
-      <objects name="Decoration">
-        <objects name="Liquids">
-          <object>objects\obj_mapwater</object>
-        </objects>
-        <object>objects\obj_maptree</object>
-        <object>objects\obj_maptree_alt</object>
-        <object>objects\obj_maptree_alt_b</object>
-        <object>objects\obj_maphill</object>
-        <object>objects\obj_maphilltrio</object>
-      </objects>
-      <objects name="Modifiers">
-        <object>objects\obj_modifier</object>
-      </objects>
+      <object>objects\obj_mapcontrol</object>
+      <object>objects\obj_mapplayer</object>
       <objects name="Paths">
         <objects name="Miscellaneous">
           <object>objects\obj_mapbridge_h</object>
@@ -1720,8 +1717,23 @@
         <object>objects\obj_mappath_downright</object>
         <object>objects\obj_mappath_levelnode</object>
         <object>objects\obj_mappath_emptynode</object>
+        <object>objects\obj_mappath_water</object>
       </objects>
-      <object>objects\obj_mapplayer</object>
+      <objects name="Panels">
+        <object>objects\obj_mapstart</object>
+      </objects>
+      <objects name="Decoration">
+        <objects name="Liquids">
+          <object>objects\obj_mapwater</object>
+        </objects>
+        <object>objects\obj_maptree</object>
+        <object>objects\obj_maptree_alt</object>
+        <object>objects\obj_maptree_alt_b</object>
+        <object>objects\obj_maphill</object>
+        <object>objects\obj_maphilltrio</object>
+      </objects>
+      <object>objects\obj_modifier</object>
+      <object>objects\obj_modifier_music</object>
     </objects>
     <objects name="Decoration">
       <objects name="Water">

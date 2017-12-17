@@ -125,7 +125,7 @@ global.gswitch = 0;
 global.starman = 0;
 
 //Star used in map?
-global.mapstar = false;
+global.mapstar = 1;
 
 //Warp used in map
 global.mapwarpchange = false;

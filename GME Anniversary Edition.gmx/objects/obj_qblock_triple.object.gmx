@@ -186,7 +186,7 @@ for (var i=0; i&lt;3; i++;) {
         instance_create(x+(i*16),ystart-16,obj_blockcoin);
         
     //Create a coin if the player is not invincible
-    else if (sprout == cs_coin_s)
+    else if (sprout[i] == cs_coin_s)
     &amp;&amp; (instance_number(obj_invincibility) == 0)
         instance_create(x+(i*16),ystart-16,obj_blockcoin);
 }

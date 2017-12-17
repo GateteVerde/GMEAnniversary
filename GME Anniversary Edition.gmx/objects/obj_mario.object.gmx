@@ -147,8 +147,12 @@ if (disablecontrol == false)
         &amp;&amp; (instance_number(obj_fireball) &lt; 2) {
         
             firing = 9;
-            with (instance_create(x,y,obj_fireball))
+            with (instance_create(x,y,obj_fireball)) {
+            
                 hspeed = 3*sign(other.xscale);
+                if (keyboard_check(global.upkey))
+                    vspeed = -3;
+            }
         }            
         
         //Iceball
@@ -156,8 +160,12 @@ if (disablecontrol == false)
         &amp;&amp; (instance_number(obj_iceball) &lt; 2) {
         
             firing = 9;
-            with (instance_create(x,y,obj_iceball))
+            with (instance_create(x,y,obj_iceball)) {
+            
                 hspeed = other.xspeed+(1.2*sign(other.xscale));
+                if (keyboard_check(global.upkey))
+                    vspeed = -3;
+            }
         }
         
         //Raccoon / Tanooki or Cat
@@ -174,8 +182,12 @@ if (disablecontrol == false)
         &amp;&amp; (instance_number(obj_hammer) &lt; 2) {
         
             firing = 9;
-            with (instance_create(x,y,obj_hammer))
-                hspeed = other.xspeed+(1*sign(other.xscale));
+            with (instance_create(x,y,obj_hammer)) {
+            
+                hspeed = other.xspeed+(1.25*sign(other.xscale));
+                if (keyboard_check(global.upkey))
+                    vspeed = -5;
+            }
         }
         
         //Boomerang
@@ -192,8 +204,12 @@ if (disablecontrol == false)
         &amp;&amp; (instance_number(obj_superball) &lt; 2) {
         
             firing = 9;
-            with (instance_create(x,y,obj_superball))
+            with (instance_create(x,y,obj_superball)) {
+            
                 hspeed = 3*sign(other.xscale);
+                if (keyboard_check(global.upkey))
+                    vspeed = -3;
+            }
         }
         
         //Bomb

@@ -61,9 +61,6 @@ frame = 0;
 //Current arrow frame / alpha
 anim = 0;
 
-//Open nearby paths if the level was beaten
-alarm[0] = 2;
-
 //Reset time
 global.time = 0;
 
@@ -309,10 +306,10 @@ else {
 //Update animation for arrows
 anim += 0.075;
 
-//Set default speed if not climbing
-if (image_index != 6)
-&amp;&amp; (speed &gt; 0) &amp;&amp; (speed &lt; 1)
-    speed = 1;
+//Reset levelname on manager if moving
+if (speed &gt; 0)
+&amp;&amp; (obj_mapcontrol.levelname != "")
+    obj_mapcontrol.levelname = "";
 </string>
           </argument>
         </arguments>
@@ -778,11 +775,14 @@ if (mypath_r)
             <kind>1</kind>
             <string>///Draw the player
 
+//Show arrows if stopped
+if (speed == 0) then event_user(0);
+
 //If the player is riding a yoshi
 if (global.mount == 1) {
 
-    //Set the palette
-    pal_swap_set(player_palette_get(), global.mountcolour);
+    //Set the palette for yoshi
+    pal_swap_set(spr_palette_yoshi, global.mountcolour);
 
     //If the player is climbing
     if (image_index == 6)
@@ -793,7 +793,7 @@ if (global.mount == 1) {
     
         //If the player is in contact with water, draw him inside water
         if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
-            draw_sprite_ext(spr_mapmario_yoshi_water,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
+            draw_sprite_ext(spr_mapmario_yoshi_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
         
         //Otherwise
         else
@@ -816,17 +816,65 @@ else {
     
         //If the player is in contact with water, draw him inside water
         if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
-            draw_sprite_ext(spr_mapmario_water,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
+            draw_sprite_ext(spr_mapmario_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
         
         //Otherwise
         else
             draw_sprite_ext(spr_mapmario,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
     }    
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Mount / Dismount Yoshi
 
-//Show arrows if stopped
-if (speed == 0)
-    event_user(0);
+global.mount = !global.mount;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Mount / Dismount Yoshi
+
+global.mountcolour++;
+if (global.mountcolour &gt; 3)
+    global.mountcolour = 0;
 </string>
           </argument>
         </arguments>
