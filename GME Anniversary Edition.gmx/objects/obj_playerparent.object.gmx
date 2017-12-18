@@ -345,7 +345,7 @@ if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
     isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(player_palette_get())-1)
+    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
         isflashing = 0;
     
     //Repeat the process.
@@ -1136,8 +1136,12 @@ if (y &lt; -96)
 else {
 
     //If the player is below the bottom room boundary, restart the room.
-    if (bbox_bottom &gt; room_height+32)
-        room_restart();
+    if (bbox_bottom &gt; room_height+32) {
+                
+        instance_create(x,y,obj_player_dead);
+        instance_destroy();
+        exit;         
+    }
 }
 </string>
           </argument>
@@ -1447,7 +1451,8 @@ if (invulnerable == false) {
                 //Otherwise, kill the player
                 else {
                 
-                    //Kill the player
+                    instance_create(x,y,obj_player_dead);
+                    instance_destroy();
                     exit;            
                 }
             }
@@ -1494,9 +1499,10 @@ if (invulnerable == false) {
             
             //Otherwise, kill the player
             else {
-            
-                //Kill player
-                exit;
+              
+                instance_create(x,y,obj_player_dead);
+                instance_destroy();
+                exit;     
             }
         }
     }
@@ -1533,7 +1539,7 @@ if (invulnerable == false) {
             <string>//Draw player and effects
 
 //Set the shader
-pal_swap_set(player_palette_get(), isflashing);
+pal_swap_set(spr_palette_mario, isflashing);
 
 //Draw player
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,angle,c_white,image_alpha);

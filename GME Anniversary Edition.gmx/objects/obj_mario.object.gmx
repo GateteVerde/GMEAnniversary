@@ -442,7 +442,7 @@ else {
                         //If Mario does not have the frog powerup
                         if (global.powerup != cs_frog)
                         &amp;&amp; (global.powerup != cs_penguin)
-                            image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                            image_speed = isinice() * 0.065+abs(xspeed)/7.5;
                             
                         //Otherwise, if Mario does have the frog suit.
                         else if (global.powerup == cs_frog) {
@@ -459,7 +459,7 @@ else {
                                         image_speed = 0.1+(0.1*keyboard_check(vk_control));
                                 }
                                 else
-                                    image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                                    image_speed = isinice() * 0.065+abs(xspeed)/7.5;
                             }
                             
                             //Otherwise, if Mario is not swimming
@@ -468,7 +468,7 @@ else {
                                 if (holding == 0)
                                     image_speed = 0.1;
                                 else
-                                    image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                                    image_speed = isinice() * 0.065+abs(xspeed)/7.5;
                             }                        
                         }
                         
@@ -487,12 +487,12 @@ else {
                                         image_speed = 0.1+(0.1*keyboard_check(vk_control));
                                 }
                                 else
-                                    image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                                    image_speed = isinice() * 0.065+abs(xspeed)/7.5;
                             }
                             
                             //Otherwise, if Mario is not swimming
                             else
-                                image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;                         
+                                image_speed = isinice() * 0.065+abs(xspeed)/7.5;                         
                         }
                     
                         //If Mario is running
@@ -861,7 +861,7 @@ else {
                 }
                 
                 //Animate
-                image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                image_speed = isinice() * 0.065+abs(xspeed)/7.5;
             }
             else {
                 
@@ -893,7 +893,7 @@ else {
         else if (state == 1) {
         
             //Set the animation speed
-            image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+            image_speed = isinice() * 0.065+abs(xspeed)/7.5;
         }
         
         //Otherwise, if Mario is jumping
@@ -946,7 +946,7 @@ else {
         
             //If Mario is not turning
             if (!turning)
-                image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+                image_speed = isinice() * 0.065+abs(xspeed)/7.5;
                 
             //Otherwise, if Mario is turning
             else {
@@ -1014,7 +1014,7 @@ else {
         else if (state == 1) {
         
             //Set the animation speed
-            image_speed = scr_inice() * 0.065+abs(xspeed)/7.5;
+            image_speed = isinice() * 0.065+abs(xspeed)/7.5;
         }
         
         //Otherwise, if Mario is jumping

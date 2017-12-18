@@ -139,7 +139,7 @@ if (!keyboard_check(global.controlkey)) {
 
     //If the vegetable is not being pulled
     if (!instance_exists(obj_turnip_out))
-    &amp;&amp; (sprite_index == scr_global_pull())
+    &amp;&amp; (sprite_index == spr_mario_pull)
         alarm[0] = 1;
 }
 </string>
@@ -167,19 +167,15 @@ if (!keyboard_check(global.controlkey)) {
             <string>///Draw the player
 
 //Set the shader
-pal_swap_set(player_palette_get(),obj_playerparent.isflashing)
+pal_swap_set(spr_palette_mario,obj_playerparent.isflashing)
 
 //If the player is pulling
-if (sprite_index == scr_global_pull()) {
-
-    //Draw
-    draw_sprite_ext(scr_global_pull(),(global.powerup*2)+frame,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha);
-}
-else {
-
-    //Draw
+if (sprite_index == spr_mario_pull)
+    draw_sprite_ext(spr_mario_pull,(global.powerup*2)+frame,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha);
+    
+//Otherwise, draw the crouched down pose
+else
     draw_sprite_ext(scr_mario_duck(),1,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha);
-}
 
 //Reset shader
 pal_swap_reset();

@@ -549,61 +549,65 @@ if (instance_exists(obj_playerparent)) {
     
         //Handle camera position
         event_user(3);
+        
+        //If you can't exit from the sides
+        if (!instance_exists(obj_gotomap)) {
          
-        //Prevent the player from going outside the left boundary
-        if (obj_playerparent.x &lt; view_xview[0]+5) {
-        
-            //Snap the player 5 pixels at the left of the boundary
-            obj_playerparent.x = view_xview[0]+5;
+            //Prevent the player from going outside the left boundary
+            if (obj_playerparent.x &lt; view_xview[0]+5) {
             
-            //Stop Mario's horizontal movement
-            if (obj_playerparent.xspeed &lt; 0) {
-            
-                //Stop horizontal movement
-                obj_playerparent.xspeed = 0;
+                //Snap the player 5 pixels at the left of the boundary
+                obj_playerparent.x = view_xview[0]+5;
                 
-                //Stop sliding if necessary
-                if (obj_playerparent.sliding) {
+                //Stop Mario's horizontal movement
+                if (obj_playerparent.xspeed &lt; 0) {
                 
-                    //Stop sliding
-                    sliding = false;
+                    //Stop horizontal movement
+                    obj_playerparent.xspeed = 0;
                     
-                    //Free 'Down' key
-                    keyboard_clear(global.downkey);
-                }
-            }
-            
-            //End dropdown
-            if (instance_exists(obj_dropdown))
-                with (obj_dropdown) instance_destroy();
-        }
-        
-        //Otherwise, prevent the player from going outside the right boundary
-        else if (obj_playerparent.x &gt; view_xview[0]+view_wview[0]-5) {
-        
-            //Snap the player 5 pixels at the left of the boundary
-            obj_playerparent.x = view_xview[0]+view_wview[0]-5;
-            
-            //Stop Mario's horizontal movement
-            if (obj_playerparent.xspeed &gt; 0) {
-            
-                //Stop horizontal movement
-                obj_playerparent.xspeed = 0;
-                
-                //Stop sliding if necessary
-                if (obj_playerparent.sliding) {
-                
-                    //Stop sliding
-                    sliding = false;
+                    //Stop sliding if necessary
+                    if (obj_playerparent.sliding) {
                     
-                    //Free 'Down' key
-                    keyboard_clear(global.downkey);
-                }
-            }
+                        //Stop sliding
+                        sliding = false;
                         
-            //End dropdown
-            if (instance_exists(obj_dropdown))
-                with (obj_dropdown) instance_destroy();
+                        //Free 'Down' key
+                        keyboard_clear(global.downkey);
+                    }
+                }
+                
+                //End dropdown
+                if (instance_exists(obj_dropdown))
+                    with (obj_dropdown) instance_destroy();
+            }
+            
+            //Otherwise, prevent the player from going outside the right boundary
+            else if (obj_playerparent.x &gt; view_xview[0]+view_wview[0]-5) {
+            
+                //Snap the player 5 pixels at the left of the boundary
+                obj_playerparent.x = view_xview[0]+view_wview[0]-5;
+                
+                //Stop Mario's horizontal movement
+                if (obj_playerparent.xspeed &gt; 0) {
+                
+                    //Stop horizontal movement
+                    obj_playerparent.xspeed = 0;
+                    
+                    //Stop sliding if necessary
+                    if (obj_playerparent.sliding) {
+                    
+                        //Stop sliding
+                        sliding = false;
+                        
+                        //Free 'Down' key
+                        keyboard_clear(global.downkey);
+                    }
+                }
+                            
+                //End dropdown
+                if (instance_exists(obj_dropdown))
+                    with (obj_dropdown) instance_destroy();
+            }
         }
         
         //Drop the reserve item
@@ -1086,6 +1090,40 @@ if (global.reserve != cs_small) {
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop all music and fanfares
+
+//Stop music instance
+FMODInstanceStop(global._stream);
+global._stream = -1;
+
+//Prevent it from playing
+musicdisable = 1;
+
+//Stop both pswitch and starman streams
+FMODInstanceStop(global._stream_pswitch);
+FMODInstanceStop(global._stream_starman);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
@@ -1106,8 +1144,7 @@ if (global.reserve != cs_small) {
             <string>///Reset values
 
 //Stop the following sounds from playing
-audio_stop_sound(snd_timer_end);
-audio_stop_sound(snd_timer);
+audio_stop_all();
 
 //If the game is not restarting
 if (obj_persistent.restart == false) {

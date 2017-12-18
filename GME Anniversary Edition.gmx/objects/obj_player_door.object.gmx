@@ -46,7 +46,7 @@ myitem = -1;
 myframe = 0;
 
 //Get the sprite
-scr_global_door();
+scr_mario_spin();
 </string>
           </argument>
         </arguments>
@@ -76,7 +76,7 @@ if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
     isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(player_palette_get())-1)
+    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
         isflashing = 0;
     
     //Repeat the process.
@@ -146,7 +146,7 @@ if (depth == 2) then draw_sprite(spr_door_inside, 0, x-8, y);
 if (global.mount == 2) {
     
     //Set the shader
-    pal_swap_set(player_palette_get(), isflashing);
+    pal_swap_set(spr_palette_mario, isflashing);
     
     //Draw the player inside the shoe
     switch (global.player) {
@@ -178,11 +178,7 @@ else if (global.mount == 1) {
     pal_swap_reset();
     
     //Draw the player
-    switch (global.player) {
-    
-        //Mario
-        case (0): player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale); break;
-    }    
+    player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale);  
 }
 
 //Otherwise, draw the player normally
@@ -199,7 +195,7 @@ else {
     }
     
     //Set up the palette
-    pal_swap_set(player_palette_get(), isflashing);
+    pal_swap_set(spr_palette_mario, isflashing);
     
     //Draw the player
     draw_sprite_ext(sprite_index, 2, round(x), round(y)+1,1,1,0,c_white,1);

@@ -112,7 +112,6 @@ else {
     //Set music volume to maximum
     FMODInstanceSetVolume(global._stream_map, 1);
 }
-    
 </string>
           </argument>
         </arguments>
@@ -236,7 +235,6 @@ if (musicdisable)
 exit;
 
 //Play new stream
-//audio_play_sound(snd_8bit_fireball,1,0);
 global._stream_map = FMODSoundLoop(mapmusic, 0);
 </string>
           </argument>

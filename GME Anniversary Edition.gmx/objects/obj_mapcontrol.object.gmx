@@ -124,7 +124,7 @@ instance_create(0,0,obj_fadeout);
 draw_sprite_ext(spr_mapborder, 0, view_xview[0], view_yview[0], 1, 1, 0, c_white, 1);
 
 //Set the palette
-pal_swap_set(player_palette_get(), isflashing);
+pal_swap_set(spr_palette_mario, isflashing);
 
 //Draw the player
 draw_sprite_ext(scr_mario_walk(), anim, view_xview[0]+32, view_yview[0]+16, 1, 1, 0, c_white, 1);

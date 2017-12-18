@@ -508,7 +508,7 @@ if (((bbox_bottom &lt; obj_playerparent.bbox_top+14) &amp;&amp; (global.powerup 
     }
     
     //Set the plucking sprite
-    with (obj_puller) sprite_index = scr_global_pull2();
+    with (obj_puller) sprite_index = scr_mario_duck();
 }
 
 //If the player does not exist...

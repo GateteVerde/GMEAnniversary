@@ -38,7 +38,7 @@ with (obj_playerparent) {
 }
 
 //Sprite
-scr_global_wallrun();
+sprite_index = scr_mario_run();
 
 //Angle
 angle = 0;
@@ -180,7 +180,7 @@ if (!instance_exists(obj_playerparent))
 }
 
 //Update sprite
-scr_global_wallrun();
+sprite_index = scr_mario_run();
 
 //Animation
 image_speed = 0.4;
@@ -706,7 +706,7 @@ if (ready) {
             <string>///Draw the player
 
 //Set the shader
-pal_swap_set(player_palette_get(),obj_playerparent.isflashing);
+pal_swap_set(spr_palette_mario,obj_playerparent.isflashing);
 
 //Draw player
 draw_sprite_ext(sprite_index,-1,round(x),round(y),1,xscale,angle,c_white,obj_playerparent.image_alpha);

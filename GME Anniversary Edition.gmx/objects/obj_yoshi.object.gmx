@@ -1013,7 +1013,7 @@ else
             <string>///Draw the player
 
 //Set the palette
-pal_swap_set(player_palette_get(), obj_playerparent.isflashing);
+pal_swap_set(spr_palette_mario, obj_playerparent.isflashing);
 
 //Draw the player
 switch (global.player) {

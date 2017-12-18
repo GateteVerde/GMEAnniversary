@@ -44,7 +44,7 @@ else {
 //Do not animate
 image_speed = 0;
 image_index = 0;
-alarm[3] = 1;
+alarm[2] = 1;
 
 //Facing direction
 xscale = 1;
@@ -60,6 +60,39 @@ frame = 0;
 
 //Current arrow frame / alpha
 anim = 0;
+
+//Room to go
+myroom = noone;
+
+//Open adyacent paths
+if (global.clear &gt; 0) {
+
+    alarm[0] = 2;
+    if (global.clear == 3) {
+    
+        //Allow clearance
+        global.clear = 0;
+    
+        //Do not allow movement
+        ready = 1;
+        
+        //Allow movement after a while
+        alarm[3] = 90;    
+    }
+}
+
+//If the player died on the level
+if (global.died == 1) {
+
+    //Reset dead variable
+    global.died = 0;
+    
+    //Do not allow movement
+    ready = 1
+    
+    //Allow movement after a while
+    alarm[3] = 90;
+}
 
 //Reset time
 global.time = 0;
@@ -88,6 +121,9 @@ global.onofforange = 0;
 //Reset held variables
 global.carrieditem = noone;
 global.carriedsprite = noone;
+
+//Reset Mario Start! text
+global.mariostart = false;
 
 //Reset ace coins
 ds_map_clear(global.acecoins);
@@ -119,10 +155,46 @@ ds_map_clear(global.doors);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Change frame
+            <string>///Allow movement or ask to save the current game
 
-alarm[3] = 7;
-frame = !frame;
+//Check for the player object
+var panel = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_maplevel,0,0);
+
+//If the player exists
+if (panel) {
+
+    //If you cannot save with the current panel
+    if (panel.saveme == 0) {
+    
+        //If there's still opener objects around, wait
+        if (instance_number(obj_opener) &gt; 0) {
+        
+            alarm[3] = 1;
+            exit;
+        }        
+        
+        //Allow movement
+        ready = 0;
+        
+        //Play music if it was paused
+        if (FMODInstanceGetPaused(global._stream_map))
+            obj_persistent_musicplayer.alarm[2] = 2;
+    }
+        
+    //Otherwise, wait
+    else if (panel.saveme == 1) {
+    
+        //If there's still opener objects around, wait
+        if (instance_number(obj_opener) &gt; 0) {
+        
+            alarm[3] = 1;
+            exit;
+        }
+        
+        //Save the game if allowed
+        instance_create(0,0,obj_savemenu);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -145,9 +217,10 @@ frame = !frame;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Allow completion of levels
+            <string>///Change frame
 
-global.clear = 0;
+alarm[2] = 9;
+frame = !frame;
 </string>
           </argument>
         </arguments>
@@ -171,6 +244,19 @@ global.clear = 0;
           <argument>
             <kind>1</kind>
             <string>///Go to the destination room
+
+//Remember position
+event_user(1);
+
+//Create curtain out effect
+if (instance_number(obj_curtainout) == 0) {
+
+    with (instance_create(x,y+4,obj_curtainout)) 
+        target = other.myroom;
+}
+
+//Pause map BGM
+FMODInstanceSetPaused(global._stream_map, true);
 </string>
           </argument>
         </arguments>
@@ -194,6 +280,157 @@ global.clear = 0;
           <argument>
             <kind>1</kind>
             <string>///Open adyacent paths
+
+//If the level has been cleared with a regular exit
+if (global.clear == 1) {
+
+    //Get the ID of the panel where the player is
+    var panel = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_maplevel,0,0);
+    
+    //If the panel exists
+    if (panel) {
+    
+        //Check up the direction of the panel
+        switch (panel.exitdir) {
+        
+            //Up
+            case (0): {
+            
+                //Check for a path above
+                var mypath = collision_rectangle(panel.x+8,panel.y-4,panel.x+8,panel.y-4,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(90,2);
+            } break;
+            
+            //Down
+            case (1): {
+            
+                //Check for a path above
+                var mypath = collision_rectangle(panel.x+8,panel.y+20,panel.x+8,panel.y+20,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(270,2);
+            } break;
+            
+            //Left
+            case (2): {
+            
+                //Check for a path above
+                var mypath = collision_rectangle(panel.x-4,panel.y+8,panel.x-4,panel.y+8,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(180,2);
+            } break;
+            
+            //Right
+            case (3): {
+            
+                //Check for a path above
+                var mypath = collision_rectangle(panel.x+20,panel.y+8,panel.x+20,panel.y+8,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(0,2);
+            } break;
+        }
+        
+        //Handle panel events
+        with (panel) {
+        
+            //Mark the level as beaten...
+            beaten = 1;
+            
+            //...do not remember checkpoints
+            checkpoint = noone;
+            
+            //...and make sure the game remembers it
+            ds_map_replace(global.mapscreen, id, 1);
+        }
+    }
+    
+    //Do not allow movement
+    ready = 1;
+    
+    //Allow movement after a while
+    alarm[3] = 90;
+}
+
+//Otherwise, if the level has been cleared with a secret exit
+else if (global.clear == 2) {
+
+    //Get the ID of the panel where the player is
+    var panel = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_maplevel,0,0);
+    
+    //If the panel exists
+    if (panel) {
+    
+        //Check up the direction of the panel
+        switch (panel.exitalt) {
+        
+            //Up
+            case (0): {
+            
+                //Check for a path above
+                var mypath = collision_rectangle(panel.x+8,panel.y-4,panel.x+8,panel.y-4,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(90,2);
+            } break;
+            
+            //Down
+            case (1): {
+            
+                //Check for a path above
+                var mypath = collision_rectangle(panel.x+8,panel.y+20,panel.x+8,panel.y+20,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(270,2);
+            } break;
+            
+            //Left
+            case (2): {
+            
+                //Check for a path above
+                var mypath = collision_rectangle(panel.x-4,panel.y+8,panel.x-4,panel.y+8,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(180,2);
+            } break;
+            
+            //Right
+            case (3): {
+            
+                //Check for a path above
+                var mypath = collision_rectangle(panel.x+20,panel.y+8,panel.x+20,panel.y+8,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(0,2);
+            } break;
+        }
+        
+        //Handle panel events
+        with (panel) {
+        
+            //Mark the level as beaten...
+            beaten = 1;
+            
+            //...do not remember checkpoints
+            checkpoint = noone;
+            
+            //...and make sure the game remembers it
+            ds_map_replace(global.mapscreen, id, 1);
+        }
+    }
+        
+    //Do not allow movement
+    ready = 1;
+    
+    //Allow movement after a while
+    alarm[3] = 90;
+}
+
+//Reset clear variable
+global.clear = 0;
 </string>
           </argument>
         </arguments>
@@ -709,6 +946,32 @@ if (vspeed &gt; 0) {
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Remember the player's last position in the map
+
+ds_map_replace(global.mapscreen,"mapx", x);
+ds_map_replace(global.mapscreen,"mapy", y);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -776,105 +1039,84 @@ if (mypath_r)
             <string>///Draw the player
 
 //Show arrows if stopped
-if (speed == 0) then event_user(0);
-
-//If the player is riding a yoshi
-if (global.mount == 1) {
-
-    //Set the palette for yoshi
-    pal_swap_set(spr_palette_yoshi, global.mountcolour);
-
-    //If the player is climbing
-    if (image_index == 6)
-        draw_sprite_ext(spr_mapmario_yoshi,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
+if (speed == 0) 
+&amp;&amp; (ready == 0)
+&amp;&amp; (letsgo == 0)
+    event_user(0);
     
-    //Otherwise
-    else {
-    
-        //If the player is in contact with water, draw him inside water
-        if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
-            draw_sprite_ext(spr_mapmario_yoshi_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
-        
-        //Otherwise
-        else
-            draw_sprite_ext(spr_mapmario_yoshi,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
-    }
-    
-    //Reset palette
-    pal_swap_reset();
+//If the player can't move
+if (ready == 1) {
+
+    draw_sprite_ext(spr_mapmario_events, 0,round(x),round(y)-4,1,1,0,c_white,1);
 }
 
-//Otherwise, if the player is not riding a yoshi
+//Otherwise, if the player can move
 else {
 
-    //If the player is climbing
-    if (image_index == 6)
-        draw_sprite_ext(spr_mapmario,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
+    //If the player is riding a yoshi
+    if (global.mount == 1) {
     
-    //Otherwise
-    else {
+        //Set the palette for yoshi
+        pal_swap_set(spr_palette_yoshi, global.mountcolour);
+        
+        //If the player decided the level
+        if (image_index == 8) {
+        
+            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))    
+                draw_sprite_ext(spr_mapmario_yoshi_water,8,round(x),round(y),xscale,1,0,c_white,1);
+            else
+                draw_sprite_ext(spr_mapmario_yoshi,8,round(x),round(y)-4,xscale,1,0,c_white,1);
+        }
     
-        //If the player is in contact with water, draw him inside water
-        if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
-            draw_sprite_ext(spr_mapmario_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
+        //If the player is climbing
+        else if (image_index == 6)
+            draw_sprite_ext(spr_mapmario_yoshi,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
         
         //Otherwise
-        else
+        else {
+        
+            //If the player is in contact with water, draw him inside water
+            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
+                draw_sprite_ext(spr_mapmario_yoshi_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
+            
+            //Otherwise
+            else
+                draw_sprite_ext(spr_mapmario_yoshi,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
+        }
+        
+        //Reset palette
+        pal_swap_reset();
+    }
+    
+    //Otherwise, if the player is not riding a yoshi
+    else {
+        
+        //If the player decided the level
+        if (image_index == 8) {
+        
+            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))    
+                draw_sprite_ext(spr_mapmario_water,8,round(x),round(y),xscale,1,0,c_white,1);
+            else
+                draw_sprite_ext(spr_mapmario,8,round(x),round(y)-4,xscale,1,0,c_white,1);
+        }
+    
+        //If the player is climbing
+        else if (image_index == 6)
             draw_sprite_ext(spr_mapmario,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
-    }    
+        
+        //Otherwise
+        else {
+        
+            //If the player is in contact with water, draw him inside water
+            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
+                draw_sprite_ext(spr_mapmario_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
+            
+            //Otherwise
+            else
+                draw_sprite_ext(spr_mapmario,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
+        }    
+    }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Mount / Dismount Yoshi
-
-global.mount = !global.mount;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Mount / Dismount Yoshi
-
-global.mountcolour++;
-if (global.mountcolour &gt; 3)
-    global.mountcolour = 0;
 </string>
           </argument>
         </arguments>

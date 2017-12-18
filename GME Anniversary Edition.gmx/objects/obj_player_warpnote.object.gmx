@@ -40,9 +40,6 @@ holding = 0;
 //Draw the item held
 myitem = -1;
 myframe = 0;
-
-//Use the jump sprite
-scr_global_jump();
 </string>
           </argument>
         </arguments>
@@ -72,7 +69,7 @@ if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
     isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(player_palette_get())-1)
+    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
         isflashing = 0;
     
     //Repeat the process.
@@ -111,7 +108,20 @@ else {
             <string>///Update sprite and go to the new area if high enough
 
 //Update sprite
-scr_global_jump();
+if (holding) { //If the player is holding something
+
+    sprite_index = scr_mario_hold();
+    image_speed = 0;
+    image_index = 1;
+}
+    
+//Otherwise, if it's not holding anything
+else {
+
+    sprite_index = scr_mario_jump();
+    image_speed = 0;
+    image_index = 0;
+}
 
 //Go to the new area
 if (y &lt; view_yview[0]-33) {
@@ -151,7 +161,7 @@ if (y &lt; view_yview[0]-33) {
 if (global.mount == 2) {
     
     //Set the shader
-    pal_swap_set(player_palette_get(), isflashing);
+    pal_swap_set(spr_palette_mario, isflashing);
     
     //Draw the player inside the shoe
     switch (global.player) {
@@ -216,7 +226,7 @@ else {
     }
     
     //Set the palette
-    pal_swap_set(player_palette_get(), isflashing);
+    pal_swap_set(spr_palette_mario, isflashing);
     
     //Draw the player
     draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);

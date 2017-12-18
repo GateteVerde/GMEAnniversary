@@ -29,7 +29,10 @@
 
 //If the player is riding something, exit
 if (global.mount &gt; 0)
-exit;
+    exit;
+    
+//Otherwise, hurt the player
+else
     with (other) event_user(0);
 </string>
           </argument>

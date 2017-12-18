@@ -58,9 +58,6 @@ holding = 0;
 //Draw the item held
 myitem = -1;
 myframe = 0;
-
-//Set up the sprite to use
-scr_global_warp();
 </string>
           </argument>
         </arguments>
@@ -90,7 +87,7 @@ if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
     isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(player_palette_get())-1)
+    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
         isflashing = 0;
     
     //Repeat the process.
@@ -284,7 +281,45 @@ ready = true;
             <string>///Player pipe logic
 
 //Update sprite to be used
-scr_global_warp();
+if (cannon &lt; 2) { //If the player is not in diagonal cannon mode
+
+    //If the player is moving vertically
+    if (vspeed != 0) {
+    
+        sprite_index = scr_mario_spin();
+        image_speed = 0;
+        image_index = 0;
+    }
+        
+    //Otherwise, if the player is moving horizontally
+    else {
+    
+        //Set the animation
+        image_speed = 0.2;
+    
+        //If the player is holding something
+        if (holding)
+            sprite_index = scr_mario_hold();
+            
+        //Otherwise
+        else
+            sprite_index = scr_mario_walk();
+    }
+}
+
+//Otherwise, if the player is on diagonal cannon mode
+else {
+
+    //Do not animate
+    image_speed = 0;
+    image_index = 0;
+    
+    //If the player is holding something
+    if (holding)
+        sprite_index = scr_mario_hold();
+    else
+        sprite_index = scr_mario_runjump();
+}
 
 //Update boundary and facing direction
 event_user(1);
@@ -751,14 +786,10 @@ instance_destroy();
 if (global.mount == 2) {
     
     //Set the shader
-    pal_swap_set(player_palette_get(), isflashing);
+    pal_swap_set(spr_palette_mario, isflashing);
     
     //Draw the player inside the shoe
-    switch (global.player) {
-    
-        //Mario
-        case (0): draw_sprite_ext(spr_mario_shoe, global.powerup, round(x), round(y)-15, image_xscale, 1, 0, c_white, 1); break;
-    }
+    draw_sprite_ext(spr_mario_shoe, global.powerup, round(x), round(y)-15, image_xscale, 1, 0, c_white, 1);
     
     //Reset shader
     pal_swap_reset();
@@ -786,11 +817,7 @@ else if (global.mount == 1) {
         pal_swap_reset();
         
         //Draw the player
-        switch (global.player) {
-        
-            //Mario
-            case (0): player_draw_yoshi(scr_mario_ride(), 1, x, y, image_xscale); break;
-        }    
+        player_draw_yoshi(scr_mario_ride(), 1, x, y, image_xscale);
     }
     else {
 
@@ -810,22 +837,14 @@ else if (global.mount == 1) {
             pal_swap_reset();
             
             //Draw the player
-            switch (global.player) {
-            
-                //Mario
-                case (0): player_draw_yoshi(scr_mario_ride(), 1, x, y-3, image_xscale); break;
-            }
+            player_draw_yoshi(scr_mario_ride(), 1, x, y-3, image_xscale);
         }
         
         //Otherwise, if the player is moving vertically
         else if (obj_player_warp.vspeed != 0) {
-        
-            //Draw the player
-            switch (global.player) {
             
-                //Mario
-                case (0): player_draw_yoshi(scr_mario_spin(), 0, x, y-9, image_xscale); break;
-            }                     
+            //Draw the player first
+            player_draw_yoshi(scr_mario_spin(), 0, x, y-9, image_xscale);               
             
             //Set Yoshi palette
             pal_swap_set(spr_palette_yoshi, obj_yoshi.colour);
@@ -868,7 +887,7 @@ else {
     }
     
     //Set the palette
-    pal_swap_set(player_palette_get(), isflashing);
+    pal_swap_set(spr_palette_mario, isflashing);
     
     //Draw the player
     draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);

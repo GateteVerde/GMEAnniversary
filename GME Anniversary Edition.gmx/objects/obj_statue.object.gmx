@@ -242,7 +242,7 @@ else
             <string>///Draw statue
 
 //Set the shader
-pal_swap_set(player_palette_get(),obj_playerparent.isflashing)
+pal_swap_set(spr_palette_mario,obj_playerparent.isflashing)
 
 //Draw statue
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,image_alpha);

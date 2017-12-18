@@ -72,7 +72,7 @@ if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
     isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(player_palette_get())-1)
+    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
         isflashing = 0;
     
     //Repeat the process.
@@ -111,7 +111,20 @@ else {
             <string>///Finish jumping
 
 //Update sprite
-scr_global_jump();
+if (holding) { //If the player is holding something
+
+    sprite_index = scr_mario_hold();
+    image_speed = 0;
+    image_index = 1;
+}
+    
+//Otherwise, if it's not holding anything
+else {
+
+    sprite_index = scr_mario_jump();
+    image_speed = 0;
+    image_index = 0;
+}
 
 //If the player jumps up to the target height
 if (y &lt; ystart) {
@@ -157,7 +170,7 @@ if (y &lt; ystart) {
 if (global.mount == 2) {
     
     //Set the shader
-    pal_swap_set(player_palette_get(), isflashing);
+    pal_swap_set(spr_palette_mario, isflashing);
     
     //Draw the player inside the shoe
     switch (global.player) {
@@ -222,7 +235,7 @@ else {
     }
     
     //Set the palette
-    pal_swap_set(player_palette_get(), isflashing);
+    pal_swap_set(spr_palette_mario, isflashing);
     
     //Draw the player
     draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);

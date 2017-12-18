@@ -210,6 +210,55 @@ else {
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_door">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Open a locked door
+
+//If the door is locked with a key...
+if (other.locked == 1)
+
+//...and the door is visible...
+&amp;&amp; (other.visible)
+
+///...and the key is being held
+&amp;&amp; (!held) {
+
+    //Play 'Chest' sound
+    audio_play_sound(snd_chest, 0, false);
+    
+    //Unlock it and remember it
+    with (other) {
+    
+        locked = 0;
+        ds_map_add(global.doors, id, 1);
+    }
+    
+    //Create dust
+    instance_create(x,y,obj_smoke);
+    
+    //Destroy
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="14">
       <action>
         <libid>1</libid>

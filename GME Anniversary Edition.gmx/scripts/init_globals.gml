@@ -48,6 +48,9 @@ global.redcoins = 0;
 //Current Player
 global.player = 0;
 
+//Whether the player died on a level
+global.died = 0;
+
 //Display 'Mario Start!'
 global.mariostart = false;
 
@@ -55,6 +58,7 @@ global.mariostart = false;
 //0: No clear
 //1: Clear
 //2: Clear (Secret Exit)
+//3: Clear (Exit from side)
 global.clear = 0;
 
 //Berries

@@ -1,8 +1,8 @@
-///scr_inice()
+///isinice()
 
 /*
 **  Usage:
-**      scr_inice()
+**      isinice()
 **
 **  Purpose:
 **      Doubles animation speed when in contact with a slippery surface

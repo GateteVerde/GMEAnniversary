@@ -16,7 +16,7 @@
 */
 
 //Set the palette
-pal_swap_set(player_palette_get(), isflashing);
+pal_swap_set(spr_palette_mario, isflashing);
 
 //Draw the player
 draw_sprite_ext(argument[0],argument[1],round(argument[2]),round(argument[3])+1,image_xscale,1,0,c_white,image_alpha);

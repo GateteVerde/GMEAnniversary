@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="24" name="datafiles">
-    <datafiles number="24" name="music">
+  <datafiles number="25" name="datafiles">
+    <datafiles number="25" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -89,6 +89,23 @@
           </Config>
         </ConfigOptions>
         <filename>map2.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>miss.ogg</name>
+        <exists>-1</exists>
+        <size>33453</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>miss.ogg</filename>
       </datafile>
       <datafile>
         <name>pswitch.ogg</name>
@@ -255,6 +272,7 @@
     </sounds>
     <sounds name="Menu">
       <sound>sound\snd_drop</sound>
+      <sound>sound\snd_enterstage</sound>
       <sound>sound\snd_hurry</sound>
       <sound>sound\snd_inventory</sound>
       <sound>sound\snd_message</sound>
@@ -815,6 +833,7 @@
       <sprite>sprites\spr_mapmario_yoshi</sprite>
       <sprite>sprites\spr_mapmario_yoshi_water</sprite>
       <sprite>sprites\spr_mapmario_arrows</sprite>
+      <sprite>sprites\spr_mapmario_events</sprite>
       <sprites name="Paths">
         <sprites name="Misc">
           <sprite>sprites\spr_mapbridge_h</sprite>
@@ -838,6 +857,8 @@
       </sprites>
       <sprites name="Panels">
         <sprite>sprites\spr_mapstart</sprite>
+        <sprite>sprites\spr_maplevel</sprite>
+        <sprite>sprites\spr_maplevel_red</sprite>
       </sprites>
       <sprites name="Decoration">
         <sprites name="Liquids">
@@ -1308,47 +1329,28 @@
   <scripts name="scripts">
     <scripts name="Player">
       <scripts name="Animation">
-        <scripts name="Mario">
-          <script>scripts\scr_mario_walk.gml</script>
-          <script>scripts\scr_mario_jump.gml</script>
-          <script>scripts\scr_mario_run.gml</script>
-          <script>scripts\scr_mario_runjump.gml</script>
-          <script>scripts\scr_mario_skid.gml</script>
-          <script>scripts\scr_mario_climb.gml</script>
-          <script>scripts\scr_mario_swim.gml</script>
-          <script>scripts\scr_mario_swim2.gml</script>
-          <script>scripts\scr_mario_swim3.gml</script>
-          <script>scripts\scr_mario_carry.gml</script>
-          <script>scripts\scr_mario_hold.gml</script>
-          <script>scripts\scr_mario_hold2.gml</script>
-          <script>scripts\scr_mario_duck.gml</script>
-          <script>scripts\scr_mario_goal.gml</script>
-          <script>scripts\scr_mario_spin.gml</script>
-          <script>scripts\scr_mario_spin2.gml</script>
-          <script>scripts\scr_mario_shoot.gml</script>
-          <script>scripts\scr_mario_slide.gml</script>
-          <script>scripts\scr_mario_kick.gml</script>
-          <script>scripts\scr_mario_clear.gml</script>
-          <script>scripts\scr_mario_walljump.gml</script>
-          <script>scripts\scr_mario_ride.gml</script>
-        </scripts>
-        <scripts name="Global">
-          <scripts name="Attacks">
-            <script>scripts\scr_global_dropdown.gml</script>
-            <script>scripts\scr_global_tailspin.gml</script>
-          </scripts>
-          <scripts name="States">
-            <script>scripts\scr_global_pull.gml</script>
-            <script>scripts\scr_global_pull2.gml</script>
-            <script>scripts\scr_global_wallrun.gml</script>
-          </scripts>
-          <script>scripts\scr_global_warp.gml</script>
-          <script>scripts\scr_global_door.gml</script>
-          <script>scripts\scr_global_jump.gml</script>
-          <script>scripts\scr_global_climb.gml</script>
-          <script>scripts\scr_global_transform.gml</script>
-        </scripts>
-        <script>scripts\scr_inice.gml</script>
+        <script>scripts\scr_mario_walk.gml</script>
+        <script>scripts\scr_mario_jump.gml</script>
+        <script>scripts\scr_mario_run.gml</script>
+        <script>scripts\scr_mario_runjump.gml</script>
+        <script>scripts\scr_mario_skid.gml</script>
+        <script>scripts\scr_mario_climb.gml</script>
+        <script>scripts\scr_mario_swim.gml</script>
+        <script>scripts\scr_mario_swim2.gml</script>
+        <script>scripts\scr_mario_swim3.gml</script>
+        <script>scripts\scr_mario_carry.gml</script>
+        <script>scripts\scr_mario_hold.gml</script>
+        <script>scripts\scr_mario_hold2.gml</script>
+        <script>scripts\scr_mario_duck.gml</script>
+        <script>scripts\scr_mario_goal.gml</script>
+        <script>scripts\scr_mario_spin.gml</script>
+        <script>scripts\scr_mario_spin2.gml</script>
+        <script>scripts\scr_mario_shoot.gml</script>
+        <script>scripts\scr_mario_slide.gml</script>
+        <script>scripts\scr_mario_kick.gml</script>
+        <script>scripts\scr_mario_clear.gml</script>
+        <script>scripts\scr_mario_walljump.gml</script>
+        <script>scripts\scr_mario_ride.gml</script>
       </scripts>
       <scripts name="Behaviour">
         <scripts name="Special">
@@ -1361,6 +1363,7 @@
         <script>scripts\scr_player_behaviour_swim.gml</script>
         <script>scripts\scr_player_behaviour_slide.gml</script>
       </scripts>
+      <script>scripts\isinice.gml</script>
       <script>scripts\canpull.gml</script>
       <script>scripts\canhold.gml</script>
       <script>scripts\player_retrieve.gml</script>
@@ -1573,7 +1576,6 @@
             <script>scripts\pal_swap_get_pal_count.gml</script>
           </scripts>
           <script>scripts\palette_get.gml</script>
-          <script>scripts\player_palette_get.gml</script>
         </scripts>
       </scripts>
       <scripts name="Text">
@@ -1599,6 +1601,8 @@
       <objects name="Controllers">
         <object>objects\obj_levelcontrol</object>
         <object>objects\obj_bganimator</object>
+        <object>objects\obj_tilehider</object>
+        <object>objects\obj_gotomap</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_player_warp</object>
@@ -1625,6 +1629,7 @@
         <object>objects\obj_ceilslope_sl</object>
       </objects>
       <object>objects\obj_hurtmask</object>
+      <object>objects\obj_hurtmask_square</object>
     </objects>
     <objects name="Blocks">
       <objects name="Item Blocks">
@@ -1721,6 +1726,7 @@
       </objects>
       <objects name="Panels">
         <object>objects\obj_mapstart</object>
+        <object>objects\obj_maplevel</object>
       </objects>
       <objects name="Decoration">
         <objects name="Liquids">
@@ -1987,12 +1993,10 @@
           <objects name="Skins">
             <object>objects\obj_mario</object>
           </objects>
-          <objects name="States">
-            <object>objects\obj_player_dead</object>
-            <object>objects\obj_player_door</object>
-            <object>objects\obj_player_warpnote</object>
-          </objects>
+          <object>objects\obj_player_warpnote</object>
           <object>objects\obj_player_transform</object>
+          <object>objects\obj_player_dead</object>
+          <object>objects\obj_player_door</object>
           <object>objects\obj_puller</object>
           <object>objects\obj_statue</object>
           <object>objects\obj_spinner</object>
@@ -2194,6 +2198,7 @@
           <room>rooms\rm_minigame_smw_a</room>
         </rooms>
       </rooms>
+      <room>rooms\rm_gameover</room>
     </rooms>
   </rooms>
   <constants number="43">

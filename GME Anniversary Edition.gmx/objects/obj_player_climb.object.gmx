@@ -133,7 +133,7 @@ if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
     isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(player_palette_get())-1)
+    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
         isflashing = 0;
     
     //Repeat the process.
@@ -172,7 +172,7 @@ else {
             <string>///Player climb logic
 
 //Update sprite
-scr_global_climb();
+scr_mario_climb();
 
 //If the player is about to climb up
 if (ready == false) {
@@ -232,7 +232,7 @@ else {
             <string>///Draw player
 
 //Set the palette
-pal_swap_set(player_palette_get(), isflashing);
+pal_swap_set(spr_palette_mario, isflashing);
 
 //Draw the player
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,image_xscale,1,0,c_white,image_alpha);

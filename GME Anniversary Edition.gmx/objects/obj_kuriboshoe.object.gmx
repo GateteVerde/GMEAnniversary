@@ -421,7 +421,7 @@ instance_destroy();
 if (instance_exists(obj_playerparent)) {
     
     //Set the shader
-    pal_swap_set(player_palette_get(), obj_playerparent.isflashing);
+    pal_swap_set(spr_palette_mario, obj_playerparent.isflashing);
     
     //Only draw if the player is not crouched down
     if (obj_playerparent.crouch == false) {

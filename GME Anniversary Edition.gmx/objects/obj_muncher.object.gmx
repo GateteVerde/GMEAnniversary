@@ -31,7 +31,7 @@
 image_speed = 0.15;
 
 //Hurt mask
-myhurt = instance_create(x,y-16,obj_hurtmask);
+myhurt = instance_create(x,y,obj_hurtmask_square);
 </string>
           </argument>
         </arguments>

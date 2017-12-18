@@ -40,7 +40,20 @@ switch (global.powerup) {
         image_speed = 0.2;
         
         //Set the sprite
-        sprite_index = scr_global_tailspin();        
+        sprite_index = spr_mario_cat_attack2;        
+    } break;
+    
+    //Tanooki
+    case (cs_tanooki): {
+    
+        //Play 'Spin' sound
+        audio_play_sound(snd_spin, 0, false);
+        
+        //Set the speed
+        image_speed = 0.3;
+        
+        //Set the sprite
+        sprite_index = spr_mario_tanooki_attack;
     } break;
     
     //Default
@@ -53,7 +66,7 @@ switch (global.powerup) {
         image_speed = 0.3;
         
         //Set the sprite
-        sprite_index = scr_global_tailspin();
+        sprite_index = spr_mario_raccoon_attack;
     } break;
 }
 
@@ -227,7 +240,7 @@ instance_destroy();
             <string>///Draw
 
 //Set the shader
-pal_swap_set(player_palette_get(),obj_playerparent.isflashing)
+pal_swap_set(spr_palette_mario,obj_playerparent.isflashing)
 
 //Draw spinner
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha);

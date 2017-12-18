@@ -31,6 +31,10 @@ music_setup(global._theme_map1, "Map 1", 1);
 global._theme_map2 = music_add("Map 2");
 music_setup(global._theme_map2, "Map 2", 1);
 
+//Miss
+global._theme_miss = music_add("Miss");
+music_setup(global._theme_miss, "Miss", 2);
+
 //PSwitch
 global._theme_pswitch = music_add("PSwitch");
 music_setup(global._theme_pswitch, "PSwitch", 3);
