@@ -1366,23 +1366,49 @@ if (invulnerable == false) {
 
     //If the player is riding something
     if (global.mount &gt; 0) {
-        
-        //If the player is riding a yoshi, scare yoshi
-        if (global.mount == 1) {
-
-            with (obj_yoshi) {
+    
+        //If the player is riding a shoe, destroy shoe
+        if (global.mount == 2) {
             
-                //Create a scared yoshi
-                with (instance_create(x,y,obj_yoshi_runaway)) colour = other.colour;
+            //With the shoe
+            with (obj_kuriboshoe) {
+            
+                //Create flying shoe
+                with (instance_create(x,y,obj_kuriboshoe_lost)) {
+                
+                    image_xscale = obj_playerparent.xscale;
+                    hspeed = obj_playerparent.xscale*-1;
+                }
                 
                 //Destroy
                 instance_destroy();
             }
-            
+        
             //Make Mario invincible for a while.
             invulnerable = true;
             alarm[0] = 90;
-            alarm[1] = 1;        
+            alarm[1] = 1;                 
+        }
+        
+        else {
+        
+            //If the player is riding a yoshi, scare yoshi
+            if (global.mount == 1) {
+    
+                with (obj_yoshi) {
+                
+                    //Create a scared yoshi
+                    with (instance_create(x,y,obj_yoshi_runaway)) colour = other.colour;
+                    
+                    //Destroy
+                    instance_destroy();
+                }
+                
+                //Make Mario invincible for a while.
+                invulnerable = true;
+                alarm[0] = 90;
+                alarm[1] = 1;        
+            }
         }
     }
     

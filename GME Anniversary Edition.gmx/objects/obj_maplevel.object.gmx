@@ -199,6 +199,7 @@ event_inherited();
 //If the player can move...
 if (other.speed == 0)
 &amp;&amp; (other.ready == 0)
+&amp;&amp; (other.letsgo == 0)
 
 //...and there's no openers around
 &amp;&amp; (instance_number(obj_opener) == 0) {

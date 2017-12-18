@@ -204,13 +204,10 @@ if (obj_playerparent.holding == 0)
     }    
     
     //Play 'Transform' sound
-    audio_play_sound(snd_transform, 0, false);
+    audio_play_sound(snd_stomp, 0, false);
     
     //Create shoe
     instance_create(x,y,obj_kuriboshoe);
-    
-    //Create smoke at position
-    with (instance_create(x-8,y-8,obj_smoke)) sprite_index = spr_smoke_b;
     
     //Destroy
     instance_destroy();

@@ -6,7 +6,7 @@
   <depth>-6</depth>
   <persistent>0</persistent>
   <parentName>obj_powblock_up</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_basketmask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -192,15 +192,15 @@ else {
 }
 
 //If the player is moving up
-if (vspeed &lt;= 0)
-&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)) 
-|| (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
+if (vspeed &lt; 0)
+&amp;&amp; ((collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_solid,1,0)) 
+|| (collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_ceilslopeparent,1,0))) {
     
     //Prevent the player's head from getting stuck on a ceiling.
     if (vspeed != 0) {
 
-        while ((collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0))
-        || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
+        while ((collision_rectangle(bbox_left+1,bbox_top,bbox_right-1,bbox_top,obj_solid,1,0))
+        || (collision_rectangle(bbox_left+1,bbox_top,bbox_right-1,bbox_top,obj_ceilslopeparent,1,0)))
             y++;
     }
     

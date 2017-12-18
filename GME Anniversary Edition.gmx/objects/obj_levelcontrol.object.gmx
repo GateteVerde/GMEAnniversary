@@ -48,7 +48,7 @@ musicdisable = 0
 
 //Manage barrier
 barrier = 1;
-alarm[6] = 3;
+alarm[7] = 3;
 
 //PSwitch is on?
 switchon = 0;
@@ -59,7 +59,7 @@ for (i=0; i&lt;8; i++;) {
     bg[i] = noone;
     fg[i] = background_foreground[i];
 }
-alarm[7] = 1;
+alarm[8] = 1;
 
 //Screen shake
 shake = 0;
@@ -80,7 +80,7 @@ instance_create(0,0,obj_hud);
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="10">
+    <event eventtype="2" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -120,7 +120,7 @@ with (obj_eblock) event_user(1);
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="9">
+    <event eventtype="2" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -167,7 +167,7 @@ with (obj_qswitchblock) {
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="8">
+    <event eventtype="2" enumb="9">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -193,7 +193,7 @@ audio_stop_sound(snd_timer);
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="7">
+    <event eventtype="2" enumb="8">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -233,7 +233,7 @@ repeat (8) {
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="6">
+    <event eventtype="2" enumb="7">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -258,7 +258,7 @@ barrier = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="5">
+    <event eventtype="2" enumb="6">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -281,7 +281,7 @@ barrier = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="4">
+    <event eventtype="2" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -326,6 +326,33 @@ if (switchon) {
     else
         alarm[0] = 2;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Kill the player
+
+instance_create(obj_playerparent.x,obj_playerparent.y,obj_player_dead);
+with (obj_playerparent) instance_destroy();
+exit;
 </string>
           </argument>
         </arguments>
@@ -400,7 +427,7 @@ if (instance_exists(obj_playerparent)) {
             
         //Kill the player at 0 seconds
         else if (global.time == 1)
-            alarm[4] = 50;
+            alarm[3] = 50;
     }
 }
 
@@ -730,7 +757,7 @@ if (barrier == 0)
     &amp;&amp; (global.reserve &gt; cs_small)) {
     
         //Drop the reserve item
-        event_user(0);
+        event_user(1);
     }
 }
 
@@ -810,8 +837,8 @@ if (!audio_is_playing(snd_timer)) then audio_play_sound(snd_timer, 0, true);
 
 //Activate E-Switch events
 with (obj_eblock) event_user(0);
-alarm[8] = 720;
-alarm[10] = 900; 
+alarm[9] = 720;
+alarm[11] = 900; 
 </string>
           </argument>
         </arguments>
@@ -843,8 +870,8 @@ if (audio_is_playing(snd_timer_end)) then audio_stop_sound(snd_timer_end);
 if (!audio_is_playing(snd_timer)) then audio_play_sound(snd_timer, 0, true);
 
 //Activate ?-Switch events
-alarm[8] = 720;
-alarm[9] = 900; 
+alarm[9] = 720;
+alarm[10] = 900; 
 </string>
           </argument>
         </arguments>

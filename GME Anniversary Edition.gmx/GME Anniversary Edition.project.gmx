@@ -252,6 +252,7 @@
       <sound>sound\snd_hatch</sound>
       <sound>sound\snd_mystery</sound>
       <sound>sound\snd_pop</sound>
+      <sound>sound\snd_powerlost</sound>
       <sound>sound\snd_powerup</sound>
       <sound>sound\snd_redcoin</sound>
       <sound>sound\snd_redcoin2</sound>
@@ -2049,6 +2050,7 @@
                 <objects name="Shoes">
                   <object>objects\obj_getshoe</object>
                   <object>objects\obj_kuriboshoe</object>
+                  <object>objects\obj_kuriboshoe_lost</object>
                   <object>objects\obj_kuriboshoe_movement</object>
                 </objects>
                 <object>objects\obj_stomp</object>

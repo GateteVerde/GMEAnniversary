@@ -27,8 +27,10 @@
             <kind>1</kind>
             <string>///Warp to another room
 
-//Stop music that is being played
+//Stop music streams
 FMODInstanceStop(global._stream);
+FMODInstanceStop(global._stream_pswitch);
+FMODInstanceStop(global._stream_starman);
 
 //Do special clear sequence
 global.clear = 3;

@@ -573,6 +573,7 @@ if (speed &gt; 0)
 
 //If the inventory is opened or the player can't move and the paths are opening or the save menu is showing.
 if (ready)
+|| (letsgo)
 || (instance_number(obj_opener) &gt; 0)
 || (instance_number(obj_savemenu) &gt; 0)
     exit;

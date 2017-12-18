@@ -1062,6 +1062,9 @@ with (instance_create(x,y,obj_yoshi_abandon)) {
     
     //Vertical speed
     vspeed = 1;
+    
+    //Move the player up
+    obj_playerparent.y -= 16;
 
     //Set the frame
     if (instance_exists(obj_playerparent)) {

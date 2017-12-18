@@ -110,7 +110,7 @@ if (player)
         //Activate switch events
         with (obj_levelcontrol) {
         
-            alarm[4] = 800;
+            alarm[5] = 800;
             event_user(5);
         }    
     }
