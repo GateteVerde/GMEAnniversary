@@ -761,6 +761,11 @@ if (barrier == 0)
     }
 }
 
+//Make sure to reset the mount colour
+if (global.mount == 0)
+&amp;&amp; (global.mountcolour &gt; 0)
+    global.mountcolour = 0;
+
 //Deactivate instances outside the view
 instance_deactivate_object(obj_deactivateparent);
 

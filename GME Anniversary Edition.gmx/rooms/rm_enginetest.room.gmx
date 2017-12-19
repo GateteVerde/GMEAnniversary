@@ -4,13 +4,13 @@
   <width>768</width>
   <height>432</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>global.skin = 1;</code>
+  <code></code>
   <enableViews>0</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -79,8 +79,16 @@
     <instance objName="obj_qblock" x="352" y="240" name="inst_ACE69975" locked="0" code="sprout = cs_coin_s;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="400" y="240" name="inst_E3D44C29" locked="0" code="sprout = cs_coin_s;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="448" y="240" name="inst_968E1123" locked="0" code="sprout = cs_coin_s;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_starman" x="72" y="320" name="inst_ECF37321" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_starman" x="696" y="320" name="inst_19DB8B2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_up" x="528" y="304" name="inst_1E23E734" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_up" x="192" y="304" name="inst_3F31647D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="192" y="304" name="inst_AEC511BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="528" y="304" name="inst_45DA08A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_down" x="192" y="192" name="inst_08D20AC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_down" x="528" y="192" name="inst_2B437F82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ferrisplatform_3x" x="96" y="160" name="inst_B37A0062" locked="0" code="turn = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ferrisplatform_3x" x="656" y="160" name="inst_6BF51E41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="64" y="320" name="inst_891195BA" locked="0" code="sprout = cs_star;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="688" y="320" name="inst_0C2FB942" locked="0" code="sprout = cs_star;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_bush_large" x="48" y="304" w="144" h="80" xo="0" yo="0" id="10007591" name="inst_BE318BD4" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

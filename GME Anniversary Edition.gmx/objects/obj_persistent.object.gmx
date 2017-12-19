@@ -236,82 +236,69 @@ window_center();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Update the view values
+            <string>///Handle various in-game variables
 
-//Set the view width and height
+//Gamepad support
+var index = 4;
+
+//If there is a gamepad connected and the window is visible
+if (gamepad_is_connected(index)) &amp;&amp; (window_has_focus()) {
+
+    //L-Stick Left / D-Pad Left
+    if (gamepad_axis_value(index,gp_axislh) &lt;= -0.4) || (gamepad_button_check(index, gp_padl)) then keyboard_key_press(global.leftkey);       
+    else keyboard_key_release(global.leftkey);
+    
+    //L-Stick Right / D-Pad Right
+    if (gamepad_axis_value(index,gp_axislh) &gt;= 0.4) || (gamepad_button_check(index, gp_padr)) then keyboard_key_press(global.rightkey);
+    else keyboard_key_release(global.rightkey);
+    
+    //L-Stick Up / D-Pad Up
+    if (gamepad_axis_value(index,gp_axislh) &lt;= -0.4) || (gamepad_button_check(index, gp_padu)) then keyboard_key_press(global.upkey);
+    else keyboard_key_release(global.upkey);
+    
+    //L-Stick Down / D-Pad Down
+    if (gamepad_axis_value(index,gp_axislh) &lt;= -0.4) || (gamepad_button_check(index, gp_padd)) then keyboard_key_press(global.downkey);
+    else keyboard_key_release(global.downkey);
+    
+    //A Button / B Button (Shift)
+    if ((gamepad_button_check(index,gp_face2)) || (gamepad_button_check(index,gp_face1))) then keyboard_key_press(global.shiftkey);
+    else keyboard_key_release(global.shiftkey);
+    
+    //X Button / Y Button (Control)
+    if ((gamepad_button_check(index,gp_face4)) || (gamepad_button_check(index,gp_face3))) then keyboard_key_press(global.controlkey);
+    else keyboard_key_release(global.controlkey);
+    
+    //Start Key
+    if (gamepad_button_check(index,gp_start)) then (keyboard_key_press(global.enterkey))
+    else keyboard_key_release(global.enterkey);
+    
+    //Select Key
+    if (gamepad_button_check(index,gp_select)) then (keyboard_key_press(global.spacekey))
+    else keyboard_key_release(global.spacekey);        
+}
+
+//Update wport
 view_wport[0] = global.gw;
-view_hport[0] = global.gh;
-view_wview[0] = global.gw;
-view_hview[0] = global.gh;
 
-//Set the view borders
+//Update hport
+view_hport[0] = global.gh;
+
+//Update wview
+view_wview[0] = global.gw;
+
+//Update hview
+view_hview[0] = global.gh; 
+
+//Update hborder
 view_hborder[0] = global.gw/2;
+
+//Update vborder
 view_vborder[0] = global.gh/2;
 
-//Enable views
+//Enable views always and make sure that view 0 is always visible.
 view_enabled = true;
-
-//Make sure view 0 is always visible
-if (!view_visible[0])
+if (view_visible[0] == false)
     view_visible[0] = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Make sure certain values don't go too high
-
-//Lives limit
-if (lives &gt; 99) 
-    lives = 99;
-
-//Score limit
-if (score &gt; 99999990) 
-    score = 99999990;
-
-//Set default health limit if below 4
-if (health &lt; 4)
-&amp;&amp; (global.healthmax == 6)
-    global.healthmax = 3;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Make the screen shake when the 'Thwomp' sound plays
-
-if (!audio_is_playing(snd_thwomp))
-    alarm[11] = 2;
 </string>
           </argument>
         </arguments>
