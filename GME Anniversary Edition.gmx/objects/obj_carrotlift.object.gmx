@@ -93,7 +93,7 @@ if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerpa
         ready = 1;
         
         //Move up
-        vspeed = -2;
+        vspeed = -1.5;
     }
 
     //Check for a moving platform

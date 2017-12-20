@@ -128,7 +128,9 @@ canpick = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//If the item is not held
+            <string>///Make the player ride the shoe or hold it
+
+//If the item is not held
 if (!held) {
 
     //If the player is above and moving down, enter the shoe

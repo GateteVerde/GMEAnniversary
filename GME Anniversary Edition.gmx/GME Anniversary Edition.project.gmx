@@ -1072,9 +1072,10 @@
           <sprite>sprites\spr_movingpipe</sprite>
           <sprite>sprites\spr_skullraft</sprite>
         </sprites>
+        <sprite>sprites\spr_rope</sprite>
+        <sprite>sprites\spr_bumper</sprite>
         <sprite>sprites\spr_conveyor</sprite>
         <sprite>sprites\spr_yoshiplatform</sprite>
-        <sprite>sprites\spr_rope</sprite>
         <sprite>sprites\spr_pulleyplatform</sprite>
         <sprite>sprites\spr_pulleyplatform_32x</sprite>
         <sprite>sprites\spr_pulleyplatform_64x</sprite>
@@ -1887,6 +1888,7 @@
           <object>objects\obj_movingpipe</object>
           <object>objects\obj_skullraft</object>
         </objects>
+        <object>objects\obj_bumper</object>
         <object>objects\obj_conveyor_l</object>
         <object>objects\obj_conveyor_r</object>
         <object>objects\obj_yoshiplatform</object>

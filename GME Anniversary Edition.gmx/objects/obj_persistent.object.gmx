@@ -269,11 +269,11 @@ if (gamepad_is_connected(index)) &amp;&amp; (window_has_focus()) {
     else keyboard_key_release(global.controlkey);
     
     //Start Key
-    if (gamepad_button_check(index,gp_start)) then (keyboard_key_press(global.enterkey))
+    if (gamepad_button_check(index,gp_start)) then keyboard_key_press(global.enterkey);
     else keyboard_key_release(global.enterkey);
     
     //Select Key
-    if (gamepad_button_check(index,gp_select)) then (keyboard_key_press(global.spacekey))
+    if (gamepad_button_check(index,gp_select)) then keyboard_key_press(global.spacekey);
     else keyboard_key_release(global.spacekey);        
 }
 
@@ -295,10 +295,21 @@ view_hborder[0] = global.gw/2;
 //Update vborder
 view_vborder[0] = global.gh/2;
 
-//Enable views always and make sure that view 0 is always visible.
+//Enable views if not enabled
 view_enabled = true;
-if (view_visible[0] == false)
-    view_visible[0] = true;
+
+//Make view 0 visible if not visible
+view_visible[0] = true;
+
+//Make sure lives don't go over 99
+if (lives &gt; 99) then lives = 99;
+
+//Make sure score don't go over 9999999990
+if (score &gt; 9999999990) then score = 9999999990;
+
+//Make the screen shake when the 'Thwomp' sound plays
+if (!audio_is_playing(snd_thwomp))
+    alarm[11] = 2;
 </string>
           </argument>
         </arguments>
@@ -749,7 +760,20 @@ if (fps &lt; 60)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Do not draw
+            <string>///Draw background if the window has not focus
+
+//If the background exists
+if (background_exists(back)) {
+
+    //Disable alpha blending.
+    draw_enable_alphablend(0);
+    
+    //Draw the screenshot
+    draw_background(back,view_xview[0],view_yview[0]);
+    
+    //Enable alpha blending.
+    draw_enable_alphablend(1);
+}
 </string>
           </argument>
         </arguments>
