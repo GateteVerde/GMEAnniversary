@@ -2,15 +2,15 @@
 <sprite>
   <type>0</type>
   <xorig>0</xorig>
-  <yorigin>0</yorigin>
-  <colkind>0</colkind>
+  <yorigin>4</yorigin>
+  <colkind>1</colkind>
   <coltolerance>0</coltolerance>
-  <sepmasks>-1</sepmasks>
+  <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
   <bbox_right>15</bbox_right>
-  <bbox_top>1</bbox_top>
-  <bbox_bottom>23</bbox_bottom>
+  <bbox_top>0</bbox_top>
+  <bbox_bottom>15</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -18,8 +18,9 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>16</width>
-  <height>24</height>
+  <height>20</height>
   <frames>
-    <frame index="0">images\spr_pit_0.png</frame>
+    <frame index="0">images\spr_mappanel_switch_y_0.png</frame>
+    <frame index="1">images\spr_mappanel_switch_y_1.png</frame>
   </frames>
 </sprite>

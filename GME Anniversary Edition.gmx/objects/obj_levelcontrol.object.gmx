@@ -1459,7 +1459,7 @@ repeat (8) {
 }
 
 //Draw pit marker
-draw_sprite_ext(spr_pit, 0, 0, room_height-24, room_width/16, 1, 0, background_blend[0], 0.5);
+draw_background_ext(bgr_pit, 0, room_height-32, room_width/16, 1, 0, background_blend[0], 0.5);
 </string>
           </argument>
         </arguments>

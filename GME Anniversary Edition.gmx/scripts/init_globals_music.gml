@@ -39,6 +39,14 @@ music_setup(global._theme_miss, "Miss", 2);
 global._theme_pswitch = music_add("PSwitch");
 music_setup(global._theme_pswitch, "PSwitch", 3);
 
+//SMW - Clear A
+global._theme_smwcleara = music_add("SMW - Clear A");
+music_setup(global._theme_smwcleara, "SMW - Clear A", 2);
+
+//SMW - Clear B
+global._theme_smwclearb = music_add("SMW - Clear B");
+music_setup(global._theme_smwclearb, "SMW - Clear B", 2);
+
 //Starman
 global._theme_starman = music_add("Starman");
 music_setup(global._theme_starman, "Starman", 3);

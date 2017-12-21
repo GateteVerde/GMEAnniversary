@@ -34,7 +34,7 @@ pal_swap_init_system(shd_palette_swapper);
 global.flighttime = 4;
 
 //Health Mode
-global.healthmode = 0;
+global.healthmode = 1;
 
 //Cat climb time
 global.cattime = 3;
@@ -149,6 +149,7 @@ else {
 if (addlives &gt; 0) {
 
     //Play '1up' sound
+    audio_stop_sound(snd_1up);
     audio_play_sound(snd_1up, 0, false);
 
     //Add a life
@@ -290,7 +291,8 @@ view_wview[0] = global.gw;
 view_hview[0] = global.gh; 
 
 //Update hborder
-view_hborder[0] = (global.gw/2)-8;
+if (instance_exists(obj_levelcontrol)) then view_hborder[0] = (global.gw/2)-8;
+else view_hborder[0] = global.gw/2;
 
 //Update vborder
 view_vborder[0] = global.gh/2;

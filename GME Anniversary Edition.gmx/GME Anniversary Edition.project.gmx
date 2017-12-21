@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="25" name="datafiles">
-    <datafiles number="25" name="music">
+  <datafiles number="27" name="datafiles">
+    <datafiles number="27" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -123,6 +123,40 @@
           </Config>
         </ConfigOptions>
         <filename>pswitch.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>smwclear.ogg</name>
+        <exists>-1</exists>
+        <size>63607</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>smwclear.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>smwclear2.ogg</name>
+        <exists>-1</exists>
+        <size>142540</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>smwclear2.ogg</filename>
       </datafile>
       <datafile>
         <name>starman.ogg</name>
@@ -272,6 +306,7 @@
       <sound>sound\snd_warning</sound>
     </sounds>
     <sounds name="Menu">
+      <sound>sound\snd_castlebreak</sound>
       <sound>sound\snd_drop</sound>
       <sound>sound\snd_enterstage</sound>
       <sound>sound\snd_hurry</sound>
@@ -834,7 +869,6 @@
       <sprite>sprites\spr_mapmario_yoshi</sprite>
       <sprite>sprites\spr_mapmario_yoshi_water</sprite>
       <sprite>sprites\spr_mapmario_arrows</sprite>
-      <sprite>sprites\spr_mapmario_events</sprite>
       <sprites name="Paths">
         <sprites name="Misc">
           <sprite>sprites\spr_mapbridge_h</sprite>
@@ -860,6 +894,10 @@
         <sprite>sprites\spr_mapstart</sprite>
         <sprite>sprites\spr_maplevel</sprite>
         <sprite>sprites\spr_maplevel_red</sprite>
+        <sprite>sprites\spr_mappanel_switch_y</sprite>
+        <sprite>sprites\spr_mappanel_switch_g</sprite>
+        <sprite>sprites\spr_mappanel_switch_r</sprite>
+        <sprite>sprites\spr_mappanel_switch_b</sprite>
       </sprites>
       <sprites name="Decoration">
         <sprites name="Liquids">
@@ -1264,9 +1302,12 @@
         <sprite>sprites\spr_palette_score</sprite>
         <sprite>sprites\spr_palette_null</sprite>
       </sprites>
-      <sprite>sprites\spr_pit</sprite>
       <sprite>sprites\spr_talk</sprite>
       <sprite>sprites\spr_mariostart</sprite>
+      <sprite>sprites\spr_palaceswitch_y</sprite>
+      <sprite>sprites\spr_palaceswitch_g</sprite>
+      <sprite>sprites\spr_palaceswitch_r</sprite>
+      <sprite>sprites\spr_palaceswitch_b</sprite>
     </sprites>
     <sprite>sprites\spr_up</sprite>
     <sprite>sprites\spr_down</sprite>
@@ -1312,6 +1353,7 @@
         <background>background\bgr_tileset_smw</background>
         <background>background\bgr_tileset_smw_pipes</background>
       </backgrounds>
+      <background>background\bgr_pit</background>
     </backgrounds>
     <backgrounds name="Map">
       <backgrounds name="Tile Sets">
@@ -1730,6 +1772,10 @@
       <objects name="Panels">
         <object>objects\obj_mapstart</object>
         <object>objects\obj_maplevel</object>
+        <object>objects\obj_maplevel_switch_y</object>
+        <object>objects\obj_maplevel_switch_g</object>
+        <object>objects\obj_maplevel_switch_r</object>
+        <object>objects\obj_maplevel_switch_b</object>
       </objects>
       <objects name="Decoration">
         <objects name="Liquids">
@@ -1965,6 +2011,12 @@
       <object>objects\obj_warpcannon_big</object>
     </objects>
     <objects name="Special">
+      <objects name="Bonus">
+        <objects name="Switch Palaces">
+          <object>objects\obj_palacemsg</object>
+          <object>objects\obj_palaceswitch</object>
+        </objects>
+      </objects>
       <objects name="Parents">
         <objects name="Players">
           <object>objects\obj_playerparent</object>
@@ -2204,6 +2256,10 @@
         </rooms>
       </rooms>
       <room>rooms\rm_gameover</room>
+      <room>rooms\rm_switchpalace_y</room>
+      <room>rooms\rm_switchpalace_g</room>
+      <room>rooms\rm_switchpalace_r</room>
+      <room>rooms\rm_switchpalace_b</room>
     </rooms>
   </rooms>
   <constants number="43">

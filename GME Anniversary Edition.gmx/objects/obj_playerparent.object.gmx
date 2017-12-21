@@ -180,10 +180,11 @@ instance_create(0,0,obj_marker_bottom);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Stop both 'Skid' and 'Climb' sound
+            <string>///Stop sounds
 
 audio_stop_sound(snd_skid);
 audio_stop_sound(snd_climb);
+audio_stop_sound(snd_pmeter);
 </string>
           </argument>
         </arguments>

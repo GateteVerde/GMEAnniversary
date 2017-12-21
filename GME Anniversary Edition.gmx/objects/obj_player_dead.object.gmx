@@ -40,6 +40,9 @@ with (obj_levelcontrol) {
 //Subtract a life
 lives--;
 
+//Remove health
+health = 0;
+
 //Jump
 alarm[0] = 60;
 
