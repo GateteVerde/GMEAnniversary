@@ -6,7 +6,7 @@
   <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_sproutmask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -814,7 +814,7 @@ if (hspeed &lt; 0) {
 //If moving down
 if (vspeed &lt; 0) {
 
-    if (y == other.y+8)
+    if (y == other.y+8) 
         hspeed = 1;
     if (y == other.y)
         vspeed = 0;
@@ -1048,7 +1048,7 @@ if (speed == 0)
 //If the player can't move
 if (ready == 1) {
 
-    draw_sprite_ext(spr_mapmario_events, 0,round(x),round(y)-4,1,1,0,c_white,1);
+    draw_sprite_ext(spr_mapmario_events, 0,round(x)-8,round(y)-4,1,1,0,c_white,1);
 }
 
 //Otherwise, if the player can move

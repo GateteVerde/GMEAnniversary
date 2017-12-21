@@ -504,6 +504,11 @@ yspeed += ygrav;
 if (global.powerup != cs_propeller)
 &amp;&amp; (stompstyle == 2)
     stompstyle = 1;
+    
+//Make sure the player does not spinjump when holding something
+if ((holding &gt; 0) &amp;&amp; (holding &lt; 4))
+&amp;&amp; (stompstyle &gt; 0)
+    stompstyle = 0;
 
 //Mute 'Bump' sound when climbing or when the player is swimming with the frog or penguin powerup
 if (state == 3)

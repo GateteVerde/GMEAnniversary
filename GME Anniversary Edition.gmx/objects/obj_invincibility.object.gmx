@@ -127,7 +127,7 @@ FMODInstanceStop(global._stream_starman);
 global._stream_starman = -1;
 
 //Play level music
-obj_levelcontrol.alarm[0] = 1;
+obj_levelcontrol.alarm[0] = 2;
 
 //Destroy
 alarm[1] = 60;

@@ -73,7 +73,6 @@
     <instance objName="obj_maptree" x="192" y="192" name="inst_F2E3CC39" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="192" y="224" name="inst_099DB339" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="272" y="272" name="inst_3F56B53F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_maptree" x="304" y="272" name="inst_661EC3DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="352" y="240" name="inst_DF9A0949" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="320" y="240" name="inst_46025007" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="304" y="240" name="inst_F8127FB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -178,7 +177,6 @@
     <instance objName="obj_mappath_h" x="320" y="224" name="inst_A22C2440" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_h" x="352" y="224" name="inst_C7D3C4B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_h" x="368" y="224" name="inst_6AEC37EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mappath_h" x="304" y="256" name="inst_1B44EAC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_h" x="304" y="288" name="inst_6984B9FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_h" x="288" y="288" name="inst_5579A544" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_h" x="272" y="288" name="inst_3D197189" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -194,7 +192,6 @@
     <instance objName="obj_mappath_v" x="256" y="176" name="inst_923FE3FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_v" x="336" y="208" name="inst_D70F6EE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_v" x="336" y="192" name="inst_28293A15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mappath_v" x="320" y="272" name="inst_43B6CE56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_v" x="256" y="304" name="inst_18A3A841" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_v" x="208" y="304" name="inst_7D300B2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_v" x="224" y="144" name="inst_6C109103" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -207,7 +204,6 @@
     <instance objName="obj_mappath_upright" x="256" y="192" name="inst_914CCC12" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_upright" x="224" y="160" name="inst_0AD709FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_upright" x="288" y="256" name="inst_5EA67F0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mappath_downleft" x="320" y="256" name="inst_193365E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_downleft" x="288" y="192" name="inst_D765EEEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_upleft" x="432" y="352" name="inst_602024C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_downright" x="208" y="288" name="inst_953A35EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -274,6 +270,10 @@
     <instance objName="obj_mapstart" x="256" y="288" name="inst_1BED6EDF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel" x="320" y="288" name="inst_55872592" locked="0" code="sprite_index = spr_maplevel_red;&#xA;levelname = &quot;engine test&quot;&#xA;exitdir = 0;&#xA;exitalt = 1;&#xA;myroom = rm_enginetest;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel" x="288" y="224" name="inst_6F0B7100" locked="0" code="sprite_index = spr_maplevel_red;&#xA;levelname = &quot;the same engine test as before&quot;&#xA;exitdir = 0;&#xA;exitalt = 1;&#xA;myroom = rm_enginetest;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappath_downleft" x="320" y="256" name="inst_CBDB1366" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappath_h" x="304" y="256" name="inst_ABF55AAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappath_v" x="320" y="272" name="inst_6CC37EB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maptree_alt_b" x="304" y="272" name="inst_D55CC302" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_map" x="112" y="320" w="16" h="16" xo="496" yo="448" id="10006996" name="inst_BFCC86D8" depth="11" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

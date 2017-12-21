@@ -30,13 +30,15 @@
 /*
 **  This item uses creation code!
 **
-**  leveltime = The time limit in seconds (Optional)
 **  levelmusic = The level music (Any sound resource you load in)
+**  leveltime = The time limit in seconds (Optional)
+**  camlock = Whether to lock the camera in place
 */
 
 //Default Values:
-leveltime = 0
-levelmusic = 0
+levelmusic = noone;
+leveltime = 0;
+camlock = 1;
 
 //Begin playing the music if the p-switch effect is not active or you did not carried a star from a previous room
 if (global.pswitch == 0)
@@ -66,9 +68,6 @@ alarm[8] = 1;
 
 //Screen shake
 shake = 0;
-
-//Camera orientation
-orientation = 1
 
 //Object to follow
 follow = noone;
@@ -377,6 +376,10 @@ if (switchon) {
             <kind>1</kind>
             <string>///Kill the player
 
+//Reset up the timer
+global.time = 0;
+
+//Kill the player
 instance_create(obj_playerparent.x,obj_playerparent.y,obj_player_dead);
 with (obj_playerparent) instance_destroy();
 exit;
@@ -454,7 +457,7 @@ if (instance_exists(obj_playerparent)) {
             
         //Kill the player at 0 seconds
         else if (global.time == 1)
-            alarm[3] = 50;
+            alarm[4] = 50;
     }
 }
 
@@ -594,9 +597,6 @@ event_user(2);
 
 //Follow main player
 if (instance_exists(obj_playerparent)) {
-
-    //Always stay relative to the player's Y position.
-    y = obj_playerparent.y;
         
     //Make sure the barrier is not active
     if (!barrier) {
@@ -669,75 +669,34 @@ if (instance_exists(obj_playerparent)) {
         &amp;&amp; (!obj_playerparent.disablecontrol)
             event_user(1);        
     }
-    
-    //Otherwise, snap normally and set no orientation
-    else {
-    
-        x = obj_playerparent.x;
-        if (orientation != 0)
-            orientation = 0;
-    }        
 }
 
 //Follow rest of player objects
 else if (instance_exists(follow)) {
 
-    //Always stay relative to the player's Y position.
-    y = follow.y;
+    //Check what object the camera must follow
+    event_user(15);
 
-    //If the barrier is not activated
-    if (!barrier) {
-
-        //If the player is moving to the left and the camera is panning to the right
-        if ((follow.hspeed &lt; 0) 
-        || (follow.x-xprevious &lt; 0))
-        &amp;&amp; (follow.x &lt; x-56) {
-        
-            //Make the camera pan to the left
-            orientation = -1;
-        }
-            
-        //Otherwise, if the player is moving to the right and the camera is panning to the left
-        else if ((follow.hspeed &gt; 0) 
-        || (follow.x-xprevious &gt; 0))
-        &amp;&amp; (follow.x &gt; x+56) {
-        
-            //Make the camera pan to the right
-            orientation = 1;
-        }
-            
-        //If the camera is to the right and the player is from a certain distance from the camera...
-        if ((orientation == 1) &amp;&amp; (follow.x &gt; x-32)) {
-        
-            //...scroll at a certain speed until the camera catches up...
-            if (follow.x &gt; x-28) 
-                x += 4+follow.hspeed;
-            
-            //...and lock the camera in place.
-            else 
-                x = follow.x+32
-        }
-        
-        //Otherwise, if the camera is to the left and the player is from a certain distance from the camera...
-        else if ((orientation = -1) &amp;&amp; (follow.x &lt; x+32)) {
-        
-            //...scroll at a certain speed until the camera catches up...
-            if (follow.x &lt; x+28) 
-                x -= 4-follow.hspeed;
-            
-            //...and lock the camera in place.
-            else 
-                x = follow.x-32;
-        }
+    //If the camera is locked.
+    if (camlock) {
+    
+        //Set the x position of the camera.
+        x = follow.x;
+    
+        //Set the y position of the camera.
+        if (view_yview[0] &lt; room_height-216)            
+            y = follow.y;
     }
     
-    //Otherwise, snap normally and set no orientation
+    //Otherwise, if it's not locked.
     else {
     
+        //Set the x position of the camera.
         x = follow.x;
-        if (orientation != 0)
-            orientation = 0;
-    }      
+    
+        //Set the y position of the camera.
+        y = follow.y;            
+    }
 }
 
 //Round position
@@ -1037,74 +996,76 @@ with (obj_player_climb) instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Camera orientation
+            <string>///Handle camera position
 
-//If the player is wallrunning...
-if (instance_exists(obj_wallrunner))
+//If the camera is locked.
+if (camlock) {
 
-//...or it's sliding with either the shell or penguin powerup
-|| (((global.powerup == cs_shell) &amp;&amp; (obj_playerparent.sliding))
-|| ((global.powerup == cs_penguin) &amp;&amp; (obj_playerparent.sliding))) 
-&amp;&amp; (global.mount == 0) {
-
-    //If the camera is panned to the right, pan it to the center.
-    if (x &gt; obj_playerparent.x+4) then x -= 4-obj_playerparent.xspeed;
+    //Set the x position of the camera.
+    x = obj_playerparent.x;
     
-    //Otherwise, If the camera is panned to the left, pan it to the center.
-    else if (x &lt; obj_playerparent.x-4) then x += 4+obj_playerparent.xspeed;
-
-    //Otherwise, do not move it.
+    //If the player speed is the maximum possible...
+    if (((obj_playerparent.run)
+    
+    //...and the player has one of the following powerups...
+    &amp;&amp; ((global.powerup == cs_leaf)
+    || (global.powerup == cs_tanooki)))
+    
+    //...or the player is riding something that is flying
+    || (((instance_exists(obj_yoshi)) &amp;&amp; (obj_yoshi.flying == 1))
+    || (instance_exists(obj_kuriboshoe)) &amp;&amp; (obj_kuriboshoe.flying == 1))) {
+    
+        //Set the y position of the camera
+        y = obj_playerparent.y;
+        
+        //Set the vertical speed of the view
+        view_vspeed[0] = 4;
+    }
+    
+    //Otherwise, if the player is climbing up a beanstalk or a fence.
+    else if (obj_playerparent.state == 3) {
+    
+        //Set the y position of the camera
+        y = obj_playerparent.y;
+        
+        //Set the vertical speed of the view
+        view_vspeed[0] = 4;                   
+    }
+    
+    //Otherwise, if the player is not doing anything stated above and the view is above the view start position.
     else {
     
-        //Stay at the same position of the player.
-        x = obj_playerparent.x;
-    }
-}
+        //If the player is colliding with a moving platform
+        if (collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom+1,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom+2,obj_platformparent,0,0)) 
+        &amp;&amp; (obj_playerparent.state &lt; 2) {
+        
+            //Set the y position of the camera
+            y = obj_playerparent.y;
+            
+            //Set the vertical speed of the view
+            view_vspeed[0] = 4;
+        }
+        
+        //Otherwise
+        else if (view_yview[0] &lt; room_height-216) {
     
-//Otherwise, do a special follow up
+            //Set the y position of the camera
+            y = obj_playerparent.y;
+            
+            //Set the vertical speed of the view
+            view_vspeed[0] = -1;           
+        }
+    }        
+}
+
+//Otherwise, if the camera is not locked.
 else {
 
-    //If the player is moving to the left and the camera is panning to the right
-    if ((obj_playerparent.xspeed &lt; 0) 
-    || (obj_playerparent.x-xprevious &lt; 0))
-    &amp;&amp; (obj_playerparent.x &lt; x-56) {
-    
-        //Make the camera pan to the left
-        orientation = -1;
-    }
-        
-    //Otherwise, if the player is moving to the right and the camera is panning to the left
-    else if ((obj_playerparent.xspeed &gt; 0) 
-    || (obj_playerparent.x-xprevious &gt; 0))
-    &amp;&amp; (obj_playerparent.x &gt; x+56) {
-    
-        //Make the camera pan to the right
-        orientation = 1;
-    }
-        
-    //If the camera is to the right and the player is from a certain distance from the camera...
-    if ((orientation == 1) &amp;&amp; (obj_playerparent.x &gt; x-32)) {
-    
-        //...scroll at a certain speed until the camera catches up...
-        if (obj_playerparent.x &gt; x-28) 
-            x += 4+obj_playerparent.xspeed;
-        
-        //...and lock the camera in place.
-        else 
-            x = obj_playerparent.x+32
-    }
-    
-    //Otherwise, if the camera is to the left and the player is from a certain distance from the camera...
-    else if ((orientation = -1) &amp;&amp; (obj_playerparent.x &lt; x+32)) {
-    
-        //...scroll at a certain speed until the camera catches up...
-        if (obj_playerparent.x &lt; x+28) 
-            x -= 4-obj_playerparent.xspeed;
-        
-        //...and lock the camera in place.
-        else 
-            x = obj_playerparent.x-32;
-    }
+    //Set the x position of the camera.
+    x = obj_playerparent.x;
+
+    //Set the y position of the camera.
+    y = obj_playerparent.y;                
 }
 </string>
           </argument>

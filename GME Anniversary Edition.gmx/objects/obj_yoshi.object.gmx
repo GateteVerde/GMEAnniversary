@@ -123,6 +123,9 @@ if (global.carrieditem != noone) {
 //Dismount Yoshi
 global.mount = 0;
 
+//Stop 'Flying' sound
+audio_stop_sound(snd_yoshi_lick);
+
 //Destroy Yoshi's tongue if it exists
 with (obj_tongue) instance_destroy();
 

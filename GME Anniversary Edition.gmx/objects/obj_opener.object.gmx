@@ -2,11 +2,11 @@
 <object>
   <spriteName>spr_opener</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>0</depth>
+  <visible>-1</visible>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_square</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Opens paths for you
 
-//Whether this object can be destroyed
+//Whether this opener can be destroyed
 ready = 0;
 
 //Play a sound
@@ -109,9 +109,10 @@ alarm[0] = 8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Destroy if possible
+            <string>///Destroy if it's possible
 
-if (ready)
+if (!ready)
+exit;
     instance_destroy();
 </string>
           </argument>
@@ -166,7 +167,6 @@ if (speed &gt; 0)
             <string>///Finish path opening
 
 if (speed &gt; 0)
-&amp;&amp; (ready == 1)
 &amp;&amp; (x == other.x)
 &amp;&amp; (y == other.y) {
 
@@ -209,7 +209,7 @@ if (hspeed &lt; 0) {
         hspeed = 0;
 }
 
-//If moving down
+//If moving up
 if (vspeed &lt; 0) {
 
     if (y == other.y+8)
