@@ -28,7 +28,7 @@
             <string>///Blue Switch Block
 
 //Turn solid if active
-if (global.palacegreen) {
+if (global.palaceblue) {
 
     //Create a block
     with (instance_create(x,y,obj_qblock)) {

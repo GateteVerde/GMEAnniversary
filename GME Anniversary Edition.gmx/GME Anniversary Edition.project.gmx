@@ -894,10 +894,11 @@
         <sprite>sprites\spr_mapstart</sprite>
         <sprite>sprites\spr_maplevel</sprite>
         <sprite>sprites\spr_maplevel_red</sprite>
-        <sprite>sprites\spr_mappanel_switch_y</sprite>
-        <sprite>sprites\spr_mappanel_switch_g</sprite>
-        <sprite>sprites\spr_mappanel_switch_r</sprite>
-        <sprite>sprites\spr_mappanel_switch_b</sprite>
+        <sprite>sprites\spr_maplevel_pipe</sprite>
+        <sprite>sprites\spr_maplevel_switch_y</sprite>
+        <sprite>sprites\spr_maplevel_switch_g</sprite>
+        <sprite>sprites\spr_maplevel_switch_r</sprite>
+        <sprite>sprites\spr_maplevel_switch_b</sprite>
       </sprites>
       <sprites name="Decoration">
         <sprites name="Liquids">
@@ -1772,6 +1773,7 @@
       <objects name="Panels">
         <object>objects\obj_mapstart</object>
         <object>objects\obj_maplevel</object>
+        <object>objects\obj_maplevel_pipe</object>
         <object>objects\obj_maplevel_switch_y</object>
         <object>objects\obj_maplevel_switch_g</object>
         <object>objects\obj_maplevel_switch_r</object>
@@ -2005,6 +2007,7 @@
         <object>objects\obj_warpleft</object>
         <object>objects\obj_warpright</object>
       </objects>
+      <object>objects\obj_warpmap</object>
       <object>objects\obj_warppost</object>
       <object>objects\obj_warproom</object>
       <object>objects\obj_warpcannon</object>
@@ -2229,6 +2232,7 @@
       <object>objects\obj_persistent</object>
       <object>objects\obj_persistent_musicplayer</object>
       <object>objects\obj_guessblock_manager</object>
+      <object>objects\obj_pipemanager</object>
     </objects>
     <object>objects\obj_up</object>
     <object>objects\obj_down</object>
@@ -2254,6 +2258,9 @@
         <rooms name="SMW">
           <room>rooms\rm_minigame_smw_a</room>
         </rooms>
+      </rooms>
+      <rooms name="Pipes">
+        <room>rooms\rm_pipearea</room>
       </rooms>
       <room>rooms\rm_gameover</room>
       <room>rooms\rm_switchpalace_y</room>

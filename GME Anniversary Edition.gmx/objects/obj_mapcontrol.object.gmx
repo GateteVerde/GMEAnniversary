@@ -98,6 +98,14 @@ anim += 0.15;
 //Fade out screen
 instance_create(0,0,obj_fadeout);
 
+//Make sure the player gets health
+if (health &lt; 3) {
+
+    health = 3;
+    if (global.powerup != cs_big)
+        global.powerup = cs_big;
+}
+
 //Make sure the player did not bring a kuribo shoe from a level
 if (global.mount == 2)
     global.mount = 0;

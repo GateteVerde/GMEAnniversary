@@ -193,9 +193,6 @@ if (!visible) {
             <kind>1</kind>
             <string>///Print level name and perform actions
 
-//Inherit 'collision' event
-event_inherited();
-
 //If the player can move...
 if (other.speed == 0)
 &amp;&amp; (other.ready == 0)
