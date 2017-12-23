@@ -132,7 +132,8 @@ global.starman = 0;
 global.mapstar = 1;
 
 //Warp used in map
-global.mapwarpchange = false;
+global.pipex = 0;
+global.pipey = 0;
 
 //Mushroom house prizes
 global.prize[0] = 0;

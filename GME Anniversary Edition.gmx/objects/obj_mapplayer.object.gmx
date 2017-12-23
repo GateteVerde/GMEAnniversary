@@ -969,8 +969,23 @@ if (vspeed &gt; 0) {
             <kind>1</kind>
             <string>///Remember the player's last position in the map
 
-ds_map_replace(global.mapscreen,"mapx", x);
-ds_map_replace(global.mapscreen,"mapy", y);
+//If the map position is going to be changed
+if (global.pipetype == 2) {
+
+    //Replace maps
+    ds_map_replace(global.mapscreen,"mapx", global.pipex+8);
+    ds_map_replace(global.mapscreen,"mapy", global.pipey);
+    
+    //Reset pipetype variable
+    global.pipetype = 0;
+}
+
+//Otherwise, stay in place
+else {
+    
+    ds_map_replace(global.mapscreen,"mapx", x);
+    ds_map_replace(global.mapscreen,"mapy", y);
+}
 </string>
           </argument>
         </arguments>
@@ -1048,68 +1063,76 @@ if (speed == 0)
 &amp;&amp; (letsgo == 0)
     event_user(0);
     
-//If the player is riding a yoshi
-if (global.mount == 1) {
-
-    //Set the palette for yoshi
-    pal_swap_set(spr_palette_yoshi, global.mountcolour);
+//If the player completed a level or died in the map...
+if (ready == 1)
+    draw_sprite_ext(spr_mapmario_events,0,round(x),round(y)-4,1,1,0,c_white,1);
     
-    //If the player decided the level
-    if (image_index == 8) {
-    
-        if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))    
-            draw_sprite_ext(spr_mapmario_yoshi_water,8,round(x),round(y),xscale,1,0,c_white,1);
-        else
-            draw_sprite_ext(spr_mapmario_yoshi,8,round(x),round(y)-4,xscale,1,0,c_white,1);
-    }
-
-    //If the player is climbing
-    else if (image_index == 6)
-        draw_sprite_ext(spr_mapmario_yoshi,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
-    
-    //Otherwise
-    else {
-    
-        //If the player is in contact with water, draw him inside water
-        if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
-            draw_sprite_ext(spr_mapmario_yoshi_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
-        
-        //Otherwise
-        else
-            draw_sprite_ext(spr_mapmario_yoshi,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
-    }
-    
-    //Reset palette
-    pal_swap_reset();
-}
-
-//Otherwise, if the player is not riding a yoshi
+//Otherwise
 else {
     
-    //If the player decided the level
-    if (image_index == 8) {
+    //If the player is riding a yoshi
+    if (global.mount == 1) {
     
-        if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))    
-            draw_sprite_ext(spr_mapmario_water,8,round(x),round(y),xscale,1,0,c_white,1);
-        else
-            draw_sprite_ext(spr_mapmario,8,round(x),round(y)-4,xscale,1,0,c_white,1);
-    }
-
-    //If the player is climbing
-    else if (image_index == 6)
-        draw_sprite_ext(spr_mapmario,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
+        //Set the palette for yoshi
+        pal_swap_set(spr_palette_yoshi, global.mountcolour);
+        
+        //If the player decided the level
+        if (image_index == 8) {
+        
+            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))    
+                draw_sprite_ext(spr_mapmario_yoshi_water,8,round(x),round(y),xscale,1,0,c_white,1);
+            else
+                draw_sprite_ext(spr_mapmario_yoshi,8,round(x),round(y)-4,xscale,1,0,c_white,1);
+        }
     
-    //Otherwise
-    else {
-    
-        //If the player is in contact with water, draw him inside water
-        if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
-            draw_sprite_ext(spr_mapmario_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
+        //If the player is climbing
+        else if (image_index == 6)
+            draw_sprite_ext(spr_mapmario_yoshi,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
         
         //Otherwise
-        else
+        else {
+        
+            //If the player is in contact with water, draw him inside water
+            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
+                draw_sprite_ext(spr_mapmario_yoshi_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
+            
+            //Otherwise
+            else
+                draw_sprite_ext(spr_mapmario_yoshi,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
+        }
+        
+        //Reset palette
+        pal_swap_reset();
+    }
+    
+    //Otherwise, if the player is not riding a yoshi
+    else {
+        
+        //If the player decided the level
+        if (image_index == 8) {
+        
+            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))    
+                draw_sprite_ext(spr_mapmario_water,8,round(x),round(y),xscale,1,0,c_white,1);
+            else
+                draw_sprite_ext(spr_mapmario,8,round(x),round(y)-4,xscale,1,0,c_white,1);
+        }
+    
+        //If the player is climbing
+        else if (image_index == 6)
             draw_sprite_ext(spr_mapmario,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
-    }    
+        
+        //Otherwise
+        else {
+        
+            //If the player is in contact with water, draw him inside water
+            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0))
+                draw_sprite_ext(spr_mapmario_water,image_index+frame,round(x),round(y),xscale,1,0,c_white,1);
+            
+            //Otherwise
+            else
+                draw_sprite_ext(spr_mapmario,image_index+frame,round(x),round(y)-4,xscale,1,0,c_white,1);
+        }    
+    }
 }
 </string>
           </argument>

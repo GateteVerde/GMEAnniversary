@@ -308,6 +308,7 @@
     <sounds name="Menu">
       <sound>sound\snd_castlebreak</sound>
       <sound>sound\snd_drop</sound>
+      <sound>sound\snd_enterpipe</sound>
       <sound>sound\snd_enterstage</sound>
       <sound>sound\snd_hurry</sound>
       <sound>sound\snd_inventory</sound>
@@ -869,6 +870,7 @@
       <sprite>sprites\spr_mapmario_yoshi</sprite>
       <sprite>sprites\spr_mapmario_yoshi_water</sprite>
       <sprite>sprites\spr_mapmario_arrows</sprite>
+      <sprite>sprites\spr_mapmario_events</sprite>
       <sprites name="Paths">
         <sprites name="Misc">
           <sprite>sprites\spr_mapbridge_h</sprite>
@@ -895,6 +897,7 @@
         <sprite>sprites\spr_maplevel</sprite>
         <sprite>sprites\spr_maplevel_red</sprite>
         <sprite>sprites\spr_maplevel_pipe</sprite>
+        <sprite>sprites\spr_maplevel_pipe2</sprite>
         <sprite>sprites\spr_maplevel_switch_y</sprite>
         <sprite>sprites\spr_maplevel_switch_g</sprite>
         <sprite>sprites\spr_maplevel_switch_r</sprite>
@@ -903,12 +906,14 @@
       <sprites name="Decoration">
         <sprites name="Liquids">
           <sprite>sprites\spr_mapwater</sprite>
+          <sprite>sprites\spr_maplava</sprite>
         </sprites>
         <sprite>sprites\spr_maptree</sprite>
         <sprite>sprites\spr_maptree_alt</sprite>
         <sprite>sprites\spr_maptree_alt_b</sprite>
         <sprite>sprites\spr_maphill</sprite>
         <sprite>sprites\spr_maphilltrio</sprite>
+        <sprite>sprites\spr_mapfire</sprite>
       </sprites>
       <sprite>sprites\spr_modifier</sprite>
       <sprite>sprites\spr_modifier_water</sprite>
@@ -1774,6 +1779,7 @@
         <object>objects\obj_mapstart</object>
         <object>objects\obj_maplevel</object>
         <object>objects\obj_maplevel_pipe</object>
+        <object>objects\obj_maplevel_pipe2</object>
         <object>objects\obj_maplevel_switch_y</object>
         <object>objects\obj_maplevel_switch_g</object>
         <object>objects\obj_maplevel_switch_r</object>
@@ -1782,12 +1788,14 @@
       <objects name="Decoration">
         <objects name="Liquids">
           <object>objects\obj_mapwater</object>
+          <object>objects\obj_maplava</object>
         </objects>
         <object>objects\obj_maptree</object>
         <object>objects\obj_maptree_alt</object>
         <object>objects\obj_maptree_alt_b</object>
         <object>objects\obj_maphill</object>
         <object>objects\obj_maphilltrio</object>
+        <object>objects\obj_mapfire</object>
       </objects>
       <object>objects\obj_modifier</object>
       <object>objects\obj_modifier_music</object>
