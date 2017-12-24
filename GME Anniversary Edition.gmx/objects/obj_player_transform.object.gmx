@@ -138,6 +138,10 @@ else if (global.mount == 2)
 //Take a screenshot.
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0);
 
+//Pause particles
+part_system_automatic_update(global.rain_sys,false);
+part_system_automatic_update(global.snow_sys,false);
+
 //Deactivate all timelines
 timeline_running = 0;
 
@@ -242,6 +246,10 @@ if (ready) {
         //Activate all instances.
         instance_activate_all();
         
+        //Resume particles
+        part_system_automatic_update(global.rain_sys,true);
+        part_system_automatic_update(global.snow_sys,true);
+            
         //Activate all timelines
         timeline_running = 1;
         

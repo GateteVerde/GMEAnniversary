@@ -182,6 +182,10 @@ global.sc_count = ds_map_create();
 //Data structure for storing the state of the world map.
 global.mapscreen = ds_map_create();
 
+//Particle effect variables
+global.rain_sys = noone;
+global.snow_sys = noone;
+
 //Map inventory variables
 for(var i=0; i<13; i++)
     global.inventory[i] = 0;

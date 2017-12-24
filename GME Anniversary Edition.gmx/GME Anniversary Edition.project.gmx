@@ -312,6 +312,7 @@
       <sound>sound\snd_enterstage</sound>
       <sound>sound\snd_hurry</sound>
       <sound>sound\snd_inventory</sound>
+      <sound>sound\snd_lightning</sound>
       <sound>sound\snd_message</sound>
       <sound>sound\snd_move</sound>
       <sound>sound\snd_openpath</sound>
@@ -1234,6 +1235,10 @@
           <sprite>sprites\spr_2uppts</sprite>
           <sprite>sprites\spr_3uppts</sprite>
         </sprites>
+        <sprites name="Weather">
+          <sprite>sprites\spr_rain</sprite>
+          <sprite>sprites\spr_snow</sprite>
+        </sprites>
         <sprite>sprites\spr_boltspark</sprite>
         <sprite>sprites\spr_bubble</sprite>
         <sprite>sprites\spr_castlesmoke</sprite>
@@ -1659,6 +1664,10 @@
   <objects name="objects">
     <objects name="Main">
       <objects name="Controllers">
+        <objects name="Weather">
+          <object>objects\obj_rainmaker</object>
+          <object>objects\obj_snowmaker</object>
+        </objects>
         <object>objects\obj_levelcontrol</object>
         <object>objects\obj_bganimator</object>
         <object>objects\obj_tilehider</object>
@@ -2230,6 +2239,7 @@
             <object>objects\obj_shellbump</object>
             <object>objects\obj_smoke</object>
             <object>objects\obj_star</object>
+            <object>objects\obj_lightningsheet</object>
           </objects>
           <objects name="Menus">
             <object>objects\obj_savemenu</object>

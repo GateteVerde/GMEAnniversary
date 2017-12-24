@@ -104,6 +104,9 @@ global.berries = 0;
 global.starman = 0;
 global.pswitch = 0;
 
+//Reset Mario Start! text
+global.mariostart = false;
+
 //Reset 'Return to map' option
 global.levelbeat = 0;
 
@@ -121,9 +124,6 @@ global.onofforange = 0;
 //Reset held variables
 global.carrieditem = noone;
 global.carriedsprite = noone;
-
-//Reset Mario Start! text
-global.mariostart = false;
 
 //Reset ace coins
 ds_map_clear(global.acecoins);
