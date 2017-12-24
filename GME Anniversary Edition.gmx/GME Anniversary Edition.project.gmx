@@ -893,15 +893,22 @@
         <sprite>sprites\spr_mappath_emptynode</sprite>
       </sprites>
       <sprites name="Panels">
+        <sprites name="Switches">
+          <sprite>sprites\spr_maplevel_switch_y</sprite>
+          <sprite>sprites\spr_maplevel_switch_g</sprite>
+          <sprite>sprites\spr_maplevel_switch_r</sprite>
+          <sprite>sprites\spr_maplevel_switch_b</sprite>
+        </sprites>
+        <sprites name="Bonus">
+          <sprite>sprites\spr_maplevel_house</sprite>
+          <sprite>sprites\spr_maplevel_house_b</sprite>
+          <sprite>sprites\spr_maplevel_house_c</sprite>
+        </sprites>
         <sprite>sprites\spr_mapstart</sprite>
         <sprite>sprites\spr_maplevel</sprite>
         <sprite>sprites\spr_maplevel_red</sprite>
         <sprite>sprites\spr_maplevel_pipe</sprite>
         <sprite>sprites\spr_maplevel_pipe2</sprite>
-        <sprite>sprites\spr_maplevel_switch_y</sprite>
-        <sprite>sprites\spr_maplevel_switch_g</sprite>
-        <sprite>sprites\spr_maplevel_switch_r</sprite>
-        <sprite>sprites\spr_maplevel_switch_b</sprite>
       </sprites>
       <sprites name="Decoration">
         <sprites name="Liquids">
@@ -1273,6 +1280,8 @@
         </sprites>
         <sprites name="In-Map">
           <sprite>sprites\spr_mapborder</sprite>
+          <sprite>sprites\spr_mapinventory</sprite>
+          <sprite>sprites\spr_mapinventory_selector</sprite>
         </sprites>
         <sprites name="Text">
           <sprites name="Dialog">
@@ -1776,14 +1785,16 @@
         <object>objects\obj_mappath_water</object>
       </objects>
       <objects name="Panels">
+        <objects name="Switches">
+          <object>objects\obj_maplevel_switch_y</object>
+          <object>objects\obj_maplevel_switch_g</object>
+          <object>objects\obj_maplevel_switch_r</object>
+          <object>objects\obj_maplevel_switch_b</object>
+        </objects>
         <object>objects\obj_mapstart</object>
         <object>objects\obj_maplevel</object>
         <object>objects\obj_maplevel_pipe</object>
         <object>objects\obj_maplevel_pipe2</object>
-        <object>objects\obj_maplevel_switch_y</object>
-        <object>objects\obj_maplevel_switch_g</object>
-        <object>objects\obj_maplevel_switch_r</object>
-        <object>objects\obj_maplevel_switch_b</object>
       </objects>
       <objects name="Decoration">
         <objects name="Liquids">

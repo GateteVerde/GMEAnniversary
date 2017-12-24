@@ -44,8 +44,45 @@ alarm[0] = 4;
 //Whether the inventory is showing
 inventory = 0;
 
+//Set up the position of the inventory
+inv_y = 0;
+
 //Handles the item highlighted in inventory
 boxselection = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Cycle between palettes
+
+//Repeat
+alarm[0] = 4;
+
+//Make the player flash.
+if (global.mapstar) {
+    
+    isflashing++;
+    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
+        isflashing = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -68,9 +105,215 @@ boxselection = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Update animation
+            <string>///Handle various map features
 
+//Animate the player sprite at the top-left corner
 anim += 0.15;
+
+//If the 'Space' key is pressed...
+if (keyboard_check_pressed(global.spacekey)) 
+
+//...and the inventory is closed...
+&amp;&amp; (!inventory)
+
+//...and the player is not moving...
+&amp;&amp; (obj_mapplayer.speed == 0) 
+
+//...and the player is not ready or entering a level...
+&amp;&amp; (obj_mapplayer.ready == 0)
+&amp;&amp; (obj_mapplayer.letsgo == 0) {
+    
+    //Play 'Inventory' sound
+    audio_play_sound(snd_inventory, 0, false);
+    
+    //Set the player state
+    with (obj_mapplayer) ready = 1;
+    
+    //Show inventory
+    inventory = 1;
+    
+    //Set selection
+    boxselection = 1;
+    if (global.inventory[0] == 0)
+        boxselection = 0;
+}
+
+//Otherwise, if the inventory is opened
+else if (inventory) {
+
+    //If the 'Space' key is pressed
+    if (keyboard_check_pressed(global.spacekey)) {
+        
+        //Play the inventory sound
+        audio_play_sound(snd_inventory, 0, false);
+
+        //Set the player state
+        with (obj_mapplayer) ready = 0;
+
+        //Close the inventory
+        inventory = 0;    
+    }
+    
+    //Otherwise, if there is a item to select
+    else if (boxselection != 0) {
+    
+        //If shift is pressed
+        if (keyboard_check_pressed(global.shiftkey)) {
+        
+            //If a powerup is selected.
+            if (global.inventory[boxselection] != cs_star) {
+                
+                //Play the reserve item sound
+                audio_play_sound(snd_powerup,0,0)
+                
+                //Remember previous powerup
+                var previous = global.powerup;
+            
+                //Change the powerup to the selected item
+                global.powerup = global.inventory[boxselection];
+                
+                //If Mario does not have a powerup.
+                if (previous == 0) {
+                    
+                    //Shift the inventory items over by one
+                    for (var i = boxselection; i &lt; global.inventory[0]; i++) {
+                    
+                        global.inventory[i] = global.inventory[i+1];
+                    }
+                        
+                    //Subtract from the number of items in the inventory
+                    global.inventory[0]--;
+                }
+                
+                //Otherwise, replace the powerup with the old powerup.
+                else {
+                        
+                    global.inventory[boxselection] = previous;
+                }
+                
+                //Finish item retrieval
+                event_user(0);
+            }
+            
+            //Otherwise, if a star got selected.
+            else if (global.inventory[boxselection] == cs_star) {
+            
+                if (!global.mapstar) {
+            
+                    //Play the reserve item sound
+                    audio_play_sound(snd_powerup,0,0)
+                                    
+                    //Shift the inventory items over by one
+                    for (var i = boxselection; i &lt; global.inventory[0]; i++) {
+                    
+                        global.inventory[i] = global.inventory[i+1];
+                    }
+                        
+                    //Subtract from the number of items in the inventory
+                    global.inventory[0]--;
+                    
+                    //Give Mario star power on the next level if we didn't.
+                    global.mapstar = true;
+                    
+                    //Finish item retrieval
+                    event_user(0);
+                }
+                else {
+                
+                    //Deny event
+                    audio_play_sound(snd_wrong, 0, false);
+                }         
+            }
+        }
+        
+        //If the 'Left' key is pressed, move one item to the left
+        else if (keyboard_check_pressed(global.leftkey)) 
+        &amp;&amp; (boxselection != 0) {
+        
+            //Play 'Move' sound
+            audio_play_sound(snd_move, 0, false)
+        
+            //If the item selected is the leftmost one, go to the last one
+            if (boxselection &gt; 1) {
+            
+                //Play 'Move' sound
+                audio_play_sound(snd_move, 0, false);
+                
+                //Move left
+                boxselection--;
+            }
+                
+            //Otherwise, go to the previous one
+            else
+                boxselection = 1;
+        }
+        
+        //If the 'Right' key is pressed, move one item to the right
+        else if (keyboard_check_pressed(global.rightkey))
+        &amp;&amp; (boxselection != 0) {
+            
+            //If the item selection if the rightmost one, go to the first item.
+            if (boxselection &lt; global.inventory[0]) {
+            
+                //Play 'Move' sound
+                audio_play_sound(snd_move, 0, false);
+                
+                //Move right
+                boxselection++;
+            }
+                
+            //Otherwise, go to the next one
+            else
+                boxselection = global.inventory[0];
+        }
+    }
+    
+    //Show inventory
+    inv_y += 4;
+    if (inv_y &gt; 40)
+        inv_y = 40;        
+}
+
+//Hide inventory if not showing
+if (!inventory) {
+
+    inv_y -= 4;
+    if (inv_y &lt; 0)
+        inv_y = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Inventory retrieval script
+
+//Go back to the normal state
+with (obj_mapplayer) ready = 0;
+
+//Close the inventory
+inventory = 0;
+
+//Create smoke
+with (instance_create(view_xview[0]+24,view_yview[0]+8,obj_smoke))
+    depth = -11;
 </string>
           </argument>
         </arguments>
@@ -99,7 +342,7 @@ anim += 0.15;
 instance_create(0,0,obj_fadeout);
 
 //Make sure the player gets health
-if (health &lt; 3) {
+if ((global.healthmode) &amp;&amp; (health &lt; 3)) {
 
     health = 3;
     if (global.powerup != cs_big)
@@ -155,8 +398,22 @@ draw_set_colour(c_white);
 draw_text(view_xview[0]+40, view_yview[0]+24, "* " + string_format(lives,2,0));
 
 //Draw levelname
-if (levelname != "")
-    draw_text(view_xview[0]+104, view_yview[0]+24, string(levelname));
+if (levelname != "") then draw_text(view_xview[0]+104, view_yview[0]+24, string(levelname));
+
+//Draw the inventory if showing
+if (inv_y &gt; 0) {
+
+    //Draw inventory box
+    draw_sprite_ext(spr_mapinventory, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+view_hview[0]-inv_y, 1, 1, 0, c_white, 1);
+    
+    //Draw the items and the cursor
+    for (var i = 1; i &lt; global.inventory[0]; i++) {
+    
+        draw_sprite_ext(constant_get_sprite(global.inventory[i]), 0, view_xview[0]+83+(i-1)*20, view_yview[0]+(224-inv_y), 1, 1, 0, c_white, 1);
+        if (boxselection == i)
+            draw_sprite_ext(spr_mapinventory_selector, anim, view_xview[0]+75+(i-1)*20, view_yview[0]+(224-inv_y), 1, 1, 0, c_white, 1);
+    }
+}
 </string>
           </argument>
         </arguments>

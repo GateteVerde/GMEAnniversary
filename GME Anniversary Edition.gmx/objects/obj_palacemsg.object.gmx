@@ -127,6 +127,9 @@ draw_set_halign(fa_left);
 //Draw the blocks
 draw_sprite_ext(sw, 1, view_xview[0]+152, view_yview[0]+96, 1, 1, 0, c_white, alpha);
 draw_sprite_ext(sw, 0, view_xview[0]+216, view_yview[0]+96, 1, 1, 0, c_white, alpha);
+
+//Reset alpha
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

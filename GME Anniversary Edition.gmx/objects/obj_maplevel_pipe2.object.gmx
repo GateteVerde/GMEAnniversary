@@ -104,8 +104,11 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0)
             <kind>1</kind>
             <string>///Print level name and perform actions
 
-//If the player can move...
-if (other.speed == 0)
+//If the inventory is not open...
+if (obj_mapcontrol.inventory == false)
+
+//...and the player can move...
+&amp;&amp; (other.speed == 0)
 &amp;&amp; (other.ready == 0)
 &amp;&amp; (other.letsgo == 0)
 

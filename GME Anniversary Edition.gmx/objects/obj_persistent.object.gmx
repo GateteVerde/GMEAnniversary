@@ -34,7 +34,7 @@ pal_swap_init_system(shd_palette_swapper);
 global.flighttime = 4;
 
 //Health Mode
-global.healthmode = 1;
+global.healthmode = 0;
 
 //Cat climb time
 global.cattime = 3;
@@ -738,8 +738,10 @@ draw_enable_alphablend(true)
 //Show FPS if below 60
 draw_set_font(global.font_interface);
 draw_set_colour(c_white);
-if (fps &lt; 60)
-    draw_text(2,2,string("LAG"));
+if (fps &lt; 60) {
+
+    draw_text(2,2,string("LAG"))
+}
 </string>
           </argument>
         </arguments>

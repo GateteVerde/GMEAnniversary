@@ -129,7 +129,7 @@ global.gswitch = 0;
 global.starman = 0;
 
 //Star used in map?
-global.mapstar = 1;
+global.mapstar = 0;
 
 //Warp used in map
 global.pipex = 0;
@@ -166,7 +166,7 @@ global.carriedsprite = noone;
 //1: Collected, not saved
 //2: Collected, saved with checkpoint
 //3: Collected, saved with level completion. (Adds to global.sc_count)
-for (i=0; i<99; i++;) {
+for (var i=0; i<99; i++;) {
 
     global.starcoin[i,0] = 0;
     global.starcoin[i,1] = 0;
@@ -183,5 +183,5 @@ global.sc_count = ds_map_create();
 global.mapscreen = ds_map_create();
 
 //Map inventory variables
-for(var i=0; i<16; i++)
+for(var i=0; i<13; i++)
     global.inventory[i] = 0;
