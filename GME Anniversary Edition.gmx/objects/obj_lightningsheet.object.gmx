@@ -121,7 +121,7 @@ else {
             <string>///Draw the lightning sheet
 
 //Disable the fog
-//d3d_set_fog(0, c_black, 0, 0);
+d3d_set_fog(0, c_black, 0, 64);
 
 //Set the colour
 draw_set_colour(c_white);
@@ -136,7 +136,7 @@ draw_rectangle(view_xview[0], view_yview[0], view_xview[0]+view_wview[0], view_y
 draw_set_alpha(1);
 
 //Enable the fog
-//d3d_set_fog(1, c_black, 0, 0);
+d3d_set_fog(1, c_black, 0, 64);
 </string>
           </argument>
         </arguments>

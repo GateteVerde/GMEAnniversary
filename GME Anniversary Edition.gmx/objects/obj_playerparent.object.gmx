@@ -1571,13 +1571,16 @@ if (invulnerable == false) {
             <string>//Draw player and effects
 
 //Set the shader
-pal_swap_set(spr_palette_mario, isflashing);
+//Disable the fog
+if (!instance_exists(obj_lightningsheet))
+    pal_swap_set(spr_palette_mario, isflashing);
 
 //Draw player
 draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,angle,c_white,image_alpha);
 
 //End shader
-pal_swap_reset();
+if (!instance_exists(obj_lightningsheet))
+    pal_swap_reset();
 
 //Draw a tornado if spinning down with the propeller suit
 if (global.powerup == cs_propeller)

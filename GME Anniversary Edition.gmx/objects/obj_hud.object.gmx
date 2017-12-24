@@ -75,13 +75,17 @@ alarm[0] = 7;
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>other</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
             <string>///Draw the HUD
+
+//Disable the fog
+if (instance_exists(obj_lightningsheet))
+    d3d_set_fog(0, c_black, 0, 64);
 
 //HUD (Left)
 draw_sprite_ext(spr_hud, 0, view_xview[0]+5, view_yview[0]+5, 1, 1, 0, c_white, 1);
@@ -136,6 +140,10 @@ if (instance_exists(obj_playerparent)) {
 }
 else
     draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+5, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
+    
+//Enable the fog
+if (instance_exists(obj_lightningsheet))
+    d3d_set_fog(1, c_black, 0, 64);
 </string>
           </argument>
         </arguments>
