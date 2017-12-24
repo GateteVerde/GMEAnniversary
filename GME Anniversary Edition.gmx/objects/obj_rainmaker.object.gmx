@@ -118,8 +118,8 @@ instance_create(0,0,obj_lightningsheet);
             <kind>1</kind>
             <string>///Clear particles and destroy system
 
-part_system_clear(global.snow_sys);
-global.snow_sys = noone;
+part_system_clear(global.rain_sys);
+global.rain_sys = noone;
 </string>
           </argument>
         </arguments>
