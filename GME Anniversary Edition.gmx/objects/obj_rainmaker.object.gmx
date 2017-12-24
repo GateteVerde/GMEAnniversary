@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>///Rain Generator
 
+//Loop a rain sound
+audio_play_sound(snd_rain,0,1)
+
 //Initialize particle system
 global.rain_sys = part_system_create();
 
@@ -120,6 +123,7 @@ instance_create(0,0,obj_lightningsheet);
 
 part_system_clear(global.rain_sys);
 global.rain_sys = noone;
+audio_stop_sound(snd_rain);
 </string>
           </argument>
         </arguments>
