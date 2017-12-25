@@ -343,6 +343,10 @@ if (keyboard_check_pressed(vk_f4))
 //Restart the game when ALT+R are pressed.
 else if (keyboard_check_pressed(ord('R'))) {
 
+    //Destroy part system
+    part_system_clear(global.rain_sys);
+    part_system_clear(global.snow_sys);
+
     //Reset all stream variables
     with (obj_persistent_musicplayer) {
     

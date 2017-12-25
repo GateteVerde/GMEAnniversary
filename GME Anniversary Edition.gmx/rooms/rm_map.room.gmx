@@ -381,7 +381,7 @@
     <instance objName="obj_mapfire" x="1104" y="352" name="inst_9AEF9E69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapfire" x="1104" y="160" name="inst_BCD8861C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapfire" x="1088" y="144" name="inst_E1076B38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_maplava" x="752" y="64" name="inst_6454D3BC" locked="0" code="" scaleX="33" scaleY="29" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maplava" x="752" y="48" name="inst_6454D3BC" locked="0" code="" scaleX="33" scaleY="29" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapfire" x="768" y="560" name="inst_CAD11EFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapfire" x="752" y="544" name="inst_D1DEBBA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapfire" x="736" y="528" name="inst_F4E31A18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -511,6 +511,9 @@
     <instance objName="obj_modifier_music" x="208" y="192" name="inst_66795117" locked="0" code="mapmusic = global._theme_map1;&#xA;mapworld = &quot;1&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_modifier_music" x="992" y="384" name="inst_E073E426" locked="0" code="mapmusic = global._theme_map2;&#xA;mapworld = &quot;2&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapfire" x="976" y="336" name="inst_6B29B0E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappanel_house" x="224" y="128" name="inst_6E97EBFE" locked="0" code="powerup[0] = cs_tanooki;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappanel_house" x="944" y="240" name="inst_BFC8A85A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappanel_house" x="896" y="128" name="inst_DB3AD46B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_map" x="112" y="320" w="16" h="16" xo="496" yo="448" id="10006996" name="inst_BFCC86D8" depth="11" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
