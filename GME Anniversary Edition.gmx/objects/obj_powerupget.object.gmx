@@ -132,6 +132,7 @@ if (sprite_index == spr_1up)
 else if (sprite_index == spr_3upmoon)
     instance_create(obj_playerparent.x,obj_playerparent.y,obj_3upmoon);
     
+//Otherwise, add a item to the inventory
 else {
 
     //Play 'Inventory' sound
@@ -147,6 +148,9 @@ else {
     //Set the item on the inventory.
     global.inventory[global.inventory[0]] = sprite_get_constant(sprite_index);
 }
+
+//Create smoke effect
+instance_create(x-8,y,obj_smoke);
 
 //Make it invisible
 image_alpha = 0;
@@ -232,9 +236,9 @@ if (inv_y &gt; 0) {
 
     //Draw inventory box
     draw_sprite_ext(spr_mapinventory, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+view_hview[0]-inv_y, 1, 1, 0, c_white, 1);
-    
-    //Draw the items and the cursor
-    for (var i = 1; i &lt;= global.inventory[0]; i++)    
+
+    //Draw the items
+    for (var i = 1; i &lt;= global.inventory[0]; i++)  
         draw_sprite_ext(constant_get_sprite(global.inventory[i]), 0, view_xview[0]+83+(i-1)*20, view_yview[0]+(224-inv_y), 1, 1, 0, c_white, 1);
 }
 </string>

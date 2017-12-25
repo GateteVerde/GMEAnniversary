@@ -40,7 +40,7 @@ switch (argument[0]) {
     case (spr_jugemushoe): return cs_jugemushoe;
     case (spr_1up): return cs_1up;
     case (spr_3upmoon): return cs_3up;
-    case (spr_star): return cs_star;
+    case (spr_starman): return cs_star;
     case (spr_poison): return cs_poison;
     case (spr_key): return cs_key;
     case (spr_pswitch): return cs_pswitch;

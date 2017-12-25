@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="28" name="datafiles">
-    <datafiles number="28" name="music">
+  <datafiles number="31" name="datafiles">
+    <datafiles number="31" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -140,6 +140,57 @@
           </Config>
         </ConfigOptions>
         <filename>pswitch.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>sm3clear.ogg</name>
+        <exists>-1</exists>
+        <size>36273</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>sm3clear.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>sm3clear2.ogg</name>
+        <exists>-1</exists>
+        <size>50788</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>sm3clear2.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>sm3clear3.ogg</name>
+        <exists>-1</exists>
+        <size>47313</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>sm3clear3.ogg</filename>
       </datafile>
       <datafile>
         <name>smwclear.ogg</name>
@@ -324,11 +375,9 @@
       <sound>sound\snd_vinesprout</sound>
       <sound>sound\snd_warning</sound>
     </sounds>
-    <sounds name="Misc">
-      <sound>sound\snd_rain</sound>
-    </sounds>
     <sounds name="Menu">
       <sound>sound\snd_castlebreak</sound>
+      <sound>sound\snd_correct</sound>
       <sound>sound\snd_drop</sound>
       <sound>sound\snd_enterpipe</sound>
       <sound>sound\snd_enterstage</sound>
@@ -343,6 +392,9 @@
       <sound>sound\snd_timer</sound>
       <sound>sound\snd_timer_end</sound>
       <sound>sound\snd_wrong</sound>
+    </sounds>
+    <sounds name="Misc">
+      <sound>sound\snd_rain</sound>
     </sounds>
     <sound>sound\snd_yoshi</sound>
     <sound>sound\snd_yoshi_eat</sound>
@@ -762,6 +814,7 @@
         <sprite>sprites\spr_qblock_big</sprite>
         <sprite>sprites\spr_qblock_big_empty</sprite>
         <sprite>sprites\spr_qblock_spiked</sprite>
+        <sprite>sprites\spr_qblock_spiked_nospin</sprite>
         <sprite>sprites\spr_qblock_winged</sprite>
       </sprites>
       <sprites name="Gray Blocks">
@@ -1348,6 +1401,7 @@
       <sprite>sprites\spr_talk</sprite>
       <sprite>sprites\spr_toad</sprite>
       <sprite>sprites\spr_chest</sprite>
+      <sprite>sprites\spr_slotblock</sprite>
       <sprite>sprites\spr_palaceswitch_y</sprite>
       <sprite>sprites\spr_palaceswitch_g</sprite>
       <sprite>sprites\spr_palaceswitch_r</sprite>
@@ -1827,6 +1881,7 @@
         </objects>
         <objects name="Bonus">
           <object>objects\obj_mappanel_house</object>
+          <object>objects\obj_mappanel_house_b</object>
         </objects>
         <object>objects\obj_mapstart</object>
         <object>objects\obj_maplevel</object>
@@ -2075,8 +2130,15 @@
           <object>objects\obj_palacemsg</object>
           <object>objects\obj_palaceswitch</object>
         </objects>
-        <object>objects\obj_toad</object>
-        <object>objects\obj_chest</object>
+        <objects name="Mushroom Houses">
+          <objects name="Lucky House">
+            <object>objects\obj_toad_slot</object>
+            <object>objects\obj_slotblock</object>
+            <object>objects\obj_slotblock_manager</object>
+          </objects>
+          <object>objects\obj_toad</object>
+          <object>objects\obj_chest</object>
+        </objects>
       </objects>
       <objects name="Parents">
         <objects name="Players">
@@ -2322,6 +2384,7 @@
         <room>rooms\rm_pipearea</room>
       </rooms>
       <room>rooms\rm_bonus</room>
+      <room>rooms\rm_bonus2</room>
       <room>rooms\rm_gameover</room>
       <room>rooms\rm_switchpalace_y</room>
       <room>rooms\rm_switchpalace_g</room>

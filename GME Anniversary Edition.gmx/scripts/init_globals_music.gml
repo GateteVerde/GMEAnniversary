@@ -19,6 +19,10 @@ music_setup(global._theme_athletic, "Athletic", 3);
 global._theme_bonus = music_add("Bonus");
 music_setup(global._theme_bonus, "Bonus", 3);
 
+//Gameover
+global._theme_gameover = music_add("Gameover");
+music_setup(global._theme_gameover, "Gameover", 3);
+
 //Land
 global._theme_land = music_add("Land");
 music_setup(global._theme_land, "Land", 3);
@@ -38,6 +42,18 @@ music_setup(global._theme_miss, "Miss", 2);
 //PSwitch
 global._theme_pswitch = music_add("PSwitch");
 music_setup(global._theme_pswitch, "PSwitch", 3);
+
+//SM3 - Clear A
+global._theme_sm3cleara = music_add("SM3 - Clear A");
+music_setup(global._theme_sm3cleara, "SM3 - Clear A", 2);
+
+//SM3 - Clear B
+global._theme_sm3clearb = music_add("SM3 - Clear B");
+music_setup(global._theme_sm3clearb, "SM3 - Clear B", 2);
+
+//SM3 - Clear C
+global._theme_sm3clearc = music_add("SM3 - Clear C");
+music_setup(global._theme_sm3clearc, "SM3 - Clear C", 2);
 
 //SMW - Clear A
 global._theme_smwcleara = music_add("SMW - Clear A");

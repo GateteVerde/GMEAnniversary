@@ -147,11 +147,11 @@ else if (inventory) {
         //Play the inventory sound
         audio_play_sound(snd_inventory, 0, false);
 
-        //Set the player state
-        with (obj_mapplayer) ready = 0;
-
         //Close the inventory
-        inventory = 0;    
+        inventory = 0;        
+        
+        //Set the player state
+        obj_mapplayer.ready = 0;    
     }
     
     //Otherwise, if there is a item to select
@@ -408,10 +408,14 @@ if (inv_y &gt; 0) {
     
     //Draw the items and the cursor
     for (var i = 1; i &lt;= global.inventory[0]; i++) {
-    
+        
+        //Draw items in inventory
         draw_sprite_ext(constant_get_sprite(global.inventory[i]), 0, view_xview[0]+83+(i-1)*20, view_yview[0]+(224-inv_y), 1, 1, 0, c_white, 1);
+        
+        //Set the position of the box
         if (boxselection == i)
             draw_sprite_ext(spr_mapinventory_selector, anim, view_xview[0]+75+(i-1)*20, view_yview[0]+(224-inv_y), 1, 1, 0, c_white, 1);
+        
     }
 }
 </string>

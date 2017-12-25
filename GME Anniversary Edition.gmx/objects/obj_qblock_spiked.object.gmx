@@ -154,15 +154,15 @@ alarm[0] = 150;
  
 //Make the block turn when needed to
 if ((turn == 1) &amp;&amp; (angle &lt; 180))
-|| ((turn == 2) &amp;&amp; (angle &lt; 360))
-{
+|| ((turn == 2) &amp;&amp; (angle &lt; 360)) {
+
     //Rotate the block by 15 degrees
     angle += 15;
 }
     
 //Reset the angle if it's past 360
-if (angle &gt;= 360)
-{
+if (angle &gt;= 360) {
+
     //Reset the angle
     angle = 0;
     
@@ -206,7 +206,7 @@ if (player)
     with (instance_create(x,y,obj_qblock)) {
     
         //Set the sprite
-        sprite_index = spr_qblock_spiked;
+        sprite_index = spr_qblock_spiked_nospin;
         image_speed = 0;
         image_index = 0;
     
