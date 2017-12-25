@@ -61,10 +61,13 @@ gswitchon = 0;
 //Manage backgrounds
 for (i=0; i&lt;8; i++;) {
 
+    //Do not use as background
     bg[i] = noone;
+    
+    //Use as foreground and make the built one invisible
     fg[i] = background_foreground[i];
 }
-alarm[8] = 1;
+alarm[8] = 3;
 
 //Screen shake
 shake = 0;
@@ -216,9 +219,6 @@ audio_stop_sound(snd_timer);
 
 var i = 0;
 repeat (8) {
-
-    //Make the backgrounds not visible
-    background_visible[i] = false;
 
     //Create the respective layer for the background.
     if (background_foreground[i] == true) {

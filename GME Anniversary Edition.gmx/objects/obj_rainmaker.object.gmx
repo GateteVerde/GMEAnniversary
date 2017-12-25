@@ -27,9 +27,6 @@
             <kind>1</kind>
             <string>///Rain Generator
 
-//Loop a rain sound
-audio_play_sound(snd_rain,0,1)
-
 //Initialize particle system
 global.rain_sys = part_system_create();
 
@@ -69,6 +66,31 @@ repeat (50)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Loop 'Rain' sound
+
+audio_play_sound(snd_rain, 0, true);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -93,10 +115,35 @@ audio_stop_sound(snd_lightning);
 audio_play_sound(snd_lightning, 0, false);
 
 //Repeat
-alarm[0] = 140+random(round(220));
+alarm[0] = 120+random(round(240));
 
 //Create lightning sheet
 instance_create(0,0,obj_lightningsheet);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Update emitter region
+
+part_emitter_region(global.rain_sys,emitter, view_xview[0]-600, view_xview[0]+view_wview[0]+600, 0, 0, ps_shape_line, ps_distr_linear);
 </string>
           </argument>
         </arguments>
@@ -123,6 +170,8 @@ instance_create(0,0,obj_lightningsheet);
 
 part_system_clear(global.rain_sys);
 global.rain_sys = noone;
+
+//Stop 'Rain' sound
 audio_stop_sound(snd_rain);
 </string>
           </argument>
@@ -146,9 +195,10 @@ audio_stop_sound(snd_rain);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize lightning effects
+            <string>///Initialize
 
 alarm[0] = 100;
+alarm[1] = 2;
 </string>
           </argument>
         </arguments>
