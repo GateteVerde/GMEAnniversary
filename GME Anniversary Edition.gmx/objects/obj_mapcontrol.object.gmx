@@ -305,8 +305,12 @@ if (!inventory) {
             <kind>1</kind>
             <string>///Inventory retrieval script
 
-//Go back to the normal state
-with (obj_mapplayer) ready = 0;
+//Delay allow movement
+with (obj_mapplayer) {
+
+    ready = 2;
+    alarm[4] = 4;
+}
 
 //Close the inventory
 inventory = 0;

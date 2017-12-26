@@ -138,6 +138,31 @@ ds_map_clear(global.doors);
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Allow movement after using inventory
+
+ready = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="3">
       <action>
         <libid>1</libid>
@@ -1064,7 +1089,7 @@ if (speed == 0)
     event_user(0);
     
 //If the player completed a level or died in the map...
-if (ready == 1)
+if (ready &gt; 0)
     draw_sprite_ext(spr_mapmario_events,0,round(x),round(y)-4,1,1,0,c_white,1);
     
 //Otherwise
