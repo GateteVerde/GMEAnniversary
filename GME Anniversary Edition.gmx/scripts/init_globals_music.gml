@@ -67,6 +67,10 @@ music_setup(global._theme_smwclearb, "SMW - Clear B", 2);
 global._theme_starman = music_add("Starman");
 music_setup(global._theme_starman, "Starman", 3);
 
+//Subcon
+global._theme_subcon = music_add("Subcon");
+music_setup(global._theme_subcon, "Subcon", 3);
+
 //Underground
 global._theme_underground = music_add("Underground");
 music_setup(global._theme_underground, "Underground", 3);

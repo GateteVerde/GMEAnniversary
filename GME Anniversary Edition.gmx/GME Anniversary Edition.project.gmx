@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="31" name="datafiles">
-    <datafiles number="31" name="music">
+  <datafiles number="32" name="datafiles">
+    <datafiles number="32" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -244,6 +244,23 @@
         <filename>starman.ogg</filename>
       </datafile>
       <datafile>
+        <name>subcon.ogg</name>
+        <exists>-1</exists>
+        <size>626582</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>subcon.ogg</filename>
+      </datafile>
+      <datafile>
         <name>underground.ogg</name>
         <exists>-1</exists>
         <size>250420</size>
@@ -337,6 +354,7 @@
       <sound>sound\snd_warp</sound>
     </sounds>
     <sounds name="Enemy">
+      <sound>sound\snd_flames</sound>
       <sound>sound\snd_podoboo</sound>
       <sound>sound\snd_thwomp</sound>
     </sounds>
@@ -1758,6 +1776,7 @@
       <object>objects\obj_player_warp</object>
       <object>objects\obj_player_jump</object>
       <object>objects\obj_player_climb</object>
+      <object>objects\obj_player_rocket</object>
     </objects>
     <objects name="Collision">
       <object>objects\obj_solid</object>
@@ -1984,6 +2003,7 @@
           <object>objects\obj_coin</object>
           <object>objects\obj_coin_p</object>
           <object>objects\obj_acecoin</object>
+          <object>objects\obj_starcoin</object>
         </objects>
         <object>objects\obj_berry</object>
         <object>objects\obj_berry_g</object>
@@ -2099,6 +2119,7 @@
           <object>objects\obj_grass</object>
           <object>objects\obj_grass_mini</object>
           <object>objects\obj_grass_large</object>
+          <object>objects\obj_grass_rocket</object>
         </objects>
         <object>objects\obj_mblock</object>
         <object>objects\obj_powblock</object>
@@ -2176,6 +2197,7 @@
           </objects>
           <object>objects\obj_player_warpnote</object>
           <object>objects\obj_player_transform</object>
+          <object>objects\obj_player_rocket2</object>
           <object>objects\obj_player_dead</object>
           <object>objects\obj_player_door</object>
           <object>objects\obj_puller</object>
@@ -2375,6 +2397,7 @@
     <room>rooms\rm_map</room>
     <rooms name="Levels">
       <room>rooms\rm_enginetest</room>
+      <room>rooms\rm_enginetest2</room>
     </rooms>
     <rooms name="Special">
       <rooms name="Minigames">

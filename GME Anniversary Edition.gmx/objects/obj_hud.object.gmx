@@ -102,6 +102,14 @@ draw_set_font(global.numbers_g);
 //Coins
 draw_text_colour_shadowed(view_xview[0]+71, view_yview[0]+10, string_format(global.coins, 2, 0), c_black, c_white, 1, 1, 1, 1);
 
+//Star coins
+for (var i = 0; i &lt; 3; i++) {
+
+    //Draw the coin if it has been collected
+    if (ds_map_find_value(global.sc[i],global.level) &gt; 0)
+        draw_sprite_ext(spr_hud_starcoin_get, -1, view_xview[0]+5+(17*i), view_yview[0]+28, 1, 1, 0, c_white, 1);
+}
+
 //Reserve Box / Health Meter
 if (global.healthmode == 0) {
 

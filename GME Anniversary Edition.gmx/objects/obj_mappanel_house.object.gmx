@@ -66,6 +66,7 @@
 
 //Default variables
 levelname = "Mushroom House"
+levelid = "999";
 powerup[0] = -1;
 powerup[1] = -1;
 powerup[2] = -1;
@@ -115,7 +116,7 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Stomp the switch and remember it.
+            <string>///Make the mushroom house dissappear and remember it
 
 //Make sure if the switch has not beem stomped yet
 if (image_index == 0) {
@@ -189,6 +190,9 @@ if (obj_mapcontrol.inventory == false)
     
         //Play 'Enter Stage' sound
         audio_play_sound(snd_enterstage, 0, false);
+                
+        //Check collected star coins
+        event_user(0);
         
         //Set the chest contents
         global.prize[0] = powerup[0];

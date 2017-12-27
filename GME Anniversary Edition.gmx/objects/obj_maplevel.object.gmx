@@ -31,6 +31,7 @@
 **  This item uses creation code!
 **
 **  levelname = Name of the level. (In quotes)
+**  levelid = ID for the level, this is used to handle star coins. (In quotes)
 **  exitdir = Regular exit direction
 **  exitalt = Secret exit direction      
 **      0: Up
@@ -44,6 +45,7 @@
 
 //Default variables
 levelname = "No name set!"
+levelid = "1";
 exitdir = 0;
 exitalt = 0;
 saveme = 0;
@@ -210,6 +212,9 @@ if (obj_mapcontrol.inventory == false)
         //Play 'Enter Stage' sound
         audio_play_sound(snd_enterstage, 0, false);
         
+        //Check collected star coins
+        event_user(0);
+        
         //Make the player hereby the room
         with (other) {
         
@@ -240,6 +245,52 @@ if (obj_mapcontrol.inventory == false)
 if (other.speed == 0)
 &amp;&amp; (obj_mapcontrol.levelname = "")
     obj_mapcontrol.levelname = levelname;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Check level id
+
+if (global.level != levelid) {
+
+    //Check for collected star coins in the previous world
+    for (var i = 0; i &lt; 3; i++) {
+    
+        //If the star coin has not been saved
+        if (ds_map_find_value(global.sc[i],global.level) &lt; 3)
+        
+            //Remove it from memory
+            ds_map_replace(global.sc[0],global.level,0);
+    }
+}
+
+//Set the new level id
+global.level = levelid;
+
+//Add maps if they don't exist
+for (i = 0; i &lt; 3; i++) {
+
+    if (!ds_map_exists(global.sc[i],global.level))
+        ds_map_add_map(global.sc[i],global.level,0);
+}
 </string>
           </argument>
         </arguments>

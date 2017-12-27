@@ -11,11 +11,8 @@
 //World Number
 global.world = "1";
 
-//Level Number
-global.level = "1";
-
-//Level id
-global.lvlid = 0;
+//Level ID (Used for star coin management)
+global.level = "0";
 
 //Level time
 global.time = 0;
@@ -166,18 +163,14 @@ global.carriedsprite = noone;
 //1: Collected, not saved
 //2: Collected, saved with checkpoint
 //3: Collected, saved with level completion. (Adds to global.sc_count)
-for (var i=0; i<99; i++;) {
+for (var i = 0; i < 3; i++) {
 
-    global.starcoin[i,0] = 0;
-    global.starcoin[i,1] = 0;
-    global.starcoin[i,2] = 0;
+    global.sc[i] = ds_map_create();
+    ds_map_add_map(global.sc[i],global.level,0);
 }
 
-//Data structure for picked up star medals
-global.sc_get = ds_map_create();
-
-//Data structure for collected star medals (This will be displayed on map.)
-global.sc_count = ds_map_create();
+//Counts number of star coins collected in the entire game
+global.sc_count = 0;
 
 //Data structure for storing the state of the world map.
 global.mapscreen = ds_map_create();
