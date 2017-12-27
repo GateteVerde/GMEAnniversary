@@ -46,16 +46,40 @@ image_speed = 0.3;
 ready = 0;
 
 //Check if collected
-if (ds_map_find_value(global.sc[type],global.level) &gt; 0) {
+alarm[0] = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Leave a trail
 
-    //If the coin is not collected
-    if (ds_map_find_value(global.sc[type],global.level) &lt; 3)
-        instance_destroy();
-    else
-        sprite_index = spr_starcoin_get;
+alarm[1] = 8;
+with (instance_create(x+random(32),y+random(32),obj_smoke)) {
+
+    //Set the sprite
+    sprite_index = spr_boltspark;
+    
+    //Animate
+    image_speed = 0.1;
 }
-else
-    alarm[0] = 7;
 </string>
           </argument>
         </arguments>
@@ -78,17 +102,18 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Leave a trail
+            <string>///Check if this coin has been collected
 
-alarm[0] = 8;
-with (instance_create(x+random(32),y+random(32),obj_smoke)) {
+if (ds_map_find_value(global.sc[type],global.level) &gt; 0) {
 
-    //Set the sprite
-    sprite_index = spr_boltspark;
-    
-    //Animate
-    image_speed = 0.1;
+    //If the coin is not collected
+    if (ds_map_find_value(global.sc[type],global.level) &lt; 3)
+        instance_destroy();
+    else
+        sprite_index = spr_starcoin_get;
 }
+else
+    alarm[1] = 7;
 </string>
           </argument>
         </arguments>
@@ -155,6 +180,59 @@ if (vspeed &gt; 0)
     //Destroy
     instance_destroy();
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_bluebrick_th">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect the coin with a thrown brick
+
+if (other.held == 0)
+&amp;&amp; (other.ready == 1)
+    event_perform(ev_collision,obj_mario); 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_parcarry">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect the coin with a vegetable
+
+if (other.held == 0)
+    event_perform(ev_collision,obj_mario); 
 </string>
           </argument>
         </arguments>
