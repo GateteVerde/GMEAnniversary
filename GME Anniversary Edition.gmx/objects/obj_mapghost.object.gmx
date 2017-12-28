@@ -27,70 +27,15 @@
             <kind>1</kind>
             <string>///Eeeek, it's a boo in the map.
 
+//Facing direction
+image_xscale = 1;
+
 //Direction
-dir = 0;
-
-//Go left
-alarm[0] = 1;
-
-//Set the vertical speed
-vspeed = 0.125;
-alarm[2] = 32;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Reverse vertical speed
-
-vspeed = -vspeed;
-alarm[2] = 32;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Go right
-
-//Make sure the boo goes right
 dir = 1;
 
-//Go left
-alarm[0] = 128;
+//Set the vertical speed
+vspeed = 0.15;
+alarm[0] = 32;
 </string>
           </argument>
         </arguments>
@@ -113,13 +58,10 @@ alarm[0] = 128;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Go left
+            <string>///Reverse vertical speed
 
-//Make sure the boo goes left
-dir = 2;
-
-//Go right
-alarm[1] = 128;
+vspeed = -vspeed;
+alarm[0] = 32;
 </string>
           </argument>
         </arguments>
@@ -144,22 +86,34 @@ alarm[1] = 128;
             <kind>1</kind>
             <string>///Boo logic
 
-//Set the facing direction
-image_xscale = 1*sign(hspeed);
-
 //Set the horizontal speed
 switch (dir) {
 
     //Right
-    case (1): hspeed += 0.0125; break;
+    case (1): {
+    
+        hspeed += 0.0125;
+        image_xscale = 1;
+        depth = -6;
+    } break;
     
     //Left
-    case (2): hspeed += -0.0125; break;
+    case (-1): {
+    
+        hspeed += -0.0125;
+        image_xscale = -1;
+        depth = 1;
+    } break;
 }
 
-//Prevent the ghost from moving too fast
-if (abs(hspeed) &gt; 0.25)
-    hspeed = 0.25 * sign(hspeed);
+//Cap horizontal speed
+if (abs(hspeed) &gt; 0.25) then hspeed = 0.25 * sign(hspeed);
+
+//Handle movement
+if (x &gt; xstart+12)
+    dir = -1;
+else if (x &lt; xstart-12)
+    dir = 1;
 </string>
           </argument>
         </arguments>

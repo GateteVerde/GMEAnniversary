@@ -77,15 +77,10 @@ if (y &lt; ystart+48) {
     if (vspeed == 0) {
 
         //Create a new player object
-        with (player_retrieve(x,y)) {
-        
-            //Make it invincible so he can survive the explosion
-            invulnerable = 1;
-            alarm[0] = 30;
-        }
+        player_retrieve(x,y)
         
         //Create explosion
-        instance_create(x-8,y-8,obj_explosion);
+        with (instance_create(x-8,y-8,obj_explosion)) harmplayer = 0;
     
         //Destroy
         instance_destroy();
