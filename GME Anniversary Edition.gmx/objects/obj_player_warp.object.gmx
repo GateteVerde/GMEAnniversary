@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>///The player when it's warping through a pipe
 
+//Set up the initial sprite
+sprite_index = scr_mario_spin();
+
 //Animate it.
 image_speed = 0.2;
 

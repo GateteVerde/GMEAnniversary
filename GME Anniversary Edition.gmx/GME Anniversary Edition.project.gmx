@@ -1003,11 +1003,18 @@
         <sprite>sprites\spr_maplevel_red</sprite>
         <sprite>sprites\spr_maplevel_pipe</sprite>
         <sprite>sprites\spr_maplevel_pipe2</sprite>
+        <sprite>sprites\spr_maplevel_ghost</sprite>
+        <sprite>sprites\spr_maplevel_fort</sprite>
+        <sprite>sprites\spr_maplevel_castle</sprite>
+        <sprite>sprites\spr_maplevel_bowser</sprite>
       </sprites>
       <sprites name="Decoration">
         <sprites name="Liquids">
           <sprite>sprites\spr_mapwater</sprite>
           <sprite>sprites\spr_maplava</sprite>
+        </sprites>
+        <sprites name="NPCs">
+          <sprite>sprites\spr_mapghost</sprite>
         </sprites>
         <sprite>sprites\spr_maptree</sprite>
         <sprite>sprites\spr_maptree_alt</sprite>
@@ -1908,6 +1915,7 @@
         <object>objects\obj_maplevel</object>
         <object>objects\obj_maplevel_pipe</object>
         <object>objects\obj_maplevel_pipe2</object>
+        <object>objects\obj_maplevel_ghost</object>
       </objects>
       <objects name="Decoration">
         <objects name="Liquids">
@@ -2224,6 +2232,9 @@
           <object>objects\obj_guessblock</object>
         </objects>
         <objects name="World Map">
+          <objects name="Panels">
+            <object>objects\obj_mapghost</object>
+          </objects>
           <object>objects\obj_opener</object>
         </objects>
         <objects name="Decoration">
