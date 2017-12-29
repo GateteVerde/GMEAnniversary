@@ -1454,6 +1454,8 @@
       <sprite>sprites\spr_palaceswitch_g</sprite>
       <sprite>sprites\spr_palaceswitch_r</sprite>
       <sprite>sprites\spr_palaceswitch_b</sprite>
+      <sprite>sprites\spr_flagpole</sprite>
+      <sprite>sprites\spr_flag</sprite>
     </sprites>
     <sprite>sprites\spr_up</sprite>
     <sprite>sprites\spr_down</sprite>
@@ -1499,6 +1501,7 @@
         <background>background\bgr_tileset_smb3</background>
         <background>background\bgr_tileset_smw</background>
         <background>background\bgr_tileset_smw_pipes</background>
+        <background>background\bgr_tileset_goal</background>
       </backgrounds>
       <background>background\bgr_pit</background>
       <background>background\bgr_goal</background>
@@ -1806,6 +1809,7 @@
       <object>objects\obj_player_jump</object>
       <object>objects\obj_player_climb</object>
       <object>objects\obj_player_rocket</object>
+      <object>objects\obj_flagpole</object>
     </objects>
     <objects name="Collision">
       <object>objects\obj_solid</object>
@@ -2440,7 +2444,6 @@
     <room>rooms\rm_map</room>
     <rooms name="Levels">
       <room>rooms\rm_enginetest</room>
-      <room>rooms\rm_enginetest2</room>
     </rooms>
     <rooms name="Special">
       <rooms name="Minigames">
