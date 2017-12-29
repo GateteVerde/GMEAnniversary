@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="32" name="datafiles">
-    <datafiles number="32" name="music">
+  <datafiles number="33" name="datafiles">
+    <datafiles number="33" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -106,6 +106,23 @@
           </Config>
         </ConfigOptions>
         <filename>map2.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>minigame.ogg</name>
+        <exists>-1</exists>
+        <size>33786</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>minigame.ogg</filename>
       </datafile>
       <datafile>
         <name>miss.ogg</name>
@@ -1404,7 +1421,9 @@
           </sprites>
           <sprite>sprites\spr_messagebox</sprite>
         </sprites>
+        <sprite>sprites\spr_timeup</sprite>
         <sprite>sprites\spr_mariostart</sprite>
+        <sprite>sprites\spr_gameover</sprite>
         <sprite>sprites\spr_hud_reserve</sprite>
         <sprite>sprites\spr_hud_starcoin_get</sprite>
       </sprites>
@@ -1427,7 +1446,9 @@
       </sprites>
       <sprite>sprites\spr_talk</sprite>
       <sprite>sprites\spr_toad</sprite>
+      <sprite>sprites\spr_digtile</sprite>
       <sprite>sprites\spr_chest</sprite>
+      <sprite>sprites\spr_chest2</sprite>
       <sprite>sprites\spr_slotblock</sprite>
       <sprite>sprites\spr_palaceswitch_y</sprite>
       <sprite>sprites\spr_palaceswitch_g</sprite>
@@ -1911,12 +1932,14 @@
         <objects name="Bonus">
           <object>objects\obj_mappanel_house</object>
           <object>objects\obj_mappanel_house_b</object>
+          <object>objects\obj_mappanel_house_c</object>
         </objects>
         <object>objects\obj_mapstart</object>
         <object>objects\obj_maplevel</object>
         <object>objects\obj_maplevel_pipe</object>
         <object>objects\obj_maplevel_pipe2</object>
         <object>objects\obj_maplevel_ghost</object>
+        <object>objects\obj_maplevel_castle</object>
       </objects>
       <objects name="Decoration">
         <objects name="Liquids">
@@ -2168,6 +2191,13 @@
             <object>objects\obj_slotblock</object>
             <object>objects\obj_slotblock_manager</object>
           </objects>
+          <objects name="Minigame House">
+            <objects name="Digging Minigame">
+              <object>objects\obj_diggame_block</object>
+              <object>objects\obj_diggame_chest</object>
+              <object>objects\obj_diggame_warptomap</object>
+            </objects>
+          </objects>
           <object>objects\obj_toad</object>
           <object>objects\obj_chest</object>
         </objects>
@@ -2328,7 +2358,6 @@
             <objects name="Collectibles">
               <object>objects\obj_sorcerer</object>
               <object>objects\obj_pullkey_up</object>
-              <object>objects\obj_vegshroom_up</object>
             </objects>
             <objects name="Turnips">
               <objects name="Important">
@@ -2378,6 +2407,7 @@
           </objects>
           <object>objects\obj_hud</object>
           <object>objects\obj_dialog</object>
+          <object>objects\obj_timeup</object>
           <object>objects\obj_message</object>
           <object>objects\obj_foreground</object>
         </objects>
@@ -2385,6 +2415,7 @@
         <object>objects\obj_blockbumper</object>
       </objects>
       <object>objects\obj_mariostart</object>
+      <object>objects\obj_gameover</object>
       <object>objects\obj_disclaimer</object>
       <object>objects\obj_persistent</object>
       <object>objects\obj_persistent_musicplayer</object>
@@ -2413,15 +2444,14 @@
     </rooms>
     <rooms name="Special">
       <rooms name="Minigames">
-        <rooms name="SMW">
-          <room>rooms\rm_minigame_smw_a</room>
-        </rooms>
+        <room>rooms\rm_bonus</room>
+        <room>rooms\rm_bonus2</room>
+        <room>rooms\rm_minigame_smw</room>
+        <room>rooms\rm_minigame_sma4_a</room>
       </rooms>
       <rooms name="Pipes">
         <room>rooms\rm_pipearea</room>
       </rooms>
-      <room>rooms\rm_bonus</room>
-      <room>rooms\rm_bonus2</room>
       <room>rooms\rm_gameover</room>
       <room>rooms\rm_switchpalace_y</room>
       <room>rooms\rm_switchpalace_g</room>

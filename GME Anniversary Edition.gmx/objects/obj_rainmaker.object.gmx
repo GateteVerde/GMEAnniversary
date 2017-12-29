@@ -59,7 +59,7 @@ part_emitter_stream(global.rain_sys,emitter,rain, 5)
 part_emitter_region(global.rain_sys,emitter, view_xview[0]-600, view_xview[0]+view_wview[0]+600, 0, 0, ps_shape_line, ps_distr_linear);
 
 //Generate particles
-repeat (50)
+repeat (25)
     part_system_update(global.rain_sys);
 </string>
           </argument>

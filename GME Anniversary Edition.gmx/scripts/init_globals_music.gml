@@ -21,7 +21,7 @@ music_setup(global._theme_bonus, "Bonus", 3);
 
 //Gameover
 global._theme_gameover = music_add("Gameover");
-music_setup(global._theme_gameover, "Gameover", 3);
+music_setup(global._theme_gameover, "Gameover", 2);
 
 //Land
 global._theme_land = music_add("Land");
@@ -34,6 +34,10 @@ music_setup(global._theme_map1, "Map 1", 1);
 //Map 2
 global._theme_map2 = music_add("Map 2");
 music_setup(global._theme_map2, "Map 2", 1);
+
+//Minigame
+global._theme_minigame = music_add("Minigame");
+music_setup(global._theme_minigame, "Minigame", 2);
 
 //Miss
 global._theme_miss = music_add("Miss");

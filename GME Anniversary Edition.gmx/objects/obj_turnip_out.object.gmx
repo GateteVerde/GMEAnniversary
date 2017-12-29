@@ -456,6 +456,20 @@ if (ready == 2) {
             image_index = other.image_index;
         }
     }
+    
+    //Otherwise, if the vegetable is a pullable mushroom
+    else if (myveggie == obj_mushroom) {
+    
+        instance_create(obj_playerparent.x,obj_playerparent.y,obj_mushroom);
+        instance_create(x,y,obj_smoke);
+    }
+        
+    //Otherwise, if the vegetable is a pullable 1up mushroom
+    else if (myveggie == obj_1up) {
+    
+        instance_create(obj_playerparent.x,obj_playerparent.y,obj_1up);
+        instance_create(x,y,obj_smoke);
+    }
         
     //Otherwise, pull a veggie
     else {

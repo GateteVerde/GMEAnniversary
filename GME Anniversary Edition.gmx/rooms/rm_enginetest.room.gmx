@@ -54,7 +54,7 @@ background_hspeed[2] = -0.2;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_F60CEB31" locked="0" code="levelmusic = global._theme_land;&#xA;leveltime = 400;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_F60CEB31" locked="0" code="levelmusic = global._theme_land;&#xA;leveltime = 900;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_gotomap" x="-32" y="-112" name="inst_012868A6" locked="0" code="" scaleX="1" scaleY="34" colour="4294967295" rotation="0"/>
     <instance objName="obj_gotomap" x="784" y="-112" name="inst_B44C428E" locked="0" code="" scaleX="1" scaleY="34" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="-48" y="384" name="inst_50BC9B55" locked="0" code="" scaleX="13" scaleY="1" colour="4294967295" rotation="0"/>
@@ -74,7 +74,6 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_semisolid" x="336" y="256" name="inst_017EA52A" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="320" y="288" name="inst_CA11DDB0" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="400" y="288" name="inst_C0233E22" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_rainmaker" x="16" y="0" name="inst_BB47E582" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="272" y="256" name="inst_1078A06D" locked="0" code="sprout = cs_star;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="480" y="256" name="inst_B3E23E52" locked="0" code="sprout = cs_star;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_winged" x="160" y="208" name="inst_FBF78CAE" locked="0" code="sprout = cs_shell;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -107,6 +106,9 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_grass" x="144" y="368" name="inst_13B68306" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="624" y="368" name="inst_AE6B7EC7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="608" y="368" name="inst_337E9385" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_snowmaker" x="16" y="0" name="inst_B8FF2105" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_vegshroom" x="336" y="240" name="inst_CC232377" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_vegshroom" x="416" y="240" name="inst_1395B6E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smw" x="160" y="320" w="16" h="16" xo="352" yo="32" id="10007689" name="inst_B386BC01" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

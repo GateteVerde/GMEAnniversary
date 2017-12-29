@@ -33,19 +33,12 @@ if (instance_exists(obj_puller)) {
     //Play 'Pickup' sound
     audio_play_sound(snd_pickup, 0, false);
     
-    //With player
-    with (obj_playerparent) {
-    
-        visible = 1;
-        holding = 0;
-        disablecontrol = false;
-    }
-    
     //Create vegetable
-    with (instance_create(x,y,obj_vegshroom_up)) sprite_index = other.sprite_index;
-        
-    //Destroy puller
-    with (obj_puller) instance_destroy();
+    with (instance_create(obj_playerparent.x-8,y,obj_turnip_out)) {
+    
+        sprite_index = spr_vegshroom;
+        myveggie = obj_mushroom;
+    }
     
     //Destroy
     instance_destroy();
@@ -72,7 +65,7 @@ if (instance_exists(obj_puller)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Pullable mushroom logic
+            <string>///Stackable mushroom logic
 
 //Check for the player above
 var player = collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerparent,0,0);
