@@ -115,6 +115,9 @@ invulnerable = false;
 //Disables the player controls completely.
 disablecontrol = false;
 
+//Makes the player do a somersault jump when invulnerable
+somersault = false;
+
 //Checks if the player is stuck on a solid surface.
 inwall = false;
 
@@ -500,6 +503,25 @@ invulnerable = false;
 x += xspeed;
 y += yspeed;
 yspeed += ygrav;
+
+//Change the angle when doing a somersault
+if (state == 2) 
+&amp;&amp; (crouch == 0)
+&amp;&amp; (holding == 0)
+&amp;&amp; (wallkick == 0)
+&amp;&amp; (swimming == 0)
+&amp;&amp; (global.powerup != cs_small) {
+
+    //If the player is doing a somersault
+    if (somersault)    
+        angle -= 30*sign(xscale);
+}
+else {
+
+    somersault = 0;
+    if (angle != 0)
+        angle = 0;
+}
 
 //Make sure the player is doing a spinjump
 if (global.powerup != cs_propeller)
@@ -1382,6 +1404,7 @@ if (invulnerable == false) {
                 //Create flying shoe
                 with (instance_create(x,y,obj_kuriboshoe_lost)) {
                 
+                    sprite_index = other.sprite_index;
                     image_xscale = obj_playerparent.xscale;
                     hspeed = obj_playerparent.xscale*-1;
                 }

@@ -47,6 +47,14 @@ music_setup(global._theme_miss, "Miss", 2);
 global._theme_pswitch = music_add("PSwitch");
 music_setup(global._theme_pswitch, "PSwitch", 3);
 
+//SM1 - Clear
+global._theme_sm1clear = music_add("SM1 - Clear");
+music_setup(global._theme_sm1clear, "SM1 - Clear", 2);
+
+//SM2 - Clear
+global._theme_sm2clear = music_add("SM2 - Clear");
+music_setup(global._theme_sm2clear, "SM2 - Clear", 2);
+
 //SM3 - Clear A
 global._theme_sm3cleara = music_add("SM3 - Clear A");
 music_setup(global._theme_sm3cleara, "SM3 - Clear A", 2);

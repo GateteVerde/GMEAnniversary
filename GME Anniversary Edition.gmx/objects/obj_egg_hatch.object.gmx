@@ -72,6 +72,13 @@ alarm[0] = 1;
 //Take a screenshot.
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0);
 
+//Pause particles
+part_system_automatic_update(global.rain_sys,false);
+part_system_automatic_update(global.snow_sys,false);
+
+//Deactivate all timelines
+timeline_running = 0;
+
 //Deactivate all instances.
 instance_deactivate_all(true);
 
@@ -129,6 +136,13 @@ if (ready) {
     
     //Activate all instances.
     instance_activate_all();
+    
+    //Resume particles
+    part_system_automatic_update(global.rain_sys,true);
+    part_system_automatic_update(global.snow_sys,true);
+        
+    //Activate all timelines
+    timeline_running = 1;
     
     //Create a idle Yoshi
     with (instance_create(x,y,obj_yoshi_abandon)) {

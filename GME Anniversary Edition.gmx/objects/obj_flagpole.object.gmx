@@ -30,6 +30,134 @@
 //Do not animate
 image_speed = 0;
 image_index = 0;
+
+//Create flag
+flag = instance_create(x+8,y+27,obj_flag);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop the player from jumping over the flagpole
+
+//If the player does exist
+if (instance_exists(obj_playerparent)) {
+
+    //Make sure the player does not pass through the flag
+    if (obj_playerparent.x &gt; x+8)
+        obj_playerparent.x = x+8;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_playerparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn the player into the player goal object
+
+//Make the flag move down
+flag.vspeed = 1.5;
+
+//Create the appropiate point object based on player's height.
+event_user(0);
+
+//Create goal player
+instance_create(x+8,other.y,obj_player_goal);
+
+//Destroy player object
+with (other) instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create the appropiate point object based on player's height
+
+//1-UP
+if (other.bbox_bottom &lt;= bbox_top+8) 
+    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(9);
+
+//8000 points
+else if (other.bbox_bottom &lt;= bbox_top+16) 
+    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(8);
+    
+//4000 points
+else if (other.bbox_bottom &lt;= bbox_top+32) 
+    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(7);
+    
+//2000 points
+else if (other.bbox_bottom &lt;= bbox_top+48) 
+    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(6);
+    
+//1000 points
+else if (other.bbox_bottom &lt;= bbox_top+64) 
+    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(5);
+    
+//800 points
+else if (other.bbox_bottom &lt;= bbox_top+80) 
+    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(4);
+    
+//400 points
+else if (other.bbox_bottom &lt;= bbox_top+96) 
+    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(3);
+    
+//200 points
+else if (other.bbox_bottom &lt;= bbox_top+112) 
+    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(2);
+    
+//100 points
+else
+    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(1);
 </string>
           </argument>
         </arguments>

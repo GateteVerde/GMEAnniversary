@@ -76,6 +76,9 @@ global.checkpoint = noone;
 //Checkpoint Room
 global.checkpointroom = noone;
 
+//Fireworks
+global.fireworks = 0;
+
 //Switch Palaces
 global.palaceyellow = 0;
 global.palacegreen = 0;

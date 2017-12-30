@@ -54,7 +54,7 @@ background_hspeed[2] = -0.2;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_F60CEB31" locked="0" code="levelmusic = global._theme_land;&#xA;leveltime = 900;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_F60CEB31" locked="0" code="levelmusic = global._theme_land;&#xA;leveltime = 400;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="0" y="400" name="inst_72A17570" locked="0" code="" scaleX="10" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flagpole" x="456" y="224" name="inst_F26229EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="452" y="384" name="inst_6815A1C8" locked="0" code="" scaleX="1.5" scaleY="1" colour="4294967295" rotation="0"/>
@@ -70,6 +70,12 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_solid" x="160" y="384" name="inst_1782449E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="304" y="400" name="inst_D4DD3EFC" locked="0" code="" scaleX="29" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rainmaker" x="16" y="0" name="inst_05D80CAC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_incastle" x="624" y="384" name="inst_0409A3C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="256" y="368" name="inst_C3D73BDF" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warpright" x="288" y="368" name="inst_792BC627" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="240" y="384" name="inst_8644B54D" locked="0" code="postchange = 1;&#xA;postx = 256;&#xA;posty = 368;&#xA;myroom = rm_enginetest2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wallspring" x="320" y="336" name="inst_8CA01D41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="288" y="208" name="inst_4BAD4F25" locked="0" code="varmsg = &quot;If you think there's something wrong with this level, you are wrong!.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_goal" x="576" y="320" w="96" h="80" xo="0" yo="0" id="10012971" name="inst_4275C98E" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -96,6 +102,7 @@ background_hspeed[2] = -0.2;</code>
     <tile bgName="bgr_tileset_smb3" x="32" y="384" w="16" h="16" xo="944" yo="32" id="10013044" name="inst_A0118758" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="304" y="384" w="16" h="16" xo="976" yo="32" id="10013045" name="inst_058AD79A" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="320" y="384" w="16" h="16" xo="992" yo="32" id="10013047" name="inst_098559DC" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_goal" x="576" y="320" w="96" h="80" xo="96" yo="0" id="10013048" name="inst_B86BC329" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="752" y="400" w="16" h="32" xo="16" yo="0" id="10012865" name="inst_ADE63D23" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="736" y="400" w="16" h="32" xo="16" yo="0" id="10012866" name="inst_0C416AB7" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="720" y="400" w="16" h="32" xo="16" yo="0" id="10012867" name="inst_A380A737" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -189,7 +196,6 @@ background_hspeed[2] = -0.2;</code>
     <tile bgName="bgr_tileset_smb3" x="272" y="288" w="16" h="16" xo="256" yo="464" id="10013023" name="inst_DC34FC21" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="256" y="288" w="16" h="16" xo="256" yo="464" id="10013024" name="inst_E5647A4F" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="272" y="272" w="16" h="16" xo="256" yo="464" id="10013025" name="inst_F236AA5D" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_goal" x="576" y="320" w="96" h="80" xo="96" yo="0" id="10012980" name="inst_0E643CFE" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

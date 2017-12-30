@@ -573,8 +573,11 @@ anim += 0.075;
 
 //Reset levelname on manager if moving
 if (speed &gt; 0)
-&amp;&amp; (obj_mapcontrol.levelname != "")
+&amp;&amp; (obj_mapcontrol.levelname != "") {
+
+    obj_mapcontrol.levelid = "999";
     obj_mapcontrol.levelname = "";
+}
 </string>
           </argument>
         </arguments>

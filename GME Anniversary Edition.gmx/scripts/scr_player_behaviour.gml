@@ -217,6 +217,10 @@ if (!disablecontrol) && (!inwall) {
         
             //Play 'Jump' sound
             audio_play_sound(snd_jump, 0, false);
+            
+            //If the player is doing a somersault
+            if (instance_exists(obj_invincibility))
+                somersault = 1;
         }
     
         //Switch to the jump state

@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="33" name="datafiles">
-    <datafiles number="33" name="music">
+  <datafiles number="35" name="datafiles">
+    <datafiles number="35" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -157,6 +157,40 @@
           </Config>
         </ConfigOptions>
         <filename>pswitch.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>sm1clear.ogg</name>
+        <exists>-1</exists>
+        <size>101282</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>sm1clear.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>sm2clear.ogg</name>
+        <exists>-1</exists>
+        <size>42851</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>sm2clear.ogg</filename>
       </datafile>
       <datafile>
         <name>sm3clear.ogg</name>
@@ -388,6 +422,8 @@
       <sound>sound\snd_door</sound>
       <sound>sound\snd_engine</sound>
       <sound>sound\snd_explode</sound>
+      <sound>sound\snd_firework</sound>
+      <sound>sound\snd_flagpole</sound>
       <sound>sound\snd_hatch</sound>
       <sound>sound\snd_mystery</sound>
       <sound>sound\snd_pop</sound>
@@ -413,6 +449,9 @@
     <sounds name="Menu">
       <sound>sound\snd_castlebreak</sound>
       <sound>sound\snd_correct</sound>
+      <sound>sound\snd_count</sound>
+      <sound>sound\snd_count2</sound>
+      <sound>sound\snd_countend</sound>
       <sound>sound\snd_drop</sound>
       <sound>sound\snd_enterpipe</sound>
       <sound>sound\snd_enterstage</sound>
@@ -479,6 +518,7 @@
           <sprite>sprites\spr_mario_big_clear</sprite>
           <sprite>sprites\spr_mario_big_kick</sprite>
           <sprite>sprites\spr_mario_big_walljump</sprite>
+          <sprite>sprites\spr_mario_big_somersault</sprite>
           <sprite>sprites\spr_mario_big_ride</sprite>
         </sprites>
         <sprites name="Fire">
@@ -500,6 +540,7 @@
           <sprite>sprites\spr_mario_fire_kick</sprite>
           <sprite>sprites\spr_mario_fire_shoot</sprite>
           <sprite>sprites\spr_mario_fire_walljump</sprite>
+          <sprite>sprites\spr_mario_fire_somersault</sprite>
           <sprite>sprites\spr_mario_fire_ride</sprite>
         </sprites>
         <sprites name="Ice">
@@ -521,6 +562,7 @@
           <sprite>sprites\spr_mario_ice_kick</sprite>
           <sprite>sprites\spr_mario_ice_shoot</sprite>
           <sprite>sprites\spr_mario_ice_walljump</sprite>
+          <sprite>sprites\spr_mario_ice_somersault</sprite>
           <sprite>sprites\spr_mario_ice_ride</sprite>
         </sprites>
         <sprites name="Carrot">
@@ -544,6 +586,7 @@
           <sprite>sprites\spr_mario_carrot_clear</sprite>
           <sprite>sprites\spr_mario_carrot_kick</sprite>
           <sprite>sprites\spr_mario_carrot_walljump</sprite>
+          <sprite>sprites\spr_mario_carrot_somersault</sprite>
           <sprite>sprites\spr_mario_carrot_ride</sprite>
         </sprites>
         <sprites name="Raccoon">
@@ -568,6 +611,7 @@
           <sprite>sprites\spr_mario_raccoon_kick</sprite>
           <sprite>sprites\spr_mario_raccoon_attack</sprite>
           <sprite>sprites\spr_mario_raccoon_walljump</sprite>
+          <sprite>sprites\spr_mario_raccoon_somersault</sprite>
           <sprite>sprites\spr_mario_raccoon_ride</sprite>
         </sprites>
         <sprites name="Frog">
@@ -586,6 +630,7 @@
           <sprite>sprites\spr_mario_frog_clear</sprite>
           <sprite>sprites\spr_mario_frog_kick</sprite>
           <sprite>sprites\spr_mario_frog_walljump</sprite>
+          <sprite>sprites\spr_mario_frog_somersault</sprite>
           <sprite>sprites\spr_mario_frog_ride</sprite>
         </sprites>
         <sprites name="Tanooki">
@@ -611,6 +656,7 @@
           <sprite>sprites\spr_mario_tanooki_attack</sprite>
           <sprite>sprites\spr_mario_tanooki_attack2</sprite>
           <sprite>sprites\spr_mario_tanooki_walljump</sprite>
+          <sprite>sprites\spr_mario_tanooki_somersault</sprite>
           <sprite>sprites\spr_mario_tanooki_ride</sprite>
         </sprites>
         <sprites name="Hammer">
@@ -632,6 +678,7 @@
           <sprite>sprites\spr_mario_hammer_kick</sprite>
           <sprite>sprites\spr_mario_hammer_shoot</sprite>
           <sprite>sprites\spr_mario_hammer_walljump</sprite>
+          <sprite>sprites\spr_mario_hammer_somersault</sprite>
           <sprite>sprites\spr_mario_hammer_ride</sprite>
         </sprites>
         <sprites name="Boomerang">
@@ -653,6 +700,7 @@
           <sprite>sprites\spr_mario_boomerang_kick</sprite>
           <sprite>sprites\spr_mario_boomerang_shoot</sprite>
           <sprite>sprites\spr_mario_boomerang_walljump</sprite>
+          <sprite>sprites\spr_mario_boomerang_somersault</sprite>
           <sprite>sprites\spr_mario_boomerang_ride</sprite>
         </sprites>
         <sprites name="Super">
@@ -674,6 +722,7 @@
           <sprite>sprites\spr_mario_super_kick</sprite>
           <sprite>sprites\spr_mario_super_shoot</sprite>
           <sprite>sprites\spr_mario_super_walljump</sprite>
+          <sprite>sprites\spr_mario_super_somersault</sprite>
           <sprite>sprites\spr_mario_super_ride</sprite>
         </sprites>
         <sprites name="Bomb">
@@ -694,6 +743,7 @@
           <sprite>sprites\spr_mario_bomb_clear</sprite>
           <sprite>sprites\spr_mario_bomb_kick</sprite>
           <sprite>sprites\spr_mario_bomb_walljump</sprite>
+          <sprite>sprites\spr_mario_bomb_somersault</sprite>
           <sprite>sprites\spr_mario_bomb_ride</sprite>
         </sprites>
         <sprites name="Shell">
@@ -714,6 +764,7 @@
           <sprite>sprites\spr_mario_shell_clear</sprite>
           <sprite>sprites\spr_mario_shell_kick</sprite>
           <sprite>sprites\spr_mario_shell_walljump</sprite>
+          <sprite>sprites\spr_mario_shell_somersault</sprite>
           <sprite>sprites\spr_mario_shell_ride</sprite>
         </sprites>
         <sprites name="Bee">
@@ -737,6 +788,7 @@
           <sprite>sprites\spr_mario_bee_clear</sprite>
           <sprite>sprites\spr_mario_bee_kick</sprite>
           <sprite>sprites\spr_mario_bee_walljump</sprite>
+          <sprite>sprites\spr_mario_bee_somersault</sprite>
           <sprite>sprites\spr_mario_bee_ride</sprite>
         </sprites>
         <sprites name="Lightning">
@@ -758,6 +810,7 @@
           <sprite>sprites\spr_mario_lightning_kick</sprite>
           <sprite>sprites\spr_mario_lightning_shoot</sprite>
           <sprite>sprites\spr_mario_lightning_walljump</sprite>
+          <sprite>sprites\spr_mario_lightning_somersault</sprite>
           <sprite>sprites\spr_mario_lightning_ride</sprite>
         </sprites>
         <sprites name="Penguin">
@@ -782,6 +835,7 @@
           <sprite>sprites\spr_mario_penguin_kick</sprite>
           <sprite>sprites\spr_mario_penguin_shoot</sprite>
           <sprite>sprites\spr_mario_penguin_walljump</sprite>
+          <sprite>sprites\spr_mario_penguin_somersault</sprite>
           <sprite>sprites\spr_mario_penguin_ride</sprite>
         </sprites>
         <sprites name="Propeller">
@@ -804,6 +858,7 @@
           <sprite>sprites\spr_mario_propeller_clear</sprite>
           <sprite>sprites\spr_mario_propeller_kick</sprite>
           <sprite>sprites\spr_mario_propeller_walljump</sprite>
+          <sprite>sprites\spr_mario_propeller_somersault</sprite>
           <sprite>sprites\spr_mario_propeller_ride</sprite>
         </sprites>
         <sprites name="Cat">
@@ -824,6 +879,7 @@
           <sprite>sprites\spr_mario_cat_kick</sprite>
           <sprite>sprites\spr_mario_cat_attack</sprite>
           <sprite>sprites\spr_mario_cat_attack2</sprite>
+          <sprite>sprites\spr_mario_cat_somersault</sprite>
           <sprite>sprites\spr_mario_cat_ride</sprite>
         </sprites>
       </sprites>
@@ -1332,6 +1388,12 @@
     </sprites>
     <sprites name="Special">
       <sprites name="Eyecandy">
+        <sprites name="Fireworks">
+          <sprite>sprites\spr_firework</sprite>
+          <sprite>sprites\spr_firework_b</sprite>
+          <sprite>sprites\spr_firework_c</sprite>
+          <sprite>sprites\spr_firework_d</sprite>
+        </sprites>
         <sprites name="Score">
           <sprites name="Coins">
             <sprite>sprites\spr_coinpts</sprite>
@@ -1404,6 +1466,7 @@
         </sprites>
         <sprites name="In-Map">
           <sprite>sprites\spr_mapborder</sprite>
+          <sprite>sprites\spr_mapborderb</sprite>
           <sprite>sprites\spr_mapinventory</sprite>
           <sprite>sprites\spr_mapinventory_selector</sprite>
         </sprites>
@@ -1546,6 +1609,7 @@
         <script>scripts\scr_mario_kick.gml</script>
         <script>scripts\scr_mario_clear.gml</script>
         <script>scripts\scr_mario_walljump.gml</script>
+        <script>scripts\scr_mario_somersault.gml</script>
         <script>scripts\scr_mario_ride.gml</script>
       </scripts>
       <scripts name="Behaviour">
@@ -1810,6 +1874,8 @@
       <object>objects\obj_player_climb</object>
       <object>objects\obj_player_rocket</object>
       <object>objects\obj_flagpole</object>
+      <object>objects\obj_flagpole_secret</object>
+      <object>objects\obj_incastle</object>
     </objects>
     <objects name="Collision">
       <object>objects\obj_solid</object>
@@ -2209,6 +2275,7 @@
       <objects name="Parents">
         <objects name="Players">
           <object>objects\obj_playerparent</object>
+          <object>objects\obj_playerparent_clear</object>
         </objects>
         <objects name="Collision">
           <objects name="Platform">
@@ -2237,6 +2304,9 @@
         <objects name="Player">
           <objects name="Skins">
             <object>objects\obj_mario</object>
+          </objects>
+          <objects name="Goal States">
+            <object>objects\obj_player_goal</object>
           </objects>
           <object>objects\obj_player_warpnote</object>
           <object>objects\obj_player_transform</object>
@@ -2387,7 +2457,13 @@
           <objects name="Effects">
             <objects name="Score">
               <object>objects\obj_score</object>
+              <object>objects\obj_score_flag</object>
               <object>objects\obj_score_coins</object>
+            </objects>
+            <objects name="Firework">
+              <object>objects\obj_firework_spawner</object>
+              <object>objects\obj_firework</object>
+              <object>objects\obj_firework_trail</object>
             </objects>
             <object>objects\obj_bubble</object>
             <object>objects\obj_bubble_blown</object>
@@ -2415,6 +2491,7 @@
           <object>objects\obj_message</object>
           <object>objects\obj_foreground</object>
         </objects>
+        <object>objects\obj_flag</object>
         <object>objects\obj_powkiller</object>
         <object>objects\obj_blockbumper</object>
       </objects>
@@ -2444,6 +2521,7 @@
     <room>rooms\rm_map</room>
     <rooms name="Levels">
       <room>rooms\rm_enginetest</room>
+      <room>rooms\rm_enginetest2</room>
     </rooms>
     <rooms name="Special">
       <rooms name="Minigames">

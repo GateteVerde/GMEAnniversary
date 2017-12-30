@@ -243,8 +243,11 @@ if (obj_mapcontrol.inventory == false)
 
 //Print level name on obj_mapcontrol
 if (other.speed == 0)
-&amp;&amp; (obj_mapcontrol.levelname = "")
+&amp;&amp; (obj_mapcontrol.levelname = "") {
+
+    obj_mapcontrol.levelid = levelid;
     obj_mapcontrol.levelname = levelname;
+}
 </string>
           </argument>
         </arguments>
