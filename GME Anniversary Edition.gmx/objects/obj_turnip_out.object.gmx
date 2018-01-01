@@ -57,6 +57,35 @@ alarm[8] = 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create smoke effect
+
+if (sprite_index == spr_vegshroom)
+|| (sprite_index == spr_vegshroom_1up)
+|| (sprite_index == spr_crystal)
+|| (sprite_index == spr_crystal_red)
+    instance_create(x,y,obj_smoke);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="8">
       <action>
         <libid>1</libid>
@@ -438,9 +467,6 @@ if (ready == 2) {
         //Destroy puller
         with (obj_puller) instance_destroy();
     }
-    
-    //Destroy
-    instance_destroy();
 
     //If the vegetable is a bomb
     if (myveggie == obj_turnip_bomb) 
@@ -458,17 +484,65 @@ if (ready == 2) {
     }
     
     //Otherwise, if the vegetable is a pullable mushroom
-    else if (myveggie == obj_mushroom) {
-    
+    else if (myveggie == obj_mushroom)    
         instance_create(obj_playerparent.x,obj_playerparent.y,obj_mushroom);
-        instance_create(x,y,obj_smoke);
-    }
         
     //Otherwise, if the vegetable is a pullable 1up mushroom
-    else if (myveggie == obj_1up) {
-    
+    else if (myveggie == obj_1up)   
         instance_create(obj_playerparent.x,obj_playerparent.y,obj_1up);
-        instance_create(x,y,obj_smoke);
+        
+    //Otherwise, if the vegetable is a crystal ball
+    else if (myveggie == obj_crystal_up) {
+    
+        //If the crystal is a blue one, open red hawkmouth
+        if (sprite_index == spr_crystal) {
+    
+            //Open Hawkmouth's mouth
+            with (obj_hawkmouth) {
+            
+                //Make sure this is the red one
+                if (sprite_index == spr_hawkmouth) {
+                
+                    //Do not animate
+                    image_speed = 0;
+                    image_index = 1;
+                    
+                    //Prepare to open the mouth
+                    ready = 1;
+                    
+                    //Play fanfare
+                    alarm[0] = 4;
+                    
+                    //Open hawkmouth mouth.
+                    alarm[1] = 120;
+                }
+            }
+        }
+        
+        //Otherwise, if the crystal is a red one, open blue hawkmouth
+        else if (sprite_index == spr_crystal_red) {
+    
+            //Open Hawkmouth's mouth
+            with (obj_hawkmouth) {
+            
+                //Make sure this is the red one
+                if (sprite_index == spr_hawkmouth_secret) {
+                
+                    //Do not animate
+                    image_speed = 0;
+                    image_index = 1;
+                    
+                    //Prepare to open the mouth
+                    ready = 1;
+                    
+                    //Play fanfare
+                    alarm[0] = 4;
+                    
+                    //Open hawkmouth mouth.
+                    alarm[1] = 120;
+                }
+            }
+        }       
     }
         
     //Otherwise, pull a veggie
@@ -485,6 +559,9 @@ if (ready == 2) {
             }
         }
     }
+    
+    //Destroy
+    instance_destroy();
 }
 
 //Set the y position of the turnip

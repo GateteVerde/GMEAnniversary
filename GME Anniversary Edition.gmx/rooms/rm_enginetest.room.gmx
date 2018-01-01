@@ -76,6 +76,9 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_warproom" x="240" y="384" name="inst_8644B54D" locked="0" code="postchange = 1;&#xA;postx = 256;&#xA;posty = 368;&#xA;myroom = rm_enginetest2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wallspring" x="320" y="336" name="inst_8CA01D41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="288" y="208" name="inst_4BAD4F25" locked="0" code="varmsg = &quot;If you think there's something wrong with this level, you are wrong!.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_sprout" x="112" y="384" name="inst_A9570D2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grass_sprout" x="80" y="384" name="inst_7B9BBCC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_hidden" x="80" y="336" name="inst_04559EC2" locked="0" code="sprout = cs_yoshi_b;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_goal" x="576" y="320" w="96" h="80" xo="0" yo="0" id="10012971" name="inst_4275C98E" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

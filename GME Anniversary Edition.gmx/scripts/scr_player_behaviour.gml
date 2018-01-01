@@ -596,6 +596,7 @@ if (keyboard_check_pressed(global.downkey))
 
     //If the player is on a slope, and the above didn't happen, slide normally
     else if (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+2,obj_slopeparent,1,0))
+    && (!collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+2,obj_hawkmouth,0,0))
     && (global.powerup != cs_frog) {
             
         //If the player can slide and it's not holding anything.

@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="35" name="datafiles">
-    <datafiles number="35" name="music">
+  <datafiles number="36" name="datafiles">
+    <datafiles number="36" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -178,7 +178,7 @@
       <datafile>
         <name>sm2clear.ogg</name>
         <exists>-1</exists>
-        <size>42851</size>
+        <size>77759</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -419,12 +419,15 @@
       <sound>sound\snd_chestitemget</sound>
       <sound>sound\snd_coin</sound>
       <sound>sound\snd_collect</sound>
+      <sound>sound\snd_crystal</sound>
       <sound>sound\snd_door</sound>
       <sound>sound\snd_engine</sound>
       <sound>sound\snd_explode</sound>
       <sound>sound\snd_firework</sound>
       <sound>sound\snd_flagpole</sound>
       <sound>sound\snd_hatch</sound>
+      <sound>sound\snd_hawkmouth</sound>
+      <sound>sound\snd_hawkmouth_close</sound>
       <sound>sound\snd_mystery</sound>
       <sound>sound\snd_pop</sound>
       <sound>sound\snd_powerlost</sound>
@@ -1307,6 +1310,19 @@
         <sprite>sprites\spr_mushroomplatform</sprite>
       </sprites>
       <sprites name="Interactive">
+        <sprites name="Goals">
+          <sprites name="SMB1">
+            <sprite>sprites\spr_flagpole</sprite>
+            <sprite>sprites\spr_flag</sprite>
+          </sprites>
+          <sprites name="SMB2">
+            <sprite>sprites\spr_crystal</sprite>
+            <sprite>sprites\spr_crystal_red</sprite>
+            <sprite>sprites\spr_hawkmouth</sprite>
+            <sprite>sprites\spr_hawkmouth_secret</sprite>
+            <sprite>sprites\spr_hawkmouth_mask</sprite>
+          </sprites>
+        </sprites>
         <sprite>sprites\spr_key</sprite>
         <sprite>sprites\spr_key_timed</sprite>
         <sprite>sprites\spr_pswitch</sprite>
@@ -1517,8 +1533,6 @@
       <sprite>sprites\spr_palaceswitch_g</sprite>
       <sprite>sprites\spr_palaceswitch_r</sprite>
       <sprite>sprites\spr_palaceswitch_b</sprite>
-      <sprite>sprites\spr_flagpole</sprite>
-      <sprite>sprites\spr_flag</sprite>
     </sprites>
     <sprite>sprites\spr_up</sprite>
     <sprite>sprites\spr_down</sprite>
@@ -1868,14 +1882,24 @@
         <object>objects\obj_tilehider</object>
         <object>objects\obj_gotomap</object>
       </objects>
+      <objects name="Goals">
+        <objects name="SMB1">
+          <object>objects\obj_flagpole</object>
+          <object>objects\obj_flagpole_secret</object>
+          <object>objects\obj_incastle</object>
+        </objects>
+        <objects name="SMB2">
+          <object>objects\obj_crystal</object>
+          <object>objects\obj_crystal_red</object>
+          <object>objects\obj_hawkmouth</object>
+          <object>objects\obj_hawkmouth_secret</object>
+        </objects>
+      </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_player_warp</object>
       <object>objects\obj_player_jump</object>
       <object>objects\obj_player_climb</object>
       <object>objects\obj_player_rocket</object>
-      <object>objects\obj_flagpole</object>
-      <object>objects\obj_flagpole_secret</object>
-      <object>objects\obj_incastle</object>
     </objects>
     <objects name="Collision">
       <object>objects\obj_solid</object>
@@ -2307,6 +2331,7 @@
           </objects>
           <objects name="Goal States">
             <object>objects\obj_player_goal</object>
+            <object>objects\obj_player_hawk</object>
           </objects>
           <object>objects\obj_player_warpnote</object>
           <object>objects\obj_player_transform</object>
@@ -2429,14 +2454,12 @@
             <object>objects\obj_boomerang_blue_up</object>
           </objects>
           <objects name="Subcon">
+            <object>objects\obj_turnip_out</object>
             <objects name="Collectibles">
               <object>objects\obj_sorcerer</object>
               <object>objects\obj_pullkey_up</object>
             </objects>
             <objects name="Turnips">
-              <objects name="Important">
-                <object>objects\obj_turnip_out</object>
-              </objects>
               <object>objects\obj_turnip</object>
               <object>objects\obj_turnip_mini</object>
               <object>objects\obj_turnip_large</object>
@@ -2494,6 +2517,7 @@
         <object>objects\obj_flag</object>
         <object>objects\obj_powkiller</object>
         <object>objects\obj_blockbumper</object>
+        <object>objects\obj_crystal_up</object>
       </objects>
       <object>objects\obj_mariostart</object>
       <object>objects\obj_gameover</object>
