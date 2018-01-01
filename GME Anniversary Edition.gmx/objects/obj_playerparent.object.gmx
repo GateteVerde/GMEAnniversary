@@ -185,8 +185,13 @@ instance_create(0,0,obj_marker_bottom);
             <kind>1</kind>
             <string>///Stop sounds
 
+//Stop 'Skid' sound
 audio_stop_sound(snd_skid);
+
+//Stop 'Climb' sound
 audio_stop_sound(snd_climb);
+
+//Stop 'P-Meter' sound
 audio_stop_sound(snd_pmeter);
 </string>
           </argument>
@@ -510,6 +515,7 @@ if (state == 2)
 &amp;&amp; (holding == 0)
 &amp;&amp; (wallkick == 0)
 &amp;&amp; (swimming == 0)
+&amp;&amp; (stompstyle == 0)
 &amp;&amp; (global.powerup != cs_small) {
 
     //If the player is doing a somersault

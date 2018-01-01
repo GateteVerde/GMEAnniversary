@@ -65,7 +65,7 @@ part_emitter_stream(global.snow_sys,emitter,snow, 5);
 part_emitter_region(global.snow_sys,emitter, view_xview[0]-600, view_xview[0]+view_wview[0]+600, view_yview[0], view_yview[0], ps_shape_line, ps_distr_linear);
 
 //Generate particles
-repeat (25)
+repeat (5)
     part_system_update(global.snow_sys);
 </string>
           </argument>
@@ -116,8 +116,9 @@ part_emitter_region(global.snow_sys,emitter, view_xview[0]-600, view_xview[0]+vi
             <kind>1</kind>
             <string>///Clear particles and destroy system
 
-part_system_clear(global.snow_sys);
-global.snow_sys = noone;
+part_type_destroy(snow);
+part_system_destroy(global.snow_sys);
+global.snow_sys = -1;
 </string>
           </argument>
         </arguments>

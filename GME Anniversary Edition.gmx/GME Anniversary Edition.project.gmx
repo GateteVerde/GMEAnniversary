@@ -1314,6 +1314,7 @@
           <sprites name="SMB1">
             <sprite>sprites\spr_flagpole</sprite>
             <sprite>sprites\spr_flag</sprite>
+            <sprite>sprites\spr_flag_player</sprite>
           </sprites>
           <sprites name="SMB2">
             <sprite>sprites\spr_crystal</sprite>
@@ -1559,6 +1560,7 @@
         <background>background\bgr_darkhills_c</background>
         <background>background\bgr_desert_bg</background>
         <background>background\bgr_desert_fg</background>
+        <background>background\bgr_iceforest</background>
         <background>background\bgr_subcon_bg</background>
         <background>background\bgr_subcon_fg</background>
         <background>background\bgr_underground_bg</background>
@@ -2515,6 +2517,8 @@
           <object>objects\obj_foreground</object>
         </objects>
         <object>objects\obj_flag</object>
+        <object>objects\obj_flag_p</object>
+        <object>objects\obj_flag_da</object>
         <object>objects\obj_powkiller</object>
         <object>objects\obj_blockbumper</object>
         <object>objects\obj_crystal_up</object>

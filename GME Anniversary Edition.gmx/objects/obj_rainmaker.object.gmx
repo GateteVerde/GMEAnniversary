@@ -168,8 +168,9 @@ part_emitter_region(global.rain_sys,emitter, view_xview[0]-600, view_xview[0]+vi
             <kind>1</kind>
             <string>///Clear particles and destroy system
 
-part_system_clear(global.rain_sys);
-global.rain_sys = noone;
+part_type_destroy(rain);
+part_system_destroy(global.rain_sys);
+global.rain_sys = -1;
 
 //Stop 'Rain' sound
 audio_stop_sound(snd_rain);

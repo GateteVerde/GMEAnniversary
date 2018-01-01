@@ -158,8 +158,12 @@ if (held) {
     
     //Destroy if the player object does not exist
     if (!instance_exists(obj_playerparent))
-    &amp;&amp; (follow == noone)
+    &amp;&amp; (follow == noone) {
+    
+        instance_create(x,y,obj_smoke);
         instance_destroy();
+        exit;
+    }
 }
 </string>
           </argument>
@@ -324,7 +328,7 @@ else if (instance_exists(obj_player_warpnote))
     
 //Reset to default
 else
-    follow = false;
+    follow = noone;
 </string>
           </argument>
         </arguments>

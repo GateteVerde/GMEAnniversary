@@ -27,14 +27,15 @@
             <kind>1</kind>
             <string>///Player on the flagpole
 
-//Play the flagpole sound
-audio_play_sound(snd_flagpole, 0, false);
+//Default flagpole
+flagpole = -1;
 
 //Use the goal sprite
 sprite_index = scr_mario_goal();
 
 //Animate
-image_speed = 0.15;
+image_speed = 0;
+image_index = 0;
 
 //Stop both music and timer
 with (obj_levelcontrol) {
@@ -92,11 +93,8 @@ ready3 = 0;
 //Stream
 stream = -1;
 
-//Move down
-vspeed = 1.5;
-
-//Start walking
-alarm[0] = 112;
+//Hold a bit before going down
+alarm[11] = 60;
 
 //Whether the object is swimming
 swimming = false;
@@ -113,6 +111,46 @@ else if (global.time -(floor(global.time/10)*10) == 1)
     global.fireworks = 1;
     
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Go down the flagpole
+
+//Play the flagpole sound
+audio_play_sound(snd_flagpole, 0, false);
+
+//Give points
+with (flagpole) {
+
+    event_user(0);
+    with (instance_create(x+8,y+144,obj_flag_p)) 
+        vspeed = -1.5;
+}
+
+//Move down
+vspeed = 1.5;
+
+//Start walking
+alarm[0] = 112;
 </string>
           </argument>
         </arguments>

@@ -53,8 +53,8 @@ vspeed = -1.5;
             <kind>1</kind>
             <string>///Keep in view   
 
-if (y &lt; obj_flagpole.bbox_top+16)
-    y = obj_flagpole.bbox_top+16;
+if (y &lt; obj_flag_p.y)
+    y = obj_flag_p.y;
 </string>
           </argument>
         </arguments>

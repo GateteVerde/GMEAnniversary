@@ -68,6 +68,9 @@ event_inherited();
 
 if (held) {
 
+    //Create smoke effect
+    instance_create(x-8,y,obj_smoke);
+
     //If the player was holding something
     if (instance_exists(obj_playerparent))
     &amp;&amp; (obj_playerparent.holding == 2)
@@ -221,6 +224,15 @@ if (held) {
             //Set up the item's frame.
             follow.myframe = image_index;            
         }
+    }
+    
+    //Destroy if the player object does not exist
+    if (!instance_exists(obj_playerparent))
+    &amp;&amp; (follow == noone) {
+    
+        instance_create(x-8,y,obj_smoke);
+        instance_destroy();
+        exit;
     }
 }
 
@@ -417,7 +429,7 @@ else if (instance_exists(obj_player_warpnote))
     
 //Reset to default
 else
-    follow = false;
+    follow = noone;
 </string>
           </argument>
         </arguments>

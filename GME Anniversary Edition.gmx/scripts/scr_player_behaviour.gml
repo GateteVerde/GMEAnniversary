@@ -147,6 +147,7 @@ if (!disablecontrol) && (!inwall) {
         //Make the player spin jump
         if ((keyboard_check(global.upkey))
         && (!crouch)
+        && ((holding == 0) || (holding == 4))
         && (global.powerup != cs_frog)) {
         
             //If a kuribo shoe is being ridden, dismount from it.

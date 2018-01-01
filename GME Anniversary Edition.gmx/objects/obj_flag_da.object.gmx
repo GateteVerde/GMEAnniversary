@@ -25,10 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///A flag for the flagpole
+            <string>///A flag that got deattached from its pole
 
 //Do not animate
 image_speed = 0;
+
+//Set the motion
+motion_set(350,0.25);
 
 //Angle of the flag
 angle = 0
@@ -43,7 +46,7 @@ wavespeed = 0.2
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_flagpole">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -60,46 +63,9 @@ wavespeed = 0.2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///When the flag reaches the bottom of the flagpole
+            <string>///Decrement alpha
 
-if (y &gt; other.y+144) {
-
-    //Stop moving
-    vspeed = 0;
-
-    //Snap to bottom of the flagpole
-    y = other.y+144;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Create smoke effect
-
-//Go poof
-visible = 0;
-
-//Create smoke effect
-with (instance_create(x,y,obj_flag_da))
-    image_index = other.image_index;
+image_alpha -= 0.025;
 </string>
           </argument>
         </arguments>
@@ -127,7 +93,7 @@ with (instance_create(x,y,obj_flag_da))
 angle += wavespeed;
 for (i=0; i&lt;=27/part; i+=1) {
 
-    draw_sprite_part(sprite_index,-1,i*part,0,part,27,round(x)+(i*part),round(y)-11+(sin(angle+i)));
+    draw_sprite_part_ext(sprite_index,-1,i*part,0,part,27,round(x)+(i*part),round(y)-11+(sin(angle+i)),1,1,c_white,image_alpha);
 }
 </string>
           </argument>

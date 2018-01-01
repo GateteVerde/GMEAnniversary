@@ -61,8 +61,12 @@ flag = instance_create(x+8,y+27,obj_flag);
 if (instance_exists(obj_playerparent)) {
 
     //Make sure the player does not pass through the flag
-    if (obj_playerparent.x &gt; x+8)
-        obj_playerparent.x = x+8;
+    if (obj_playerparent.x &gt; x) {
+    
+        obj_playerparent.x = x;
+        if (instance_exists(obj_dropdown))
+            obj_dropdown.x = x;
+    }
 }
 </string>
           </argument>
@@ -88,17 +92,21 @@ if (instance_exists(obj_playerparent)) {
             <kind>1</kind>
             <string>///Turn the player into the player goal object
 
-//Make the flag move down
-flag.vspeed = 1.5;
+if (other.y &gt;= y+16) {
 
-//Create the appropiate point object based on player's height.
-event_user(0);
-
-//Create goal player
-instance_create(x+8,other.y,obj_player_goal);
-
-//Destroy player object
-with (other) instance_destroy();
+    //Create goal player
+    with (instance_create(x+8,other.y,obj_player_goal)) {
+    
+        //Set up the id of this flagpole
+        flagpole = other.id;
+        
+        //Make the flag move down
+        with (other.flag) event_user(0);
+    }
+    
+    //Destroy player object
+    with (other) instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -124,40 +132,44 @@ with (other) instance_destroy();
             <string>///Create the appropiate point object based on player's height
 
 //1-UP
-if (other.bbox_bottom &lt;= bbox_top+8) 
-    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(9);
+if (obj_playerparent_clear.ystart+16 &lt;= y+35) {
 
-//8000 points
-else if (other.bbox_bottom &lt;= bbox_top+16) 
-    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(8);
+    limit = 27;
+    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+        event_user(9);
+}
     
 //4000 points
-else if (other.bbox_bottom &lt;= bbox_top+32) 
-    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(7);
-    
-//2000 points
-else if (other.bbox_bottom &lt;= bbox_top+48) 
-    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(6);
+else if (obj_playerparent_clear.ystart+16 &lt;= y+80) {
+
+    limit = 45;
+    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+        event_user(7);
+}
     
 //1000 points
-else if (other.bbox_bottom &lt;= bbox_top+64) 
-    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(5);
-    
-//800 points
-else if (other.bbox_bottom &lt;= bbox_top+80) 
-    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(4);
+else if (obj_playerparent_clear.ystart+16 &lt;= y+104) {
+
+    limit = 91
+    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+        event_user(5);
+}
     
 //400 points
-else if (other.bbox_bottom &lt;= bbox_top+96) 
-    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(3);
-    
-//200 points
-else if (other.bbox_bottom &lt;= bbox_top+112) 
-    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(2);
+else if (obj_playerparent_clear.ystart+16 &lt;= y+144) {
+
+    limit = 115;
+    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+        event_user(3);
+}
     
 //100 points
-else
-    with (instance_create(bbox_right+24,bbox_bottom-10,obj_score_flag)) event_user(1);
+else {
+
+    limit = 144;
+    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+        event_user(1);
+}
 </string>
           </argument>
         </arguments>

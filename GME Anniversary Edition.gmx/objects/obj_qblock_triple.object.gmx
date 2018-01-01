@@ -138,11 +138,11 @@ for (var i=0; i&lt;3; i++;) {
         sprout[i] = cs_big;
         
     //Create the item
-    if (sprout != cs_coin) {
+    if (sprout[i] != cs_coin) {
     
         with (instance_create(x+8+(i*16),y,obj_powerupsprout)) {
         
-            sprite_index = constant_get_sprite(other.sprout);
+            sprite_index = constant_get_sprite(other.sprout[i]);
             if (sprite_get_xoffset(sprite_index) == 0)
                 x -= 8;
         }
