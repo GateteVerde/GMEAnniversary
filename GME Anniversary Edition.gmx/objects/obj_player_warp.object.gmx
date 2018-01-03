@@ -649,7 +649,7 @@ if (instance_exists(obj_levelcontrol)) {
         barrier = 1;
         
         //Deactivate barrier
-        alarm[6] = 3;
+        alarm[7] = 3;
     }
     
     //Set position

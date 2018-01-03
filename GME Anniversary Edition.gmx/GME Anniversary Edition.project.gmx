@@ -1323,6 +1323,13 @@
             <sprite>sprites\spr_hawkmouth_secret</sprite>
             <sprite>sprites\spr_hawkmouth_mask</sprite>
           </sprites>
+          <sprites name="SMB3">
+            <sprite>sprites\spr_goalbox</sprite>
+            <sprite>sprites\spr_goalcard</sprite>
+            <sprite>sprites\spr_goalcard_mush</sprite>
+            <sprite>sprites\spr_goalcard_flower</sprite>
+            <sprite>sprites\spr_goalcard_starman</sprite>
+          </sprites>
         </sprites>
         <sprite>sprites\spr_key</sprite>
         <sprite>sprites\spr_key_timed</sprite>
@@ -1432,6 +1439,7 @@
           <sprite>sprites\spr_1uppts</sprite>
           <sprite>sprites\spr_2uppts</sprite>
           <sprite>sprites\spr_3uppts</sprite>
+          <sprite>sprites\spr_cardpts</sprite>
         </sprites>
         <sprites name="Weather">
           <sprite>sprites\spr_rain</sprite>
@@ -1441,11 +1449,9 @@
         <sprite>sprites\spr_bubble</sprite>
         <sprite>sprites\spr_castlesmoke</sprite>
         <sprite>sprites\spr_cinder</sprite>
-        <sprite>sprites\spr_confetti</sprite>
         <sprite>sprites\spr_glass</sprite>
         <sprite>sprites\spr_glass_h</sprite>
         <sprite>sprites\spr_icespark</sprite>
-        <sprite>sprites\spr_light</sprite>
         <sprite>sprites\spr_notespark</sprite>
         <sprite>sprites\spr_pop</sprite>
         <sprite>sprites\spr_shellthump</sprite>
@@ -1504,6 +1510,7 @@
         <sprite>sprites\spr_timeup</sprite>
         <sprite>sprites\spr_mariostart</sprite>
         <sprite>sprites\spr_gameover</sprite>
+        <sprite>sprites\spr_hud_cards</sprite>
         <sprite>sprites\spr_hud_reserve</sprite>
         <sprite>sprites\spr_hud_starcoin_get</sprite>
       </sprites>
@@ -1548,6 +1555,9 @@
       <backgrounds name="Backgrounds">
         <backgrounds name="Foregrounds">
           <background>background\bgr_cloudblanket</background>
+          <background>background\bgr_cloudblanket_snow</background>
+          <background>background\bgr_cloudfg</background>
+          <background>background\bgr_reef</background>
           <background>background\bgr_smog</background>
         </backgrounds>
         <background>background\bgr_blocks</background>
@@ -1560,6 +1570,7 @@
         <background>background\bgr_darkhills_c</background>
         <background>background\bgr_desert_bg</background>
         <background>background\bgr_desert_fg</background>
+        <background>background\bgr_hills</background>
         <background>background\bgr_iceforest</background>
         <background>background\bgr_subcon_bg</background>
         <background>background\bgr_subcon_fg</background>
@@ -1896,6 +1907,10 @@
           <object>objects\obj_hawkmouth</object>
           <object>objects\obj_hawkmouth_secret</object>
         </objects>
+        <objects name="SMB3">
+          <object>objects\obj_goalcard</object>
+          <object>objects\obj_goalcard_secret</object>
+        </objects>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_player_warp</object>
@@ -2198,7 +2213,6 @@
           <object>objects\obj_movingpipe</object>
           <object>objects\obj_skullraft</object>
         </objects>
-        <object>objects\obj_bumper</object>
         <object>objects\obj_conveyor_l</object>
         <object>objects\obj_conveyor_r</object>
         <object>objects\obj_yoshiplatform</object>
@@ -2211,6 +2225,7 @@
         <object>objects\obj_trampoline</object>
         <object>objects\obj_trampoline_p</object>
         <object>objects\obj_trampoline_timed</object>
+        <object>objects\obj_bumper</object>
         <object>objects\obj_wallspring</object>
         <object>objects\obj_flipper_top</object>
         <object>objects\obj_flipper_bottom</object>
@@ -2332,8 +2347,9 @@
             <object>objects\obj_mario</object>
           </objects>
           <objects name="Goal States">
-            <object>objects\obj_player_goal</object>
-            <object>objects\obj_player_hawk</object>
+            <object>objects\obj_player_goal_smb1</object>
+            <object>objects\obj_player_goal_smb2</object>
+            <object>objects\obj_player_goal_smb3</object>
           </objects>
           <object>objects\obj_player_warpnote</object>
           <object>objects\obj_player_transform</object>
@@ -2451,6 +2467,12 @@
             <object>objects\obj_pulleyplatform_rope</object>
           </objects>
           <objects name="Interactive">
+            <objects name="Goals">
+              <object>objects\obj_flag</object>
+              <object>objects\obj_flag_p</object>
+              <object>objects\obj_flag_da</object>
+              <object>objects\obj_goalcard_get</object>
+            </objects>
             <object>objects\obj_trampoline_p_active</object>
             <object>objects\obj_propellerblock_up</object>
             <object>objects\obj_boomerang_blue_up</object>
@@ -2483,6 +2505,7 @@
             <objects name="Score">
               <object>objects\obj_score</object>
               <object>objects\obj_score_flag</object>
+              <object>objects\obj_score_goal</object>
               <object>objects\obj_score_coins</object>
             </objects>
             <objects name="Firework">
@@ -2493,7 +2516,6 @@
             <object>objects\obj_bubble</object>
             <object>objects\obj_bubble_blown</object>
             <object>objects\obj_bubble_v</object>
-            <object>objects\obj_confetti</object>
             <object>objects\obj_notespark</object>
             <object>objects\obj_shellbump</object>
             <object>objects\obj_smoke</object>
@@ -2516,9 +2538,6 @@
           <object>objects\obj_message</object>
           <object>objects\obj_foreground</object>
         </objects>
-        <object>objects\obj_flag</object>
-        <object>objects\obj_flag_p</object>
-        <object>objects\obj_flag_da</object>
         <object>objects\obj_powkiller</object>
         <object>objects\obj_blockbumper</object>
         <object>objects\obj_crystal_up</object>

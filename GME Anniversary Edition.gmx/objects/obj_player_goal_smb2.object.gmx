@@ -276,6 +276,9 @@ if (ready == 0) {
     }
 }
 
+//Update yoshi anim
+anim += 0.15
+
 //Make sure to set the alt exit if the hawk is a secret one
 if (myhawk.sprite_index == spr_hawkmouth_secret)
     global.clear = 2;
@@ -316,10 +319,7 @@ if (global.mount == 1) {
     pal_swap_reset();
     
     //Draw the player
-    if (x &lt; obj_incastle.x)
-        player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale);
-    else
-        player_draw_yoshi(scr_mario_ride(), 1, x, y-3, image_xscale);
+    player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale);
 }
 
 //Otherwise, draw normally

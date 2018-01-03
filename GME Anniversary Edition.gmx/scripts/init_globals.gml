@@ -58,6 +58,11 @@ global.mariostart = false;
 //3: Clear (Exit from side)
 global.clear = 0;
 
+//SMB3 Card System
+global.card[0] = -1;
+global.card[1] = -1;
+global.card[2] = -1;
+
 //Berries
 global.berries = 0;
 

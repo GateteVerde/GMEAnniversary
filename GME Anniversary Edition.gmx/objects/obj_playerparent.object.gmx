@@ -130,8 +130,8 @@ wiggle = 0;
 //Handles the player combos and gives extra lives.
 combo = 0;
 
-//Delay the use of the leaf powerup if the player just dismounted yoshi
-dismount = 0;
+//Change direction of the projectiles when spinning
+dir = 1;
 
 //Carrot / Bee powerup flight variables
 beefly = 0;
@@ -154,6 +154,7 @@ boost = 0;
 isflashing = 0;
 
 //Initialize important alarms
+alarm[3] = 1; //This one is found on player skins
 alarm[5] = 1;
 alarm[8] = 1; 
 alarm[10] = 1; //This one is found on player skins

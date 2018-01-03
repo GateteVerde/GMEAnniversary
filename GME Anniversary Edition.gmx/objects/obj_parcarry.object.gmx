@@ -269,7 +269,7 @@ else {
     var water = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0);
     
     //If the object is not underwater and makes contact with water
-    if (water) 
+    if (water)
     &amp;&amp; (!swimming) {
     
         //Make the object go underwater

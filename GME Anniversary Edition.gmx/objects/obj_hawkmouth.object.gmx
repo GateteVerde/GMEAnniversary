@@ -206,7 +206,7 @@ if (ready == 3) {
         audio_play_sound(snd_hawkmouth_close, 0, false);
         
         //Create hawk player object
-        with (instance_create(x,y+28,obj_player_hawk)) {
+        with (instance_create(x,y+28,obj_player_goal_smb2)) {
         
             //If the hawk is facing left
             if (other.xscale == 1) {

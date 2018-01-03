@@ -8,7 +8,7 @@
   <parentName>obj_grayblockparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="4" ename="obj_invincibility">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,9 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Destroy
+            <string>///Break in contact with the player while invulnerablke
 
-event_user(0);
+//Check for the player object
+if (instance_exists(obj_playerparent)) {
+
+    //If the player is on contact with the block and the p-switch is active
+    if (collision_rectangle(bbox_left-1,bbox_top-1-obj_playerparent.yspeed,bbox_right+1,bbox_bottom+1+obj_playerparent.yspeed,obj_playerparent,0,0))
+    &amp;&amp; (instance_exists(obj_invincibility))
+        event_user(0);
+}
 </string>
           </argument>
         </arguments>

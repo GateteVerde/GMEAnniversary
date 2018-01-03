@@ -300,6 +300,78 @@ else
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Throw projectiles when spinning
+
+//If the player is doing a spinjump
+if (stompstyle == 1) {
+    
+    //Fireball
+    if (global.powerup == cs_fire) {
+    
+        with (instance_create(x,y,obj_fireball)) 
+            hspeed = 3*sign(other.dir);
+    }         
+    
+    //Iceball
+    else if ((global.powerup == cs_ice) || ((global.powerup == cs_penguin) &amp;&amp; (swimming == false))) {
+    
+        with (instance_create(x,y,obj_iceball)) 
+            hspeed = other.xspeed+(1.2*sign(other.dir));
+    }
+        
+    //Hammer
+    else if (global.powerup == cs_hammer) {
+    
+        with (instance_create(x,y,obj_hammer)) 
+            hspeed = other.xspeed+(1.25*sign(other.dir));
+    }
+    
+    //Superball
+    else if (global.powerup == cs_super) {
+    
+        with (instance_create(x,y,obj_superball)) 
+            hspeed = 3*sign(other.dir);
+    }
+    
+    //Lightning
+    else if (global.powerup == cs_lightning) {
+    
+        with (instance_create(x,y+2,obj_bolt)) 
+            hspeed = 6*sign(other.dir);
+    }
+    
+    //Repeat
+    alarm[3] = 15;
+    
+    //Change the facing direction
+    dir = -dir;
+}
+
+//Otherwise, deny event
+else
+    alarm[3] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>

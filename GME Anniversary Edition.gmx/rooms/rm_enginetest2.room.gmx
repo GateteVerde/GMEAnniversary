@@ -35,7 +35,7 @@ background_hspeed[2] = -0.2;</code>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="bgr_iceforest" x="0" y="0" htiled="-1" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
-    <background visible="-1" foreground="0" name="bgr_cloudblanket" x="0" y="0" htiled="-1" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="bgr_cloudblanket_snow" x="0" y="0" htiled="-1" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -74,17 +74,19 @@ background_hspeed[2] = -0.2;</code>
     <instance objName="obj_player_warp" x="272" y="384" name="inst_B5A464A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flagpole_secret" x="456" y="224" name="inst_1F1F4D5E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snowmaker" x="16" y="0" name="inst_E1B990F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="304" y="336" name="inst_D69D1A77" locked="0" code="varmsg = &quot;See, there is nothing wrong with this stage.&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_graybrick" x="112" y="384" name="inst_48E82181" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_graybrick" x="96" y="384" name="inst_A01526EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_graybrick" x="80" y="384" name="inst_FE3FC74D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_graybrick" x="96" y="368" name="inst_B7B00B30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="352" y="384" name="inst_924189EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="368" y="384" name="inst_B2C01A6E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="384" y="384" name="inst_6AD735D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wallspring" x="320" y="336" name="inst_F0A0B760" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="64" y="336" name="inst_66BBF4BD" locked="0" code="sprout = cs_beanstalk;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="64" y="64" name="inst_A667D518" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_semisolid" x="80" y="128" name="inst_D0C5B624" locked="0" code="" scaleX="8" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_semisolid" x="224" y="80" name="inst_3160A4B5" locked="0" code="" scaleX="8" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_superbell" x="288" y="64" name="inst_2A2DC0A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_goal" x="576" y="320" w="96" h="80" xo="0" yo="80" id="10013050" name="inst_CB869549" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="64" y="64" w="16" h="16" xo="256" yo="416" id="10014135" name="inst_037E0629" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_goal" x="576" y="320" w="96" h="80" xo="96" yo="80" id="10013052" name="inst_55A31823" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="32" y="384" w="16" h="16" xo="864" yo="160" id="10013108" name="inst_FF12B917" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="112" y="384" w="16" h="16" xo="816" yo="240" id="10013109" name="inst_4EF2EEE7" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -200,6 +202,22 @@ background_hspeed[2] = -0.2;</code>
     <tile bgName="bgr_tileset_smb3" x="32" y="400" w="16" h="32" xo="192" yo="0" id="10013105" name="inst_9CAF19BF" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="16" y="400" w="16" h="32" xo="192" yo="0" id="10013106" name="inst_0753F500" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="0" y="400" w="16" h="32" xo="192" yo="0" id="10013107" name="inst_28D55F3E" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="80" y="112" w="16" h="48" xo="368" yo="432" id="10014136" name="inst_5D7419A5" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="224" y="64" w="16" h="48" xo="368" yo="432" id="10014137" name="inst_5673BCB4" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="336" y="64" w="16" h="48" xo="400" yo="432" id="10014138" name="inst_1D4C88A4" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="96" y="112" w="16" h="48" xo="384" yo="432" id="10014139" name="inst_30B9F191" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="112" y="112" w="16" h="48" xo="384" yo="432" id="10014140" name="inst_A55608A7" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="128" y="112" w="16" h="48" xo="384" yo="432" id="10014141" name="inst_A985A56D" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="144" y="112" w="16" h="48" xo="384" yo="432" id="10014142" name="inst_DAF39EB6" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="160" y="112" w="16" h="48" xo="384" yo="432" id="10014143" name="inst_2EE80022" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="176" y="112" w="16" h="48" xo="384" yo="432" id="10014144" name="inst_299AFAA3" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="240" y="64" w="16" h="48" xo="384" yo="432" id="10014145" name="inst_3942E563" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="256" y="64" w="16" h="48" xo="384" yo="432" id="10014146" name="inst_26680A28" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="272" y="64" w="16" h="48" xo="384" yo="432" id="10014147" name="inst_F2F3C310" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="288" y="64" w="16" h="48" xo="384" yo="432" id="10014150" name="inst_7A400CF1" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="304" y="64" w="16" h="48" xo="384" yo="432" id="10014151" name="inst_7D03765E" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="320" y="64" w="16" h="48" xo="384" yo="432" id="10014152" name="inst_58CF561E" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="192" y="112" w="16" h="48" xo="400" yo="432" id="10014153" name="inst_0A503A29" depth="-6" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

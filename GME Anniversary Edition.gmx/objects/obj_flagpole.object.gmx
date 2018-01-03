@@ -64,8 +64,12 @@ if (instance_exists(obj_playerparent)) {
     if (obj_playerparent.x &gt; x) {
     
         obj_playerparent.x = x;
-        if (instance_exists(obj_dropdown))
+        if (instance_exists(obj_dropdown)) {
+        
             obj_dropdown.x = x;
+            if (obj_dropdown.hspeed &gt; 0)
+                obj_dropdown.hspeed = 0;
+        }
     }
 }
 </string>
@@ -95,7 +99,7 @@ if (instance_exists(obj_playerparent)) {
 if (other.y &gt;= y+16) {
 
     //Create goal player
-    with (instance_create(x+8,other.y,obj_player_goal)) {
+    with (instance_create(x+8,other.y,obj_player_goal_smb1)) {
     
         //Set up the id of this flagpole
         flagpole = other.id;

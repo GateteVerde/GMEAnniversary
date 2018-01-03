@@ -1112,6 +1112,15 @@ else {
             ds_map_replace(global.sc[i],global.level,0);
     }
 }
+
+//Delete all cards
+if (global.card[0] != -1) 
+&amp;&amp; (global.card[1] != -1) 
+&amp;&amp; (global.card[2] != -1) {
+
+    for (var j = 0; j &lt; 3; j++)
+        global.card[j] = -1;
+}
 </string>
           </argument>
         </arguments>

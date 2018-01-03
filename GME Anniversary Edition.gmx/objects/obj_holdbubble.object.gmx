@@ -215,9 +215,9 @@ else if (ready) {
 
     //...and it's outside the view limits
     if (outside_view()) {
-    
-        //Create a bubble with the same specs
-        with (instance_create(xstart,ystart,obj_holdbubble)) sprout = other.sprout;
+        
+        //Create a respawn bubble with the same item
+        with (instance_create(xstart,ystart,obj_holdbubble_respawn)) sprout = other.sprout;
         
         //Destroy
         instance_destroy();
@@ -295,8 +295,13 @@ alarm[1] = 1;
 //Draw item
 if (sprout == cs_jugemushoe)
     draw_sprite_ext(constant_get_sprite(sprout),0,x+(sprite_get_xoffset(constant_get_sprite(sprout))),y+10,1,1,0,c_white,1);
-else
-    draw_sprite_ext(constant_get_sprite(sprout),0,x+8+(sprite_get_xoffset(constant_get_sprite(sprout))),y+10,1,1,0,c_white,1);
+else {
+
+    if (sprout == cs_coin)
+        draw_sprite(spr_coin,-1,x+8,y+10);    
+    else
+        draw_sprite_ext(constant_get_sprite(sprout),0,x+8+(sprite_get_xoffset(constant_get_sprite(sprout))),y+10,1,1,0,c_white,1);
+}
 
 //Draw bubble
 draw_sprite_ext(sprite_index,-1,x,y,1,1,0,c_white,image_alpha);
