@@ -51,7 +51,7 @@ postchange = 0;
 postx = x;
 posty = y;
 locked = 0;
-myroom = room;
+myroom = room_next(room);
 
 //Do not animate
 image_speed = 0;
@@ -80,7 +80,7 @@ image_speed = 0;
             <string>///Warp to another room
 
 //If the position needs to be changed in the new room.
-if (postchange != 1) {
+if (postchange != -1) {
 
     //Remember the spawn type
     global.postchange = postchange;

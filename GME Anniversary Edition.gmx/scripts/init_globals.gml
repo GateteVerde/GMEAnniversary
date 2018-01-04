@@ -104,7 +104,6 @@ global.onofforange = 1;
 //1: Pipe
 //2: Jump
 //3: Climb
-//4: Warp/Mystery Boxes
 global.postchange = -1;
 
 //Position change coordinates

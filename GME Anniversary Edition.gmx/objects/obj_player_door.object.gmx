@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>///The player is warping through a door
 
+//Get the sprite
+sprite_index = scr_mario_spin();
+
 //Animate it
 image_speed = 0;
 image_index = 2;
@@ -44,9 +47,6 @@ holding = 0;
 //Draw the item held
 myitem = -1;
 myframe = 0;
-
-//Get the sprite
-scr_mario_spin();
 </string>
           </argument>
         </arguments>
@@ -188,10 +188,24 @@ else {
     if (holding &gt; 0) {
     
         //If the player is small
-        if (global.powerup == cs_small)
-            draw_sprite_ext(myitem, myframe, round(x), round(y), 1, 1, 0, c_white, 1);
-        else
-            draw_sprite_ext(myitem, myframe, round(x), round(y)-4, 1, 1, 0, c_white, 1);
+        if (global.powerup == cs_small) {
+
+            //If the offset of the item is at the middle
+            if (sprite_get_xoffset(myitem) == sprite_get_width(myitem)/2)
+                draw_sprite_ext(myitem,myframe,round(x),round(y),1,1,0,c_white,1);
+            else
+                draw_sprite_ext(myitem,myframe,round(x)-8,round(y),1,1,0,c_white,1);
+        }
+        
+        //Otherwise
+        else {
+
+            //If the offset of the item is at the middle
+            if (sprite_get_xoffset(myitem) == sprite_get_width(myitem)/2)
+                draw_sprite_ext(myitem,myframe,round(x),round(y)-4,1,1,0,c_white,1);
+            else
+                draw_sprite_ext(myitem,myframe,round(x)-8,round(y)-4,1,1,0,c_white,1);       
+        }
     }
     
     //Set up the palette

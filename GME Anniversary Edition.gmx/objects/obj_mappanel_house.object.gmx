@@ -154,7 +154,7 @@ if (image_index == 0) {
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mapplayer">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -171,54 +171,28 @@ if (image_index == 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Print level name and perform actions
+            <string>///Go where the panel takes you
 
-//If the inventory is not open...
-if (obj_mapcontrol.inventory == false)
-
-//...and the player can move...
-&amp;&amp; (other.speed == 0)
-&amp;&amp; (other.ready == 0)
-&amp;&amp; (other.letsgo == 0)
-
-//...and there's no openers around
-&amp;&amp; (instance_number(obj_opener) == 0) {
-
-    //If the 'Shift' key is held
-    if (keyboard_check_pressed(global.shiftkey)) 
-    &amp;&amp; (beaten == 0) {
+//If the level has not been beaten yet
+if (beaten == 0) {
     
-        //Play 'Enter Stage' sound
-        audio_play_sound(snd_enterstage, 0, false);
-                
-        //Check collected star coins
-        event_user(0);
+    //Play 'Enter Stage' sound
+    audio_play_sound(snd_enterstage, 0, false);
+    
+    //Set up pipe info
+    global.prize[0] = powerup[0];
+    global.prize[1] = powerup[1];
+    global.prize[2] = powerup[2];
+    
+    //Do not remember checkpoint
+    global.checkpoint = noone;    
+    
+    //Do not display "Mario Start!"
+    global.mariostart = 1;
         
-        //Set the chest contents
-        global.prize[0] = powerup[0];
-        global.prize[1] = powerup[1];
-        global.prize[2] = powerup[2];
-        
-        //Make the player hereby the room
-        with (other) {
-        
-            //Set up the destination room
-            myroom = other.myroom;
-            alarm[1] = 2;
-            
-            //Set the victory pose
-            letsgo = true;
-            
-            //Make sure the player can exit the level
-            global.levelbeat = other.beaten;
-        }
-    }
+    //Set the room
+    myroom = other.myroom;
 }
-
-//Print level name on obj_mapcontrol
-if (other.speed == 0)
-&amp;&amp; (obj_mapcontrol.levelname = "")
-    obj_mapcontrol.levelname = levelname;
 </string>
           </argument>
         </arguments>

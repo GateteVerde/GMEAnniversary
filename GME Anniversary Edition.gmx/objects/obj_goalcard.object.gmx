@@ -52,7 +52,7 @@ cardtype = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="3">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -75,117 +75,6 @@ with (instance_create(view_xview[0]+view_wview[0]/2,view_yview[0]+216,obj_score_
 
     depth = -4;
     image_index = other.cardtype;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Return to map
-
-//Create fade effect
-if (instance_number(obj_fadein) == 0) {
-
-    //Create a fade in effect.
-    with (instance_create(0,0,obj_fadein))
-        target = rm_map;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Take points off the time, and add to the score
-
-//If there is no time left
-if (global.time == 0) 
-    alarm[2] = 1;
-
-//Otherwise
-else {
-
-    //If the time is greater than 4, decrement 5 seconds from timer
-    if (global.time &gt; 4) {
-    
-        //Repeat the process
-        alarm[1] = 2;
-    
-        //Get 250 points
-        score += 250;
-        
-        //Decrement 5 seconds
-        global.time -= 5;
-    }
-    
-    //Otherwise, decrement timer by 1 second
-    else if ((global.time &lt; 5) &amp;&amp; (global.time &gt; 0)) {
-    
-        //Repeat the process
-        alarm[1] = 2;
-    
-        //Get 50 points
-        score += 50;
-        
-        //Decrement 1 second
-        global.time--;
-    }
-
-    //Play 'Count' sounds
-    if (ready3 == 0) {
-    
-        //If the timer is greater than 0
-        if (global.time &gt; 0) {
-        
-            ready3 = 1;
-            audio_play_sound(snd_count, 0, false);
-            audio_play_sound(snd_count2, 0, true);
-        }
-        else {
-        
-            ready3 = 2;
-            audio_play_sound(snd_countend, 0, false);
-        }
-    }
-    else if ((global.time &lt; 1) &amp;&amp; (ready3 == 1)) {
-    
-        ready3 = 2;
-        audio_stop_sound(snd_count2);
-        audio_play_sound(snd_countend, 0, false);
-    }    
 }
 </string>
           </argument>
@@ -225,47 +114,6 @@ if (!ready) {
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Goal card logic
-
-//If the card has been collected.
-if (ready) {
-
-    //Is the stream playing?
-    if (!FMODInstanceIsPlaying(stream)) {
-    
-        //Is there not time left?
-        if ((global.time == 0) &amp;&amp; (!ready2)) {
-        
-            //Time has been collected
-            ready2 = 1;
-            
-            //Return to map
-            alarm[2] = 120;
-        }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="4" ename="obj_playerparent">
       <action>
         <libid>1</libid>
@@ -286,7 +134,7 @@ if (ready) {
             <string>///Clear the level
 
 //Create goal mario
-instance_create(other.x,other.y,obj_player_goal_smb3);
+with (instance_create(other.x,other.y,obj_player_goal_smb3)) mygoal = other.id;
 
 //Stop streams
 FMODInstanceStop(global._stream_pswitch);
@@ -340,9 +188,6 @@ event_user(0);
 
 //Get card
 event_user(2);
-
-//Get points off time
-alarm[1] = 280;
 
 //Destroy the player last
 with (obj_playerparent) instance_destroy();
@@ -417,7 +262,7 @@ if ((global.card[0] == global.card[1]) &amp;&amp; (global.card[0] == global.card
         cardtype = 1;
         
         //Get extra lives
-        alarm[3] = 120;
+        alarm[1] = 120;
     }
     
     //Otherwise, if all three cards are fire flowers.
@@ -430,7 +275,7 @@ if ((global.card[0] == global.card[1]) &amp;&amp; (global.card[0] == global.card
         cardtype = 2;
         
         //Get extra lives
-        alarm[3] = 120;
+        alarm[1] = 120;
     }
     
     //Otherwise, if all three cards are starmen.
@@ -443,7 +288,7 @@ if ((global.card[0] == global.card[1]) &amp;&amp; (global.card[0] == global.card
         cardtype = 3;
         
         //Get extra lives
-        alarm[3] = 120;
+        alarm[1] = 120;
     }
 }
 
@@ -457,7 +302,7 @@ else {
     cardtype = 0;
     
     //Get extra lives
-    alarm[3] = 120;
+    alarm[1] = 120;
 }
 </string>
           </argument>

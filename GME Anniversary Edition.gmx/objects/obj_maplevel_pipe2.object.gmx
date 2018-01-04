@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>1</depth>
   <persistent>0</persistent>
-  <parentName>obj_maplevel</parentName>
+  <parentName>obj_maplevel_pipe</parentName>
   <maskName>spr_square</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -86,7 +86,7 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0)
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mapplayer">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -103,50 +103,25 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Print level name and perform actions
+            <string>///Go where the panel takes you
 
-//If the inventory is not open...
-if (obj_mapcontrol.inventory == false)
+//Play 'Enter Stage' sound
+audio_play_sound(snd_enterpipe, 0, false);
 
-//...and the player can move...
-&amp;&amp; (other.speed == 0)
-&amp;&amp; (other.ready == 0)
-&amp;&amp; (other.letsgo == 0)
+//Clear
+global.clear = 1;
 
-//...and there's no openers around
-&amp;&amp; (instance_number(obj_opener) == 0) {
+//Set up pipe info
+global.pipetype = 2;
+global.pipex = pipex;
+global.pipey = pipey;
 
-    //If the 'Shift' key is held
-    if (keyboard_check_pressed(global.shiftkey)) {
-    
-        //Play 'Enter Pipe' sound
-        audio_play_sound(snd_enterpipe, 0, false);
-        
-        //Remember map position
-        global.pipetype = 2;
-        global.pipex = pipex;
-        global.pipey = pipey;
-        
-        //Clear it
-        global.clear = 1;
-        
-        //Make the player hereby the room
-        with (other) {
-        
-            //Set up the destination room
-            myroom = other.myroom;
-            alarm[1] = 2;
-            
-            //Set the victory pose
-            letsgo = true;
-        }
-    }
-}
+//Do not remember checkpoint
+global.checkpoint = noone;
 
-//Print level name on obj_mapcontrol
-if (other.speed == 0)
-&amp;&amp; (obj_mapcontrol.levelname = "")
-    obj_mapcontrol.levelname = levelname;
+//Set the room
+with (obj_mapplayer)
+    myroom = other.myroom;
 </string>
           </argument>
         </arguments>

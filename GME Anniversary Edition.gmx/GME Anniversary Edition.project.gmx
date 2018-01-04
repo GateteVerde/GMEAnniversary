@@ -448,6 +448,7 @@
       <sound>sound\snd_trampoline</sound>
       <sound>sound\snd_vinesprout</sound>
       <sound>sound\snd_warning</sound>
+      <sound>sound\snd_whistle</sound>
     </sounds>
     <sounds name="Menu">
       <sound>sound\snd_castlebreak</sound>
@@ -1330,6 +1331,9 @@
             <sprite>sprites\spr_goalcard_flower</sprite>
             <sprite>sprites\spr_goalcard_starman</sprite>
           </sprites>
+          <sprite>sprites\spr_checkpoint</sprite>
+          <sprite>sprites\spr_checkpoint_flag</sprite>
+          <sprite>sprites\spr_checkpoint_flag_m</sprite>
         </sprites>
         <sprite>sprites\spr_key</sprite>
         <sprite>sprites\spr_key_timed</sprite>
@@ -1911,6 +1915,7 @@
           <object>objects\obj_goalcard</object>
           <object>objects\obj_goalcard_secret</object>
         </objects>
+        <object>objects\obj_checkpoint</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_player_warp</object>
@@ -2325,6 +2330,10 @@
           <object>objects\obj_slopeparent</object>
           <object>objects\obj_ceilslopeparent</object>
         </objects>
+        <objects name="World Map">
+          <object>objects\obj_mappathparent</object>
+          <object>objects\obj_maplevelparent</object>
+        </objects>
         <objects name="NPC">
           <objects name="Holdables">
             <object>objects\obj_parpull</object>
@@ -2339,7 +2348,6 @@
         <object>objects\obj_blockparent</object>
         <object>objects\obj_grayblockparent</object>
         <object>objects\obj_deactivateparent</object>
-        <object>objects\obj_mappathparent</object>
       </objects>
       <objects name="Don't Use">
         <objects name="Player">
@@ -2568,7 +2576,6 @@
     <room>rooms\rm_map</room>
     <rooms name="Levels">
       <room>rooms\rm_enginetest</room>
-      <room>rooms\rm_enginetest2</room>
     </rooms>
     <rooms name="Special">
       <rooms name="Minigames">

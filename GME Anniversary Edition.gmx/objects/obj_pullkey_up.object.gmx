@@ -235,8 +235,11 @@ if (other.locked == 1)
 //...and the door is visible...
 &amp;&amp; (other.visible)
 
-///...and the key is being held
-&amp;&amp; (!held) {
+///...and the key is being held...
+&amp;&amp; (held) 
+
+//...and the 'Up' key is held
+&amp;&amp; (keyboard_check_pressed(global.upkey)) {
 
     //Play 'Chest' sound
     audio_play_sound(snd_chest, 0, false);

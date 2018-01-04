@@ -597,78 +597,76 @@ event_user(2);
 
 //Follow main player
 if (instance_exists(obj_playerparent)) {
+
+    //Handle camera position
+    event_user(3);
         
     //Make sure the barrier is not active
-    if (!barrier) {
-    
-        //Handle camera position
-        event_user(3);
-        
-        //If you can't exit from the sides
-        if (!instance_exists(obj_gotomap)) {
+    if (barrier == 0) 
+    &amp;&amp; (instance_number(obj_gotomap) == 0) {
          
-            //Prevent the player from going outside the left boundary
-            if (obj_playerparent.x &lt; view_xview[0]+5) {
+        //Prevent the player from going outside the left boundary
+        if (obj_playerparent.x &lt; view_xview[0]+5) {
+        
+            //Snap the player 5 pixels at the left of the boundary
+            obj_playerparent.x = view_xview[0]+5;
             
-                //Snap the player 5 pixels at the left of the boundary
-                obj_playerparent.x = view_xview[0]+5;
+            //Stop Mario's horizontal movement
+            if (obj_playerparent.xspeed &lt; 0) {
+            
+                //Stop horizontal movement
+                obj_playerparent.xspeed = 0;
                 
-                //Stop Mario's horizontal movement
-                if (obj_playerparent.xspeed &lt; 0) {
+                //Stop sliding if necessary
+                if (obj_playerparent.sliding) {
                 
-                    //Stop horizontal movement
-                    obj_playerparent.xspeed = 0;
+                    //Stop sliding
+                    sliding = false;
                     
-                    //Stop sliding if necessary
-                    if (obj_playerparent.sliding) {
-                    
-                        //Stop sliding
-                        sliding = false;
-                        
-                        //Free 'Down' key
-                        keyboard_clear(global.downkey);
-                    }
+                    //Free 'Down' key
+                    keyboard_clear(global.downkey);
                 }
-                
-                //End dropdown
-                if (instance_exists(obj_dropdown))
-                    with (obj_dropdown) instance_destroy();
             }
             
-            //Otherwise, prevent the player from going outside the right boundary
-            else if (obj_playerparent.x &gt; view_xview[0]+view_wview[0]-5) {
-            
-                //Snap the player 5 pixels at the left of the boundary
-                obj_playerparent.x = view_xview[0]+view_wview[0]-5;
-                
-                //Stop Mario's horizontal movement
-                if (obj_playerparent.xspeed &gt; 0) {
-                
-                    //Stop horizontal movement
-                    obj_playerparent.xspeed = 0;
-                    
-                    //Stop sliding if necessary
-                    if (obj_playerparent.sliding) {
-                    
-                        //Stop sliding
-                        sliding = false;
-                        
-                        //Free 'Down' key
-                        keyboard_clear(global.downkey);
-                    }
-                }
-                            
-                //End dropdown
-                if (instance_exists(obj_dropdown))
-                    with (obj_dropdown) instance_destroy();
-            }
+            //End dropdown
+            if (instance_exists(obj_dropdown))
+                with (obj_dropdown) instance_destroy();
         }
         
-        //Drop the reserve item
-        if (keyboard_check_pressed(global.spacekey))
-        &amp;&amp; (!obj_playerparent.disablecontrol)
-            event_user(1);        
+        //Otherwise, prevent the player from going outside the right boundary
+        else if (obj_playerparent.x &gt; view_xview[0]+view_wview[0]-5) {
+        
+            //Snap the player 5 pixels at the left of the boundary
+            obj_playerparent.x = view_xview[0]+view_wview[0]-5;
+            
+            //Stop Mario's horizontal movement
+            if (obj_playerparent.xspeed &gt; 0) {
+            
+                //Stop horizontal movement
+                obj_playerparent.xspeed = 0;
+                
+                //Stop sliding if necessary
+                if (obj_playerparent.sliding) {
+                
+                    //Stop sliding
+                    sliding = false;
+                    
+                    //Free 'Down' key
+                    keyboard_clear(global.downkey);
+                }
+            }
+                        
+            //End dropdown
+            if (instance_exists(obj_dropdown))
+                with (obj_dropdown) instance_destroy();
+        }
     }
+    
+    //Drop the reserve item
+    if (keyboard_check_pressed(global.spacekey))
+    &amp;&amp; (barrier == 0)
+    &amp;&amp; (!obj_playerparent.disablecontrol)
+        event_user(1);        
 }
 
 //Follow rest of player objects
@@ -931,7 +929,7 @@ if (!switchon) {
             <kind>1</kind>
             <string>///Destroy player objects
 
-with (obj_player) instance_destroy();
+with (obj_playerparent) instance_destroy();
 with (obj_player_warp) instance_destroy();
 with (obj_player_jump) instance_destroy();
 with (obj_player_climb) instance_destroy();
@@ -1238,10 +1236,20 @@ if (leveltime &gt; 0) { //If the timer has been set.
 if (global.mariostart == 0) {
 
     //The level has started
-    global.mariostart = 1
+    global.mariostart = 1;
+    
+    //Handles checkpoints
+    if (instance_exists(global.checkpoint)) {
+
+        //Destroy all player objects
+        event_user(4);
+        
+        //Create a new Mario at the desired location
+        player_retrieve(global.checkpoint.x+8,global.checkpoint.y+32);
+    }
 
     //Create the Mario Start! effect
-    instance_create(view_xview[0],view_yview[0],obj_mariostart)
+    instance_create(view_xview[0],view_yview[0],obj_mariostart);
 }
 else {
 

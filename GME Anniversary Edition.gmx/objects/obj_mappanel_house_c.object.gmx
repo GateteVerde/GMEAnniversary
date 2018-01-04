@@ -74,74 +74,6 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_mapplayer">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Print level name and perform actions
-
-//If the inventory is not open...
-if (obj_mapcontrol.inventory == false)
-
-//...and the player can move...
-&amp;&amp; (other.speed == 0)
-&amp;&amp; (other.ready == 0)
-&amp;&amp; (other.letsgo == 0)
-
-//...and there's no openers around
-&amp;&amp; (instance_number(obj_opener) == 0) {
-
-    //If the 'Shift' key is held
-    if (keyboard_check_pressed(global.shiftkey)) 
-    &amp;&amp; (beaten == 0) {
-    
-        //Play 'Enter Stage' sound
-        audio_play_sound(snd_enterstage, 0, false);
-                
-        //Check collected star coins
-        event_user(0);
-        
-        //Set up the minigame
-        event_user(1);
-        
-        //Make the player hereby the room
-        with (other) {
-        
-            //Set up the destination room
-            myroom = other.myroom;
-            alarm[1] = 2;
-            
-            //Set the victory pose
-            letsgo = true;
-            
-            //Make sure the player can exit the level
-            global.levelbeat = other.beaten;
-        }
-    }
-}
-
-//Print level name on obj_mapcontrol
-if (other.speed == 0)
-&amp;&amp; (obj_mapcontrol.levelname = "")
-    obj_mapcontrol.levelname = levelname;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
@@ -159,13 +91,26 @@ if (other.speed == 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Set up the minigame
+            <string>///Go where the panel takes you
 
-//Check what minigame was chosen
-switch (myroom) {
+//If the the level has not been beaten yet
+if (beaten == 0) {
 
-    //Dig Minigame
-    case (0): myroom = rm_minigame_sma4_a; break;
+    //Play 'Enter Stage' sound
+    audio_play_sound(snd_enterstage, 0, false);
+    
+    //Do not display "Mario Start!"
+    global.mariostart = 1;
+    
+    //Do not remember checkpoint
+    global.checkpoint = noone;
+    
+    //Check what minigame was chosen
+    switch (myroom) {
+    
+        //Dig Minigame
+        case (0): myroom = rm_minigame_sma4_a; break;
+    }
 }
 </string>
           </argument>
