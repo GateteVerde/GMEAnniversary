@@ -425,9 +425,12 @@
       <sound>sound\snd_explode</sound>
       <sound>sound\snd_firework</sound>
       <sound>sound\snd_flagpole</sound>
+      <sound>sound\snd_goal</sound>
+      <sound>sound\snd_goalend</sound>
       <sound>sound\snd_hatch</sound>
       <sound>sound\snd_hawkmouth</sound>
       <sound>sound\snd_hawkmouth_close</sound>
+      <sound>sound\snd_key</sound>
       <sound>sound\snd_mystery</sound>
       <sound>sound\snd_pop</sound>
       <sound>sound\snd_powerlost</sound>
@@ -1331,6 +1334,14 @@
             <sprite>sprites\spr_goalcard_flower</sprite>
             <sprite>sprites\spr_goalcard_starman</sprite>
           </sprites>
+          <sprites name="SMW">
+            <sprite>sprites\spr_goal</sprite>
+            <sprite>sprites\spr_goal_b</sprite>
+            <sprite>sprites\spr_goalgate</sprite>
+            <sprite>sprites\spr_goalgate_secret</sprite>
+            <sprite>sprites\spr_keyhole</sprite>
+            <sprite>sprites\spr_keyhole_anim</sprite>
+          </sprites>
           <sprite>sprites\spr_checkpoint</sprite>
           <sprite>sprites\spr_checkpoint_flag</sprite>
           <sprite>sprites\spr_checkpoint_flag_m</sprite>
@@ -1915,6 +1926,11 @@
           <object>objects\obj_goalcard</object>
           <object>objects\obj_goalcard_secret</object>
         </objects>
+        <objects name="SMW">
+          <object>objects\obj_goalgate</object>
+          <object>objects\obj_goalgate_secret</object>
+          <object>objects\obj_keyhole</object>
+        </objects>
         <object>objects\obj_checkpoint</object>
       </objects>
       <object>objects\obj_player</object>
@@ -2358,6 +2374,7 @@
             <object>objects\obj_player_goal_smb1</object>
             <object>objects\obj_player_goal_smb2</object>
             <object>objects\obj_player_goal_smb3</object>
+            <object>objects\obj_player_goal_smw</object>
           </objects>
           <object>objects\obj_player_warpnote</object>
           <object>objects\obj_player_transform</object>
@@ -2476,10 +2493,23 @@
           </objects>
           <objects name="Interactive">
             <objects name="Goals">
-              <object>objects\obj_flag</object>
-              <object>objects\obj_flag_p</object>
-              <object>objects\obj_flag_da</object>
-              <object>objects\obj_goalcard_get</object>
+              <objects name="SMB1">
+                <object>objects\obj_flag</object>
+                <object>objects\obj_flag_p</object>
+                <object>objects\obj_flag_da</object>
+              </objects>
+              <objects name="SMB3">
+                <object>objects\obj_goalcard_get</object>
+              </objects>
+              <objects name="SMW">
+                <objects name="Transitions">
+                  <object>objects\obj_fadegoal</object>
+                  <object>objects\obj_curtaingoal</object>
+                </objects>
+                <object>objects\obj_goalgate_tape</object>
+                <object>objects\obj_goalgate_tape_b</object>
+                <object>objects\obj_goalgate_front</object>
+              </objects>
             </objects>
             <object>objects\obj_trampoline_p_active</object>
             <object>objects\obj_propellerblock_up</object>

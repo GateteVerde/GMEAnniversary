@@ -68,9 +68,6 @@ event_inherited();
 
 if (held) {
 
-    //Create smoke effect
-    instance_create(x-8,y,obj_smoke);
-
     //If the player was holding something
     if (instance_exists(obj_playerparent))
     &amp;&amp; (obj_playerparent.holding == 2)

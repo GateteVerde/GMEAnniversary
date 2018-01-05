@@ -120,22 +120,25 @@ if (global.carrieditem != noone) {
             <kind>1</kind>
             <string>///Destroy Yoshi
 
-//Dismount Yoshi
-global.mount = 0;
+if (obj_keyhole.ready == 0) {
 
-//Stop 'Flying' sound
-audio_stop_sound(snd_yoshi_lick);
+    //Dismount Yoshi
+    global.mount = 0;
 
-//Destroy Yoshi's tongue if it exists
-with (obj_tongue) instance_destroy();
-
-//Make both the player and yoshi do stuff
-if (instance_exists(obj_playerparent)) {
-
-    obj_playerparent.holding = 0;
-    obj_playerparent.visible = 1;
-    if (mouthholder != noone)
-        event_user(0);
+    //Stop 'Flying' sound
+    audio_stop_sound(snd_yoshi_lick);
+    
+    //Destroy Yoshi's tongue if it exists
+    with (obj_tongue) instance_destroy();
+    
+    //Make both the player and yoshi do stuff
+    if (instance_exists(obj_playerparent)) {
+    
+        obj_playerparent.holding = 0;
+        obj_playerparent.visible = 1;
+        if (mouthholder != noone)
+            event_user(0);
+    }
 }
 </string>
           </argument>
