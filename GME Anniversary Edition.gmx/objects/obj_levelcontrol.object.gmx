@@ -667,6 +667,13 @@ if (instance_exists(obj_playerparent)) {
     &amp;&amp; (barrier == 0)
     &amp;&amp; (!obj_playerparent.disablecontrol)
         event_user(1);        
+        
+    if (keyboard_check_pressed(global.enterkey))
+    &amp;&amp; (!keyboard_check(vk_alt))
+    &amp;&amp; (barrier == 0)
+    &amp;&amp; (!obj_playerparent.disablecontrol)
+    &amp;&amp; (!instance_exists(obj_pausemenu))
+        instance_create(0,0,obj_pausemenu)  
 }
 
 //Follow rest of player objects

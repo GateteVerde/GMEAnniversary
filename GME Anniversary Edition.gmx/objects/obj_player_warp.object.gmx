@@ -336,7 +336,7 @@ if (cannon == 0) {
     &amp;&amp; (collision_point(x-8,bbox_bottom,obj_solid,0,0))
     &amp;&amp; (collision_point(x+7,bbox_bottom,obj_solid,0,0)) {
     
-        speed = 2;
+        speed = 3;
         visible = false;
     }
     else {
