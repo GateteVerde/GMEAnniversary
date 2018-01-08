@@ -275,6 +275,9 @@ else if (keyboard_check_pressed(global.shiftkey)) {
                     //Stop all sounds
                     audio_stop_all();
                     
+                    //Perform dead event
+                    global.died = true;
+                    
                     //Play a sound
                     audio_play_sound(snd_correct,false,0);
                     
@@ -359,26 +362,34 @@ draw_sprite_ext(spr_mariostart,0,view_xview[0],view_yview[0],1,1,0,c_white,image
 //Draw the actual border.
 draw_sprite_ext(spr_pausemenu,1,view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,image_xscale,image_yscale,0,c_white,1)
 
+//Draw if the menu if fully scaled
 if (image_xscale == 1) {
 
+    //Align the text
     draw_set_halign(fa_center)
     draw_set_valign(fa_center)
-    draw_set_font(font)    
+    
+    //Set the font
+    draw_set_font(font)
+    
+    //Set the alpha
     draw_set_alpha(1)
     
-    //Makes the Word Choice.    
+    //Makes the word choice   
     var i, text;
-    
     for (i = 0; i &lt; 3; i++;) {
     
+        //Set the text to draw
         text = string(menu[i]);
         
+        //Draw depending of the option chosen
         if (choice != i)
-            draw_text(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,text);
+            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12, text, c_black, c_gray, 1, 1, 0.5, 1);
         else
-            draw_text(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,"{ " + string(text) + " }");
+            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,"{ " + string(text) + " }", c_black, c_white, 1, 1, 0.5, 1);
     }
     
+    //Re-align the text
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }

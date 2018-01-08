@@ -72,7 +72,7 @@ powerup[1] = -1;
 powerup[2] = -1;
 exitdir = 0;
 exitalt = 0;
-saveme = 0;
+saveme = 1;
 myroom = rm_bonus;
 
 //Animate
@@ -190,8 +190,11 @@ if (beaten == 0) {
     //Do not display "Mario Start!"
     global.mariostart = 1;
         
-    //Set the room
-    myroom = rm_bonus;
+    //Make the player go to the destination room
+    with (obj_mapplayer) {
+    
+        myroom = rm_bonus;
+    }
 }
 </string>
           </argument>

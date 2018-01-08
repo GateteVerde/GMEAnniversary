@@ -47,7 +47,7 @@ levelname = "Minigame House"
 levelid = "999";
 exitdir = 0;
 exitalt = 0;
-saveme = 0;
+saveme = 1;
 myroom = 0;
 
 //Animate
@@ -105,9 +105,12 @@ if (beaten == 0) {
     //Do not remember checkpoint
     global.checkpoint = noone;
     
-    //Check what minigame was chosen
-    if (myroom == 0)
-        myroom = rm_minigame_sma4_a;
+    //Make the player go to the destination room
+    with (obj_mapplayer) {
+    
+        if (other.myroom == 0)
+            myroom = rm_minigame_sma4_a; //SMA4 Digging Minigame
+    }
 }
 </string>
           </argument>

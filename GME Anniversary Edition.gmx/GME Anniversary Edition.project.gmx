@@ -1625,6 +1625,7 @@
       <background>background\bgr_mappoison_b</background>
       <background>background\bgr_mappoison_c</background>
     </backgrounds>
+    <background>background\bgr_title</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\pth_bubble</path>
@@ -1888,6 +1889,8 @@
         <script>scripts\string_add_zeros.gml</script>
         <script>scripts\string_make_width.gml</script>
       </scripts>
+      <script>scripts\save.gml</script>
+      <script>scripts\load.gml</script>
       <script>scripts\init_globals.gml</script>
       <script>scripts\init_globals_music.gml</script>
       <script>scripts\draw_circle_colour_precise.gml</script>
@@ -2565,8 +2568,9 @@
             <object>objects\obj_lightningsheet2</object>
           </objects>
           <objects name="Menus">
-            <object>objects\obj_pausemenu</object>
+            <object>objects\obj_titlemenu</object>
             <object>objects\obj_savemenu</object>
+            <object>objects\obj_pausemenu</object>
           </objects>
           <objects name="Transitions">
             <object>objects\obj_fadein</object>
@@ -2607,6 +2611,7 @@
   <rooms name="rooms">
     <room>rooms\rm_gamestart</room>
     <room>rooms\rm_disclaimer</room>
+    <room>rooms\rm_titlemenu</room>
     <room>rooms\rm_map</room>
     <rooms name="Levels">
       <room>rooms\rm_enginetest</room>

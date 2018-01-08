@@ -45,7 +45,7 @@ levelname = "Lucky House"
 levelid = "999";
 exitdir = 0;
 exitalt = 0;
-saveme = 0;
+saveme = 1;
 myroom = rm_bonus2;
 
 //Animate
@@ -108,8 +108,11 @@ if (beaten == 0) {
     //Do not display "Mario Start!"
     global.mariostart = 1;
         
-    //Set the room
-    myroom = rm_bonus2;
+    //Make the player go to the destination room
+    with (obj_mapplayer) {
+    
+        myroom = rm_bonus2;
+    }
 }
 </string>
           </argument>

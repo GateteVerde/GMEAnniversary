@@ -84,7 +84,7 @@ menu[2] = 'Continue without Saving';
             <string>///Closes the game...
 
 //The menu is quitable
-quitable = 1
+quitable = 1;
 
 //End the game
 game_end();
@@ -162,11 +162,16 @@ if (ready == 0) {
 
 if (ready == 2) {
 
-    scale -= 0.05;
-    
-    if (scale &lt; 0) &amp;&amp; (quitable = 1)
-        instance_destroy();
+    //Decrement scale
+    scale -= 0.05;   
+    if (scale &lt; 0.05)
+        scale = 0;
 }
+
+//Destroy if quitable
+if (scale == 0)
+&amp;&amp; (quitable = 1)
+    instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -292,9 +297,11 @@ else if (keyboard_check_pressed(global.shiftkey)) {
             <kind>1</kind>
             <string>///Save the files and close the game.
 
+//Save the game
 event_user(0);
+
 //Prepares to close the game.
-    alarm[1] = 25
+alarm[1] = 25;
 </string>
           </argument>
         </arguments>
@@ -317,7 +324,9 @@ event_user(0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Save a file.
+            <string>///Save the game
+
+save(global.file);
 </string>
           </argument>
         </arguments>
@@ -342,26 +351,35 @@ event_user(0);
             <kind>1</kind>
             <string>///Draw the menu.
 
-draw_sprite_ext(spr_pausemenu,2,view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,scale,scale,0,c_white,1)
-draw_set_halign(fa_center)
-draw_set_valign(fa_center)
-draw_set_font(font)
-draw_set_alpha(1)
+//Draw the menu
+draw_sprite_ext(spr_pausemenu,2,view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,scale,scale,0,c_white,1);
 
+//Align the text
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+
+//Set up the font
+draw_set_font(font);
+
+//Set the alpha
+draw_set_alpha(1);
+
+//Draw the text on the menu
 if (scale &gt;= 1) {
 
     for(i = 0; i &lt; 3; i++) {
     
         text = string(menu[i]);
         if (choice != i)
-            draw_text(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,string(text));
+            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,string(text), c_black, c_gray, 1, 1, 0.5, 1);
         else
-            draw_text(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,"{ " + string(text) + " }");
+            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,"{ " + string(text) + " }", c_black, c_white, 1, 1, 0.5, 1);
     }
 }
 
-draw_set_halign(fa_left)
-draw_set_valign(fa_top)
+//Re align the text
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 </string>
           </argument>
         </arguments>

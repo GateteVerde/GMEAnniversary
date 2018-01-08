@@ -122,14 +122,16 @@ global.onofforange = 0;
 global.carrieditem = noone;
 global.carriedsprite = noone;
 
+//Reset all door states
+ds_map_clear(global.doors);
+
 //Reset ace coins
 ds_map_clear(global.acecoins);
 
 //Reset red coin rings
 ds_map_clear(global.redrings);
 
-//Reset all door states
-ds_map_clear(global.doors);
+
 </string>
           </argument>
         </arguments>
@@ -204,7 +206,7 @@ if (panel) {
     }
         
     //Otherwise, wait
-    else if (panel.saveme == 1) {
+    else if (panel.saveme == 1) &amp;&amp; (global.clear &gt; 0) {
     
         //If there's still opener objects around, wait
         if (instance_number(obj_opener) &gt; 0) {
@@ -217,6 +219,9 @@ if (panel) {
         instance_create(0,0,obj_savemenu);
     }
 }
+
+//Reset clear variable
+global.clear = 0;
 </string>
           </argument>
         </arguments>
@@ -369,7 +374,7 @@ if (global.clear == 1) {
             checkpoint = noone;
             
             //...and make sure the game remembers it
-            ds_map_replace(global.mapscreen, id, 1);
+            ds_map_replace(global.mapscreen, id, 2);
         }
     }
     
@@ -443,7 +448,7 @@ else if (global.clear == 2) {
             checkpoint = noone;
             
             //...and make sure the game remembers it
-            ds_map_replace(global.mapscreen, id, 1);
+            ds_map_replace(global.mapscreen, id, 2);
         }
     }
         
@@ -453,9 +458,6 @@ else if (global.clear == 2) {
     //Allow movement after a while
     alarm[3] = 90;
 }
-
-//Reset clear variable
-global.clear = 0;
 </string>
           </argument>
         </arguments>
@@ -760,7 +762,9 @@ panel = collision_point(x,y+8,obj_maplevel,0,0);
 if (panel) {
     
     //If 'Shift' is pressed and the panel can be accessed
-    if (keyboard_check_pressed(global.shiftkey)) {
+    if (keyboard_check_pressed(global.shiftkey)) 
+    &amp;&amp; (speed == 0) 
+    &amp;&amp; (letsgo == 0) {
         
         //Go where the panel takes you
         with (panel) {
