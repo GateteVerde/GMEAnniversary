@@ -31,7 +31,7 @@
 **  This item uses creation code!
 **
 **  levelname = Name of the level. (In quotes)
-**  levelid = ID for the level, this is used to handle star coins. (In quotes)
+**  levelid = ID for the level, this is used to handle star coins.
 **  exitdir = Regular exit direction
 **  exitalt = Secret exit direction      
 **      0: Up
@@ -45,7 +45,7 @@
 
 //Default variables
 levelname = "No name set!"
-levelid = "1";
+levelid = -1;
 exitdir = 0;
 exitalt = 0;
 saveme = 1;

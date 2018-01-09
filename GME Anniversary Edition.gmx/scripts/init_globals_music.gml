@@ -8,7 +8,7 @@
 **      Initializes all of the music variables used throughout the game.
 **
 **  Notes:
-**      See 'obj_musicplayer_persistent' for details about the music.
+**      See 'obj_persistent_musicplayer' for details about the music.
 */
 
 //Athletic
@@ -82,6 +82,10 @@ music_setup(global._theme_starman, "Starman", 3);
 //Subcon
 global._theme_subcon = music_add("Subcon");
 music_setup(global._theme_subcon, "Subcon", 3);
+
+//Title
+global._theme_title = music_add("Title");
+music_setup(global._theme_title, "Title", 0);
 
 //Underground
 global._theme_underground = music_add("Underground");

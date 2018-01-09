@@ -27,11 +27,11 @@
             <kind>1</kind>
             <string>///Print level name and perform actions
 
-//Inherit 'collision' event
-event_inherited();
-
 //Print level name if the player is not moving
 if (other.speed == 0) {
+
+    //Level ID
+    obj_mapcontrol.levelid = -1;
 
     //Print 'Start' in map manager
     obj_mapcontrol.levelname = "START";

@@ -42,7 +42,7 @@
 
 //Default variables
 levelname = "Lucky House"
-levelid = "999";
+levelid = -1;
 exitdir = 0;
 exitalt = 0;
 saveme = 1;
@@ -96,11 +96,6 @@ if (beaten == 0) {
     
     //Play 'Enter Stage' sound
     audio_play_sound(snd_enterstage, 0, false);
-    
-    //Set up pipe info
-    global.prize[0] = powerup[0];
-    global.prize[1] = powerup[1];
-    global.prize[2] = powerup[2];
     
     //Do not remember checkpoint
     global.checkpoint = noone;    

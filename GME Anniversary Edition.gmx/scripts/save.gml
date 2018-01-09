@@ -18,7 +18,7 @@ file_text_writeln(file);
 //Turn the star coin data structure into a string and write it
 for (var i = 0; i < 3; i++) {
 
-    file_text_write_string(file,ds_grid_write(global.sc[i]));
+    file_text_write_string(file,ds_map_write(global.sc[i]));
     file_text_writeln(file);
 }
 

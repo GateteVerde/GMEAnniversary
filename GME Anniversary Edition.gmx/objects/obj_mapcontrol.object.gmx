@@ -38,7 +38,7 @@ anim = 0;
 levelname = "";
 
 //Level id
-levelid = "999";
+levelid = -1;
 
 //Whether the player is flashing
 isflashing = 0;
@@ -411,7 +411,7 @@ if (levelname != "") {
     draw_text(view_xview[0]+104, view_yview[0]+24, string(levelname));
     
     //Draw the coins collected in the level
-    if (levelid != "999") {
+    if (levelid != -1) {
     
         //Draw the coin spot
         draw_sprite_ext(spr_mapborderb, 0, view_xview[0]+104, view_yview[0]+4, 1, 1, 0, c_white, 1);
@@ -419,8 +419,11 @@ if (levelname != "") {
         //Draw the coins
         for (var i = 0; i &lt; 3; i++) {
         
-            if (ds_map_find_value(global.sc[i],levelid))
-                draw_sprite_ext(spr_hud_starcoin_get, -1, view_xview[0]+104+(17*i), view_yview[0]+4, 1, 1, 0, c_white, 1);
+            for (var j = 0; j &lt; global.levelmax; j++) {
+                
+                if (ds_map_find_value(global.sc[i],levelid) &gt; 0)
+                    draw_sprite_ext(spr_hud_starcoin_get, -1, view_xview[0]+104+(17*i), view_yview[0]+4, 1, 1, 0, c_white, 1);
+            }
         }
     }
 }

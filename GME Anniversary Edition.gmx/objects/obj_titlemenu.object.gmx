@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>///The titlescreen menu
 
+//Play the title theme
+stream = FMODSoundPlay(global._theme_title, 0);
+
 //Display 'Press Enter!'
 display = 0;
 alarm[0] = 30;
@@ -208,7 +211,14 @@ if ((display == 1) &amp;&amp; (scale == 1)) {
             if (choice &lt; 3) {
             
                 //Play 'Correct' sound
-                audio_play_sound(snd_correct, 0, false);
+                audio_play_sound(snd_enterstage, 0, false);                
+                
+                //Stop stream if it's playing
+                if (FMODInstanceIsPlaying(stream)) {
+                
+                    FMODInstanceStop(stream)
+                    stream = -1;
+                }
                 
                 //Check what file is selected
                 switch (choice) {

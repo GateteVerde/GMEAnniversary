@@ -12,7 +12,11 @@
 global.world = "1";
 
 //Level ID (Used for star coin management)
-global.level = "0";
+global.level = 0;
+
+//How many level does the game have? 
+//(Make sure is 1 number higher than the amount of levels)
+global.levelmax = 7;
 
 //Level time
 global.time = 0;
@@ -173,7 +177,8 @@ global.carriedsprite = noone;
 for (var i = 0; i < 3; i++) {
 
     global.sc[i] = ds_map_create();
-    ds_map_add_map(global.sc[i],global.level,0);
+    for (var j = 0; j < global.levelmax; j++)
+        ds_map_add(global.sc[i],j,0);
 }
 
 //Counts number of star coins collected in the entire game

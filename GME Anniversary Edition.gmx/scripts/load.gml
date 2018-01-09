@@ -18,7 +18,7 @@ file_text_readln(file);
 //Turn the star coin data structure into a string and write it
 for (var i = 0; i < 3; i++) {
 
-    ds_grid_read(global.sc[i],file_text_read_string(file));
+    ds_map_read(global.sc[i],file_text_read_string(file));
     file_text_readln(file);
 }
 
