@@ -35,6 +35,9 @@ display = 0;
 alarm[0] = 30;
 anim = 0;
 
+//Key
+key = 0;
+
 //Scale
 scale = 0;
 
@@ -67,6 +70,95 @@ menu[2,0] = 'Window Size';
 menu[2,1] = 'Key Configuration';
 menu[2,2] = 'V-Sync: Off';
 menu[2,3] = 'Back';
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Change keys one by one
+
+switch (key) {
+
+    //Control key
+    case (0): {
+    
+        set_keys(0, "Set a key for 'Run / Shoot'", vk_control);
+        alarm[1] = 1;
+        key++;
+    } break;
+    
+    //Shift key
+    case (1): {
+    
+        set_keys(1, "Set a key for 'Jump'", vk_shift);
+        alarm[1] = 1;
+        key++;
+    } break;
+    
+    //Space key
+    case (2): {
+    
+        set_keys(2, "Set a key for 'Space'", vk_space);
+        alarm[1] = 1;
+        key++;
+    } break;
+    
+    //Enter key
+    case (3): {
+    
+        set_keys(3, "Set a key for 'Pause'", vk_enter);
+        alarm[1] = 1;
+        key++;
+    } break;
+    
+    //Up key
+    case (4): {
+    
+        set_keys(4, "Set a key for 'Up'", vk_up);
+        alarm[1] = 1;
+        key++;
+    } break;
+    
+    //Down key
+    case (5): {
+    
+        set_keys(5, "Set a key for 'Down'", vk_up);
+        alarm[1] = 1;
+        key++;
+    } break;
+    
+    //Left key
+    case (6): {
+    
+        set_keys(6, "Set a key for 'Left'", vk_up);
+        alarm[1] = 1;
+        key++;
+    } break;
+    
+    //Right key
+    case (7): {
+    
+        set_keys(7, "Set a key for 'Right'", vk_up);
+        key = 0;
+    } break;
+}
 </string>
           </argument>
         </arguments>
@@ -321,6 +413,9 @@ if ((display == 1) &amp;&amp; (scale == 1)) {
                         
                 //Play 'Correct' sound
                 audio_play_sound(snd_correct, 0, false);
+                
+                //Set keys
+                alarm[1] = 1;
             }
             
             //Choice 2: Enable V-Sync

@@ -1534,6 +1534,7 @@
             </sprites>
             <sprite>sprites\spr_dialog</sprite>
           </sprites>
+          <sprite>sprites\spr_keybox</sprite>
           <sprite>sprites\spr_pausemenu</sprite>
           <sprite>sprites\spr_messagebox</sprite>
         </sprites>
@@ -1908,6 +1909,7 @@
       </scripts>
       <script>scripts\save.gml</script>
       <script>scripts\load.gml</script>
+      <script>scripts\set_keys.gml</script>
       <script>scripts\init_globals.gml</script>
       <script>scripts\init_globals_music.gml</script>
       <script>scripts\draw_circle_colour_precise.gml</script>
@@ -2585,7 +2587,10 @@
             <object>objects\obj_lightningsheet2</object>
           </objects>
           <objects name="Menus">
-            <object>objects\obj_titlemenu</object>
+            <objects name="Title">
+              <object>objects\obj_titlemenu</object>
+              <object>objects\obj_titlemenu_key</object>
+            </objects>
             <object>objects\obj_savemenu</object>
             <object>objects\obj_pausemenu</object>
           </objects>
