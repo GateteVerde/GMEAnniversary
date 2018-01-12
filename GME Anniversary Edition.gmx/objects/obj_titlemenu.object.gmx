@@ -115,7 +115,7 @@ switch (key) {
     //Space key
     case (2): {
     
-        set_keys(2, "Set a key for 'Space'", vk_space);
+        set_keys(2, "Set a key for 'Reserve / Inventory'", vk_space);
         alarm[1] = 1;
         key++;
     } break;
@@ -331,8 +331,8 @@ if ((display == 1) &amp;&amp; (scale == 1)) {
                     load(global.file);
                     if (instance_number(obj_curtainout) == 0) {
                     
-                        with (instance_create(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,obj_curtainout))
-                            target = rm_map;
+                        with (instance_create(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,obj_curtainout))                        
+                            target = rm_map;                        
                     }
                 }
                 
@@ -342,7 +342,7 @@ if ((display == 1) &amp;&amp; (scale == 1)) {
                     if (instance_number(obj_curtainout) == 0) {
                     
                         with (instance_create(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,obj_curtainout))
-                            target = rm_map;
+                            target = rm_intro;
                     }                    
                 }
             }

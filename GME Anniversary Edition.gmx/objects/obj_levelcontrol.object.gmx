@@ -595,8 +595,118 @@ else
 //Check what object to follow
 event_user(2);
 
+//If the autoscroll object exists
+if (instance_exists(obj_autoscroll)) {
+
+    //If the player does exist
+    if (instance_exists(obj_playerparent)) {
+
+        //If the camera is locked.
+        if (camlock) {
+        
+            //Set the x position of the camera.
+            x = obj_autoscroll.x;
+            
+            //If the player speed is the maximum possible...
+            if (((obj_playerparent.run)
+            
+            //...and the player has one of the following powerups...
+            &amp;&amp; ((global.powerup == cs_leaf)
+            || (global.powerup == cs_tanooki)))
+            
+            //...or the player is riding something that is flying
+            || (((instance_exists(obj_yoshi)) &amp;&amp; (obj_yoshi.flying == 1))
+            || (instance_exists(obj_kuriboshoe)) &amp;&amp; (obj_kuriboshoe.flying == 1))) {
+            
+                //Set the y position of the camera
+                y = obj_playerparent.y;
+                
+                //Set the vertical speed of the view
+                view_vspeed[0] = 4;
+            }
+            
+            //Otherwise, if the player is climbing up a beanstalk or a fence.
+            else if (obj_playerparent.state == 3) {
+            
+                //Set the y position of the camera
+                y = obj_playerparent.y;
+                
+                //Set the vertical speed of the view
+                view_vspeed[0] = 4;                   
+            }
+            
+            //Otherwise, if the player is not doing anything stated above and the view is above the view start position.
+            else {
+            
+                //If the player is colliding with a moving platform
+                if (collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom+1,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom+2,obj_platformparent,0,0)) 
+                &amp;&amp; (obj_playerparent.state &lt; 2) {
+                
+                    //Set the y position of the camera
+                    y = obj_playerparent.y;
+                    
+                    //Set the vertical speed of the view
+                    view_vspeed[0] = 4;
+                }
+                
+                //Otherwise
+                else if (view_yview[0] &lt; room_height-216) {
+            
+                    //Set the y position of the camera
+                    y = obj_playerparent.y;
+                    
+                    //Set the vertical speed of the view
+                    view_vspeed[0] = -1;           
+                }
+            }        
+        }
+        
+        //Otherwise, if the camera is not locked.
+        else {
+        
+            //Set the x position of the camera.
+            x = obj_autoscroll.x;
+        
+            //Set the y position of the camera.
+            y = obj_autoscroll.y;                
+        }
+    }
+    
+    //Otherwise, follow the rest of objects
+    else if (instance_exists(follow)) {
+    
+        //Check what object the camera must follow
+        event_user(2);
+    
+        //If the camera is locked.
+        if (camlock) {
+        
+            //Set the x position of the camera.
+            x = follow.x;
+        
+            //Set the y position of the camera.
+            if (view_yview[0] &lt; room_height-216)            
+                y = follow.y;
+        }
+        
+        //Otherwise, if it's not locked.
+        else {
+        
+            //Set the x position of the camera.
+            x = follow.x;
+        
+            //Set the y position of the camera.
+            y = follow.y;            
+        }     
+        
+        //Set the view speed
+        view_hspeed[0] = 4;
+        view_vspeed[0] = 4;   
+    }
+}
+
 //Follow main player
-if (instance_exists(obj_playerparent)) {
+else if (instance_exists(obj_playerparent)) {
 
     //Handle camera position
     event_user(3);
@@ -661,26 +771,13 @@ if (instance_exists(obj_playerparent)) {
                 with (obj_dropdown) instance_destroy();
         }
     }
-    
-    //Drop the reserve item
-    if (keyboard_check_pressed(global.spacekey))
-    &amp;&amp; (barrier == 0)
-    &amp;&amp; (!obj_playerparent.disablecontrol)
-        event_user(1);        
-        
-    if (keyboard_check_pressed(global.enterkey))
-    &amp;&amp; (!keyboard_check(vk_alt))
-    &amp;&amp; (barrier == 0)
-    &amp;&amp; (!obj_playerparent.disablecontrol)
-    &amp;&amp; (!instance_exists(obj_pausemenu))
-        instance_create(0,0,obj_pausemenu)  
 }
 
 //Follow rest of player objects
 else if (instance_exists(follow)) {
 
     //Check what object the camera must follow
-    event_user(15);
+    event_user(2);
 
     //If the camera is locked.
     if (camlock) {
@@ -734,22 +831,31 @@ if (global.coins &gt; 99) {
     }
 }
 
-//Drop the reserve item
+//Allow the player to either drop the reserve item or pause the game.
 if (barrier == 0) 
-&amp;&amp; (instance_exists(obj_playerparent)) {
+&amp;&amp; (instance_exists(obj_playerparent)) 
+&amp;&amp; (obj_playerparent.disablecontrol == false) {
 
-    //If 'Space' is pressed and the player's controls are not disabled...
-    if ((keyboard_check_pressed(global.spacekey)) 
-    &amp;&amp; (!obj_playerparent.disablecontrol))
+    //If there's a item in reserve
+    if (global.reserve &gt; cs_small) {
     
-    //...or the player turned into the small form and there's a reserve item saved
-    || ((obj_playerparent.invulnerable)
-    &amp;&amp; (global.powerup == 0)
-    &amp;&amp; (global.reserve &gt; cs_small)) {
-    
-        //Drop the reserve item
-        event_user(1);
+        //If the 'Space' key is pressed...
+        if (keyboard_check_pressed(global.spacekey))
+        
+        //...or the player turned into the small form and there's a reserve item saved
+        || ((obj_playerparent.invulnerable)
+        &amp;&amp; (global.powerup == 0)) {
+        
+            //Drop the reserve item
+            event_user(1);
+        }
     }
+        
+    //If the 'Enter' key is pressed and the player controls are not disabled
+    if (keyboard_check_pressed(global.enterkey))
+    &amp;&amp; (!keyboard_check(vk_alt))
+    &amp;&amp; (!instance_exists(obj_pausemenu))
+        instance_create(0,0,obj_pausemenu);
 }
 
 //Make sure to reset the mount colour
@@ -758,6 +864,7 @@ if (global.mount == 0)
     global.mountcolour = 0;
 
 //Deactivate instances outside the view
+instance_deactivate_object(obj_deactenemyparent);
 instance_deactivate_object(obj_deactivateparent);
 
 //Activate deactivated instances inside the view

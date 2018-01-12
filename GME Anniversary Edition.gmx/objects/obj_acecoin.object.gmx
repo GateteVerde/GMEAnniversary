@@ -97,7 +97,7 @@ instance_destroy();
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_parcarry">
+    <event eventtype="4" ename="obj_playerparent">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -114,11 +114,10 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Collect
+            <string>///Collect the dragon coin.
 
-//Check if the ace coin is not animating and the vegetable is not being held
-if (other.held == 0) 
-&amp;&amp; (image_speed == 0) {
+//Check if the ace coin is not animating
+if (image_speed == 0) {
 
     //Play 'Scatter' sound.
     audio_play_sound(snd_scatter, 0, false);
@@ -156,7 +155,7 @@ if (other.held == 0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_playerparent">
+    <event eventtype="4" ename="obj_parcarry">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -173,10 +172,11 @@ if (other.held == 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Collect the dragon coin.
+            <string>///Collect
 
-//Check if the ace coin is not animating
-if (image_speed == 0) {
+//Check if the ace coin is not animating and the vegetable is not being held
+if (other.held == 0) 
+&amp;&amp; (image_speed == 0) {
 
     //Play 'Scatter' sound.
     audio_play_sound(snd_scatter, 0, false);

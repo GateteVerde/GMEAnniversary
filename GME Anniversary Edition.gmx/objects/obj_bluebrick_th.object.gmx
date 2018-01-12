@@ -266,7 +266,7 @@ if (held) {
     //Play 'Kick' sound
     audio_play_sound(snd_kick, 0, false);
 
-    //Get 800 points
+    //Get 1000 points
     with (instance_create(x-8,y,obj_score)) event_user(5);
     
     //Create spin thump

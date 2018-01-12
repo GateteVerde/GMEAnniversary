@@ -222,12 +222,6 @@ if (ready == 0)
     kx = round(other.x);
     ky = round(other.y);
     kd = other.dir;
-    
-    //Set alt position of the key
-    if (global.powerup != cs_small) {
-    
-        ky -= round(other.y)-4;
-    }
 
     //Delete the key
     with (other) instance_destroy()

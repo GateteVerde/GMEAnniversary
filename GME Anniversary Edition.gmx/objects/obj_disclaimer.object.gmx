@@ -30,9 +30,38 @@
 //Play 'Coin' sound
 audio_play_sound(snd_coin, 0, false);
 
+//Go to the next room
+alarm[0] = 600;
+
 //Fade out
 if (instance_number(obj_fadeout) == 0)
     instance_create(0,0,obj_fadeout);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Begin the game
+
+if (instance_number(obj_fadein) == 0)
+    with (instance_create(0,0,obj_fadein)) target = room_next(room);
 </string>
           </argument>
         </arguments>
@@ -67,33 +96,19 @@ draw_set_halign(fa_center);
 //Set the colour
 draw_set_colour(c_white);
 
-//Set the alpha
-draw_set_alpha(1);
-
 //Draw the disclaimer
-draw_text(view_xview[0]+view_wview[0]/2,view_yview[0]+view_hview[0]/2,"--- DISCLAIMER ---#"
+draw_text_colour(view_xview[0]+global.gw/2, view_yview[0]+156, "This is an OPEN-SOURCE Mario engine#"
++ "developed by the GMETeam#"
++ " #"
++ "This engine is under the BSD-3 license#"
++ " #"
++ "Head to the official Discord server#"
++ "https://discord.gg/7PZX4uY#"
++ " #"
++ "You can replace this screen with your logo#"
 + " #"
 + " #"
-+ "Gatete Mario Engine: Anniversary Edition#"
-+ "is a open source Mario engine written with#"
-+ "Game Maker Studio v1.4.1772#"
-+ " #"
-+ " #"
-+ "You can do whatever you want#"
-+ "as long you don't claim it#"
-+ "as your own work.#"
-+ " #"
-+ " #"
-+ "Game Maker Studio and the GM logo are#"
-+ "copyright of Yoyo Games Limited.#"
-+ " #"
-+ " #"
-+ "All graphics, music, sounds#"
-+ "and scenario are @ of its#"
-+ "respective owners.#"
-+ " #"
-+ " #"
-+ "Press any key to continue!");
++ "- PRESS ANY KEY TO CONTINUE! -#", c_white, c_white, c_white, c_white, 1);
 
 //Set the alignment
 draw_set_valign(fa_top);
@@ -120,10 +135,9 @@ draw_set_halign(fa_left);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Begin the game
+            <string>///Go to next room
 
-if (instance_number(obj_fadein) == 0)
-    with (instance_create(0,0,obj_fadein)) target = room_next(room);
+alarm[0] = 5;
 </string>
           </argument>
         </arguments>

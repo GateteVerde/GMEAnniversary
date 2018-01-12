@@ -458,7 +458,8 @@ else {
                 if (state == 0) {
                 
                     //If Mario is firing something
-                    if (firing &gt; 0) {
+                    if (firing &gt; 0) 
+                    &amp;&amp; (sprite_index != scr_mario_somersault()) {
                     
                         //Set the sprite
                         sprite_index = scr_mario_shoot();
@@ -586,7 +587,8 @@ else {
                 else if (state == 2) {
                 
                     //If Mario is shooting a projectile
-                    if (firing &gt; 0) {
+                    if (firing &gt; 0) 
+                    &amp;&amp; (sprite_index != scr_mario_somersault()) {
                     
                         //Set the sprite
                         sprite_index = scr_mario_shoot();

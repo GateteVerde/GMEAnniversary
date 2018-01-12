@@ -27,6 +27,10 @@ music_setup(global._theme_gameover, "Gameover", 2);
 global._theme_land = music_add("Land");
 music_setup(global._theme_land, "Land", 3);
 
+//Intro
+global._theme_intro = music_add("Intro");
+music_setup(global._theme_intro, "Intro", 2);
+
 //Map 1
 global._theme_map1 = music_add("Map 1");
 music_setup(global._theme_map1, "Map 1", 1);
