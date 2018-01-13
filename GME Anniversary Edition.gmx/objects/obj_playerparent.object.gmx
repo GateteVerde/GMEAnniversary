@@ -972,7 +972,7 @@ else {
 }
 
 //Check for a nearby swimming surface
-var water = collision_rectangle(bbox_left,y,bbox_right,y,obj_swim,1,0);
+var water = collision_rectangle(bbox_left,y-1,bbox_right,y,obj_swim,1,0);
 
 //If the player is not swimming and makes contact with a water surface
 if ((!swimming) &amp;&amp; (water)) {
@@ -1358,7 +1358,7 @@ if (global.powerup == cs_propeller)
 else {
 
     //Set the vertical speed
-    yspeed = -3.6;
+    yspeed = -4;
     
     //Boost jump
     y--;

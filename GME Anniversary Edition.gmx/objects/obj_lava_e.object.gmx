@@ -134,15 +134,15 @@ image_index = 1;
             <kind>1</kind>
             <string>///Draw the lava
 
-for (var i = 0; i&lt;sprite_width/16; i++;) 
-for (var j = 0; j&lt;sprite_height/16; j++;) {
+for (var i = 0; i &lt; image_xscale; i++;) 
+for (var j = 0; j &lt; image_yscale; j++;) {
 
-    //Draw the lava top
+    //Draw the water top
     draw_sprite_ext(sprite_index,-1,x+(i*16),y,1,1,0,c_white,1);
     
-    //If the vertical scale of the lava is equal/greater than 2
-    if (image_yscale &gt; 1)    
-        draw_sprite_ext(sprite_index,0,x+i*16,y+16+(j*16),1,1,0,c_white,1);
+    //If the vertical scale of the water is equal/greater than 2
+    if (j &gt;= 1)    
+        draw_sprite_ext(sprite_index,0,x+i*16,y+(j*16),1,1,0,c_white,1);
 }
 </string>
           </argument>

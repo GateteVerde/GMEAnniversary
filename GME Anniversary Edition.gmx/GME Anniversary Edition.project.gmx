@@ -439,6 +439,7 @@
       <sound>sound\snd_spin</sound>
       <sound>sound\snd_stomp</sound>
       <sound>sound\snd_stomp2</sound>
+      <sound>sound\snd_spinstomp</sound>
       <sound>sound\snd_superball</sound>
       <sound>sound\snd_swim</sound>
       <sound>sound\snd_throw</sound>
@@ -2099,6 +2100,7 @@
     <objects name="Enemies">
       <objects name="Land">
         <object>objects\obj_goomba</object>
+        <object>objects\obj_goomba_red</object>
       </objects>
     </objects>
     <objects name="World Map">
@@ -2482,6 +2484,8 @@
         </objects>
         <objects name="Enemies">
           <object>objects\obj_enemy_dead</object>
+          <object>objects\obj_enemy_stomped</object>
+          <object>objects\obj_stomped</object>
         </objects>
         <objects name="World Map">
           <objects name="Panels">
@@ -2641,6 +2645,7 @@
             <object>objects\obj_lightningsheet2</object>
             <object>objects\obj_notespark</object>
             <object>objects\obj_shellbump</object>
+            <object>objects\obj_spinsmoke</object>
             <object>objects\obj_smoke</object>
             <object>objects\obj_star</object>
           </objects>

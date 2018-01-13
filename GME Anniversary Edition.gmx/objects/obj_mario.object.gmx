@@ -319,8 +319,9 @@ else
             <kind>1</kind>
             <string>///Throw projectiles when spinning
 
-//If the player is doing a spinjump
-if (stompstyle == 1) {
+//If the player is doing a spinjump and it's not riding anything
+if (stompstyle == 1) 
+&amp;&amp; (global.mount == 0) {
     
     //Fireball
     if (global.powerup == cs_fire) {
