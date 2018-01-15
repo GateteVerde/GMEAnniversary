@@ -1084,11 +1084,31 @@
     </sprites>
     <sprites name="Enemies">
       <sprites name="Land">
-        <sprite>sprites\spr_goomba</sprite>
-        <sprite>sprites\spr_goomba_sq</sprite>
-        <sprite>sprites\spr_goomba_red</sprite>
-        <sprite>sprites\spr_goomba_red_sq</sprite>
-        <sprite>sprites\spr_goomba_wings</sprite>
+        <sprites name="Goombas">
+          <sprites name="Normal">
+            <sprites name="Big">
+              <sprite>sprites\spr_goomba_big</sprite>
+              <sprite>sprites\spr_goomba_big_sq</sprite>
+            </sprites>
+            <sprite>sprites\spr_goomba</sprite>
+            <sprite>sprites\spr_goomba_sq</sprite>
+            <sprite>sprites\spr_goomba_wings</sprite>
+            <sprite>sprites\spr_goombrat</sprite>
+            <sprite>sprites\spr_goombrat_sq</sprite>
+          </sprites>
+          <sprites name="Red">
+            <sprite>sprites\spr_goomba_red</sprite>
+            <sprite>sprites\spr_goomba_red_sq</sprite>
+          </sprites>
+          <sprite>sprites\spr_goomba_shoe</sprite>
+          <sprite>sprites\spr_goomba_micro</sprite>
+        </sprites>
+        <sprite>sprites\spr_galoomba</sprite>
+        <sprite>sprites\spr_galoomba_down</sprite>
+        <sprite>sprites\spr_galoomba_parachute</sprite>
+        <sprite>sprites\spr_galoomba_parachute_land</sprite>
+        <sprite>sprites\spr_galoomba_wing_front</sprite>
+        <sprite>sprites\spr_galoomba_wing_back</sprite>
       </sprites>
     </sprites>
     <sprites name="World Map">
@@ -1685,6 +1705,7 @@
   <paths name="paths">
     <path>paths\pth_bubble</path>
     <path>paths\pth_bubble_v</path>
+    <path>paths\pth_microgoomba</path>
   </paths>
   <scripts name="scripts">
     <scripts name="Player">
@@ -2099,8 +2120,22 @@
     </objects>
     <objects name="Enemies">
       <objects name="Land">
-        <object>objects\obj_goomba</object>
-        <object>objects\obj_goomba_red</object>
+        <objects name="Goombas">
+          <objects name="Normal">
+            <objects name="Big">
+              <object>objects\obj_goomba_big</object>
+            </objects>
+            <object>objects\obj_goomba</object>
+            <object>objects\obj_paragoomba</object>
+            <object>objects\obj_goombrat</object>
+          </objects>
+          <objects name="Red">
+            <object>objects\obj_goomba_red</object>
+            <object>objects\obj_paragoomba_red</object>
+          </objects>
+          <object>objects\obj_goomba_shoe</object>
+        </objects>
+        <object>objects\obj_galoomba</object>
       </objects>
     </objects>
     <objects name="World Map">
@@ -2416,6 +2451,7 @@
             </objects>
             <objects name="Enemies">
               <object>objects\obj_enemyparent</object>
+              <object>objects\obj_enemyparent_held</object>
               <object>objects\obj_deactenemyparent</object>
             </objects>
             <object>objects\obj_physicsparent</object>
@@ -2486,6 +2522,10 @@
           <object>objects\obj_enemy_dead</object>
           <object>objects\obj_enemy_stomped</object>
           <object>objects\obj_stomped</object>
+          <objects name="Land">
+            <object>objects\obj_goomba_micro</object>
+            <object>objects\obj_galoomba_down</object>
+          </objects>
         </objects>
         <objects name="World Map">
           <objects name="Panels">

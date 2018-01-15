@@ -2,7 +2,7 @@
 <sprite>
   <type>0</type>
   <xorig>8</xorig>
-  <yorigin>-7</yorigin>
+  <yorigin>0</yorigin>
   <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
@@ -10,7 +10,7 @@
   <bbox_left>3</bbox_left>
   <bbox_right>12</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>7</bbox_bottom>
+  <bbox_bottom>15</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -18,8 +18,9 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>16</width>
-  <height>9</height>
+  <height>16</height>
   <frames>
-    <frame index="0">images\spr_goomba_sq_0.png</frame>
+    <frame index="0">images\spr_galoomba_0.png</frame>
+    <frame index="1">images\spr_galoomba_1.png</frame>
   </frames>
 </sprite>

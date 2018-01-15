@@ -292,12 +292,13 @@ if (hunger = 0) {
 if (hunger == 0)
 &amp;&amp; (other.vulnerable &lt; 2) {
 
-    /*If the enemy is one of the following, flip it
-    if (other.object_index == obj_galoomba)
+    //If the enemy is one of the following, flip it
+    if (other.object_index == obj_goomba_shoe)
+    || (other.object_index == obj_galoomba)
         with (other) event_user(7);
         
     //Otherwise, eat it
-    else */ {
+    else {
     
         //Enemy eaten
         hunger = 1;
