@@ -41,7 +41,6 @@ vulnerable = 0;
 //2: Hurt the player + Shoe immunity
 //3: Silence + Shoe immunity
 //4: Subcon
-//5: Stomp, no musical scale
 //-1: Phase through the player
 stomp = 0;
 
@@ -1003,15 +1002,13 @@ if (stomp != -1)
         if (other.bbox_bottom &lt; bbox_top-vspeed+5) {
         
             //If the player is spinjumping
-            if (global.mount == 1)
-            &amp;&amp; (stomp != 3)
-            &amp;&amp; (stomp != 5)
+            if (stomp != 3)
             &amp;&amp; (other.stompstyle == 1) {
             
                 //If the enemy is not vulnerable to spin jumps
                 if (stomp == 0)
                 || (stomp == 4)
-                || ((stomp == 1) &amp;&amp; (global.mount == 2)) {
+                || ((stomp == 1) &amp;&amp; (global.mount &gt; 0)) {
                 
                     //Stop vertical speed
                     other.yspeed = 0;
@@ -1068,11 +1065,8 @@ if (stomp != -1)
             }
             
             //Otherwise, do a regular stomp
-            else if ((stomp == 0) || (stomp == 3) || (stomp == 5))
+            else if ((stomp == 0) || (stomp == 3))
             &amp;&amp; (other.swimming == 0) {
-            
-                //Play 'Stomp' sound
-                audio_play_sound(snd_stomp, 0, false);
             
                 //Prevent certain enemies from getting double stomped
                 if (vspeed &lt; 0) {
@@ -1107,16 +1101,33 @@ if (stomp != -1)
                             event_user(10);        
                     }
                 }
-                                
-                //Stomp the enemy
-                event_user(1);                    
                 
+                //If the player is riding either a yoshi or a kuribo shoe
+                if (global.mount &gt; 0) {
+                
+                    //Create spin smoke
+                    instance_create((bbox_left+bbox_right)/2-8,y,obj_spinsmoke);
+                    
+                    //Destroy
+                    instance_destroy();                                      
+                }
+                
+                //Otherwise, do a normal stomp
+                else {
+                
+                    //Play 'Stomp' sound
+                    audio_play_sound(snd_stomp, 0, false);
+                    
+                    //Create 'Spinthump' effect
+                    with (instance_create(other.x,other.bbox_bottom-8,obj_smoke)) sprite_index = spr_spinthump;
+                                        
+                    //Stomp the enemy  
+                    event_user(1);
+                }      
+                                              
                 //Make the player bounce off
                 with (other) event_user(1);
-                
-                //Create 'Spinthump' effect
-                with (instance_create(other.x,other.bbox_bottom-8,obj_smoke)) sprite_index = spr_spinthump;
-                
+                                
                 //Increment hitcombo
                 other.hitcombo++;                
             }

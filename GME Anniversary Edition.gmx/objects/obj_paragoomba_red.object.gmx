@@ -164,8 +164,13 @@ else
 event_inherited();
 
 //Animate the wings
-if (jumping &gt; 0)
-    anim += 0.3;
+if (jumping &gt; 0) {
+
+    if (jumping &gt; 3)
+        anim += 0.3;
+    else
+        anim += 0.15;
+}
 else
     anim = 0;
 </string>

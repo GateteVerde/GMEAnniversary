@@ -3,7 +3,7 @@
   <spriteName>spr_goomba</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,19 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///A enemy that has been killed
+            <string>///Goomba Pipe Generator (Use only on horizontal pipes)
+
+/*
+**  This item uses creation code!
+**
+**  dir = Pick from below:
+**      1: Right
+**      -1: Left
+*/
+
+//Default variable:
+dir = 1;
+
+//Spawn 3 goombas
+spawn = 0;
 
 //Do not animate
 image_speed = 0;
 image_index = 0;
 
-//Set vertical speed
-vspeed = -4;
-gravity = 0.2;
+//Set the depth
+depth = 10;
 
-//Check sprite
-image_yscale = -1;
-alarm[1] = 1;
+//Start spawning
+alarm[0] = 1;
 </string>
           </argument>
         </arguments>
@@ -60,13 +72,28 @@ alarm[1] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Check sprite
+            <string>///Create a goomba.
 
-//Galoomba sprite fix
-if (sprite_index == spr_galoomba_down) {
+//Create goomba
+with (instance_create(x,y,obj_goomba)) {
 
-    image_yscale = 1;
-    y -= 16;
+    hspeed = 0.5*sign(other.dir);
+}
+
+//Stop and snap into position
+hspeed = 0;
+x = xstart;
+
+//Spawn another goomba.
+if (spawn &lt; 2) {
+
+    spawn++;
+    alarm[0] = 60;
+}
+else {
+
+    spawn = 0;
+    alarm[0] = 180;
 }
 </string>
           </argument>
@@ -90,50 +117,63 @@ if (sprite_index == spr_galoomba_down) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Change horizontal speed
+            <string>///Spawn a goomba.
 
-hspeed = -hspeed;
-alarm[0] = 8;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Dead enemy logic
+//If Mario does not exists.
+if (!instance_exists(obj_playerparent)) {
 
-//Cap vertical speed
-if (vspeed &gt; 4) {
-
-    //Set vertical speed
-    vspeed = 4;
-    
-    //Check if outside the view
-    if (y &gt; view_yview[0]+248)
-        instance_destroy();
+    //Hold event
+    alarm[0] = 1;
+    exit;
 }
 
-//Cap horizontal speed
-if ((hspeed &gt; 0.6) &amp;&amp; (hspeed &lt; 2))
-    hspeed = 0.6;
-else if ((hspeed &gt; -2) &amp;&amp; (hspeed &lt; -0.6))
-    hspeed = -0.6;
+//Otherwise, if Mario does exist.
+else {
+
+    //If there's more than 6 goombas present on the view.
+    if (instance_number(obj_goomba) &gt;= 6) {
+    
+        //Hold event
+        alarm[0] = 1;
+        exit;
+    }
+    
+    //Otherwise, if there's less than 6 goombas present on the view.
+    else {
+    
+        //If the goombas spawn to the right.
+        if (dir == 1) {
+        
+            if (obj_playerparent.x &lt; x+32) {
+            
+                //Hold event
+                alarm[0] = 1;
+                exit;    
+            }
+            else {
+            
+                hspeed = 0.5;
+                alarm[1] = 32;
+            }
+        }
+        
+        //Otherwise, if the goombas spawn to the left.
+        else if (dir == -1) {
+        
+            if (obj_playerparent.x &gt; x-32) {
+            
+                //Hold event
+                alarm[0] = 1;
+                exit;
+            }
+            else {
+            
+                hspeed = -0.5;
+                alarm[1] = 32;
+            }
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -156,9 +196,9 @@ else if ((hspeed &gt; -2) &amp;&amp; (hspeed &lt; -0.6))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw dead enemy
+            <string>///Draw Goomba coming out of the pipe
 
-draw_sprite_ext(sprite_index, -1, round(x), y, image_xscale, image_yscale, 0, c_white, 1);
+draw_sprite_ext(sprite_index,-1,round(x),y,1,1,0,c_white,1);
 </string>
           </argument>
         </arguments>

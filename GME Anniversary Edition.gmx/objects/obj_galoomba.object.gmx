@@ -155,7 +155,7 @@ instance_destroy();
 with (instance_create(x,y,obj_galoomba_down)) {
 
     //Hereby facing direction
-    image_xscale = other.xscale;
+    dir = other.xscale;
 }
 
 //Destroy
