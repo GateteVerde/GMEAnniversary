@@ -1102,13 +1102,51 @@
           </sprites>
           <sprite>sprites\spr_goomba_shoe</sprite>
           <sprite>sprites\spr_goomba_micro</sprite>
+          <sprite>sprites\spr_galoomba</sprite>
+          <sprite>sprites\spr_galoomba_down</sprite>
+          <sprite>sprites\spr_galoomba_parachute</sprite>
+          <sprite>sprites\spr_galoomba_parachute_land</sprite>
+          <sprite>sprites\spr_galoomba_wing_front</sprite>
+          <sprite>sprites\spr_galoomba_wing_back</sprite>
         </sprites>
-        <sprite>sprites\spr_galoomba</sprite>
-        <sprite>sprites\spr_galoomba_down</sprite>
-        <sprite>sprites\spr_galoomba_parachute</sprite>
-        <sprite>sprites\spr_galoomba_parachute_land</sprite>
-        <sprite>sprites\spr_galoomba_wing_front</sprite>
-        <sprite>sprites\spr_galoomba_wing_back</sprite>
+        <sprites name="Koopas">
+          <sprites name="Green">
+            <sprites name="Beach Koopas">
+              <sprite>sprites\spr_beachkoopa</sprite>
+              <sprite>sprites\spr_beachkoopa_walk</sprite>
+              <sprite>sprites\spr_beachkoopa_kick</sprite>
+            </sprites>
+            <sprite>sprites\spr_koopa</sprite>
+            <sprite>sprites\spr_parakoopa</sprite>
+            <sprite>sprites\spr_shell</sprite>
+            <sprite>sprites\spr_shell_down</sprite>
+          </sprites>
+          <sprites name="Red">
+            <sprite>sprites\spr_koopa_red</sprite>
+            <sprite>sprites\spr_parakoopa_red</sprite>
+            <sprite>sprites\spr_shell_red</sprite>
+            <sprite>sprites\spr_shell_red_down</sprite>
+          </sprites>
+          <sprites name="Blue">
+            <sprites name="Beach Koopas">
+              <sprite>sprites\spr_beachkoopa_blue</sprite>
+              <sprite>sprites\spr_beachkoopa_blue_walk</sprite>
+              <sprite>sprites\spr_beachkoopa_blue_kick</sprite>
+            </sprites>
+            <sprite>sprites\spr_koopa_blue</sprite>
+            <sprite>sprites\spr_shell_blue</sprite>
+            <sprite>sprites\spr_shell_blue_down</sprite>
+          </sprites>
+          <sprites name="Yellow">
+            <sprite>sprites\spr_koopa_yellow</sprite>
+            <sprite>sprites\spr_parakoopa_yellow</sprite>
+            <sprite>sprites\spr_parakoopa_yellow_jump</sprite>
+            <sprite>sprites\spr_shell_yellow</sprite>
+            <sprite>sprites\spr_shell_yellow_down</sprite>
+          </sprites>
+          <sprite>sprites\spr_koopa_sq</sprite>
+          <sprite>sprites\spr_koopa_kamikaze</sprite>
+        </sprites>
       </sprites>
     </sprites>
     <sprites name="World Map">
@@ -2133,13 +2171,15 @@
             <object>objects\obj_goomba_red</object>
             <object>objects\obj_paragoomba_red</object>
           </objects>
+          <object>objects\obj_galoomba</object>
+          <object>objects\obj_paragaloomba</object>
+          <object>objects\obj_galoomba_parachute</object>
           <object>objects\obj_goomba_shoe</object>
         </objects>
-        <object>objects\obj_galoomba</object>
-        <object>objects\obj_paragaloomba</object>
       </objects>
       <objects name="Generators">
         <object>objects\obj_generator_goomba</object>
+        <object>objects\obj_generator_galoomba</object>
       </objects>
     </objects>
     <objects name="World Map">

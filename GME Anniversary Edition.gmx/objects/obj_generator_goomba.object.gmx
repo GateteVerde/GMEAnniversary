@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_deactivateparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -130,15 +130,15 @@ if (!instance_exists(obj_playerparent)) {
 //Otherwise, if Mario does exist.
 else {
 
-    //If there's more than 6 goombas present on the view.
-    if (instance_number(obj_goomba) &gt;= 6) {
+    //If the level control is in silver coin mode, wait
+    if (obj_levelcontrol.gswitchon) {
     
         //Hold event
         alarm[0] = 1;
         exit;
     }
     
-    //Otherwise, if there's less than 6 goombas present on the view.
+    //Otherwise, spawn
     else {
     
         //If the goombas spawn to the right.
