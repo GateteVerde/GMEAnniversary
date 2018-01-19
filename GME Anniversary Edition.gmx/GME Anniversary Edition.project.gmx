@@ -1114,7 +1114,6 @@
             <sprites name="Beach Koopas">
               <sprite>sprites\spr_beachkoopa</sprite>
               <sprite>sprites\spr_beachkoopa_walk</sprite>
-              <sprite>sprites\spr_beachkoopa_kick</sprite>
             </sprites>
             <sprite>sprites\spr_koopa</sprite>
             <sprite>sprites\spr_parakoopa</sprite>
@@ -1146,6 +1145,7 @@
           </sprites>
           <sprite>sprites\spr_koopa_sq</sprite>
           <sprite>sprites\spr_koopa_kamikaze</sprite>
+          <sprite>sprites\spr_koopa_kamikaze_down</sprite>
         </sprites>
       </sprites>
     </sprites>
@@ -1653,6 +1653,9 @@
           <sprite>sprites\spr_palette_warpnoteblock</sprite>
         </sprites>
         <sprites name="NPCs">
+          <sprites name="Enemies">
+            <sprite>sprites\spr_palette_beachkoopa</sprite>
+          </sprites>
           <sprite>sprites\spr_palette_yoshi</sprite>
         </sprites>
         <sprite>sprites\spr_palette_door</sprite>
@@ -2176,6 +2179,24 @@
           <object>objects\obj_galoomba_parachute</object>
           <object>objects\obj_goomba_shoe</object>
         </objects>
+        <objects name="Koopa">
+          <objects name="Green">
+            <object>objects\obj_koopa</object>
+            <object>objects\obj_parakoopa</object>
+            <object>objects\obj_parakoopa_fly</object>
+            <object>objects\obj_beachkoopa</object>
+          </objects>
+          <objects name="Red">
+            <object>objects\obj_koopa_red</object>
+            <object>objects\obj_parakoopa_red</object>
+            <object>objects\obj_beachkoopa_red</object>
+          </objects>
+          <objects name="Blue">
+            <object>objects\obj_koopa_blue</object>
+            <object>objects\obj_beachkoopa_blue</object>
+          </objects>
+          <object>objects\obj_shell</object>
+        </objects>
       </objects>
       <objects name="Generators">
         <object>objects\obj_generator_goomba</object>
@@ -2567,9 +2588,12 @@
           <object>objects\obj_enemy_stomped</object>
           <object>objects\obj_stomped</object>
           <objects name="Land">
-            <object>objects\obj_goomba_micro</object>
-            <object>objects\obj_galoomba_down</object>
+            <objects name="Goombas">
+              <object>objects\obj_goomba_micro</object>
+              <object>objects\obj_galoomba_down</object>
+            </objects>
           </objects>
+          <object>objects\obj_shell_kick</object>
         </objects>
         <objects name="World Map">
           <objects name="Panels">

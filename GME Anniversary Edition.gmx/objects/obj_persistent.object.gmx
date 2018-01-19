@@ -384,6 +384,43 @@ else if (keyboard_check_pressed(ord('R'))) {
     if (instance_number(obj_fadein) == 0)    
         with (instance_create(0,0,obj_fadein)) target = rm_disclaimer;
 }
+
+//Change window size
+else if (keyboard_check_pressed(ord('W'))) {
+
+    //If the window is not set to fullscreen
+    if (fullscreen == false) {
+
+        //Change filter
+        filter++;
+        
+        //Check if the filter is the second one
+        if (filter == 3) {
+        
+            //Set default filter
+            filter = 0;
+            
+            //Set fullscreen variable
+            fullscreen = true;
+            
+            //Set fullscreen mode
+            window_set_fullscreen(true);                                                             
+        }
+    }
+    
+    //Otherwise, set it to windowed mode
+    else {
+    
+        //Change fullscreen variable
+        fullscreen = false;
+    
+        //Set windowed mode
+        window_set_fullscreen(false);             
+    }
+    
+    //Apply settings
+    event_user(0);       
+}
 </string>
           </argument>
         </arguments>
