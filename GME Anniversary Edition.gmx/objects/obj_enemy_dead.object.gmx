@@ -63,7 +63,13 @@ alarm[1] = 1;
             <string>///Check sprite
 
 //Galoomba sprite fix
-if (sprite_index == spr_galoomba_down) {
+if (sprite_index == spr_galoomba_down)
+|| (sprite_index == spr_shell_down)
+|| (sprite_index == spr_shell_red_down)
+|| (sprite_index == spr_shell_blue_down)
+|| (sprite_index == spr_shell_yellow_down)
+|| (sprite_index == spr_shell_big_down)
+|| (sprite_index == spr_shell_big_red_down) {
 
     image_yscale = 1;
     y -= 16;

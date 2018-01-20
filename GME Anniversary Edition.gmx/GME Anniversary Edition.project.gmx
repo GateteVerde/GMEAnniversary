@@ -1115,12 +1115,24 @@
               <sprite>sprites\spr_beachkoopa</sprite>
               <sprite>sprites\spr_beachkoopa_walk</sprite>
             </sprites>
+            <sprites name="Big">
+              <sprite>sprites\spr_koopa_big</sprite>
+              <sprite>sprites\spr_parakoopa_big</sprite>
+              <sprite>sprites\spr_shell_big</sprite>
+              <sprite>sprites\spr_shell_big_down</sprite>
+            </sprites>
             <sprite>sprites\spr_koopa</sprite>
             <sprite>sprites\spr_parakoopa</sprite>
             <sprite>sprites\spr_shell</sprite>
             <sprite>sprites\spr_shell_down</sprite>
           </sprites>
           <sprites name="Red">
+            <sprites name="Big">
+              <sprite>sprites\spr_koopa_big_red</sprite>
+              <sprite>sprites\spr_parakoopa_big_red</sprite>
+              <sprite>sprites\spr_shell_big_red</sprite>
+              <sprite>sprites\spr_shell_big_red_down</sprite>
+            </sprites>
             <sprite>sprites\spr_koopa_red</sprite>
             <sprite>sprites\spr_parakoopa_red</sprite>
             <sprite>sprites\spr_shell_red</sprite>
@@ -2179,14 +2191,23 @@
           <object>objects\obj_galoomba_parachute</object>
           <object>objects\obj_goomba_shoe</object>
         </objects>
-        <objects name="Koopa">
+        <objects name="Koopas">
           <objects name="Green">
+            <objects name="Big">
+              <object>objects\obj_koopa_big</object>
+              <object>objects\obj_parakoopa_big</object>
+              <object>objects\obj_parakoopa_big_fly</object>
+            </objects>
             <object>objects\obj_koopa</object>
             <object>objects\obj_parakoopa</object>
             <object>objects\obj_parakoopa_fly</object>
             <object>objects\obj_beachkoopa</object>
           </objects>
           <objects name="Red">
+            <objects name="Big">
+              <object>objects\obj_koopa_big_red</object>
+              <object>objects\obj_parakoopa_big_red</object>
+            </objects>
             <object>objects\obj_koopa_red</object>
             <object>objects\obj_parakoopa_red</object>
             <object>objects\obj_beachkoopa_red</object>
@@ -2195,7 +2216,13 @@
             <object>objects\obj_koopa_blue</object>
             <object>objects\obj_beachkoopa_blue</object>
           </objects>
+          <objects name="Yellow">
+            <object>objects\obj_koopa_yellow</object>
+            <object>objects\obj_parakoopa_yellow</object>
+            <object>objects\obj_beachkoopa_yellow</object>
+          </objects>
           <object>objects\obj_shell</object>
+          <object>objects\obj_koopa_kamikaze</object>
         </objects>
       </objects>
       <objects name="Generators">

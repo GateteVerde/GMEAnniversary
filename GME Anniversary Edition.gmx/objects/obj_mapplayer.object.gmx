@@ -85,7 +85,7 @@ if (global.clear &gt; 0) {
 if (global.died == 1) {
 
     //Reset dead variable
-    global.died = 0;
+    global.died = 2;
     
     //Do not allow movement
     ready = 1
@@ -187,15 +187,45 @@ var panel = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ma
 //If the player exists
 if (panel) {
 
-    //If you cannot save with the current panel
-    if (panel.saveme == 0) {
-    
-        //If there's still opener objects around, wait
-        if (instance_number(obj_opener) &gt; 0) {
+    //If the player died in the level
+    if (global.died == 0) {
+
+        //If you cannot save with the current panel
+        if (panel.saveme == 0) {
         
-            alarm[3] = 1;
-            exit;
-        }        
+            //If there's still opener objects around, wait
+            if (instance_number(obj_opener) &gt; 0) {
+            
+                alarm[3] = 1;
+                exit;
+            }        
+            
+            //Allow movement
+            ready = 0;
+            
+            //Play music if it was paused
+            if (FMODInstanceGetPaused(global._stream_map))
+                obj_persistent_musicplayer.alarm[2] = 2;
+        }
+            
+        //Otherwise, wait
+        else if (panel.saveme == 1) &amp;&amp; (global.clear &gt; 0) {
+        
+            //If there's still opener objects around, wait
+            if (instance_number(obj_opener) &gt; 0) {
+            
+                alarm[3] = 1;
+                exit;
+            }
+            
+            //Save the game if allowed
+            instance_create(0,0,obj_savemenu);
+        }
+    }
+    else {
+    
+        //End die sequence
+        global.died = 0;
         
         //Allow movement
         ready = 0;
@@ -203,20 +233,6 @@ if (panel) {
         //Play music if it was paused
         if (FMODInstanceGetPaused(global._stream_map))
             obj_persistent_musicplayer.alarm[2] = 2;
-    }
-        
-    //Otherwise, wait
-    else if (panel.saveme == 1) &amp;&amp; (global.clear &gt; 0) {
-    
-        //If there's still opener objects around, wait
-        if (instance_number(obj_opener) &gt; 0) {
-        
-            alarm[3] = 1;
-            exit;
-        }
-        
-        //Save the game if allowed
-        instance_create(0,0,obj_savemenu);
     }
 }
 

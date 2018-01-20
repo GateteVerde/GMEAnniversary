@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Green beach koopa
+            <string>///Yellow beach koopa
 
 //Default variables
 ready = 1;
@@ -33,11 +33,11 @@ ready = 1;
 //How vulnerable is this enemy to various items?
 vulnerable = 0;
 
-//How vulnerable is this enemy to yoshi?
-edible = 0;
-
 //How vulnerable is this enemy to the player?
 stomp = 0;
+
+//How vulnerable is this enemy to yoshi?
+edible = 0;
 
 //Facing direction
 xscale = 1;
@@ -77,15 +77,14 @@ alarm[10] = 2;
             <kind>1</kind>
             <string>///Move towards the player
 
-//If the koopa can move
-if (ready &gt; 0) {
+if (hspeed == 0) {
 
-    //Inherit event
-    event_inherited();
-
-    //Set walking sprite
-    if (sprite_index == spr_beachkoopa)
-        sprite_index = spr_beachkoopa_walk;
+    //Start moving
+    if (!instance_exists(obj_playerparent))
+    || (obj_playerparent.x &lt; x)
+        hspeed = -1;
+    else
+        hspeed = 1;
 }
 </string>
           </argument>
@@ -109,7 +108,7 @@ if (ready &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Beach koopa logic
+            <string>///Yellow beach koopa logic
 
 //Inherit event
 event_inherited();
@@ -147,11 +146,33 @@ else if (ready &gt; 0) {
     //Otherwise if the koopa is no longer overlapping a shell, make him enter one.
     else if (ready == 2) {
     
+        //Keep following the player
+        if ((gravity == 0) &amp;&amp; (ready &gt; 1)) {
+        
+            //If the player does exist
+            if (instance_exists(obj_playerparent)) {
+            
+                //If the koopa is moving to the left and the player is 48 pixels to the right
+                if ((hspeed &lt; 0) &amp;&amp; (obj_playerparent.x &gt; x+48))
+                    hspeed = 1;
+                    
+                //Otherwise, if the koopa is moving to the right and the player is 48 pixels to the left
+                else if ((hspeed &gt; 0) &amp;&amp; (obj_playerparent.x &lt; x-48))
+                    hspeed = -1;
+            }
+        }
+    
         //Check for a shell
-        var shell = collision_rectangle(x+(5*sign(xscale)),bbox_top,x+(10*sign(xscale)),bbox_bottom-4,obj_shell,0,0);
+        var shell = collision_rectangle(x+(5*sign(xscale)),bbox_top,x+(10*sign(xscale)),bbox_bottom+16,obj_shell,0,0);
         
         //If there's a shell in position and said shell does not have a koopa inside.
         if (shell) {
+        
+            //Reduce speed so the koopa can enter the shell.
+            if (abs(hspeed) &gt; 0.5) {
+            
+                hspeed = 0.5*sign(xscale);
+            }
         
             //If there's not a koopa inside the shell
             if (shell.koopainside == 0) 
@@ -171,6 +192,12 @@ else if (ready &gt; 0) {
             else if (shell.koopainside != 0)
                 hspeed = -hspeed;
         } 
+        else {
+        
+            //Increment speed
+            if (abs(hspeed) &lt; 1)
+                hspeed = 1*sign(xscale);
+        }
         
         //Reset jump
         if (jumping == 1)
@@ -185,8 +212,6 @@ if (hspeed &gt; 0)
     xscale = 1;
 else
     xscale = -1;
-
-
 </string>
           </argument>
         </arguments>
@@ -211,70 +236,20 @@ else
             <kind>1</kind>
             <string>///Climb inside the shell
 
-//If the koopa is jumping inside
+//If the koopa is jumping inside, turn into a kamikaze koopa (no matter what colour is used.
 if (jumping == 1)
 &amp;&amp; (gravity == 0) 
 &amp;&amp; (ready == 2) {
-
-    //If the shell is a green one, become a green koopa
-    if (other.sprite_index == spr_shell)
-    || (other.sprite_index == spr_shell_down) {
     
-        //With the shell
-        with (other) {
-        
-            instance_create(x,y,obj_koopa);
-            instance_destroy();
-        }
-        
-        //Destroy this object
+    //With the shell
+    with (other) {
+    
+        instance_create(x,y,obj_koopa_kamikaze);
         instance_destroy();
     }
     
-    //Otherwise if the shell is a red one, become a red koopa
-    else if (other.sprite_index == spr_shell_red)
-    || (other.sprite_index == spr_shell_red_down) {
-    
-        //With the shell
-        with (other) {
-        
-            instance_create(x,y,obj_koopa_red);
-            instance_destroy();
-        }
-        
-        //Destroy this object
-        instance_destroy();    
-    }
-    
-    //Otherwise if the shell is a red one, become a red koopa
-    else if (other.sprite_index == spr_shell_blue)
-    || (other.sprite_index == spr_shell_blue_down) {
-    
-        //With the shell
-        with (other) {
-        
-            instance_create(x,y,obj_koopa_blue);
-            instance_destroy();
-        }
-        
-        //Destroy this object
-        instance_destroy();    
-    }
-    
-    //Otherwise if the shell is a red one, become a red koopa
-    else if (other.sprite_index == spr_shell_yellow)
-    || (other.sprite_index == spr_shell_yellow_down) {
-    
-        //With the shell
-        with (other) {
-        
-            instance_create(x,y,obj_koopa_yellow);
-            instance_destroy();
-        }
-        
-        //Destroy this object
-        instance_destroy();    
-    }
+    //Destroy this object
+    instance_destroy();
 }
 else
     event_inherited();
@@ -322,7 +297,7 @@ if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="11">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -339,13 +314,16 @@ if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Turn into a pancake
+            <string>///Draw beach koopa
 
-//Create pancak'd enemy
-with (instance_create(x,y,obj_stomped)) sprite_index = spr_koopa_sq;
+//Set palette
+pal_swap_set(spr_palette_beachkoopa, 3);
 
-//Destroy
-instance_destroy();
+//Draw sprite
+draw_sprite_ext(sprite_index, -1, round(x), y+1, xscale, 1, 0, c_white, 1);
+
+//Reset palette
+pal_swap_reset();
 </string>
           </argument>
         </arguments>

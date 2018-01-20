@@ -93,16 +93,42 @@ shake = 0;
 alarm[0] = -1;
 
 //If there's a koopa inside the shell, make it go inside
-if (koopainside &gt; 0) {
+if (koopainside != 0) {
 
     //Check what koopa is inside and create it
     switch (koopainside) {
+    
+        //Other shelled enemies
+        case (-1): {
+        
+            //Big Green Koopa
+            if (sprite_index == spr_shell_big)
+            || (sprite_index == spr_shell_big_down) {
+            
+                instance_create(x,y,obj_koopa_big);
+                instance_destroy();
+            }
+            
+            //Big Red Koopa
+            if (sprite_index == spr_shell_big_red)
+            || (sprite_index == spr_shell_big_red_down) {
+            
+                instance_create(x,y,obj_koopa_big_red);
+                instance_destroy();
+            }              
+        } break;
     
         //Green
         case (1): instance_create(x,y,obj_beachkoopa); break;
         
         //Red
         case (2): instance_create(x,y,obj_beachkoopa_red); break;
+        
+        //Blue
+        case (3): instance_create(x,y,obj_beachkoopa_blue); break;
+        
+        //Yellow
+        case (4): instance_create(x,y,obj_beachkoopa_yellow); break;
     }
     
     //Do not create koopas
@@ -403,6 +429,10 @@ else if (sprite_index == spr_shell_blue)
     imheld.sprite_index = spr_shell_blue_down;
 else if (sprite_index == spr_shell_yellow)
     imheld.sprite_index = spr_shell_yellow_down;
+else if (sprite_index == spr_shell_big)
+    imheld.sprite_index = spr_shell_big_down;
+else if (sprite_index == spr_shell_big_red)
+    imheld.sprite_index = spr_shell_big_red_down;
 else
     imheld.sprite_index = sprite_index;
 
@@ -410,7 +440,7 @@ else
 imheld.vspeed = -5;
 
 //Check if a koopa was inside
-if (koopainside &gt; 0) {
+if (koopainside != 0) {
 
     imheld.koopainside = koopainside;
     imheld.alarm[0] = 540;

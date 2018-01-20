@@ -292,9 +292,16 @@ if (hunger = 0) {
 if (hunger == 0)
 &amp;&amp; (other.vulnerable &lt; 2) {
 
-    //If the enemy is one of the following, flip it
-    if (other.object_index == obj_goomba_shoe)
-    || (other.object_index == obj_galoomba)
+    //If the enemy is edible by yoshi
+    if (other.edible == 2) {
+    
+        //Move tongue back
+        ready = 1;
+        alarm[0] = 8;
+    }
+    
+    //Otherwise, create item
+    else if (other.edible == 1)
         with (other) event_user(7);
         
     //Otherwise, eat it
@@ -307,18 +314,18 @@ if (hunger == 0)
         ready = 1;
         alarm[0] = 8;
         
+        //Food sprite
+        foodsprite = other.sprite_index;
+        
+        //Food image
+        foodindex = other.image_index;
+        
         /*Put shells in Yoshi's mouth
         if (other.object_index == obj_shell) {
         
             
         }
         */
-        
-        //Food sprite
-        foodsprite = other.sprite_index;
-        
-        //Food image
-        foodindex = other.image_index;
         
         //Food offset
         with (other) other.foodoffset = (bbox_left+bbox_right)/2-x;

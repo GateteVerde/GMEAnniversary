@@ -342,7 +342,7 @@ if (cannon == 0) {
     else {
     
         //Play a sound if the player is about to exit a pipe.
-        if (speed == 2) {
+        if (speed == 3) {
             
             //Play 'Warp' sound
             audio_play_sound(snd_warp, 0, false);

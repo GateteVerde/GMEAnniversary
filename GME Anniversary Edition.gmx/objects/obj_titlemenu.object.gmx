@@ -301,10 +301,7 @@ if ((display == 1) &amp;&amp; (scale == 1)) {
         else if (page == 1) {
         
             if (choice &lt; 3) {
-            
-                //Play 'Correct' sound
-                audio_play_sound(snd_enterstage, 0, false);                
-                
+                                           
                 //Stop stream if it's playing
                 if (FMODInstanceIsPlaying(stream)) {
                 
@@ -331,6 +328,7 @@ if ((display == 1) &amp;&amp; (scale == 1)) {
                     load(global.file);
                     if (instance_number(obj_curtainout) == 0) {
                     
+                        audio_play_sound(snd_enterstage, 0, false);     
                         with (instance_create(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,obj_curtainout))                        
                             target = rm_map;                        
                     }
@@ -341,6 +339,7 @@ if ((display == 1) &amp;&amp; (scale == 1)) {
                 
                     if (instance_number(obj_curtainout) == 0) {
                     
+                        audio_play_sound(snd_enterstage, 0, false);     
                         with (instance_create(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,obj_curtainout))
                             target = rm_intro;
                     }                    

@@ -201,10 +201,9 @@ event_perform_object(obj_shell, ev_other, ev_user7);
 with (instance_create(x,y,obj_shell)) {
 
     sprite_index = other.sprite_index;
-    if (other.koopainside) {
+    if (other.koopainside != 0) {
     
-        koopainside = true;
-        colour = other.colour;
+        koopainside = other.koopainside;
         alarm[0] = 540;
         alarm[1] = 600;
     }
