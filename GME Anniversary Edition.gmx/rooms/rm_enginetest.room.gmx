@@ -54,21 +54,28 @@ background_hspeed[7] = -0.25;</code>
   <instances>
     <instance objName="obj_levelcontrol" x="0" y="0" name="inst_8B934E68" locked="0" code="levelmusic = global._theme_athletic;&#xA;leveltime = 500;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tides" x="0" y="728" name="inst_3F2A1567" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_semisolid" x="0" y="720" name="inst_B74CA889" locked="0" code="" scaleX="48" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="56" y="704" name="inst_11E22E7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rainmaker" x="16" y="0" name="inst_B6BCCB04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="272" y="672" name="inst_028BA041" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="448" y="672" name="inst_EA817011" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="352" y="624" name="inst_D0E913B1" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock" x="112" y="656" name="inst_54524593" locked="0" code="sprout = cs_yoshi;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock" x="160" y="656" name="inst_AD77B63F" locked="0" code="sprout = cs_kuriboshoe;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_koopa_kamikaze" x="384" y="704" name="inst_62B613D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa_red" x="360" y="608" name="inst_3D9315F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa_red" x="376" y="608" name="inst_2E860F8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa_red" x="392" y="608" name="inst_CDF06301" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa_red" x="408" y="608" name="inst_13E44A3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_koopa_big_red" x="296" y="656" name="inst_C7956955" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_koopa_big_red" x="471" y="656" name="inst_2069E713" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shell" x="584" y="704" name="inst_22273C21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shell" x="616" y="704" name="inst_53336EAB" locked="0" code="sprite_index = spr_shell_red;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shell" x="648" y="704" name="inst_C737557B" locked="0" code="sprite_index = spr_shell_yellow;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shell" x="680" y="704" name="inst_6B388C10" locked="0" code="sprite_index = spr_shell_blue;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="80" y="656" name="inst_E374F176" locked="0" code="sprout = cs_yoshi;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="112" y="656" name="inst_AE60C2A8" locked="0" code="sprout = cs_yoshi_r;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="144" y="656" name="inst_3771470A" locked="0" code="sprout = cs_yoshi_y;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="176" y="656" name="inst_7E1FB962" locked="0" code="sprout = cs_yoshi_b;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="304" y="720" name="inst_C4BC2F6B" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="448" y="720" name="inst_490D31DD" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="obj_semisolid" x="0" y="720" name="inst_60906A1D" locked="0" code="" scaleX="17" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_semisolid" x="496" y="720" name="inst_E08A3466" locked="0" code="" scaleX="17" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_koopa_kamikaze" x="240" y="704" name="inst_066300A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_bush_large" x="-48" y="640" w="144" h="80" xo="0" yo="0" id="10013607" name="inst_5984DCAA" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -91,7 +98,6 @@ background_hspeed[7] = -0.25;</code>
     <tile bgName="bgr_tileset_smb3" x="160" y="704" w="16" h="16" xo="832" yo="112" id="10013628" name="inst_EA0CC91B" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="208" y="688" w="16" h="16" xo="864" yo="112" id="10013629" name="inst_971218AD" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="208" y="704" w="16" h="16" xo="864" yo="112" id="10013630" name="inst_FB4E32F6" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_bush_large" x="352" y="640" w="144" h="80" xo="0" yo="0" id="10013637" name="inst_4FE50CAB" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_bush" x="544" y="656" w="96" h="64" xo="0" yo="0" id="10013638" name="inst_CB27C5DE" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="752" y="720" w="16" h="32" xo="16" yo="448" id="10013530" name="inst_DCAB9BAA" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="736" y="720" w="16" h="32" xo="16" yo="448" id="10013531" name="inst_6F45C4EB" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -112,16 +118,6 @@ background_hspeed[7] = -0.25;</code>
     <tile bgName="bgr_tileset_smb3" x="496" y="720" w="16" h="32" xo="16" yo="448" id="10013546" name="inst_33DC5165" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="480" y="720" w="16" h="32" xo="16" yo="448" id="10013547" name="inst_51CB2D14" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="464" y="720" w="16" h="32" xo="16" yo="448" id="10013548" name="inst_06AC6533" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="448" y="720" w="16" h="32" xo="16" yo="448" id="10013549" name="inst_BF695FB0" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="432" y="720" w="16" h="32" xo="16" yo="448" id="10013550" name="inst_358B6F23" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="416" y="720" w="16" h="32" xo="16" yo="448" id="10013551" name="inst_34EED3B7" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="400" y="720" w="16" h="32" xo="16" yo="448" id="10013552" name="inst_7E6E2352" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="384" y="720" w="16" h="32" xo="16" yo="448" id="10013553" name="inst_2FD073D8" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="368" y="720" w="16" h="32" xo="16" yo="448" id="10013554" name="inst_D1F659E4" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="352" y="720" w="16" h="32" xo="16" yo="448" id="10013555" name="inst_57AEA84E" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="336" y="720" w="16" h="32" xo="16" yo="448" id="10013556" name="inst_3DC468AD" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="320" y="720" w="16" h="32" xo="16" yo="448" id="10013557" name="inst_7464647E" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="304" y="720" w="16" h="32" xo="16" yo="448" id="10013558" name="inst_B470810F" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="288" y="720" w="16" h="32" xo="16" yo="448" id="10013559" name="inst_415AC598" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="272" y="720" w="16" h="32" xo="16" yo="448" id="10013560" name="inst_EEC08EC8" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="256" y="720" w="16" h="32" xo="16" yo="448" id="10013561" name="inst_CD58B73F" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -147,6 +143,8 @@ background_hspeed[7] = -0.25;</code>
     <tile bgName="bgr_tileset_smb3" x="368" y="624" w="16" h="16" xo="256" yo="416" id="10013634" name="inst_0A6A004B" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="384" y="624" w="16" h="16" xo="256" yo="416" id="10013635" name="inst_4873F52C" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="400" y="624" w="16" h="16" xo="256" yo="416" id="10013636" name="inst_86D62DE8" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="448" y="720" w="16" h="32" xo="0" yo="448" id="10013639" name="inst_E9C2290B" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="304" y="720" w="16" h="32" xo="32" yo="448" id="10013640" name="inst_E997568C" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

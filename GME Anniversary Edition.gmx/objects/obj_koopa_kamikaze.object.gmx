@@ -138,6 +138,116 @@ if (charge == 1) {
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_spinner">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collision with a raccoon tail
+
+//If the enemy is vulnerable to invincibility and it's not moving up
+if (vulnerable &lt; 99) &amp;&amp; (vspeed &gt;= 0) {
+
+    //Play 'Kick sound
+    audio_play_sound(snd_kick, 0, false);
+
+    //Kill or flip the enemy
+    event_user(0);
+    
+    //Create 'Spinthump' effect
+    with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
+        
+    //Get 200 points
+    with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) 
+        event_user(2);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_blockparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collision with bumped blocks
+
+if (other.vspeed &lt; 0)
+&amp;&amp; (bbox_bottom &lt; other.yprevious+5) {
+
+    //Play 'Kick sound
+    audio_play_sound(snd_kick, 0, false);
+
+    //Kill or flip the enemy
+    event_user(0);
+    
+    //Create 'Spinthump' effect
+    with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
+        
+    //Get 200 points
+    with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) 
+        event_user(2);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Give Yoshi three abilities in one
+
+//Create held object
+imheld = instance_create(x,y-2,obj_shell);
+imheld.sprite_index = spr_koopa_black;
+
+//Destroy
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>

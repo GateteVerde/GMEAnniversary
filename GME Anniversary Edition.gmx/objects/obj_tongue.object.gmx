@@ -314,18 +314,36 @@ if (hunger == 0)
         ready = 1;
         alarm[0] = 8;
         
+        //Put shells inside yoshi's mouth
+        if (other.object_index == obj_shell_kick) {
+        
+            //If the yoshi is a red one, put fire inside
+            if (global.mountcolour = 1)
+                obj_yoshi.mouthholder = obj_yoshi_fire;
+            
+            //Otherwise,
+            else {
+            
+                //Put a shell inside Yoshi's mouth
+                obj_yoshi.mouthholder = obj_shell_kick;
+                
+                //Set the shell sprite
+                obj_yoshi.mouthsprite = other.sprite_index;
+            }
+        } 
+        
+        //Otherwise, if the shell is a kamikaze shell
+        else if (other.object_index == obj_koopa_kamikaze) {
+        
+            //Put fire inside yoshi's mouth
+            obj_yoshi.mouthholder = obj_yoshi_fire;
+        }       
+        
         //Food sprite
         foodsprite = other.sprite_index;
         
         //Food image
         foodindex = other.image_index;
-        
-        /*Put shells in Yoshi's mouth
-        if (other.object_index == obj_shell) {
-        
-            
-        }
-        */
         
         //Food offset
         with (other) other.foodoffset = (bbox_left+bbox_right)/2-x;
@@ -361,6 +379,26 @@ if (hunger == 0)
 if (!hunger)
 &amp;&amp; (other.object_index != obj_trampoline_timed)
 &amp;&amp; (other.object_index != obj_trampoline_p_active) {
+
+    //If the item is a shell, flip it.
+    if (other.object_index == obj_shell) {
+    
+        //Green
+        if (other.sprite_index = spr_shell)
+            other.sprite_index = spr_shell_down;
+            
+        //Red
+        else if (other.sprite_index = spr_shell_red)
+            other.sprite_index = spr_shell_red_down;
+            
+        //Blue
+        else if (other.sprite_index = spr_shell_blue)
+            other.sprite_index = spr_shell_blue_down;
+            
+        //Yellow
+        else if (other.sprite_index = spr_shell_yellow)
+            other.sprite_index = spr_shell_yellow_down;
+    }
 
     //Item eaten
     hunger = 1;
