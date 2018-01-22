@@ -52,6 +52,39 @@ alarm[10] = 2;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Move towards the player
+
+//Start moving
+if (!instance_exists(obj_playerparent))
+|| (obj_playerparent.x &lt; x)
+    hspeed = -1;
+else
+    hspeed = 1;
+
+//Change direction
+alarm[11] = 60+round(random_range(60,120));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="10">
       <action>
         <libid>1</libid>
@@ -80,6 +113,9 @@ if (hspeed == 0) {
     else
         hspeed = 1;
 }
+
+//Change direction
+alarm[11] = 60;
 </string>
           </argument>
         </arguments>
@@ -106,22 +142,6 @@ if (hspeed == 0) {
 
 //Inherit event
 event_inherited();
-
-//Keep following the player
-if ((gravity == 0) &amp;&amp; (ready &gt; 1)) {
-
-    //If the player does exist
-    if (instance_exists(obj_playerparent)) {
-    
-        //If the koopa is moving to the left and the player is 48 pixels to the right
-        if ((hspeed &lt; 0) &amp;&amp; (obj_playerparent.x &gt; x+48))
-            hspeed = 1;
-            
-        //Otherwise, if the koopa is moving to the right and the player is 48 pixels to the left
-        else if ((hspeed &gt; 0) &amp;&amp; (obj_playerparent.x &lt; x-48))
-            hspeed = -1;
-    }
-}
 
 //Set the facing direction
 if (hspeed &gt; 0)

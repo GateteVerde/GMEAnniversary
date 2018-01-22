@@ -1163,6 +1163,10 @@
         <sprite>sprites\spr_rex</sprite>
         <sprite>sprites\spr_rex2</sprite>
         <sprite>sprites\spr_rex_sq</sprite>
+        <sprite>sprites\spr_spike</sprite>
+        <sprite>sprites\spr_spike_throw</sprite>
+        <sprite>sprites\spr_spike_throw2</sprite>
+        <sprite>sprites\spr_spike_ball</sprite>
       </sprites>
     </sprites>
     <sprites name="World Map">
@@ -2229,6 +2233,8 @@
           <object>objects\obj_shell</object>
           <object>objects\obj_koopa_kamikaze</object>
         </objects>
+        <object>objects\obj_rex</object>
+        <object>objects\obj_spike</object>
       </objects>
       <objects name="Generators">
         <object>objects\obj_generator_goomba</object>
@@ -2624,6 +2630,7 @@
               <object>objects\obj_goomba_micro</object>
               <object>objects\obj_galoomba_down</object>
             </objects>
+            <object>objects\obj_spike_ball</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>

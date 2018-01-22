@@ -58,6 +58,43 @@ alarm[10] = 2;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Follow the player
+
+//If there's no gravity
+if (gravity == 0) {
+
+    //Start moving
+    if (!instance_exists(obj_playerparent))
+    || (obj_playerparent.x &lt; x)
+        hspeed = -1;
+    else
+        hspeed = 1;
+}
+
+//Change direction
+alarm[11] = 60+round(random_range(60,120));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="10">
       <action>
         <libid>1</libid>
@@ -86,6 +123,9 @@ if (hspeed == 0) {
     else
         hspeed = 1;
 }
+
+//Follow the player
+alarm[11] = 60;
 </string>
           </argument>
         </arguments>
