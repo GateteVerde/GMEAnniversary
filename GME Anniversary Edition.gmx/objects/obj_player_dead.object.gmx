@@ -56,6 +56,9 @@ alarm[1] = 200;
 //Make the player do something in the map
 global.died = true;
 
+//Reset mount
+global.mount = 0;
+
 //Reset powerup
 global.powerup = cs_small;
 </string>
