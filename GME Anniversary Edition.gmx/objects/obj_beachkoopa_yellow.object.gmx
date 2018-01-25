@@ -116,6 +116,12 @@ alarm[11] = 60+round(random_range(60,120));
 
 if (hspeed == 0) {
 
+    //Set the sprite
+    sprite_index = spr_beachkoopa_walk;
+
+    //Follow the player
+    alarm[11] = 60;
+
     //Start moving
     if (!instance_exists(obj_playerparent))
     || (obj_playerparent.x &lt; x)
@@ -123,9 +129,6 @@ if (hspeed == 0) {
     else
         hspeed = 1;
 }
-
-//Follow the player
-alarm[11] = 60;
 </string>
           </argument>
         </arguments>

@@ -192,6 +192,61 @@ else
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_playerparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collision with the player
+
+//Kill if stunned
+if (sprite_index == spr_beachkoopa) {
+    
+    //Play 'Kick' sound
+    audio_play_sound(snd_kick, 0, false);
+
+    //Create dead object
+    imdead = instance_create(x,y+16,obj_enemy_dead);
+    
+    //Make the dead object hereby the sprite
+    imdead.sprite_index = sprite_index;
+    
+    //Make the dead object hereby the scale
+    imdead.image_xscale = xscale;
+    
+    //Destroy
+    instance_destroy();
+    
+    //Get 200 points
+    with (instance_create(x-8,y,obj_score)) event_user(2);
+    
+    //Create 'Spinthump' effect
+    with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
+    
+    //Make the player visually kick the enemy
+    with (other) event_user(4);
+}
+
+//Otherwise, do normal collision
+else
+    event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_shell">
       <action>
         <libid>1</libid>

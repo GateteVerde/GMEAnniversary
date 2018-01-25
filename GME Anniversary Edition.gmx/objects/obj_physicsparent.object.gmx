@@ -214,7 +214,7 @@ if (moving) {
         //If this instance is on the platform
         if (collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_bottom+4,other.id,0,0)) 
         &amp;&amp; (other.id.bbox_bottom &lt; yprevious+5)
-        &amp;&amp; (other.id.vspeed == 0) {
+        &amp;&amp; (other.id.vspeed &gt;= 0) {
         
             //Make sure the NPC is not overlapping another platform
             var check = collision_rectangle(other.id.bbox_left,other.id.bbox_bottom-1,other.id.bbox_right,other.id.bbox_bottom+1,obj_semisolid,0,1);

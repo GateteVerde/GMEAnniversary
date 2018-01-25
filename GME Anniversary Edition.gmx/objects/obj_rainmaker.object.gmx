@@ -28,10 +28,13 @@
             <string>///Rain Generator
 
 //Initialize particle system
-global.rain_sys = part_system_create();
+rain_sys = part_system_create();
+
+//Pause / Resume particles
+ind = 1;
 
 //Set the depth
-part_system_depth(global.rain_sys,-8);
+part_system_depth(rain_sys,-8);
 
 //Set particle type
 rain = part_type_create();
@@ -50,17 +53,17 @@ part_type_direction(rain, 225, 225, 0, 0);
 part_type_colour1(rain, c_white);
 
 //Create emitter
-emitter = part_emitter_create(rain)
+emitter = part_emitter_create(rain_sys);
 
 //Set emitter stream
-part_emitter_stream(global.rain_sys,emitter,rain, 5)
+part_emitter_stream(rain_sys,emitter,rain, 5);
 
 //Set emitter region
-part_emitter_region(global.rain_sys,emitter, view_xview[0]-600, view_xview[0]+view_wview[0]+600, 0, 0, ps_shape_line, ps_distr_linear);
+part_emitter_region(rain_sys,emitter, view_xview[0]-600, view_xview[0]+view_wview[0]+600, 0, 0, ps_shape_line, ps_distr_linear);
 
 //Generate particles
-repeat (25)
-    part_system_update(global.rain_sys);
+repeat (5)
+    part_system_update(rain_sys);
 </string>
           </argument>
         </arguments>
@@ -124,7 +127,7 @@ instance_create(0,0,obj_lightningsheet);
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -141,9 +144,10 @@ instance_create(0,0,obj_lightningsheet);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Update emitter region
+            <string>///Pause / Resume particle effects
 
-part_emitter_region(global.rain_sys,emitter, view_xview[0]-600, view_xview[0]+view_wview[0]+600, 0, 0, ps_shape_line, ps_distr_linear);
+ind = !ind;
+part_system_automatic_update(rain_sys, ind);
 </string>
           </argument>
         </arguments>
@@ -166,14 +170,22 @@ part_emitter_region(global.rain_sys,emitter, view_xview[0]-600, view_xview[0]+vi
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Clear particles and destroy system
+            <string>///Clear particles and destroy particle system
 
+//Destroy emitters
+part_emitter_destroy_all(rain_sys);
+
+//Destroy particles
 part_type_destroy(rain);
-part_system_destroy(global.rain_sys);
-global.rain_sys = -1;
 
+//Destroy rain system
+part_system_destroy(rain_sys);
+    
 //Stop 'Rain' sound
 audio_stop_sound(snd_rain);
+
+//Destroy
+instance_destroy();
 </string>
           </argument>
         </arguments>

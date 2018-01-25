@@ -96,9 +96,10 @@ if (sprite_index == spr_galoomba_down)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Change horizontal speed
+            <string>///Change horizontal speed and facing direction
 
 hspeed = -hspeed;
+image_xscale = -image_xscale
 alarm[0] = 8;
 </string>
           </argument>

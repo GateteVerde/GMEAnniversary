@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_rainmaker</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,10 +28,13 @@
             <string>///Snow Generator
 
 //Initialize particle system
-global.snow_sys = part_system_create();
+snow_sys = part_system_create();
+
+//Pause / Resume particles
+ind = 1;
 
 //Set the depth
-part_system_depth(global.snow_sys,-8);
+part_system_depth(snow_sys,-8);
 
 //Set particle type
 snow = part_type_create();
@@ -56,23 +59,23 @@ part_type_direction(snow, 240, 260, 0.05, 0.1);
 part_type_colour1(snow, c_white);
 
 //Create emitter
-emitter = part_emitter_create(snow);
+emitter = part_emitter_create(snow_sys);
 
 //Set emitter stream
-part_emitter_stream(global.snow_sys,emitter,snow, 5);
+part_emitter_stream(snow_sys,emitter,snow, 5);
 
 //Set emitter region
-part_emitter_region(global.snow_sys,emitter, view_xview[0]-600, view_xview[0]+view_wview[0]+600, view_yview[0], view_yview[0], ps_shape_line, ps_distr_linear);
+part_emitter_region(snow_sys,emitter, view_xview[0]-600, view_xview[0]+view_wview[0]+600, view_yview[0], view_yview[0], ps_shape_line, ps_distr_linear);
 
 //Generate particles
 repeat (5)
-    part_system_update(global.snow_sys);
+    part_system_update(snow_sys);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -89,9 +92,10 @@ repeat (5)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Update emitter region
+            <string>///Pause / Resume particle effects
 
-part_emitter_region(global.snow_sys,emitter, view_xview[0]-600, view_xview[0]+view_wview[0]+600, view_yview[0], view_yview[0], ps_shape_line, ps_distr_linear);
+ind = !ind;
+part_system_automatic_update(snow_sys, ind);
 </string>
           </argument>
         </arguments>
@@ -116,9 +120,40 @@ part_emitter_region(global.snow_sys,emitter, view_xview[0]-600, view_xview[0]+vi
             <kind>1</kind>
             <string>///Clear particles and destroy system
 
+//Destroy emitters
+part_emitter_destroy_all(snow_sys);
+
+//Destroy particles
 part_type_destroy(snow);
-part_system_destroy(global.snow_sys);
-global.snow_sys = -1;
+
+//Destroy snow system
+part_system_destroy(snow_sys);
+
+//Destroy this object
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///DO NOT REMOVE!
 </string>
           </argument>
         </arguments>

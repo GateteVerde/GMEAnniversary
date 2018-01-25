@@ -39,15 +39,11 @@ image_xscale = 0;
 image_yscale = 0;
 image_alpha = 0;
 
-//Pause particles
-part_system_automatic_update(1,0);
-
 //Create a screenshot
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0)
 
 //Pause particles
-part_system_automatic_update(global.rain_sys,false);
-part_system_automatic_update(global.snow_sys,false);
+with (obj_rainmaker) event_user(0);
 
 //Deactivate all timelines
 timeline_running = 0;
@@ -171,8 +167,7 @@ else if (ready2 == 2) {
         instance_activate_all();
         
         //Resume particles
-        part_system_automatic_update(global.rain_sys,true);
-        part_system_automatic_update(global.snow_sys,true);
+        with (obj_rainmaker) event_user(0);
         
         //Activate all timelines
         timeline_running = 1;

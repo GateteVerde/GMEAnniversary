@@ -1167,6 +1167,14 @@
         <sprite>sprites\spr_spike_throw</sprite>
         <sprite>sprites\spr_spike_throw2</sprite>
         <sprite>sprites\spr_spike_ball</sprite>
+        <sprite>sprites\spr_hoopster</sprite>
+        <sprite>sprites\spr_ninji</sprite>
+        <sprite>sprites\spr_fuzzy</sprite>
+        <sprite>sprites\spr_wiggler</sprite>
+        <sprite>sprites\spr_wiggler_body</sprite>
+        <sprite>sprites\spr_wiggler_mad</sprite>
+        <sprite>sprites\spr_wiggler_mad_body</sprite>
+        <sprite>sprites\spr_wiggler_flower</sprite>
       </sprites>
     </sprites>
     <sprites name="World Map">
@@ -2039,6 +2047,7 @@
     <script>scripts\constant_get_sprite.gml</script>
     <script>scripts\sprite_get_constant.gml</script>
     <script>scripts\sprite_make_object.gml</script>
+    <script>scripts\move_contact_object.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
@@ -2235,6 +2244,11 @@
         </objects>
         <object>objects\obj_rex</object>
         <object>objects\obj_spike</object>
+        <object>objects\obj_hoopster</object>
+        <object>objects\obj_ninji</object>
+        <object>objects\obj_fuzzy</object>
+        <object>objects\obj_fuzzy_line</object>
+        <object>objects\obj_wiggler</object>
       </objects>
       <objects name="Generators">
         <object>objects\obj_generator_goomba</object>
@@ -2623,6 +2637,7 @@
         </objects>
         <objects name="Enemies">
           <object>objects\obj_enemy_dead</object>
+          <object>objects\obj_enemy_multidead</object>
           <object>objects\obj_enemy_stomped</object>
           <object>objects\obj_stomped</object>
           <objects name="Land">
@@ -2631,6 +2646,7 @@
               <object>objects\obj_galoomba_down</object>
             </objects>
             <object>objects\obj_spike_ball</object>
+            <object>objects\obj_wiggler_body</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>

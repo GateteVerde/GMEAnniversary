@@ -30,18 +30,18 @@
 //How vulnerable is this enemy to various items?
 //0: Normal
 //1: Immune to fireballs
-//2: Immune to yoshi and all projectiles
+//2: Immune to all projectiles
 //99: Invincible
 //100: Invincible + Ignore projectiles
 vulnerable = 0;
 
 //How vulnerable is this enemy to the player?
 //0: Normal
-//1: Spiked
-//2: Spiked (Not immune to mounts)
-//3: Immune to normal stomps, vulnerable to spin jumps
-//4: Immune to stomps
-//5: Subcon (Solid on top)
+//1: Hurt Mario
+//2: Hurt Mario + Shoe Immunity
+//3: Subcon
+//4: Stomp Only
+//-1: Phase through Mario
 stomp = 0;
 
 //How vulnerable is this enemy to yoshi?
@@ -1087,235 +1087,121 @@ if (stomp != -1)
                     event_user(10);        
             }
         }
-
-      //Create 'Spinthump' effect
-      with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
-
-      //Kill the enemy
-      event_user(0);
+    
+        //Kill the enemy
+        event_user(0);        
         
-      //Increment hitcombo
-      other.hitcombo++;   
-   }
-
-   //Otherwise, if the player is not sliding
-   else {
-
-      //If the player is above, moving down and not swimming.
-        if (other.bbox_bottom &lt; bbox_top-vspeed+5) 
-        &amp;&amp; (other.yspeed &gt;= 0) 
-        &amp;&amp; (other.swimming == false) {
-
-            //If the enemy is vulnerable to all stomps
-            if (stomp == 0) {
-            
-                //If the player is doing a spinjump or it's riding a yoshi
-                if ((other.stompstyle == 1) || (global.mount &gt; 0)) {
-
-                    //Create special smoke effect
-                    instance_create((bbox_left+bbox_right)/2-8,(bbox_top+bbox_bottom)/2-8,obj_spinsmoke);
+        //Create 'Spinthump' effect
+        with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
+                
+        //Increment hitcombo
+        other.hitcombo++;   
+    }
     
+    //Otherwise, if the player is not sliding
+    else {
+    
+        //If the player is above the enemy and moving down
+        if (other.bbox_bottom &lt; bbox_top-vspeed+5) {
+    
+            //If the player is spin jumping
+            if (stomp != 4)
+            &amp;&amp; ((other.stompstyle == 1) || (global.mount &gt; 0)) {
+    
+                //If this enemy is not immune to spin jumps
+                if (stomp == 0)
+                || (stomp == 3)
+                || ((stomp == 1) &amp;&amp; (global.mount &gt; 0)) {
+                
+                    //Create spin smoke effect
+                    instance_create((bbox_left+bbox_right)/2-8,y,obj_spinsmoke);
+                    
                     //Get points based on combo
                     if (other.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
-                        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
-    
-                    //Otherwise, if the player did 6 or more consecutive stomps
-                    else if (other.hitcombo &gt; 6) {
-    
-                        //If the combo is a odd number
-                        if (other.hitcombo % 2 == 1)
-                            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(9);
-    
-                        //Otherwise, if the combo is a even number
-                        else if (other.hitcombo % 2 == 0)
-                            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);
-                    }
-    
-                    //Increment combo
-                    other.hitcombo++;
-                    
-                    //Make the player bounce
-                    if (global.mount &gt; 0) {
-                    
-                        with (other) event_user(1);
-                    }
-    
-                    //Destroy
-                    instance_destroy();                
-                }
-                
-                //Otherwise, do normal stomp
-                else {
-            
-                    //Play 'Stomp' sound
-                    audio_play_sound(snd_stomp, 0, false);
-    
-                    //Prevent certain enemies from getting double stomped
-                    if (vspeed &lt; 0) {
-    
-                        y = yprevious;
-                        if (other.vspeed &lt; 0)
-                            other.y = other.yprevious;
-                    }
-    
-                    //Get points based on combo
-                    if (other.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
-                        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
-    
-                    //Otherwise, if the player did 6 or more consecutive stomps
-                    else if (other.hitcombo &gt; 6) {
-    
-                        //If the combo is a odd number
-                        if (other.hitcombo % 2 == 1)
-                            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(9);
-    
-                        //Otherwise, if the combo is a even number
-                        else if (other.hitcombo % 2 == 0)
-                            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);
-                    }
-    
-                    //Increment combo
-                    other.hitcombo++;
-    
-                    //Stomp enemy
-                    event_user(1);
-    
-                    //Make the player bounce
-                    with (other) event_user(1);
-    
-                    //Create spin thump effect
-                    with (instance_create(other.x,other.bbox_bottom-8,obj_smoke))
-                        sprite_index = spr_spinthump;
-                }
-            }
-
-            //If the enemy is spiked and it's immune to mounts
-            else if ((stomp == 1) &amp;&amp; ((stompstyle == 1) || (global.mount &gt; 0))) {
-
-                //Play 'Stomp' sound
-                audio_play_sound(snd_stomp, 0, false);
-
-                //Make the player bounce
-                with (other) event_user(1);
-
-                //Create spin thump effect
-                with (instance_create(other.x,other.bbox_bottom-8,obj_smoke))
-                    sprite_index = spr_spinthump;
-            }
-
-            //Otherwise, if the enemy is spiked and it's not immune to mounts
-            else if ((stomp == 2) &amp;&amp; ((stompstyle == 1) || (global.mount &gt; 0))) {
-
-                //Create special smoke effect
-                instance_create((bbox_left+bbox_right)/2-8,(bbox_top+bbox_bottom)/2-8,obj_spinsmoke);
-
-                //Get points based on combo
-                if (other.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
-                    with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
-
-                //Otherwise, if the player did 6 or more consecutive stomps
-                else if (other.hitcombo &gt; 6) {
-
-                    //If the combo is a odd number
-                    if (other.hitcombo % 2 == 1)
-                        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(9);
-
-                    //Otherwise, if the combo is a even number
-                    else if (other.hitcombo % 2 == 0)
-                        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);
-                }
-
-                //Increment combo
-                other.hitcombo++;
-
-                //Destroy
-                instance_destroy();
-            }
-
-            //Otherwise
-            else if ((stomp &gt; 2) &amp;&amp; (stomp &lt; 5)) {
-
-                //Prevent certain enemies from getting double stomped
-                if (vspeed &lt; 0) {
-
-                    y = yprevious;
-                    if (other.vspeed &lt; 0)
-                        other.y = other.yprevious;
-                }
-
-                //If the enemy is immune to normal stomps and vulnerable to spin jumps
-                if (stomp == 3) {
-                
-                    //If the player is doing a spinjump or it's riding either a yoshi or a kuribo shoe
-                    if ((other.stompstyle == 1) || (global.mount &gt; 0)) {
-    
-                        //Create special smoke effect
-                        instance_create((bbox_left+bbox_right)/2-8,(bbox_top+bbox_bottom)/2-8,obj_spinsmoke);
-    
-                        //Get points based on combo
-                        if (other.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
-                            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
-    
-                        //Otherwise, if the player did 6 or more consecutive stomps
-                        else if (other.hitcombo &gt; 6) {
-    
-                            //If the combo is a odd number
-                            if (other.hitcombo % 2 == 1)
-                                with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(9);
-    
-                            //Otherwise, if the combo is a even number
-                            else if (other.hitcombo % 2 == 0)
-                                with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);
-                        }
-    
-                        //Increment combo
-                        other.hitcombo++;
-    
-                        //If the player is riding either a yoshi or a kuribo shoe, bounce
-                        if (global.mount &gt; 0) {
-                        
-                            with (other) event_user(1);
-                        }
-    
-                        //Destroy
-                        instance_destroy();
-                    }
-                    
-                    //Otherwise, bounce
+                        with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
                     else {
                             
-                        //Play 'Stomp' sound
-                        audio_play_sound(snd_stomp, 0, false);
-    
-                        //Make the player bounce
-                        with (other) event_user(1);
-    
-                        //Create spin thump effect
-                        with (instance_create(other.x,other.bbox_bottom-8,obj_smoke))
-                            sprite_index = spr_spinthump;                        
+                        //If the combo is odd
+                        if (other.hitcombo % 2 == 1)
+                            with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(9);
+                        
+                        //Otherwise, if the combo is even
+                        else if (other.hitcombo % 2 == 0)
+                            with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);        
                     }
+                    
+                    //Bounce against if riding or just stop
+                    if (global.mount &gt; 0)
+                        with (other) event_user(1);
+                    else
+                        other.vspeed = 0;
+                        
+                    //Destroy
+                    instance_destroy();
                 }
-
-                //Otherwise, if the enemy is vulnerable to both stomps
-                else if (stomp == 4) {
-
+                
+                //Otherwise, spin on spiky enemies
+                else {
+                
                     //Play 'Stomp' sound
                     audio_play_sound(snd_stomp, 0, false);
-
-                    //Make the player bounce
+                    
+                    //Create spin smoke
+                    with (instance_create(other.x,other.bbox_bottom-8,obj_smoke)) sprite_index = spr_spinthump;
+                    
+                    //Bounce
                     with (other) event_user(1);
-
-                    //Create spin thump effect
-                    with (instance_create(other.x,other.bbox_bottom-8,obj_smoke))
-                        sprite_index = spr_spinthump;
+                }    
+            }
+    
+            //Regular stomp
+            else if ((stomp == 0) || (stomp == 4))
+            &amp;&amp; (other.swimming == false) {
+            
+                //Play 'Stomp' sound
+                audio_play_sound(snd_stomp, 0, false);
+            
+                //Prevent certain enemies from getting double stomped
+                if (vspeed &lt; 0) {
+                
+                    y = yprevious;
+                    if (other.yspeed &gt; 0)
+                        other.y = other.yprevious;
                 }
+                
+                //Bounce the player
+                with (other) event_user(1);
+                
+                //If the enemy does give points
+                if (stomp == 0) {
+                
+                    //Get points based on combo
+                    if (other.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
+                        with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
+                    else {
+                            
+                        //If the combo is odd
+                        if (other.hitcombo % 2 == 1)
+                            with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(9);
+                        
+                        //Otherwise, if the combo is even
+                        else if (other.hitcombo % 2 == 0)
+                            with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);        
+                    }
+                }
+                
+                //Create spin smoke
+                with (instance_create(other.x,other.bbox_bottom-8,obj_smoke)) sprite_index = spr_spinthump;
+                
+                //Stomp the enemy
+                event_user(1);                
             }
         }
-
+    
         //Otherwise, hurt the player
         else
             with (other) event_user(0);
-    }
+    } 
 }
 </string>
           </argument>

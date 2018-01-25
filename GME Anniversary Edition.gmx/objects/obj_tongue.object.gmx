@@ -289,8 +289,7 @@ if (hunger = 0) {
             <kind>1</kind>
             <string>///Eat enemies
 
-if (hunger == 0)
-&amp;&amp; (other.vulnerable &lt; 2) {
+if (hunger == 0) {
 
     //If the enemy is edible by yoshi
     if (other.edible == 2) {
