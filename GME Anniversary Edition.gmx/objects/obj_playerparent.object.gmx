@@ -584,7 +584,7 @@ if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0)
 &amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
 
     //If the player is moving down onto a slope.
-    if (yspeed &gt;= 0) {
+    if (yspeed &gt; 0) {
     
         //Stop vertical movement
         yspeed = 0;

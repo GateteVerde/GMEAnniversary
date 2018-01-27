@@ -267,7 +267,7 @@ else
 //Make body parts turn around in order
 if (ready == 0) {
 
-    for (i=0; i&lt;4; i++)
+    for (i=0; i&lt;4; i++) 
         with (mybody[i]) alarm[0] = 20+(16*other.i);
 }
 

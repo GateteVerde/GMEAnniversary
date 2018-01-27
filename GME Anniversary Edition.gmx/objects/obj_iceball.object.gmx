@@ -120,11 +120,12 @@ alarm[0] = 8;
             <kind>1</kind>
             <string>///Fireball logic
 
-//Wall collision
-event_user(3);
+//Inherit event
+event_inherited();
 
-//Floor collision
-event_user(4);
+//Bounce
+if (gravity == 0)
+    vspeed = -3;
 
 //Destroy when outside the view
 if (x &lt; view_xview[0]-32)
@@ -194,7 +195,7 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
     //Stop vertical movement
     gravity = 0;
     if (vspeed &gt; 0)
-        vspeed = -3;
+        vspeed = 0;
 }
 else {
     

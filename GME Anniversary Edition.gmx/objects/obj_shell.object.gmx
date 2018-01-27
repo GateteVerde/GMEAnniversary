@@ -110,12 +110,27 @@ if (koopainside != 0) {
             }
             
             //Big Red Koopa
-            if (sprite_index == spr_shell_big_red)
+            else if (sprite_index == spr_shell_big_red)
             || (sprite_index == spr_shell_big_red_down) {
             
                 instance_create(x,y,obj_koopa_big_red);
                 instance_destroy();
-            }              
+            }
+            
+            //Buzzy Beetle
+            else if (sprite_index == spr_shell_buzzy)
+            || (sprite_index == spr_shell_buzzy_down) {
+            
+                instance_create(x,y,obj_buzzybeetle);
+                instance_destroy();
+            }
+            
+            //Spiny
+            else if (sprite_index == spr_shell_spiny) {
+            
+                instance_create(x,y,obj_spiny);
+                instance_destroy();
+            }                  
         } break;
     
         //Green
@@ -154,7 +169,25 @@ else {
         instance_create(x,y,obj_koopa_red);
         instance_destroy();
         exit;
-    }           
+    }
+    
+    //Otherwise if the shell is a blue one
+    if (sprite_index == spr_shell_blue)
+    || (sprite_index == spr_shell_blue_down) {
+    
+        instance_create(x,y,obj_koopa_blue);
+        instance_destroy();
+        exit;
+    }       
+    
+    //Otherwise if the shell is a red one
+    if (sprite_index == spr_shell_yellow)
+    || (sprite_index == spr_shell_yellow_down) {
+    
+        instance_create(x,y,obj_koopa_yellow);
+        instance_destroy();
+        exit;
+    }                  
 }
 </string>
           </argument>
@@ -185,6 +218,36 @@ if (shake != 1)
     shake = 1;
 else
     shake = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make buzzy beetle shells not vulnerable to fire
+
+if (sprite_index == spr_shell_buzzy)
+|| (sprite_index == spr_shell_buzzy_down) {
+
+    //Make it invulnerable to fire
+    vulnerable = 1;
+}
 </string>
           </argument>
         </arguments>

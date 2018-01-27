@@ -289,7 +289,7 @@ if (hunger = 0) {
             <kind>1</kind>
             <string>///Eat enemies
 
-if (hunger == 0) {
+if ((hunger == 0) &amp;&amp; (ready == 0)) {
 
     //If the enemy is edible by yoshi
     if (other.edible == 2) {
@@ -336,7 +336,7 @@ if (hunger == 0) {
         
             //Put fire inside yoshi's mouth
             obj_yoshi.mouthholder = obj_yoshi_fire;
-        }       
+        }
         
         //Food sprite
         foodsprite = other.sprite_index;
@@ -406,11 +406,17 @@ if (!hunger)
     ready = 1;
     alarm[0] = 8;
 
-    //Put it in Yoshi's mouth
-    obj_yoshi.mouthholder = other.object_index;
+    //If the item has any of the following sprites, do not remember.
+    if (other.sprite_index != spr_shell_spiny)
+    &amp;&amp; (other.sprite_index != spr_shell_buzzy)
+    &amp;&amp; (other.sprite_index != spr_shell_buzzy_down) {
+    
+        //Put it in Yoshi's mouth
+        obj_yoshi.mouthholder = other.object_index;
 
-    //Remember its sprite
-    obj_yoshi.mouthsprite = other.sprite_index;
+        //Remember its sprite
+        obj_yoshi.mouthsprite = other.sprite_index;
+    }
 
     //Food sprite
     foodsprite = other.sprite_index;

@@ -1019,6 +1019,11 @@ if (other.vspeed &lt; 0)
             <kind>1</kind>
             <string>///Collision with the player
 
+//If the player is invulnerable, exit
+if (instance_exists(obj_invincibility))
+exit;
+
+//If the enemy is invulnerable to stomp or the player is invulnerable.
 if (stomp != -1)
 || (other.invulnerable == -1) {
 
@@ -1130,6 +1135,9 @@ if (stomp != -1)
                             with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);        
                     }
                     
+                    //Increment combo
+                    other.hitcombo++;
+                    
                     //Bounce against if riding or just stop
                     if (global.mount &gt; 0)
                         with (other) event_user(1);
@@ -1188,6 +1196,9 @@ if (stomp != -1)
                         else if (other.hitcombo % 2 == 0)
                             with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);        
                     }
+                    
+                    //Increment combo
+                    other.hitcombo++;
                 }
                 
                 //Create spin smoke
@@ -1731,7 +1742,7 @@ instance_destroy();
             <kind>1</kind>
             <string>///Draw enemy
 
-draw_sprite_ext(sprite_index,-1,round(x),y+1,xscale, 1, 0, c_white, 1);
+draw_sprite_ext(sprite_index, -1, round(x), y+1, xscale, 1, 0, c_white, 1);
 </string>
           </argument>
         </arguments>

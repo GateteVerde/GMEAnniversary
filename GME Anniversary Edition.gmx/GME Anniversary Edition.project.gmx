@@ -1176,6 +1176,23 @@
         <sprite>sprites\spr_wiggler_mad_body</sprite>
         <sprite>sprites\spr_wiggler_flower</sprite>
       </sprites>
+      <sprites name="Underground">
+        <sprite>sprites\spr_buzzybeetle</sprite>
+        <sprite>sprites\spr_shell_buzzy</sprite>
+        <sprite>sprites\spr_shell_buzzy_down</sprite>
+        <sprite>sprites\spr_spiny</sprite>
+        <sprite>sprites\spr_spiny_dead</sprite>
+        <sprite>sprites\spr_shell_spiny</sprite>
+        <sprites name="Piranha Plants">
+          <sprite>sprites\spr_pplant</sprite>
+          <sprite>sprites\spr_pplant_fire</sprite>
+          <sprite>sprites\spr_pplant_side</sprite>
+          <sprite>sprites\spr_pplant_side_fire</sprite>
+          <sprite>sprites\spr_pplant_large</sprite>
+          <sprite>sprites\spr_pplant_large_fire</sprite>
+          <sprite>sprites\spr_jpplant</sprite>
+        </sprites>
+      </sprites>
     </sprites>
     <sprites name="World Map">
       <sprite>sprites\spr_mapmario</sprite>
@@ -1721,6 +1738,7 @@
           <background>background\bgr_cloudfg</background>
           <background>background\bgr_reef</background>
           <background>background\bgr_smog</background>
+          <background>background\bgr_smog2</background>
         </backgrounds>
         <background>background\bgr_blocks</background>
         <background>background\bgr_bonus</background>
@@ -2250,6 +2268,25 @@
         <object>objects\obj_fuzzy_line</object>
         <object>objects\obj_wiggler</object>
       </objects>
+      <objects name="Underground">
+        <object>objects\obj_buzzybeetle</object>
+        <object>objects\obj_ceilingbuzzy</object>
+        <object>objects\obj_spiny</object>
+        <object>objects\obj_ceilingspiny</object>
+        <objects name="Piranha Plants">
+          <object>objects\obj_pplant</object>
+          <object>objects\obj_pplant_fire</object>
+          <object>objects\obj_pplant_side_r</object>
+          <object>objects\obj_pplant_side_l</object>
+          <object>objects\obj_pplant_fire_side_r</object>
+          <object>objects\obj_pplant_fire_side_l</object>
+          <object>objects\obj_pplant_large</object>
+          <object>objects\obj_pplant_large_down</object>
+          <object>objects\obj_pplant_large_fire</object>
+          <object>objects\obj_pplant_large_fire_down</object>
+          <object>objects\obj_jpplant</object>
+        </objects>
+      </objects>
       <objects name="Generators">
         <object>objects\obj_generator_goomba</object>
         <object>objects\obj_generator_galoomba</object>
@@ -2647,6 +2684,10 @@
             </objects>
             <object>objects\obj_spike_ball</object>
             <object>objects\obj_wiggler_body</object>
+          </objects>
+          <objects name="Underground">
+            <object>objects\obj_plantfire</object>
+            <object>objects\obj_plantfire2</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>

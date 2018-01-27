@@ -512,6 +512,8 @@ instance_create(0,0,obj_curtainin);
             <kind>1</kind>
             <string>///Draw the menu.
 
+
+
 if (display == 1) {
 
     //Draw the menu box
@@ -554,9 +556,9 @@ else {
     //Align the text
     draw_set_halign(fa_center);
     draw_set_valign(fa_center);
-        
+    
     //Set up the font
-    draw_set_font(global.font_interface);
+    draw_set_font(global.font_interface);    
     
     //Set the alpha
     draw_set_alpha(1);
