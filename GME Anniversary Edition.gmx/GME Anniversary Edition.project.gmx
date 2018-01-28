@@ -449,6 +449,7 @@
     <sounds name="Enemy">
       <sound>sound\snd_flames</sound>
       <sound>sound\snd_podoboo</sound>
+      <sound>sound\snd_swooper</sound>
       <sound>sound\snd_thwomp</sound>
     </sounds>
     <sounds name="Item">
@@ -1191,7 +1192,15 @@
           <sprite>sprites\spr_pplant_large</sprite>
           <sprite>sprites\spr_pplant_large_fire</sprite>
           <sprite>sprites\spr_jpplant</sprite>
+          <sprite>sprites\spr_ptooie</sprite>
+          <sprite>sprites\spr_ptooie_blow</sprite>
+          <sprite>sprites\spr_ptooie_ball</sprite>
         </sprites>
+        <sprite>sprites\spr_swooper</sprite>
+        <sprite>sprites\spr_spiketop</sprite>
+        <sprite>sprites\spr_spiketop_turn</sprite>
+        <sprite>sprites\spr_spiketop_blue</sprite>
+        <sprite>sprites\spr_spiketop_blue_turn</sprite>
       </sprites>
     </sprites>
     <sprites name="World Map">
@@ -2285,7 +2294,12 @@
           <object>objects\obj_pplant_large_fire</object>
           <object>objects\obj_pplant_large_fire_down</object>
           <object>objects\obj_jpplant</object>
+          <object>objects\obj_ptooie</object>
+          <object>objects\obj_ptooie_pipe</object>
         </objects>
+        <object>objects\obj_swooper</object>
+        <object>objects\obj_spiketop</object>
+        <object>objects\obj_spiketop_blue</object>
       </objects>
       <objects name="Generators">
         <object>objects\obj_generator_goomba</object>
@@ -2688,6 +2702,7 @@
           <objects name="Underground">
             <object>objects\obj_plantfire</object>
             <object>objects\obj_plantfire2</object>
+            <object>objects\obj_plantball</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>
