@@ -64,7 +64,8 @@ if (ready == 0) {
     
         //If the player is nearby
         if (obj_playerparent.x &gt; x-32)
-        &amp;&amp; (obj_playerparent.x &lt; x+32) {
+        &amp;&amp; (obj_playerparent.x &lt; x+32) 
+        &amp;&amp; (obj_playerparent.y &gt; y) {
         
             //Set the sprite
             sprite_index = spr_shell_buzzy_down;

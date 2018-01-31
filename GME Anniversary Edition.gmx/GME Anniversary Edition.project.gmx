@@ -447,6 +447,7 @@
       <sound>sound\snd_warp</sound>
     </sounds>
     <sounds name="Enemy">
+      <sound>sound\snd_blargg</sound>
       <sound>sound\snd_flames</sound>
       <sound>sound\snd_podoboo</sound>
       <sound>sound\snd_swooper</sound>
@@ -1185,6 +1186,9 @@
         <sprite>sprites\spr_spiny_dead</sprite>
         <sprite>sprites\spr_shell_spiny</sprite>
         <sprites name="Piranha Plants">
+          <sprites name="Big">
+            <sprite>sprites\spr_bigplant</sprite>
+          </sprites>
           <sprite>sprites\spr_pplant</sprite>
           <sprite>sprites\spr_pplant_fire</sprite>
           <sprite>sprites\spr_pplant_side</sprite>
@@ -1201,6 +1205,14 @@
         <sprite>sprites\spr_spiketop_turn</sprite>
         <sprite>sprites\spr_spiketop_blue</sprite>
         <sprite>sprites\spr_spiketop_blue_turn</sprite>
+        <sprite>sprites\spr_nokobomb</sprite>
+        <sprite>sprites\spr_nokobomb_bomb</sprite>
+        <sprite>sprites\spr_nokobombette</sprite>
+        <sprite>sprites\spr_nokobombette_bomb</sprite>
+        <sprite>sprites\spr_blargg</sprite>
+        <sprite>sprites\spr_blargg_look</sprite>
+        <sprite>sprites\spr_busterbeetle</sprite>
+        <sprite>sprites\spr_busterbeetle_hold</sprite>
       </sprites>
     </sprites>
     <sprites name="World Map">
@@ -2283,6 +2295,9 @@
         <object>objects\obj_spiny</object>
         <object>objects\obj_ceilingspiny</object>
         <objects name="Piranha Plants">
+          <objects name="Big">
+            <object>objects\obj_bigplant</object>
+          </objects>
           <object>objects\obj_pplant</object>
           <object>objects\obj_pplant_fire</object>
           <object>objects\obj_pplant_side_r</object>
@@ -2300,6 +2315,11 @@
         <object>objects\obj_swooper</object>
         <object>objects\obj_spiketop</object>
         <object>objects\obj_spiketop_blue</object>
+        <object>objects\obj_nokobomb</object>
+        <object>objects\obj_nokobombette</object>
+        <object>objects\obj_ceilingnokobombette</object>
+        <object>objects\obj_blargg</object>
+        <object>objects\obj_busterbeetle</object>
       </objects>
       <objects name="Generators">
         <object>objects\obj_generator_goomba</object>
@@ -2618,9 +2638,11 @@
               <object>objects\obj_parhold</object>
             </objects>
             <objects name="Enemies">
+              <objects name="Deactivated">
+                <object>objects\obj_deactenemyparent</object>
+              </objects>
               <object>objects\obj_enemyparent</object>
               <object>objects\obj_enemyparent_held</object>
-              <object>objects\obj_deactenemyparent</object>
             </objects>
             <object>objects\obj_physicsparent</object>
             <object>objects\obj_powerupparent</object>
@@ -2703,6 +2725,9 @@
             <object>objects\obj_plantfire</object>
             <object>objects\obj_plantfire2</object>
             <object>objects\obj_plantball</object>
+            <object>objects\obj_nokobomb_down</object>
+            <object>objects\obj_blargg_jump</object>
+            <object>objects\obj_busterpickup</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>
