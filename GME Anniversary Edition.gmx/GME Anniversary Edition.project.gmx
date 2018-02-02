@@ -1214,6 +1214,17 @@
         <sprite>sprites\spr_busterbeetle</sprite>
         <sprite>sprites\spr_busterbeetle_hold</sprite>
       </sprites>
+      <sprites name="Underwater">
+        <sprites name="Cheep-Cheeps">
+          <sprite>sprites\spr_cheepcheep</sprite>
+          <sprite>sprites\spr_cheepcheep_green</sprite>
+          <sprites name="Boss Bass">
+            <sprite>sprites\spr_bossbass</sprite>
+            <sprite>sprites\spr_bossbass_jump</sprite>
+            <sprite>sprites\spr_bossbass_cheep</sprite>
+          </sprites>
+        </sprites>
+      </sprites>
     </sprites>
     <sprites name="World Map">
       <sprite>sprites\spr_mapmario</sprite>
@@ -1753,14 +1764,6 @@
   <backgrounds name="background">
     <backgrounds name="Levels">
       <backgrounds name="Backgrounds">
-        <backgrounds name="Foregrounds">
-          <background>background\bgr_cloudblanket</background>
-          <background>background\bgr_cloudblanket_snow</background>
-          <background>background\bgr_cloudfg</background>
-          <background>background\bgr_reef</background>
-          <background>background\bgr_smog</background>
-          <background>background\bgr_smog2</background>
-        </backgrounds>
         <background>background\bgr_blocks</background>
         <background>background\bgr_bonus</background>
         <background>background\bgr_cave_bg</background>
@@ -1781,6 +1784,19 @@
         <background>background\bgr_underground_fg_c</background>
         <background>background\bgr_underground_fg_d</background>
         <background>background\bgr_underground_fg_e</background>
+        <background>background\bgr_underwater</background>
+        <background>background\bgr_waterfall</background>
+        <background>background\bgr_waterfall_b</background>
+        <background>background\bgr_waterfall_c</background>
+        <background>background\bgr_waterfall_d</background>
+      </backgrounds>
+      <backgrounds name="Foregrounds">
+        <background>background\bgr_cloudblanket</background>
+        <background>background\bgr_cloudblanket_snow</background>
+        <background>background\bgr_cloudfg</background>
+        <background>background\bgr_reef</background>
+        <background>background\bgr_smog</background>
+        <background>background\bgr_smog2</background>
       </backgrounds>
       <backgrounds name="Tile Sets">
         <backgrounds name="Decoration">
@@ -2229,101 +2245,116 @@
       <object>objects\obj_arrowblock_reset</object>
     </objects>
     <objects name="Enemies">
-      <objects name="Land">
-        <objects name="Goombas">
-          <objects name="Normal">
-            <objects name="Big">
-              <object>objects\obj_goomba_big</object>
+      <objects name="Main">
+        <objects name="Land">
+          <objects name="Goombas">
+            <objects name="Normal">
+              <objects name="Big">
+                <object>objects\obj_goomba_big</object>
+              </objects>
+              <object>objects\obj_goomba</object>
+              <object>objects\obj_paragoomba</object>
+              <object>objects\obj_goombrat</object>
             </objects>
-            <object>objects\obj_goomba</object>
-            <object>objects\obj_paragoomba</object>
-            <object>objects\obj_goombrat</object>
-          </objects>
-          <objects name="Red">
-            <object>objects\obj_goomba_red</object>
-            <object>objects\obj_paragoomba_red</object>
-          </objects>
-          <object>objects\obj_galoomba</object>
-          <object>objects\obj_paragaloomba</object>
-          <object>objects\obj_galoomba_parachute</object>
-          <object>objects\obj_goomba_shoe</object>
-        </objects>
-        <objects name="Koopas">
-          <objects name="Green">
-            <objects name="Big">
-              <object>objects\obj_koopa_big</object>
-              <object>objects\obj_parakoopa_big</object>
-              <object>objects\obj_parakoopa_big_fly</object>
+            <objects name="Red">
+              <object>objects\obj_goomba_red</object>
+              <object>objects\obj_paragoomba_red</object>
             </objects>
-            <object>objects\obj_koopa</object>
-            <object>objects\obj_parakoopa</object>
-            <object>objects\obj_parakoopa_fly</object>
-            <object>objects\obj_beachkoopa</object>
+            <object>objects\obj_galoomba</object>
+            <object>objects\obj_paragaloomba</object>
+            <object>objects\obj_galoomba_parachute</object>
+            <object>objects\obj_goomba_shoe</object>
           </objects>
-          <objects name="Red">
-            <objects name="Big">
-              <object>objects\obj_koopa_big_red</object>
-              <object>objects\obj_parakoopa_big_red</object>
+          <objects name="Koopas">
+            <objects name="Green">
+              <objects name="Big">
+                <object>objects\obj_koopa_big</object>
+                <object>objects\obj_parakoopa_big</object>
+                <object>objects\obj_parakoopa_big_fly</object>
+              </objects>
+              <object>objects\obj_koopa</object>
+              <object>objects\obj_parakoopa</object>
+              <object>objects\obj_parakoopa_fly</object>
+              <object>objects\obj_beachkoopa</object>
             </objects>
-            <object>objects\obj_koopa_red</object>
-            <object>objects\obj_parakoopa_red</object>
-            <object>objects\obj_beachkoopa_red</object>
+            <objects name="Red">
+              <objects name="Big">
+                <object>objects\obj_koopa_big_red</object>
+                <object>objects\obj_parakoopa_big_red</object>
+              </objects>
+              <object>objects\obj_koopa_red</object>
+              <object>objects\obj_parakoopa_red</object>
+              <object>objects\obj_beachkoopa_red</object>
+            </objects>
+            <objects name="Blue">
+              <object>objects\obj_koopa_blue</object>
+              <object>objects\obj_beachkoopa_blue</object>
+            </objects>
+            <objects name="Yellow">
+              <object>objects\obj_koopa_yellow</object>
+              <object>objects\obj_parakoopa_yellow</object>
+              <object>objects\obj_beachkoopa_yellow</object>
+            </objects>
+            <object>objects\obj_shell</object>
+            <object>objects\obj_koopa_kamikaze</object>
           </objects>
-          <objects name="Blue">
-            <object>objects\obj_koopa_blue</object>
-            <object>objects\obj_beachkoopa_blue</object>
-          </objects>
-          <objects name="Yellow">
-            <object>objects\obj_koopa_yellow</object>
-            <object>objects\obj_parakoopa_yellow</object>
-            <object>objects\obj_beachkoopa_yellow</object>
-          </objects>
-          <object>objects\obj_shell</object>
-          <object>objects\obj_koopa_kamikaze</object>
+          <object>objects\obj_rex</object>
+          <object>objects\obj_spike</object>
+          <object>objects\obj_hoopster</object>
+          <object>objects\obj_ninji</object>
+          <object>objects\obj_fuzzy</object>
+          <object>objects\obj_fuzzy_line</object>
+          <object>objects\obj_wiggler</object>
         </objects>
-        <object>objects\obj_rex</object>
-        <object>objects\obj_spike</object>
-        <object>objects\obj_hoopster</object>
-        <object>objects\obj_ninji</object>
-        <object>objects\obj_fuzzy</object>
-        <object>objects\obj_fuzzy_line</object>
-        <object>objects\obj_wiggler</object>
-      </objects>
-      <objects name="Underground">
-        <object>objects\obj_buzzybeetle</object>
-        <object>objects\obj_ceilingbuzzy</object>
-        <object>objects\obj_spiny</object>
-        <object>objects\obj_ceilingspiny</object>
-        <objects name="Piranha Plants">
-          <objects name="Big">
-            <object>objects\obj_bigplant</object>
+        <objects name="Underground">
+          <object>objects\obj_buzzybeetle</object>
+          <object>objects\obj_ceilingbuzzy</object>
+          <object>objects\obj_spiny</object>
+          <object>objects\obj_ceilingspiny</object>
+          <objects name="Piranha Plants">
+            <objects name="Big">
+              <object>objects\obj_bigplant</object>
+            </objects>
+            <object>objects\obj_pplant</object>
+            <object>objects\obj_pplant_fire</object>
+            <object>objects\obj_pplant_side_r</object>
+            <object>objects\obj_pplant_side_l</object>
+            <object>objects\obj_pplant_fire_side_r</object>
+            <object>objects\obj_pplant_fire_side_l</object>
+            <object>objects\obj_pplant_large</object>
+            <object>objects\obj_pplant_large_down</object>
+            <object>objects\obj_pplant_large_fire</object>
+            <object>objects\obj_pplant_large_fire_down</object>
+            <object>objects\obj_jpplant</object>
+            <object>objects\obj_ptooie</object>
+            <object>objects\obj_ptooie_pipe</object>
           </objects>
-          <object>objects\obj_pplant</object>
-          <object>objects\obj_pplant_fire</object>
-          <object>objects\obj_pplant_side_r</object>
-          <object>objects\obj_pplant_side_l</object>
-          <object>objects\obj_pplant_fire_side_r</object>
-          <object>objects\obj_pplant_fire_side_l</object>
-          <object>objects\obj_pplant_large</object>
-          <object>objects\obj_pplant_large_down</object>
-          <object>objects\obj_pplant_large_fire</object>
-          <object>objects\obj_pplant_large_fire_down</object>
-          <object>objects\obj_jpplant</object>
-          <object>objects\obj_ptooie</object>
-          <object>objects\obj_ptooie_pipe</object>
+          <object>objects\obj_swooper</object>
+          <object>objects\obj_spiketop</object>
+          <object>objects\obj_spiketop_blue</object>
+          <object>objects\obj_nokobomb</object>
+          <object>objects\obj_nokobombette</object>
+          <object>objects\obj_ceilingnokobombette</object>
+          <object>objects\obj_blargg</object>
+          <object>objects\obj_busterbeetle</object>
         </objects>
-        <object>objects\obj_swooper</object>
-        <object>objects\obj_spiketop</object>
-        <object>objects\obj_spiketop_blue</object>
-        <object>objects\obj_nokobomb</object>
-        <object>objects\obj_nokobombette</object>
-        <object>objects\obj_ceilingnokobombette</object>
-        <object>objects\obj_blargg</object>
-        <object>objects\obj_busterbeetle</object>
+        <objects name="Underwater">
+          <objects name="Cheep-Cheeps">
+            <object>objects\obj_cheepcheep</object>
+            <object>objects\obj_cheepcheep_jump</object>
+            <object>objects\obj_cheepcheep_green</object>
+            <objects name="Boss Bass">
+              <object>objects\obj_bossbass</object>
+              <object>objects\obj_bigbertha</object>
+            </objects>
+          </objects>
+        </objects>
       </objects>
       <objects name="Generators">
-        <object>objects\obj_generator_goomba</object>
-        <object>objects\obj_generator_galoomba</object>
+        <objects name="Land">
+          <object>objects\obj_generator_goomba</object>
+          <object>objects\obj_generator_galoomba</object>
+        </objects>
       </objects>
     </objects>
     <objects name="World Map">
@@ -2683,6 +2714,7 @@
           <object>objects\obj_player_warpnote</object>
           <object>objects\obj_player_transform</object>
           <object>objects\obj_player_rocket2</object>
+          <object>objects\obj_player_eaten</object>
           <object>objects\obj_player_dead</object>
           <object>objects\obj_player_door</object>
           <object>objects\obj_puller</object>
@@ -2712,6 +2744,7 @@
           <object>objects\obj_enemy_dead</object>
           <object>objects\obj_enemy_multidead</object>
           <object>objects\obj_enemy_stomped</object>
+          <object>objects\obj_enemy_tick</object>
           <object>objects\obj_stomped</object>
           <objects name="Land">
             <objects name="Goombas">
@@ -2728,6 +2761,13 @@
             <object>objects\obj_nokobomb_down</object>
             <object>objects\obj_blargg_jump</object>
             <object>objects\obj_busterpickup</object>
+          </objects>
+          <objects name="Underwater">
+            <objects name="Cheep-Cheeps">
+              <objects name="Boss Bass">
+                <object>objects\obj_bigbertha_cheep</object>
+              </objects>
+            </objects>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>

@@ -86,13 +86,13 @@ waverot = (waverot+waverotSpeed) mod 360;
 ir = 2;
 
 //Left boundary of surface
-ix = -4+(view_xview-ir);
+ix = view_xview-ir;
 
 //Top boundary of surface
 iy = round(parent.y+4);
 
 //Width
-iw = 4+(view_wview+ir*2);
+iw = (view_wview+ir*2)+4;
 
 //Height
 ih = view_yview+view_hview-iy;
@@ -101,7 +101,7 @@ ih = view_yview+view_hview-iy;
 if (iy &lt; view_yview+view_hview) {
 
     //Surface
-    sf=surface_create(iw,ih);
+    sf = surface_create(iw,ih);
 
     //Copy surface
     surface_copy_part(sf,0,0,application_surface,ix-view_xview,iy-view_yview,iw,ih);

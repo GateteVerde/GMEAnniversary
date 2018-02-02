@@ -36,7 +36,6 @@ vspeed = -4;
 gravity = 0.2;
 
 //Check sprite
-image_yscale = -1;
 alarm[1] = 1;
 </string>
           </argument>
@@ -62,17 +61,15 @@ alarm[1] = 1;
             <kind>1</kind>
             <string>///Check sprite
 
-//Galoomba sprite fix
-if (sprite_index == spr_galoomba_down)
-|| (sprite_index == spr_shell_down)
-|| (sprite_index == spr_shell_red_down)
-|| (sprite_index == spr_shell_blue_down)
-|| (sprite_index == spr_shell_yellow_down)
-|| (sprite_index == spr_shell_big_down)
-|| (sprite_index == spr_shell_big_red_down) {
+//If the offset of the sprites is lower than 16, flip
+if (sprite_get_yoffset(sprite_index) &gt;= 16)
+    exit;
 
-    image_yscale = 1;
-    y -= 16;
+//Otherwise, flip
+else if (sprite_get_yoffset(sprite_index) &lt; 16) {
+
+    image_yscale = -1;
+    y += 16;
 }
 </string>
           </argument>
