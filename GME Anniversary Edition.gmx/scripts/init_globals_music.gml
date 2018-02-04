@@ -94,3 +94,7 @@ music_setup(global._theme_title, "Title", 0);
 //Underground
 global._theme_underground = music_add("Underground");
 music_setup(global._theme_underground, "Underground", 3);
+
+//Underwater
+global._theme_underwater = music_add("Underwater");
+music_setup(global._theme_underwater, "Underwater", 3);

@@ -952,8 +952,14 @@ if (state != 3) {
             
             //Check if there's a ceiling above the player and make him move until it's not embed in a solid
             if (collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top-4,obj_solid,1,0))
-            &amp;&amp; (global.powerup != cs_small)
+            &amp;&amp; (global.powerup != cs_small) {
+            
                 inwall = true;
+                if (xscale == -1)
+                    direct = 1;
+                else if (xscale == 1)
+                    direct = -1;
+            }
         }            
     }
     

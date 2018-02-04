@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="38" name="datafiles">
-    <datafiles number="38" name="music">
+  <datafiles number="39" name="datafiles">
+    <datafiles number="39" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -361,6 +361,23 @@
           </Config>
         </ConfigOptions>
         <filename>underground.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>underwater.ogg</name>
+        <exists>-1</exists>
+        <size>422577</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>underwater.ogg</filename>
       </datafile>
     </datafiles>
     <datafile>
@@ -1218,11 +1235,16 @@
         <sprites name="Cheep-Cheeps">
           <sprite>sprites\spr_cheepcheep</sprite>
           <sprite>sprites\spr_cheepcheep_green</sprite>
+          <sprite>sprites\spr_cheepcheep_spiked</sprite>
           <sprites name="Boss Bass">
             <sprite>sprites\spr_bossbass</sprite>
             <sprite>sprites\spr_bossbass_jump</sprite>
             <sprite>sprites\spr_bossbass_cheep</sprite>
           </sprites>
+          <sprite>sprites\spr_blurp</sprite>
+          <sprite>sprites\spr_ripvanfish</sprite>
+          <sprite>sprites\spr_ripvanfish_chase</sprite>
+          <sprite>sprites\spr_ripvanfish_snore</sprite>
         </sprites>
       </sprites>
     </sprites>
@@ -1296,6 +1318,11 @@
       <sprite>sprites\spr_modifier_music</sprite>
     </sprites>
     <sprites name="Decoration">
+      <sprites name="Hazards">
+        <sprite>sprites\spr_muncher</sprite>
+        <sprite>sprites\spr_muncher_pipe</sprite>
+        <sprite>sprites\spr_muncher_pipe2</sprite>
+      </sprites>
       <sprites name="Water">
         <sprite>sprites\spr_watertop</sprite>
         <sprite>sprites\spr_waterfall_top</sprite>
@@ -1338,12 +1365,11 @@
         <sprite>sprites\spr_lavafall_b</sprite>
       </sprites>
       <sprite>sprites\spr_vine</sprite>
-      <sprite>sprites\spr_muncher</sprite>
-      <sprite>sprites\spr_muncher_pipe</sprite>
-      <sprite>sprites\spr_muncher_pipe2</sprite>
+      <sprite>sprites\spr_signpost</sprite>
+      <sprite>sprites\spr_seaweed</sprite>
+      <sprite>sprites\spr_seaweedb</sprite>
       <sprite>sprites\spr_quicksand</sprite>
       <sprite>sprites\spr_quicksandb</sprite>
-      <sprite>sprites\spr_signpost</sprite>
     </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
@@ -2347,6 +2373,8 @@
               <object>objects\obj_bossbass</object>
               <object>objects\obj_bigbertha</object>
             </objects>
+            <object>objects\obj_blurp</object>
+            <object>objects\obj_ripvanfish</object>
           </objects>
         </objects>
       </objects>
@@ -2354,6 +2382,11 @@
         <objects name="Land">
           <object>objects\obj_generator_goomba</object>
           <object>objects\obj_generator_galoomba</object>
+        </objects>
+        <objects name="Underwater">
+          <object>objects\obj_generator_cheepcheep</object>
+          <object>objects\obj_generator_spikedcheep</object>
+          <object>objects\obj_generator_spikedcheep_b</object>
         </objects>
       </objects>
     </objects>
@@ -2416,6 +2449,11 @@
       <object>objects\obj_modifier_music</object>
     </objects>
     <objects name="Decoration">
+      <objects name="Hazards">
+        <object>objects\obj_muncher</object>
+        <object>objects\obj_muncher_pipe</object>
+        <object>objects\obj_muncher_pipe2</object>
+      </objects>
       <objects name="Water">
         <object>objects\obj_watertop</object>
         <object>objects\obj_waterfall</object>
@@ -2455,11 +2493,9 @@
         <object>objects\obj_lavafall</object>
       </objects>
       <object>objects\obj_vine</object>
-      <object>objects\obj_muncher</object>
-      <object>objects\obj_muncher_pipe</object>
-      <object>objects\obj_muncher_pipe2</object>
-      <object>objects\obj_quicksand</object>
       <object>objects\obj_signpost</object>
+      <object>objects\obj_seaweed</object>
+      <object>objects\obj_quicksand</object>
     </objects>
     <objects name="Items">
       <objects name="Collectables">
@@ -2767,6 +2803,9 @@
               <objects name="Boss Bass">
                 <object>objects\obj_bigbertha_cheep</object>
               </objects>
+              <object>objects\obj_generatorcheep</object>
+              <object>objects\obj_generatorcheep2</object>
+              <object>objects\obj_generatorcheep2b</object>
             </objects>
           </objects>
           <object>objects\obj_shell_kick</object>
