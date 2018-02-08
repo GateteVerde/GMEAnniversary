@@ -58,13 +58,24 @@ alarm[1] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Dead enemy logic
+            <string>///Stomped enemy logic
 
 //Cap vertical speed
-if (vspeed &gt; 4) {
+if (vspeed &gt; 0) {
 
-    //Set vertical speed
-    vspeed = 4;
+    //If not in water
+    if (!place_meeting(x,y,obj_swim)) {
+
+        //Cap vertical speed
+        if (vspeed &gt; 4)
+            vspeed = 4;
+    }
+    else {
+    
+        //Cap vertical speed
+        if (vspeed &gt; 1)
+            vspeed = 1;
+    }
     
     //Check if outside the view
     if (y &gt; view_yview[0]+248)

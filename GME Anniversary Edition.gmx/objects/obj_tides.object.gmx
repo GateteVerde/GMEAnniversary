@@ -55,10 +55,6 @@ with (water) {
     image_xscale = room_width/16;
     image_yscale = room_height/16;
 }
-
-//Create a background surface
-with (instance_create(x,y+4,obj_tides_surface))
-    parent = other.id;
 </string>
           </argument>
         </arguments>

@@ -133,6 +133,14 @@ if (chase == 0) {
 //Otherwise, chase the player
 else {
 
+    //Make sure rip van fishes can't exit water
+    water = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim,0,0);
+    
+    //If there's water
+    if (water)
+    &amp;&amp; (y &lt; water.y-4)
+        y = water.y-4;
+
     //If the player does exist
     if (instance_exists(obj_playerparent)) {
         

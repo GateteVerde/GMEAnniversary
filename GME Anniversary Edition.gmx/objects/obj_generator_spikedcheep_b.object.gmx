@@ -81,9 +81,9 @@ if (instance_exists(obj_playerparent)) {
         
         //Generate a spiked cheep-cheep.
         if (dir == 1)
-            instance_create(view_xview[0]-16,view_yview[0]+random_range(32,144),obj_generatorcheep2b);
+            instance_create(view_xview[0]-16,view_yview[0]+random_range(32,184),obj_generatorcheep2b);
         else
-            instance_create(view_xview[0]+view_wview[0]+16,view_yview[0]+random_range(32,144),obj_generatorcheep2b);
+            instance_create(view_xview[0]+view_wview[0]+16,view_yview[0]+random_range(32,184),obj_generatorcheep2b);
     }
     
     //Otherwise, stop.

@@ -185,6 +185,31 @@ if (vspeed &gt; 0)
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_shell_kick">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect the coin with a thrown shell
+
+event_perform(ev_collision,obj_mario); 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_bluebrick_th">
       <action>
         <libid>1</libid>
@@ -234,7 +259,7 @@ if (other.held == 0)
 if (!ready) {
 
     //Play 'Scatter' sound
-    audio_play_sound(snd_scatter, 0, false);
+    event_user(0);
     
     //If the coin has been collected in a previous run of the level, destroy it
     if (ds_map_find_value(global.sc[type],global.level) == 3)
@@ -288,6 +313,64 @@ if (!ready) {
 
 if (other.held == 0)
     event_perform(ev_collision,obj_mario); 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_koopa_kamikaze">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect the coin with a kamikaze koopa
+
+event_perform(ev_collision,obj_mario); 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Play a sound depending of how many coins you got in the level
+
+//Play 'Starcoin 2' sound if two coins were collected on the level
+if ((ds_map_find_value(global.sc[0],global.level) &gt; 0) &amp;&amp; (ds_map_find_value(global.sc[1],global.level) &gt; 0)) //OO-
+|| ((ds_map_find_value(global.sc[0],global.level) &gt; 0) &amp;&amp; (ds_map_find_value(global.sc[2],global.level) &gt; 0)) //O-O
+|| ((ds_map_find_value(global.sc[1],global.level) &gt; 0) &amp;&amp; (ds_map_find_value(global.sc[2],global.level) &gt; 0)) //-OO
+    audio_play_sound(snd_starcoin2, 0, false);
+
+//Otherwise, play default sound
+else
+    audio_play_sound(snd_starcoin, 0, false);
 </string>
           </argument>
         </arguments>

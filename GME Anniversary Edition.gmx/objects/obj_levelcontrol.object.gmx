@@ -864,6 +864,8 @@ if (global.mount == 0)
     global.mountcolour = 0;
 
 //Deactivate instances outside the view
+instance_deactivate_object(obj_dolphin);
+instance_deactivate_object(obj_dolphin_jump);
 instance_deactivate_object(obj_deactenemyparent);
 instance_deactivate_object(obj_deactivateparent);
 
@@ -1540,8 +1542,10 @@ repeat (8) {
             draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i],1,1,0,background_blend[i],background_alpha[i]);
          else
             draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i]+(view_yview[0]*(room_height-background_height[i])/(room_height-view_hview[0])),1,1,0,background_blend[i],background_alpha[i]);
-      }
+        }
     }
+    
+    //Next background
     i++;
 }
 

@@ -66,10 +66,16 @@ switch (sprite_index) {
         instance_create(view_xview[0]+view_wview[0]+64,y,obj_cheepcheep);
     } break;
     
-    //Big Bertha
+    //Boss Bass
     case (spr_bossbass): {
     
         instance_create(view_xview[0]+view_wview[0]+64,y,obj_bossbass);
+    } break;
+    
+    //Porchu Puffer
+    case (spr_porchupuffer): {
+    
+        instance_create(view_xview[0]+view_wview[0]+64,y,obj_porchupuffer);
     } break;
     
     /*Lakitu
