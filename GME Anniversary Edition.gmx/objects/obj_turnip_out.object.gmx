@@ -44,9 +44,6 @@ powerup = 0;
 drawpiece = 0;
 drawpiece2 = 0;
 
-//Whether the vegetable can respawn
-turnback = 0;
-
 //Timer for bombs
 aa = 0;
 
@@ -555,7 +552,6 @@ if (ready == 2) {
             
                 sprite_index = other.sprite_index;
                 image_xscale = other.image_xscale;
-                turnback = other.turnback;
             }
         }
     }

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_platformparent</parentName>
+  <parentName>obj_subconenemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,17 +27,43 @@
             <kind>1</kind>
             <string>///Jumping Dolphin
 
+//How vulnerable is this enemy to various items?
+vulnerable = 100;
+
+//How vulnerable is this enemy to the player?
+stomp = 4;
+
+//How vulnerable is this enemy to yoshi?
+edible = 2;
+
+//Facing direction
+xscale = 1;
+
+//Is this enemy heavy?
+isheavy = 2;
+
+//Gravity
+gravity = 0.1;
+
 //Animate
 image_speed = 0.25;
 
-//Whether the dolphin is jumping
-gravity = 0.1;
+//Create solid collision
+mytop = instance_create(x,y,obj_semisolid);
+with (mytop) {
+
+    //Set the sprite
+    sprite_index = spr_sproutmask;
+    
+    //Set the scale
+    image_yscale = 0.25;
+}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -56,38 +82,21 @@ gravity = 0.1;
             <kind>1</kind>
             <string>///Dolphin logic
 
-//If the player is on this moving platform
-if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerparent,0,0))
-&amp;&amp; (obj_playerparent.bbox_bottom &lt; yprevious+5-vspeed)
-&amp;&amp; (obj_playerparent.state &lt; 2)) {
-
-    //Check for a moving platform
-    var check = collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom+1,obj_semisolid,0,1);
-    if (check)
-    &amp;&amp; (vspeed &gt; 0)
-        exit;
-
-    //Snap the player vertically
-    obj_playerparent.y = ceil(bbox_top-15);
-
-    //Move the player horizontally if there is no solid in his way
-    if (x &lt; x-xprevious) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_left-1,obj_playerparent.bbox_top+4,obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
-    || (x &gt; x-xprevious) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_right,obj_playerparent.bbox_top+4,obj_playerparent.bbox_right+1,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
-        obj_playerparent.x += x-xprevious;
-}
-
 //Check for water
 water = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_swim, 0, 0);
 
 //If there's water
-if (water) &amp;&amp; (y &gt; water.y-4) {
+if (water) &amp;&amp; (y &gt; water.y+12) {
     
     //Snap in water
-    y = water.y-4
-    
-    //Jump again
+    y = water.y+12
+
+    //Stop vertical movement
     vspeed = -5.5;
 }
+
+//Set facing direction
+xscale = 1*sign(hspeed);
 
 //Cap vertical speed
 if (vspeed &gt; 3.5)
@@ -95,6 +104,22 @@ if (vspeed &gt; 3.5)
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_playerparent">
+      <action>
+        <libid>1</libid>
+        <id>425</id>
+        <kind>4</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="8" enumb="0">

@@ -864,8 +864,6 @@ if (global.mount == 0)
     global.mountcolour = 0;
 
 //Deactivate instances outside the view
-instance_deactivate_object(obj_dolphin);
-instance_deactivate_object(obj_dolphin_jump);
 instance_deactivate_object(obj_deactenemyparent);
 instance_deactivate_object(obj_deactivateparent);
 

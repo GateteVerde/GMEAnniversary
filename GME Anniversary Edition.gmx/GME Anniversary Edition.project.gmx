@@ -1253,6 +1253,9 @@
         <sprite>sprites\spr_ripvanfish</sprite>
         <sprite>sprites\spr_ripvanfish_chase</sprite>
         <sprite>sprites\spr_ripvanfish_snore</sprite>
+        <sprite>sprites\spr_lavalotus</sprite>
+        <sprite>sprites\spr_lavalotus_spit</sprite>
+        <sprite>sprites\spr_lavalotus_ball</sprite>
       </sprites>
     </sprites>
     <sprites name="World Map">
@@ -2380,14 +2383,15 @@
             <object>objects\obj_cheepcheep</object>
             <object>objects\obj_cheepcheep_jump</object>
             <object>objects\obj_cheepcheep_green</object>
+            <object>objects\obj_blurp</object>
+            <object>objects\obj_ripvanfish</object>
+            <object>objects\obj_porchupuffer</object>
           </objects>
           <object>objects\obj_urchin</object>
           <object>objects\obj_urchin_wall</object>
           <object>objects\obj_dolphin</object>
           <object>objects\obj_dolphin_jump</object>
-          <object>objects\obj_blurp</object>
-          <object>objects\obj_ripvanfish</object>
-          <object>objects\obj_porchupuffer</object>
+          <object>objects\obj_lavalotus</object>
         </objects>
       </objects>
       <objects name="Generators">
@@ -2720,6 +2724,7 @@
             <objects name="Enemies">
               <objects name="Deactivated">
                 <object>objects\obj_deactenemyparent</object>
+                <object>objects\obj_subconenemyparent</object>
               </objects>
               <object>objects\obj_enemyparent</object>
               <object>objects\obj_enemyparent_held</object>
@@ -2793,6 +2798,7 @@
           <object>objects\obj_enemy_dead</object>
           <object>objects\obj_enemy_multidead</object>
           <object>objects\obj_enemy_stomped</object>
+          <object>objects\obj_enemy_pulled</object>
           <object>objects\obj_enemy_tick</object>
           <object>objects\obj_stomped</object>
           <objects name="Land">
@@ -2821,6 +2827,7 @@
               <object>objects\obj_generatorcheep2b</object>
             </objects>
             <object>objects\obj_generatordolphin</object>
+            <object>objects\obj_lavalotus_ball</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>
