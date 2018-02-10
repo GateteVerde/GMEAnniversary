@@ -1256,6 +1256,9 @@
         <sprite>sprites\spr_lavalotus</sprite>
         <sprite>sprites\spr_lavalotus_spit</sprite>
         <sprite>sprites\spr_lavalotus_ball</sprite>
+        <sprite>sprites\spr_torpedobox</sprite>
+        <sprite>sprites\spr_torpedoted</sprite>
+        <sprite>sprites\spr_blooper</sprite>
       </sprites>
     </sprites>
     <sprites name="World Map">
@@ -1378,6 +1381,7 @@
       <sprite>sprites\spr_signpost</sprite>
       <sprite>sprites\spr_seaweed</sprite>
       <sprite>sprites\spr_seaweedb</sprite>
+      <sprite>sprites\spr_seaweed_big</sprite>
       <sprite>sprites\spr_quicksand</sprite>
       <sprite>sprites\spr_quicksandb</sprite>
     </sprites>
@@ -1687,6 +1691,7 @@
         </sprites>
         <sprite>sprites\spr_boltspark</sprite>
         <sprite>sprites\spr_bubble</sprite>
+        <sprite>sprites\spr_torpedobubble</sprite>
         <sprite>sprites\spr_castlesmoke</sprite>
         <sprite>sprites\spr_cinder</sprite>
         <sprite>sprites\spr_glass</sprite>
@@ -2142,6 +2147,7 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
+    <shader type="GLSLES">shaders\shd_wind.shader</shader>
   </shaders>
   <objects name="objects">
     <objects name="Main">
@@ -2392,6 +2398,9 @@
           <object>objects\obj_dolphin</object>
           <object>objects\obj_dolphin_jump</object>
           <object>objects\obj_lavalotus</object>
+          <object>objects\obj_torpedobox</object>
+          <object>objects\obj_torpedoted</object>
+          <object>objects\obj_blooper</object>
         </objects>
       </objects>
       <objects name="Generators">
@@ -2512,6 +2521,7 @@
       <object>objects\obj_vine</object>
       <object>objects\obj_signpost</object>
       <object>objects\obj_seaweed</object>
+      <object>objects\obj_seaweed_big</object>
       <object>objects\obj_quicksand</object>
     </objects>
     <objects name="Items">
