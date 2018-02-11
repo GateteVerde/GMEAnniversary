@@ -1260,6 +1260,10 @@
         <sprite>sprites\spr_torpedoted</sprite>
         <sprite>sprites\spr_blooper</sprite>
       </sprites>
+      <sprites name="Desert">
+        <sprite>sprites\spr_nipper</sprite>
+        <sprite>sprites\spr_nipper_jump</sprite>
+      </sprites>
     </sprites>
     <sprites name="World Map">
       <sprite>sprites\spr_mapmario</sprite>
@@ -1691,7 +1695,6 @@
         </sprites>
         <sprite>sprites\spr_boltspark</sprite>
         <sprite>sprites\spr_bubble</sprite>
-        <sprite>sprites\spr_torpedobubble</sprite>
         <sprite>sprites\spr_castlesmoke</sprite>
         <sprite>sprites\spr_cinder</sprite>
         <sprite>sprites\spr_glass</sprite>
@@ -1715,6 +1718,7 @@
         <sprite>sprites\spr_supersmash</sprite>
         <sprite>sprites\spr_sweat</sprite>
         <sprite>sprites\spr_tornado</sprite>
+        <sprite>sprites\spr_torpedobubble</sprite>
       </sprites>
       <sprites name="GUI">
         <sprites name="In-Level">
@@ -2399,8 +2403,11 @@
           <object>objects\obj_dolphin_jump</object>
           <object>objects\obj_lavalotus</object>
           <object>objects\obj_torpedobox</object>
-          <object>objects\obj_torpedoted</object>
           <object>objects\obj_blooper</object>
+        </objects>
+        <objects name="Desert">
+          <object>objects\obj_nipper</object>
+          <object>objects\obj_firenipper</object>
         </objects>
       </objects>
       <objects name="Generators">
@@ -2838,6 +2845,7 @@
             </objects>
             <object>objects\obj_generatordolphin</object>
             <object>objects\obj_lavalotus_ball</object>
+            <object>objects\obj_torpedoted</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>
@@ -2965,6 +2973,7 @@
               <object>objects\obj_turnip_bomb</object>
               <object>objects\obj_turnip_shell</object>
             </objects>
+            <object>objects\obj_grass_used</object>
             <object>objects\obj_mblock_up</object>
             <object>objects\obj_powblock_up</object>
             <object>objects\obj_powblock_up_large</object>
