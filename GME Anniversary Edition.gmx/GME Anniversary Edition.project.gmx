@@ -1247,6 +1247,10 @@
         <sprite>sprites\spr_firechomp</sprite>
         <sprite>sprites\spr_firechomp_b</sprite>
         <sprite>sprites\spr_firechomp_fire</sprite>
+        <sprite>sprites\spr_parabeetle</sprite>
+        <sprite>sprites\spr_megaparabeetle</sprite>
+        <sprite>sprites\spr_foo</sprite>
+        <sprite>sprites\spr_foo_smog</sprite>
       </sprites>
       <sprites name="Big Land">
         <sprite>sprites\spr_goomba_big</sprite>
@@ -2386,6 +2390,9 @@
           <object>objects\obj_pipelakitu</object>
           <object>objects\obj_pipelakitu_red</object>
           <object>objects\obj_firechomp</object>
+          <object>objects\obj_parabeetle</object>
+          <object>objects\obj_megaparabeetle</object>
+          <object>objects\obj_foo</object>
         </objects>
         <objects name="Big Land">
           <object>objects\obj_goomba_big</object>
@@ -2841,6 +2848,7 @@
             <object>objects\obj_lakitu_movement</object>
             <object>objects\obj_lakitu_egg</object>
             <object>objects\obj_firechomp_fire</object>
+            <object>objects\obj_foo_fog</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>
