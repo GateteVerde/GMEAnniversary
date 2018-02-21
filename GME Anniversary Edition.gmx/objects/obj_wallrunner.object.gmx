@@ -713,9 +713,6 @@ draw_sprite_ext(sprite_index,-1,round(x),round(y),1,xscale,angle,c_white,obj_pla
 
 //Reset shader
 pal_swap_reset();
-
-//Draw direction
-draw_text(x+2,y+2,string(xscale) + ", " + string(direction));
 </string>
           </argument>
         </arguments>

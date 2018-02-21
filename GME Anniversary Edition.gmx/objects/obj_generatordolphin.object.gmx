@@ -31,7 +31,7 @@
 vulnerable = 100;
 
 //How vulnerable is this enemy to the player?
-stomp = 4;
+stomp = 3;
 
 //How vulnerable is this enemy to yoshi?
 edible = 2;
@@ -168,22 +168,6 @@ if (vspeed &gt; 3.5)
 </string>
           </argument>
         </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_playerparent">
-      <action>
-        <libid>1</libid>
-        <id>425</id>
-        <kind>4</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="8" enumb="0">

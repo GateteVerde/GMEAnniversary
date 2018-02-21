@@ -124,7 +124,7 @@ if (instance_exists(obj_puller)) {
     audio_play_sound(snd_pickup, 0, false);
     
     //Create vegetable
-    with (instance_create(obj_playerparent.x-8,y+8,obj_turnip_out)) {
+    with (instance_create(obj_playerparent.x,y+8,obj_turnip_out)) {
     
         sprite_index = spr_turnip_shell;
         myveggie = obj_turnip_shell;
@@ -159,9 +159,6 @@ if (instance_exists(obj_puller)) {
 
 //Make sure is not held
 if (!held) {
-
-    //Moving platform collision
-    event_user(5);
     
     //Make sure the semisolid follows
     if (instance_exists(mytop)) {
@@ -201,36 +198,8 @@ if (!held) {
         }
     }
     
-    //Destroy in contact with lava
-    if (collision_rectangle(bbox_left,bbox_bottom+6,bbox_right,bbox_bottom+7,obj_lava,0,0)) {
-    
-        //Play 'Podoboo' sound
-        audio_play_sound(snd_podoboo, 0, false);
-        
-        //Go poof
-        instance_create((bbox_left+bbox_right)/2-8,(bbox_top+bbox_bottom)/2-8,obj_smoke);
-        with (instance_create((bbox_left+bbox_right)/2-8,(bbox_top+bbox_bottom)/2-8,obj_smoke))    
-            sprite_index = spr_splash_lava;
-        
-        //Destroy
-        instance_destroy();
-    }
-    
-    //Move in contact with a left-moving conveyor belt
-    lconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_conveyor_l,0,0);
-    if ((lconv) &amp;&amp; (lconv.image_speed != 0)) {
-    
-        if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0))
-            x -= 0.75;
-    }
-    
-    //Move in contact with a right-moving conveyor belt
-    rconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_conveyor_r,0,0);
-    if ((rconv) &amp;&amp; (rconv.image_speed != 0)) {
-    
-        if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0))
-            x += 0.75;
-    }
+    //Inherit event
+    event_inherited();
 }
 
 //Otherwise, inherit default End Step event and make the solidtop go away
@@ -243,8 +212,74 @@ else {
         mytop.y = -1000;
     }
     
-    //Inherit End Step event    
-    event_inherited();
+    //If the player does exist.
+    if (instance_exists(obj_playerparent)) {
+        
+        //Force player hold
+        obj_playerparent.holding = 1;
+        
+        //Make it visible
+        visible = 1;
+        
+        //Snap onto the player's x position
+        x = obj_playerparent.x;
+        
+        //Snap onto the player's y position        
+        if (obj_playerparent.crouch) { //If the player is crouched down.
+        
+            //If the player is small.
+            if (global.powerup == cs_small)
+                y = obj_playerparent.y-9;
+            else
+                y = obj_playerparent.y-12;
+        }
+        
+        //Otherwise, if it's not.
+        else {
+        
+            //If the player is small.
+            if (global.powerup == cs_small)
+                y = obj_playerparent.y-12;
+            else
+                y = obj_playerparent.y-20;
+        }
+    }
+    
+    //Otherwise
+    else {
+            
+        //Check what object is holding first
+        event_user(15);
+        
+        //Then check if it exists
+        if (instance_exists(follow)) {
+            
+            //Set the position of the item.
+            x = follow.x;
+            y = follow.y;
+            
+            //Make it invisible.
+            visible = 0;
+            
+            //Make said object hold the item
+            follow.holding = 1;
+            
+            //Set up the item's sprite
+            follow.myitem = sprite_index;
+            
+            //Set up the item's frame.
+            follow.myframe = image_index;            
+        }            
+    }
+    
+    //Destroy if the player object does not exist
+    if (!instance_exists(obj_playerparent))
+    &amp;&amp; (follow == noone) {
+    
+        instance_create(x,y,obj_smoke);
+        instance_destroy();
+        exit;
+    }
 }
 </string>
           </argument>
@@ -387,117 +422,6 @@ else {
 if (harmplayer)
 &amp;&amp; (other.bbox_bottom &gt; yprevious+5)
     with (other) event_user(0);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="14">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Default floor collision
-
-//When moving down
-if (vspeed &gt; 0) {
-
-    //Check for a semisolid below
-    var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_semisolid,0,0);
-    
-    //If the semisolid exists, snap above it.
-    if (semisolid)
-    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5)
-        y = semisolid.bbox_top-16;
-}
-
-//Embed the NPC into the slope to ensure correct slope physics.
-if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0))
-&amp;&amp; (vspeed == 0) {
-
-    //Make sure it's not in contact with a semisolid
-    if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_semisolid,0,0))
-        y += 4;
-}
-    
-//Handle slope collision
-if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
-
-    //Stay embed on the slope.
-    while collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0)
-        y--;
-}
-
-//Check for floor objects
-if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
-&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_semisolid,0,0)))
-|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
-
-    //Stop vertical movement
-    gravity = 0;
-    if (vspeed &gt; 0)
-        vspeed = 0;
-}
-else {
-
-    //Set the gravity when not underwater
-    if (!swimming) {
-    
-        //Gravity
-        gravity = 0.2;
-        
-        //Cap vertical speed
-        if (vspeed &gt; 4)
-            vspeed = 4;
-    }
-    
-    //Otherwise, set the gravity when underwater
-    else {
-    
-        //Gravity
-        gravity = 0.05;
-        
-        //Cap vertical speed
-        if (vspeed &gt; 1)
-            vspeed = 1;
-    }
-}
-
-//If the player is moving up
-if (vspeed &lt;= 0)
-&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)) 
-|| (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
-    
-    //Prevent the player's head from getting stuck on a ceiling.
-    if (vspeed != 0) {
-
-        while ((collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0))
-        || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
-            y++;
-    }
-    
-    //Stop vertical speed
-    vspeed = 0;
-}
-
-//Make sure that the player does not get embed on ceiling slopes
-if (vspeed != 0)
-    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
-        y++;
 </string>
           </argument>
         </arguments>

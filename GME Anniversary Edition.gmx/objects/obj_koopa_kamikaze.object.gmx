@@ -325,7 +325,7 @@ else if ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,b
             <string>///Default enemy dead script
 
 //Create dead object
-imdead = instance_create(x,y+16,obj_enemy_dead);
+imdead = instance_create(x,y,obj_enemy_dead);
 
 //Make the dead object hereby the sprite
 imdead.sprite_index = spr_shell_yellow;

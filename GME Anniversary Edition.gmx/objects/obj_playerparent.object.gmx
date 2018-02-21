@@ -579,7 +579,7 @@ if ((collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+4,obj_slopeparent,1,0
         y += 4;
 }
 
-//Handle Slope collision
+//Handle slope collision
 if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0)) 
 &amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
 
@@ -867,7 +867,7 @@ else if (xspeed &lt; 0)
 }
 
 //If the player is moving up
-if (yspeed &lt;= 0)
+if (yspeed &lt; 0)
 &amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)) 
 || (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
     

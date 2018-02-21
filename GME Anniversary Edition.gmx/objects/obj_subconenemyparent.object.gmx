@@ -132,7 +132,7 @@ if (instance_exists(mytop)) {
 
     //Snap semisolid to position
     mytop.x = round(x);
-    mytop.y = round(y);
+    mytop.y = round(bbox_top);
     
     //If the player is on this enemy
     if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerparent,0,0))

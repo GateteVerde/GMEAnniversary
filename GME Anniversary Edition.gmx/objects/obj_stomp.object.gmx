@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_powkiller</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -29,6 +29,12 @@
 
 //Play 'Stomp2' sound
 audio_play_sound(snd_stomp2, 0, false);
+
+//Default kill method
+killtype = 0;
+
+//Combo
+hitcombo = 0;
 
 //Create smoke effect
 with (instance_create(x-8,y,obj_smoke)) sprite_index = spr_supersmash;

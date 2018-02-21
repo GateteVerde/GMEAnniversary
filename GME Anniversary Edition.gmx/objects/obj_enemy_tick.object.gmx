@@ -28,7 +28,6 @@
             <string>///A enemy generator
 
 //Default type
-type = 0;
 xmin = 0;
 xmax = room_width;
 
@@ -78,28 +77,25 @@ switch (sprite_index) {
         instance_create(view_xview[0]+view_wview[0]+64,y,obj_porchupuffer);
     } break;
     
-    /*Lakitu
+    //Lakitu
     case (spr_lakitu): {
     
-        if (type == 0) {
+        with (instance_create(view_xview[0]+view_wview[0]+32, view_yview[0]+32, obj_lakitu)) {
         
-            ID = instance_create(view_xview[0]+304,y,obj_lakitu);
-            with (ID) {
-            
-                xmin = other.xmin;
-                xmax = other.xmax;
-            }
+            xmin = other.xmin;
+            xmax = other.xmax;
         }
-        else if (type == 1) {
+    } break;
+    
+    //Red Lakitu
+    case (spr_lakitu_red): {
+    
+        with (instance_create(view_xview[0]+view_wview[0]+32, view_yview[0]+32, obj_lakitu_red)) {
         
-            ID = instance_create(view_xview[0]+304,y,obj_lakitu_red);
-            with (ID) {
-            
-                xmin = other.xmin;
-                xmax = other.xmax;
-            }        
+            xmin = other.xmin;
+            xmax = other.xmax;
         }
-    }*/
+    } break;
 }
 
 //Destroy

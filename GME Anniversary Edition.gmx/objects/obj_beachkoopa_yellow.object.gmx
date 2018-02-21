@@ -340,38 +340,6 @@ if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Draw beach koopa
-
-//Set palette
-pal_swap_set(spr_palette_beachkoopa, 3);
-
-//Draw sprite
-draw_sprite_ext(sprite_index, -1, round(x), y+1, xscale, 1, 0, c_white, 1);
-
-//Reset palette
-pal_swap_reset();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

@@ -466,6 +466,7 @@
     <sounds name="Enemy">
       <sound>sound\snd_blargg</sound>
       <sound>sound\snd_flames</sound>
+      <sound>sound\snd_hammer</sound>
       <sound>sound\snd_podoboo</sound>
       <sound>sound\snd_swooper</sound>
       <sound>sound\snd_thwomp</sound>
@@ -1105,82 +1106,43 @@
     </sprites>
     <sprites name="Enemies">
       <sprites name="Land">
-        <sprites name="Goombas">
-          <sprites name="Normal">
-            <sprites name="Big">
-              <sprite>sprites\spr_goomba_big</sprite>
-              <sprite>sprites\spr_goomba_big_sq</sprite>
-            </sprites>
-            <sprite>sprites\spr_goomba</sprite>
-            <sprite>sprites\spr_goomba_sq</sprite>
-            <sprite>sprites\spr_goomba_wings</sprite>
-            <sprite>sprites\spr_goombrat</sprite>
-            <sprite>sprites\spr_goombrat_sq</sprite>
-          </sprites>
-          <sprites name="Red">
-            <sprite>sprites\spr_goomba_red</sprite>
-            <sprite>sprites\spr_goomba_red_sq</sprite>
-          </sprites>
-          <sprite>sprites\spr_goomba_shoe</sprite>
-          <sprite>sprites\spr_goomba_micro</sprite>
-          <sprite>sprites\spr_galoomba</sprite>
-          <sprite>sprites\spr_galoomba_down</sprite>
-          <sprite>sprites\spr_galoomba_parachute</sprite>
-          <sprite>sprites\spr_galoomba_parachute_land</sprite>
-          <sprite>sprites\spr_galoomba_wing_front</sprite>
-          <sprite>sprites\spr_galoomba_wing_back</sprite>
-        </sprites>
-        <sprites name="Koopas">
-          <sprites name="Green">
-            <sprites name="Beach Koopas">
-              <sprite>sprites\spr_beachkoopa</sprite>
-              <sprite>sprites\spr_beachkoopa_walk</sprite>
-            </sprites>
-            <sprites name="Big">
-              <sprite>sprites\spr_koopa_big</sprite>
-              <sprite>sprites\spr_parakoopa_big</sprite>
-              <sprite>sprites\spr_shell_big</sprite>
-              <sprite>sprites\spr_shell_big_down</sprite>
-            </sprites>
-            <sprite>sprites\spr_koopa</sprite>
-            <sprite>sprites\spr_parakoopa</sprite>
-            <sprite>sprites\spr_shell</sprite>
-            <sprite>sprites\spr_shell_down</sprite>
-          </sprites>
-          <sprites name="Red">
-            <sprites name="Big">
-              <sprite>sprites\spr_koopa_big_red</sprite>
-              <sprite>sprites\spr_parakoopa_big_red</sprite>
-              <sprite>sprites\spr_shell_big_red</sprite>
-              <sprite>sprites\spr_shell_big_red_down</sprite>
-            </sprites>
-            <sprite>sprites\spr_koopa_red</sprite>
-            <sprite>sprites\spr_parakoopa_red</sprite>
-            <sprite>sprites\spr_shell_red</sprite>
-            <sprite>sprites\spr_shell_red_down</sprite>
-          </sprites>
-          <sprites name="Blue">
-            <sprites name="Beach Koopas">
-              <sprite>sprites\spr_beachkoopa_blue</sprite>
-              <sprite>sprites\spr_beachkoopa_blue_walk</sprite>
-              <sprite>sprites\spr_beachkoopa_blue_kick</sprite>
-            </sprites>
-            <sprite>sprites\spr_koopa_blue</sprite>
-            <sprite>sprites\spr_shell_blue</sprite>
-            <sprite>sprites\spr_shell_blue_down</sprite>
-          </sprites>
-          <sprites name="Yellow">
-            <sprite>sprites\spr_koopa_yellow</sprite>
-            <sprite>sprites\spr_parakoopa_yellow</sprite>
-            <sprite>sprites\spr_parakoopa_yellow_jump</sprite>
-            <sprite>sprites\spr_shell_yellow</sprite>
-            <sprite>sprites\spr_shell_yellow_down</sprite>
-          </sprites>
-          <sprite>sprites\spr_koopa_sq</sprite>
-          <sprite>sprites\spr_koopa_kamikaze</sprite>
-          <sprite>sprites\spr_koopa_kamikaze_down</sprite>
-          <sprite>sprites\spr_koopa_black</sprite>
-        </sprites>
+        <sprite>sprites\spr_goomba</sprite>
+        <sprite>sprites\spr_goomba_sq</sprite>
+        <sprite>sprites\spr_goomba_wings</sprite>
+        <sprite>sprites\spr_goombrat</sprite>
+        <sprite>sprites\spr_goombrat_sq</sprite>
+        <sprite>sprites\spr_goomba_red</sprite>
+        <sprite>sprites\spr_goomba_red_sq</sprite>
+        <sprite>sprites\spr_goomba_shoe</sprite>
+        <sprite>sprites\spr_goomba_micro</sprite>
+        <sprite>sprites\spr_galoomba</sprite>
+        <sprite>sprites\spr_galoomba_down</sprite>
+        <sprite>sprites\spr_galoomba_parachute</sprite>
+        <sprite>sprites\spr_galoomba_parachute_land</sprite>
+        <sprite>sprites\spr_galoomba_wing_front</sprite>
+        <sprite>sprites\spr_galoomba_wing_back</sprite>
+        <sprite>sprites\spr_koopa</sprite>
+        <sprite>sprites\spr_parakoopa</sprite>
+        <sprite>sprites\spr_shell</sprite>
+        <sprite>sprites\spr_shell_down</sprite>
+        <sprite>sprites\spr_koopa_red</sprite>
+        <sprite>sprites\spr_parakoopa_red</sprite>
+        <sprite>sprites\spr_shell_red</sprite>
+        <sprite>sprites\spr_shell_red_down</sprite>
+        <sprite>sprites\spr_koopa_blue</sprite>
+        <sprite>sprites\spr_shell_blue</sprite>
+        <sprite>sprites\spr_shell_blue_down</sprite>
+        <sprite>sprites\spr_koopa_yellow</sprite>
+        <sprite>sprites\spr_parakoopa_yellow</sprite>
+        <sprite>sprites\spr_parakoopa_yellow_jump</sprite>
+        <sprite>sprites\spr_shell_yellow</sprite>
+        <sprite>sprites\spr_shell_yellow_down</sprite>
+        <sprite>sprites\spr_beachkoopa</sprite>
+        <sprite>sprites\spr_beachkoopa_walk</sprite>
+        <sprite>sprites\spr_beachkoopa_blue</sprite>
+        <sprite>sprites\spr_beachkoopa_blue_walk</sprite>
+        <sprite>sprites\spr_beachkoopa_blue_kick</sprite>
+        <sprite>sprites\spr_koopa_sq</sprite>
         <sprite>sprites\spr_rex</sprite>
         <sprite>sprites\spr_rex2</sprite>
         <sprite>sprites\spr_rex_sq</sprite>
@@ -1204,21 +1166,17 @@
         <sprite>sprites\spr_spiny</sprite>
         <sprite>sprites\spr_spiny_dead</sprite>
         <sprite>sprites\spr_shell_spiny</sprite>
-        <sprites name="Piranha Plants">
-          <sprites name="Big">
-            <sprite>sprites\spr_bigplant</sprite>
-          </sprites>
-          <sprite>sprites\spr_pplant</sprite>
-          <sprite>sprites\spr_pplant_fire</sprite>
-          <sprite>sprites\spr_pplant_side</sprite>
-          <sprite>sprites\spr_pplant_side_fire</sprite>
-          <sprite>sprites\spr_pplant_large</sprite>
-          <sprite>sprites\spr_pplant_large_fire</sprite>
-          <sprite>sprites\spr_jpplant</sprite>
-          <sprite>sprites\spr_ptooie</sprite>
-          <sprite>sprites\spr_ptooie_blow</sprite>
-          <sprite>sprites\spr_ptooie_ball</sprite>
-        </sprites>
+        <sprite>sprites\spr_pplant</sprite>
+        <sprite>sprites\spr_pplant_fire</sprite>
+        <sprite>sprites\spr_pplant_side</sprite>
+        <sprite>sprites\spr_pplant_side_fire</sprite>
+        <sprite>sprites\spr_pplant_large</sprite>
+        <sprite>sprites\spr_pplant_large_fire</sprite>
+        <sprite>sprites\spr_jpplant</sprite>
+        <sprite>sprites\spr_ptooie</sprite>
+        <sprite>sprites\spr_ptooie_blow</sprite>
+        <sprite>sprites\spr_ptooie_ball</sprite>
+        <sprite>sprites\spr_bigplant</sprite>
         <sprite>sprites\spr_swooper</sprite>
         <sprite>sprites\spr_spiketop</sprite>
         <sprite>sprites\spr_spiketop_turn</sprite>
@@ -1234,16 +1192,12 @@
         <sprite>sprites\spr_busterbeetle_hold</sprite>
       </sprites>
       <sprites name="Underwater">
-        <sprites name="Cheep-Cheeps">
-          <sprites name="Boss Bass">
-            <sprite>sprites\spr_bossbass</sprite>
-            <sprite>sprites\spr_bossbass_jump</sprite>
-            <sprite>sprites\spr_bossbass_cheep</sprite>
-          </sprites>
-          <sprite>sprites\spr_cheepcheep</sprite>
-          <sprite>sprites\spr_cheepcheep_green</sprite>
-          <sprite>sprites\spr_cheepcheep_spiked</sprite>
-        </sprites>
+        <sprite>sprites\spr_cheepcheep</sprite>
+        <sprite>sprites\spr_cheepcheep_green</sprite>
+        <sprite>sprites\spr_cheepcheep_spiked</sprite>
+        <sprite>sprites\spr_bossbass</sprite>
+        <sprite>sprites\spr_bossbass_jump</sprite>
+        <sprite>sprites\spr_bossbass_cheep</sprite>
         <sprite>sprites\spr_urchin</sprite>
         <sprite>sprites\spr_urchin_blink</sprite>
         <sprite>sprites\spr_dolphin</sprite>
@@ -1263,7 +1217,52 @@
       <sprites name="Desert">
         <sprite>sprites\spr_nipper</sprite>
         <sprite>sprites\spr_nipper_jump</sprite>
+        <sprite>sprites\spr_montymole</sprite>
+        <sprite>sprites\spr_montymole_b</sprite>
+        <sprite>sprites\spr_montymole_dirt</sprite>
+        <sprite>sprites\spr_montymole_dirt_wall</sprite>
+        <sprite>sprites\spr_megamole</sprite>
+        <sprite>sprites\spr_dinotorch</sprite>
+        <sprite>sprites\spr_dinotorch_blow</sprite>
+        <sprite>sprites\spr_dinotorch_sq</sprite>
+        <sprite>sprites\spr_dinoflame</sprite>
+        <sprite>sprites\spr_dinoflame_st</sprite>
+        <sprite>sprites\spr_dinorhino</sprite>
+        <sprite>sprites\spr_volcanolotus</sprite>
+        <sprite>sprites\spr_volcanolotus_b</sprite>
+        <sprite>sprites\spr_volcanolotus_c</sprite>
+        <sprite>sprites\spr_lotusball</sprite>
+        <sprite>sprites\spr_pokey</sprite>
+        <sprite>sprites\spr_firesnake</sprite>
+        <sprite>sprites\spr_firesnake_body</sprite>
+        <sprite>sprites\spr_brickgoomba</sprite>
+        <sprite>sprites\spr_angrysun</sprite>
       </sprites>
+      <sprites name="Sky">
+        <sprite>sprites\spr_lakitu</sprite>
+        <sprite>sprites\spr_lakitu_red</sprite>
+        <sprite>sprites\spr_lakitu_cloud</sprite>
+        <sprite>sprites\spr_spinyegg</sprite>
+        <sprite>sprites\spr_spinyegg_red</sprite>
+        <sprite>sprites\spr_firechomp</sprite>
+        <sprite>sprites\spr_firechomp_b</sprite>
+        <sprite>sprites\spr_firechomp_fire</sprite>
+      </sprites>
+      <sprites name="Big Land">
+        <sprite>sprites\spr_goomba_big</sprite>
+        <sprite>sprites\spr_goomba_big_sq</sprite>
+        <sprite>sprites\spr_koopa_big</sprite>
+        <sprite>sprites\spr_parakoopa_big</sprite>
+        <sprite>sprites\spr_shell_big</sprite>
+        <sprite>sprites\spr_shell_big_down</sprite>
+        <sprite>sprites\spr_koopa_big_red</sprite>
+        <sprite>sprites\spr_parakoopa_big_red</sprite>
+        <sprite>sprites\spr_shell_big_red</sprite>
+        <sprite>sprites\spr_shell_big_red_down</sprite>
+      </sprites>
+      <sprite>sprites\spr_koopa_kamikaze</sprite>
+      <sprite>sprites\spr_koopa_kamikaze_down</sprite>
+      <sprite>sprites\spr_koopa_black</sprite>
     </sprites>
     <sprites name="World Map">
       <sprite>sprites\spr_mapmario</sprite>
@@ -1776,9 +1775,6 @@
           <sprite>sprites\spr_palette_warpnoteblock</sprite>
         </sprites>
         <sprites name="NPCs">
-          <sprites name="Enemies">
-            <sprite>sprites\spr_palette_beachkoopa</sprite>
-          </sprites>
           <sprite>sprites\spr_palette_yoshi</sprite>
         </sprites>
         <sprite>sprites\spr_palette_door</sprite>
@@ -1873,9 +1869,12 @@
     <background>background\bgr_titleb</background>
   </backgrounds>
   <paths name="paths">
+    <paths name="NPC Paths">
+      <path>paths\pth_angrysun</path>
+      <path>paths\pth_microgoomba</path>
+    </paths>
     <path>paths\pth_bubble</path>
     <path>paths\pth_bubble_v</path>
-    <path>paths\pth_microgoomba</path>
   </paths>
   <scripts name="scripts">
     <scripts name="Player">
@@ -2293,57 +2292,27 @@
     <objects name="Enemies">
       <objects name="Main">
         <objects name="Land">
-          <objects name="Goombas">
-            <objects name="Normal">
-              <objects name="Big">
-                <object>objects\obj_goomba_big</object>
-              </objects>
-              <object>objects\obj_goomba</object>
-              <object>objects\obj_paragoomba</object>
-              <object>objects\obj_goombrat</object>
-            </objects>
-            <objects name="Red">
-              <object>objects\obj_goomba_red</object>
-              <object>objects\obj_paragoomba_red</object>
-            </objects>
-            <object>objects\obj_galoomba</object>
-            <object>objects\obj_paragaloomba</object>
-            <object>objects\obj_galoomba_parachute</object>
-            <object>objects\obj_goomba_shoe</object>
-          </objects>
-          <objects name="Koopas">
-            <objects name="Green">
-              <objects name="Big">
-                <object>objects\obj_koopa_big</object>
-                <object>objects\obj_parakoopa_big</object>
-                <object>objects\obj_parakoopa_big_fly</object>
-              </objects>
-              <object>objects\obj_koopa</object>
-              <object>objects\obj_parakoopa</object>
-              <object>objects\obj_parakoopa_fly</object>
-              <object>objects\obj_beachkoopa</object>
-            </objects>
-            <objects name="Red">
-              <objects name="Big">
-                <object>objects\obj_koopa_big_red</object>
-                <object>objects\obj_parakoopa_big_red</object>
-              </objects>
-              <object>objects\obj_koopa_red</object>
-              <object>objects\obj_parakoopa_red</object>
-              <object>objects\obj_beachkoopa_red</object>
-            </objects>
-            <objects name="Blue">
-              <object>objects\obj_koopa_blue</object>
-              <object>objects\obj_beachkoopa_blue</object>
-            </objects>
-            <objects name="Yellow">
-              <object>objects\obj_koopa_yellow</object>
-              <object>objects\obj_parakoopa_yellow</object>
-              <object>objects\obj_beachkoopa_yellow</object>
-            </objects>
-            <object>objects\obj_shell</object>
-            <object>objects\obj_koopa_kamikaze</object>
-          </objects>
+          <object>objects\obj_goomba</object>
+          <object>objects\obj_paragoomba</object>
+          <object>objects\obj_goombrat</object>
+          <object>objects\obj_goomba_red</object>
+          <object>objects\obj_paragoomba_red</object>
+          <object>objects\obj_galoomba</object>
+          <object>objects\obj_paragaloomba</object>
+          <object>objects\obj_galoomba_parachute</object>
+          <object>objects\obj_goomba_shoe</object>
+          <object>objects\obj_koopa</object>
+          <object>objects\obj_parakoopa</object>
+          <object>objects\obj_parakoopa_fly</object>
+          <object>objects\obj_beachkoopa</object>
+          <object>objects\obj_koopa_red</object>
+          <object>objects\obj_parakoopa_red</object>
+          <object>objects\obj_beachkoopa_red</object>
+          <object>objects\obj_koopa_blue</object>
+          <object>objects\obj_beachkoopa_blue</object>
+          <object>objects\obj_koopa_yellow</object>
+          <object>objects\obj_parakoopa_yellow</object>
+          <object>objects\obj_beachkoopa_yellow</object>
           <object>objects\obj_rex</object>
           <object>objects\obj_spike</object>
           <object>objects\obj_hoopster</object>
@@ -2357,24 +2326,19 @@
           <object>objects\obj_ceilingbuzzy</object>
           <object>objects\obj_spiny</object>
           <object>objects\obj_ceilingspiny</object>
-          <objects name="Piranha Plants">
-            <objects name="Big">
-              <object>objects\obj_bigplant</object>
-            </objects>
-            <object>objects\obj_pplant</object>
-            <object>objects\obj_pplant_fire</object>
-            <object>objects\obj_pplant_side_r</object>
-            <object>objects\obj_pplant_side_l</object>
-            <object>objects\obj_pplant_fire_side_r</object>
-            <object>objects\obj_pplant_fire_side_l</object>
-            <object>objects\obj_pplant_large</object>
-            <object>objects\obj_pplant_large_down</object>
-            <object>objects\obj_pplant_large_fire</object>
-            <object>objects\obj_pplant_large_fire_down</object>
-            <object>objects\obj_jpplant</object>
-            <object>objects\obj_ptooie</object>
-            <object>objects\obj_ptooie_pipe</object>
-          </objects>
+          <object>objects\obj_pplant</object>
+          <object>objects\obj_pplant_fire</object>
+          <object>objects\obj_pplant_side_r</object>
+          <object>objects\obj_pplant_side_l</object>
+          <object>objects\obj_pplant_fire_side_r</object>
+          <object>objects\obj_pplant_fire_side_l</object>
+          <object>objects\obj_pplant_large</object>
+          <object>objects\obj_pplant_large_down</object>
+          <object>objects\obj_pplant_large_fire</object>
+          <object>objects\obj_pplant_large_fire_down</object>
+          <object>objects\obj_jpplant</object>
+          <object>objects\obj_ptooie</object>
+          <object>objects\obj_ptooie_pipe</object>
           <object>objects\obj_swooper</object>
           <object>objects\obj_spiketop</object>
           <object>objects\obj_spiketop_blue</object>
@@ -2385,18 +2349,14 @@
           <object>objects\obj_busterbeetle</object>
         </objects>
         <objects name="Underwater">
-          <objects name="Cheep-Cheeps">
-            <objects name="Boss Bass">
-              <object>objects\obj_bossbass</object>
-              <object>objects\obj_bigbertha</object>
-            </objects>
-            <object>objects\obj_cheepcheep</object>
-            <object>objects\obj_cheepcheep_jump</object>
-            <object>objects\obj_cheepcheep_green</object>
-            <object>objects\obj_blurp</object>
-            <object>objects\obj_ripvanfish</object>
-            <object>objects\obj_porchupuffer</object>
-          </objects>
+          <object>objects\obj_cheepcheep</object>
+          <object>objects\obj_cheepcheep_jump</object>
+          <object>objects\obj_cheepcheep_green</object>
+          <object>objects\obj_bossbass</object>
+          <object>objects\obj_bigbertha</object>
+          <object>objects\obj_blurp</object>
+          <object>objects\obj_ripvanfish</object>
+          <object>objects\obj_porchupuffer</object>
           <object>objects\obj_urchin</object>
           <object>objects\obj_urchin_wall</object>
           <object>objects\obj_dolphin</object>
@@ -2408,7 +2368,36 @@
         <objects name="Desert">
           <object>objects\obj_nipper</object>
           <object>objects\obj_firenipper</object>
+          <object>objects\obj_monty</object>
+          <object>objects\obj_monty_chase</object>
+          <object>objects\obj_monty_dig</object>
+          <object>objects\obj_megamole</object>
+          <object>objects\obj_dinotorch</object>
+          <object>objects\obj_dinorhino</object>
+          <object>objects\obj_volcanolotus</object>
+          <object>objects\obj_pokey</object>
+          <object>objects\obj_firesnake</object>
+          <object>objects\obj_brickgoomba</object>
+          <object>objects\obj_angrysun</object>
         </objects>
+        <objects name="Sky">
+          <object>objects\obj_lakitu</object>
+          <object>objects\obj_lakitu_red</object>
+          <object>objects\obj_pipelakitu</object>
+          <object>objects\obj_pipelakitu_red</object>
+          <object>objects\obj_firechomp</object>
+        </objects>
+        <objects name="Big Land">
+          <object>objects\obj_goomba_big</object>
+          <object>objects\obj_koopa_big</object>
+          <object>objects\obj_parakoopa_big</object>
+          <object>objects\obj_parakoopa_big_fly</object>
+          <object>objects\obj_koopa_big_red</object>
+          <object>objects\obj_parakoopa_big_red</object>
+          <object>objects\obj_bigplant</object>
+        </objects>
+        <object>objects\obj_shell</object>
+        <object>objects\obj_koopa_kamikaze</object>
       </objects>
       <objects name="Generators">
         <objects name="Land">
@@ -2819,10 +2808,8 @@
           <object>objects\obj_enemy_tick</object>
           <object>objects\obj_stomped</object>
           <objects name="Land">
-            <objects name="Goombas">
-              <object>objects\obj_goomba_micro</object>
-              <object>objects\obj_galoomba_down</object>
-            </objects>
+            <object>objects\obj_goomba_micro</object>
+            <object>objects\obj_galoomba_down</object>
             <object>objects\obj_spike_ball</object>
             <object>objects\obj_wiggler_body</object>
           </objects>
@@ -2835,17 +2822,25 @@
             <object>objects\obj_busterpickup</object>
           </objects>
           <objects name="Underwater">
-            <objects name="Cheep-Cheeps">
-              <objects name="Boss Bass">
-                <object>objects\obj_bigbertha_cheep</object>
-              </objects>
-              <object>objects\obj_generatorcheep</object>
-              <object>objects\obj_generatorcheep2</object>
-              <object>objects\obj_generatorcheep2b</object>
-            </objects>
+            <object>objects\obj_generatorcheep</object>
+            <object>objects\obj_generatorcheep2</object>
+            <object>objects\obj_generatorcheep2b</object>
+            <object>objects\obj_bigbertha_cheep</object>
             <object>objects\obj_generatordolphin</object>
             <object>objects\obj_lavalotus_ball</object>
             <object>objects\obj_torpedoted</object>
+          </objects>
+          <objects name="Desert">
+            <object>objects\obj_monty_jump</object>
+            <object>objects\obj_dinotorch_fire</object>
+            <object>objects\obj_lotusball</object>
+            <object>objects\obj_firesnake_body</object>
+            <object>objects\obj_angrysun_movement</object>
+          </objects>
+          <objects name="Sky">
+            <object>objects\obj_lakitu_movement</object>
+            <object>objects\obj_lakitu_egg</object>
+            <object>objects\obj_firechomp_fire</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>

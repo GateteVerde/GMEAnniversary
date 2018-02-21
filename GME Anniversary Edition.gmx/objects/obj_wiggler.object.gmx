@@ -420,7 +420,7 @@ if (ready == 0) {
             <string>///Wiggler kill
 
 //Create dead object.
-imdead = instance_create(x,y+16,obj_enemy_dead);
+imdead = instance_create(x,y,obj_enemy_dead);
 
 //Set the sprite
 imdead.sprite_index = sprite_index;

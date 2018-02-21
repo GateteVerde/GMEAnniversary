@@ -37,6 +37,9 @@ alarm[0] = 8;
 //Num. of parts
 count = 0;
 
+//Speed
+spd = -6;
+
 //Scale
 xscale = -1;
 </string>
@@ -64,7 +67,7 @@ xscale = -1;
             <string>///Create dead enemy parts.
 
 //Create dead object.
-imdead = instance_create(x,y+16,obj_enemy_dead);
+imdead = instance_create(x,y,obj_enemy_dead);
 
 //Set the sprite
 imdead.sprite_index = sprite_index;
@@ -73,7 +76,7 @@ imdead.sprite_index = sprite_index;
 imdead.image_xscale = xscale;
 
 //Set the vertical speed
-imdead.vspeed = -6;
+imdead.vspeed = spd;
 
 //Set the horizontal speed.
 imdead.hspeed = 0.5;

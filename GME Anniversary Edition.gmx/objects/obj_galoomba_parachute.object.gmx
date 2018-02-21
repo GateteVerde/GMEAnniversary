@@ -265,7 +265,7 @@ else {
             <string>///Default enemy dead script
 
 //Create dead object
-imdead = instance_create(x,y+16,obj_enemy_dead);
+imdead = instance_create(x,y,obj_enemy_dead);
 
 //Make the dead object hereby the sprite
 imdead.sprite_index = spr_galoomba;

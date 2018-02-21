@@ -256,7 +256,7 @@ if (moving) {
             <string>///Default floor collision
 
 //When moving down
-if (vspeed &gt; 0) {
+if (vspeed &gt;= 0) {
 
     //Check for a semisolid below
     var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_semisolid,0,0);
@@ -269,7 +269,7 @@ if (vspeed &gt; 0) {
 
 //Embed the NPC into the slope to ensure correct slope physics.
 if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0))
+&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0)) 
 &amp;&amp; (vspeed == 0) {
 
     //Make sure it's not in contact with a semisolid
@@ -278,8 +278,9 @@ if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0))
 }
     
 //Handle slope collision
-if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
+if (vspeed &gt; -0.85)
+&amp;&amp; ((collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
+&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0))) {
 
     //Stay embed on the slope.
     while collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0)
