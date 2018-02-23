@@ -19,6 +19,10 @@ music_setup(global._theme_athletic, "Athletic", 3);
 global._theme_bonus = music_add("Bonus");
 music_setup(global._theme_bonus, "Bonus", 3);
 
+//Castle
+global._theme_castle = music_add("Castle");
+music_setup(global._theme_castle, "Castle", 3);
+
 //Gameover
 global._theme_gameover = music_add("Gameover");
 music_setup(global._theme_gameover, "Gameover", 2);

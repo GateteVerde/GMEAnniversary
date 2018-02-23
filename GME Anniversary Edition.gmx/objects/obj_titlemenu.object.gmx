@@ -300,7 +300,7 @@ if ((display == 1) &amp;&amp; (scale == 1)) {
         //Page 1: File Selection
         else if (page == 1) {
         
-            if (choice &lt; 3) {
+            if (choice != 3) {
                                            
                 //Stop stream if it's playing
                 if (FMODInstanceIsPlaying(stream)) {
@@ -512,8 +512,6 @@ instance_create(0,0,obj_curtainin);
             <kind>1</kind>
             <string>///Draw the menu.
 
-
-
 if (display == 1) {
 
     //Draw the menu box
@@ -573,6 +571,23 @@ else {
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }
+
+//Align the text
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+
+//Set up the font
+draw_set_font(global.font_interface);  
+
+//Set the alpha
+draw_set_alpha(1);
+
+//Draw the text
+draw_text_colour_shadowed(view_xview[0]+global.gw/2, view_yview[0]+(global.gh-10),"2008-2018 GMETEAM / GATETE GAMING", c_black, c_white, 1, 1, 0.5, 1);
+
+//Re align the text
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 </string>
           </argument>
         </arguments>

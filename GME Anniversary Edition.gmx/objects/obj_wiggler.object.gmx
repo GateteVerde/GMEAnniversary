@@ -366,6 +366,9 @@ if (ready == 0) {
             with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);        
     }
     
+    //Increment combo
+    obj_playerparent.hitcombo++;
+    
     //Kill flower
     with (instance_create(x,y,obj_enemy_dead)) {
     

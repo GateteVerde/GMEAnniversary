@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="39" name="datafiles">
-    <datafiles number="39" name="music">
+  <datafiles number="40" name="datafiles">
+    <datafiles number="40" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -38,6 +38,23 @@
           </Config>
         </ConfigOptions>
         <filename>bonus.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>castle.ogg</name>
+        <exists>-1</exists>
+        <size>210416</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>castle.ogg</filename>
       </datafile>
       <datafile>
         <name>gameover.ogg</name>
@@ -465,6 +482,7 @@
     </sounds>
     <sounds name="Enemy">
       <sound>sound\snd_blargg</sound>
+      <sound>sound\snd_crumble</sound>
       <sound>sound\snd_flames</sound>
       <sound>sound\snd_hammer</sound>
       <sound>sound\snd_podoboo</sound>
@@ -1248,9 +1266,20 @@
         <sprite>sprites\spr_firechomp_b</sprite>
         <sprite>sprites\spr_firechomp_fire</sprite>
         <sprite>sprites\spr_parabeetle</sprite>
-        <sprite>sprites\spr_megaparabeetle</sprite>
+        <sprite>sprites\spr_bigparabeetle</sprite>
         <sprite>sprites\spr_foo</sprite>
-        <sprite>sprites\spr_foo_smog</sprite>
+        <sprite>sprites\spr_foo_blow</sprite>
+        <sprite>sprites\spr_foo_fog</sprite>
+      </sprites>
+      <sprites name="Castle">
+        <sprite>sprites\spr_drybones</sprite>
+        <sprite>sprites\spr_drybones_crumble</sprite>
+        <sprite>sprites\spr_bonybeetle</sprite>
+        <sprite>sprites\spr_bonybeetle_hide</sprite>
+        <sprite>sprites\spr_bonybeetle_crumble</sprite>
+        <sprite>sprites\spr_podoboo</sprite>
+        <sprite>sprites\spr_thwomp</sprite>
+        <sprite>sprites\spr_thwimp</sprite>
       </sprites>
       <sprites name="Big Land">
         <sprite>sprites\spr_goomba_big</sprite>
@@ -1381,6 +1410,7 @@
         <sprite>sprites\spr_lava_c</sprite>
         <sprite>sprites\spr_lava_d</sprite>
         <sprite>sprites\spr_lava_e</sprite>
+        <sprite>sprites\spr_lava_e2</sprite>
         <sprite>sprites\spr_lavafall_a</sprite>
         <sprite>sprites\spr_lavafall_b</sprite>
       </sprites>
@@ -1785,6 +1815,12 @@
         <sprite>sprites\spr_palette_score</sprite>
         <sprite>sprites\spr_palette_null</sprite>
       </sprites>
+      <sprites name="Title">
+        <sprite>sprites\spr_logo</sprite>
+        <sprite>sprites\spr_titlebg_top</sprite>
+        <sprite>sprites\spr_titlebg_middle</sprite>
+        <sprite>sprites\spr_titlebg_bottom</sprite>
+      </sprites>
       <sprite>sprites\spr_talk</sprite>
       <sprite>sprites\spr_toad</sprite>
       <sprite>sprites\spr_digtile</sprite>
@@ -1819,6 +1855,8 @@
         <background>background\bgr_darkhills_c</background>
         <background>background\bgr_desert_bg</background>
         <background>background\bgr_desert_fg</background>
+        <background>background\bgr_fortress_bg</background>
+        <background>background\bgr_fortress_fg</background>
         <background>background\bgr_hills</background>
         <background>background\bgr_iceforest</background>
         <background>background\bgr_subcon_bg</background>
@@ -1870,7 +1908,7 @@
       <background>background\bgr_mappoison_c</background>
     </backgrounds>
     <background>background\bgr_title</background>
-    <background>background\bgr_titleb</background>
+    <background>background\bgr_titlebg_back</background>
   </backgrounds>
   <paths name="paths">
     <paths name="NPC Paths">
@@ -2145,6 +2183,7 @@
       <script>scripts\init_globals_music.gml</script>
       <script>scripts\draw_circle_colour_precise.gml</script>
       <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
+      <script>scripts\draw_sprite_tiled_area_ext.gml</script>
     </scripts>
     <script>scripts\outside_view.gml</script>
     <script>scripts\constant_get_sprite.gml</script>
@@ -2391,8 +2430,17 @@
           <object>objects\obj_pipelakitu_red</object>
           <object>objects\obj_firechomp</object>
           <object>objects\obj_parabeetle</object>
-          <object>objects\obj_megaparabeetle</object>
+          <object>objects\obj_bigparabeetle</object>
           <object>objects\obj_foo</object>
+        </objects>
+        <objects name="Castle">
+          <object>objects\obj_drybones</object>
+          <object>objects\obj_bonybeetle</object>
+          <object>objects\obj_podoboo</object>
+          <object>objects\obj_podoboo_ceiling</object>
+          <object>objects\obj_thwomp</object>
+          <object>objects\obj_thwomp_left</object>
+          <object>objects\obj_thwomp_right</object>
         </objects>
         <objects name="Big Land">
           <object>objects\obj_goomba_big</object>
@@ -2514,11 +2562,14 @@
           <object>objects\obj_lavaslope_sl</object>
           <object>objects\obj_lavaslope_sr</object>
         </objects>
+        <objects name="Castle">
+          <object>objects\obj_lava_top</object>
+          <object>objects\obj_lava_ceiling</object>
+        </objects>
         <object>objects\obj_lava</object>
         <object>objects\obj_lava_b</object>
         <object>objects\obj_lava_c</object>
         <object>objects\obj_lava_d</object>
-        <object>objects\obj_lava_e</object>
         <object>objects\obj_lavafall</object>
       </objects>
       <object>objects\obj_vine</object>
@@ -2850,6 +2901,9 @@
             <object>objects\obj_firechomp_fire</object>
             <object>objects\obj_foo_fog</object>
           </objects>
+          <objects name="Castle">
+            <object>objects\obj_crumblebones</object>
+          </objects>
           <object>objects\obj_shell_kick</object>
         </objects>
         <objects name="World Map">
@@ -3017,6 +3071,7 @@
           </objects>
           <objects name="Menus">
             <objects name="Title">
+              <object>objects\obj_title</object>
               <object>objects\obj_titlemenu</object>
               <object>objects\obj_titlemenu_key</object>
             </objects>
@@ -3087,6 +3142,31 @@
     </rooms>
   </rooms>
   <constants number="43">
+    <constant name="cs_golden">-28</constant>
+    <constant name="cs_beanstalk">-27</constant>
+    <constant name="cs_propellerblock">-26</constant>
+    <constant name="cs_trampoline">-25</constant>
+    <constant name="cs_gswitch">-24</constant>
+    <constant name="cs_pswitch">-23</constant>
+    <constant name="cs_key">-22</constant>
+    <constant name="cs_poison">-21</constant>
+    <constant name="cs_star">-20</constant>
+    <constant name="cs_3up">-19</constant>
+    <constant name="cs_1up">-18</constant>
+    <constant name="cs_jugemushoe">-17</constant>
+    <constant name="cs_dossunshoe">-16</constant>
+    <constant name="cs_baburushoe">-15</constant>
+    <constant name="cs_kuriboshoe">-14</constant>
+    <constant name="cs_yoshi_b">-13</constant>
+    <constant name="cs_yoshi_r">-12</constant>
+    <constant name="cs_yoshi_g">-11</constant>
+    <constant name="cs_yoshi">-10</constant>
+    <constant name="cs_coin_s">-6</constant>
+    <constant name="cs_coin">-5</constant>
+    <constant name="cs_area_b">-4</constant>
+    <constant name="cs_area_r">-3</constant>
+    <constant name="cs_area_g">-2</constant>
+    <constant name="cs_area_y">-1</constant>
     <constant name="cs_small">0</constant>
     <constant name="cs_big">1</constant>
     <constant name="cs_fire">2</constant>
@@ -3105,31 +3185,6 @@
     <constant name="cs_penguin">15</constant>
     <constant name="cs_propeller">16</constant>
     <constant name="cs_cat">17</constant>
-    <constant name="cs_coin">-1</constant>
-    <constant name="cs_coin_s">-2</constant>
-    <constant name="cs_area_y">-3</constant>
-    <constant name="cs_area_g">-4</constant>
-    <constant name="cs_area_r">-5</constant>
-    <constant name="cs_area_b">-6</constant>
-    <constant name="cs_yoshi">-10</constant>
-    <constant name="cs_yoshi_r">-11</constant>
-    <constant name="cs_yoshi_y">-12</constant>
-    <constant name="cs_yoshi_b">-13</constant>
-    <constant name="cs_kuriboshoe">-14</constant>
-    <constant name="cs_baburushoe">-15</constant>
-    <constant name="cs_dossunshoe">-16</constant>
-    <constant name="cs_jugemushoe">-17</constant>
-    <constant name="cs_golden">-18</constant>
-    <constant name="cs_1up">-19</constant>
-    <constant name="cs_3up">-20</constant>
-    <constant name="cs_star">-21</constant>
-    <constant name="cs_poison">-22</constant>
-    <constant name="cs_key">-23</constant>
-    <constant name="cs_pswitch">-24</constant>
-    <constant name="cs_gswitch">-25</constant>
-    <constant name="cs_trampoline">-26</constant>
-    <constant name="cs_propellerblock">-27</constant>
-    <constant name="cs_beanstalk">-28</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

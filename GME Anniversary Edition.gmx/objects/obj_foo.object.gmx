@@ -31,7 +31,7 @@
 vulnerable = 0;
 
 //How vulnerable is this enemy to the player?
-stomp = 0;
+stomp = 4;
 
 //How vulnerable is this enemy to yoshi?
 edible = 0;
@@ -39,69 +39,11 @@ edible = 0;
 //Facing direction
 xscale = 1;
 
-//Animate
-image_speed = 0;
+//Whether this object is swimming
+swimming = 0;
 
-//Blow
-alarm[0] = 2;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Stop blowing
-
-//Set the default frame
-image_index = 0;
-
-//Blow again
-alarm[0] = 600;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Blow
-
-//Set the blowing frame
-image_index = 1;
-
-//Stop blowing
-alarm[1] = 200;
+//Blow time
+blowtime = 200;
 </string>
           </argument>
         </arguments>
@@ -126,11 +68,15 @@ alarm[1] = 200;
             <kind>1</kind>
             <string>///Foo logic
 
+//Inherit event
+event_inherited();
+
 //If blowing
-if (image_index == 1) {
+if (sprite_index == spr_foo_blow)
+&amp;&amp; (image_index == 1) {
     
     //Create fog
-    with (instance_create(x,y,obj_fog)) {
+    with (instance_create(x,y,obj_foo_fog)) {
     
         //If facing right
         if (other.xscale == 1)
@@ -152,6 +98,148 @@ else {
     else
         xscale = 1;
 }
+
+//If the blow time is smaller than 200
+if (blowtime &lt;= 200) {
+
+    //Set the blowing sprite
+    sprite_index = spr_foo_blow;
+    
+    //Do not animate
+    image_speed = 0;
+    image_index = 1;
+}
+
+//Otherwise, if the blow time is greater than 201
+else if (blowtime &gt; 200) {
+
+    //If the blow time is smaller than 300
+    if (blowtime &lt;= 300) {
+    
+        //Set the blowing sprite
+        sprite_index = spr_foo_blow;
+        
+        //Do not animate
+        image_speed = 0;
+        image_index = 0;
+    }
+    
+    //Otherwise, animate normally
+    else {
+    
+        //Set the normal sprite
+        sprite_index = spr_foo;
+        
+        //Animate
+        image_speed = 0.125;
+    }
+}
+
+//Decrement blowtime
+blowtime--;
+if (blowtime &lt; 0)
+    blowtime = 800;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Custom stomp script
+
+//Get points based on combo
+if (obj_playerparent.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
+    with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
+else {
+        
+    //If the combo is odd
+    if (obj_playerparent.hitcombo % 2 == 1)
+        with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(9);
+    
+    //Otherwise, if the combo is even
+    else if (obj_playerparent.hitcombo % 2 == 0)
+        with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);        
+}
+    
+//Increment combo
+obj_playerparent.hitcombo++;
+
+//Defaults to dead script
+event_user(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Custom dead script
+
+repeat (10) {
+
+    with (instance_create(x,y,obj_foo_fog)) {
+    
+        motion_set(random(360), random_range(0.25,0.5));
+        scale = 0.5;
+    }
+}
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw foo
+
+draw_sprite_ext(sprite_index, -1, round(x), round(y), xscale, 1, 0, c_white, 1);
 </string>
           </argument>
         </arguments>
