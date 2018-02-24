@@ -1287,6 +1287,18 @@
         <sprite>sprites\spr_netkoopa_red</sprite>
         <sprite>sprites\spr_netkoopa_red_b</sprite>
         <sprite>sprites\spr_netkoopa_red_turn</sprite>
+        <sprites name="Obstacles">
+          <sprites name="Skewers">
+            <sprites name="Base">
+              <sprite>sprites\spr_skewerbase</sprite>
+              <sprite>sprites\spr_skewerbase_side</sprite>
+            </sprites>
+            <sprite>sprites\spr_skewertrunk</sprite>
+            <sprite>sprites\spr_skewertrunk_down</sprite>
+            <sprite>sprites\spr_skewertrunk_left</sprite>
+            <sprite>sprites\spr_skewertrunk_right</sprite>
+          </sprites>
+        </sprites>
       </sprites>
       <sprites name="Big Land">
         <sprite>sprites\spr_goomba_big</sprite>
@@ -2452,6 +2464,14 @@
           <object>objects\obj_thwimp</object>
           <object>objects\obj_netkoopa</object>
           <object>objects\obj_netkoopa_red</object>
+          <objects name="Obstacles">
+            <objects name="Skewers">
+              <object>objects\obj_skewer</object>
+              <object>objects\obj_skewer_up</object>
+              <object>objects\obj_skewer_left</object>
+              <object>objects\obj_skewer_right</object>
+            </objects>
+          </objects>
         </objects>
         <objects name="Big Land">
           <object>objects\obj_goomba_big</object>
@@ -2914,6 +2934,14 @@
           </objects>
           <objects name="Castle">
             <object>objects\obj_crumblebones</object>
+            <objects name="Obstacles">
+              <objects name="Skewers">
+                <object>objects\obj_skewer_trunk</object>
+                <object>objects\obj_skewer_trunk_up</object>
+                <object>objects\obj_skewer_trunk_left</object>
+                <object>objects\obj_skewer_trunk_right</object>
+              </objects>
+            </objects>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>
