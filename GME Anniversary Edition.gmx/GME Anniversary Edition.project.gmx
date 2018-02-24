@@ -1118,6 +1118,7 @@
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
       <sprite>sprites\spr_stompmask</sprite>
+      <sprite>sprites\spr_thwompmask</sprite>
       <sprite>sprites\spr_warp_h</sprite>
       <sprite>sprites\spr_warp_v</sprite>
       <sprite>sprites\spr_yoshimask</sprite>
@@ -1280,6 +1281,12 @@
         <sprite>sprites\spr_podoboo</sprite>
         <sprite>sprites\spr_thwomp</sprite>
         <sprite>sprites\spr_thwimp</sprite>
+        <sprite>sprites\spr_netkoopa</sprite>
+        <sprite>sprites\spr_netkoopa_b</sprite>
+        <sprite>sprites\spr_netkoopa_turn</sprite>
+        <sprite>sprites\spr_netkoopa_red</sprite>
+        <sprite>sprites\spr_netkoopa_red_b</sprite>
+        <sprite>sprites\spr_netkoopa_red_turn</sprite>
       </sprites>
       <sprites name="Big Land">
         <sprite>sprites\spr_goomba_big</sprite>
@@ -2441,6 +2448,10 @@
           <object>objects\obj_thwomp</object>
           <object>objects\obj_thwomp_left</object>
           <object>objects\obj_thwomp_right</object>
+          <object>objects\obj_thwomp_diagonal</object>
+          <object>objects\obj_thwimp</object>
+          <object>objects\obj_netkoopa</object>
+          <object>objects\obj_netkoopa_red</object>
         </objects>
         <objects name="Big Land">
           <object>objects\obj_goomba_big</object>

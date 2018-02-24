@@ -109,7 +109,7 @@ if (disablecontrol == false)
 &amp;&amp; (kicking == 0)
 &amp;&amp; (wallkick == 0)
 &amp;&amp; (stompstyle != 1) {
-
+        
     //Tanooki
     if (global.powerup == cs_tanooki)
     &amp;&amp; (keyboard_check(global.downkey))

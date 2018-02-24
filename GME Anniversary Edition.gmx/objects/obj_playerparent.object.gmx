@@ -91,7 +91,7 @@ flying = false;
 crouch = 0;
 
 //Handles the player net smacking
-netsmack = false;
+netsmack = 0;
 
 //Makes the player able or not able to move.
 move = false;
@@ -530,6 +530,10 @@ else {
         angle = 0;
 }
 
+//Decrement net smack
+if (netsmack &gt; 0)
+    netsmack--;
+
 //Make sure the player is doing a spinjump
 if (global.powerup != cs_propeller)
 &amp;&amp; (stompstyle == 2)
@@ -739,6 +743,21 @@ if (!swimming) {
         
             //Execute climb behaviour script
             scr_player_behaviour_climb();
+            
+            //Smack net if possible
+            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb_net,0,0))
+            &amp;&amp; (keyboard_check_pressed(vk_control))
+            &amp;&amp; (netsmack == 0) {
+            
+                //Play 'Bump' sound
+                audio_play_sound(snd_bump, 0, false);
+            
+                //Increment netsmack
+                netsmack = 4;
+                
+                //Change facing direction
+                xscale = -xscale;
+            }
         
             //Stop 'P-Meter' sound
             audio_stop_sound(snd_pmeter);
@@ -1358,6 +1377,10 @@ else
 //If the player has the propeller suit and the down key is pressed.
 if (global.powerup == cs_propeller)
 &amp;&amp; (keyboard_check(global.downkey))
+    exit;
+    
+//Otherwise, if the player is not climbing
+else if (state == 3)
     exit;
     
 //Otherwise, bounce
