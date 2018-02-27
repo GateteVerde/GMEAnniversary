@@ -1106,7 +1106,6 @@
       <sprite>sprites\spr_24mask</sprite>
       <sprite>sprites\spr_32mask</sprite>
       <sprite>sprites\spr_basketmask</sprite>
-      <sprite>sprites\spr_cannonmask</sprite>
       <sprite>sprites\spr_explosionmask</sprite>
       <sprite>sprites\spr_graymask</sprite>
       <sprite>sprites\spr_itembubblemask</sprite>
@@ -1118,9 +1117,6 @@
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
       <sprite>sprites\spr_stompmask</sprite>
-      <sprite>sprites\spr_thwompmask</sprite>
-      <sprite>sprites\spr_warp_h</sprite>
-      <sprite>sprites\spr_warp_v</sprite>
       <sprite>sprites\spr_yoshimask</sprite>
     </sprites>
     <sprites name="Enemies">
@@ -1273,6 +1269,23 @@
         <sprite>sprites\spr_foo_fog</sprite>
       </sprites>
       <sprites name="Castle">
+        <sprites name="Obstacles">
+          <sprites name="Skewers">
+            <sprites name="Base">
+              <sprite>sprites\spr_skewerbase</sprite>
+              <sprite>sprites\spr_skewerbase_side</sprite>
+            </sprites>
+            <sprite>sprites\spr_skewertrunk</sprite>
+            <sprite>sprites\spr_skewertrunk_down</sprite>
+            <sprite>sprites\spr_skewertrunk_left</sprite>
+            <sprite>sprites\spr_skewertrunk_right</sprite>
+          </sprites>
+          <sprite>sprites\spr_firebar</sprite>
+          <sprite>sprites\spr_rotodisc</sprite>
+          <sprite>sprites\spr_rotodisc_trail</sprite>
+          <sprite>sprites\spr_ballnchain</sprite>
+          <sprite>sprites\spr_crusher</sprite>
+        </sprites>
         <sprite>sprites\spr_drybones</sprite>
         <sprite>sprites\spr_drybones_crumble</sprite>
         <sprite>sprites\spr_bonybeetle</sprite>
@@ -1287,27 +1300,18 @@
         <sprite>sprites\spr_netkoopa_red</sprite>
         <sprite>sprites\spr_netkoopa_red_b</sprite>
         <sprite>sprites\spr_netkoopa_red_turn</sprite>
-        <sprites name="Obstacles">
-          <sprites name="Skewers">
-            <sprites name="Base">
-              <sprite>sprites\spr_skewerbase</sprite>
-              <sprite>sprites\spr_skewerbase_side</sprite>
-            </sprites>
-            <sprite>sprites\spr_skewertrunk</sprite>
-            <sprite>sprites\spr_skewertrunk_down</sprite>
-            <sprite>sprites\spr_skewertrunk_left</sprite>
-            <sprite>sprites\spr_skewertrunk_right</sprite>
-          </sprites>
-          <sprites name="Icons">
-            <sprite>sprites\spr_icon_firebar</sprite>
-            <sprite>sprites\spr_icon_rotodisc</sprite>
-            <sprite>sprites\spr_icon_ballnchain</sprite>
-          </sprites>
-          <sprite>sprites\spr_firebar</sprite>
-          <sprite>sprites\spr_rotodisc</sprite>
-          <sprite>sprites\spr_rotodisc_trail</sprite>
-          <sprite>sprites\spr_ballnchain</sprite>
-        </sprites>
+        <sprite>sprites\spr_grinder</sprite>
+        <sprite>sprites\spr_grinder_line</sprite>
+        <sprite>sprites\spr_hotfoot</sprite>
+        <sprite>sprites\spr_hotfoot_walk</sprite>
+        <sprite>sprites\spr_lilsparky</sprite>
+        <sprite>sprites\spr_hothead</sprite>
+        <sprite>sprites\spr_hothead_blink</sprite>
+        <sprite>sprites\spr_bowserstatue</sprite>
+        <sprite>sprites\spr_bowserstatue_gold</sprite>
+        <sprite>sprites\spr_bowserstatue_fire</sprite>
+        <sprite>sprites\spr_mechakoopa</sprite>
+        <sprite>sprites\spr_mechakoopa_held</sprite>
       </sprites>
       <sprites name="Big Land">
         <sprite>sprites\spr_goomba_big</sprite>
@@ -1843,13 +1847,6 @@
         <sprite>sprites\spr_palette_score</sprite>
         <sprite>sprites\spr_palette_null</sprite>
       </sprites>
-      <sprites name="Title">
-        <sprite>sprites\spr_logo</sprite>
-        <sprite>sprites\spr_titlebg_top</sprite>
-        <sprite>sprites\spr_titlebg_middle</sprite>
-        <sprite>sprites\spr_titlebg_bottom</sprite>
-      </sprites>
-      <sprite>sprites\spr_talk</sprite>
       <sprite>sprites\spr_toad</sprite>
       <sprite>sprites\spr_digtile</sprite>
       <sprite>sprites\spr_chest</sprite>
@@ -1859,16 +1856,30 @@
       <sprite>sprites\spr_palaceswitch_g</sprite>
       <sprite>sprites\spr_palaceswitch_r</sprite>
       <sprite>sprites\spr_palaceswitch_b</sprite>
+      <sprite>sprites\spr_logo</sprite>
+      <sprite>sprites\spr_titlebg_top</sprite>
+      <sprite>sprites\spr_titlebg_middle</sprite>
+      <sprite>sprites\spr_titlebg_bottom</sprite>
       <sprite>sprites\spr_letter</sprite>
     </sprites>
     <sprite>sprites\spr_up</sprite>
     <sprite>sprites\spr_down</sprite>
     <sprite>sprites\spr_left</sprite>
     <sprite>sprites\spr_right</sprite>
-    <sprite>sprites\spr_endmarker</sprite>
-    <sprite>sprites\spr_eventmarker</sprite>
-    <sprite>sprites\spr_eventmarker2</sprite>
-    <sprite>sprites\spr_mysterymarker</sprite>
+    <sprite>sprites\spr_marker_end</sprite>
+    <sprite>sprites\spr_marker_event</sprite>
+    <sprite>sprites\spr_marker_event2</sprite>
+    <sprite>sprites\spr_marker_firebar</sprite>
+    <sprite>sprites\spr_marker_rotodisc</sprite>
+    <sprite>sprites\spr_marker_spinners</sprite>
+    <sprite>sprites\spr_marker_warppipe</sprite>
+    <sprite>sprites\spr_marker_warpcannon</sprite>
+    <sprite>sprites\spr_marker_giantwarpcannon</sprite>
+    <sprite>sprites\spr_marker_warppipe_up</sprite>
+    <sprite>sprites\spr_marker_warppipe_down</sprite>
+    <sprite>sprites\spr_marker_warppipe_left</sprite>
+    <sprite>sprites\spr_marker_warppipe_right</sprite>
+    <sprite>sprites\spr_marker_npctalk</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Levels">
@@ -2462,6 +2473,18 @@
           <object>objects\obj_foo</object>
         </objects>
         <objects name="Castle">
+          <objects name="Obstacles">
+            <objects name="Skewers">
+              <object>objects\obj_skewer</object>
+              <object>objects\obj_skewer_up</object>
+              <object>objects\obj_skewer_left</object>
+              <object>objects\obj_skewer_right</object>
+            </objects>
+            <object>objects\obj_firebar_manager</object>
+            <object>objects\obj_rotodisc_manager</object>
+            <object>objects\obj_ballnchain_manager</object>
+            <object>objects\obj_crusher</object>
+          </objects>
           <object>objects\obj_drybones</object>
           <object>objects\obj_bonybeetle</object>
           <object>objects\obj_podoboo</object>
@@ -2473,17 +2496,14 @@
           <object>objects\obj_thwimp</object>
           <object>objects\obj_netkoopa</object>
           <object>objects\obj_netkoopa_red</object>
-          <objects name="Obstacles">
-            <objects name="Skewers">
-              <object>objects\obj_skewer</object>
-              <object>objects\obj_skewer_up</object>
-              <object>objects\obj_skewer_left</object>
-              <object>objects\obj_skewer_right</object>
-            </objects>
-            <object>objects\obj_firebar_manager</object>
-            <object>objects\obj_rotodisc_manager</object>
-            <object>objects\obj_ballnchain_manager</object>
-          </objects>
+          <object>objects\obj_grinder</object>
+          <object>objects\obj_grinder_line</object>
+          <object>objects\obj_hotfoot</object>
+          <object>objects\obj_lilspark</object>
+          <object>objects\obj_hothead</object>
+          <object>objects\obj_bowserstatue</object>
+          <object>objects\obj_bowserstatue_gold</object>
+          <object>objects\obj_mechakoopa</object>
         </objects>
         <objects name="Big Land">
           <object>objects\obj_goomba_big</object>
@@ -2945,7 +2965,6 @@
             <object>objects\obj_foo_fog</object>
           </objects>
           <objects name="Castle">
-            <object>objects\obj_crumblebones</object>
             <objects name="Obstacles">
               <objects name="Skewers">
                 <object>objects\obj_skewer_trunk</object>
@@ -2959,6 +2978,9 @@
               <object>objects\obj_chain</object>
               <object>objects\obj_ball</object>
             </objects>
+            <object>objects\obj_crumblebones</object>
+            <object>objects\obj_bowserstatue_fire</object>
+            <object>objects\obj_mechakoopa_down</object>
           </objects>
           <object>objects\obj_shell_kick</object>
         </objects>

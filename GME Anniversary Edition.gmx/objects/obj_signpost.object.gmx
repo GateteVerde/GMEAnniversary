@@ -140,7 +140,7 @@ if (ready)
 if (instance_exists(obj_playerparent)) {
 
     if (collision_rectangle(bbox_left-16,bbox_top-16,bbox_right+16,bbox_bottom,obj_playerparent,0,0))
-        draw_sprite(spr_talk, 0, x, bbox_top-16);
+        draw_sprite(spr_marker_npctalk, 0, x, bbox_top-16);
 }
 
 //Draw sign
