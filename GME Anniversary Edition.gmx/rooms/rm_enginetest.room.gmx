@@ -4,7 +4,7 @@
   <width>1280</width>
   <height>432</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -90,13 +90,18 @@ global.skin = 2;</code>
     <instance objName="obj_ballnchain_manager" x="1104" y="320" name="inst_0E84FF67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="648" y="384" name="inst_25DC966E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelcontrol" x="0" y="432" name="inst_1A58A27E" locked="0" code="levelmusic = global._theme_castle;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lilspark" x="344" y="272" name="inst_44DA50B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hothead" x="184" y="304" name="inst_D91EB209" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bowserstatue" x="776" y="288" name="inst_104FACF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bowserstatue_gold" x="1112" y="288" name="inst_EE025FFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mechakoopa" x="56" y="384" name="inst_9F219B31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mechakoopa" x="104" y="384" name="inst_6ABAB515" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mechakoopa" x="152" y="384" name="inst_EF476B56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pencilpillar" x="336" y="352" name="inst_B9F0023B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_endmarker" x="336" y="336" name="inst_5219D044" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_endmarker" x="336" y="416" name="inst_F5F497D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_up" x="336" y="400" name="inst_F755EF5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_down" x="336" y="352" name="inst_585749C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_foo" x="464" y="336" name="inst_46F40E1E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="96" y="320" w="16" h="16" xo="560" yo="272" id="10022373" name="inst_44AC37CA" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

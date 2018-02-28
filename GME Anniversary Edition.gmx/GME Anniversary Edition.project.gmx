@@ -1285,6 +1285,7 @@
           <sprite>sprites\spr_rotodisc_trail</sprite>
           <sprite>sprites\spr_ballnchain</sprite>
           <sprite>sprites\spr_crusher</sprite>
+          <sprite>sprites\spr_pencilpillar</sprite>
         </sprites>
         <sprite>sprites\spr_drybones</sprite>
         <sprite>sprites\spr_drybones_crumble</sprite>
@@ -1312,6 +1313,8 @@
         <sprite>sprites\spr_bowserstatue_fire</sprite>
         <sprite>sprites\spr_mechakoopa</sprite>
         <sprite>sprites\spr_mechakoopa_held</sprite>
+        <sprite>sprites\spr_fishbone</sprite>
+        <sprite>sprites\spr_fishbone_blink</sprite>
       </sprites>
       <sprites name="Big Land">
         <sprite>sprites\spr_goomba_big</sprite>
@@ -2484,6 +2487,7 @@
             <object>objects\obj_rotodisc_manager</object>
             <object>objects\obj_ballnchain_manager</object>
             <object>objects\obj_crusher</object>
+            <object>objects\obj_pencilpillar</object>
           </objects>
           <object>objects\obj_drybones</object>
           <object>objects\obj_bonybeetle</object>
@@ -2504,6 +2508,7 @@
           <object>objects\obj_bowserstatue</object>
           <object>objects\obj_bowserstatue_gold</object>
           <object>objects\obj_mechakoopa</object>
+          <object>objects\obj_fishbone</object>
         </objects>
         <objects name="Big Land">
           <object>objects\obj_goomba_big</object>
