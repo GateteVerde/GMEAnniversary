@@ -210,6 +210,31 @@ event_perform(ev_collision,obj_mario);
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_koopa_kamikaze">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect the coin with a kamikaze koopa
+
+event_perform(ev_collision,obj_mario); 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_bluebrick_th">
       <action>
         <libid>1</libid>
@@ -313,31 +338,6 @@ if (!ready) {
 
 if (other.held == 0)
     event_perform(ev_collision,obj_mario); 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_koopa_kamikaze">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Collect the coin with a kamikaze koopa
-
-event_perform(ev_collision,obj_mario); 
 </string>
           </argument>
         </arguments>

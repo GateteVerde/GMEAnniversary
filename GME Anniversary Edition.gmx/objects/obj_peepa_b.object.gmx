@@ -6,7 +6,7 @@
   <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>obj_enemyparent</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>spr_sproutmask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>///Peepa
 
+//Does this object have a parent
+parent = -1;
+
 //How vulnerable is this enemy to various items?
 vulnerable = 1;
 
@@ -46,36 +49,59 @@ image_speed = 0.125;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
-        <id>425</id>
-        <kind>4</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Decrement parent count
+
+with (parent) count--;
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>425</id>
-        <kind>4</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Peepa Logic
+
+//Face towards the player
+if (!instance_exists(obj_playerparent))
+|| (obj_playerparent.x &lt; x)
+    xscale = -1;
+else
+    xscale = 1;
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
     <event eventtype="7" enumb="40">

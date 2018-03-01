@@ -44,6 +44,9 @@ dist = 72;
 ghosts = 1;
 myspeed = 0.75;
 
+//Count number of ghosts
+count = 0;
+
 //Set the position.
 x += 8;
 y += 8;
@@ -108,8 +111,18 @@ active = true;
             <kind>1</kind>
             <string>///Create peepas
 
-for (var i=0; i&lt;ghosts; i++)
-    myghost[i] = instance_create(x,y,obj_peepa);
+for (var i=0; i&lt;ghosts; i++) {
+
+    //Create peepa
+    var b = instance_create(x,y,obj_peepa_b);
+    
+    //Count
+    count++;
+
+    //Assign peepa to a id
+    myghost[i] = b;
+        b.parent = id;
+}
 </string>
           </argument>
         </arguments>
@@ -132,20 +145,25 @@ for (var i=0; i&lt;ghosts; i++)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handle rotodisc positions
+            <string>///Handle ghost positions
 
-//If the discs are active
+//If the ghosts are active
 if (active) {
 
+    //Handle position of the ghosts
     for (i=0; i&lt;ghosts; i++;) {
     
         //Check if the ghost exist first
         if (instance_exists(myghost[i])) {
             
             myghost[i].x = x+dist*cos((angle+(i*360/ghosts))*pi/180);
-            myghost[i].y = y+dist*sin((angle+(i*360/ghosts))*pi/180);
+            myghost[i].y = y-8+dist*sin((angle+(i*360/ghosts))*pi/180);
         }
     }
+    
+    //Destroy if there's no ghosts
+    if (count == 0)
+        instance_destroy();    
 }
 
 //Disc angle

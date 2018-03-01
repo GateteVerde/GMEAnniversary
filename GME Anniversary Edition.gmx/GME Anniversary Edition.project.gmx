@@ -2533,9 +2533,10 @@
       </objects>
       <objects name="Ghost">
         <object>objects\obj_boo</object>
-        <object>objects\obj_boo_large</object>
-        <object>objects\obj_boo_ring</object>
-        <object>objects\obj_peepa_ring</object>
+        <object>objects\obj_bigboo</object>
+        <object>objects\obj_trailboo</object>
+        <object>objects\obj_ringboo</object>
+        <object>objects\obj_peepa_manager</object>
       </objects>
       <objects name="Big Land">
         <object>objects\obj_goomba_big</object>
@@ -2547,12 +2548,16 @@
         <object>objects\obj_bigplant</object>
       </objects>
       <objects name="Generators">
-        <object>objects\obj_generator_goomba</object>
-        <object>objects\obj_generator_galoomba</object>
-        <object>objects\obj_generator_cheepcheep</object>
-        <object>objects\obj_generator_spikedcheep</object>
-        <object>objects\obj_generator_spikedcheep_b</object>
-        <object>objects\obj_generator_dolphin</object>
+        <objects name="Land">
+          <object>objects\obj_generator_goomba</object>
+          <object>objects\obj_generator_galoomba</object>
+        </objects>
+        <objects name="Underwater">
+          <object>objects\obj_generator_cheepcheep</object>
+          <object>objects\obj_generator_spikedcheep</object>
+          <object>objects\obj_generator_spikedcheep_b</object>
+          <object>objects\obj_generator_dolphin</object>
+        </objects>
       </objects>
     </objects>
     <objects name="World Map">
@@ -3009,8 +3014,9 @@
             <object>objects\obj_mechakoopa_down</object>
           </objects>
           <objects name="Ghost">
-            <object>objects\obj_ringboo</object>
-            <object>objects\obj_peepa</object>
+            <object>objects\obj_ringboo_boo</object>
+            <object>objects\obj_trailboo_trail</object>
+            <object>objects\obj_peepa_b</object>
           </objects>
           <object>objects\obj_shell</object>
           <object>objects\obj_shell_kick</object>
