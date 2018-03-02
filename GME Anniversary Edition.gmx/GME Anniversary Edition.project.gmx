@@ -1322,7 +1322,11 @@
         <sprite>sprites\spr_boo</sprite>
         <sprite>sprites\spr_boo_large</sprite>
         <sprite>sprites\spr_boo_large_turn</sprite>
+        <sprite>sprites\spr_boo_stretch</sprite>
+        <sprite>sprites\spr_boo_stretch_b</sprite>
+        <sprite>sprites\spr_boo_block</sprite>
         <sprite>sprites\spr_peepa</sprite>
+        <sprite>sprites\spr_eerie</sprite>
       </sprites>
       <sprites name="Big Land">
         <sprite>sprites\spr_goomba_big</sprite>
@@ -1746,6 +1750,7 @@
         <sprite>sprites\spr_marker_cheep_spiked</sprite>
         <sprite>sprites\spr_marker_dolphin</sprite>
         <sprite>sprites\spr_marker_boo</sprite>
+        <sprite>sprites\spr_marker_eerie</sprite>
         <sprite>sprites\spr_marker_peepa</sprite>
       </sprites>
       <sprites name="Warp Markers">
@@ -1921,6 +1926,7 @@
         <background>background\bgr_desert_fg</background>
         <background>background\bgr_fortress_bg</background>
         <background>background\bgr_fortress_fg</background>
+        <background>background\bgr_ghosthouse</background>
         <background>background\bgr_hills</background>
         <background>background\bgr_iceforest</background>
         <background>background\bgr_subcon_bg</background>
@@ -2534,9 +2540,15 @@
       <objects name="Ghost">
         <object>objects\obj_boo</object>
         <object>objects\obj_bigboo</object>
-        <object>objects\obj_trailboo</object>
-        <object>objects\obj_ringboo</object>
+        <object>objects\obj_boocircle</object>
+        <object>objects\obj_boosnake</object>
+        <object>objects\obj_booblock</object>
+        <object>objects\obj_boostretch</object>
+        <object>objects\obj_boostretch_ceiling</object>
         <object>objects\obj_peepa_manager</object>
+        <object>objects\obj_peepa</object>
+        <object>objects\obj_peepa_v</object>
+        <object>objects\obj_eerie</object>
       </objects>
       <objects name="Big Land">
         <object>objects\obj_goomba_big</object>
@@ -2557,6 +2569,9 @@
           <object>objects\obj_generator_spikedcheep</object>
           <object>objects\obj_generator_spikedcheep_b</object>
           <object>objects\obj_generator_dolphin</object>
+        </objects>
+        <objects name="Ghost">
+          <object>objects\obj_generator_eerie</object>
         </objects>
       </objects>
     </objects>
@@ -3014,9 +3029,10 @@
             <object>objects\obj_mechakoopa_down</object>
           </objects>
           <objects name="Ghost">
-            <object>objects\obj_ringboo_boo</object>
-            <object>objects\obj_trailboo_trail</object>
+            <object>objects\obj_boocircle_boo</object>
+            <object>objects\obj_boosnake_trail</object>
             <object>objects\obj_peepa_b</object>
+            <object>objects\obj_eerie_active</object>
           </objects>
           <object>objects\obj_shell</object>
           <object>objects\obj_shell_kick</object>
