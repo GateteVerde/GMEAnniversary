@@ -149,29 +149,10 @@ if (ready &lt; 2) {
     
     //Otherwise, if health mode is active.
     else if (global.healthmode == true) {
-    
-        //If the player is small
-        if (health == 1) {
-        
-            //Play 'Powerup' sound.
-            audio_play_sound(snd_powerup, 0, false);
-        
-            //Turn Mario into 'Super' Mario.
-            global.powerup = cs_big;
-            
-            //Perform animation sequence
-            with (instance_create(0,0,obj_player_transform))
-                sequence = 0;        
-        }
-        else {
-        
-            //Play 'Cherry' sound
-            audio_play_sound(snd_cherry, 0, false);
-        }
-        
+
         health++;
-        if (health &gt; global.healthmax)
-            health = global.healthmax;
+        if (health &gt; 4)
+            health = 4;
     }
     
     //Collect it

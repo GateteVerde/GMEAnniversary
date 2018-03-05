@@ -27,12 +27,56 @@
             <kind>1</kind>
             <string>///The In-Level HUD
 
+//SMB3 Card Icons
+alpha = 0;
+if (instance_exists(obj_goalcard))
+    alpha = 2;
+
 //P-Meter flash
 flash = 0;
 alarm[0] = 7;
 
-//Shows up if the player collected a plus clock
-extratime = 0;
+//Shake
+shakex = 0;
+shakey = 0;
+
+//Shake the counter
+alarm[1] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Shake 'Time Left' marker
+
+alarm[1] = 2;
+if (audio_is_playing(snd_hurry)) {
+
+    shakex = random_range(-1,1);
+    shakey = random_range(-1,1);
+}
+else {
+
+    shakex = 0;
+    shakey = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -64,6 +108,38 @@ alarm[0] = 7;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HUD Logic
+
+//If the goal card exists, show HUD cards
+if (instance_exists(obj_goalcard)) 
+|| (global.clear &gt; 0)
+    alpha = 1;
+
+//Otherwise, hide HUD cards
+else
+    alpha = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -87,78 +163,85 @@ alarm[0] = 7;
 if (instance_exists(obj_lightningsheet))
     d3d_set_fog(0, c_black, 0, 64);
 
-//HUD (Left)
-if (global.level != -1)
-    draw_sprite_ext(spr_hud, 0, view_xview[0]+5, view_yview[0]+5, 1, 1, 0, c_white, 1);
-else
-    draw_sprite_ext(spr_hud, 1, view_xview[0]+5, view_yview[0]+5, 1, 1, 0, c_white, 1);
 
 //Set font
 draw_set_font(global.numbers_w);
 
 //Lives
-draw_text_colour_shadowed(view_xview[0]+26, view_yview[0]+10, string_format(lives, 2, 0), c_black, c_white, 1, 1, 1, 1);
+draw_sprite_ext(spr_hud_mario, -1, view_xview[0]+8, view_yview[0]+13, 1, 1, 0, c_white, 1);
+draw_text_colour(view_xview[0]+36, view_yview[0]+15, string_format(lives, 2, 0), c_white, c_white, c_white, c_white, 1);
 
 //Set font
 draw_set_font(global.numbers_g);
 
 //Coins
-draw_text_colour_shadowed(view_xview[0]+71, view_yview[0]+10, string_format(global.coins, 2, 0), c_black, c_white, 1, 1, 1, 1);
+draw_sprite_ext(spr_hud_coin, -1, view_xview[0]+69, view_yview[0]+13, 1, 1, 0, c_white, 1);
+draw_text_colour(view_xview[0]+97, view_yview[0]+15, string_format(global.coins, 2, 0), c_white, c_white, c_white, c_white, 1);
 
 //Star coins
-for (var i = 0; i &lt; 3; i++) {
+if (global.level != -1) {
 
-    //Draw the coin if it has been collected
-    if (ds_map_find_value(global.sc[i],global.level) &gt; 0)
-        draw_sprite_ext(spr_hud_starcoin_get, -1, view_xview[0]+5+(17*i), view_yview[0]+28, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_hud_starcoin, -1, view_xview[0]+8, view_yview[0]+33, 1, 1, 0, c_white, 1);
+    for (var i = 0; i &lt; 3; i++) {
+    
+        //Draw the coin if it has been collected
+        if (ds_map_find_value(global.sc[i],global.level) &gt; 0)
+            draw_sprite_ext(spr_hud_starcoin_get, -1, view_xview[0]+8+(17*i), view_yview[0]+33, 1, 1, 0, c_white, 1);
+    }
 }
 
 //Cards
-draw_sprite_ext(spr_hud_cards, 0, view_xview[0]+view_wview[0]-67,view_yview[0]+view_hview[0]-24, 1, 1, 0, c_white, 1);
+draw_sprite_ext(spr_hud_cards, 0, view_xview[0]+view_wview[0]-70,view_yview[0]+view_hview[0]-26, 1, 1, 0, c_white, alpha);
 for (var i = 0; i &lt; 3; i++) {
 
     if (global.card[i] != -1)
-        draw_sprite_ext(spr_goalcard, global.card[i], view_xview[0]+view_wview[0]-(66-(22*i)), view_yview[0]+view_hview[0]-23, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_goalcard, global.card[i], view_xview[0]+view_wview[0]-(69-(22*i)), view_yview[0]+view_hview[0]-25, 1, 1, 0, c_white, alpha);
 }
 
 //Reserve Box / Health Meter
 if (global.healthmode == 0) {
 
     //Box
-    draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+19, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, 1);
     
     //Reserve item
     if (global.reserve &gt; cs_small)
-        draw_sprite_ext(constant_get_sprite(global.reserve), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+11, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(constant_get_sprite(global.reserve), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+14, 1, 1, 0, c_white, 1);
 }
-else {
-
-    //Draw health
-    draw_sprite_ext(spr_hud_health, health, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, 1);
-}
-
-//HUD (Right)
-draw_sprite_ext(spr_hud_r, 0, view_xview[0]+view_wview[0]-83, view_yview[0]+5, 1, 1, 0, c_white, 1);
+else
+draw_sprite_ext(spr_hud_health, health, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, 1);
 
 //Set font
 draw_set_font(global.numbers_w);
 
 //Time
-draw_text_colour_shadowed(view_xview[0]+view_wview[0]-29, view_yview[0]+10, string_add_zeros(global.time, 3), c_black, c_white, 1, 1, 1, 1);
+draw_sprite_ext(spr_hud_time, -1, view_xview[0]+view_wview[0]-33+shakex, view_yview[0]+8+shakey, 1, 1, 0, c_white, 1);
+if (global.time &gt; -1)
+&amp;&amp; (obj_levelcontrol.leveltime != 0) {
+
+    //If there's 100 or less seconds left
+    if (global.time &lt;= 100)
+        draw_text_colour(view_xview[0]+view_wview[0]-32+shakex, view_yview[0]+15+shakey, string_add_zeros(global.time, 3), c_red, c_red, c_red, c_red, 1);
+    else
+        draw_text_colour(view_xview[0]+view_wview[0]-32, view_yview[0]+15, string_add_zeros(global.time, 3), c_white, c_white, c_white, c_white, 1);
+}
+else
+draw_text_colour(view_xview[0]+view_wview[0]-32, view_yview[0]+15, "000", c_white, c_white, c_white, c_white, 1);
 
 //Score
-draw_text_colour_shadowed(view_xview[0]+view_wview[0]-85, view_yview[0]+28, string_add_zeros(score, 10), c_black, c_white, 1, 1, 1, 1);
+draw_sprite_ext(spr_hud_score, -1, view_xview[0]+view_wview[0]-91, view_yview[0]+8, 1, 1, 0, c_white, 1);
+draw_text_colour(view_xview[0]+view_wview[0]-127, view_yview[0]+15, string_add_zeros(score, 9), c_white, c_white, c_white, c_white, 1);
 
 //P-Meter
 if (instance_exists(obj_playerparent)) {
 
     if (obj_playerparent.pmeter &gt; 111)
-        draw_sprite_ext(spr_hud_pmeter, 6+flash, view_xview[0]+5, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_hud_pmeter, 6+flash, view_xview[0]+8, view_yview[0]+view_hview[0]-24, 1, 1, 0, c_white, 1);
     else
-        draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/16), view_xview[0]+5, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/16), view_xview[0]+8, view_yview[0]+view_hview[0]-24, 1, 1, 0, c_white, 1);
 }
 else
-    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+5, view_yview[0]+view_hview[0]-20, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+8, view_yview[0]+view_hview[0]-24, 1, 1, 0, c_white, 1);
     
 //Enable the fog
 if (instance_exists(obj_lightningsheet))

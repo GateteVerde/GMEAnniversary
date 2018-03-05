@@ -31,8 +31,7 @@ lives = 5;
 score = 0;
 
 //Health
-health = 3;
-global.healthmax = 3;
+health = 2;
 
 //Skin
 //0: No skin
@@ -45,6 +44,9 @@ global.coins = 0;
 
 //Red Coins
 global.redcoins = 0;
+
+//Silver Coins
+global.silvercoins = 0;
 
 //Current Player
 global.player = 0;

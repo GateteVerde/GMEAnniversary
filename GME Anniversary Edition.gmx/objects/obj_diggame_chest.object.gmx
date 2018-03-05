@@ -198,8 +198,13 @@ if (ready == 0) {
     //Otherwise, if the roll gave a number between 1001 and 8000
     else if ((roll &gt;= 1001) &amp;&amp; (roll &lt;= 8000)) {
     
-        with (instance_create(x+8,y,obj_powerupget)) 
-            sprite_index = constant_get_sprite(round(random_range(cs_big, cs_cat)));
+        with (instance_create(x+8,y,obj_powerupget)) {
+        
+            if (global.healthmode == 0)
+                sprite_index = constant_get_sprite(round(random_range(cs_big, cs_cat)));
+            else
+                sprite_index = constant_get_sprite(round(random_range(cs_fire, cs_cat)));
+        }
     }
         
     //Otherwise, if the roll gave a number between 8001 and 9990

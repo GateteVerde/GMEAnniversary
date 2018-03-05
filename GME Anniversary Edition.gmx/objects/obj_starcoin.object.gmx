@@ -299,6 +299,9 @@ if (!ready) {
     
         //Set the animation speed
         image_speed = 1;
+        
+        //Depth
+        depth = -2;
     
         //Set the vertical speed
         vspeed = -4;
@@ -363,10 +366,15 @@ if (other.held == 0)
             <string>///Play a sound depending of how many coins you got in the level
 
 //Play 'Starcoin 2' sound if two coins were collected on the level
-if ((ds_map_find_value(global.sc[0],global.level) &gt; 0) &amp;&amp; (ds_map_find_value(global.sc[1],global.level) &gt; 0)) //OO-
-|| ((ds_map_find_value(global.sc[0],global.level) &gt; 0) &amp;&amp; (ds_map_find_value(global.sc[2],global.level) &gt; 0)) //O-O
-|| ((ds_map_find_value(global.sc[1],global.level) &gt; 0) &amp;&amp; (ds_map_find_value(global.sc[2],global.level) &gt; 0)) //-OO
-    audio_play_sound(snd_starcoin2, 0, false);
+if ((ds_map_find_value(global.sc[0],global.level) &gt; 0) &amp;&amp; (ds_map_find_value(global.sc[1],global.level) &gt; 0)) 
+|| ((ds_map_find_value(global.sc[0],global.level) &gt; 0) &amp;&amp; (ds_map_find_value(global.sc[2],global.level) &gt; 0)) 
+|| ((ds_map_find_value(global.sc[1],global.level) &gt; 0) &amp;&amp; (ds_map_find_value(global.sc[2],global.level) &gt; 0)) {
+
+    if (sprite_index != spr_starcoin_get)
+        audio_play_sound(snd_starcoin2, 0, false);
+    else
+        audio_play_sound(snd_starcoin, 0, false);
+}
 
 //Otherwise, play default sound
 else

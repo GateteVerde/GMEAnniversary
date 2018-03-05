@@ -1315,6 +1315,7 @@
         <sprite>sprites\spr_bowserstatue_fire</sprite>
         <sprite>sprites\spr_mechakoopa</sprite>
         <sprite>sprites\spr_mechakoopa_held</sprite>
+        <sprite>sprites\spr_magikoopa</sprite>
         <sprite>sprites\spr_fishbone</sprite>
         <sprite>sprites\spr_fishbone_blink</sprite>
       </sprites>
@@ -1540,6 +1541,7 @@
           </sprites>
           <sprite>sprites\spr_coin</sprite>
           <sprite>sprites\spr_coin2</sprite>
+          <sprite>sprites\spr_coin3</sprite>
           <sprite>sprites\spr_pcoin</sprite>
           <sprite>sprites\spr_redcoin</sprite>
           <sprite>sprites\spr_starcoin</sprite>
@@ -1839,14 +1841,15 @@
             <sprite>sprites\spr_numbers</sprite>
             <sprite>sprites\spr_numbersgold</sprite>
           </sprites>
-          <sprite>sprites\spr_hud</sprite>
-          <sprite>sprites\spr_hud_r</sprite>
+          <sprite>sprites\spr_hud_mario</sprite>
+          <sprite>sprites\spr_hud_coin</sprite>
+          <sprite>sprites\spr_hud_time</sprite>
+          <sprite>sprites\spr_hud_score</sprite>
           <sprite>sprites\spr_hud_health</sprite>
           <sprite>sprites\spr_hud_pmeter</sprite>
         </sprites>
         <sprites name="In-Map">
           <sprite>sprites\spr_mapborder</sprite>
-          <sprite>sprites\spr_mapborderb</sprite>
           <sprite>sprites\spr_mapinventory</sprite>
           <sprite>sprites\spr_mapinventory_selector</sprite>
         </sprites>
@@ -1876,6 +1879,7 @@
         <sprite>sprites\spr_gameover</sprite>
         <sprite>sprites\spr_hud_cards</sprite>
         <sprite>sprites\spr_hud_reserve</sprite>
+        <sprite>sprites\spr_hud_starcoin</sprite>
         <sprite>sprites\spr_hud_starcoin_get</sprite>
       </sprites>
       <sprites name="Palettes">
@@ -2535,6 +2539,7 @@
         <object>objects\obj_bowserstatue</object>
         <object>objects\obj_bowserstatue_gold</object>
         <object>objects\obj_mechakoopa</object>
+        <object>objects\obj_magikoopa</object>
         <object>objects\obj_fishbone</object>
       </objects>
       <objects name="Ghost">
@@ -2972,6 +2977,7 @@
           <object>objects\obj_enemy_stomped</object>
           <object>objects\obj_enemy_pulled</object>
           <object>objects\obj_enemy_tick</object>
+          <object>objects\obj_enemy_coin</object>
           <object>objects\obj_stomped</object>
           <objects name="Land">
             <object>objects\obj_goomba_micro</object>
@@ -3252,6 +3258,8 @@
       <rooms name="World 1">
         <rooms name="Level 1">
           <room>rooms\rm_enginetest</room>
+          <room>rooms\rm_enginetest2</room>
+          <room>rooms\rm_enginetest3</room>
         </rooms>
       </rooms>
     </rooms>

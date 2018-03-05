@@ -1482,78 +1482,48 @@ if (invulnerable == false) {
         //If health mode is active
         if (global.healthmode == true) {
         
-            //If the player does have a higher grade powerup
+            //If the player does have a powerup
             if (global.powerup &gt; cs_big) {
             
                 //Play 'Warp' sound
                 audio_play_sound(snd_warp, 0, false);
+                
+                //Turn into 'Super'
+                global.powerup = cs_big;
+                
+                //Perform animation sequence
+                with (instance_create(0,0,obj_player_transform))
+                    sequence = 3;
+            }
             
-                //If the health is greater than 1
+            //Otherwise, if the player does not have a powerup
+            else {
+            
+                //If there's health left
                 if (health &gt; 1) {
-        
-                    //Turn the player into 'Super'.
-                    global.powerup = cs_big;
+                
+                    //Play 'Warp' sound
+                    audio_play_sound(snd_warp, 0, false);
+                    
+                    //Decrement health
+                    health--;
                     
                     //Perform animation sequence
                     with (instance_create(0,0,obj_player_transform))
                         sequence = 3;
                 }
                 
-                //Otherwise, if health is equal to 1
+                //Otherwise if the HP is 1, die.
                 else if (health == 1) {
                 
-                    //Turn the player into 'Super'.
-                    global.powerup = cs_small;
+                    //Set health
+                    health = 0;
                     
-                    //Perform animation sequence
-                    with (instance_create(0,0,obj_player_transform))
-                        sequence = 1;            
-                }
-            }
-            
-            //Otherwise, reduce health
-            else {
-            
-                //If health is greater than 1
-                if (health &gt; 1) {
-                
-                    //Play 'Warp' sound
-                    audio_play_sound(snd_warp, 0, false);
-            
-                    //If health is equal to 2
-                    if (health == 2) {
-                    
-                        //Turn the player into 'Small'.
-                        global.powerup = cs_small;
-                        
-                        //Set health to 1
-                        health = 1;
-                        
-                        //Perform animation sequence
-                        with (instance_create(0,0,obj_player_transform))
-                            sequence = 1;            
-                    }
-                    
-                    //Otherwise, decrement health
-                    else
-                        health--;
-                }
-                
-                //Otherwise, kill the player
-                else {
-                
+                    //Perform death events
                     instance_create(x,y,obj_player_dead);
                     instance_destroy();
-                    exit;            
+                    exit;     
                 }
-            }
-            
-            //Do a involuntary jump when hurt
-            if (state &lt; 2) {
-            
-                jumping = 2;
-                yspeed = -1.5;
-                xspeed = -1.5*sign(xscale);
             }
         }
         

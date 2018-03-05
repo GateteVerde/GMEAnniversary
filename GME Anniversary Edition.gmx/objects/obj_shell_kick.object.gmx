@@ -152,6 +152,10 @@ if (harmplayer)
         audio_play_sound(snd_bump, 0, false);
 }
 
+//If no gravity
+if (vspeed != 0)
+    gravity = 0.4;
+
 //Allow the shell to hurt the player
 if (harmplayer == 0)
 &amp;&amp; (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_playerparent,0,0))

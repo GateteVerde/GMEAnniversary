@@ -349,11 +349,15 @@ with (instance_create(view_xview[0]+24,view_yview[0]+8,obj_smoke))
 instance_create(0,0,obj_fadeout);
 
 //Make sure the player gets health
-if ((global.healthmode) &amp;&amp; (health &lt; 3)) {
+if (global.healthmode) {
 
-    health = 3;
-    if (global.powerup != cs_big)
-        global.powerup = cs_big;
+    //If health was set to 0
+    if (health == 0) {
+    
+        health = 2;
+        if (global.powerup == cs_small)
+            global.powerup = cs_big;
+    }
 }
 
 //Make sure the player did not bring a kuribo shoe from a level
@@ -414,7 +418,7 @@ if (levelname != "") {
     if (levelid != -1) {
     
         //Draw the coin spot
-        draw_sprite_ext(spr_mapborderb, 0, view_xview[0]+104, view_yview[0]+4, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_hud_starcoin, 0, view_xview[0]+104, view_yview[0]+4, 1, 1, 0, c_white, 1);
     
         //Draw the coins
         for (var i = 0; i &lt; 3; i++) {

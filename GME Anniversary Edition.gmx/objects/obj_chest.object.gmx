@@ -75,8 +75,18 @@ if (keyboard_check_pressed(global.controlkey))
     image_index = 1;
     
     //Get powerup
-    with (instance_create(x+16,y,obj_powerupget))
+    with (instance_create(x+16,y,obj_powerupget)) {
+    
+        //If health mode is active, turn mushrooms into fire flowers
+        if (global.healthmode == 1)
+        &amp;&amp; (global.prize[other.type] == cs_big) {
+        
+            global.prize[other.type] = cs_fire;
+        }
+    
+        //Set the sprite for the chest
         sprite_index = constant_get_sprite(global.prize[other.type]);
+    }
 }
 </string>
           </argument>

@@ -77,6 +77,9 @@ if (flagsprite == spr_checkpoint_flag) {
     //Switch to the player flag
     flagsprite = spr_checkpoint_flag_m;
     
+    //Recover all health
+    if (health &lt; 4) then health = 4;
+    
     //Sparkles
     event_user(0);
     

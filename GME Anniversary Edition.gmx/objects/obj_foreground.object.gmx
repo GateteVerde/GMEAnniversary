@@ -51,9 +51,16 @@ index = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw the background at the front of all objects
-
-draw_background_tiled_horizontal_ext(background_index[index],view_xview[0]/1.2+(0.4*index)+(background_x[index]+background_hspeed[index]),background_y[index]+(view_yview[0]*(room_height-background_height[index])/(room_height-view_hview[0])),1,1,0,c_white,background_alpha[index]);
+            <string>///Draw foregrounds
+        
+//If the background is higher than the height of the room
+if (background_height[index] &lt; room_height)
+&amp;&amp; (background_height[index] &gt; view_hview[0])
+    draw_background_tiled_horizontal_ext(background_index[index], view_xview[0]/(1.2+(0.2*index))+(background_x[index]+background_hspeed[index]), background_y[index]+(view_yview[0]*(room_height-background_height[index])/(room_height-view_hview[0])), 1, 1, 0, background_blend[index], background_alpha[index]);
+    
+//Otherwise, draw normally        
+else        
+    draw_background_tiled_horizontal_ext(background_index[index], view_xview[0]/(1.2+(0.2*index))+(background_x[index]+background_hspeed[index]), background_y[index], 1, 1, 0, background_blend[index], background_alpha[index]);
 </string>
           </argument>
         </arguments>

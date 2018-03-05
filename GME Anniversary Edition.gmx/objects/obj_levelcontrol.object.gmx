@@ -52,22 +52,23 @@ musicdisable = 0
 barrier = 1;
 alarm[7] = 3;
 
+//Manage foreground backgrounds
+for (var i=0; i&lt;8; i++) {
+
+    bgfg[i] = 0;
+    if (background_foreground[i] == true) {
+    
+        bgfg[i] = true;
+        background_foreground[i] = false;
+    }
+}
+alarm[8] = 3;
+
 //PSwitch is on?
 switchon = 0;
 
 //GSwitch is on?
 gswitchon = 0;
-
-//Manage backgrounds
-for (i=0; i&lt;8; i++;) {
-
-    //Do not use as background
-    bg[i] = noone;
-    
-    //Use as foreground and make the built one invisible
-    fg[i] = background_foreground[i];
-}
-alarm[8] = 3;
 
 //Screen shake
 shake = 0;
@@ -217,18 +218,18 @@ audio_stop_sound(snd_timer);
             <kind>1</kind>
             <string>///Create foreground layers if necessary
 
-var i = 0;
-repeat (8) {
+for (var i=0; i&lt;8; i++) {
 
-    //Create the respective layer for the background.
-    if (background_foreground[i] == true) {
+    //If a background has not been set, do not draw
+    if (background_index[i] != -1) {
     
-        bglayer = instance_create(0,0,obj_foreground);
-        bglayer.index = i;
+        //If the background is set to the foreground
+        if (bgfg[i] == true) {
+        
+            fg = instance_create(0,0,obj_foreground)
+            fg.index = i;
+        }
     }
-    
-    //Find next layer
-    i++;
 }
 </string>
           </argument>
@@ -284,6 +285,9 @@ if (gswitchon) {
 
     //Turn off the P-Switch.
     gswitchon = false;
+    
+    //Reset silver coin
+    global.silvercoins = 0;
     
     //Stop the switch song
     FMODInstanceStop(global._stream_pswitch);
@@ -1214,7 +1218,7 @@ else {
 if (global.reserve != cs_small) {
 
     //Create a reserve item
-    with (instance_create(view_xview[0]+view_wview[0]/2, view_yview[0]+10, obj_reserveitem)) {
+    with (instance_create(view_xview[0]+view_wview[0]/2, view_yview[0]+14, obj_reserveitem)) {
     
         sprite_index = constant_get_sprite(global.reserve);
     }
@@ -1516,35 +1520,24 @@ if (global.starman &gt; 0) {
             <kind>1</kind>
             <string>///Deals with parallax backgrounds.
 
-//Draw backgrounds
-var i;
-i = 0;
-repeat (8) {
+for (var i=0; i&lt;8; i++) {
 
-    //If the background is not a foreground
-    if (background_foreground[i] == false) {
+    //If the background is not set, do not draw
+    if (background_index[i] != -1) {
     
-        //Draw main background if it exists
-        if ((i = 0) &amp;&amp; (background_index[0] != noone)) {
+        //If the background is not a foreground, do not draw
+        if (background_foreground[i] == false) {
         
-            if (room_height &lt; 384)
-                draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0],1,1,0,background_blend[0],background_alpha[0]);
-            else
-                draw_background_tiled_horizontal_ext(background_index[0],view_xview[0]/1.2+(background_x[0]+background_hspeed[0]),background_y[0]+(view_yview[0]*(room_height-background_height[0])/(room_height-view_hview[0])),1,1,0,background_blend[0],background_alpha[0]);
-        }
-        
-        //Draw rest of backgrounds if it exists
-        else if ((i &gt; 0) &amp;&amp; (background_index[i] != noone)) {
-
-            if (room_height &lt; 384)
-                draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i],1,1,0,background_blend[i],background_alpha[i]);
-            else
-                draw_background_tiled_horizontal_ext(background_index[i],view_xview[0]/(1.2+(0.4*i))+(background_x[i]+background_hspeed[i]),background_y[i]+(view_yview[0]*(room_height-background_height[i])/(room_height-view_hview[0])),1,1,0,background_blend[i],background_alpha[i]);
+            //If the background is higher than the height of the room
+            if (background_height[i] &lt; room_height)
+            &amp;&amp; (background_height[i] &gt; view_hview[0])
+                draw_background_tiled_horizontal_ext(background_index[i], view_xview[0]/(1.2+(0.2*i))+(background_x[i]+background_hspeed[i]), background_y[i]+(view_yview[0]*(room_height-background_height[i])/(room_height-view_hview[0])), 1, 1, 0, background_blend[i], background_alpha[i]);
+                
+            //Otherwise, draw normally        
+            else        
+                draw_background_tiled_horizontal_ext(background_index[i], view_xview[0]/(1.2+(0.2*i))+(background_x[i]+background_hspeed[i]), background_y[i], 1, 1, 0, background_blend[i], background_alpha[i]);
         }
     }
-    
-    //Next background
-    i++;
 }
 
 //Draw pit marker

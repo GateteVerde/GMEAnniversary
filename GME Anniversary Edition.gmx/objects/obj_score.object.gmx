@@ -54,8 +54,9 @@ friction = 0.0175;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Destroy
+            <string>///Score logic
 
+//Destroy if vertical speed is equal to zero
 if (vspeed == 0)
     instance_destroy();
 </string>

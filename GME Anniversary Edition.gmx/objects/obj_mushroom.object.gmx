@@ -201,21 +201,11 @@ if (global.healthmode == false) {
 
 //Otherwise, if health mode is active.
 else if (global.healthmode == true) {
-
-    //If the player is small
-    if (health == 1) {
     
-        //Turn Mario into 'Super' Mario.
-        global.powerup = cs_big;
-        
-        //Perform animation sequence
-        with (instance_create(0,0,obj_player_transform))
-            sequence = 0;        
-    }
-    
+    //Heal 1 hp if not full
     health++;
-    if (health &gt; global.healthmax)
-        health = global.healthmax;
+    if (health &gt; 4)
+        health = 4;
 }
 
 //Destroy
