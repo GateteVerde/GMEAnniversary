@@ -293,7 +293,7 @@ else if (kickme) {
                 instance_destroy();                   
             }
             
-            else {
+            else if (vspeed &gt;= 0) {
             
                 //Play 'Kick' sound.
                 audio_play_sound(snd_kick, 0, false);
@@ -313,9 +313,6 @@ else if (kickme) {
                 
                 //Boost it
                 y--;
-                
-                //Boost kick
-                x = other.x+(10*sign(other.xscale));
                 
                 //Set the horizontal speed
                 if (!collision_rectangle(x-1,bbox_top,x+1,bbox_bottom,obj_slopeparent,1,0))

@@ -1132,6 +1132,8 @@
         <sprite>sprites\spr_goomba_red_sq</sprite>
         <sprite>sprites\spr_goomba_shoe</sprite>
         <sprite>sprites\spr_goomba_micro</sprite>
+        <sprite>sprites\spr_goomba_big</sprite>
+        <sprite>sprites\spr_goomba_big_sq</sprite>
         <sprite>sprites\spr_galoomba</sprite>
         <sprite>sprites\spr_galoomba_down</sprite>
         <sprite>sprites\spr_galoomba_parachute</sprite>
@@ -1142,10 +1144,18 @@
         <sprite>sprites\spr_parakoopa</sprite>
         <sprite>sprites\spr_shell</sprite>
         <sprite>sprites\spr_shell_down</sprite>
+        <sprite>sprites\spr_koopa_big</sprite>
+        <sprite>sprites\spr_parakoopa_big</sprite>
+        <sprite>sprites\spr_shell_big</sprite>
+        <sprite>sprites\spr_shell_big_down</sprite>
         <sprite>sprites\spr_koopa_red</sprite>
         <sprite>sprites\spr_parakoopa_red</sprite>
         <sprite>sprites\spr_shell_red</sprite>
         <sprite>sprites\spr_shell_red_down</sprite>
+        <sprite>sprites\spr_koopa_big_red</sprite>
+        <sprite>sprites\spr_parakoopa_big_red</sprite>
+        <sprite>sprites\spr_shell_big_red</sprite>
+        <sprite>sprites\spr_shell_big_red_down</sprite>
         <sprite>sprites\spr_koopa_blue</sprite>
         <sprite>sprites\spr_shell_blue</sprite>
         <sprite>sprites\spr_shell_blue_down</sprite>
@@ -1310,6 +1320,14 @@
         <sprite>sprites\spr_lilsparky</sprite>
         <sprite>sprites\spr_hothead</sprite>
         <sprite>sprites\spr_hothead_blink</sprite>
+        <sprite>sprites\spr_boo</sprite>
+        <sprite>sprites\spr_boo_large</sprite>
+        <sprite>sprites\spr_boo_large_turn</sprite>
+        <sprite>sprites\spr_boo_stretch</sprite>
+        <sprite>sprites\spr_boo_stretch_b</sprite>
+        <sprite>sprites\spr_boo_block</sprite>
+        <sprite>sprites\spr_peepa</sprite>
+        <sprite>sprites\spr_eerie</sprite>
         <sprite>sprites\spr_bowserstatue</sprite>
         <sprite>sprites\spr_bowserstatue_gold</sprite>
         <sprite>sprites\spr_bowserstatue_fire</sprite>
@@ -1319,27 +1337,12 @@
         <sprite>sprites\spr_fishbone</sprite>
         <sprite>sprites\spr_fishbone_blink</sprite>
       </sprites>
-      <sprites name="Ghost">
-        <sprite>sprites\spr_boo</sprite>
-        <sprite>sprites\spr_boo_large</sprite>
-        <sprite>sprites\spr_boo_large_turn</sprite>
-        <sprite>sprites\spr_boo_stretch</sprite>
-        <sprite>sprites\spr_boo_stretch_b</sprite>
-        <sprite>sprites\spr_boo_block</sprite>
-        <sprite>sprites\spr_peepa</sprite>
-        <sprite>sprites\spr_eerie</sprite>
-      </sprites>
-      <sprites name="Big Land">
-        <sprite>sprites\spr_goomba_big</sprite>
-        <sprite>sprites\spr_goomba_big_sq</sprite>
-        <sprite>sprites\spr_koopa_big</sprite>
-        <sprite>sprites\spr_parakoopa_big</sprite>
-        <sprite>sprites\spr_shell_big</sprite>
-        <sprite>sprites\spr_shell_big_down</sprite>
-        <sprite>sprites\spr_koopa_big_red</sprite>
-        <sprite>sprites\spr_parakoopa_big_red</sprite>
-        <sprite>sprites\spr_shell_big_red</sprite>
-        <sprite>sprites\spr_shell_big_red_down</sprite>
+      <sprites name="Airship">
+        <sprite>sprites\spr_bobomb</sprite>
+        <sprite>sprites\spr_bobomb_bomb</sprite>
+        <sprite>sprites\spr_bobomb_bomb_th</sprite>
+        <sprite>sprites\spr_bobomb_parachute</sprite>
+        <sprite>sprites\spr_bobomb_parachute_land</sprite>
       </sprites>
       <sprite>sprites\spr_koopa_kamikaze</sprite>
       <sprite>sprites\spr_koopa_kamikaze_down</sprite>
@@ -1754,6 +1757,7 @@
         <sprite>sprites\spr_marker_boo</sprite>
         <sprite>sprites\spr_marker_eerie</sprite>
         <sprite>sprites\spr_marker_peepa</sprite>
+        <sprite>sprites\spr_marker_bobomb</sprite>
       </sprites>
       <sprites name="Warp Markers">
         <sprite>sprites\spr_marker_warppipe</sprite>
@@ -2413,6 +2417,7 @@
         <object>objects\obj_goombrat</object>
         <object>objects\obj_goomba_red</object>
         <object>objects\obj_paragoomba_red</object>
+        <object>objects\obj_goomba_big</object>
         <object>objects\obj_galoomba</object>
         <object>objects\obj_paragaloomba</object>
         <object>objects\obj_galoomba_parachute</object>
@@ -2420,9 +2425,14 @@
         <object>objects\obj_koopa</object>
         <object>objects\obj_parakoopa</object>
         <object>objects\obj_parakoopa_fly</object>
+        <object>objects\obj_koopa_big</object>
+        <object>objects\obj_parakoopa_big</object>
+        <object>objects\obj_parakoopa_big_fly</object>
         <object>objects\obj_beachkoopa</object>
         <object>objects\obj_koopa_red</object>
         <object>objects\obj_parakoopa_red</object>
+        <object>objects\obj_koopa_big_red</object>
+        <object>objects\obj_parakoopa_big_red</object>
         <object>objects\obj_beachkoopa_red</object>
         <object>objects\obj_koopa_blue</object>
         <object>objects\obj_beachkoopa_blue</object>
@@ -2455,6 +2465,7 @@
         <object>objects\obj_jpplant</object>
         <object>objects\obj_ptooie</object>
         <object>objects\obj_ptooie_pipe</object>
+        <object>objects\obj_bigplant</object>
         <object>objects\obj_swooper</object>
         <object>objects\obj_spiketop</object>
         <object>objects\obj_spiketop_blue</object>
@@ -2536,13 +2547,6 @@
         <object>objects\obj_hotfoot</object>
         <object>objects\obj_lilspark</object>
         <object>objects\obj_hothead</object>
-        <object>objects\obj_bowserstatue</object>
-        <object>objects\obj_bowserstatue_gold</object>
-        <object>objects\obj_mechakoopa</object>
-        <object>objects\obj_magikoopa</object>
-        <object>objects\obj_fishbone</object>
-      </objects>
-      <objects name="Ghost">
         <object>objects\obj_boo</object>
         <object>objects\obj_bigboo</object>
         <object>objects\obj_boocircle</object>
@@ -2554,15 +2558,15 @@
         <object>objects\obj_peepa</object>
         <object>objects\obj_peepa_v</object>
         <object>objects\obj_eerie</object>
+        <object>objects\obj_bowserstatue</object>
+        <object>objects\obj_bowserstatue_gold</object>
+        <object>objects\obj_mechakoopa</object>
+        <object>objects\obj_magikoopa</object>
+        <object>objects\obj_fishbone</object>
       </objects>
-      <objects name="Big Land">
-        <object>objects\obj_goomba_big</object>
-        <object>objects\obj_koopa_big</object>
-        <object>objects\obj_parakoopa_big</object>
-        <object>objects\obj_parakoopa_big_fly</object>
-        <object>objects\obj_koopa_big_red</object>
-        <object>objects\obj_parakoopa_big_red</object>
-        <object>objects\obj_bigplant</object>
+      <objects name="Airship">
+        <object>objects\obj_bobomb</object>
+        <object>objects\obj_bobomb_parachute</object>
       </objects>
       <objects name="Generators">
         <objects name="Land">
@@ -2577,6 +2581,9 @@
         </objects>
         <objects name="Ghost">
           <object>objects\obj_generator_eerie</object>
+        </objects>
+        <objects name="Airship">
+          <object>objects\obj_generator_bobomb</object>
         </objects>
       </objects>
     </objects>
@@ -3031,14 +3038,15 @@
               <object>objects\obj_ball</object>
             </objects>
             <object>objects\obj_crumblebones</object>
-            <object>objects\obj_bowserstatue_fire</object>
-            <object>objects\obj_mechakoopa_down</object>
-          </objects>
-          <objects name="Ghost">
             <object>objects\obj_boocircle_boo</object>
             <object>objects\obj_boosnake_trail</object>
             <object>objects\obj_peepa_b</object>
             <object>objects\obj_eerie_active</object>
+            <object>objects\obj_bowserstatue_fire</object>
+            <object>objects\obj_mechakoopa_down</object>
+          </objects>
+          <objects name="Airship">
+            <object>objects\obj_bobomb_down</object>
           </objects>
           <object>objects\obj_shell</object>
           <object>objects\obj_shell_kick</object>
