@@ -72,11 +72,6 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_slope_sl" x="528" y="176" name="inst_5DDBE8A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sl" x="544" y="192" name="inst_930C2D32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_sl" x="560" y="208" name="inst_BB031CAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="512" y="128" name="inst_6FE1F044" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="496" y="112" name="inst_6C8886AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="480" y="128" name="inst_84CE13A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="464" y="112" name="inst_8AF9BD08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="448" y="128" name="inst_315CE50C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="640" y="256" name="inst_CC80C6DB" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="848" y="224" name="inst_EBF44C96" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="976" y="192" name="inst_F7058611" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
@@ -91,13 +86,12 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_goomba" x="232" y="224" name="inst_FAEDE58F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="264" y="240" name="inst_01BD7C72" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="296" y="240" name="inst_D59ED44F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_koopa" x="504" y="160" name="inst_FF8CC2EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="656" y="240" name="inst_942CC955" locked="0" code="sprout = cs_fire;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="672" y="192" name="inst_774C1C9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="720" y="192" name="inst_33A0F144" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="688" y="192" name="inst_C986D23F" locked="0" code="sprite_index = spr_brick;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="704" y="192" name="inst_6FAD76E0" locked="0" code="sprite_index = spr_brick;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_68A3A9FA" locked="0" code="levelmusic = global._theme_athletic;&#xA;leveltime = 400;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_68A3A9FA" locked="0" code="levelmusic = global._theme_athletic;&#xA;leveltime = 400;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="24" y="144" name="inst_05BBA309" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa" x="696" y="176" name="inst_A92884F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="888" y="208" name="inst_347A2617" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -294,10 +288,10 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_up" x="1216" y="272" name="inst_4DA645AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpright" x="2048" y="240" name="inst_E7A17FE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2000" y="256" name="inst_693AD342" locked="0" code="myroom = rm_enginetest3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bobomb" x="456" y="160" name="inst_1D2A14AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bobomb" x="424" y="176" name="inst_37BFCACA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bobomb" x="392" y="208" name="inst_7E6FA16E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_generator_bobomb" x="16" y="0" name="inst_7DE4792E" locked="0" code="xmin = 1280;&#xA;xmax = 1776;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_banzaibill" x="1200" y="160" name="inst_A7AB9824" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="480" y="48" name="inst_45BA4D63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solid" x="512" y="800" name="inst_73954ECD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_cannon_quad" x="472" y="80" name="inst_33469885" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="1056" y="192" w="16" h="16" xo="160" yo="432" id="10024005" name="inst_9A5DF750" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -307,6 +301,8 @@ background_hspeed[7] = -0.25;</code>
     <tile bgName="bgr_tileset_smb3" x="1040" y="176" w="16" h="16" xo="256" yo="544" id="10024009" name="inst_C9704AF3" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="1056" y="176" w="16" h="16" xo="256" yo="544" id="10024010" name="inst_79C7B881" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_goal" x="3712" y="192" w="96" h="80" xo="0" yo="0" id="10024827" name="inst_514A5839" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="480" y="48" w="16" h="16" xo="256" yo="416" id="10025551" name="inst_9289506E" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="472" y="64" w="32" h="16" xo="544" yo="528" id="10025552" name="inst_C73F639B" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="48" y="128" w="16" h="16" xo="752" yo="208" id="10023918" name="inst_482349F6" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="32" y="80" w="16" h="16" xo="752" yo="208" id="10023919" name="inst_A0E2AD78" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="16" y="80" w="16" h="16" xo="736" yo="208" id="10023920" name="inst_A4C5D86C" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -347,10 +343,6 @@ background_hspeed[7] = -0.25;</code>
     <tile bgName="bgr_tileset_smb3" x="304" y="224" w="16" h="16" xo="768" yo="224" id="10023955" name="inst_EC201368" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="256" y="240" w="16" h="16" xo="928" yo="32" id="10023956" name="inst_411EF2AF" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="448" y="160" w="16" h="16" xo="928" yo="32" id="10023957" name="inst_90FDC459" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="480" y="160" w="16" h="16" xo="928" yo="32" id="10023958" name="inst_562D1E2F" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="464" y="160" w="16" h="16" xo="928" yo="32" id="10023959" name="inst_1350F875" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="512" y="160" w="16" h="16" xo="928" yo="32" id="10023960" name="inst_958B156D" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset_smb3" x="496" y="160" w="16" h="16" xo="928" yo="32" id="10023961" name="inst_B72E705A" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="768" y="240" w="16" h="16" xo="928" yo="32" id="10023962" name="inst_E9815165" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="752" y="240" w="16" h="16" xo="928" yo="32" id="10023963" name="inst_BB0E6E60" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="640" y="240" w="16" h="16" xo="928" yo="32" id="10023964" name="inst_B75BFAE0" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -538,6 +530,8 @@ background_hspeed[7] = -0.25;</code>
     <tile bgName="bgr_tileset_smb3" x="2256" y="224" w="16" h="16" xo="768" yo="224" id="10024930" name="inst_89E2D7AE" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="2256" y="240" w="16" h="16" xo="768" yo="224" id="10024931" name="inst_DFE63E86" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="2256" y="256" w="16" h="16" xo="768" yo="224" id="10024932" name="inst_40182EE5" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="480" y="160" w="16" h="16" xo="928" yo="32" id="10025456" name="inst_292CEB32" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="512" y="160" w="16" h="16" xo="928" yo="32" id="10025457" name="inst_0CA6931D" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="0" y="256" w="16" h="16" xo="16" yo="80" id="10023633" name="inst_B3890304" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="16" y="256" w="16" h="16" xo="16" yo="80" id="10023634" name="inst_85CC18A7" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="32" y="256" w="16" h="16" xo="16" yo="80" id="10023635" name="inst_F3CC15FB" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1300,6 +1294,8 @@ background_hspeed[7] = -0.25;</code>
     <tile bgName="bgr_tileset_smb3" x="2704" y="272" w="16" h="16" xo="144" yo="80" id="10024933" name="inst_43CDA39C" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="2720" y="272" w="16" h="16" xo="144" yo="80" id="10024934" name="inst_6F9AD438" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_smb3" x="2736" y="272" w="16" h="16" xo="144" yo="80" id="10024935" name="inst_FECB144A" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="496" y="160" w="16" h="16" xo="928" yo="32" id="10025439" name="inst_F5FAEBD1" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset_smb3" x="464" y="160" w="16" h="16" xo="928" yo="32" id="10025440" name="inst_9E80476A" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

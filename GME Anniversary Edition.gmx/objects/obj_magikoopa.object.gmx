@@ -3,11 +3,310 @@
   <spriteName>spr_magikoopa</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Magikoopa
+
+//How vulnerable is this enemy to various items?
+vulnerable = 1;
+
+//How vulnerable is this enemy to the player?
+stomp = 0;
+
+//How vulnerable is this enemy to yoshi?
+edible = 2;
+
+//Facing direction
+xscale = 1;
+
+//Whether the magikoopa is preparing a spell
+ready = 0;
+
+//Do not animate
+image_speed = 0;
+
+//Alpha
+image_alpha = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Change position
+
+//If the player does exist
+if (!instance_exists(obj_playerparent)) {
+
+    alarm[2] = 1;
+    exit;    
+}
+
+//Otherwise
+else {
+
+    //Move to a random position
+    x = random_range(view_xview[0]+16, view_xview[0]+view_wview[0]-16);
+    y = random_range(view_yview[0]+16, view_yview[0]+view_hview[0]-16);
+    
+    //Check for a semisolid
+    var semisolid = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+2,obj_semisolid,0,0);
+    
+    //If there's a collision in position
+    if (semisolid)
+    &amp;&amp; (ready == 3)
+    &amp;&amp; (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
+        
+        //Snap above the semisolid
+        y = semisolid.bbox_top-16;
+        
+        //Prepare spell
+        ready = 0; 
+    }
+    
+    //Otherwise, repeat
+    else
+        alarm[2] = 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Start to dissappear
+
+//Set the frame
+image_speed = 0;
+image_index = 0;
+
+//Make sure it appears again
+ready = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Throw the spell
+
+//Play 'Transform' sound
+audio_play_sound(snd_transform, 0, false);
+
+//Create spell
+instance_create(x,y,obj_magic);
+
+//Animate
+image_speed = 0.15;
+image_index = 2;
+
+//Dissappear
+alarm[1] = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Magikoopa logic
+
+//If the magikoopa appeared
+if (ready == 0) {
+
+    //Increment alpha
+    image_alpha += 0.05;
+    
+    //If the magikoopa is done
+    if (image_alpha &gt; 1) {
+    
+        //Set both alpha and frame
+        image_alpha = 1;
+        image_index = 1;
+        
+        //Make vulnerable
+        vulnerable = 1;
+        stomp = 0;
+        
+        //Prepare a spell
+        ready = 1;
+        alarm[0] = 90;
+    }
+}
+
+//Otherwise, if the magikoopa is dissappearing
+else if (ready == 2) {
+
+    //Decrement alpha
+    image_alpha -= 0.05;
+    
+    //If the magikoopa is done
+    if (image_alpha &lt; 0) {
+    
+        //Set both alpha and frame
+        image_index = 0;
+        image_alpha = 0;
+        
+        //End
+        ready = 3;
+        
+        //Change position
+        alarm[2] = 90;
+    }
+    
+    //Make invulnerable
+    vulnerable = 100;
+    stomp = -1;   
+}
+
+//Go up if overlapping a slope
+while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,1)) y--;
+
+//Face towards the player
+if (!instance_exists(obj_playerparent))
+|| (obj_playerparent.x &lt; x)
+    xscale = -1;
+else
+    xscale = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reset animation
+
+image_index = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw magikoopa
+
+draw_sprite_ext(sprite_index, -1, round(x), y+1, xscale, 1, 0, c_white, image_alpha);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

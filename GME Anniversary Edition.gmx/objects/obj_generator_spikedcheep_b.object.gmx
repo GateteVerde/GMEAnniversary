@@ -71,7 +71,9 @@ alarm[0] = 80;
 if (instance_exists(obj_playerparent)) {
 
     //If the player is on the set coordinates.
-    if ((obj_playerparent.x &gt; xmin) &amp;&amp; (obj_playerparent.x &lt; xmax)) {
+    if (obj_playerparent.x &gt; xmin) 
+    &amp;&amp; (obj_playerparent.x &lt; xmax)
+    &amp;&amp; (obj_levelcontrol.gswitchon == false) {
     
         //Repeat the process.
         alarm[0] = 80;

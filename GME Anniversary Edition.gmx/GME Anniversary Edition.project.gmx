@@ -1069,6 +1069,19 @@
       <sprite>sprites\spr_beanstalk</sprite>
     </sprites>
     <sprites name="Masks">
+      <sprites name="Player">
+        <sprites name="Markers">
+          <sprite>sprites\spr_topmarker</sprite>
+          <sprite>sprites\spr_bottommarker</sprite>
+        </sprites>
+        <sprite>sprites\spr_mask</sprite>
+        <sprite>sprites\spr_bigmask</sprite>
+        <sprite>sprites\spr_shellmask</sprite>
+        <sprite>sprites\spr_warpmask</sprite>
+      </sprites>
+      <sprites name="NPCs">
+        <sprite>sprites\spr_sproutmask</sprite>
+      </sprites>
       <sprites name="Collision">
         <sprite>sprites\spr_square</sprite>
         <sprite>sprites\spr_square_b</sprite>
@@ -1092,19 +1105,6 @@
         <sprite>sprites\spr_linemask</sprite>
         <sprite>sprites\spr_squaremask</sprite>
       </sprites>
-      <sprites name="NPCs">
-        <sprite>sprites\spr_sproutmask</sprite>
-      </sprites>
-      <sprites name="Player">
-        <sprites name="Markers">
-          <sprite>sprites\spr_topmarker</sprite>
-          <sprite>sprites\spr_bottommarker</sprite>
-        </sprites>
-        <sprite>sprites\spr_mask</sprite>
-        <sprite>sprites\spr_bigmask</sprite>
-        <sprite>sprites\spr_shellmask</sprite>
-        <sprite>sprites\spr_warpmask</sprite>
-      </sprites>
       <sprite>sprites\spr_24mask</sprite>
       <sprite>sprites\spr_32mask</sprite>
       <sprite>sprites\spr_basketmask</sprite>
@@ -1112,6 +1112,7 @@
       <sprite>sprites\spr_graymask</sprite>
       <sprite>sprites\spr_itembubblemask</sprite>
       <sprite>sprites\spr_liftmask</sprite>
+      <sprite>sprites\spr_magicmask</sprite>
       <sprite>sprites\spr_opener</sprite>
       <sprite>sprites\spr_pipemask</sprite>
       <sprite>sprites\spr_screenmask</sprite>
@@ -1331,9 +1332,8 @@
         <sprite>sprites\spr_bowserstatue</sprite>
         <sprite>sprites\spr_bowserstatue_gold</sprite>
         <sprite>sprites\spr_bowserstatue_fire</sprite>
-        <sprite>sprites\spr_mechakoopa</sprite>
-        <sprite>sprites\spr_mechakoopa_held</sprite>
         <sprite>sprites\spr_magikoopa</sprite>
+        <sprite>sprites\spr_magic</sprite>
         <sprite>sprites\spr_fishbone</sprite>
         <sprite>sprites\spr_fishbone_blink</sprite>
       </sprites>
@@ -1343,6 +1343,17 @@
         <sprite>sprites\spr_bobomb_bomb_th</sprite>
         <sprite>sprites\spr_bobomb_parachute</sprite>
         <sprite>sprites\spr_bobomb_parachute_land</sprite>
+        <sprite>sprites\spr_mechakoopa</sprite>
+        <sprite>sprites\spr_mechakoopa_held</sprite>
+        <sprite>sprites\spr_bulletbill</sprite>
+        <sprite>sprites\spr_missilebill</sprite>
+        <sprite>sprites\spr_banzaibill</sprite>
+        <sprite>sprites\spr_banzaiblaster</sprite>
+        <sprite>sprites\spr_cannon</sprite>
+        <sprite>sprites\spr_cannon_side</sprite>
+        <sprite>sprites\spr_cannon_quad</sprite>
+        <sprite>sprites\spr_cannonball</sprite>
+        <sprite>sprites\spr_cannonball_large</sprite>
       </sprites>
       <sprite>sprites\spr_koopa_kamikaze</sprite>
       <sprite>sprites\spr_koopa_kamikaze_down</sprite>
@@ -1758,6 +1769,8 @@
         <sprite>sprites\spr_marker_eerie</sprite>
         <sprite>sprites\spr_marker_peepa</sprite>
         <sprite>sprites\spr_marker_bobomb</sprite>
+        <sprite>sprites\spr_marker_bulletbill</sprite>
+        <sprite>sprites\spr_marker_missilebill</sprite>
       </sprites>
       <sprites name="Warp Markers">
         <sprite>sprites\spr_marker_warppipe</sprite>
@@ -2560,13 +2573,20 @@
         <object>objects\obj_eerie</object>
         <object>objects\obj_bowserstatue</object>
         <object>objects\obj_bowserstatue_gold</object>
-        <object>objects\obj_mechakoopa</object>
         <object>objects\obj_magikoopa</object>
         <object>objects\obj_fishbone</object>
       </objects>
       <objects name="Airship">
         <object>objects\obj_bobomb</object>
         <object>objects\obj_bobomb_parachute</object>
+        <object>objects\obj_mechakoopa</object>
+        <object>objects\obj_bulletbill</object>
+        <object>objects\obj_missilebill</object>
+        <object>objects\obj_banzaibill</object>
+        <object>objects\obj_banzaiblaster</object>
+        <object>objects\obj_cannon</object>
+        <object>objects\obj_cannon_side</object>
+        <object>objects\obj_cannon_quad</object>
       </objects>
       <objects name="Generators">
         <objects name="Land">
@@ -3043,10 +3063,15 @@
             <object>objects\obj_peepa_b</object>
             <object>objects\obj_eerie_active</object>
             <object>objects\obj_bowserstatue_fire</object>
-            <object>objects\obj_mechakoopa_down</object>
+            <object>objects\obj_magic</object>
           </objects>
           <objects name="Airship">
             <object>objects\obj_bobomb_down</object>
+            <object>objects\obj_mechakoopa_down</object>
+            <object>objects\obj_bullet</object>
+            <object>objects\obj_bullet_homing</object>
+            <object>objects\obj_bullet_banzai</object>
+            <object>objects\obj_cannonball</object>
           </objects>
           <object>objects\obj_shell</object>
           <object>objects\obj_shell_kick</object>

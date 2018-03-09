@@ -79,10 +79,10 @@ if (instance_exists(obj_playerparent)) {
             exit;
         }
         
-        //Otherwise, spawn a galoomba
+        //Otherwise, spawn a bobomb
         else {
         
-            //Generate a galoomba
+            //Generate a bobomb
             instance_create(view_xview[0]+random_range(32,global.gw-32),view_yview[0]-32,obj_bobomb_parachute);
             
             //Repeat
