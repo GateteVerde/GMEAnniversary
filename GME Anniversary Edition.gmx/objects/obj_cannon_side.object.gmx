@@ -79,9 +79,6 @@ else {
     //Play 'Cannon' sound
     audio_play_sound(snd_explode, 0, false);
     
-    //Create smoke
-    instance_create(x+8,y+8,obj_smoke);
-    
     //Create cannon ball
     switch (image_index) {
     
@@ -91,7 +88,7 @@ else {
             //If the player is at the left
             if (obj_playerparent.x &lt; x) {
             
-                with (instance_create(x+8,y+8,obj_cannonball))
+                with (instance_create(x-8,y-8,obj_cannonball))
                     motion_set(135, 1.5);
             }
             
@@ -103,20 +100,20 @@ else {
             }
         } break;
             
-        //Frame 0
+        //Frame 1
         case (1): {
         
             //If the player is at the left
             if (obj_playerparent.x &lt; x) {
             
-                with (instance_create(x+8,y+8,obj_cannonball))
+                with (instance_create(x-8,y+8,obj_cannonball))
                     motion_set(225, 1.5);
             }
             
             //Otherwise, if the player is at the left
             else if (obj_playerparent.x &gt; x) {
             
-                with (instance_create(x+8,y+8,obj_cannonball))
+                with (instance_create(x+8,y-8,obj_cannonball))
                     motion_set(45, 1.5);
             }
         } break;

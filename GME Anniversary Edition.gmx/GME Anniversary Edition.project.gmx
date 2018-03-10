@@ -1354,6 +1354,12 @@
         <sprite>sprites\spr_cannon_quad</sprite>
         <sprite>sprites\spr_cannonball</sprite>
         <sprite>sprites\spr_cannonball_large</sprite>
+        <sprite>sprites\spr_engine_st</sprite>
+        <sprite>sprites\spr_engine</sprite>
+        <sprite>sprites\spr_engine_alt</sprite>
+        <sprite>sprites\spr_rockywrench</sprite>
+        <sprite>sprites\spr_rockywrench_dead</sprite>
+        <sprite>sprites\spr_rockywrench_wrench</sprite>
       </sprites>
       <sprite>sprites\spr_koopa_kamikaze</sprite>
       <sprite>sprites\spr_koopa_kamikaze_down</sprite>
@@ -2587,6 +2593,10 @@
         <object>objects\obj_cannon</object>
         <object>objects\obj_cannon_side</object>
         <object>objects\obj_cannon_quad</object>
+        <object>objects\obj_cannon_big</object>
+        <object>objects\obj_engine</object>
+        <object>objects\obj_engine_alt</object>
+        <object>objects\obj_rockywrench</object>
       </objects>
       <objects name="Generators">
         <objects name="Land">
@@ -3072,6 +3082,8 @@
             <object>objects\obj_bullet_homing</object>
             <object>objects\obj_bullet_banzai</object>
             <object>objects\obj_cannonball</object>
+            <object>objects\obj_cannonball_large</object>
+            <object>objects\obj_wrench</object>
           </objects>
           <object>objects\obj_shell</object>
           <object>objects\obj_shell_kick</object>

@@ -33,9 +33,8 @@ image_speed = 0;
 //Start shooting
 alarm[0] = 90;
 
-//Cannonball directions
-cbdir[0] = 0;
-cbdir[1] = 180;
+//Frame
+f = 0;
 </string>
           </argument>
         </arguments>
@@ -60,9 +59,9 @@ cbdir[1] = 180;
             <kind>1</kind>
             <string>///Change frame
 
-image_index++;
-for (i=0; i&lt;2; i++)
-    cbdir[i] += 45;
+f++;
+if (f &gt; 3)
+    f = 0;
 </string>
           </argument>
         </arguments>
@@ -100,20 +99,67 @@ else {
     //Play 'Cannon' sound
     audio_play_sound(snd_explode, 0, false);
     
-    //Create smoke
-    instance_create(x+8,y+8,obj_smoke);
-    
     //Create cannons
-    for (i=0; i&lt;2; i++) {
+    switch (f) {
     
-        with (instance_create(x+8,y+8,obj_cannonball))
-            motion_set(other.cbdir[other.i], 1.5);
+        //0, 180
+        case (0): {
+        
+            with (instance_create(x+16,y,obj_cannonball)) motion_set(0, 1.5);
+            with (instance_create(x-16,y,obj_cannonball)) motion_set(180, 1.5);
+        } break;
+
+        //45, 225
+        case (1): {
+        
+            with (instance_create(x+16,y-16,obj_cannonball)) motion_set(45, 1.5);
+            with (instance_create(x-16,y+16,obj_cannonball)) motion_set(225, 1.5);
+        } break;
+        
+        //90, 270
+        case (2): {
+        
+            with (instance_create(x,y-16,obj_cannonball)) motion_set(90, 1.5);
+            with (instance_create(x,y+16,obj_cannonball)) motion_set(270, 1.5);
+        } break;
+        
+        //135, 315
+        case (3): {
+        
+            with (instance_create(x-16,y-16,obj_cannonball)) motion_set(135, 1.5);
+            with (instance_create(x+16,y+16,obj_cannonball)) motion_set(315, 1.5);                    
+        } break;
     }
     
     //Repeat after 3 seconds
     alarm[0] = 120;
     alarm[1] = 60;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw Quad Cannon
+
+draw_sprite_ext(sprite_index, f, round(x), round(y), 1, 1, 0, c_white, 1);
 </string>
           </argument>
         </arguments>
