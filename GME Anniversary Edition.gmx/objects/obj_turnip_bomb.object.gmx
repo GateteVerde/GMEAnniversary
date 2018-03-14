@@ -38,7 +38,7 @@ image_index = 0;
 aa = 0;
 
 //Create semisolid
-mytop = instance_create(x,y,obj_semisolid);
+mytop = instance_create(x,y,obj_enemytop);
 </string>
           </argument>
         </arguments>

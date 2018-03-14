@@ -156,14 +156,10 @@ if (held) {
         }            
     }
     
-    //Destroy if the player object does not exist
+    //Release if the player dies
     if (!instance_exists(obj_playerparent))
-    &amp;&amp; (follow == noone) {
-    
-        instance_create(x,y,obj_smoke);
-        instance_destroy();
-        exit;
-    }
+    &amp;&amp; (follow == noone)
+        held = false;
 }
 </string>
           </argument>

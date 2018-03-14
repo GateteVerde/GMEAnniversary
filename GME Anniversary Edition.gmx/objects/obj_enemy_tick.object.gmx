@@ -96,6 +96,12 @@ switch (sprite_index) {
             xmax = other.xmax;
         }
     } break;
+    
+    //Magikoopa
+    case (spr_magikoopa): {
+    
+        instance_create(-1000,-1000,obj_magikoopa);
+    } break;
 }
 
 //Destroy

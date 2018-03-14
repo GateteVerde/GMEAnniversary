@@ -1324,6 +1324,10 @@ if (other.held == 0)
     
     //Reduce horizontal speed
     other.hspeed = other.hspeed/2;
+    
+    //If the other object is a enemy, do not respawn
+    if (other.object_index == obj_enemy_carried)
+        with (other) turnback = -1;
 }
 </string>
           </argument>

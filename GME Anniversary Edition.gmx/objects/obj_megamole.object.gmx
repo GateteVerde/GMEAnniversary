@@ -52,7 +52,7 @@ image_speed = 0.2;
 alarm[10] = 2;
 
 //Create solid collision
-mytop = instance_create(x,y-14,obj_semisolid);
+mytop = instance_create(x,y-14,obj_enemytop);
 with (mytop) {
 
     //Set the sprite

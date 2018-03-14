@@ -130,9 +130,20 @@ instance_destroy();
             <kind>1</kind>
             <string>///Puller logic
 
-//Snap onto the player's position
-x = round(obj_playerparent.x);
-y = round(obj_playerparent.y);
+//Make sure the player's gravity is disabled
+if (instance_exists(obj_playerparent)) {
+
+    //Make sure to deny gravity
+    with (obj_playerparent) {
+    
+        yspeed = 0;
+        ygrav = 0;
+    }
+    
+    //Snap in player's position
+    x = round(obj_playerparent.x);
+    y = round(obj_playerparent.y);
+}
 
 //Check if control is not longer pressed
 if (!keyboard_check(global.controlkey)) {

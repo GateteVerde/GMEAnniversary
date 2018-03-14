@@ -52,11 +52,8 @@ image_speed = 0.15;
 alarm[10] = 2;
 
 //Create solid collision
-mytop = instance_create(x,y,obj_semisolid);
+mytop = instance_create(x,y,obj_enemytop);
 with (mytop) {
-
-    //Set the sprite
-    sprite_index = spr_sproutmask;
     
     //Set the scale
     image_xscale = 2;

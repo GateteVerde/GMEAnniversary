@@ -206,7 +206,7 @@ if (global.healthmode == 0) {
     
     //Reserve item
     if (global.reserve &gt; cs_small)
-        draw_sprite_ext(constant_get_sprite(global.reserve), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+14, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(constant_get_sprite(global.reserve), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+15, 1, 1, 0, c_white, 1);
 }
 else
 draw_sprite_ext(spr_hud_health, health, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, 1);

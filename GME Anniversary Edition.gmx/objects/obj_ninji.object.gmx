@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_deactenemyparent</parentName>
+  <parentName>obj_subconenemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,16 +28,19 @@
             <string>///Ninji
 
 //How vulnerable is this enemy to various items?
-vulnerable = 0;
+vulnerable = 1;
 
 //How vulnerable is this enemy to the player?
-stomp = 0;
+stomp = 3;
 
 //How vulnerable is this enemy to yoshi?
 edible = 0;
 
 //Facing direction
 xscale = 1;
+
+//Is this enemy heavy?
+isheavy = 0;
 
 //Whether the object is swimming
 swimming = false;
@@ -49,13 +52,21 @@ jumping = 0;
 image_speed = 0.125;
 
 //Start jumping
-alarm[0] = 15+random(round(30));
+alarm[1] = 15+random(round(30));
+
+//Create solid collision
+mytop = instance_create(x,y,obj_enemytop);
+with (mytop) {
+    
+    //Set the scale
+    image_yscale = 0.25;
+}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -166,7 +177,7 @@ else {
         jumping = 0;
         
         //Jump again
-        alarm[0] = 15+random(round(30));
+        alarm[1] = 15+random(round(30));
     }
 }
 

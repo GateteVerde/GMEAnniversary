@@ -1218,7 +1218,7 @@ else {
 if (global.reserve != cs_small) {
 
     //Create a reserve item
-    with (instance_create(view_xview[0]+view_wview[0]/2, view_yview[0]+14, obj_reserveitem)) {
+    with (instance_create(view_xview[0]+view_wview[0]/2, view_yview[0]+15, obj_reserveitem)) {
     
         sprite_index = constant_get_sprite(global.reserve);
     }
@@ -1441,7 +1441,7 @@ else if (global.carrieditem != noone) {
             //If the item held was a blue boomerang
             if (global.carrieditem == obj_boomerang_blue_up)
                 obj_playerparent.holding = 3;
-            else
+            else            
                 obj_playerparent.holding = 1;
         }
         

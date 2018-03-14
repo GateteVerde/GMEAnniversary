@@ -194,6 +194,10 @@ audio_stop_sound(snd_climb);
 
 //Stop 'P-Meter' sound
 audio_stop_sound(snd_pmeter);
+
+//Destroy puller object
+if (instance_exists(obj_puller))
+    with (obj_puller) instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -564,6 +568,25 @@ if (yspeed &gt;= 0) { //If the player is moving down and the gravity is not disa
     
         //Snap above the semisolid platform
         y = semisolid.y-16;
+        
+        //Stop vertical movement
+        yspeed = 0;
+        ygrav = 0;
+        
+        //Reset values
+        event_user(15);
+    }
+    
+    //Check for a enemy that is solid on top
+    var enemy = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+yspeed,obj_enemytop,0,0);
+    
+    //If the enemy exists and the player is above it
+    if (enemy)
+    &amp;&amp; (bbox_bottom &lt; enemy.yprevious+4)
+    &amp;&amp; (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,enemy.y-1,obj_solid,1,0)) {
+    
+        //Snap above the semisolid platform
+        y = enemy.y-16;
         
         //Stop vertical movement
         yspeed = 0;

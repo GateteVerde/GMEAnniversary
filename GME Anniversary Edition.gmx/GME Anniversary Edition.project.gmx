@@ -1171,6 +1171,9 @@
         <sprite>sprites\spr_beachkoopa_blue_walk</sprite>
         <sprite>sprites\spr_beachkoopa_blue_kick</sprite>
         <sprite>sprites\spr_koopa_sq</sprite>
+        <sprite>sprites\spr_koopa_kamikaze</sprite>
+        <sprite>sprites\spr_koopa_kamikaze_down</sprite>
+        <sprite>sprites\spr_koopa_black</sprite>
         <sprite>sprites\spr_rex</sprite>
         <sprite>sprites\spr_rex2</sprite>
         <sprite>sprites\spr_rex_sq</sprite>
@@ -1179,7 +1182,7 @@
         <sprite>sprites\spr_spike_throw2</sprite>
         <sprite>sprites\spr_spike_ball</sprite>
         <sprite>sprites\spr_hoopster</sprite>
-        <sprite>sprites\spr_ninji</sprite>
+        <sprite>sprites\spr_ninji_black</sprite>
         <sprite>sprites\spr_fuzzy</sprite>
         <sprite>sprites\spr_wiggler</sprite>
         <sprite>sprites\spr_wiggler_body</sprite>
@@ -1361,9 +1364,27 @@
         <sprite>sprites\spr_rockywrench_dead</sprite>
         <sprite>sprites\spr_rockywrench_wrench</sprite>
       </sprites>
-      <sprite>sprites\spr_koopa_kamikaze</sprite>
-      <sprite>sprites\spr_koopa_kamikaze_down</sprite>
-      <sprite>sprites\spr_koopa_black</sprite>
+      <sprites name="Subcon">
+        <sprite>sprites\spr_shyguy</sprite>
+        <sprite>sprites\spr_shyguy_big</sprite>
+        <sprite>sprites\spr_shyguy_b</sprite>
+        <sprite>sprites\spr_shyguy_big_b</sprite>
+        <sprite>sprites\spr_shyguy_p</sprite>
+        <sprite>sprites\spr_snifit</sprite>
+        <sprite>sprites\spr_snifit_b</sprite>
+        <sprite>sprites\spr_snifit_g</sprite>
+        <sprite>sprites\spr_snifit_p</sprite>
+        <sprite>sprites\spr_snifit_ball</sprite>
+        <sprite>sprites\spr_ninji</sprite>
+        <sprite>sprites\spr_ninji_big</sprite>
+        <sprite>sprites\spr_tweeter</sprite>
+        <sprite>sprites\spr_tweeter_b</sprite>
+        <sprite>sprites\spr_hoopster_red</sprite>
+        <sprite>sprites\spr_bombguy</sprite>
+        <sprite>sprites\spr_bombguy_th</sprite>
+        <sprite>sprites\spr_cobrat</sprite>
+        <sprite>sprites\spr_cobrat_jump</sprite>
+      </sprites>
     </sprites>
     <sprites name="World Map">
       <sprite>sprites\spr_mapmario</sprite>
@@ -2461,7 +2482,7 @@
         <object>objects\obj_rex</object>
         <object>objects\obj_spike</object>
         <object>objects\obj_hoopster</object>
-        <object>objects\obj_ninji</object>
+        <object>objects\obj_ninji_black</object>
         <object>objects\obj_fuzzy</object>
         <object>objects\obj_fuzzy_line</object>
         <object>objects\obj_wiggler</object>
@@ -2597,6 +2618,24 @@
         <object>objects\obj_engine</object>
         <object>objects\obj_engine_alt</object>
         <object>objects\obj_rockywrench</object>
+      </objects>
+      <objects name="Subcon">
+        <object>objects\obj_shyguy</object>
+        <object>objects\obj_shyguy_big</object>
+        <object>objects\obj_shyguy_b</object>
+        <object>objects\obj_shyguy_big_b</object>
+        <object>objects\obj_shyguy_p</object>
+        <object>objects\obj_snifit</object>
+        <object>objects\obj_snifit_b</object>
+        <object>objects\obj_snifit_g</object>
+        <object>objects\obj_snifit_p</object>
+        <object>objects\obj_ninji</object>
+        <object>objects\obj_ninji_big</object>
+        <object>objects\obj_tweeter</object>
+        <object>objects\obj_tweeter_b</object>
+        <object>objects\obj_hoopster_red</object>
+        <object>objects\obj_bombguy</object>
+        <object>objects\obj_cobrat</object>
       </objects>
       <objects name="Generators">
         <objects name="Land">
@@ -2952,6 +2991,9 @@
         </objects>
         <objects name="Collision Parents">
           <objects name="Platform">
+            <objects name="Enemy">
+              <object>objects\obj_enemytop</object>
+            </objects>
             <object>objects\obj_platformparent</object>
           </objects>
           <object>objects\obj_slopeparent</object>
@@ -3012,7 +3054,7 @@
           <object>objects\obj_enemy_dead</object>
           <object>objects\obj_enemy_multidead</object>
           <object>objects\obj_enemy_stomped</object>
-          <object>objects\obj_enemy_pulled</object>
+          <object>objects\obj_enemy_carried</object>
           <object>objects\obj_enemy_tick</object>
           <object>objects\obj_enemy_coin</object>
           <object>objects\obj_stomped</object>
@@ -3084,6 +3126,9 @@
             <object>objects\obj_cannonball</object>
             <object>objects\obj_cannonball_large</object>
             <object>objects\obj_wrench</object>
+          </objects>
+          <objects name="Subcon">
+            <object>objects\obj_snifit_ball</object>
           </objects>
           <object>objects\obj_shell</object>
           <object>objects\obj_shell_kick</object>

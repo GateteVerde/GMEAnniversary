@@ -171,6 +171,9 @@ global.carrieditem = noone;
 //The sprite used by an item carried between rooms
 global.carriedsprite = noone;
 
+//The object to return when carrying a SMB2 enemy between rooms
+global.turnback = 0;
+
 //Initialize star coin system
 //0: Not collected
 //1: Collected, not saved
