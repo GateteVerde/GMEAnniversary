@@ -1384,6 +1384,18 @@
         <sprite>sprites\spr_bombguy_th</sprite>
         <sprite>sprites\spr_cobrat</sprite>
         <sprite>sprites\spr_cobrat_jump</sprite>
+        <sprite>sprites\spr_flurry</sprite>
+        <sprite>sprites\spr_beezo</sprite>
+        <sprite>sprites\spr_beezo_red</sprite>
+        <sprite>sprites\spr_phanto</sprite>
+        <sprite>sprites\spr_panser</sprite>
+        <sprite>sprites\spr_panser_g</sprite>
+        <sprite>sprites\spr_panser_b</sprite>
+        <sprite>sprites\spr_panser_p</sprite>
+        <sprite>sprites\spr_panser_fire</sprite>
+        <sprite>sprites\spr_pokey_green</sprite>
+        <sprite>sprites\spr_porcupo</sprite>
+        <sprite>sprites\spr_trouter</sprite>
       </sprites>
     </sprites>
     <sprites name="World Map">
@@ -1798,6 +1810,7 @@
         <sprite>sprites\spr_marker_bobomb</sprite>
         <sprite>sprites\spr_marker_bulletbill</sprite>
         <sprite>sprites\spr_marker_missilebill</sprite>
+        <sprite>sprites\spr_marker_beezo</sprite>
       </sprites>
       <sprites name="Warp Markers">
         <sprite>sprites\spr_marker_warppipe</sprite>
@@ -2636,6 +2649,17 @@
         <object>objects\obj_hoopster_red</object>
         <object>objects\obj_bombguy</object>
         <object>objects\obj_cobrat</object>
+        <object>objects\obj_cobrat_jar</object>
+        <object>objects\obj_flurry</object>
+        <object>objects\obj_beezo</object>
+        <object>objects\obj_phanto</object>
+        <object>objects\obj_panser</object>
+        <object>objects\obj_panser_g</object>
+        <object>objects\obj_panser_b</object>
+        <object>objects\obj_panser_p</object>
+        <object>objects\obj_pokey_green</object>
+        <object>objects\obj_porcupo</object>
+        <object>objects\obj_trouter</object>
       </objects>
       <objects name="Generators">
         <objects name="Land">
@@ -2653,6 +2677,12 @@
         </objects>
         <objects name="Airship">
           <object>objects\obj_generator_bobomb</object>
+          <object>objects\obj_generator_bulletbill</object>
+        </objects>
+        <objects name="Subcon">
+          <object>objects\obj_generator_shyguy</object>
+          <object>objects\obj_generator_bombguy</object>
+          <object>objects\obj_generator_beezo</object>
         </objects>
       </objects>
     </objects>
@@ -2975,12 +3005,10 @@
               <object>objects\obj_parhold</object>
             </objects>
             <objects name="Enemies">
-              <objects name="Deactivated">
-                <object>objects\obj_deactenemyparent</object>
-                <object>objects\obj_subconenemyparent</object>
-              </objects>
               <object>objects\obj_enemyparent</object>
               <object>objects\obj_enemyparent_held</object>
+              <object>objects\obj_deactenemyparent</object>
+              <object>objects\obj_subconenemyparent</object>
             </objects>
             <object>objects\obj_physicsparent</object>
             <object>objects\obj_powerupparent</object>
@@ -3129,6 +3157,8 @@
           </objects>
           <objects name="Subcon">
             <object>objects\obj_snifit_ball</object>
+            <object>objects\obj_beezo_active</object>
+            <object>objects\obj_panser_fire</object>
           </objects>
           <object>objects\obj_shell</object>
           <object>objects\obj_shell_kick</object>
