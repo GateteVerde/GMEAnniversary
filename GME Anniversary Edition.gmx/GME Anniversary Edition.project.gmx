@@ -1397,6 +1397,10 @@
         <sprite>sprites\spr_porcupo</sprite>
         <sprite>sprites\spr_trouter</sprite>
       </sprites>
+      <sprite>sprites\spr_hammerbro</sprite>
+      <sprite>sprites\spr_hammerbro_b</sprite>
+      <sprite>sprites\spr_hammerbro_c</sprite>
+      <sprite>sprites\spr_hammerbro_hammer</sprite>
     </sprites>
     <sprites name="World Map">
       <sprite>sprites\spr_mapmario</sprite>
@@ -2685,6 +2689,8 @@
           <object>objects\obj_generator_beezo</object>
         </objects>
       </objects>
+      <object>objects\obj_hammerbro</object>
+      <object>objects\obj_hammerbro_hammer</object>
     </objects>
     <objects name="World Map">
       <object>objects\obj_mapcontrol</object>
