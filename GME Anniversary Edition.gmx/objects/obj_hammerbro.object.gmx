@@ -169,6 +169,9 @@ throughsolid = 1;
             <kind>1</kind>
             <string>///Throw a hammer
 
+//Play 'Hammer' sound
+audio_play_sound(snd_hammer, 0, false);
+
 //If the player does exist.
 if (instance_exists(obj_playerparent)) {
 

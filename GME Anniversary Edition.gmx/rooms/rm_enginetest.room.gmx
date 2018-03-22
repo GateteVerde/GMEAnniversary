@@ -4,7 +4,7 @@
   <width>3904</width>
   <height>288</height>
   <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -90,7 +90,6 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_qblock" x="704" y="192" name="inst_6FAD76E0" locked="0" code="sprite_index = spr_brick;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelcontrol" x="0" y="0" name="inst_68A3A9FA" locked="0" code="levelmusic = global._theme_athletic;&#xA;leveltime = 400;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="24" y="144" name="inst_05BBA309" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_koopa" x="696" y="176" name="inst_A92884F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="888" y="208" name="inst_347A2617" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="920" y="200" name="inst_75B63AFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="1024" y="192" name="inst_DAF5EECE" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
@@ -285,29 +284,20 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_up" x="1216" y="272" name="inst_4DA645AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpright" x="2048" y="240" name="inst_E7A17FE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2000" y="256" name="inst_693AD342" locked="0" code="myroom = rm_enginetest3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bombguy" x="760" y="240" name="inst_ECF0BBE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bombguy" x="808" y="224" name="inst_CC601260" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tweeter" x="1000" y="176" name="inst_6D00BA48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_keyhole" x="3424" y="256" name="inst_1C89962B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_koopa" x="504" y="160" name="inst_7EF11669" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="512" y="112" name="inst_0D39C569" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="496" y="96" name="inst_F69E3F39" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="480" y="112" name="inst_34C89470" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="464" y="96" name="inst_CD2713C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="448" y="112" name="inst_53BAB573" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="248" y="232" name="inst_73D2A4F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="280" y="240" name="inst_BC6F6754" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="312" y="240" name="inst_E8D7A4F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="224" y="176" name="inst_D5FB159C" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="336" y="112" name="inst_F9C773B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="320" y="112" name="inst_F25DE8E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="304" y="112" name="inst_72210BD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="288" y="112" name="inst_BB6C2D45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="272" y="112" name="inst_6EAB13E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="256" y="112" name="inst_1833169D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="240" y="112" name="inst_7210F169" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hammerbro" x="328" y="96" name="inst_8916F8C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hammerbro" x="296" y="160" name="inst_C2F91B17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boomerangflower" x="56" y="144" name="inst_B75C5DC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_walrus" x="472" y="160" name="inst_F1E7B625" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_walrus" x="520" y="160" name="inst_5BC27250" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_walrus" x="568" y="192" name="inst_335ADAA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grayrus" x="712" y="176" name="inst_D725FCD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gladrus" x="760" y="240" name="inst_6AB06B16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gladrus" x="808" y="224" name="inst_318EADB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_chainchomp" x="288" y="160" name="inst_25151122" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_charginchuck" x="1096" y="176" name="inst_D2812063" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="1056" y="192" w="16" h="16" xo="160" yo="432" id="10024005" name="inst_9A5DF750" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

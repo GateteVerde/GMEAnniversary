@@ -487,6 +487,7 @@
       <sound>sound\snd_crumble</sound>
       <sound>sound\snd_flames</sound>
       <sound>sound\snd_hammer</sound>
+      <sound>sound\snd_hurt</sound>
       <sound>sound\snd_podoboo</sound>
       <sound>sound\snd_swooper</sound>
       <sound>sound\snd_thwomp</sound>
@@ -1401,6 +1402,32 @@
       <sprite>sprites\spr_hammerbro_b</sprite>
       <sprite>sprites\spr_hammerbro_c</sprite>
       <sprite>sprites\spr_hammerbro_hammer</sprite>
+      <sprite>sprites\spr_boomerangbro</sprite>
+      <sprite>sprites\spr_boomerangbro_b</sprite>
+      <sprite>sprites\spr_boomerangbro_c</sprite>
+      <sprite>sprites\spr_boomerangbro_boomerang</sprite>
+      <sprite>sprites\spr_firebro</sprite>
+      <sprite>sprites\spr_firebro_b</sprite>
+      <sprite>sprites\spr_firebro_c</sprite>
+      <sprite>sprites\spr_sledgebro</sprite>
+      <sprite>sprites\spr_sledgebro_b</sprite>
+      <sprite>sprites\spr_afhb</sprite>
+      <sprite>sprites\spr_afhb_platform</sprite>
+      <sprite>sprites\spr_sumobro</sprite>
+      <sprite>sprites\spr_sumobro_b</sprite>
+      <sprite>sprites\spr_sumobro_flame</sprite>
+      <sprite>sprites\spr_sumobro_lightning</sprite>
+      <sprite>sprites\spr_walrus</sprite>
+      <sprite>sprites\spr_grayrus</sprite>
+      <sprite>sprites\spr_gladrus</sprite>
+      <sprite>sprites\spr_gladrus_mad</sprite>
+      <sprite>sprites\spr_chainchomp</sprite>
+      <sprite>sprites\spr_chainchomp_chain</sprite>
+      <sprite>sprites\spr_chainchomp_chainpost</sprite>
+      <sprite>sprites\spr_charginchuck</sprite>
+      <sprite>sprites\spr_charginchuck_walk</sprite>
+      <sprite>sprites\spr_charginchuck_jump</sprite>
+      <sprite>sprites\spr_charginchuck_damage</sprite>
     </sprites>
     <sprites name="World Map">
       <sprite>sprites\spr_mapmario</sprite>
@@ -2690,7 +2717,16 @@
         </objects>
       </objects>
       <object>objects\obj_hammerbro</object>
-      <object>objects\obj_hammerbro_hammer</object>
+      <object>objects\obj_boomerangbro</object>
+      <object>objects\obj_firebro</object>
+      <object>objects\obj_sledgebro</object>
+      <object>objects\obj_afhb</object>
+      <object>objects\obj_sumobro</object>
+      <object>objects\obj_walrus</object>
+      <object>objects\obj_grayrus</object>
+      <object>objects\obj_gladrus</object>
+      <object>objects\obj_chainchomp</object>
+      <object>objects\obj_charginchuck</object>
     </objects>
     <objects name="World Map">
       <object>objects\obj_mapcontrol</object>
@@ -3168,6 +3204,14 @@
           </objects>
           <object>objects\obj_shell</object>
           <object>objects\obj_shell_kick</object>
+          <object>objects\obj_hammerbro_hammer</object>
+          <object>objects\obj_boomerangbro_boomerang</object>
+          <object>objects\obj_firebro_fireball</object>
+          <object>objects\obj_afhb_rider</object>
+          <object>objects\obj_sumobro_flame</object>
+          <object>objects\obj_sumobro_lightning</object>
+          <object>objects\obj_chomp</object>
+          <object>objects\obj_chomp_chain</object>
         </objects>
         <objects name="World Map">
           <objects name="Panels">

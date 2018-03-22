@@ -1505,7 +1505,7 @@ if (instance_exists(obj_playerparent)) {
     pal_swap_set(spr_palette_yoshi, colour);
     
     //Draw Yoshi
-    draw_sprite_ext(sprite_index, -1, round(x), round(y)+1, image_xscale, 1, 0, c_white, 1);
+    draw_sprite_ext(sprite_index, -1, round(x)+obj_playerparent.shake, round(y)+1, image_xscale, 1, 0, c_white, 1);
     
     //Reset shader
     pal_swap_reset();

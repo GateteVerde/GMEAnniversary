@@ -141,6 +141,12 @@ isfloating = 0;
 //Frog / Penguin powerup swimming variables
 swimtype = 0;
 
+//Prevents the player from moving if stunned
+stuntime = 0;
+
+//Makes the player shake when stunned
+shake = 0;
+
 //Mutes the 'Bump' sound when either the player is climbing or swimming with the frog or penguin powerups
 noisy = 0;
 
@@ -537,6 +543,24 @@ else {
 //Decrement net smack
 if (netsmack &gt; 0)
     netsmack--;
+    
+//Decrement stun time
+if (stuntime &gt; 0) {
+
+    //If the stuntime is about to end
+    if (stuntime == 1) {
+    
+        stuntime = 0;
+        shake = 0;
+        disablecontrol = false;
+    }
+    
+    //Decrement stuntime
+    stuntime--;
+    
+    //Shake if possible
+    shake = -shake;
+}
 
 //Make sure the player is doing a spinjump
 if (global.powerup != cs_propeller)
@@ -1626,7 +1650,7 @@ if (invulnerable == false) {
 pal_swap_set(spr_palette_mario, isflashing);
 
 //Draw player
-draw_sprite_ext(sprite_index,-1,round(x),round(y)+1,xscale,1,angle,c_white,image_alpha);
+draw_sprite_ext(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha);
 
 //End shader
 pal_swap_reset();
