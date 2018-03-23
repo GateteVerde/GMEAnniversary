@@ -205,7 +205,7 @@ if (y &gt; room_height+32)
 //  This event must be called in a 'End Step' event, otherwise it will not work properly.
 */
 
-var moving = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_platformparent,0,0);
+var moving = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+4,obj_platformparent,0,0);
 if (moving) {
 
     //With this platform

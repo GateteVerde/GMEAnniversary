@@ -4,7 +4,7 @@
   <width>3904</width>
   <height>288</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -290,14 +290,10 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_goomba" x="312" y="240" name="inst_E8D7A4F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="224" y="176" name="inst_D5FB159C" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boomerangflower" x="56" y="144" name="inst_B75C5DC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_walrus" x="472" y="160" name="inst_F1E7B625" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_walrus" x="520" y="160" name="inst_5BC27250" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_walrus" x="568" y="192" name="inst_335ADAA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_grayrus" x="712" y="176" name="inst_D725FCD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gladrus" x="760" y="240" name="inst_6AB06B16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gladrus" x="808" y="224" name="inst_318EADB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_chainchomp" x="288" y="160" name="inst_25151122" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_charginchuck" x="1096" y="176" name="inst_D2812063" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_clappinchuck" x="488" y="160" name="inst_D682E311" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_holdbubble_enemy" x="528" y="112" name="inst_B6C1A049" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_holdbubble_enemy" x="576" y="80" name="inst_239F50A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_holdbubble_enemy" x="624" y="96" name="inst_40D6440A" locked="0" code="sprout = spr_bobomb;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="1056" y="192" w="16" h="16" xo="160" yo="432" id="10024005" name="inst_9A5DF750" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
