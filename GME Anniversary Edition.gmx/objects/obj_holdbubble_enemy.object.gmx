@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -174,7 +174,7 @@ else if (ready) {
     if (outside_view()) {
         
         //Create a respawn bubble with the same item
-        with (instance_create(xstart,ystart,obj_holdbubble_respawn)) sprout = other.sprout;
+        with (instance_create(xstart,ystart,obj_holdbubble_enemy_respawn)) sprout = other.sprout;
         
         //Destroy
         instance_destroy();
@@ -250,10 +250,10 @@ alarm[1] = 1;
             <string>///Draw bubble
 
 //Draw enemy
-draw_sprite_ext(sprout,0,x+8+(sprite_get_xoffset(sprout)),y+26,1,-1,0,c_white,1);
+draw_sprite_ext(sprout,-1,round(x)+8+(sprite_get_xoffset(sprout)),y+26,1,-1,0,c_white,1);
 
 //Draw bubble
-draw_sprite_ext(sprite_index,-1,x,y,1,1,0,c_white,image_alpha);
+draw_sprite_ext(sprite_index,-1,round(x),y,1,1,0,c_white,image_alpha);
 </string>
           </argument>
         </arguments>

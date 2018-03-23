@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -53,10 +53,13 @@ sprout = cs_coin;
             <kind>1</kind>
             <string>///Respawn
 
-if (!outside_view()) {
+if (xstart &lt; view_xview[0]-32)
+|| (ystart &lt; view_yview[0]-32)
+|| (xstart &gt; view_xview[0]+view_wview[0])
+|| (ystart &gt; view_yview[0]+view_hview[0]) {
 
     //Create the new bubble
-    with (instance_create(x,y,obj_holdbubble)) sprout = other.sprout;
+    with (instance_create(xstart,ystart,obj_holdbubble)) sprout = other.sprout;
     
     //Destroy
     instance_destroy();
