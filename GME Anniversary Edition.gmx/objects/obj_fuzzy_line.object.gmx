@@ -84,6 +84,22 @@ else
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>425</id>
+        <kind>4</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -101,12 +117,12 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Makes the platform move around on paths.
+            <string>///Makes the fuzzy move around on paths.
 
-//Check up in what direction is the platform moving.
+//Check up in what direction is the fuzzy moving.
 switch (direct) {
 
-    //If the platform is moving to the right.
+    //If the fuzzy is moving to the right.
     case (0): {
     
         if (collision_point(x+1,y+sprite_height/2,obj_pathparent,1,0))
@@ -135,7 +151,7 @@ switch (direct) {
             direct = 180;
     } break;
     
-    //Otherwise, if the platform is moving upwards.
+    //Otherwise, if the fuzzy is moving upwards.
     case (90): {
     
         if (collision_point(x,y+(sprite_height/2)-1,obj_pathparent,1,0))     
@@ -164,7 +180,7 @@ switch (direct) {
             direct = 270;
     } break;
     
-    //Otherwise, if the platform is moving to the left.
+    //Otherwise, if the fuzzy is moving to the left.
     case (180): {
     
         if (collision_point(x-1,y+sprite_height/2,obj_pathparent,1,0))         
@@ -193,7 +209,7 @@ switch (direct) {
             direct = 0;
     } break;
     
-    //Otherwise, if the platform is moving downwards.
+    //Otherwise, if the fuzzy is moving downwards.
     case (270): {
     
         if (collision_point(x,y+(sprite_height/2)+1,obj_pathparent,1,0))    
