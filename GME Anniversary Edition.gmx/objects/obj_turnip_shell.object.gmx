@@ -392,7 +392,7 @@ else {
     
     //Otherwise, if the object is underwater and it's not underwater, end swimming.
     else if (!water) 
-    &amp;&amp; (swimming)
+    &amp;&amp; (swimming)    
         swimming = false;
 }
 </string>

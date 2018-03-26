@@ -121,7 +121,7 @@ else {
     || (sprite_index == spr_mblock)
     || (sprite_index == spr_powblock)
     || (sprite_index == spr_vegshroom)
-    || (sprite_index == spr_vegshroom_1up) 
+    || (sprite_index == spr_vegshroom_1up)
     || (sprite_index == spr_propellerblock) {
     
         drawpiece2 = 3;
@@ -587,7 +587,8 @@ if (((bbox_bottom &lt; obj_playerparent.bbox_top+14) &amp;&amp; (global.powerup 
     if (global.powerup != cs_small) {
     
         //If the sprite height is greater than 16
-        if (sprite_height &gt; 16) {
+        if (sprite_width &gt; 16) 
+        &amp;&amp; (sprite_height &gt; 16) {
         
             //If the vegetable is a enemy
             if (enemy) {
@@ -608,7 +609,8 @@ if (((bbox_bottom &lt; obj_playerparent.bbox_top+14) &amp;&amp; (global.powerup 
     else if (global.powerup == cs_small) {
     
         //If the sprite height is greater than 16
-        if (sprite_height &gt; 16) {
+        if (sprite_width &gt; 16) 
+        &amp;&amp; (sprite_height &gt; 16) {
         
             //If the vegetable is a enemy
             if (enemy) {

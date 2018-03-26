@@ -148,23 +148,22 @@ if (!disablecontrol) && (!inwall) {
         //Make the player spin jump
         if ((keyboard_check(global.upkey))
         && (!crouch)
-        && ((holding == 0) || (holding == 4))
-        && (global.powerup != cs_frog)) {
+        && ((holding == 0) || (holding == 4))) {
         
             //If a kuribo shoe is being ridden, dismount from it.
             if (global.mount == 2) {
             
                 with (obj_kuriboshoe) event_user(0);
                 if (state < 2) {
-                
-                    //Set spin jump variable
-                    stompstyle = true;
                     
-                    //Set horizontal speed
-                    xspeed = 1*(xscale*-1)
-    
                     //Play 'Spin' sound
                     audio_play_sound(snd_spin, 0, false);
+                    
+                    //Set horizontal speed
+                    xspeed = 1*(xscale*-1);
+                
+                    //Set spin jump variable
+                    stompstyle = true;        
                 }
                 else {
                 
@@ -181,24 +180,24 @@ if (!disablecontrol) && (!inwall) {
             
                 with (obj_yoshi) event_user(1);
                 if (state < 2) {
-                
-                    //Set spin jump variable
-                    stompstyle = true;
                     
-                    //Set horizontal speed
-                    xspeed = 1*(xscale*-1)
-    
                     //Play 'Spin' sound
                     audio_play_sound(snd_spin, 0, false);
+                    
+                    //Set horizontal speed
+                    xspeed = 1*(xscale*-1);
+                
+                    //Set spin jump variable
+                    stompstyle = true;        
                 }
                 else {
                 
                     //Do not set spin jump
                     stompstyle = false;
-                                    
+                
                     //Play 'Jump' sound
                     audio_play_sound(snd_jump, 0, false);
-                }
+                }              
             }
             
             else {

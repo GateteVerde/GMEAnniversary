@@ -311,7 +311,7 @@ if (!held) {
             inwall = false;        
     }
     
-    //Check for a body of water
+    //Check for a water object
     var water = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0);
     
     //If the object is not underwater and makes contact with water
@@ -321,6 +321,9 @@ if (!held) {
         //Make the object go underwater
         swimming = true;
         
+        //Slowdown
+        hspeed = hspeed/2;
+        
         //Stop vertical movement
         gravity = 0;
         if (vspeed &gt; 0)
@@ -329,8 +332,11 @@ if (!held) {
     
     //Otherwise, if the object is underwater and it's not underwater, end swimming.
     else if (!water) 
-    &amp;&amp; (swimming)
+    &amp;&amp; (swimming) {
+    
         swimming = false;
+        hspeed = hspeed*2;
+    }
 }
 </string>
           </argument>

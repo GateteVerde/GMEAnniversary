@@ -204,6 +204,9 @@ else {
         //Make the object go underwater
         swimming = true;
         
+        //Slowdown
+        hspeed = hspeed/2;
+        
         //Stop vertical movement
         gravity = 0;
         if (vspeed &gt; 0)
@@ -212,8 +215,11 @@ else {
     
     //Otherwise, if the object is underwater and it's not underwater, end swimming.
     else if (!water) 
-    &amp;&amp; (swimming)
+    &amp;&amp; (swimming) {
+    
         swimming = false;
+        hspeed = hspeed*2;
+    }
 }
 
 //Increment scale
