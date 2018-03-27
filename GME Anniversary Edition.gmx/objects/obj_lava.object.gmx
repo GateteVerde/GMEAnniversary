@@ -3,7 +3,7 @@
   <spriteName>spr_lava</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-6</depth>
+  <depth>9</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -71,7 +71,7 @@ if (instance_exists(obj_playerparent)) {
     with (obj_playerparent) {
     
         //If the player makes contact with lava
-        if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_lava,1,0)) {
+        if (collision_rectangle(bbox_left,bbox_bottom+6,bbox_right,bbox_bottom+7,obj_lava,1,0)) {
         
             instance_create(x,y,obj_player_dead);
             instance_destroy();
@@ -104,7 +104,7 @@ if (instance_exists(obj_playerparent)) {
             <string>///Lava logic
 
 //Depth
-depth = -6;
+depth = 9;
 
 //Animate
 frame += 0.15;

@@ -30,6 +30,9 @@
 //Inherit event
 event_inherited();
 
+//Make it invulnerable to projectiles
+vulnerable = 1;
+
 //Animate
 image_speed = 0;
 
