@@ -409,16 +409,10 @@ exit;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Warn the player that the time is running out
+            <string>///Speed up the music and warn the player that the time is running out
 
 //Play 'Hurry' sound
 audio_play_sound(snd_hurry, 0, false);
-
-//Play music
-alarm[0] = 120;
-
-//Stop music
-alarm[1] = 1;
 </string>
           </argument>
         </arguments>

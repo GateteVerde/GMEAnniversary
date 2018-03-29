@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="40" name="datafiles">
-    <datafiles number="40" name="music">
+  <datafiles number="41" name="datafiles">
+    <datafiles number="41" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
@@ -314,7 +314,7 @@
       <datafile>
         <name>starman.ogg</name>
         <exists>-1</exists>
-        <size>72301</size>
+        <size>55965</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -3435,6 +3435,11 @@
           <room>rooms\rm_woodenwalkway</room>
           <room>rooms\rm_woodenwalkway_b</room>
           <room>rooms\rm_woodenwalkway_c</room>
+        </rooms>
+        <rooms name="Level 4">
+          <room>rooms\rm_subconfields</room>
+          <room>rooms\rm_subconfields_b</room>
+          <room>rooms\rm_subconfields_c</room>
         </rooms>
       </rooms>
       <room>rooms\rm_enginetest</room>
