@@ -2126,6 +2126,7 @@
       <script>scripts\player_draw_yoshi.gml</script>
     </scripts>
     <scripts name="Events">
+      <script>scripts\redcoin_set.gml</script>
       <script>scripts\pswitch_activate.gml</script>
       <script>scripts\pswitch_deactivate.gml</script>
     </scripts>
@@ -3435,6 +3436,9 @@
           <room>rooms\rm_woodenwalkway</room>
           <room>rooms\rm_woodenwalkway_b</room>
           <room>rooms\rm_woodenwalkway_c</room>
+        </rooms>
+        <rooms name="Level 3">
+          <room>rooms\rm_scorchingdesert</room>
         </rooms>
         <rooms name="Level 4">
           <room>rooms\rm_subconfields</room>
