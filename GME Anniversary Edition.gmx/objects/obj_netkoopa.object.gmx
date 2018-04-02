@@ -258,6 +258,9 @@ switch (depth) {
         //Set stomp grade
         stomp = 0;
         
+        //Make edible
+        edible = 0;
+        
         //Set depth
         depth = -2;
     } break;
@@ -270,6 +273,9 @@ switch (depth) {
         
         //Set stomp grade
         stomp = -1;
+        
+        //Make not edible
+        edible = 2;
         
         //Set depth
         depth = 10;

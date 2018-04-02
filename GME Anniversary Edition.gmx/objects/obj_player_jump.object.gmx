@@ -167,7 +167,8 @@ if (y &lt; ystart) {
             <string>///Draw player and item
 
 //If the player is inside a kuribo shoe
-if (global.mount == 2) {
+if (global.mount == 2) 
+&amp;&amp; (instance_exists(obj_kuriboshoe)) {
     
     //Set the shader
     pal_swap_set(spr_palette_mario, isflashing);
@@ -187,7 +188,8 @@ if (global.mount == 2) {
 }
 
 //Otherwise, if the player is riding a yoshi
-else if (global.mount == 1) {
+else if (global.mount == 1) 
+&amp;&amp; (instance_exists(obj_yoshi)) {
 
     //Set Yoshi palette
     pal_swap_set(spr_palette_yoshi, obj_yoshi.colour);

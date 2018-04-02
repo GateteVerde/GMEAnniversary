@@ -134,7 +134,7 @@ else {
         else {
         
             //If there's not a solid above
-            if (!place_meeting(x,ystart-4,obj_solid)) {
+            if (!place_meeting(x,y-1,obj_solid)) {
             
                 //Hold event
                 alarm[0] = 1;

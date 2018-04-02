@@ -196,12 +196,10 @@
     <instance objName="obj_coin" x="576" y="256" name="inst_4D80618E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="576" y="224" name="inst_6B6F5578" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="400" y="64" name="inst_F3F013DA" locked="0" code="varmsg = &quot;When swimming, press 'Up' to swim higher or press 'Down' to swim as not high.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warppost" x="336" y="384" name="inst_41D136E9" locked="0" code="postx = 592;&#xA;posty = 368;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ninji_black" x="8" y="288" name="inst_61122A90" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="248" y="384" name="inst_654F96D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="200" y="384" name="inst_6D995FB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_generator_goomba" x="296" y="384" name="inst_4C80F6F1" locked="0" code="dir = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warpleft" x="288" y="368" name="inst_0154C4B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_path" x="688" y="160" name="inst_6DF338F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_path" x="800" y="96" name="inst_AA50E665" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_path_diagonal_r" x="704" y="144" name="inst_A6059B39" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
@@ -286,7 +284,6 @@
     <instance objName="obj_semisolid" x="1248" y="368" name="inst_CCA693DA" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1360" y="256" name="inst_605A15BA" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1312" y="336" name="inst_150F0316" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solid" x="1360" y="320" name="inst_F7B75F8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1376" y="288" name="inst_C326D9A3" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_slope_r" x="1328" y="320" name="inst_191A1F78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="1376" y="256" name="inst_461F1908" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
@@ -297,7 +294,7 @@
     <instance objName="obj_semisolid" x="1536" y="256" name="inst_B99DA187" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mushroomplatform" x="1456" y="176" name="inst_F168CA0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tilehider" x="1456" y="304" name="inst_8E905BD2" locked="0" code="target_depth = -6;&#xA;" scaleX="9" scaleY="6" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="1424" y="304" name="inst_BDDA7DE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="1424" y="304" name="inst_BDDA7DE8" locked="0" code="myroom = rm_woodenwalkway_c;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shyguy_big_b" x="1440" y="240" name="inst_8F17FFC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpleft" x="1536" y="352" name="inst_B7191154" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="1456" y="176" name="inst_1A298879" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -365,7 +362,7 @@
     <instance objName="obj_bobomb" x="1624" y="240" name="inst_394CA1B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bobomb" x="1576" y="240" name="inst_92D124D1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warppost" x="1584" y="368" name="inst_EDEE8D13" locked="0" code="postx = 1200;&#xA;posty = 80;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock_hidden_triple" x="1472" y="304" name="inst_7B7FC79A" locked="0" code="sprout[1] = cs_key;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_hidden_triple" x="1472" y="304" name="inst_7B7FC79A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_1up" x="1496" y="368" name="inst_0602A5F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_holdbubble_enemy" x="1872" y="272" name="inst_CEAF72F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_holdbubble_enemy" x="1952" y="240" name="inst_2B884505" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -414,6 +411,10 @@
     <instance objName="obj_nokobomb" x="2744" y="272" name="inst_6E42EB0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_nokobomb" x="2696" y="256" name="inst_38D2A903" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_charginchuck" x="3200" y="368" name="inst_ADF9B57C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warpleft" x="1376" y="288" name="inst_10E04A55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_noteblock_warp_hidden" x="1608" y="112" name="inst_B1674E6A" locked="0" code="myroom = rm_woodenwalkway_b;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_up" x="1840" y="352" name="inst_2FEF8891" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_semisolid" x="1360" y="320" name="inst_2E43F89E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_goal" x="3056" y="192" w="432" h="240" xo="0" yo="0" id="10063048" name="inst_F5C2A5C1" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -215,8 +215,8 @@ if (ready == 0) {
     alarm[1] = 4;
     
     //Snap into the slope
-    x = other.x+sprite_width/2;
-    y = other.y+sprite_height/2;
+    x = other.x+other.sprite_width/2;
+    y = other.y+other.sprite_height/2;
 }
 </string>
           </argument>
@@ -282,8 +282,8 @@ if (ready == 0) {
     alarm[1] = 4;
     
     //Snap into the slope
-    x = other.x+sprite_width/2;
-    y = other.y+sprite_height/2;
+    x = other.x+other.sprite_width/2;
+    y = other.y+other.sprite_height/2;
 }
 </string>
           </argument>

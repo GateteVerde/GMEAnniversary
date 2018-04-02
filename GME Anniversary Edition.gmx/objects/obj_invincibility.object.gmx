@@ -59,8 +59,12 @@ hitcombo = 0;
             <kind>1</kind>
             <string>///Play invincibility music
 
-//End level music
-obj_levelcontrol.alarm[1] = 1;
+//End level music and reset global.music
+with (obj_levelcontrol) {
+
+    alarm[1] = 1;
+    global.levelmusic = noone;
+}
 
 //Play 'Starman' theme
 if (!FMODInstanceIsPlaying(global._stream_starman)) 
