@@ -8,6 +8,9 @@
 **      Initializes all of the global variables used throughout the game.
 */
 
+//Gamepad
+global.gamepad = false;
+
 //World Number
 global.world = "1";
 

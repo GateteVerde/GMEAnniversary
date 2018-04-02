@@ -254,7 +254,7 @@ window_center();
 var index = 4;
 
 //If there is a gamepad connected and the window is visible
-if (gamepad_is_connected(index)) &amp;&amp; (window_has_focus()) {
+if (global.gamepad == true) &amp;&amp; (gamepad_is_connected(index)) &amp;&amp; (window_has_focus()) {
 
     //L-Stick Left / D-Pad Left
     if (gamepad_axis_value(index,gp_axislh) &lt;= -0.4) || (gamepad_button_check(index, gp_padl)) then keyboard_key_press(global.leftkey);       
@@ -265,11 +265,11 @@ if (gamepad_is_connected(index)) &amp;&amp; (window_has_focus()) {
     else keyboard_key_release(global.rightkey);
     
     //L-Stick Up / D-Pad Up
-    if (gamepad_axis_value(index,gp_axislh) &lt;= -0.4) || (gamepad_button_check(index, gp_padu)) then keyboard_key_press(global.upkey);
+    if (gamepad_axis_value(index,gp_axislv) &lt;= -0.4) || (gamepad_button_check(index, gp_padu)) then keyboard_key_press(global.upkey);
     else keyboard_key_release(global.upkey);
     
     //L-Stick Down / D-Pad Down
-    if (gamepad_axis_value(index,gp_axislh) &lt;= -0.4) || (gamepad_button_check(index, gp_padd)) then keyboard_key_press(global.downkey);
+    if (gamepad_axis_value(index,gp_axislv) &gt;= 0.4) || (gamepad_button_check(index, gp_padd)) then keyboard_key_press(global.downkey);
     else keyboard_key_release(global.downkey);
     
     //A Button / B Button (Shift)
@@ -350,6 +350,10 @@ if (!audio_is_playing(snd_thwomp))
 //Quit the game when ALT+F4 are pressed.
 if (keyboard_check_pressed(vk_f4))
     game_end();
+    
+//Enable/Disable the Gamepad.
+else if (keyboard_check_pressed(ord('G')))
+    global.gamepad =! global.gamepad;
     
 //Restart the game when ALT+R are pressed.
 else if (keyboard_check_pressed(ord('R'))) {
