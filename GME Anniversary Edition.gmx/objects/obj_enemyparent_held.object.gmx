@@ -1424,7 +1424,7 @@ else {
     audio_play_sound(snd_kick, 0, false);
             
     //Set the horizontal speed.
-    hspeed = 1.5*obj_playerparent.xscale;
+    hspeed = 2*obj_playerparent.xscale;
     
     //Set the vertical speed
     vspeed = -2;

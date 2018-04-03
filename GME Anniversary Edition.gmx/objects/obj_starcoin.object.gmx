@@ -303,9 +303,10 @@ if (!ready) {
         //Depth
         depth = -2;
     
-        //Set the vertical speed
+        //Set the vertical and animation speed
         vspeed = -4;
         gravity = 0.2;
+        image_speed = 0.8;
     }
 
     //Collect it

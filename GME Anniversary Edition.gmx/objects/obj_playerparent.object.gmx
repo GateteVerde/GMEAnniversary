@@ -159,6 +159,9 @@ boost = 0;
 //Player colour
 isflashing = 0;
 
+//If the player is warping from a pit.
+pitwarp = false;
+
 //Initialize important alarms
 alarm[3] = 1; //This one is found on player skins
 alarm[5] = 1;
@@ -1242,12 +1245,21 @@ if (y &lt; -96)
 //Otherwise, if he is falling.
 else {
 
-    //If the player is below the bottom room boundary, restart the room.
+    //If the player is below the bottom room boundary and didn't activate a warp, restart the room.
     if (bbox_bottom &gt; room_height+32) {
                 
-        instance_create(x,y,obj_player_dead);
-        instance_destroy();
-        exit;         
+        if (pitwarp == false) {
+        
+            instance_create(x,y,obj_player_dead);
+            instance_destroy();
+            exit;  
+        }
+        
+        else {
+        
+            //Force the player to fall.
+            vspeed = 4;
+        }       
     }
 }
 </string>

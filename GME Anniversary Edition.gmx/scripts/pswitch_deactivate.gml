@@ -67,3 +67,23 @@ with (obj_coin_m) {
     //Destroy
     instance_destroy();
 }
+
+//Make P-blocks visible
+with (obj_pblock) {
+
+    //Destroy solid
+    with (mysolid) instance_destroy();
+    
+    //Make visible
+    visible = false;
+}
+
+//Make P-blocks visible
+with (obj_qblock_p) {
+
+    //Destroy solid
+    with (mysolid) instance_destroy();
+    
+    //Make visible
+    visible = false;
+}

@@ -51,7 +51,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_00604371" locked="0" code="levelmusic = global._theme_underground;&#xA;leveltime = 1;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_00604371" locked="0" code="levelmusic = global._theme_underground;&#xA;leveltime = 1;&#xA;camlock = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="32" y="144" name="inst_217848E9" locked="0" code="" scaleX="4" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="240" y="160" name="inst_F65FFADC" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="288" y="80" name="inst_0EB211E5" locked="0" code="" scaleX="3" scaleY="2" colour="4294967295" rotation="0"/>
@@ -150,7 +150,7 @@
     <instance objName="obj_coin" x="768" y="176" name="inst_ADC48EB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="768" y="208" name="inst_5468BAA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="736" y="176" name="inst_208ADB4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="864" y="96" name="inst_84036ED2" locked="0" code="postchange = 1;&#xA;postx = 1840;&#xA;posty = 256;&#xA;myroom = rm_scorchingdesert;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="864" y="96" name="inst_84036ED2" locked="0" code="postchange = 1;&#xA;postx = 2176;&#xA;posty = 240;&#xA;myroom = rm_scorchingdesert;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="848" y="144" name="inst_0C4D03ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bganimator" x="16" y="-16" name="inst_4672D299" locked="0" code="bg_index = 1;&#xA;bg_frame[0] = bgr_underground_fg;&#xA;bg_frame[1] = bgr_underground_fg_b;&#xA;bg_frame[2] = bgr_underground_fg_c;&#xA;bg_frame[3] = bgr_underground_fg_d;&#xA;bg_frame[4] = bgr_underground_fg_e;&#xA;bg_frame[5] = bgr_underground_fg_d;&#xA;bg_frame[6] = bgr_underground_fg_c;&#xA;bg_frame[7] = bgr_underground_fg_b;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flipblock" x="576" y="160" name="inst_8423D4A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

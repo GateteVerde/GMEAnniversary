@@ -391,6 +391,32 @@ if (!held) {
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy if not being held and outside the view
+
+if ((y &gt; room_height+32) &amp;&amp; (!held))
+    instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="25">
       <action>
         <libid>1</libid>
@@ -504,7 +530,7 @@ else {
         
         vspeed = -2;
         if (!collision_rectangle(x-1,bbox_top,x+1,bbox_bottom,obj_slopeparent,1,0))
-            hspeed = obj_playerparent.xspeed+0.75*obj_playerparent.xscale;
+            hspeed = obj_playerparent.xspeed+1*obj_playerparent.xscale;
         else {
         
             //Set the horizontal speed

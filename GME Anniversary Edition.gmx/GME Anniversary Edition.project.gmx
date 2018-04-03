@@ -998,6 +998,7 @@
         <sprite>sprites\spr_qblock_triple_empty</sprite>
         <sprite>sprites\spr_qblock_big</sprite>
         <sprite>sprites\spr_qblock_big_empty</sprite>
+        <sprite>sprites\spr_qblock_p</sprite>
         <sprite>sprites\spr_qblock_spiked</sprite>
         <sprite>sprites\spr_qblock_spiked_nospin</sprite>
         <sprite>sprites\spr_qblock_winged</sprite>
@@ -1059,6 +1060,7 @@
       <sprite>sprites\spr_eswitchblock</sprite>
       <sprite>sprites\spr_eoutline</sprite>
       <sprite>sprites\spr_eblock</sprite>
+      <sprite>sprites\spr_pblock</sprite>
       <sprite>sprites\spr_area_y</sprite>
       <sprite>sprites\spr_area_g</sprite>
       <sprite>sprites\spr_area_r</sprite>
@@ -2437,8 +2439,9 @@
         <object>objects\obj_qblock_triple</object>
         <object>objects\obj_qblock_hidden_triple</object>
         <object>objects\obj_qblock_big</object>
-        <object>objects\obj_qblock_winged</object>
+        <object>objects\obj_qblock_p</object>
         <object>objects\obj_qblock_spiked</object>
+        <object>objects\obj_qblock_winged</object>
       </objects>
       <objects name="Gray Blocks">
         <object>objects\obj_flowerblock</object>
@@ -2488,6 +2491,7 @@
       <object>objects\obj_qswitchblock</object>
       <object>objects\obj_eswitchblock</object>
       <object>objects\obj_eblock</object>
+      <object>objects\obj_pblock</object>
       <object>objects\obj_area_y</object>
       <object>objects\obj_area_g</object>
       <object>objects\obj_area_r</object>
@@ -2907,6 +2911,7 @@
           </objects>
           <object>objects\obj_platform</object>
           <object>objects\obj_platform_touch</object>
+          <object>objects\obj_platform_floating</object>
           <object>objects\obj_platform_falling</object>
         </objects>
         <objects name="SMB2">
@@ -3020,6 +3025,7 @@
       <object>objects\obj_warproom</object>
       <object>objects\obj_warpcannon</object>
       <object>objects\obj_warpcannon_big</object>
+      <object>objects\obj_pitwarp</object>
       <object>objects\obj_pipemanager</object>
     </objects>
     <objects name="Special">
@@ -3437,6 +3443,13 @@
           <room>rooms\rm_woodenwalkway_b</room>
           <room>rooms\rm_woodenwalkway_c</room>
         </rooms>
+        <rooms name="Level 2">
+          <room>rooms\rm_waterfallcaverns</room>
+          <room>rooms\rm_waterfallcaverns_b</room>
+          <room>rooms\rm_waterfallcaverns_c</room>
+          <room>rooms\rm_waterfallcaverns_d</room>
+          <room>rooms\rm_waterfallcaverns_e</room>
+        </rooms>
         <rooms name="Level 3">
           <room>rooms\rm_scorchingdesert</room>
           <room>rooms\rm_scorchingdesert_b</room>
@@ -3446,6 +3459,14 @@
           <room>rooms\rm_subconfields</room>
           <room>rooms\rm_subconfields_b</room>
           <room>rooms\rm_subconfields_c</room>
+        </rooms>
+      </rooms>
+      <rooms name="World 2">
+        <rooms name="Fort">
+          <room>rooms\rm_w2_f1a</room>
+          <room>rooms\rm_w2_f1b</room>
+          <room>rooms\rm_w2_f1c</room>
+          <room>rooms\rm_w2_f1d</room>
         </rooms>
       </rooms>
       <room>rooms\rm_enginetest</room>

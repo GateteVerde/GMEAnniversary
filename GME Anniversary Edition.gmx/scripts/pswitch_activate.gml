@@ -67,3 +67,23 @@ with (obj_muncher) {
     //Destroy
     instance_destroy();
 }
+
+//Make P-blocks visible
+with (obj_pblock) {
+
+    //Create a solid
+    mysolid = instance_create(x,y,obj_solid);
+    
+    //Make visible
+    visible = true;
+}
+
+//Make P-blocks visible
+with (obj_qblock_p) {
+
+    //Create a solid
+    mysolid = instance_create(x,y,obj_solid);
+    
+    //Make visible
+    visible = true;
+}

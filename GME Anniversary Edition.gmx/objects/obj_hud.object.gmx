@@ -219,8 +219,8 @@ draw_sprite_ext(spr_hud_time, -1, view_xview[0]+view_wview[0]-33+shakex, view_yv
 if (global.time &gt; -1)
 &amp;&amp; (obj_levelcontrol.leveltime != 0) {
 
-    //If there's 100 or less seconds left
-    if (global.time &lt;= 100)
+    //If there's 100 or less seconds left and the level isn't finished
+    if (global.time &lt;= 100 &amp;&amp; global.clear == 0)
         draw_text_colour(view_xview[0]+view_wview[0]-32+shakex, view_yview[0]+15+shakey, string_add_zeros(global.time, 3), c_red, c_red, c_red, c_red, 1);
     else
         draw_text_colour(view_xview[0]+view_wview[0]-32, view_yview[0]+15, string_add_zeros(global.time, 3), c_white, c_white, c_white, c_white, 1);
