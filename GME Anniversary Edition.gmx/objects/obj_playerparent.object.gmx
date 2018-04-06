@@ -1656,13 +1656,13 @@ if (invulnerable == false) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Draw player and effects
+            <string>///Draw player and effects
 
 //Set the shader
 pal_swap_set(spr_palette_mario, isflashing);
 
 //Draw player
-draw_sprite_ext(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha);
+draw_sprite_player(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha,1);
 
 //End shader
 pal_swap_reset();
