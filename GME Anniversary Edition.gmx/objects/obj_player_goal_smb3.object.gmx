@@ -78,7 +78,7 @@ with (instance_create(view_xview[0],view_yview[0],obj_powkiller))
             <kind>1</kind>
             <string>///Return to the map if no music is playing
 
-if (FMODInstanceIsPlaying(mygoal.stream))
+if (audio_is_playing(mygoal.stream))
     alarm[1] = 1;
 else {
     
@@ -276,7 +276,7 @@ if (gravity == 0)
 //If the player did not exit the view
 if (ready == 0)
 &amp;&amp; (x &gt; room_width+32)
-&amp;&amp; (FMODInstanceIsPlaying(mygoal.stream) == false) {
+&amp;&amp; (audio_is_playing(mygoal.stream) == false) {
 
     //The player exited the view
     ready = 1;

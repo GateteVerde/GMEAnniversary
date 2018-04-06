@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Play stream
 
-stream = FMODSoundLoop(global._theme_bonus, 0);
+stream = audio_play_sound(global._theme_bonus, 0, 1);
 </string>
           </argument>
         </arguments>

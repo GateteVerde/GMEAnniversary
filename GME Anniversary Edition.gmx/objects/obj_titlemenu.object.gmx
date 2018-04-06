@@ -28,7 +28,7 @@
             <string>///The titlescreen menu
 
 //Play the title theme
-stream = FMODSoundPlay(global._theme_title, 0);
+stream = audio_play_sound(global._theme_title, 0, 0);
 
 //Display 'Press Enter!'
 display = 0;
@@ -303,9 +303,9 @@ if ((display == 1) &amp;&amp; (scale == 1)) {
             if (choice != 3) {
                                            
                 //Stop stream if it's playing
-                if (FMODInstanceIsPlaying(stream)) {
+                if (audio_is_playing(stream)) {
                 
-                    FMODInstanceStop(stream)
+                    audio_stop_sound(stream)
                     stream = -1;
                 }
                 

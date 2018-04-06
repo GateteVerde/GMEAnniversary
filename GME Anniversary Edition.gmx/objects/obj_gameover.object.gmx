@@ -28,7 +28,7 @@
             <string>///Game over for you, are you that bad?
 
 //Play stream
-stream = FMODSoundPlay(global._theme_gameover, 0);
+stream = audio_play_sound(global._theme_gameover, 0, 0);
 
 //Scale
 scale = 0;
@@ -60,7 +60,7 @@ alarm[0] = 300;
             <string>///Restart the game
 
 //Stop stream
-FMODInstanceStop(stream);
+audio_stop_sound(stream);
 stream = -1;
 
 //Reset all stream variables
@@ -71,9 +71,6 @@ with (obj_persistent_musicplayer) {
     
     //Reset map theme
     mapmusic = noone;
-    
-    //Stop all FMOD instances
-    FMODAllStop();
 }
 
 //Restart?

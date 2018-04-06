@@ -28,7 +28,7 @@
             <string>///Return to the map
 
 //Play 'Minigame' stream
-stream = FMODSoundLoop(global._theme_minigame, 0);
+stream = audio_play_sound(global._theme_minigame, 0, 1);
 
 //Whether the player reached this point
 ready = 0;
@@ -64,7 +64,7 @@ if (instance_exists(obj_diggame_chest)) {
     exit;
     
     //Otherwise, stop minigame sound
-    FMODInstanceStop(stream);
+    audio_stop_sound(stream);
     stream = -1;
     
     //Clear it

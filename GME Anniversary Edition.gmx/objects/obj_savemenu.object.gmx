@@ -117,7 +117,7 @@ if (instance_exists(obj_mapplayer))
     obj_mapplayer.ready = false;
 
 //Play up the map music.
-if (FMODInstanceGetPaused(global._stream_map))
+if (audio_is_paused(global._stream_map))
     obj_persistent_musicplayer.alarm[2] = 2;
 
 //Clear some stuff

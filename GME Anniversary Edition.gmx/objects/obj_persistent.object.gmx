@@ -367,8 +367,8 @@ else if (keyboard_check_pressed(ord('R'))) {
         //Reset map theme
         mapmusic = noone;
         
-        //Stop all FMOD instances
-        FMODAllStop();
+        //Stop all music instances
+        audio_stop_all();
     }
     
     //Restart?
@@ -528,6 +528,9 @@ restart = 0;
           <argument>
             <kind>1</kind>
             <string>///Save Keys + Fullscreen + Window size + VSync Settings
+
+keyboard_key_release(vk_control)
+keyboard_key_release(global.controlkey)
 
 //Open the file
 var file = file_text_open_write("settings.dat");

@@ -36,7 +36,7 @@ filename = "";
 //Volume to play the song, pulled from ini file
 myvolume = 0;
 
-//Value used by the FMOD scripts to play the song at the specified volume//
+//Value used by the audio scripts to play the song at the specified volume//
 songvolume = 0;
 
 //Music loop start point
@@ -96,7 +96,7 @@ mapmusicvol = 1;
 if (mapmusicvol &lt; 1) { 
 
     //Set music volume accordingly
-    FMODInstanceSetVolume(global._stream_map, mapmusicvol);
+    audio_sound_gain(global._stream_map, mapmusicvol, 0);
     
     //Increment music volume by a bit
     mapmusicvol += 0.005;
@@ -110,7 +110,7 @@ else {
     mapmusicvol = 1; 
     
     //Set music volume to maximum
-    FMODInstanceSetVolume(global._stream_map, 1);
+    audio_sound_gain(global._stream_map, mapmusicvol, 0);
 }
 </string>
           </argument>
@@ -136,9 +136,9 @@ else {
             <kind>1</kind>
             <string>///Stop overworld map BGM
 
-if (FMODInstanceIsPlaying(global._stream_map)) {
+if (audio_is_playing(global._stream_map)) {
 
-    FMODInstanceStop(global._stream_map);
+    audio_stop_sound(global._stream_map);
     global._stream_map = -1;
 }
 </string>
@@ -165,10 +165,10 @@ if (FMODInstanceIsPlaying(global._stream_map)) {
             <kind>1</kind>
             <string>///Resume play of the overworld map BGM
 
-FMODInstanceSetPaused(global._stream_map, false);
+audio_resume_sound(global._stream_map);
 
 //set music volume to 0 for fade in effect
-FMODInstanceSetVolume(global._stream_map, 0);
+audio_sound_gain(global._stream_map, mapmusicvol, 0);
 mapmusicvol = 0; //Set music volume variable to 0
 
 //Start volume fade-in alarm
@@ -197,7 +197,7 @@ alarm[11] = 1;
             <kind>1</kind>
             <string>///Pause the overworld map BGM
 
-FMODInstanceSetPaused(global._stream_map, true);
+audio_pause_sound(global._stream_map);
 </string>
           </argument>
         </arguments>
@@ -235,7 +235,7 @@ if (musicdisable)
 exit;
 
 //Play new stream
-global._stream_map = FMODSoundLoop(mapmusic, 0);
+global._stream_map = audio_play_sound(mapmusic, 0, 1);
 </string>
           </argument>
         </arguments>
@@ -267,56 +267,7 @@ if (instance_exists(obj_mapcontrol))
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Deinitialize FMOD system
-
-UnloadFMOD();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Initialize FMOD system
-
-LoadFMOD();
-FMODinit(32, false);
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>

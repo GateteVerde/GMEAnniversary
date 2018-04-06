@@ -120,7 +120,7 @@ with (instance_create(view_xview[0],view_yview[0],obj_powkiller))
             <kind>1</kind>
             <string>///Return to the map if no music is playing
 
-if (FMODInstanceIsPlaying(stream))
+if (audio_is_playing(stream))
     alarm[2] = 1;
 else {
     
@@ -235,7 +235,7 @@ else {
             <kind>1</kind>
             <string>///Play music
 
-stream = FMODSoundPlay(global._theme_sm2clear, 0);
+stream = audio_play_sound(global._theme_sm2clear, 0, 0);
 </string>
           </argument>
         </arguments>

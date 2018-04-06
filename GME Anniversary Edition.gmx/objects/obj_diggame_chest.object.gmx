@@ -107,7 +107,7 @@ with (instance_create(0,0,obj_message)) {
 //Stop stream
 with (obj_diggame_warptomap) {
 
-    FMODInstanceStop(stream);
+    audio_stop_sound(stream);
     stream = -1;
 }
 

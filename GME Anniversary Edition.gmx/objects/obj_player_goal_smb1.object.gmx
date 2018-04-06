@@ -201,7 +201,7 @@ depth = 14;
             <kind>1</kind>
             <string>///Return to the map after the music is done playing.
 
-if (!FMODInstanceIsPlaying(stream)) {
+if (!audio_is_playing(stream)) {
 
     //If there's not fireworks
     if (global.fireworks == 0) {
@@ -352,7 +352,7 @@ else {
 ready = 2;
 
 //Play the flagpole music
-stream = FMODSoundPlay(global._theme_sm1clear, 0);
+stream = audio_play_sound(global._theme_sm1clear, 0, 0);
 
 //Jump off the flagpole
 vspeed = -3;

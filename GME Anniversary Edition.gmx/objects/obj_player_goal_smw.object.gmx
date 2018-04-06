@@ -274,7 +274,7 @@ else
             <kind>1</kind>
             <string>///Play stream
 
-stream = FMODSoundPlay(global._theme_smwcleara, 0);
+stream = audio_play_sound(global._theme_smwcleara, 0, 0);
 </string>
           </argument>
         </arguments>
@@ -388,7 +388,7 @@ event_inherited();
 //Close curtain and go to map
 if (ready3 == 1)
 &amp;&amp; (global.time == 0)
-&amp;&amp; (!FMODInstanceIsPlaying(stream)) {
+&amp;&amp; (!audio_is_playing(stream)) {
 
     //Close curtain
     ready3 = 2;

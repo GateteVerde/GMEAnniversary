@@ -16,4 +16,4 @@ var section = argument[0];
 var filename = ini_read_string(section, "songname", "none");
 
 //Return this
-return FMODSoundAdd("music/" + filename, 0, 0);
+return audio_create_stream("music/" + filename);

@@ -67,9 +67,9 @@ with (obj_levelcontrol) {
 }
 
 //Play 'Starman' theme
-if (!FMODInstanceIsPlaying(global._stream_starman)) 
-&amp;&amp; (!FMODInstanceIsPlaying(global._stream_pswitch))
-    global._stream_starman = FMODSoundLoop(global._theme_starman,0);
+if (!audio_is_playing(global._stream_starman)) 
+&amp;&amp; (!audio_is_playing(global._stream_pswitch))
+    global._stream_starman = audio_play_sound(global._theme_starman,0,1);
 </string>
           </argument>
         </arguments>
@@ -127,7 +127,7 @@ instance_destroy();
             <string>///End invincibility
 
 //Stop starman music
-FMODInstanceStop(global._stream_starman);
+audio_stop_sound(global._stream_starman);
 global._stream_starman = -1;
 
 //Play level music
@@ -214,13 +214,13 @@ if (obj_persistent.restart == false) {
     else {
     
         //Stop 'Starman' instance
-        FMODInstanceStop(global._stream_starman);
+        audio_stop_sound(global._stream_starman);
         global._stream_starman = -1;
     }
 }
 else {
 
-    FMODInstanceStop(global._stream_starman);
+    audio_stop_sound(global._stream_starman);
     global._stream_starman = -1;    
 }
 </string>

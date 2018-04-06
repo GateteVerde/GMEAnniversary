@@ -70,7 +70,7 @@ EXAMPLE: "Hello!#"
 */
 
 //Stream
-stream = FMODSoundPlay(global._theme_intro, 0);
+stream = audio_play_sound(global._theme_intro, 0, 0);
 </string>
           </argument>
         </arguments>
@@ -95,7 +95,7 @@ stream = FMODSoundPlay(global._theme_intro, 0);
             <kind>1</kind>
             <string>///Go to the map
 
-if (!FMODInstanceIsPlaying(stream)) {
+if (!audio_is_playing(stream)) {
 
     if (instance_number(obj_fadein) == 0)
         with (instance_create(0,0,obj_fadein)) target = rm_map;
@@ -194,8 +194,8 @@ draw_text_colour_shadowed(view_xview[0]+64,view_yview[0]+40,"Hello!#"
             <kind>1</kind>
             <string>///Skip intro
 
-if (FMODInstanceIsPlaying(stream))
-    FMODInstanceStop(stream);
+if (audio_is_playing(stream))
+    audio_stop_sound(stream);
 </string>
           </argument>
         </arguments>

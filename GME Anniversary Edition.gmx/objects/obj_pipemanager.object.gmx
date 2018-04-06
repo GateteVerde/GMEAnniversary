@@ -105,7 +105,7 @@ with (instance_create(destx[global.pipetype]+16, desty[global.pipetype]+16, obj_
             <kind>1</kind>
             <string>///Play music
 
-stream = FMODSoundLoop(global._theme_underground, 0);
+stream = audio_play_sound(global._theme_underground, 0, 1);
 </string>
           </argument>
         </arguments>
@@ -130,7 +130,7 @@ stream = FMODSoundLoop(global._theme_underground, 0);
             <kind>1</kind>
             <string>///Stop stream
 
-FMODInstanceStop(stream);
+audio_stop_sound(stream);
 stream = -1;
 </string>
           </argument>

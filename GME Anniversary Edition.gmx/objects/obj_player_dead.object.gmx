@@ -28,7 +28,7 @@
             <string>///You killed the player, happy now?
 
 //Play sound
-stream = FMODSoundPlay(global._theme_miss, 0);
+stream = audio_play_sound(global._theme_miss, 0, 0);
 
 //Stop stream and timer
 with (obj_levelcontrol) {

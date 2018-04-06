@@ -204,7 +204,7 @@ if (panel) {
             ready = 0;
             
             //Play music if it was paused
-            if (FMODInstanceGetPaused(global._stream_map))
+            if (audio_is_paused(global._stream_map))
                 obj_persistent_musicplayer.alarm[2] = 2;
         }
             
@@ -231,7 +231,7 @@ if (panel) {
         ready = 0;
         
         //Play music if it was paused
-        if (FMODInstanceGetPaused(global._stream_map))
+        if (audio_is_paused(global._stream_map))
             obj_persistent_musicplayer.alarm[2] = 2;
     }
 }
@@ -299,7 +299,7 @@ if (instance_number(obj_curtainout) == 0) {
 }
 
 //Pause map BGM
-FMODInstanceSetPaused(global._stream_map, true);
+audio_pause_sound(global._stream_map);
 </string>
           </argument>
         </arguments>

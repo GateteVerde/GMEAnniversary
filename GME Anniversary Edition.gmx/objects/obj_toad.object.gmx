@@ -72,7 +72,7 @@ if (!instance_exists(obj_levelcontrol))
             <string>///Clear the level and stop the music.
 
 //Stop music
-FMODInstanceStop(stream);
+audio_stop_sound(stream);
 stream = -1;
 
 //Clear it
@@ -109,7 +109,7 @@ if (instance_number(obj_fadein) == 0) {
             <kind>1</kind>
             <string>///Play stream
 
-stream = FMODSoundLoop(global._theme_pswitch, 0);
+stream = audio_play_sound(global._theme_pswitch, 0, 1);
 </string>
           </argument>
         </arguments>

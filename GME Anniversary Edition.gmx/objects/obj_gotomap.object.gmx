@@ -28,9 +28,9 @@
             <string>///Warp to another room
 
 //Stop music streams
-FMODInstanceStop(global._stream);
-FMODInstanceStop(global._stream_pswitch);
-FMODInstanceStop(global._stream_starman);
+audio_stop_sound(global._stream);
+audio_stop_sound(global._stream_pswitch);
+audio_stop_sound(global._stream_starman);
 
 //Do special clear sequence
 global.clear = 3;

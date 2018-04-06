@@ -264,9 +264,9 @@ else if (keyboard_check_pressed(global.shiftkey)) {
                     instance_activate_all();
                     
                     //Stop Music
-                    FMODInstanceStop(global._stream);
-                    FMODInstanceStop(global._stream_pswitch);
-                    FMODInstanceStop(global._stream_starman);
+                    audio_stop_sound(global._stream);
+                    audio_stop_sound(global._stream_pswitch);
+                    audio_stop_sound(global._stream_starman);
                     
                     //Stop all sounds
                     audio_stop_all();
