@@ -94,13 +94,13 @@ mapmusicvol = 1;
 
 //While volume is less than 100% (value of 1)
 if (mapmusicvol &lt; 1) { 
-
-    //Set music volume accordingly
-    audio_sound_gain(global._stream_map, mapmusicvol, 0);
     
     //Increment music volume by a bit
-    mapmusicvol += 0.005;
+    mapmusicvol += 0.05;
 
+    //Set music volume accordingly
+    audio_sound_gain(global._stream_map, mapmusicvol, 0);    
+    
     //Repeat this alarm
     alarm[11] = 2;
 }
@@ -165,11 +165,14 @@ if (audio_is_playing(global._stream_map)) {
             <kind>1</kind>
             <string>///Resume play of the overworld map BGM
 
+//Resume Map stream
 audio_resume_sound(global._stream_map);
 
-//set music volume to 0 for fade in effect
+//Set music volume variable to 0
+mapmusicvol = 0; 
+
+//Set music volume to 0 for fade in effect
 audio_sound_gain(global._stream_map, mapmusicvol, 0);
-mapmusicvol = 0; //Set music volume variable to 0
 
 //Start volume fade-in alarm
 alarm[11] = 1;

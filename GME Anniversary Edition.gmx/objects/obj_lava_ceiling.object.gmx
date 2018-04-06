@@ -81,18 +81,14 @@ image_index = 1;
             <kind>1</kind>
             <string>///Draw the lava
 
-//Set up the length
-var i = 0;
-var j = 0;
+//Draw the inside part of the lava if it's greater than 16 pixels
+if (sprite_height &gt; 16) {
 
-//Draw the lava
-for (i=0; i&lt;sprite_width/16; i++;) 
-for (j=0; j&lt;sprite_height/16-1; j++;) {
-
-    draw_sprite_ext(sprite_index,-1,x+i*16,y+sprite_height-16,1,1,0,c_white,1);
-    if (image_yscale &gt; 1)    
-        draw_sprite_ext(sprite_index,0,x+i*16,y+(j*16),1,1,0,c_white,1);
+    draw_sprite_tiled_area_ext(sprite_index, 0, x, y+sprite_height-16, x, y, x+sprite_width-1, y+sprite_height-16, c_white, 1);
 }
+
+//Draw the lava always at the bottom
+draw_sprite_tiled_area_ext(sprite_index, -1, x, y+sprite_height-16, x, y+sprite_height-16, x+sprite_width-1, y+sprite_height-1, c_white, 1);
 </string>
           </argument>
         </arguments>

@@ -398,23 +398,6 @@
       </datafile>
     </datafiles>
     <datafile>
-      <name>fmodex.dll</name>
-      <exists>-1</exists>
-      <size>1266176</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>fmodex.dll</filename>
-    </datafile>
-    <datafile>
       <name>gmemusicini.ini</name>
       <exists>-1</exists>
       <size>85</size>
@@ -430,23 +413,6 @@
         </Config>
       </ConfigOptions>
       <filename>gmemusicini.ini</filename>
-    </datafile>
-    <datafile>
-      <name>GMFMODSimple.dll</name>
-      <exists>-1</exists>
-      <size>155648</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>GMFMODSimple.dll</filename>
     </datafile>
   </datafiles>
   <NewExtensions/>
@@ -1553,7 +1519,6 @@
       <sprite>sprites\spr_signpost</sprite>
       <sprite>sprites\spr_seaweed</sprite>
       <sprite>sprites\spr_seaweedb</sprite>
-      <sprite>sprites\spr_seaweed_big</sprite>
       <sprite>sprites\spr_quicksand</sprite>
       <sprite>sprites\spr_quicksandb</sprite>
     </sprites>
@@ -2014,6 +1979,7 @@
         <background>background\bgr_cave_bg</background>
         <background>background\bgr_cave_fg</background>
         <background>background\bgr_clouds</background>
+        <background>background\bgr_clouds_desert</background>
         <background>background\bgr_darkhills</background>
         <background>background\bgr_darkhills_b</background>
         <background>background\bgr_darkhills_c</background>
@@ -2040,6 +2006,7 @@
       </backgrounds>
       <backgrounds name="Foregrounds">
         <background>background\bgr_cloudblanket</background>
+        <background>background\bgr_cloudblanket_desert</background>
         <background>background\bgr_cloudblanket_snow</background>
         <background>background\bgr_cloudfg</background>
         <background>background\bgr_reef</background>
@@ -2153,9 +2120,9 @@
       <script>scripts\save.gml</script>
       <script>scripts\load.gml</script>
       <script>scripts\set_keys.gml</script>
+      <script>scripts\music_add.gml</script>
       <script>scripts\init_globals.gml</script>
       <script>scripts\init_globals_music.gml</script>
-      <script>scripts\music_add.gml</script>
       <script>scripts\draw_circle_colour_precise.gml</script>
       <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
       <script>scripts\draw_sprite_tiled_area_ext.gml</script>
@@ -2168,7 +2135,6 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
-    <shader type="GLSLES">shaders\shd_wind.shader</shader>
   </shaders>
   <objects name="objects">
     <objects name="Main">
@@ -2654,7 +2620,6 @@
       <object>objects\obj_vine</object>
       <object>objects\obj_signpost</object>
       <object>objects\obj_seaweed</object>
-      <object>objects\obj_seaweed_big</object>
       <object>objects\obj_quicksand</object>
     </objects>
     <objects name="Items">

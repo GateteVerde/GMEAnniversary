@@ -197,55 +197,13 @@ if (other.gravity &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw the quicksand and the player if it's inside it.
+            <string>///Draw the quicksand
 
-//Draw the quicksand
-for (var i = 0; i&lt;sprite_width/16; i++;) 
-for (var j = 0; j&lt;sprite_height/16; j++;) {
+draw_sprite_tiled_area_ext(spr_quicksand, -1, x, y, x, y, x+sprite_width-1, y+15, c_white, 1);
+if (sprite_height &gt; 16) {
 
-    //Draw the quicksand top
-    draw_sprite_ext(sprite_index,-1,x+(i*16),y,1,1,0,c_white,1);
-    
-    //If the vertical scale of the quicksand is equal/greater than 2
-    if (image_yscale &gt; 1)    
-        draw_sprite_ext(spr_quicksandb,-1,x+i*16,y+16+(j*16),1,1,0,c_white,1);
+    draw_sprite_tiled_area_ext(spr_quicksandb, -1, x, y+16, x, y+16, x+sprite_width-1, y+sprite_height-1, c_white, 1);
 }
-
-/*
-//If the player exists, draw him sinking on quicksand
-if (instance_exists(obj_playerparent)) {
-
-    //Draw player position
-    var left = bbox_left;
-    var top = bbox_top;
-    var right = bbox_right+1;
-    var bottom = bbox_bottom+1;
-    
-    var spr_index = obj_playerparent.sprite_index;
-    var img_index = obj_playerparent.image_index;
-    var spr_x = obj_playerparent.x;
-    var spr_y = obj_playerparent.y+1;
-    var img_xscale = obj_playerparent.xscale;
-    var img_yscale = 1;
-    var color = c_black;
-    var alpha = 0.5;
-    
-    var x1 = spr_x - sprite_get_xoffset(spr_index) * img_xscale;
-    var y1 = spr_y - sprite_get_yoffset(spr_index) * img_yscale;
-    var x2 = x1 + sprite_get_width(spr_index) * img_xscale;
-    var y2 = y1 + sprite_get_height(spr_index) * img_yscale;
-    
-    switch (rectangle_in_rectangle(x1, y1, x2, y2, left, top, right, bottom)) {
-    
-        case (1):
-            draw_sprite_ext(spr_index, img_index, spr_x, spr_y, img_xscale, img_yscale, 0, color, alpha); break;
-        case (2):
-            var _x1 = max(0, left - x1) / img_xscale;
-            var _y1 = max(0, top - y1) / img_yscale;
-            draw_sprite_part_ext(spr_index, img_index, _x1, _y1, sprite_get_width(spr_index) + min(0, right - x2) / img_xscale - _x1, sprite_get_height(spr_index) + min(0, bottom - y2) / img_yscale - _y1, spr_x + (_x1 - sprite_get_xoffset(spr_index)) * img_xscale, spr_y + (_y1 - sprite_get_yoffset(spr_index)) * img_yscale, img_xscale, img_yscale, color, alpha); break;
-    }
-}
-*/
 </string>
           </argument>
         </arguments>

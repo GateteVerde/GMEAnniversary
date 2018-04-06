@@ -51,17 +51,12 @@ image_speed = 0.15;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw the waterwall
+            <string>///Draw the lavafall
 
-for (var i = 0; i&lt;sprite_width/16; i++;) 
-for (var j = 0; j&lt;sprite_height/16; j++;) {
+draw_sprite_tiled_area_ext(spr_lavafall_a, -1, x, y, x, y, x+sprite_width-1, y+15, c_white, 1);
+if (sprite_height &gt; 16) {
 
-    //Draw the top of the waterfall
-    draw_sprite_ext(spr_lavafall_a,-1,x+(i*16),y,1,1,0,c_white,1);
-    
-    //If the vertical scale of the water is equal/greater than 2
-    if (image_yscale &gt; 1)    
-        draw_sprite_ext(sprite_index,-1,x+i*16,y+16+(j*16),1,1,0,c_white,1);
+    draw_sprite_tiled_area_ext(spr_lavafall_b, -1, x, y+16, x, y+16, x+sprite_width-1, y+sprite_height-1, c_white, 1);
 }
 </string>
           </argument>

@@ -86,15 +86,10 @@ if (other.swimming)
             <kind>1</kind>
             <string>///Draw the waterwall
 
-for (var i = 0; i &lt; image_xscale; i++;) 
-for (var j = 0; j &lt; image_yscale; j++;) {
+draw_sprite_tiled_area_ext(spr_waterfall_top, -1, x, y, x, y, x+sprite_width-1, y+15, c_white, 1);
+if (sprite_height &gt; 16) {
 
-    //Draw the water top
-    draw_sprite_ext(spr_waterfall_top,-1,x+(i*16),y,1,1,0,c_white,1);
-    
-    //If the vertical scale of the water is equal/greater than 2
-    if (j &gt;= 1)    
-        draw_sprite_ext(spr_waterfall_bottom,-1,x+(i*16),y+(j*16),1,1,0,c_white,1);
+    draw_sprite_tiled_area_ext(spr_waterfall_bottom, -1, x, y+16, x, y+16, x+sprite_width-1, y+sprite_height-1, c_white, 1);
 }
 </string>
           </argument>

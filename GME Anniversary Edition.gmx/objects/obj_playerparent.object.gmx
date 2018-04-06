@@ -1662,7 +1662,7 @@ if (invulnerable == false) {
 pal_swap_set(spr_palette_mario, isflashing);
 
 //Draw player
-draw_sprite_player(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha,1);
+draw_sprite_player(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha,0);
 
 //End shader
 pal_swap_reset();
