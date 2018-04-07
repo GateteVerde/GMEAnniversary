@@ -274,7 +274,7 @@
     <instance objName="obj_slope_l" x="1184" y="320" name="inst_011EDE43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_holdbubble" x="1216" y="192" name="inst_CABA0CD3" locked="0" code="sprout = cs_trampoline;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="1248" y="288" name="inst_92254A1A" locked="0" code="sprout[0] = cs_propeller;&#xA;sprout[1] = cs_star;&#xA;sprout[2] = cs_penguin;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_viewblock" x="1264" y="224" name="inst_B900C5F1" locked="0" code="sprout[0] = cs_big;&#xA;sprout[1] = cs_fire;&#xA;sprout[2] = cs_ice;&#xA;sprout[3] = cs_leaf;&#xA;sprout[4] = cs_shell;&#xA;sprout[5] = cs_poison;&#xA;sprout[6] = cs_cat;&#xA;sprout[7] = cs_star;&#xA;sprout[8] = cs_1up;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_viewblock" x="1264" y="224" name="inst_B900C5F1" locked="0" code="sprout[0] = cs_big;&#xA;sprout[1] = cs_fire;&#xA;sprout[2] = cs_leaf;&#xA;sprout[3] = cs_shell;&#xA;sprout[4] = cs_poison;&#xA;sprout[5] = cs_star;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="1248" y="368" name="inst_CCA693DA" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1360" y="256" name="inst_605A15BA" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1312" y="336" name="inst_150F0316" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -412,6 +412,7 @@
     <instance objName="obj_koopa" x="256" y="384" name="inst_F377E4B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="1904" y="144" name="inst_EF8E0A19" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform_falling" x="112" y="64" name="inst_C1CCAB21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="1344" y="256" name="inst_A8A70D08" locked="0" code="varmsg = &quot;These blocks here can be shattered if you scratch them while having the cat powerup.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_goal" x="3056" y="192" w="432" h="240" xo="0" yo="0" id="10063048" name="inst_F5C2A5C1" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

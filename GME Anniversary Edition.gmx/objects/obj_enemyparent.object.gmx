@@ -1367,8 +1367,19 @@ if (stomp != -1)
                     other.hitcombo++;
                     
                     //Bounce against if riding or just stop
-                    if (global.mount &gt; 0)
+                    if (global.mount &gt; 0) {
+                    
+                        //Bounce
                         with (other) event_user(1);
+                        
+                        //Create two fireballs if the player is wearing a red shoe
+                        if (global.mount == 2)
+                        &amp;&amp; (global.mountcolour = 1) {
+                        
+                            with (instance_create(x+12,y+8,obj_fireball)) hspeed = 3;
+                            with (instance_create(x-12,y+8,obj_fireball)) hspeed = -3;
+                        }
+                    }
                     else
                         other.vspeed = 0;
                         
