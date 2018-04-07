@@ -35,7 +35,8 @@ image_index = 0;
 frame = 1;
 
 //Collision
-mycol = instance_create(x,y,obj_slope_l);
+mycol = obj_slope_l;
+instance_create(x,y,mycol);
 </string>
           </argument>
         </arguments>

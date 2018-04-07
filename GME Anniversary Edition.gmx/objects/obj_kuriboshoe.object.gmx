@@ -130,7 +130,7 @@ if (instance_exists(obj_playerparent)) {
 var lava = collision_rectangle(bbox_left,bbox_bottom+6,bbox_right,bbox_bottom+7,obj_lava,0,0)
 if (lava) {
     
-    if (movement.vspeed == 0)
+    if (movement.gravity == 0)
     &amp;&amp; (sprite_index == spr_baburushoe) {
     
         alarm[1] = 2;
@@ -303,6 +303,10 @@ else {
         depth = follow.depth;
     }
 }
+
+//If the player just died, destroy
+if (instance_exists(obj_player_dead))
+    instance_destroy();
 </string>
           </argument>
         </arguments>

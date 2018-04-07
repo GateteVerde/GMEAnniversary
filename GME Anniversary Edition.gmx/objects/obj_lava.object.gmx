@@ -35,7 +35,8 @@ image_index = 0;
 frame = 1;
 
 //Collision
-mycol = instance_create(x,y,obj_semisolid);
+mycol = obj_semisolid;
+instance_create(x,y,mycol);
 </string>
           </argument>
         </arguments>
@@ -63,19 +64,43 @@ mycol = instance_create(x,y,obj_semisolid);
 //Kill the player in contact with lava
 if (instance_exists(obj_playerparent)) {
 
-    //If the player is not riding a baburu shoe
-    if ((global.mount == 2) &amp;&amp; (global.mountcolour == 1))
-    exit;
-    
     //With the player
     with (obj_playerparent) {
     
-        //If the player makes contact with lava
-        if (collision_rectangle(bbox_left,bbox_bottom+6,bbox_right,bbox_bottom+7,obj_lava,1,0)) {
+        //Lava check
+        lava = collision_rectangle(bbox_left-7,bbox_top-7,bbox_right+7,bbox_bottom+7,obj_lava,1,0);
+    
+        //If lava exists
+        if (lava) {
         
-            instance_create(x,y,obj_player_dead);
-            instance_destroy();
-            exit;
+            //If the lava has a collision attached
+            if (lava.mycol == obj_semisolid) 
+            || (lava.mycol == obj_slope_r) 
+            || (lava.mycol == obj_slope_l) 
+            || (lava.mycol == obj_slope_sr) 
+            || (lava.mycol == obj_slope_sl) {
+            
+                //If the player is wearing a baburu shoe, ignore
+                if (global.mount == 2)
+                || (global.mounttype == 1)
+                    exit;
+                    
+                //Otherwise, kill player
+                else {
+                
+                    instance_create(x,y,obj_player_dead);
+                    instance_destroy();
+                    exit;
+                }
+            }
+            
+            //Otherwise, kill the player
+            else {
+            
+                instance_create(x,y,obj_player_dead);
+                instance_destroy();
+                exit;
+            }
         }
     }
 }
