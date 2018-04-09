@@ -1734,6 +1734,7 @@
         <sprite>sprites\spr_walltriangle_l</sprite>
         <sprite>sprites\spr_walltriangle_cr</sprite>
         <sprite>sprites\spr_walltriangle_cl</sprite>
+        <sprite>sprites\spr_lightblock</sprite>
         <sprite>sprites\spr_propellerblock</sprite>
         <sprite>sprites\spr_boomerang_blue</sprite>
         <sprite>sprites\spr_waterbubble</sprite>
@@ -1955,6 +1956,10 @@
         <sprite>sprites\spr_palette_score</sprite>
         <sprite>sprites\spr_palette_null</sprite>
       </sprites>
+      <sprites name="Surfaces">
+        <sprite>sprites\spr_surface_light</sprite>
+        <sprite>sprites\spr_surface_light_small</sprite>
+      </sprites>
       <sprite>sprites\spr_toad</sprite>
       <sprite>sprites\spr_digtile</sprite>
       <sprite>sprites\spr_chest</sprite>
@@ -2146,6 +2151,7 @@
           </objects>
           <object>objects\obj_bganimator</object>
           <object>objects\obj_levelcontrol</object>
+          <object>objects\obj_levelcontrol_light</object>
         </objects>
         <objects name="Goals">
           <objects name="SMB1">
@@ -2175,6 +2181,9 @@
         <object>objects\obj_autoscroll</object>
         <object>objects\obj_autoscroll_modifier</object>
         <object>objects\obj_guessblock_manager</object>
+      </objects>
+      <objects name="Lights">
+        <object>objects\obj_light</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_player_warp</object>
@@ -2863,6 +2872,7 @@
           <object>objects\obj_blockparent</object>
           <object>objects\obj_grayblockparent</object>
         </objects>
+        <object>objects\obj_lightparent</object>
         <object>objects\obj_deactivateparent</object>
       </objects>
       <objects name="Don't Use">
