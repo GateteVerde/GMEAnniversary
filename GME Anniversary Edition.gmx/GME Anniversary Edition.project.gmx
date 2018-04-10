@@ -2004,6 +2004,7 @@
         <background>background\bgr_underground_fg_d</background>
         <background>background\bgr_underground_fg_e</background>
         <background>background\bgr_underwater</background>
+        <background>background\bgr_volcano</background>
         <background>background\bgr_waterfall</background>
         <background>background\bgr_waterfall_b</background>
         <background>background\bgr_waterfall_c</background>
@@ -2184,6 +2185,7 @@
       </objects>
       <objects name="Lights">
         <object>objects\obj_light</object>
+        <object>objects\obj_light_st</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_player_warp</object>
@@ -3246,6 +3248,10 @@
         </rooms>
       </rooms>
       <rooms name="World 2">
+        <rooms name="Level 1">
+          <room>rooms\rm_radiantmine</room>
+          <room>rooms\rm_radiantmine_b</room>
+        </rooms>
         <rooms name="Fort">
           <room>rooms\rm_w2_f1a</room>
           <room>rooms\rm_w2_f1b</room>
