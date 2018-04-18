@@ -59,9 +59,6 @@ fade = 1;
             <kind>1</kind>
             <string>///Return to the map
 
-//Stop all sounds
-audio_stop_all();
-
 //Return to the map
 if (instance_number(obj_fadein) == 0) {
 

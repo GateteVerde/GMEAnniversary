@@ -167,8 +167,14 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
             yspeed = 4;
         
         //Set up the maximum horizontal speed.
-        if (state == 2)
-            xspeedmax = 2;
+        if (state == 2) {
+        
+            //If the player is wearing the blue shell
+            if (global.powerup == cs_shell)
+                xspeedmax = 2.5;
+            else
+                xspeedmax = 2;
+        }
         else
             xspeedmax = 0.5;
             

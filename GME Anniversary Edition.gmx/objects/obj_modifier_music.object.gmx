@@ -74,19 +74,17 @@ if (obj_persistent.restart == false) {
         with (obj_persistent_musicplayer) {
         
             //Stop map music
-            alarm[3] = 1;
+            alarm[3] = 1;   
+            
+            //Hereby map music
+            mapmusic = other.mapmusic;            
             
             //Allow initialization
-            mapmusicinit = false;
-            
-            //Hereby map
-            mapmusic = other.mapmusic;
-            
+            mapmusicinit = false;                
+                        
             //Play it again
             alarm[0] = 2;
-            
-            //Pause if the player cannot move
-            if (global.clear == 1)
+            if (global.clear &gt; 0)
                 alarm[1] = 3;        
         }
     }

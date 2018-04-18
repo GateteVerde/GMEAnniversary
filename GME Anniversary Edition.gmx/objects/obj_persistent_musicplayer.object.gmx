@@ -30,36 +30,6 @@
 //The music stream variable for the overworld map music
 mapmusic = noone;
 
-//The name of the file to load, located in folder "music/"
-filename = "";
-
-//Volume to play the song, pulled from ini file
-myvolume = 0;
-
-//Value used by the audio scripts to play the song at the specified volume//
-songvolume = 0;
-
-//Music loop start point
-myloopS = 0;
-
-//Music loop end point
-myloopE = 0;
-
-//Forces the room to play its specified music (TRUE)
-music_init = false;
-
-//Changes the music when the room is exited
-music_change = false;
-
-//The song group to play the music (as noted above)
-songgroup = 0;
-
-//Checked at the beginning of the room to play a song no matter what
-forceplay = false;
-
-//No music?
-nomusic = false;
-
 //So that the map BGM plays only once
 mapmusicinit = false;
 
@@ -96,7 +66,7 @@ mapmusicvol = 1;
 if (mapmusicvol &lt; 1) { 
     
     //Increment music volume by a bit
-    mapmusicvol += 0.05;
+    mapmusicvol += 0.005;
 
     //Set music volume accordingly
     audio_sound_gain(global._stream_map, mapmusicvol, 0);    
@@ -108,6 +78,7 @@ else {
 
     //Set it to the default value of 1 just in case
     mapmusicvol = 1; 
+    
     
     //Set music volume to maximum
     audio_sound_gain(global._stream_map, mapmusicvol, 0);
@@ -288,30 +259,6 @@ if (instance_exists(obj_mapcontrol))
           <argument>
             <kind>1</kind>
             <string>///Initialize music streams
-
-/*
-// INSTRUCTIONS ABOUT ADDING MUSIC ON THE ENGINE.
-//
-// 1. Add the music file on the music folder under "Included Files".
-//
-// 2. Then add the global variable with the following data.
-//
-//      - Group
-//          - 0: Title Music
-//          - 1: Map
-//          - 2: Events (Toad Houses, Minigames)
-//          - 3: Level Music
-//          - 4: P-switch music
-//
-//      - Volume (I recommend setting it to 0.7 so you can hear the sound files included on the engine.)
-//
-//      - Loop Point (If the song does have a loop point, here's how you can get it. (I recommend the use of Audacity to do this.)
-//          1. At the bottom of the screen, set the timing to samples.
-//          2. Calculate the position of the start of the loop and the end of the loop, I recommend setting it in samples.
-//          3. Once you're done with step 2, divide the start loop with the end loop. This will return the value you must use with FMODSoundSetLoopPoints().
-//
-//  3. To use it, just call the global variable you added before on "obj_levelmanger" and you're done.
-*/
 
 //Open SMFMUSIC.INI for reading
 ini_open("gmemusicini.ini");

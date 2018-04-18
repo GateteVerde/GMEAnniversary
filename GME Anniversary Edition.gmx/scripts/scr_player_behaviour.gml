@@ -78,11 +78,11 @@ if (!flying) { //If the player is not flying
                             
                 //If the P-Meter is filled up.
                 if (run)  
-                    xspeedmax = fullrunspeed;
+                    xspeedmax = fullrunspeed+abs(0.3*instance_number(obj_invincibility));
                 
                 //Otherwise, if the P-Meter is not filled up.
                 else    
-                    xspeedmax = runspeed;                
+                    xspeedmax = runspeed+abs(0.3*instance_number(obj_invincibility));                
             }
         }
         
@@ -91,11 +91,11 @@ if (!flying) { //If the player is not flying
             
             //If the P-Meter is filled up.
             if (run)  
-                xspeedmax = fullrunspeed;
+                xspeedmax = fullrunspeed+abs(0.3*instance_number(obj_invincibility));
             
             //Otherwise, if the P-Meter is not filled up.
             else    
-                xspeedmax = runspeed;
+                xspeedmax = runspeed+abs(0.3*instance_number(obj_invincibility));
         }
     }               
     

@@ -288,6 +288,9 @@ frame = !frame;
             <kind>1</kind>
             <string>///Go to the destination room
 
+//Pause map stream
+audio_pause_sound(global._stream_map);
+
 //Remember position
 event_user(1);
 
@@ -297,9 +300,6 @@ if (instance_number(obj_curtainout) == 0) {
     with (instance_create(x,y+4,obj_curtainout)) 
         target = other.myroom;
 }
-
-//Pause map BGM
-audio_pause_sound(global._stream_map);
 </string>
           </argument>
         </arguments>
