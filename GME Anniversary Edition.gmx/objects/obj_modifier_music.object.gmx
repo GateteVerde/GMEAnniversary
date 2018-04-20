@@ -64,7 +64,8 @@ mapworld = "1";
 //Do not continue if the game is restarting
 if (obj_persistent.restart == false) {
 
-    if (global.world != mapworld) 
+    if (global.world != mapworld)
+    &amp;&amp; (global.clear == 0)  
     &amp;&amp; (other.speed == 0) {
         
         //Set up the world
@@ -84,8 +85,10 @@ if (obj_persistent.restart == false) {
                         
             //Play it again
             alarm[0] = 2;
+            
+            //Reduce volume
             if (global.clear &gt; 0)
-                alarm[1] = 3;        
+                alarm[1] = 3; 
         }
     }
 }

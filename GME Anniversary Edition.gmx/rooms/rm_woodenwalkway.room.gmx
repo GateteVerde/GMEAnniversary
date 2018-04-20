@@ -4,7 +4,7 @@
   <width>3488</width>
   <height>432</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -414,8 +414,6 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_semisolid" x="1904" y="144" name="inst_EF8E0A19" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform_falling" x="112" y="64" name="inst_C1CCAB21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="1344" y="256" name="inst_A8A70D08" locked="0" code="varmsg = &quot;These blocks here can be shattered if you scratch them while having the cat powerup.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_starman" x="72" y="288" name="inst_E3D6C53D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_blueshell" x="392" y="256" name="inst_8475C91C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_goal" x="3056" y="192" w="432" h="240" xo="0" yo="0" id="10063048" name="inst_F5C2A5C1" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

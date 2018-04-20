@@ -1039,19 +1039,6 @@
       <sprite>sprites\spr_beanstalk</sprite>
     </sprites>
     <sprites name="Masks">
-      <sprites name="Player">
-        <sprites name="Markers">
-          <sprite>sprites\spr_topmarker</sprite>
-          <sprite>sprites\spr_bottommarker</sprite>
-        </sprites>
-        <sprite>sprites\spr_mask</sprite>
-        <sprite>sprites\spr_bigmask</sprite>
-        <sprite>sprites\spr_shellmask</sprite>
-        <sprite>sprites\spr_warpmask</sprite>
-      </sprites>
-      <sprites name="NPCs">
-        <sprite>sprites\spr_sproutmask</sprite>
-      </sprites>
       <sprites name="Collision">
         <sprite>sprites\spr_square</sprite>
         <sprite>sprites\spr_square_b</sprite>
@@ -1075,6 +1062,19 @@
         <sprite>sprites\spr_linemask</sprite>
         <sprite>sprites\spr_squaremask</sprite>
       </sprites>
+      <sprites name="NPCs">
+        <sprite>sprites\spr_sproutmask</sprite>
+      </sprites>
+      <sprites name="Player">
+        <sprites name="Markers">
+          <sprite>sprites\spr_topmarker</sprite>
+          <sprite>sprites\spr_bottommarker</sprite>
+        </sprites>
+        <sprite>sprites\spr_mask</sprite>
+        <sprite>sprites\spr_bigmask</sprite>
+        <sprite>sprites\spr_shellmask</sprite>
+        <sprite>sprites\spr_warpmask</sprite>
+      </sprites>
       <sprite>sprites\spr_24mask</sprite>
       <sprite>sprites\spr_32mask</sprite>
       <sprite>sprites\spr_basketmask</sprite>
@@ -1089,10 +1089,10 @@
       <sprite>sprites\spr_slopemask_l</sprite>
       <sprite>sprites\spr_slopemask_r</sprite>
       <sprite>sprites\spr_spinmask</sprite>
-      <sprite>sprites\spr_stompmask</sprite>
-      <sprite>sprites\spr_yoshimask</sprite>
       <sprite>sprites\spr_starmask</sprite>
       <sprite>sprites\spr_starmask_big</sprite>
+      <sprite>sprites\spr_stompmask</sprite>
+      <sprite>sprites\spr_yoshimask</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprites name="Land">
@@ -3253,6 +3253,8 @@
         <rooms name="Level 1">
           <room>rooms\rm_radiantmine</room>
           <room>rooms\rm_radiantmine_b</room>
+          <room>rooms\rm_radiantmine_c</room>
+          <room>rooms\rm_radiantmine_d</room>
         </rooms>
         <rooms name="Fort">
           <room>rooms\rm_w2_f1a</room>

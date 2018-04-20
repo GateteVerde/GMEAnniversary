@@ -128,9 +128,14 @@ alarm[0] = 7;
             <string>///HUD Logic
 
 //If the goal card exists, show HUD cards
-if (instance_exists(obj_goalcard)) 
-|| (global.clear &gt; 0)
-    alpha = 1;
+if (instance_exists(obj_goalcard)) {
+
+    if (obj_levelcontrol.x &gt; obj_goalcard.x-384) 
+    || (obj_levelcontrol.x &gt; obj_goalcard.x)
+        alpha = 2;
+    else
+        alpha -= 0.0125;
+}
 
 //Otherwise, hide HUD cards
 else
@@ -160,9 +165,10 @@ else
             <string>///Draw the HUD
 
 //Disable the fog
-if (instance_exists(obj_lightningsheet))
-    d3d_set_fog(0, c_black, 0, 64);
+if (instance_exists(obj_lightningsheet)) {
 
+    d3d_set_fog(0, c_black, 0, 64);
+}
 
 //Set font
 draw_set_font(global.numbers_w);
@@ -244,8 +250,10 @@ else
     draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+8, view_yview[0]+view_hview[0]-24, 1, 1, 0, c_white, 1);
     
 //Enable the fog
-if (instance_exists(obj_lightningsheet))
+if (instance_exists(obj_lightningsheet)) {
+
     d3d_set_fog(1, c_black, 0, 64);
+}
 </string>
           </argument>
         </arguments>

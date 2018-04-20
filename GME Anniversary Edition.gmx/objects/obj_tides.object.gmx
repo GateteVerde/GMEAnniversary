@@ -39,6 +39,9 @@ push = false;
 //Animate
 image_speed = 0.15;
 
+//Alpha
+image_alpha = 0.7;
+
 //Set depth
 depth = -7;
 
@@ -235,14 +238,14 @@ draw_set_blend_mode(bm_add);
 //Check the length of the room
 for (var i=0; i&lt;room_width/16+1; i++) {
 
-    draw_sprite_ext(sprite_index,-1,i*16,y,1,1,0,c_white,0.7);
+    draw_sprite_ext(sprite_index,-1,i*16,y,1,1,0,c_white,image_alpha);
 }
 
 //Set the colour
 draw_set_colour(make_color_rgb(0,40,120));
 
 //Set the alpha
-draw_set_alpha(0.7);
+draw_set_alpha(image_alpha);
 
 //Draw a rectangle.
 draw_rectangle(x,y+48,room_width,room_height,false);
