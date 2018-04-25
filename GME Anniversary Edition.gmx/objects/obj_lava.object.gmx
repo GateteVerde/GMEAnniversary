@@ -82,7 +82,7 @@ if (instance_exists(obj_playerparent)) {
             
                 //If the player is wearing a baburu shoe, ignore
                 if (global.mount == 2)
-                || (global.mounttype == 1)
+                || (global.mountcolour == 1)
                     exit;
                     
                 //Otherwise, kill player

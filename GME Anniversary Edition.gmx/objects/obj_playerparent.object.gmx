@@ -590,8 +590,7 @@ if (yspeed &gt;= 0) { //If the player is moving down and the gravity is not disa
     
     //If the semisolid exists and the player is above it.
     if (semisolid)
-    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+4)
-    &amp;&amp; (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,semisolid.y-1,obj_solid,1,0)) {
+    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5) {
     
         //Snap above the semisolid platform
         y = semisolid.y-16;
@@ -609,8 +608,7 @@ if (yspeed &gt;= 0) { //If the player is moving down and the gravity is not disa
     
     //If the enemy exists and the player is above it
     if (enemy)
-    &amp;&amp; (bbox_bottom &lt; enemy.yprevious+4)
-    &amp;&amp; (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,enemy.y-1,obj_solid,1,0)) {
+    &amp;&amp; (bbox_bottom &lt; enemy.yprevious+5) {
     
         //Snap above the semisolid platform
         y = enemy.y-16;
@@ -649,9 +647,11 @@ if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0)
     }
     
     //Prevent the player from getting embed inside a slope.
-    if (yspeed &gt; -0.85)
+    if (yspeed &gt; -0.8) {
+    
         while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0))        
             y--;
+    }
 }
 
 //Left conveyor belt collision

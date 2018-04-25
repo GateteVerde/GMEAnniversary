@@ -237,6 +237,10 @@ if (!held) {
     &amp;&amp; (swimming)
         swimming = false;
 }
+
+//Destroy when outside the view
+if (outside_view())
+    instance_destroy();
 </string>
           </argument>
         </arguments>
