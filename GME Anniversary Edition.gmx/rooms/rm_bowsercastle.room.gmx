@@ -4,7 +4,7 @@
   <width>1488</width>
   <height>432</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -86,7 +86,7 @@ if (global.mariostart == 0) {
     <instance objName="obj_onoffplatform_p" x="688" y="272" name="inst_0ED14FCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform_p" x="688" y="288" name="inst_4D7D1C4C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform_p" x="688" y="304" name="inst_B1440C9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_4F8E7868" locked="0" code="levelmusic = global._theme_castle;&#xA;leveltime = 500;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_4F8E7868" locked="0" code="levelmusic = global._theme_castle;&#xA;leveltime = 500;&#xA;camlock = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_starcoin" x="472" y="280" name="inst_527D3712" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_thwomp" x="448" y="240" name="inst_6BB1799A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_thwomp" x="528" y="240" name="inst_34489520" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -189,10 +189,9 @@ if (global.mariostart == 0) {
     <instance objName="obj_mechakoopa" x="808" y="336" name="inst_995863D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mechakoopa" x="776" y="336" name="inst_D82518D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="992" y="384" name="inst_A5636844" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_checkpoint" x="1120" y="288" name="inst_C8E90CE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door_p" x="1072" y="320" name="inst_490B5092" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_door" x="1216" y="192" name="inst_BB1441E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bowserstatue" x="1320" y="192" name="inst_A210BCD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_door" x="1216" y="192" name="inst_BB1441E6" locked="0" code="postchange = 0;&#xA;postx = 64;&#xA;posty = 256;&#xA;myroom = rm_bowsercastle_b;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bowserstatue" x="1336" y="192" name="inst_A210BCD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="480" y="112" name="inst_031AAB53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="464" y="96" name="inst_AC87805C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="448" y="96" name="inst_F63F2D8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -206,7 +205,7 @@ if (global.mariostart == 0) {
     <instance objName="obj_flipper_bottom" x="1256" y="208" name="inst_7036825C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_netkoopa" x="1296" y="368" name="inst_11E1E4D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_netkoopa" x="1184" y="320" name="inst_CE2D7272" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_netkoopa_red" x="1280" y="272" name="inst_A2F72A85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_netkoopa_red" x="1280" y="288" name="inst_A2F72A85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="112" y="256" w="16" h="16" xo="480" yo="288" id="10048616" name="tile_A7022011" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
