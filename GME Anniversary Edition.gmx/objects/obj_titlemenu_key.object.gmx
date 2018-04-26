@@ -118,7 +118,7 @@ draw_set_valign(fa_center);
 draw_set_halign(fa_center);
 
 //Draw the text
-draw_text_colour_shadowed(view_xview[0]+global.gw/2, view_yview[0]+global.gh-48, keyText, c_black, c_white, 1, 1, 0.5, 1);
+draw_text_colour_shadowed(view_xview[0]+global.gw/2, view_yview[0]+global.gh-48, keyText, make_color_rgb(1,75,131), c_white, 1, 1, 0.5, 1);
 
 //Re-Align the text
 draw_set_valign(fa_top);

@@ -47,6 +47,16 @@ image_speed = 0.125;
 
 //Whether the object is moving
 movenow = 0;
+
+//Create spotlight
+if (instance_exists(obj_levelcontrol_light)) {
+
+    with (instance_create(x,y,obj_light_st)) {
+    
+        target = other.id;
+        image_blend = c_orange;
+    }
+}
 </string>
           </argument>
         </arguments>

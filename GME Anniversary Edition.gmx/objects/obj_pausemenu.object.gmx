@@ -378,9 +378,9 @@ if (image_xscale == 1) {
         
         //Draw depending of the option chosen
         if (choice != i)
-            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12, text, c_black, c_gray, 1, 1, 0.5, 1);
+            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12, text, make_color_rgb(1,75,131), make_color_rgb(151,216,255), 1, 1, 0.5, 1);
         else
-            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,"{ " + string(text) + " }", c_black, c_white, 1, 1, 0.5, 1);
+            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,"{ " + string(text) + " }", make_color_rgb(1,75,131), c_white, 1, 1, 0.5, 1);
     }
     
     //Re-align the text

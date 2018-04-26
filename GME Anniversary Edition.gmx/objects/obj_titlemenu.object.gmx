@@ -115,7 +115,7 @@ switch (key) {
     //Space key
     case (2): {
     
-        set_keys(2, "Set a key for 'Reserve / Inventory'", vk_space);
+        set_keys(2, "Set a key for 'Inventory'", vk_space);
         alarm[1] = 1;
         key++;
     } break;
@@ -209,7 +209,9 @@ alarm[0] = 30;
             <kind>1</kind>
             <string>///Manage keyboard presses
 
-if ((display == 1) &amp;&amp; (scale == 1)) {
+if (display == 1) 
+&amp;&amp; (scale == 1) 
+&amp;&amp; (instance_number(obj_titlemenu_key) == 0) {
 
     //Check if the 'Up' key is pressed
     if (keyboard_check_pressed(global.upkey)) {
@@ -537,9 +539,9 @@ if (display == 1) {
             
             //Draw text highlighted
             if (choice != i)
-                draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+142+(i*10),string(text), c_black, c_gray, 1, 1, 0.5, 1);
+                draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+142+(i*10),string(text), make_color_rgb(1,75,131), make_color_rgb(151,216,255), 1, 1, 0.5, 1);
             else
-                draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+142+(i*10),"{ " + string(text) + " }", c_black, c_white, 1, 1, 0.5, 1);
+                draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+142+(i*10),"{ " + string(text) + " }", make_color_rgb(1,75,131), c_white, 1, 1, 0.5, 1);
         }
     }
     

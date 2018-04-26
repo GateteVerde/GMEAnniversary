@@ -27,8 +27,49 @@
             <kind>1</kind>
             <string>///Static light
 
+//Default target
+target = -1;
+
 //Set the sprite to use
 sprite_index = spr_surface_light_small;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Move towards the target
+
+//If the target does exist
+if (target != -1) {
+
+    //Destroy if the target does not exist
+    if (!instance_exists(target)) {
+    
+        instance_destroy();
+        exit;
+    }    
+    
+    //Move towards the target
+    x = (target.bbox_left+target.bbox_right)/2-8;
+    y = (target.bbox_top+target.bbox_bottom)/2-8;
+}
 </string>
           </argument>
         </arguments>
