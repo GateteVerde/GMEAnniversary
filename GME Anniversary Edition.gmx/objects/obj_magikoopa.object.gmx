@@ -27,6 +27,17 @@
             <kind>1</kind>
             <string>///Magikoopa
 
+/*
+**  This item uses creation code!
+**
+**  xmin = Minimum x coordinate where this enemy appears (Default: X)
+**  xmax = Maximum x coordinate where this enemy appears (Default: Room Width)
+*/
+
+//Default values
+xmin = x;
+xmax = room_width;
+
 //How vulnerable is this enemy to various items?
 vulnerable = 1;
 
@@ -71,8 +82,12 @@ image_alpha = 0;
             <kind>1</kind>
             <string>///Generate another magikoopa
 
-with (instance_create(-1000,-1000,obj_enemy_tick))
+with (instance_create(-1000,-1000,obj_enemy_tick)) {
+
     sprite_index = spr_magikoopa;
+    xmin = other.xmin;
+    xmax = other.xmax;
+}
 </string>
           </argument>
         </arguments>
@@ -107,26 +122,35 @@ if (!instance_exists(obj_playerparent)) {
 //Otherwise
 else {
 
-    //Move to a random position
-    x = random_range(view_xview[0]+16, view_xview[0]+view_wview[0]-16);
-    y = random_range(view_yview[0]+16, view_yview[0]+view_hview[0]-16);
-    
-    //Check for a semisolid
-    var semisolid = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+2,obj_semisolid,0,0);
-    
-    //If there's a collision in position
-    if (semisolid)
-    &amp;&amp; (ready == 3)
-    &amp;&amp; (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
+    //If the player is inside the given coordinates, and there's not a tile at the given position.
+    if (obj_playerparent.x &gt; xmin)
+    &amp;&amp; (obj_playerparent.x &lt; xmax) {
+
+        //Move to a random position
+        x = (floor(random_range(view_xview[0]+16, view_xview[0]+view_wview[0]-16)/16)*16)+8;
+        y = floor(random_range(view_yview[0]+16, view_yview[0]+view_hview[0]-16)/16)*16;
         
-        //Snap above the semisolid
-        y = semisolid.bbox_top-16;
+        //Check for a semisolid
+        var semisolid = collision_rectangle(x,bbox_bottom,x,bbox_bottom+2,obj_semisolid,0,1);
         
-        //Prepare spell
-        ready = 0; 
+        //If there's a collision in position
+        if (semisolid)
+        &amp;&amp; (ready == 3)
+        &amp;&amp; (!tile_layer_find(9, x-8, y)) 
+        &amp;&amp; (!tile_layer_find(9, x+7, y))
+        &amp;&amp; (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,1)) {
+            
+            //Snap above the semisolid
+            y = semisolid.bbox_top-16;
+            
+            //Prepare spell
+            ready = 0; 
+        }
+        
+        //Otherwise, repeat
+        else
+            alarm[2] = 1;
     }
-    
-    //Otherwise, repeat
     else
         alarm[2] = 1;
 }
@@ -201,6 +225,29 @@ alarm[1] = 60;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///DO NOT REMOVE!
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -220,9 +267,9 @@ alarm[1] = 60;
             <kind>1</kind>
             <string>///Magikoopa logic
 
-//If the magikoopa appeared
+//If the magikoopa is about to appear
 if (ready == 0) {
-
+    
     //Increment alpha
     image_alpha += 0.05;
     

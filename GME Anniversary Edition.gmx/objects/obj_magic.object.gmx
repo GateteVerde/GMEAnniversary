@@ -126,7 +126,7 @@ if (flip) {
             //1-Up
             case (5): {
             
-                with (instance_create(x,y,obj_1up)) 
+                with (instance_create(x+8,y,obj_1up)) 
                     permission = true;
             } break;
             

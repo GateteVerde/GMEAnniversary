@@ -61,7 +61,6 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_player" x="72" y="96" name="inst_32F727B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lavafall" x="832" y="320" name="inst_8DF31DA9" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_lavafall" x="1056" y="304" name="inst_09950E9A" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lava_ceiling" x="816" y="368" name="inst_61276680" locked="0" code="depth = 8;&#xA;" scaleX="17" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="48" y="112" name="inst_DBEB8375" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="144" y="112" name="inst_A6AEF7C6" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="32" y="32" name="inst_40845AD3" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
@@ -160,7 +159,7 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_semisolid" x="1568" y="112" name="inst_50F4A18B" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="1632" y="112" name="inst_8A5D0C07" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1600" y="112" name="inst_3AB6E790" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_B8E4F591" locked="0" code="levelmusic = global._theme_castle;&#xA;leveltime = 500;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_B8E4F591" locked="0" code="levelmusic = global._theme_castle;&#xA;leveltime = 500;&#xA;camlock = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelcontrol_light" x="16" y="-16" name="inst_5E266424" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light_st" x="80" y="48" name="inst_6E8F3371" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_light_st" x="176" y="48" name="inst_C876C97B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -185,6 +184,9 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_solid" x="1424" y="320" name="inst_CF3E6A09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="1504" y="240" name="inst_9D9DC406" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="obj_checkpoint" x="176" y="224" name="inst_F54F0B8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warptop" x="1600" y="112" name="inst_3C7E1B3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warproom" x="1616" y="160" name="inst_6A61D6C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lava_top" x="816" y="368" name="inst_EB20231E" locked="0" code="" scaleX="17" scaleY="2" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="224" y="192" w="16" h="16" xo="480" yo="288" id="10051475" name="tile_5CCDB1CA" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
