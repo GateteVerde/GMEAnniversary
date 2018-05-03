@@ -721,37 +721,21 @@ alarm[1] = 1;
 //Disable alpha blending
 draw_enable_alphablend(false)
 
-//No Filter
-if (filter = 0) {
+//Draw a rectangle
+draw_rectangle_colour(0,0,global.gw*(filter+1),global.gh*(filter+1),c_black,c_black,c_black,c_black,0);
 
-    draw_rectangle_colour(0,0,global.gw,global.gh,c_black,c_black,c_black,c_black,0);
-    draw_surface(application_surface,port_x,port_y);
-}
-
-//2x Filtering 
-else if (filter = 1) {
-
-    draw_rectangle_colour(0,0,global.gw*2,global.gh*2,c_black,c_black,c_black,c_black,0);
-    draw_surface_stretched(application_surface,port_x*2,port_y*2,global.gw*2,global.gh*2);
-}
-
-//3x Filtering
-else if (filter = 2) {
-
-    draw_rectangle_colour(0,0,global.gw*3,global.gh*3,c_black,c_black,c_black,c_black,0);
-    draw_surface_stretched(application_surface,port_x*3,port_y*3,global.gw*3,global.gh*3);
-}
+//Draw the application surface
+draw_surface_stretched(application_surface,port_x*(filter+1),port_y*(filter+1),global.gw*(filter+1),global.gh*(filter+1));
 
 //Enable alpha blending
 draw_enable_alphablend(true)
 
-//Show FPS if below 60
+//Set 'Interface' font
 draw_set_font(global.font_interface);
-draw_set_colour(c_white);
-if (fps &lt; 60) {
 
-    draw_text(2,2,string("LAG"))
-}
+//Draw 'FPS' if below 60
+if (fps &lt; 60)
+    draw_text_colour(2, 2, string("FPS: ") + string(fps), c_white, c_white, c_white, c_white, 1);
 </string>
           </argument>
         </arguments>
