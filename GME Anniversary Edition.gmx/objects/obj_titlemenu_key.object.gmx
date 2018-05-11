@@ -199,7 +199,9 @@ if (ready == 1) {
             
                 if (newKey == vk_lcontrol)
                 || (newKey == vk_rcontrol)
-                    global.controlkey   = vk_control; 
+                    global.controlkey = vk_control;
+                else
+                    global.controlkey = newKey;
             } break;
             
             //Shift               
@@ -207,7 +209,9 @@ if (ready == 1) {
             
                 if (newKey == vk_lshift)
                 || (newKey == vk_rshift)
-                    global.shiftkey   = vk_shift; 
+                    global.shiftkey = vk_shift;
+                else
+                    global.shiftkey = newKey;
             } break;
             
             //Space                
