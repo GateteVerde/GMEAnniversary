@@ -27,15 +27,43 @@
             <kind>1</kind>
             <string>///Gatete Mario Engine Anniversary Edition disclaimer notice
 
-//Play 'Coin' sound
-audio_play_sound(snd_coin, 0, false);
-
 //Go to the next room
-alarm[0] = 600;
+alarm[0] = 300;
+
+//Play sound
+alarm[1] = 2;
 
 //Fade out
 if (instance_number(obj_fadeout) == 0)
     instance_create(0,0,obj_fadeout);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Play a sound depending of what room you are
+
+if (room != rm_disclaimer)
+    audio_play_sound(snd_1up, 0, false);
+else
+    audio_play_sound(snd_coin, 0, false);
 </string>
           </argument>
         </arguments>
@@ -86,34 +114,38 @@ if (instance_number(obj_fadein) == 0)
             <kind>1</kind>
             <string>///Draw the disclaimer
 
-//Set the font
-draw_set_font(global.font_message);
+//Draw only if the room is the disclaimer one
+if (room == rm_disclaimer) {
 
-//Set the alignment
-draw_set_valign(fa_center);
-draw_set_halign(fa_center);
-
-//Set the colour
-draw_set_colour(c_white);
-
-//Draw the disclaimer
-draw_text_colour(view_xview[0]+global.gw/2, view_yview[0]+148, "This is an OPEN-SOURCE Mario engine#"
-+ "developed by the GMETeam#"
-+ " #"
-+ "This engine is under the BSD-3 license#"
-+ " #"
-+ "Head to the official Discord server#"
-+ "https://discord.gg/7PZX4uY#"
-+ " #"
-+ "You can replace this screen with your logo#"
-+ " #"
-+ " #"
-+ " #"
-+ "- PRESS ANY KEY TO CONTINUE! -#", c_white, c_white, c_white, c_white, 1);
-
-//Set the alignment
-draw_set_valign(fa_top);
-draw_set_halign(fa_left);
+    //Set the font
+    draw_set_font(global.font_message);
+    
+    //Set the alignment
+    draw_set_valign(fa_center);
+    draw_set_halign(fa_center);
+    
+    //Set the colour
+    draw_set_colour(c_white);
+    
+    //Draw the disclaimer
+    draw_text_colour(view_xview[0]+global.gw/2, view_yview[0]+148, "This is an OPEN-SOURCE Mario engine#"
+    + "developed by the GMETeam#"
+    + " #"
+    + "This engine is under the BSD-3 license#"
+    + " #"
+    + "Head to the official Discord server#"
+    + "https://discord.gg/7PZX4uY#"
+    + " #"
+    + "You can replace this screen with your logo#"
+    + " #"
+    + " #"
+    + " #"
+    + "- PRESS ANY KEY TO CONTINUE! -#", c_white, c_white, c_white, c_white, 1);
+    
+    //Set the alignment
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
+}
 </string>
           </argument>
         </arguments>

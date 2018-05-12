@@ -3,12 +3,12 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="41" name="datafiles">
-    <datafiles number="41" name="music">
+  <datafiles number="46" name="datafiles">
+    <datafiles number="46" name="music">
       <datafile>
         <name>athletic.ogg</name>
         <exists>-1</exists>
-        <size>474211</size>
+        <size>455149</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -25,7 +25,7 @@
       <datafile>
         <name>bonus.ogg</name>
         <exists>-1</exists>
-        <size>364359</size>
+        <size>181339</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -93,7 +93,7 @@
       <datafile>
         <name>land.ogg</name>
         <exists>-1</exists>
-        <size>307104</size>
+        <size>346323</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -331,7 +331,7 @@
       <datafile>
         <name>subcon.ogg</name>
         <exists>-1</exists>
-        <size>626582</size>
+        <size>615475</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -382,7 +382,7 @@
       <datafile>
         <name>underwater.ogg</name>
         <exists>-1</exists>
-        <size>422577</size>
+        <size>384105</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -2047,6 +2047,7 @@
       <background>background\bgr_mappoison_b</background>
       <background>background\bgr_mappoison_c</background>
     </backgrounds>
+    <background>background\bgr_anniversary</background>
     <background>background\bgr_title</background>
     <background>background\bgr_titlebg_back</background>
   </backgrounds>
@@ -3201,8 +3202,8 @@
         <object>objects\obj_crystal_up</object>
       </objects>
       <object>objects\obj_intro</object>
+      <object>objects\obj_skipper</object>
       <object>objects\obj_mariostart</object>
-      <object>objects\obj_disclaimer</object>
       <object>objects\obj_persistent</object>
       <object>objects\obj_persistent_musicplayer</object>
       <object>objects\obj_gameover</object>
@@ -3222,6 +3223,7 @@
   <rooms name="rooms">
     <room>rooms\rm_gamestart</room>
     <room>rooms\rm_disclaimer</room>
+    <room>rooms\rm_anniversary</room>
     <room>rooms\rm_titlemenu</room>
     <room>rooms\rm_intro</room>
     <room>rooms\rm_map</room>
