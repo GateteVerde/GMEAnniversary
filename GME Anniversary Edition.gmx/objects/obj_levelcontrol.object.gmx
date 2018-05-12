@@ -1279,9 +1279,11 @@ audio_stop_sound(global._stream_starman);
             <string>///Reset values
 
 //Stop the following sounds from playing
+audio_stop_sound(snd_pmeter);
 audio_stop_sound(snd_skid);
 audio_stop_sound(snd_spin);
-audio_stop_sound(snd_pmeter);
+audio_stop_sound(snd_timer);
+audio_stop_sound(snd_timer_end);
 
 //If the game is not restarting
 if (obj_persistent.restart == false) {

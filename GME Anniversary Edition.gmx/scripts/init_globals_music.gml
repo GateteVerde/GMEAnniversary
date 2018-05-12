@@ -11,6 +11,9 @@
 **      See 'obj_persistent_musicplayer' for details about the music.
 */
 
+//Airship
+global._theme_airship = music_add("Airship");
+
 //Athletic
 global._theme_athletic = music_add("Athletic");
 
@@ -22,6 +25,9 @@ global._theme_castle = music_add("Castle");
 
 //Gameover
 global._theme_gameover = music_add("Gameover");
+
+//Ghost
+global._theme_ghost = music_add("Ghost");
 
 //Land
 global._theme_land = music_add("Land");
