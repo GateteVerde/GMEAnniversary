@@ -1,8 +1,8 @@
-///set_keys(key, keytext, keydefault);
+///set_keys(key,keytext,keydefault);
 
 /*
 **  Usage:
-**      set_keys(key. )
+**      set_keys(key,keytext,keydefault)
 **
 **  Given:
 **      key         Key to modify

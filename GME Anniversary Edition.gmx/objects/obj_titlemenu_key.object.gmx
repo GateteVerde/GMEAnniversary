@@ -108,17 +108,17 @@ if (background_exists(back)) {
 }
 
 //Draw the box
-draw_sprite_ext(spr_keybox, 0, view_xview[0]+global.gw/2, view_yview[0]+global.gh-48, 1, 1, 0, c_white, 1);
+draw_sprite_ext(spr_keybox, 0, view_xview[0]+global.gw/2, view_yview[0]+global.gh-48, 1, 1, 0, c_white, 0.5);
 
 //Set the font
-draw_set_font(global.font_message);
+draw_set_font(global.font_interface);
 
 //Align the text
 draw_set_valign(fa_center);
 draw_set_halign(fa_center);
 
 //Draw the text
-draw_text_colour_shadowed(view_xview[0]+global.gw/2, view_yview[0]+global.gh-48, keyText, make_color_rgb(1,75,131), c_white, 1, 1, 0.5, 1);
+draw_text_colour_shadowed(view_xview[0]+global.gw/2, view_yview[0]+global.gh-48, keyText, c_black, c_white, 1, 1, 0.5, 1);
 
 //Re-Align the text
 draw_set_valign(fa_top);
@@ -238,10 +238,8 @@ if (ready == 1) {
     instance_activate_all();
     
     //Delete the screenshot
-    if (background_exists(back)) {
-        
+    if (background_exists(back))        
         background_delete(back);
-    }
     
     //Destroy
     instance_destroy();

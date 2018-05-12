@@ -562,7 +562,10 @@ score += 10;
             <kind>1</kind>
             <string>///Draw it
 
-draw_sprite(sprite_index,-1,round(x),round(y));
+if (y &lt; view_yview[0]+50)
+    draw_sprite(sprite_index,-1,round(x),view_yview[0]+50);
+else
+    draw_sprite(sprite_index,-1,round(x),round(y));
 </string>
           </argument>
         </arguments>
