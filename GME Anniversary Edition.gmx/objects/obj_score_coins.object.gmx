@@ -119,6 +119,9 @@ if (vspeed == 0)
             <kind>1</kind>
             <string>///Draw text
 
+//Set the colour
+draw_set_colour(c_white);
+
 //Set the font
 draw_set_font(myfont);
 
