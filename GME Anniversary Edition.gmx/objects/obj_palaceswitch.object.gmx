@@ -129,7 +129,16 @@ if (ready == 0) {
         //Perform player events
         with (player) {
         
+            //If the dropdown attack is there, destroy
+            if (instance_exists(obj_dropdown)) {
+            
+                with (obj_dropdown) instance_destroy();
+            }
+        
+            //Disable controls
             disablecontrol = true;
+            
+            //Set the vertical speed
             yspeed = -3;
         }
         

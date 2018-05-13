@@ -780,7 +780,8 @@ if (panel) {
     //If 'Shift' is pressed and the panel can be accessed
     if (keyboard_check_pressed(global.shiftkey)) 
     &amp;&amp; (speed == 0) 
-    &amp;&amp; (letsgo == 0) {
+    &amp;&amp; (letsgo == 0) 
+    &amp;&amp; (panel.beaten != 2) {
         
         //Go where the panel takes you
         with (panel) {

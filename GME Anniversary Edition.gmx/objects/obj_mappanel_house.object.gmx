@@ -90,7 +90,7 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
     visible = 1;
     if (ds_map_find_value(global.mapscreen,id) == 2) {
     
-        beaten = 1;
+        beaten = 2;
         image_index = 1;
     }
 }
@@ -129,8 +129,9 @@ if (image_index == 0) {
     
     //Set the frame
     image_index = 1;
-    
+        
     //Remember it
+    beaten = 2;
     ds_map_replace(global.mapscreen, id, 2);
 }
 </string>
@@ -172,29 +173,25 @@ if (image_index == 0) {
           <argument>
             <kind>1</kind>
             <string>///Go where the panel takes you
+    
+//Play 'Enter Stage' sound
+audio_play_sound(snd_enterstage, 0, false);
 
-//If the level has not been beaten yet
-if (beaten == 0) {
+//Set up pipe info
+global.prize[0] = powerup[0];
+global.prize[1] = powerup[1];
+global.prize[2] = powerup[2];
+
+//Do not remember checkpoint
+global.checkpoint = noone;    
+
+//Do not display "Mario Start!"
+global.mariostart = 1;
     
-    //Play 'Enter Stage' sound
-    audio_play_sound(snd_enterstage, 0, false);
-    
-    //Set up pipe info
-    global.prize[0] = powerup[0];
-    global.prize[1] = powerup[1];
-    global.prize[2] = powerup[2];
-    
-    //Do not remember checkpoint
-    global.checkpoint = noone;    
-    
-    //Do not display "Mario Start!"
-    global.mariostart = 1;
-        
-    //Make the player go to the destination room
-    with (obj_mapplayer) {
-    
-        myroom = rm_bonus;
-    }
+//Make the player go to the destination room
+with (obj_mapplayer) {
+
+    myroom = rm_bonus;
 }
 </string>
           </argument>
