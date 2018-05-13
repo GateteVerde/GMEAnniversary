@@ -65,7 +65,7 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
     visible = 1;
     if (ds_map_find_value(global.mapscreen,id) == 2) {
     
-        beaten = 1;
+        beaten = 2;
         image_index = 1;
     }
 }
@@ -93,24 +93,20 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
             <kind>1</kind>
             <string>///Go where the panel takes you
 
-//If the the level has not been beaten yet
-if (beaten == 0) {
+//Play 'Enter Stage' sound
+audio_play_sound(snd_enterstage, 0, false);
 
-    //Play 'Enter Stage' sound
-    audio_play_sound(snd_enterstage, 0, false);
-    
-    //Do not display "Mario Start!"
-    global.mariostart = 1;
-    
-    //Do not remember checkpoint
-    global.checkpoint = noone;
-    
-    //Make the player go to the destination room
-    with (obj_mapplayer) {
-    
-        if (other.myroom == 0)
-            myroom = rm_minigame_sma4_a; //SMA4 Digging Minigame
-    }
+//Do not display "Mario Start!"
+global.mariostart = 1;
+
+//Do not remember checkpoint
+global.checkpoint = noone;
+
+//Make the player go to the destination room
+with (obj_mapplayer) {
+
+    if (other.myroom == 0)
+        myroom = rm_minigame_sma4_a; //SMA4 Digging Minigame
 }
 </string>
           </argument>

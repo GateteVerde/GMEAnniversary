@@ -63,7 +63,7 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
     visible = 1;
     if (ds_map_find_value(global.mapscreen,id) == 2) {
     
-        beaten = 1;
+        beaten = 2;
         image_index = 1;
     }
 }
@@ -104,6 +104,7 @@ if (image_index == 0) {
     image_index = 1;
     
     //Remember it
+    beaten = 2;
     ds_map_replace(global.mapscreen, id, 2);
 }
 </string>
@@ -146,20 +147,16 @@ if (image_index == 0) {
             <kind>1</kind>
             <string>///Go where the panel takes you
 
-//If the level has not been beaten
-if (beaten == 0) {
+//Play 'Enter Stage' sound
+audio_play_sound(snd_enterstage, 0, false);
 
-    //Play 'Enter Stage' sound
-    audio_play_sound(snd_enterstage, 0, false);
-    
-    //Do not remember checkpoint
-    global.checkpoint = noone;
-    
-    //Make the player go to the destination room
-    with (obj_mapplayer) {
-    
-        myroom = other.myroom;
-    }
+//Do not remember checkpoint
+global.checkpoint = noone;
+
+//Make the player go to the destination room
+with (obj_mapplayer) {
+
+    myroom = other.myroom;
 }
 </string>
           </argument>

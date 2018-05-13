@@ -80,6 +80,18 @@ if (instance_exists(obj_kuriboshoe))
 if (instance_exists(obj_tides))
     obj_tides.visible = false;
 
+//Make spinner invisible
+if (instance_exists(obj_spinner))
+    with (obj_spinner) visible = false;
+
+//Make dropdown invisible
+if (instance_exists(obj_dropdown))
+    with (obj_dropdown) visible = false;
+
+//Make wallrunner invisible
+if (instance_exists(obj_wallrunner))
+    with (obj_wallrunner) visible = false;
+
 //Start animation
 alarm[0] = 1;
 </string>
@@ -106,9 +118,29 @@ alarm[0] = 1;
             <kind>1</kind>
             <string>///Make the player visible
 
-obj_playerparent.visible = true;
+//Make the player visible but check if it's not running a wall or doing a special action
+if (!instance_exists(obj_spinner))
+&amp;&amp; (!instance_exists(obj_dropdown))
+&amp;&amp; (!instance_exists(obj_wallrunner))
+    obj_playerparent.visible = true;
+    
+//Otherwise, if the spinner exists
+else if (instance_exists(obj_spinner))
+    obj_spinner.visible = true;
+    
+//Otherwise, if the dropdown exists
+else if (instance_exists(obj_dropdown))
+    obj_dropdown.visible = true;
+    
+//Otherwise, if the wallrunner exists
+else if (instance_exists(obj_wallrunner))
+    obj_wallrunner.visible = true;
+    
+//If the player is riding a yoshi, make yoshi visible.
 if (global.mount == 1)
     obj_yoshi.visible = true;
+    
+//Otherwise, if the player is riding a kuribo shoe, make the kuribo shoe visible.
 else if (global.mount == 2)
     obj_kuriboshoe.visible = true;
 </string>

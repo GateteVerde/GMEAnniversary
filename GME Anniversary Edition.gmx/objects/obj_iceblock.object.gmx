@@ -282,8 +282,12 @@ if (held) {
 }
 
 //Inherit default event
-if (!held)
+if (!held) {
+
     event_inherited();
+    if (ready)
+        image_alpha = 1;
+}
 </string>
           </argument>
         </arguments>
@@ -411,7 +415,7 @@ if (!ready) {
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="25">
+    <event eventtype="7" enumb="24">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -428,9 +432,8 @@ if (!ready) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Prepare sprite
+            <string>///Select a appropiate ice sprite
 
-//Select a appropiate ice sprite
 //If the sprite if greater than 16x16, set a 32x32 block
 if (bbox_bottom-bbox_top &gt; 18)
 &amp;&amp; (bbox_right-bbox_left &gt; 18)
