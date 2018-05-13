@@ -116,7 +116,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Stackable mushroom logic
+            <string>///Holdable logic
 
 //If the object is being held.
 if (held) {
@@ -158,7 +158,7 @@ if (held) {
             else {
             
                 //Set the vertical speed
-                vspeed = 1;
+                vspeed = 0.1;
                 gravity = 0.2;
                 
                 //Set the horizontal speed
