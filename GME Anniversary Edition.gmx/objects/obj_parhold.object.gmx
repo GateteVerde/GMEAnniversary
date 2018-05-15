@@ -514,6 +514,24 @@ else if (keyboard_check(global.downkey)) {
 
     //Set the horizontal speed
     hspeed = 0.5*obj_playerparent.xscale;
+    
+    //Check if the object is stuck on a solid and move it
+    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
+    
+        //Move it to a safe position
+        inwall = true;
+        
+        //Stop it
+        hspeed = 0;
+    }
+    
+    //Check if the object is overlapping a slope and move it above the slope.
+    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)) {
+    
+        hspeed = hspeed/2;
+        while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0))   
+            y--;
+    }
 }
 
 //Otherwise, throw it to the side.
@@ -529,7 +547,7 @@ else {
     if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
         
         vspeed = -2;
-        if (!collision_rectangle(x-1,bbox_top,x+1,bbox_bottom,obj_slopeparent,1,0))
+        if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0))
             hspeed = obj_playerparent.xspeed+1*obj_playerparent.xscale;
         else {
         
@@ -537,7 +555,7 @@ else {
             hspeed = 1*obj_playerparent.xscale;
             
             //Boost movement
-            while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))   
+            while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0))   
                 y--;
         }
     }

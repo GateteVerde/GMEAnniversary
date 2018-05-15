@@ -584,7 +584,7 @@ if (keyboard_check(global.upkey)) {
     else {
     
         //Create dead object
-        imdead = instance_create(x,y+16,obj_enemy_dead);
+        imdead = instance_create(x,y,obj_enemy_dead);
         
         //Hereby sprite
         imdead.sprite_index = sprite_index;
@@ -602,6 +602,24 @@ else if (keyboard_check(global.downkey)) {
 
     //Set the horizontal speed
     hspeed = 0.5*obj_playerparent.xscale;
+    
+    //Check if the object is stuck on a solid and move it
+    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
+    
+        //Move it to a safe position
+        inwall = true;
+        
+        //Stop it
+        hspeed = 0;
+    }
+    
+    //Check if the object is overlapping a slope and move it above the slope.
+    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)) {
+    
+        hspeed = hspeed/2;
+        while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0))   
+            y--;
+    }
 }
 
 //Otherwise, throw it to the side.
@@ -614,7 +632,7 @@ else if (vspeed &gt;= 0) {
     if (place_meeting(x,y,obj_solid)) {
     
         //Create dead object
-        imdead = instance_create(x,y+16,obj_enemy_dead);
+        imdead = instance_create(x,y,obj_enemy_dead);
         
         //Hereby sprite
         imdead.sprite_index = sprite_index;

@@ -35,9 +35,6 @@ mapmusicinit = false;
 
 //Don't know if this will be used
 musicdisable = false;
-
-//For fading in the music volume upon resum
-mapmusicvol = 1;
 </string>
           </argument>
         </arguments>
@@ -66,7 +63,7 @@ mapmusicvol = 1;
 if (mapmusicvol &lt; 1) { 
     
     //Increment music volume by a bit
-    mapmusicvol += 0.005;
+    mapmusicvol += 0.01;
 
     //Set music volume accordingly
     audio_sound_gain(global._stream_map, mapmusicvol, 0);    
@@ -78,8 +75,7 @@ else {
 
     //Set it to the default value of 1 just in case
     mapmusicvol = 1; 
-    
-    
+        
     //Set music volume to maximum
     audio_sound_gain(global._stream_map, mapmusicvol, 0);
 }
