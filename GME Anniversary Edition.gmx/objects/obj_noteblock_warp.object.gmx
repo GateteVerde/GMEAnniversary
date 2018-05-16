@@ -161,8 +161,8 @@ if (!ready) {
 }
 
 //Change palette
-pal += 0.1;
-if (pal &gt; 9)
+pal += 0.05;
+if (pal &gt; 8)
     pal = 0;
 </string>
           </argument>
