@@ -189,8 +189,8 @@ for (var i = 0; i < 3; i++) {
         ds_map_add(global.sc[i],j,0);
 }
 
-//Counts number of star coins collected in the entire game
-global.sc_count = 0;
+//Star Coins collected
+global.starcoins = 0;
 
 //Data structure for storing the state of the world map.
 global.mapscreen = ds_map_create();

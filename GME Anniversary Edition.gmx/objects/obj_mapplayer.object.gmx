@@ -783,24 +783,34 @@ if (panel) {
     &amp;&amp; (letsgo == 0) 
     &amp;&amp; (panel.beaten != 2) {
         
-        //Go where the panel takes you
-        with (panel) {
+        //Check if the panel is blocked
+        if (panel.block == 0) {
         
-            //Check the star coins collected in the level
-            event_user(0);
+            //Go where the panel takes you
+            with (panel) {
             
-            //Check the rooms of the level
-            event_user(1);
+                //Check the star coins collected in the level
+                event_user(0);
+                
+                //Check the rooms of the level
+                event_user(1);
+                
+                //Check if the player can exit the room via pausing the game
+                global.levelbeat = beaten;
+            }
             
-            //Check if the player can exit the room via pausing the game
-            global.levelbeat = beaten;
+            //Go to the level
+            alarm[1] = 2;
+            
+            //Set the victory pose
+            letsgo = true;
         }
         
-        //Go to the level
-        alarm[1] = 2;
-        
-        //Set the victory pose
-        letsgo = true;
+        else {
+            
+            //Play a sound
+            audio_play_sound(snd_wrong,0,0)
+        }
     }
 }
 </string>
@@ -1167,7 +1177,7 @@ if (global.clear &gt; 0) {
             ds_map_replace(global.sc[i],global.level,3);
             
             //Increment star counter
-            global.sc_count++;
+            global.starcoins++;
         }
     }
 }

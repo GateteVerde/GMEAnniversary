@@ -41,6 +41,7 @@
 **
 **  saveme = Whether to save the game after beating
 **  myroom = Destination room
+**  block = Number of Star Coins to unlock level. (Default: 0)
 */
 
 //Default variables
@@ -50,6 +51,7 @@ exitdir = 0;
 exitalt = 0;
 saveme = 1;
 myroom = room_next(room);
+block = 0;
 
 //Animate
 image_speed = 0.2;

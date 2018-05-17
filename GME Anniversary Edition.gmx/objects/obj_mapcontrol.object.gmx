@@ -52,6 +52,39 @@ inv_y = 0;
 
 //Handles the item highlighted in inventory
 boxselection = 0;
+
+//Draws the player or collected Star Coins
+showcase = 0;
+alarm[1] = 240;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Change the hud to display Player or Starcoins
+
+//Change what to showcase.
+showcase = !showcase;
+
+//Repeat the process.
+alarm[1] = 240;
 </string>
           </argument>
         </arguments>
@@ -390,23 +423,41 @@ if (global.mount == 2)
 //Draw border
 draw_sprite_ext(spr_mapborder, 0, view_xview[0], view_yview[0], 1, 1, 0, c_white, 1);
 
-//Set the palette
-pal_swap_set(spr_palette_mario, isflashing);
-
-//Draw the player
-draw_sprite_ext(scr_mario_walk(), anim, view_xview[0]+32, view_yview[0]+16, 1, 1, 0, c_white, 1);
-
-//Reset the palette
-pal_swap_reset();
-
 //Set the font
 draw_set_font(global.font_interface);
 
-//Set the colour
-draw_set_colour(c_white);
+//Draw the player
+if (showcase == 0) {
 
-//Draw lives
-draw_text(view_xview[0]+40, view_yview[0]+24, "* " + string_format(lives,2,0));
+    //Set the palette
+    pal_swap_set(spr_palette_mario, isflashing);
+    
+    //Draw the player
+    draw_sprite_ext(scr_mario_walk(), anim, view_xview[0]+32, view_yview[0]+16, 1, 1, 0, c_white, 1);
+    
+    //Reset the palette
+    pal_swap_reset();
+    
+    //Set the colour
+    draw_set_colour(c_white);
+    
+    //Draw lives
+    draw_text(view_xview[0]+40, view_yview[0]+24, "* " + string_format(lives,2,0));
+}
+
+//Draw the total amount of Star Coins
+else {
+    
+    //Draw the player
+    draw_sprite_ext(spr_hud_starcoin_get, 0, view_xview[0]+24, view_yview[0]+16, 1, 1, 0, c_white, 1);
+    
+    //Set the colour
+    draw_set_colour(c_white);
+    
+    //Draw lives
+    draw_text(view_xview[0]+40, view_yview[0]+24, "* " + string_format(global.starcoins,2,0));
+
+}
 
 //Draw levelname
 if (levelname != "") {

@@ -257,7 +257,7 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_starblock" x="1120" y="128" name="inst_FDB664FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_starblock" x="1104" y="128" name="inst_4AC5D17A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_starcoin" x="1008" y="32" name="inst_DDF57251" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="1072" y="32" name="inst_CAFACEF2" locked="0" code="varmsg = &quot;This coin at my left is a Star Coin, there are 3 of these coins hidden on each level. You can use them to unlock stuff on your game by using the global.sc_count variable.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="1072" y="32" name="inst_CAFACEF2" locked="0" code="varmsg = &quot;This coin at my left is a Star Coin, there are 3 of these coins hidden on each level. You can use them to unlock stuff on your game by using the global.starcoins variable.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="976" y="16" name="inst_BBEFB675" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
     <instance objName="obj_pplant_large_down" x="992" y="240" name="inst_0EFD4D2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pplant_large_fire_down" x="1024" y="208" name="inst_CD1229F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -343,7 +343,7 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_grass_multicoin" x="2000" y="352" name="inst_0B80E784" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="2016" y="304" name="inst_D135EB04" locked="0" code="varmsg = &quot;Did you know that if you press the 'Run' button on those grass sprouts you can pick them up!.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="1744" y="240" name="inst_7B1E0238" locked="0" code="sprout[0] = cs_hammer;&#xA;sprout[2] = cs_super;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock_triple" x="1744" y="176" name="inst_2003D0D4" locked="0" code="sprout[0] = cs_frog;&#xA;sprout[2] = cs_tanooki;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_triple" x="1744" y="176" name="inst_2003D0D4" locked="0" code="sprout[0] = cs_frog;&#xA;sprout[2] = cs_tanooki;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pplant" x="1824" y="336" name="inst_B42AD71A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shyguy" x="1944" y="352" name="inst_029C964B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shyguy_big" x="2000" y="352" name="inst_491D6827" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -415,6 +415,7 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_platform_falling" x="112" y="64" name="inst_C1CCAB21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="1344" y="256" name="inst_A8A70D08" locked="0" code="varmsg = &quot;These blocks here can be shattered if you scratch them while having the cat powerup.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_p" x="208" y="272" name="inst_1D46A35B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_triple" x="1744" y="112" name="inst_E8436BC8" locked="0" code="sprout[0] = cs_cat;&#xA;sprout[2] = cs_bee;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_goal" x="3056" y="192" w="432" h="240" xo="0" yo="0" id="10063048" name="inst_F5C2A5C1" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

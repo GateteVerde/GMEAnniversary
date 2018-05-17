@@ -41,6 +41,7 @@
 **  pipex = x position of pipe.
 **  pipey = y position of pipe.
 **  myroom = Destination room
+**  block = Number of Star Coins to unlock level. (Default: 0)
 */
 
 //Default variables
@@ -52,6 +53,7 @@ saveme = 0;
 pipex = 0;
 pipey = 0;
 myroom = room_next(room);
+block = 0;
 
 //Animate
 image_speed = 0.2;

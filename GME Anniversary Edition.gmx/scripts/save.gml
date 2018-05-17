@@ -23,7 +23,7 @@ for (var i = 0; i < 3; i++) {
 }
 
 //Turn the global coin counter into a string and write it
-file_text_write_string(file,base64_encode(string(global.sc_count)));
+file_text_write_string(file,base64_encode(string(global.starcoins)));
 file_text_writeln(file);
 
 //Coins

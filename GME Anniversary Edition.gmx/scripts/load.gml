@@ -23,7 +23,7 @@ for (var i = 0; i < 3; i++) {
 }
 
 //Turn the global coin counter into a string and write it
-global.sc_count = real(base64_decode(file_text_read_string(file)));
+global.starcoins = real(base64_decode(file_text_read_string(file)));
 file_text_readln(file);
 
 //Coins

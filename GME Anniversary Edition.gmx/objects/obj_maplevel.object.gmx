@@ -41,6 +41,7 @@
 **
 **  saveme = Whether to save the game after beating
 **  myroom = Destination room
+**  block = Number of Star Coins to unlock level. (Default: 0)
 */
 
 //Default variables
@@ -50,6 +51,7 @@ exitdir = 0;
 exitalt = 0;
 saveme = 0;
 myroom = room_next(room);
+block = 0;
 
 //Animate
 image_speed = 0.2;
@@ -218,8 +220,11 @@ if (other.speed == 0)
     //Level ID
     obj_mapcontrol.levelid = levelid;
 
-    //Level Name
-    obj_mapcontrol.levelname = levelname;
+    //Level Name    
+    if (block &gt; 0)
+        obj_mapcontrol.levelname = "?????";    
+    else
+        obj_mapcontrol.levelname = levelname;
 }
 </string>
           </argument>
@@ -303,6 +308,65 @@ if (global.level != levelid) {
 
 //Set the new level id
 global.level = levelid;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw the level panel.
+
+//If there is more than 0 Star Coins needed to unlock the level.
+if (block &gt; 0) 
+{
+    //Do you have enough Star Coins?
+    if (global.starcoins &gt;= block) {
+    
+        draw_sprite(sprite_index,-1,round(x),round(y));
+     
+        //Remove the block.
+        block = 0;   
+    }
+        
+    else {
+    
+        draw_sprite_ext(sprite_index,-1,round(x),round(y),1,1,0,c_black,1);
+        
+        //Align the text
+        draw_set_halign(fa_center);
+        
+        //Set the font
+        draw_set_font(global.font_interface);
+        
+        //Set the alpha
+        draw_set_alpha(1);
+        
+        //Draw the needed stars
+        draw_text(x+8,y-10,string_format(block,0,0));
+        
+        //Align the text again
+        draw_set_halign(fa_left);
+    }
+}
+
+else
+    draw_sprite(sprite_index,-1,round(x),round(y));
 </string>
           </argument>
         </arguments>
