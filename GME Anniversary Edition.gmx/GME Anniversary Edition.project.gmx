@@ -2140,7 +2140,6 @@
       <script>scripts\player_draw_yoshi.gml</script>
     </scripts>
     <scripts name="Events">
-      <script>scripts\redcoin_set.gml</script>
       <script>scripts\pswitch_activate.gml</script>
       <script>scripts\pswitch_deactivate.gml</script>
     </scripts>
@@ -2704,6 +2703,7 @@
           </objects>
           <object>objects\obj_coin</object>
           <object>objects\obj_coin_p</object>
+          <object>objects\obj_coin_r</object>
           <object>objects\obj_acecoin</object>
           <object>objects\obj_starcoin</object>
         </objects>
@@ -3101,9 +3101,6 @@
               <object>objects\obj_invincibility</object>
             </objects>
             <objects name="Coins">
-              <objects name="Special">
-                <object>objects\obj_coin_r</object>
-              </objects>
               <object>objects\obj_coinchange</object>
             </objects>
             <object>objects\obj_holdbubble_respawn</object>

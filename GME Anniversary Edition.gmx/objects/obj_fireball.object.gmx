@@ -34,7 +34,7 @@ audio_play_sound(snd_fireball, 0, false);
 image_speed = 0.15;
 
 //Set the vertical speed
-vspeed = 3;
+vspeed = 0.5;
 
 //Create spotlight
 if (instance_exists(obj_levelcontrol_light)) {

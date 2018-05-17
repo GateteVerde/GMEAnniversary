@@ -192,17 +192,15 @@ audio_pause_sound(global._stream_map);
             <kind>1</kind>
             <string>///Start the map music playing
 
-//Deny if the map music has already been started
+//Deny if the map music has already been started, disabled, and player isn't in a stage.
 if (mapmusicinit)
+|| (musicdisable)
+|| ((instance_exists(obj_mapplayer) &amp;&amp; (obj_mapplayer.letsgo == 1)))
 exit;
 
 //Play this particular instance of the map music only once until further notice
 if (mapmusicinit == false)
 mapmusicinit = true;
-
-//Deny if music has been disabled.
-if (musicdisable)
-exit;
 
 //Play new stream
 global._stream_map = audio_play_sound(mapmusic, 0, 1);

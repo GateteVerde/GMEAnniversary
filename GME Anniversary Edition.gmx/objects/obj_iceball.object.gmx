@@ -31,7 +31,7 @@
 audio_play_sound(snd_iceball, 0, false);
 
 //Set the vertical speed
-vspeed = 3;
+vspeed = 0.5;
 
 //Leave a trail
 alarm[0] = 8;

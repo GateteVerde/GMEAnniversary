@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_redcoin</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>9</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -27,8 +27,17 @@
             <kind>1</kind>
             <string>///A red coin
 
+/*
+**  This item uses creation code!
+**
+**  ringid = A number id to spawn the red coins.
+*/
+
 //Animate
 image_speed = 0.15;
+
+//Ring ID
+ringid = 0;
 </string>
           </argument>
         </arguments>
@@ -51,41 +60,44 @@ image_speed = 0.15;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Collect the coin
+            <string>///Collect the coin if visible
 
-//Play 'Coin' sounds
-switch (instance_number(obj_coin_r)) {
-
-    case (1): audio_play_sound(snd_redcoin8, 0, false); break;
-    case (2): audio_play_sound(snd_redcoin7, 0, false); break;
-    case (3): audio_play_sound(snd_redcoin6, 0, false); break;
-    case (4): audio_play_sound(snd_redcoin5, 0, false); break;
-    case (5): audio_play_sound(snd_redcoin4, 0, false); break;
-    case (6): audio_play_sound(snd_redcoin3, 0, false); break;
-    case (7): audio_play_sound(snd_redcoin2, 0, false); break;
-    default: audio_play_sound(snd_redcoin, 0, false); break;
+if (visible) {
+    
+    //Play 'Coin' sounds
+    switch (instance_number(obj_coin_r)) {
+    
+        case (1): audio_play_sound(snd_redcoin8, 0, false); break;
+        case (2): audio_play_sound(snd_redcoin7, 0, false); break;
+        case (3): audio_play_sound(snd_redcoin6, 0, false); break;
+        case (4): audio_play_sound(snd_redcoin5, 0, false); break;
+        case (5): audio_play_sound(snd_redcoin4, 0, false); break;
+        case (6): audio_play_sound(snd_redcoin3, 0, false); break;
+        case (7): audio_play_sound(snd_redcoin2, 0, false); break;
+        default: audio_play_sound(snd_redcoin, 0, false); break;
+    }
+    
+    //Increment 2 coins
+    global.coins += 2;
+    
+    //Get 20 points
+    score += 20;
+    
+    //Create a sparkle
+    with (instance_create(x,y,obj_smoke)) sprite_index = spr_sparkle_c;
+    
+    //Increment coins
+    global.redcoins++;
+    with (instance_create(x+8,y,obj_score_coins)) {
+    
+        amount = global.redcoins;
+        if (instance_number(obj_coin_r) == 1)
+            alarm[0] = 12;
+    }
+    
+    //Destroy
+    instance_destroy();
 }
-
-//Increment 2 coins
-global.coins += 2;
-
-//Get 20 points
-score += 20;
-
-//Create a sparkle
-with (instance_create(x,y,obj_smoke)) sprite_index = spr_sparkle_c;
-
-//Increment coins
-global.redcoins++;
-with (instance_create(x+8,y,obj_score_coins)) {
-
-    amount = global.redcoins;
-    if (instance_number(obj_coin_r) == 1)
-        alarm[0] = 12;
-}
-
-//Destroy
-instance_destroy();
 </string>
           </argument>
         </arguments>

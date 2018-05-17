@@ -64,6 +64,9 @@ port_y = 0;
 //Is the game being restarted
 restart = 0;
 
+//Show the FPS?
+showfps = false;
+
 //Data structure for picked up 3up moons
 global.moons = ds_map_create();
 
@@ -350,10 +353,6 @@ if (!audio_is_playing(snd_thwomp))
 //Quit the game when ALT+F4 are pressed.
 if (keyboard_check_pressed(vk_f4))
     game_end();
-    
-//Enable/Disable the Gamepad.
-else if (keyboard_check_pressed(ord('G')))
-    global.gamepad =! global.gamepad;
     
 //Restart the game when ALT+R are pressed.
 else if (keyboard_check_pressed(ord('R'))) {
@@ -733,8 +732,8 @@ draw_enable_alphablend(true)
 //Set 'Interface' font
 draw_set_font(global.font_interface);
 
-//Draw 'FPS' if below 60
-if (fps &lt; 60)
+//Draw 'FPS' if below 60 and FPS showing is on
+if (showfps == true)
     draw_text_colour(2, 2, string("FPS: ") + string(fps), c_white, c_white, c_white, c_white, 1);
 </string>
           </argument>

@@ -796,7 +796,7 @@ if (!swimming) {
             
             //Smack net if possible
             if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb_net,0,0))
-            &amp;&amp; (keyboard_check_pressed(vk_control))
+            &amp;&amp; (keyboard_check_pressed(global.controlkey))
             &amp;&amp; (netsmack == 0) {
             
                 //Play 'Bump' sound

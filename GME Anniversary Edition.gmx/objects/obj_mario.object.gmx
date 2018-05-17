@@ -530,7 +530,7 @@ else {
                                     if (xspeed == 0)
                                         image_speed = 0.1;
                                     else
-                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
+                                        image_speed = 0.1+(0.1*keyboard_check(global.controlkey));
                                 }
                                 else
                                     image_speed = isinice() * 0.065+abs(xspeed)/7.5;
@@ -558,7 +558,7 @@ else {
                                     if (xspeed == 0)
                                         image_speed = 0.1;
                                     else
-                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
+                                        image_speed = 0.1+(0.1*keyboard_check(global.controlkey));
                                 }
                                 else
                                     image_speed = isinice() * 0.065+abs(xspeed)/7.5;
@@ -851,7 +851,7 @@ else {
                                     if (xspeed == 0)
                                         image_speed = 0.1;
                                     else
-                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
+                                        image_speed = 0.1+(0.1*keyboard_check(global.controlkey));
                                 }
                                 
                                 //Otherwise, if Mario is swimming upwards
@@ -862,7 +862,7 @@ else {
                                     
                                     //Set the speed
                                     if ((x != xprevious) || (y != yprevious))
-                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
+                                        image_speed = 0.1+(0.1*keyboard_check(global.controlkey));
                                     else
                                         image_speed = 0;
                                 }
@@ -875,7 +875,7 @@ else {
                                     
                                     //Set the speed
                                     if ((x != xprevious) || (y != yprevious))
-                                        image_speed = 0.1+(0.1*keyboard_check(vk_control));
+                                        image_speed = 0.1+(0.1*keyboard_check(global.controlkey));
                                     else
                                         image_speed = 0;
                                 }

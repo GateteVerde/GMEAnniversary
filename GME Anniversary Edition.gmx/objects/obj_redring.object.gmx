@@ -50,9 +50,12 @@
 **
 **  coin_x[0] = X position of the coin. (Repeat as many coins you want to be spawned by this ring)
 **  coin_y[0] = Y position of the coin. (Repeat as many coins you want to be spawned by this ring)
+**
+**  ringid = A number id to spawn the red coins.
 */
 
 //Default variables:
+ringid = 0;
 sprout = cs_fire;
 coin_x[0] = xstart;
 coin_y[0] = ystart;
@@ -241,10 +244,14 @@ if (sprite_index != spr_redring_active) {
     //Get 1000 points
     with (instance_create(x-8,y,obj_score)) event_user(5);
 
-    //Create the coins
-    for (i=0; i&lt;array_length_1d(coin_x); i++;) {
+    //Make the coins visible            
+    with (obj_coin_r) {
     
-        coin[i] = instance_create(coin_x[i],coin_y[i],obj_coin_r);
+        //Check if the ring id's match
+        if (ringid == other.ringid) {
+        
+            visible = true;    
+        }
     }
     
     //Countdown
