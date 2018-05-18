@@ -8,5 +8,3 @@ Gatete Mario Engine: Anniversary Edition is a open-source Mario engine for Game 
 - Super Mario World
 - Super Mario Land 2
 - New Super Mario Bros. DS and Wii
-
-This engine is currently a WIP so I encourage to not use it yet until a stable version is made.
