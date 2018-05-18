@@ -133,8 +133,8 @@ else {
         //Otherwise, spawn upwards if not blocked
         else {
         
-            //If there's not a solid above
-            if (!place_meeting(x,y-1,obj_solid)) {
+            //If there's a solid above
+            if (place_meeting(x,y-16,obj_solid)) {
             
                 //Hold event
                 alarm[0] = 1;
