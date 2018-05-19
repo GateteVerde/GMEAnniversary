@@ -48,17 +48,12 @@
 **      cs_propeller
 **      cs_cat
 **
-**  coin_x[0] = X position of the coin. (Repeat as many coins you want to be spawned by this ring)
-**  coin_y[0] = Y position of the coin. (Repeat as many coins you want to be spawned by this ring)
-**
 **  ringid = A number id to spawn the red coins.
 */
 
 //Default variables:
 ringid = 0;
 sprout = cs_fire;
-coin_x[0] = xstart;
-coin_y[0] = ystart;
 
 //Destroy if this ring has been touched before
 if (ds_map_find_value(global.redrings,id)) {
@@ -118,15 +113,12 @@ global.redcoins = 0;
             <kind>1</kind>
             <string>///Destroy ring and all active coins
 
-//Destroy coins
-for (i=0; i&lt;array_length_1d(coin); i++;) {
+//Destroy red coins
+with (obj_coin_r) {
 
-    with (obj_coin_r) {
-    
-        //Destroy the coins
-        if (ringid == other.id)
-            instance_destroy();
-    }
+    //If the ring id is the same as the coins
+    if (ringid == other.ringid)
+        instance_destroy();
 }
 
 //Destroy the ring

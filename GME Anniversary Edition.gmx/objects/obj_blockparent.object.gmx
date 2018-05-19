@@ -137,6 +137,28 @@ alarm[1] = 4;
             <kind>1</kind>
             <string>///Set depth
 
+//Check for the player
+var held = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_parhold,0,0);
+
+//If the player is in position
+if (held)
+&amp;&amp; (held.vspeed &lt; 0)
+&amp;&amp; (held.bbox_top &gt; bbox_bottom+held.vspeed) {
+
+    //Bump it
+    ready = 1;
+    
+    //Set the vertical speed
+    vspeed = -2;
+    
+    //Move down
+    alarm[0] = 4;
+    
+    //Perform block specific event
+    event_user(0);
+}
+
+//Set depth
 if (speed == 0)
     depth = 9;
 else

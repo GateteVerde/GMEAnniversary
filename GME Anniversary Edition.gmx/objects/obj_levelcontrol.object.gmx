@@ -105,9 +105,6 @@ instance_create(0,0,obj_hud);
             <kind>1</kind>
             <string>///Turn off E-Switch events
 
-//Stop 'Timer End' sound
-audio_stop_sound(snd_timer_end);
-
 //Enable all switches
 with (obj_eswitchblock) {
 
@@ -144,9 +141,6 @@ with (obj_eblock) event_user(1);
           <argument>
             <kind>1</kind>
             <string>///Turn off ?-Switch events
-
-//Stop 'Timer End' sound
-audio_stop_sound(snd_timer_end);
 
 //Enable all switches
 with (obj_qswitchblock) {
@@ -891,11 +885,9 @@ instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view
             <kind>1</kind>
             <string>///Activate E-Switch events
 
-//Stop 'Timer End' sound if playing
-if (audio_is_playing(snd_timer_end)) then audio_stop_sound(snd_timer_end);
-
-//Play 'Timer' sound if not playing
-if (!audio_is_playing(snd_timer)) then audio_play_sound(snd_timer, 0, true);
+//Stop and play 'Switch timer'
+audio_stop_sound(snd_switchtimer);
+audio_play_sound(snd_switchtimer, 0, false);
 
 //Activate E-Switch events
 with (obj_eblock) event_user(0);
@@ -925,11 +917,9 @@ alarm[11] = 900;
             <kind>1</kind>
             <string>///Activate ?-Switch events
 
-//Stop 'Timer End' sound if playing
-if (audio_is_playing(snd_timer_end)) then audio_stop_sound(snd_timer_end);
-
-//Play 'Timer' sound if not playing
-if (!audio_is_playing(snd_timer)) then audio_play_sound(snd_timer, 0, true);
+//Stop and play 'Switch timer'
+audio_stop_sound(snd_switchtimer);
+audio_play_sound(snd_switchtimer, 0, false);
 
 //Activate ?-Switch events
 alarm[9] = 720;

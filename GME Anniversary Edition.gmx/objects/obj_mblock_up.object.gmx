@@ -267,8 +267,8 @@ if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
 }
 
 //Check for floor objects
-if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
-&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_semisolid,0,0)))
+if ((collision_rectangle(bbox_left+1,bbox_bottom+1,bbox_right-1,bbox_bottom+1,obj_semisolid,0,0))
+&amp;&amp; (!collision_rectangle(bbox_left+1,bbox_bottom-4,bbox_right-1,bbox_bottom-4,obj_semisolid,0,0)))
 || (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
 
     //Stop gravity
@@ -289,7 +289,12 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
     else {
         
         //Create a new mushroom block
-        with (instance_create(x,y,obj_mblock)) move_snap(16,1);
+        with (instance_create(x,y,obj_mblock)) {
+        
+            x = round(x/16)*16;
+            while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))
+                y--;
+        }
         
         //Destroy
         instance_destroy();
