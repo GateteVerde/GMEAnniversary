@@ -111,16 +111,7 @@ if (timeup)
             <kind>1</kind>
             <string>///Return to the map or go to the game over screen
 
-if (instance_number(obj_fadein) == 0) {
-
-    with (instance_create(0,0,obj_fadein)) {
-    
-        if (lives == 0)
-            target = rm_gameover;
-        else
-            target = rm_map;
-    }
-}
+endlevel();
 </string>
           </argument>
         </arguments>

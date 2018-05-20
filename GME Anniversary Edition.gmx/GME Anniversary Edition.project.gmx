@@ -558,6 +558,7 @@
       <sound>sound\snd_reserve</sound>
       <sound>sound\snd_save</sound>
       <sound>sound\snd_switchtimer</sound>
+      <sound>sound\snd_switchtimer_end</sound>
       <sound>sound\snd_timer</sound>
       <sound>sound\snd_timer_end</sound>
       <sound>sound\snd_wrong</sound>
@@ -2141,6 +2142,7 @@
       <script>scripts\player_draw_yoshi.gml</script>
     </scripts>
     <scripts name="Events">
+      <script>scripts\endlevel.gml</script>
       <script>scripts\pswitch_activate.gml</script>
       <script>scripts\pswitch_deactivate.gml</script>
     </scripts>

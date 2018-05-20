@@ -33,15 +33,8 @@ y = round(obj_playerparent_clear.y);
 
 //This grows the image, you can change the values to control how fast the circle should grow.
 scale += -3.125;
-if (scale &lt; 0) {
-
-    //Create fade out effect
-    if (instance_number(obj_fadein) == 0) {
-     
-        with (instance_create(0,0,obj_fadein))
-            target = rm_map;   
-    }
-}
+if (scale &lt; 0)
+    endlevel();
 </string>
           </argument>
         </arguments>

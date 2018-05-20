@@ -276,12 +276,9 @@ else if (keyboard_check_pressed(global.shiftkey)) {
                     audio_play_sound(snd_correct,false,0);
                     
                     //Return to the map
-                    if (instance_number(obj_fadein) == 0) {
+                    endlevel();
                     
-                        with (instance_create(0,0,obj_fadein))
-                            target = rm_map;
-                    }
-                    
+                    //Exit
                     exit;
                 }
                 else {

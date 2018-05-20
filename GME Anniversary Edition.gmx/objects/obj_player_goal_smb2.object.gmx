@@ -122,15 +122,8 @@ with (instance_create(view_xview[0],view_yview[0],obj_powkiller))
 
 if (audio_is_playing(stream))
     alarm[2] = 1;
-else {
-    
-    //Go to the map
-    if (instance_number(obj_fadein) == 0) {
-    
-        with (instance_create(0,0,obj_fadein))
-            target = rm_map;
-    }    
-}
+else
+    endlevel();
 </string>
           </argument>
         </arguments>

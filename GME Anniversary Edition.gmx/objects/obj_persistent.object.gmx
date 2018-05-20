@@ -254,7 +254,7 @@ window_center();
 */
 
 //Gamepad support
-var index = 4;
+var index = 0;
 
 //If there is a gamepad connected and the window is visible
 if (global.gamepad == true) &amp;&amp; (gamepad_is_connected(index)) &amp;&amp; (window_has_focus()) {

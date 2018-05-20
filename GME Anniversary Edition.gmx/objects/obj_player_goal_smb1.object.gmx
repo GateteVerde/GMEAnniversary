@@ -204,15 +204,8 @@ depth = 14;
 if (!audio_is_playing(stream)) {
 
     //If there's not fireworks
-    if (global.fireworks == 0) {
-    
-        //Go to the map
-        if (instance_number(obj_fadein) == 0) {
-        
-            with (instance_create(0,0,obj_fadein))
-                target = rm_map;
-        }
-    }
+    if (global.fireworks == 0)
+        endlevel();
     
     else {
     

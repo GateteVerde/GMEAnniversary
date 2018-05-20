@@ -74,8 +74,7 @@ if (pipetype != global.pipetype) {
 global.clear = 1;
 
 //Return to the map
-with (instance_create(0,0,obj_fadein))
-    target = rm_map;
+endlevel();
 </string>
           </argument>
         </arguments>

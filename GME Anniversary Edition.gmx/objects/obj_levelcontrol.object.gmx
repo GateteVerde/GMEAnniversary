@@ -105,6 +105,9 @@ instance_create(0,0,obj_hud);
             <kind>1</kind>
             <string>///Turn off E-Switch events
 
+//Stop end timer
+audio_stop_sound(snd_switchtimer_end);
+
 //Enable all switches
 with (obj_eswitchblock) {
 
@@ -141,6 +144,9 @@ with (obj_eblock) event_user(1);
           <argument>
             <kind>1</kind>
             <string>///Turn off ?-Switch events
+
+//Stop end timer
+audio_stop_sound(snd_switchtimer_end);
 
 //Enable all switches
 with (obj_qswitchblock) {
@@ -186,8 +192,8 @@ with (obj_qswitchblock) {
             <kind>1</kind>
             <string>///Warn the player that the switch effect is about to end
 
-audio_play_sound(snd_timer_end, 0, false);
-audio_stop_sound(snd_timer);
+audio_play_sound(snd_switchtimer_end, 0, false);
+audio_stop_sound(snd_switchtimer);
 </string>
           </argument>
         </arguments>
@@ -885,9 +891,11 @@ instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+64,view
             <kind>1</kind>
             <string>///Activate E-Switch events
 
-//Stop and play 'Switch timer'
-audio_stop_sound(snd_switchtimer);
-audio_play_sound(snd_switchtimer, 0, false);
+//If the switch timer end sound is playing, stop it first
+if (audio_is_playing(snd_switchtimer_end)) then audio_stop_sound(snd_switchtimer_end);
+
+//Play the switch timer sound
+if (!audio_is_playing(snd_switchtimer)) then audio_play_sound(snd_switchtimer, 0, true);
 
 //Activate E-Switch events
 with (obj_eblock) event_user(0);
@@ -917,9 +925,11 @@ alarm[11] = 900;
             <kind>1</kind>
             <string>///Activate ?-Switch events
 
-//Stop and play 'Switch timer'
-audio_stop_sound(snd_switchtimer);
-audio_play_sound(snd_switchtimer, 0, false);
+//If the switch timer end sound is playing, stop it first
+if (audio_is_playing(snd_switchtimer_end)) then audio_stop_sound(snd_switchtimer_end);
+
+//Play the switch timer sound
+if (!audio_is_playing(snd_switchtimer)) then audio_play_sound(snd_switchtimer, 0, true);
 
 //Activate ?-Switch events
 alarm[9] = 720;
@@ -1272,6 +1282,8 @@ audio_stop_sound(global._stream_starman);
 audio_stop_sound(snd_pmeter);
 audio_stop_sound(snd_skid);
 audio_stop_sound(snd_spin);
+audio_stop_sound(snd_switchtimer);
+audio_stop_sound(snd_switchtimer_end);
 audio_stop_sound(snd_timer);
 audio_stop_sound(snd_timer_end);
 
