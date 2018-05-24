@@ -195,6 +195,9 @@ instance_create(0,0,obj_marker_bottom);
             <kind>1</kind>
             <string>///Stop sounds
 
+//Stop 'Spin' sound
+audio_stop_sound(snd_spin);
+
 //Stop 'Skid' sound
 audio_stop_sound(snd_skid);
 
