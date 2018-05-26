@@ -32,6 +32,15 @@ vspeed = -1;
 
 //Set the friction
 friction = 0.0175;
+
+//Make the object stay in view
+xx = 0;
+
+//Where the score is created on screen
+makex = xstart;
+
+//Where the score goes, based on the distance from a give point
+xx = point_distance(view_xview[0],view_yview[0],makex,view_yview[0]);
 </string>
           </argument>
         </arguments>
@@ -55,6 +64,9 @@ friction = 0.0175;
           <argument>
             <kind>1</kind>
             <string>///Score logic
+
+//Keep in view
+x = view_xview[0];
 
 //Destroy if vertical speed is equal to zero
 if (vspeed == 0)
@@ -562,10 +574,10 @@ score += 10;
             <kind>1</kind>
             <string>///Draw it
 
-if (y &lt; view_yview[0]+50)
-    draw_sprite(sprite_index,-1,round(x),view_yview[0]+50);
+if (y &gt; view_yview[0]+16)
+    draw_sprite(sprite_index,image_index,floor(view_xview[0]+xx),y);
 else
-    draw_sprite(sprite_index,-1,round(x),round(y));
+    draw_sprite(sprite_index,image_index,floor(view_xview[0]+xx),view_yview[0]+16);
 </string>
           </argument>
         </arguments>

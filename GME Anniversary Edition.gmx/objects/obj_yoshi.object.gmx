@@ -532,8 +532,9 @@ if (instance_exists(obj_playerparent)) {
     &amp;&amp; (obj_playerparent.swimming == false) {
     
         //If Yoshi can flutter
-        if (flutter == 0) 
-        &amp;&amp; (obj_playerparent.yspeed &gt; 2) {
+        if (flutter == 0)
+        &amp;&amp; (obj_playerparent.yspeed &gt; 2) 
+        &amp;&amp; (obj_playerparent.yspeed != 0) {
         
             //Play 'Hover' sound
             audio_play_sound(snd_yoshi_hover, 0, false);
@@ -593,6 +594,20 @@ if (instance_exists(obj_playerparent)) {
         alarm[4] = 30;
     }
     
+    //Force end flutter if not jumping
+    if (flutter == 1)
+    &amp;&amp; (obj_playerparent.state != 2) {
+            
+        //Stop 'Hover' sound
+        audio_stop_sound(snd_yoshi_hover);
+            
+        //End flutter
+        flutter = 2;
+        
+        //Allow flutter after a while
+        alarm[4] = 30;
+    }
+    
     //Depth
     depth = -4;
     
@@ -604,8 +619,10 @@ if (instance_exists(obj_playerparent)) {
     obj_playerparent.mask_index = spr_bigmask;
     
     //Check if the player is jumping and make yoshi set up his jump pose if so.
-    if ((obj_playerparent.state == 2) || (obj_playerparent.delay &gt; 0))
+    if ((obj_playerparent.state == 2) || (obj_playerparent.delay &gt; 0))    
         jumping = 1;
+        
+    //Otherwise, if the player is not jumping
     else {
     
         //Stop 'Hover' sound
@@ -614,7 +631,7 @@ if (instance_exists(obj_playerparent)) {
         //End jumping
         jumping = 0;
         
-        //Allow flutter
+        //Allow fluttering        
         flutter = 0;
         if (fluttertime &gt; 0)
             fluttertime = 0;

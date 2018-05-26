@@ -354,18 +354,18 @@ if (instance_exists(obj_invincibility)) {
     //Create a effect
     if (mask_index == spr_mask) {
     
-        with (instance_create(x-8+random(16),y+random(16),obj_smoke)) {
+        with (instance_create(x-8+random(16),y+random(16),obj_notespark)) {
         
-            image_speed = 0.2;
-            sprite_index = spr_icespark;
+            image_speed = 0.1;
+            pal = random(8);
         }
     }
     else if (mask_index == spr_bigmask) {
     
-        with (instance_create(x-8+random(16),y-11+random(27),obj_smoke)) {
+        with (instance_create(x-8+random(16),y-11+random(27),obj_notespark)) {
         
-            image_speed = 0.2;
-            sprite_index = spr_icespark;
+            image_speed = 0.1;
+            pal = random(8);
         }
     }
 

@@ -411,15 +411,37 @@ if (mode != 0) {
                 
                 //Option 3: Gamepad
                 else if (current == 3) {
-                
-                    //Play 'Correct' sound
-                    audio_play_sound(snd_correct, 0, false);
                     
                     //Enable Gamepad
                     with (obj_persistent) {
                     
                         //Toggle gamepad support
-                        global.gamepad = !global.gamepad;
+                        if (global.gamepad == 0) {
+                        
+                            //If a gamepad is connected...
+                            if (gamepad_is_connected(0) == true) {
+                            
+                                //Play 'Correct' sound
+                                audio_play_sound(snd_correct, 0, false);
+                                
+                                //Activate gamepad
+                                global.gamepad = 1;
+                            }
+                            
+                            //Otherwise, play 'Wrong' sound
+                            else
+                                audio_play_sound(snd_wrong, 0, false);
+                        }
+                        
+                        //Otherwise, disable gamepad
+                        else {
+                        
+                            //Play 'Correct' sound
+                            audio_play_sound(snd_correct, 0, false);
+                            
+                            //Deactivate gamepad
+                            global.gamepad = 0;
+                        }                                
                     }
                 }
                 
@@ -728,7 +750,7 @@ draw_set_font(global.font_interface);
 draw_set_alpha(1);
 
 //Draw the text
-draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+4,"VERSION 9.0.2", c_black, c_white, 1, 1, 0.5, 1);
+draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+4,"VERSION 9.0.3", c_black, c_white, 1, 1, 0.5, 1);
 draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+global.gh-12,"2008-2018 GMETEAM/GATETE GAMING", c_black, c_white, 1, 1, 0.5, 1);
 
 //Re align the text

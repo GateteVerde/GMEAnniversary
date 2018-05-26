@@ -196,6 +196,10 @@ visible = true;
             <kind>1</kind>
             <string>///Statue logic
 
+//If the player does not have the tanooki powerup
+if (global.powerup != cs_tanooki)
+    instance_destroy();
+
 //If the player does exist.
 if (instance_exists(obj_playerparent)) {
 
