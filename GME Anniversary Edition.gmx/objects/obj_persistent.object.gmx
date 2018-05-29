@@ -67,6 +67,9 @@ restart = 0;
 //Show the FPS?
 showfps = false;
 
+//Controller index
+global.device = 0;
+
 //Data structure for picked up 3up moons
 global.moons = ds_map_create();
 
@@ -253,42 +256,41 @@ window_center();
 **  8 - 11   Android Device Controllers
 */
 
-//Gamepad support
-var index = 0;
+//To edit the type of device, find global.device on the create event of obj_persistent
 
 //If there is a gamepad connected and the window is visible
-if (global.gamepad == true) &amp;&amp; (gamepad_is_connected(index)) &amp;&amp; (window_has_focus()) {
+if (global.gamepad == true) &amp;&amp; (gamepad_is_connected(global.device)) &amp;&amp; (window_has_focus()) {
 
     //L-Stick Left / D-Pad Left
-    if (gamepad_axis_value(index,gp_axislh) &lt;= -0.4) || (gamepad_button_check(index, gp_padl)) then keyboard_key_press(global.leftkey);       
+    if (gamepad_axis_value(global.device,gp_axislh) &lt;= -0.4) || (gamepad_button_check(global.device, gp_padl)) then keyboard_key_press(global.leftkey);       
     else keyboard_key_release(global.leftkey);
     
     //L-Stick Right / D-Pad Right
-    if (gamepad_axis_value(index,gp_axislh) &gt;= 0.4) || (gamepad_button_check(index, gp_padr)) then keyboard_key_press(global.rightkey);
+    if (gamepad_axis_value(global.device,gp_axislh) &gt;= 0.4) || (gamepad_button_check(global.device, gp_padr)) then keyboard_key_press(global.rightkey);
     else keyboard_key_release(global.rightkey);
     
     //L-Stick Up / D-Pad Up
-    if (gamepad_axis_value(index,gp_axislv) &lt;= -0.4) || (gamepad_button_check(index, gp_padu)) then keyboard_key_press(global.upkey);
+    if (gamepad_axis_value(global.device,gp_axislv) &lt;= -0.4) || (gamepad_button_check(global.device, gp_padu)) then keyboard_key_press(global.upkey);
     else keyboard_key_release(global.upkey);
     
     //L-Stick Down / D-Pad Down
-    if (gamepad_axis_value(index,gp_axislv) &gt;= 0.4) || (gamepad_button_check(index, gp_padd)) then keyboard_key_press(global.downkey);
+    if (gamepad_axis_value(global.device,gp_axislv) &gt;= 0.4) || (gamepad_button_check(global.device, gp_padd)) then keyboard_key_press(global.downkey);
     else keyboard_key_release(global.downkey);
     
     //A Button / B Button (Shift)
-    if ((gamepad_button_check(index,gp_face2)) || (gamepad_button_check(index,gp_face1))) then keyboard_key_press(global.shiftkey);
+    if ((gamepad_button_check(global.device,gp_face2)) || (gamepad_button_check(global.device,gp_face1))) then keyboard_key_press(global.shiftkey);
     else keyboard_key_release(global.shiftkey);
     
     //X Button / Y Button (Control)
-    if ((gamepad_button_check(index,gp_face4)) || (gamepad_button_check(index,gp_face3))) then keyboard_key_press(global.controlkey);
+    if ((gamepad_button_check(global.device,gp_face4)) || (gamepad_button_check(global.device,gp_face3))) then keyboard_key_press(global.controlkey);
     else keyboard_key_release(global.controlkey);
     
     //Start Key
-    if (gamepad_button_check(index,gp_start)) then keyboard_key_press(global.enterkey);
+    if (gamepad_button_check(global.device,gp_start)) then keyboard_key_press(global.enterkey);
     else keyboard_key_release(global.enterkey);
     
     //Select Key
-    if (gamepad_button_check(index,gp_select)) then keyboard_key_press(global.spacekey);
+    if (gamepad_button_check(global.device,gp_select)) then keyboard_key_press(global.spacekey);
     else keyboard_key_release(global.spacekey);        
 }
 
@@ -771,6 +773,31 @@ if (background_exists(back)) {
     //Enable alpha blending.
     draw_enable_alphablend(1);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Close the game
+
+game_end();
 </string>
           </argument>
         </arguments>

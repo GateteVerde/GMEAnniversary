@@ -592,8 +592,16 @@ if (keyboard_check_pressed(global.downkey))
     && (global.mount == 0)
     && (state == 1)
     && (!sliding)
-    && ((holding == 0) || (holding == 4))
+    && ((holding == 0) || (holding == 4)) {
+    
+        //Start sliding
         sliding = true;
+        
+        //Boost slide if overlapping a semisolid
+        if (place_meeting(x,bbox_bottom+1,obj_semisolid))
+        && (xspeed == 0)
+            xspeed = 0.05*sign(xscale);     
+    }
 
     //If the player is on a slope, and the above didn't happen, slide normally
     else if (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+2,obj_slopeparent,1,0))
@@ -601,9 +609,16 @@ if (keyboard_check_pressed(global.downkey))
     && (global.powerup != cs_frog) {
             
         //If the player can slide and it's not holding anything.
-        if ((holding == 0) || (holding == 4))
+        if ((holding == 0) || (holding == 4)){
+        
+            //Start sliding
             sliding = true;
             
+            //Boost slide if overlapping a semisolid
+            if (place_meeting(x,bbox_bottom+1,obj_semisolid))
+                xspeed = 0.05*sign(xscale);        
+        }
+                
         //Otherwise, just crouch down if the player can do it.
         else
             crouch = true;

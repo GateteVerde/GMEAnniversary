@@ -79,6 +79,10 @@ if (instance_exists(obj_kuriboshoe))
 //Make the tides invisible
 if (instance_exists(obj_tides))
     obj_tides.visible = false;
+    
+//Make puller invisible
+if (instance_exists(obj_puller))
+    with (obj_puller) visible = false;
 
 //Make spinner invisible
 if (instance_exists(obj_spinner))
@@ -118,11 +122,16 @@ alarm[0] = 1;
             <kind>1</kind>
             <string>///Make the player visible
 
-//Make the player visible but check if it's not running a wall or doing a special action
-if (!instance_exists(obj_spinner))
+//Make the player visible but check if it's not pulling, running a wall or doing a special action
+if (!instance_exists(obj_puller))
+&amp;&amp; (!instance_exists(obj_spinner))
 &amp;&amp; (!instance_exists(obj_dropdown))
 &amp;&amp; (!instance_exists(obj_wallrunner))
     obj_playerparent.visible = true;
+    
+//Otherwise, if the puller exists
+else if (instance_exists(obj_puller))
+    obj_puller.visible = true;
     
 //Otherwise, if the spinner exists
 else if (instance_exists(obj_spinner))
