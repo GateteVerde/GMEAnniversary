@@ -131,6 +131,7 @@ if (disablecontrol == false)
     &amp;&amp; (keyboard_check(global.downkey))
     &amp;&amp; (global.mount == 0)
     &amp;&amp; (state == 2)
+    &amp;&amp; (yspeed &gt; 0)
     &amp;&amp; (instance_number(obj_spinner) == 0)
     &amp;&amp; (instance_number(obj_dropdown) &lt; 1) {
     

@@ -995,8 +995,10 @@
     <sprites name="Blocks">
       <sprites name="Item Blocks">
         <sprite>sprites\spr_qblock</sprite>
+        <sprite>sprites\spr_qblock_hidden</sprite>
         <sprite>sprites\spr_qblock_empty</sprite>
         <sprite>sprites\spr_qblock_triple</sprite>
+        <sprite>sprites\spr_qblock_triple_hidden</sprite>
         <sprite>sprites\spr_qblock_triple_empty</sprite>
         <sprite>sprites\spr_qblock_big</sprite>
         <sprite>sprites\spr_qblock_big_empty</sprite>
@@ -1054,8 +1056,11 @@
       </sprites>
       <sprite>sprites\spr_viewblock</sprite>
       <sprite>sprites\spr_noteblock</sprite>
+      <sprite>sprites\spr_noteblock_hidden</sprite>
       <sprite>sprites\spr_noteblock_blue</sprite>
+      <sprite>sprites\spr_noteblock_blue_hidden</sprite>
       <sprite>sprites\spr_noteblock_warp</sprite>
+      <sprite>sprites\spr_noteblock_warp_hidden</sprite>
       <sprite>sprites\spr_messageblock</sprite>
       <sprite>sprites\spr_pswitchblock</sprite>
       <sprite>sprites\spr_qswitchblock</sprite>
@@ -2035,6 +2040,10 @@
         <background>background\bgr_iceforest</background>
         <background>background\bgr_subcon_bg</background>
         <background>background\bgr_subcon_fg</background>
+        <background>background\bgr_switchpalace_r</background>
+        <background>background\bgr_switchpalace_g</background>
+        <background>background\bgr_switchpalace_y</background>
+        <background>background\bgr_switchpalace_b</background>
         <background>background\bgr_underground_bg</background>
         <background>background\bgr_underground_fg</background>
         <background>background\bgr_underground_fg_b</background>
@@ -2264,7 +2273,7 @@
         <object>objects\obj_qblock_multicoin_shroom</object>
         <object>objects\obj_qblock_hidden</object>
         <object>objects\obj_qblock_triple</object>
-        <object>objects\obj_qblock_hidden_triple</object>
+        <object>objects\obj_qblock_triple_hidden</object>
         <object>objects\obj_qblock_big</object>
         <object>objects\obj_qblock_p</object>
         <object>objects\obj_qblock_spiked</object>

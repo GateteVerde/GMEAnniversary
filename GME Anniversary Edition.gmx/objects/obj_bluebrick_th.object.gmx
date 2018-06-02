@@ -505,9 +505,24 @@ if (keyboard_check(global.upkey)) {
 
 //Otherwise, if 'Down' is pressed.
 else if (keyboard_check(global.downkey)) {
-
-    //Set the horizontal speed
-    hspeed = 0.5*obj_playerparent.xscale;
+    
+    //Check if the object is stuck on a solid and move it
+    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
+    
+        //Move it to a safe position
+        inwall = true;
+        
+        //Stop it
+        hspeed = 0;
+    }
+    
+    //If there's not a slope in place...
+    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))
+        hspeed = 0.5*obj_playerparent.xscale;
+    
+    //Otherwise
+    else
+        vspeed = 0.1;    
 }
 
 //Otherwise, throw it to the side.

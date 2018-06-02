@@ -57,7 +57,7 @@ alarm[3] = 10;
 
 ready = 4;
 path_start(pth_angrysun, 4, path_action_stop, false);
-path_reverse(pth_angrysun);
+path_rescale(pth_angrysun,1,1);
 </string>
           </argument>
         </arguments>
@@ -142,7 +142,7 @@ motion_set(270,4);
 
 ready = 3;
 path_start(pth_angrysun, 4, path_action_stop, false);
-path_reverse(pth_angrysun);
+path_rescale(pth_angrysun,-1,1);
 </string>
           </argument>
         </arguments>

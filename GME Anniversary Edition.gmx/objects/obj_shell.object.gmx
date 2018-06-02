@@ -534,6 +534,37 @@ instance_destroy();
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="14">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Custom floor / ceiling collision
+
+//Inherit event
+event_inherited();
+
+//If moving down and there's a slope below
+if (vspeed &gt; 0)
+    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))
+        y--;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
@@ -599,9 +630,6 @@ if (keyboard_check(global.upkey)) {
 
 //Otherwise, if 'Down' is pressed.
 else if (keyboard_check(global.downkey)) {
-
-    //Set the horizontal speed
-    hspeed = 0.5*obj_playerparent.xscale;
     
     //Check if the object is stuck on a solid and move it
     if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
@@ -613,13 +641,13 @@ else if (keyboard_check(global.downkey)) {
         hspeed = 0;
     }
     
-    //Check if the object is overlapping a slope and move it above the slope.
-    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)) {
+    //If there's not a slope in place...
+    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))
+        hspeed = 0.5*obj_playerparent.xscale;
     
-        hspeed = hspeed/2;
-        while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0))   
-            y--;
-    }
+    //Otherwise
+    else
+        vspeed = 0.1;    
 }
 
 //Otherwise, throw it to the side.

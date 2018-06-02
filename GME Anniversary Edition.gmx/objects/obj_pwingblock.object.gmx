@@ -30,8 +30,8 @@
 //Check for the player object
 if (instance_exists(obj_playerparent)) {
 
-    //If the player is on contact with the block and the p-switch is active
-    if (collision_rectangle(bbox_left-1,bbox_top-1,bbox_right+1,bbox_bottom+1,obj_playerparent,0,0))
+    //If the player is on contact with the block and the player is running at fullspeed
+    if (collision_rectangle(bbox_left-8,bbox_top-1,bbox_right+8,bbox_bottom+1,obj_playerparent,0,0))
     &amp;&amp; (obj_playerparent.pmeter &gt;= 112)
         event_user(0);
 }

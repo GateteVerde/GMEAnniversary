@@ -51,6 +51,7 @@ xscale = 1;
 //1:    Right
 //-1:   Left
 direct = 1;
+direct2 = 0;
 
 //Make the player able to hold various items.
 //0:    Can hold
@@ -1017,22 +1018,8 @@ if (state != 3) {
             crouch = true;
             
         //Otherwise, if the 'Down' key is no longer pressed
-        else if (!keyboard_check(global.downkey)) {
-                
-            //Make the player get up
+        else if (!keyboard_check(global.downkey))
             crouch = false;
-            
-            //Check if there's a ceiling above the player and make him move until it's not embed in a solid
-            if (collision_rectangle(bbox_left,bbox_top-4,bbox_right,bbox_top-4,obj_solid,1,0))
-            &amp;&amp; (global.powerup != cs_small) {
-            
-                inwall = true;
-                if (xscale == -1)
-                    direct = 1;
-                else if (xscale == 1)
-                    direct = -1;
-            }
-        }            
     }
     
     //Handles powerup specific projectiles, tail spinning, cat scratching and statue morphing.
@@ -1132,101 +1119,63 @@ else if ((swimming) &amp;&amp; (!water)) {
 
 //Free the player is he is stuck on a solid.
 if (yspeed == 0)
-&amp;&amp; (crouch == false)
-&amp;&amp; (inwall == false) {
+&amp;&amp; (crouch == false) 
+&amp;&amp; (mask_index != spr_mask) {
 
-    //Check for a nearby solid block.
-    var stuck = collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,1,0);
+    //If there's a solid above
+    var stuck = collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,0,0);
     
-    //If the player is embed on a wall and it's not overlapping a mushblock.
-    if (stuck) {
+    //If the player gets stuck
+    if (stuck) 
+    &amp;&amp; (inwall == 0) {
     
-        //If the player is colliding with a left or right modifier.
-        if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_left,0,0))
-        &amp;&amp; (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_right,0,0)) {
+        //If the direction was not set
+        if (direct2 == 0) {
         
-            //If the player is facing right.
-            if (xscale == 1) {
-            
-                //If the player's horizontal speed is equal/greater than 0.
-                if (hspeed &gt;= 0) {
-            
-                    //Move mario to safety.
-                    inwall = true;
-                    
-                    //Set the direction to move.
-                    direct = -1;
-                }
-                
-                //Otherwise, if the player's horizontal speed is lower than 0.
-                else if (hspeed &lt; 0) {
-                
-                    //Move mario to safety.
-                    inwall = true;
-                    
-                    //Set the direction to move.
-                    direct = 1;                
-                }
-            }
-            
-            //Otherwise, if the player is facing left.
-            else if (xscale == -1) {
-            
-                //If the player's horizontal speed if equal/lower than 0.
-                if (hspeed &lt;= 0) {
-            
-                    //Move mario to safety.
-                    inwall = true;
-                    
-                    //Set the direction to move.
-                    direct = 1;
-                }
-                
-                //Otherwise, if the player's horizontal speed if greater than 0.
-                else if (hspeed &gt; 0) {
-                
-                    //Move mario to safety.
-                    inwall = true;
-                    
-                    //Set the direction to move.
-                    direct = -1;                
-                }           
-            }
+            //Set it up
+            direct2 = xscale;
         }
         
-        //Otherwise, if the player is overlapping an left modifier.
-        else if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_left,0,0)) {
+        //Begin movement
+        inwall = 1;
         
-            //Move mario to safety.
-            inwall = true;
-            
-            //Set the direction to move.
-            direct = -1;              
+        //Set the movement direction
+        direct = -direct2;
+    }
+    
+    //Otherwise, if the player gets stuck on a wall.
+    if (inwall == 1) {
+    
+        //Move the player until it's not embed in a wall.
+        x += 1*sign(direct);
+        
+        //If the player is not longer embed on a wall, make him able to move.
+        if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,1,0)) {
+        
+            inwall = 0;
+            direct2 = 0;
         }
         
-        //Otherwise, if the player is overlapping an right modifier.
-        else if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_right,0,0)) {
-        
-            //Move mario to safety.
-            inwall = true;
-            
-            //Set the direction to move.
-            direct = 1;              
-        }
+        //If the player collides with a wall while being stuck
+        if (collision_rectangle(bbox_left,y+4,bbox_left,bbox_bottom-4,obj_solid,0,0))
+        || (collision_rectangle(bbox_right,y+4,bbox_right,bbox_bottom-4,obj_solid,0,0))
+            direct = -direct;
     }
 }
 
-//Otherwise, if the player gets stuck on a wall.
-else if (inwall) {
+//Otherwise, reset
+else {
 
-    //Move the player until it's not embed in a wall.
-    x += 2*sign(direct);
-    
-    //If the player is not longer embed on a wall, make him able to move.
-    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,1,0))
-        inwall = false;
+    inwall = 0;
+    direct2 = 0;
 }
 
+//Unstuck in case of overlapping a solid completely
+if (state &lt; 2)
+&amp;&amp; (inwall == 0)
+    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0))
+        y--;
+    
 //Handle tail whip animation
 if ((state == 2) &amp;&amp; (wiggle &gt; 0))
     wiggle--;
@@ -1386,8 +1335,8 @@ alarm[6] = 10;
             <kind>1</kind>
             <string>///Toggle movement when crouched down
 
-//If the player is crouched down.
-if (crouch) { 
+//If the player is crouched down
+if (crouch) {
 
     //If the player is inside a shoe, allow move
     if (global.mount == 2)
@@ -1409,7 +1358,7 @@ if (crouch) {
     }
 }
 
-//If the player is not crouched down.
+//Otherwise, allow movement
 else 
     move = true;
 </string>

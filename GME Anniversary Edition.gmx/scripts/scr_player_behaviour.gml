@@ -115,7 +115,8 @@ else {
 }
     
 //If controls are not disabled or the player is not stuck in a wall
-if (!disablecontrol) && (!inwall) {
+if (!disablecontrol) 
+&& (inwall == 0) {
 
     //Handles the player's jumping
     if (keyboard_check_pressed(global.shiftkey))
@@ -250,13 +251,16 @@ if (!disablecontrol) && (!inwall) {
     //Handle Horizontal Movement.
     if ((keyboard_check(global.rightkey)) && (move) && (wallkick < 1) && (!keyboard_check(global.leftkey))) { //If the player holds the 'Right' key and the 'Left' key is not being held.
         
-        //Set the facing direction
+        //Set the facing direction        
         if ((holding == 2) && (xscale != 1)) {
         
             turning = 1;
             alarm[2] = 6;
         }
-        xscale = 1;
+        
+        //If the player is not overlapping a wall
+        if (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,0,0))
+            xscale = 1;
         
         //If there's NOT a wall on the way.
         if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)) {
@@ -319,13 +323,16 @@ if (!disablecontrol) && (!inwall) {
     //Otherwise, if the player holds the 'Left' key and the 'Right' key is not being held.
     else if ((keyboard_check(global.leftkey)) && (move) && (wallkick == 0) && (!keyboard_check(global.rightkey))) {
                 
-        //Set the facing direction
+        //Set the facing direction    
         if ((holding == 2) && (xscale != -1)) {
         
             turning = 1;
             alarm[2] = 6;
         }
-        xscale = -1;
+        
+        //If the player is not overlapping a wall
+        if (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,0,0))
+            xscale = -1;
         
         //If there's NOT a wall on the way.
         if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)) {

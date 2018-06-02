@@ -1412,9 +1412,6 @@ if (keyboard_check(global.upkey)) {
 
 //Otherwise, if 'Down' is pressed.
 else if (keyboard_check(global.downkey)) {
-
-    //Set the horizontal speed
-    hspeed = 0.5*obj_playerparent.xscale;
     
     //Check if the object is stuck on a solid and move it
     if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
@@ -1426,13 +1423,13 @@ else if (keyboard_check(global.downkey)) {
         hspeed = 0;
     }
     
-    //Check if the object is overlapping a slope and move it above the slope.
-    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0)) {
+    //If there's not a slope in place...
+    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))
+        hspeed = 0.5*obj_playerparent.xscale;
     
-        hspeed = hspeed/2;
-        while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0))   
-            y--;
-    }
+    //Otherwise
+    else
+        vspeed = 0.1;    
 }
 
 //Otherwise, throw it to the side.
@@ -1440,36 +1437,39 @@ else {
         
     //Play 'Kick' sound.
     audio_play_sound(snd_kick, 0, false);
-            
-    //Set the horizontal speed.
-    hspeed = 2*obj_playerparent.xscale;
-    
-    //Set the vertical speed
-    vspeed = -2;
-    
-    //Boost it
-    y -= 2;
-    
-    //Boost kick
-    x = obj_playerparent.x+(10*sign(obj_playerparent.xscale));
     
     //Create hit
     with (instance_create(x,y,obj_smoke)) sprite_index = spr_spinthump;
 
-    //Kill instantly if in contact with a solid
-    if (place_meeting(x,y,obj_solid)) {
+    //If the item is not overlapping a solid.
+    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
+        
+        //Set the vertical speed
+        vspeed = -2;
+        
+        //If the object is not on contact with a slope
+        if (!collision_rectangle(x,bbox_top,x,bbox_bottom-4,obj_slopeparent,1,0))
+            hspeed = obj_playerparent.xspeed+2*obj_playerparent.xscale;
+            
+        //Otherwise, do not apply horizontal speed
+        else        
+            vspeed = 0.1;
+    }
+    
+    //Otherwise, kill it
+    else {
     
         //Create dead object
         imdead = instance_create(x,y,obj_enemy_dead);
         
-        //Hereby sprite
+        //Make the dead object hereby the sprite
         imdead.sprite_index = sprite_index;
         
-        //Hereby scale
-        imdead.image_xscale = dir;
+        //Make the dead object hereby the scale
+        imdead.image_xscale = dir;      
         
         //Destroy
-        instance_destroy();
+        instance_destroy();  
     }
 }
 </string>

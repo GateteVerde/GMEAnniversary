@@ -16,7 +16,7 @@ switch (global.powerup) {
     case (cs_ice): return spr_mario_ice_somersault;
     case (cs_carrot): return spr_mario_carrot_somersault;
     case (cs_leaf): return spr_mario_raccoon_somersault;
-    case (cs_frog): return spr_mario_frog_walk;
+    case (cs_frog): return spr_mario_frog_somersault;
     case (cs_tanooki): return spr_mario_tanooki_somersault;
     case (cs_hammer): return spr_mario_hammer_somersault;
     case (cs_boomerang): return spr_mario_boomerang_somersault;
