@@ -67,7 +67,10 @@ restart = 0;
 //Show the FPS?
 showfps = false;
 
-//Controller index
+//Controller Index System
+//0 - 3:    Xbox Controllers
+//4 - 7:    Direct Input Controllers
+//8 - 11:   Android Device Controllers
 global.device = 0;
 
 //Data structure for picked up 3up moons
@@ -247,14 +250,6 @@ window_center();
           <argument>
             <kind>1</kind>
             <string>///Handle various in-game variables
-
-/*
-**  Controller Index System
-**
-**  0 - 3    Xbox Controllers
-**  4 - 7    Direct Input Controllers
-**  8 - 11   Android Device Controllers
-*/
 
 //To edit the type of device, find global.device on the create event of obj_persistent
 
