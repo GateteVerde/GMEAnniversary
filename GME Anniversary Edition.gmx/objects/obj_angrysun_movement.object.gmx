@@ -56,8 +56,7 @@ alarm[3] = 10;
             <string>///Swoop to the right
 
 ready = 4;
-path_start(pth_angrysun, 4, path_action_stop, false);
-path_rescale(pth_angrysun,1,1);
+path_start(pth_angrysun_swoop_r, 4, path_action_stop, false);
 </string>
           </argument>
         </arguments>
@@ -141,8 +140,7 @@ motion_set(270,4);
             <string>///Swoop to the left
 
 ready = 3;
-path_start(pth_angrysun, 4, path_action_stop, false);
-path_rescale(pth_angrysun,-1,1);
+path_start(pth_angrysun_swoop_l, 4, path_action_stop, false);
 </string>
           </argument>
         </arguments>

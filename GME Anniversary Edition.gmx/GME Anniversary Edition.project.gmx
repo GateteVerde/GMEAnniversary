@@ -2099,7 +2099,10 @@
   </backgrounds>
   <paths name="paths">
     <paths name="NPC Paths">
-      <path>paths\pth_angrysun</path>
+      <paths name="Angry Sun">
+        <path>paths\pth_angrysun_swoop_l</path>
+        <path>paths\pth_angrysun_swoop_r</path>
+      </paths>
       <path>paths\pth_microgoomba</path>
     </paths>
     <path>paths\pth_bubble</path>
