@@ -858,7 +858,7 @@ else if (swimming) {
 }
 
 //If the player is bumping into a wall to the right
-if (xspeed &gt; 0)
+if (xspeed &gt;= 0)
 &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-4,obj_solid,1,0)) {
 
     //If the player is sliding with the shell
@@ -893,13 +893,13 @@ if (xspeed &gt; 0)
     }
     
     //Prevent the player from getting embed into the wall
-    while (collision_rectangle(x,bbox_top+4,bbox_right,bbox_bottom-4,obj_solid,1,0))
-    &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,1,0))
+    while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-4,obj_solid,1,0))
+    &amp;&amp; (!collision_point(bbox_right,bbox_top+4,obj_solid,1,0))
         x--;
 }
 
 //Otherwise, if the player is bumping into a wall to the left
-else if (xspeed &lt; 0)
+else if (xspeed &lt;= 0)
 &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-4,obj_solid,1,0)) {
 
     //If the player is sliding with the shell
@@ -934,8 +934,8 @@ else if (xspeed &lt; 0)
     }        
     
     //Prevent the player from getting embed into the wall
-    while (collision_rectangle(bbox_left,bbox_top+4,x,bbox_bottom-4,obj_solid,1,0))
-    &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,1,0))
+    while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-4,obj_solid,1,0))
+    &amp;&amp; (!collision_point(bbox_left,bbox_top+4,obj_solid,1,0))
         x++;
 }
 
@@ -1116,17 +1116,13 @@ else if ((swimming) &amp;&amp; (!water)) {
         }
     }
 }
-
+    
 //Free the player is he is stuck on a solid.
 if (yspeed == 0)
-&amp;&amp; (crouch == false) 
-&amp;&amp; (mask_index != spr_mask) {
-
-    //If there's a solid above
-    var stuck = collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,0,0);
+&amp;&amp; (crouch == false) {
     
     //If the player gets stuck
-    if (stuck) 
+    if (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,1,0)) 
     &amp;&amp; (inwall == 0) {
     
         //If the direction was not set
@@ -1157,8 +1153,8 @@ if (yspeed == 0)
         }
         
         //If the player collides with a wall while being stuck
-        if (collision_rectangle(bbox_left,y+4,bbox_left,bbox_bottom-4,obj_solid,0,0))
-        || (collision_rectangle(bbox_right,y+4,bbox_right,bbox_bottom-4,obj_solid,0,0))
+        if (collision_rectangle(bbox_left-1,y+4,bbox_left,bbox_bottom-4,obj_solid,1,0))
+        || (collision_rectangle(bbox_right,y+4,bbox_right+1,bbox_bottom-4,obj_solid,1,0))
             direct = -direct;
     }
 }
@@ -1173,7 +1169,7 @@ else {
 //Unstuck in case of overlapping a solid completely
 if (state &lt; 2)
 &amp;&amp; (inwall == 0)
-    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0))
+    while (collision_rectangle(x,bbox_bottom,x,bbox_bottom,obj_solid,1,0))
         y--;
     
 //Handle tail whip animation
@@ -1618,6 +1614,9 @@ draw_sprite_player(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_wh
 
 //End shader
 pal_swap_reset();
+
+//Draw inwall check
+draw_text_colour(x-4,bbox_top-16,string(inwall),c_white,c_white,c_white,c_white,1);
 
 //Draw a tornado if spinning down with the propeller suit
 if (global.powerup == cs_propeller)

@@ -262,60 +262,56 @@ if (!disablecontrol)
         if (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,0,0))
             xscale = 1;
         
-        //If there's NOT a wall on the way.
-        if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)) {
-        
-            //Check up the player's horizontal speed
-            if (xspeed < xspeedmax) {
-                            
-                //Make the player move horizontally.
-                if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) 
-                || (global.powerup == cs_penguin) { //If the player is not overlapping a slippery surface.
-                    
-                    //If the player's horizontal speed is equal/greater than 0.
-                    if (xspeed >= 0) {
-                    
-                        //Add 'acc' to xspeed.
-                        if (global.powerup != cs_frog)
-                            xspeed += acc;
-                        else {
+        //Check up the player's horizontal speed
+        if (xspeed < xspeedmax) {
                         
-                            //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
-                            if ((holding == 0) && (global.mount == 0))                              
-                                xspeed += accfrog;
-                            else
-                                xspeed += acc;
-                        }
-                    }
-                    else { //Otherwise, if the player's speed is lower than 0.
-                    
-                        //Add 'accskid' to xspeed;
-                        xspeed += accskid;
-                    }
-                }
-                else { //Otherwise, if the player is overlapping a slippery surface.
+            //Make the player move horizontally.
+            if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) 
+            || (global.powerup == cs_penguin) { //If the player is not overlapping a slippery surface.
                 
-                    //If the player's horizontal speed is equal/greater than 0.
-                    if (xspeed >= 0) {
+                //If the player's horizontal speed is equal/greater than 0.
+                if (xspeed >= 0) {
+                
+                    //Add 'acc' to xspeed.
+                    if (global.powerup != cs_frog)
+                        xspeed += acc;
+                    else {
                     
-                        //Add 'acc' to xspeed.
-                        if (global.powerup != cs_frog)
-                            xspeed += acc/2;
-                        else {
-                        
-                            //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
-                            if ((holding == 0) && (global.mount == 0))                              
-                                xspeed += accfrog/2;
-                            else
-                                xspeed += acc/2;
-                        }
+                        //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
+                        if ((holding == 0) && (global.mount == 0))                              
+                            xspeed += accfrog;
+                        else
+                            xspeed += acc;
                     }
-                    else { //Otherwise, if the player's speed is lower than 0.
-                    
-                        //Add 'accskid' to xspeed.
-                        xspeed += accskid/2;
-                    }                                              
                 }
+                else { //Otherwise, if the player's speed is lower than 0.
+                
+                    //Add 'accskid' to xspeed;
+                    xspeed += accskid;
+                }
+            }
+            else { //Otherwise, if the player is overlapping a slippery surface.
+            
+                //If the player's horizontal speed is equal/greater than 0.
+                if (xspeed >= 0) {
+                
+                    //Add 'acc' to xspeed.
+                    if (global.powerup != cs_frog)
+                        xspeed += acc/2;
+                    else {
+                    
+                        //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
+                        if ((holding == 0) && (global.mount == 0))                              
+                            xspeed += accfrog/2;
+                        else
+                            xspeed += acc/2;
+                    }
+                }
+                else { //Otherwise, if the player's speed is lower than 0.
+                
+                    //Add 'accskid' to xspeed.
+                    xspeed += accskid/2;
+                }                                              
             }
         }
     }
@@ -334,60 +330,56 @@ if (!disablecontrol)
         if (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,0,0))
             xscale = -1;
         
-        //If there's NOT a wall on the way.
-        if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)) {
-        
-            //Check up the player's horizontal speed.
-            if (xspeed > -xspeedmax) {
-                    
-                //Make the player move horizontally.
-                if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) 
-                || (global.powerup == cs_penguin) { //If the player is not overlapping a slippery surface.
-                    
-                    //If the player's horizontal speed is equal/lower than 0.
-                    if (xspeed <= 0) {
-                    
-                        //Add 'acc' to xspeed.
-                        if (global.powerup != cs_frog)
-                            xspeed += -acc;
-                        else {
-                        
-                            //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
-                            if ((holding == 0) && (global.mount == 0))                              
-                                xspeed += -accfrog;
-                            else
-                                xspeed += -acc;
-                        }
-                    }
-                    else { //Otherwise, if the player's speed is greater than 0.
-                    
-                        //Add 'accskid' to xspeed;
-                        xspeed += -accskid;
-                    }
-                }
-                else { //Otherwise, if the player is overlapping a slippery surface.
+        //Check up the player's horizontal speed.
+        if (xspeed > -xspeedmax) {
                 
-                    //If the player's horizontal speed is equal/lower than 0.
-                    if (xspeed <= 0) {
+            //Make the player move horizontally.
+            if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) 
+            || (global.powerup == cs_penguin) { //If the player is not overlapping a slippery surface.
+                
+                //If the player's horizontal speed is equal/lower than 0.
+                if (xspeed <= 0) {
+                
+                    //Add 'acc' to xspeed.
+                    if (global.powerup != cs_frog)
+                        xspeed += -acc;
+                    else {
                     
-                        //Add 'acc' to xspeed.
-                        if (global.powerup != cs_frog)
-                            xspeed += -acc/2;
-                        else {
-                        
-                            //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
-                            if ((holding == 0) && (global.mount == 0))                              
-                                xspeed += -accfrog/2;
-                            else
-                                xspeed += -acc/2;
-                        }
+                        //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
+                        if ((holding == 0) && (global.mount == 0))                              
+                            xspeed += -accfrog;
+                        else
+                            xspeed += -acc;
                     }
-                    else { //Otherwise, if the player's speed is greater than 0.
-                    
-                        //Add 'accskid' to xspeed.
-                        xspeed += -accskid/2;
-                    }                                              
                 }
+                else { //Otherwise, if the player's speed is greater than 0.
+                
+                    //Add 'accskid' to xspeed;
+                    xspeed += -accskid;
+                }
+            }
+            else { //Otherwise, if the player is overlapping a slippery surface.
+            
+                //If the player's horizontal speed is equal/lower than 0.
+                if (xspeed <= 0) {
+                
+                    //Add 'acc' to xspeed.
+                    if (global.powerup != cs_frog)
+                        xspeed += -acc/2;
+                    else {
+                    
+                        //If Mario is not holding or is not riding a yoshi or a kuribo shoe.
+                        if ((holding == 0) && (global.mount == 0))                              
+                            xspeed += -accfrog/2;
+                        else
+                            xspeed += -acc/2;
+                    }
+                }
+                else { //Otherwise, if the player's speed is greater than 0.
+                
+                    //Add 'accskid' to xspeed.
+                    xspeed += -accskid/2;
+                }                                              
             }
         }
     }
@@ -467,7 +459,6 @@ else if (yspeed == 0) {
             xspeed = 0;
     }
 }
-
 
 //Prevent the player from moving too fast
 if (state != 2) {
@@ -748,7 +739,6 @@ if (state == 2)
                     xspeed -= 0.1;
                 if (xspeed < -1)
                     xspeed += 0.1;
-
             }
 
             //Stop floating otherwise

@@ -188,7 +188,7 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_path_diagonal_r" x="704" y="144" name="inst_A6059B39" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_path_diagonal_r" x="736" y="128" name="inst_F06AA85D" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_path_diagonal_r" x="768" y="112" name="inst_2FC67F1B" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform_touch" x="720" y="144" name="inst_33A09DEC" locked="0" code="ready = 1;&#xA;direct = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform_touch" x="720" y="144" name="inst_33A09DEC" locked="0" code="ready = 1;&#xA;direct = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="560" y="192" name="inst_9BF6BF35" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="528" y="272" name="inst_5B0196A9" locked="0" code="varmsg = &quot;In order to perform a wall-jump: hug a wall and press the opposite key to start sliding it down. Once sliding press the 'Jump' key to jump against the wall.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yoshiplatform" x="800" y="240" name="inst_AE1ED3FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -198,12 +198,6 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_yoshiplatform" x="768" y="176" name="inst_0EB680DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yoshiplatform" x="784" y="176" name="inst_CB6A2A2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fuzzy_line" x="784" y="112" name="inst_D6AEEAF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="672" y="384" name="inst_6EAFAAD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="928" y="384" name="inst_BD9C17D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_left" x="960" y="384" name="inst_8778DC92" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_right" x="672" y="384" name="inst_5BD54DF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_left" x="784" y="384" name="inst_3AF63B65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_right" x="848" y="384" name="inst_1FD20758" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_galoomba" x="376" y="336" name="inst_0D31F80B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_paragaloomba" x="424" y="320" name="inst_F5FC0285" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_holdbubble" x="704" y="240" name="inst_0BA1BF11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -425,6 +419,10 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_coin" x="48" y="368" name="inst_76597AAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="48" y="352" name="inst_83EF4C5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="32" y="352" name="inst_B31C1D21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_path" x="960" y="376" name="inst_7F609081" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_path" x="672" y="392" name="inst_F441FDBD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_path_hor" x="688" y="376" name="inst_734EBC60" locked="0" code="" scaleX="17" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform_touch" x="704" y="384" name="inst_BE9D6FCC" locked="0" code="ready = 1;&#xA;direct = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_goal" x="3056" y="192" w="432" h="240" xo="0" yo="0" id="10063048" name="inst_F5C2A5C1" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

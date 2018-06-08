@@ -187,9 +187,9 @@ if (instance_exists(mytop)) {
         obj_playerparent.y = ceil(bbox_top-15);
 
         //Move the player horizontally if there is no solid in his way
-        if (hspeed &lt; 0) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_left+hspeed,obj_playerparent.bbox_top+4,obj_playerparent.bbox_left+hspeed,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
-        || (hspeed &gt; 0) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_right+hspeed,obj_playerparent.bbox_top+4,obj_playerparent.bbox_right+hspeed,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
-            obj_playerparent.x += hspeed;       
+        if (x &lt; x-xprevious) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_left-1,obj_playerparent.bbox_top+4,obj_playerparent.bbox_left-1,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
+        || (x &gt; x-xprevious) &amp;&amp; (!collision_rectangle(obj_playerparent.bbox_right+1,obj_playerparent.bbox_top+4,obj_playerparent.bbox_right+1,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
+            obj_playerparent.x += x-xprevious;     
     }
 }
 
