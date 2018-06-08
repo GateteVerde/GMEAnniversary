@@ -33,7 +33,7 @@ if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerpa
 &amp;&amp; (obj_playerparent.state &lt; 2)) {
 
     //Check for a moving platform or quicksand
-    var check = collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom+1,obj_semisolid,0,1);
+    var check = collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom,obj_semisolid,0,1);
     if (check)
     || (collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom+1,obj_quicksand,0,0))
         exit;
