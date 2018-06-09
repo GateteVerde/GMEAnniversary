@@ -502,8 +502,8 @@ else if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1
 if (ready) {
     
     //If moving and there's a wall on the way
-    if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0)))
-    || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0)))
+    if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0)))
+    || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-5,obj_solid,1,0)))
         event_user(0);
 }
 else

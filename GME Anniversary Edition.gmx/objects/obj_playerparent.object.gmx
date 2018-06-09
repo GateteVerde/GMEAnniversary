@@ -859,7 +859,7 @@ else if (swimming) {
 
 //If the player is bumping into a wall to the right
 if (xspeed &gt; 0)
-&amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-4,obj_solid,1,0)) {
+&amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-5,obj_solid,1,0)) {
 
     //If the player is sliding with the shell
     if (global.powerup == cs_shell)
@@ -893,14 +893,14 @@ if (xspeed &gt; 0)
     }
     
     //Prevent the player from getting embed into the wall
-    while (collision_rectangle(x,bbox_top+4,bbox_right,bbox_bottom-4,obj_solid,1,0))
-    &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,1,0))
+    while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-5,obj_solid,1,0))
+    &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
         x--;
 }
 
 //Otherwise, if the player is bumping into a wall to the left
 else if (xspeed &lt; 0)
-&amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-4,obj_solid,1,0)) {
+&amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0)) {
 
     //If the player is sliding with the shell
     if (global.powerup == cs_shell)
@@ -934,8 +934,8 @@ else if (xspeed &lt; 0)
     }        
     
     //Prevent the player from getting embed into the wall
-    while (collision_rectangle(bbox_left,bbox_top+4,x,bbox_bottom-4,obj_solid,1,0))
-    &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,1,0))
+    while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0))
+    &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
         x++;
 }
 
