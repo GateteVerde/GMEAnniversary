@@ -3,7 +3,7 @@
   <spriteName>spr_marker_event</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>-11</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -175,14 +175,14 @@ draw_set_font(global.numbers_w);
 
 //Lives
 draw_sprite_ext(spr_hud_mario, -1, view_xview[0]+8, view_yview[0]+13, 1, 1, 0, c_white, 1);
-draw_text_colour(view_xview[0]+36, view_yview[0]+15, string_format(lives, 2, 0), c_white, c_white, c_white, c_white, 1);
+draw_text_colour(view_xview[0]+36, view_yview[0]+18, string_format(lives, 2, 0), c_white, c_white, c_white, c_white, 1);
 
 //Set font
 draw_set_font(global.numbers_g);
 
 //Coins
 draw_sprite_ext(spr_hud_coin, -1, view_xview[0]+69, view_yview[0]+13, 1, 1, 0, c_white, 1);
-draw_text_colour(view_xview[0]+97, view_yview[0]+15, string_format(global.coins, 2, 0), c_white, c_white, c_white, c_white, 1);
+draw_text_colour(view_xview[0]+97, view_yview[0]+18, string_format(global.coins, 2, 0), c_white, c_white, c_white, c_white, 1);
 
 //Star coins
 if (global.level != -1) {
@@ -221,33 +221,33 @@ draw_sprite_ext(spr_hud_health, health, view_xview[0]+view_wview[0]/2, view_yvie
 draw_set_font(global.numbers_w);
 
 //Time
-draw_sprite_ext(spr_hud_time, -1, view_xview[0]+view_wview[0]-33+shakex, view_yview[0]+8+shakey, 1, 1, 0, c_white, 1);
+draw_sprite_ext(spr_hud_time, -1, view_xview[0]+view_wview[0]-33+shakex, view_yview[0]+11+shakey, 1, 1, 0, c_white, 1);
 if (global.time &gt; -1)
 &amp;&amp; (obj_levelcontrol.leveltime != 0) {
 
     //If there's 100 or less seconds left and the level isn't finished
     if (global.time &lt;= 100 &amp;&amp; global.clear == 0)
-        draw_text_colour(view_xview[0]+view_wview[0]-32+shakex, view_yview[0]+15+shakey, string_add_zeros(global.time, 3), c_red, c_red, c_red, c_red, 1);
+        draw_text_colour(view_xview[0]+view_wview[0]-32+shakex, view_yview[0]+18+shakey, string_add_zeros(global.time, 3), c_red, c_red, c_red, c_red, 1);
     else
-        draw_text_colour(view_xview[0]+view_wview[0]-32, view_yview[0]+15, string_add_zeros(global.time, 3), c_white, c_white, c_white, c_white, 1);
+        draw_text_colour(view_xview[0]+view_wview[0]-32, view_yview[0]+18, string_add_zeros(global.time, 3), c_white, c_white, c_white, c_white, 1);
 }
 else
-draw_text_colour(view_xview[0]+view_wview[0]-32, view_yview[0]+15, "000", c_white, c_white, c_white, c_white, 1);
+draw_text_colour(view_xview[0]+view_wview[0]-32, view_yview[0]+18, "000", c_white, c_white, c_white, c_white, 1);
 
 //Score
-draw_sprite_ext(spr_hud_score, -1, view_xview[0]+view_wview[0]-91, view_yview[0]+8, 1, 1, 0, c_white, 1);
-draw_text_colour(view_xview[0]+view_wview[0]-127, view_yview[0]+15, string_add_zeros(score, 9), c_white, c_white, c_white, c_white, 1);
+draw_sprite_ext(spr_hud_score, -1, view_xview[0]+view_wview[0]-91, view_yview[0]+11, 1, 1, 0, c_white, 1);
+draw_text_colour(view_xview[0]+view_wview[0]-127, view_yview[0]+18, string_add_zeros(score, 9), c_white, c_white, c_white, c_white, 1);
 
 //P-Meter
 if (instance_exists(obj_playerparent)) {
 
     if (obj_playerparent.pmeter &gt; 111)
-        draw_sprite_ext(spr_hud_pmeter, 6+flash, view_xview[0]+8, view_yview[0]+view_hview[0]-24, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_hud_pmeter, 7+flash, view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, 1);
     else
-        draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/16), view_xview[0]+8, view_yview[0]+view_hview[0]-24, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/14), view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, 1);
 }
 else
-    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+8, view_yview[0]+view_hview[0]-24, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, 1);
     
 //Enable the fog
 if (instance_exists(obj_lightningsheet)) {

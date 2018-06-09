@@ -119,8 +119,8 @@ else {
             <kind>1</kind>
             <string>///Spawn a goomba.
 
-//If Mario does not exists.
-if (!instance_exists(obj_playerparent)) {
+//If the player does not exist or there's more than 6 goombas in screen.
+if (!instance_exists(obj_playerparent)) || (instance_number(obj_goomba) &gt; 6) {
 
     //Hold event
     alarm[0] = 1;
