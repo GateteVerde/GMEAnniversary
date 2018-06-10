@@ -225,8 +225,8 @@ if (moving) {
             other.id.y = ceil(bbox_top-15);
             
             //Move the player horizontally if there is no solid in his way
-            if (x &lt; x-xprevious) &amp;&amp; (!collision_rectangle(other.id.bbox_left-1,other.id.bbox_top+4,other.id.bbox_left,other.id.bbox_bottom-1,obj_solid,0,0))
-            || (x &gt; x-xprevious) &amp;&amp; (!collision_rectangle(other.id.bbox_right,other.id.bbox_top+4,other.id.bbox_right+1,other.id.bbox_bottom-1,obj_solid,0,0))
+            if (x &lt; x-xprevious) &amp;&amp; (!collision_rectangle(other.id.bbox_left-1,other.id.bbox_top+4,other.id.bbox_left,other.id.bbox_bottom-5,obj_solid,0,0))
+            || (x &gt; x-xprevious) &amp;&amp; (!collision_rectangle(other.id.bbox_right,other.id.bbox_top+4,other.id.bbox_right+1,other.id.bbox_bottom-5,obj_solid,0,0))
                 other.id.x += x-xprevious;
         }
     }
@@ -364,16 +364,16 @@ if (vspeed &lt; 0)
             <kind>1</kind>
             <string>///Default wall collision
 
-if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0)))
-|| ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-5,obj_solid,1,0))) {
+if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-5-abs(hspeed),obj_solid,1,0)))
+|| ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-5-abs(hspeed),obj_solid,1,0))) {
 
     //Reverse horizontal speed
     hspeed = -hspeed;
     
     //Prevent getting embed on walls
-    while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,0,0))
+    while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-5-abs(hspeed),obj_solid,1,0))
         x++;
-    while (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-5,obj_solid,0,0))
+    while (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-5-abs(hspeed),obj_solid,1,0))
         x--;
 }
 </string>

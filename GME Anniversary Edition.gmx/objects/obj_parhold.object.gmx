@@ -485,7 +485,7 @@ event_inherited();
 //If moving down and in contact with a slope
 if (vspeed &gt;= 0)
     while (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom,obj_semisolid,0,0))
-    || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_slopeparent,1,0))
+    || (collision_rectangle(x-1,bbox_top,x+1,bbox_bottom-4,obj_slopeparent,1,0))
         y--;
 </string>
           </argument>

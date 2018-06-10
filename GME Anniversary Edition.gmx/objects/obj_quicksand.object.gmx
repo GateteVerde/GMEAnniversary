@@ -164,7 +164,7 @@ exit;
 if (other.gravity &gt; 0) {
     
     with (other) {
-    
+        
         //Stop vertical speed
         vspeed = 0;
         gravity = 0;
