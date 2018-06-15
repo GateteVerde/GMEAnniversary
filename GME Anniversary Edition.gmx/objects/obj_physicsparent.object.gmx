@@ -283,7 +283,7 @@ if (vspeed &gt; -0.85)
 &amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0))) {
 
     //Stay embed on the slope.
-    while collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0)
+    while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
         y--;
 }
 
@@ -364,16 +364,16 @@ if (vspeed &lt; 0)
             <kind>1</kind>
             <string>///Default wall collision
 
-if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-5-abs(hspeed),obj_solid,1,0)))
-|| ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-5-abs(hspeed),obj_solid,1,0))) {
+if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top,bbox_left,bbox_bottom-8,obj_solid,1,0)))
+|| ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top,bbox_right+1,bbox_bottom-8,obj_solid,1,0))) {
 
     //Reverse horizontal speed
     hspeed = -hspeed;
     
     //Prevent getting embed on walls
-    while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-5-abs(hspeed),obj_solid,1,0))
+    while (collision_rectangle(bbox_left,bbox_top,bbox_left,bbox_bottom-8,obj_solid,1,0))
         x++;
-    while (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-5-abs(hspeed),obj_solid,1,0))
+    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-8,obj_solid,1,0))
         x--;
 }
 </string>

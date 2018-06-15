@@ -8,7 +8,8 @@
 **      Handles the main movement of the player when it's swimming
 */
 
-//Reset following variables
+
+//Reset sliding
 if (sliding > 0) {
 
     //Stop sliding
@@ -17,16 +18,25 @@ if (sliding > 0) {
     //Clear 'Down' key
     keyboard_clear(global.downkey);
 }
-floatnow = 0;
+
+//Reset bunny and carrot fly
 beefly = 0;
-shelltime = 0;
-stompstyle = 0;
+floatnow = 0;
 if (isfloating) {
 
     isfloating = 0;
     if (audio_is_playing(snd_spin))
         audio_stop_sound(snd_spin);
 }
+
+//Reset shell timer
+shelltime = 0;
+
+//Reset spin jump
+stompstyle = 0;
+
+//Reset player local variables
+event_user(14);
 
 //Figure out the player's state.
 if ((collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
@@ -79,18 +89,18 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         
         //If the 'Control' key is pressed, move faster.
         if (keyboard_check(global.controlkey))  
-            xspeedmax = 2.5;
+            xspeedmax = 2;
         
         //Otherwise, move slower.
         else        
-            xspeedmax = 1.5;
+            xspeedmax = 1;
         
         //Handle horizontal movement
         //If the left key is pressed and the player is not crouched down.
         if ((keyboard_check(global.leftkey)) && (!crouch) && (!keyboard_check(global.rightkey))) {
         
             //Set the horizontal speed
-            xspeed += -0.5;
+            xspeed += -0.2;
             
             //Set the facing direction
             xscale = -1;
@@ -103,7 +113,7 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         else if ((keyboard_check(global.rightkey)) && (!crouch) && (!keyboard_check(global.leftkey))) {
         
             //Set the horizontal speed
-            xspeed += 0.5;
+            xspeed += 0.2;
             
             //Set the facing direction
             xscale = 1;
@@ -113,34 +123,50 @@ if (!disablecontrol) && (!inwall) { //If the player controls are not disabled.
         }
         
         //Otherwise, stop the player.
-        else 
-        xspeed = 0;
+        else {
+        
+            //Reduce the player's speed until he stops.
+            xspeed = max(0,abs(xspeed)-0.2)*sign(xspeed);
+            
+            //Set up horizontal speed to 0 when xspeed hits 0.2
+            if ((xspeed < 0.2) && (xspeed > -0.2))                
+                xspeed = 0;
+        }
             
         //If the 'Up' key is pressed.
         if (keyboard_check(global.upkey)) {
         
             //Move upwards
-            yspeed += -0.5;
+            yspeed += -0.2;
             
             //Set the swimming animation.
-            swimtype = 1;
+            if (xspeed == 0)
+                swimtype = 1;
         }
         
         //Otherwise, if the 'Down' key is pressed.
         else if (keyboard_check(global.downkey)) {
         
             //Set the swimming animation
-            swimtype = 2;
+            if (xspeed == 0)
+                swimtype = 2;
             
             //Move downwards
             if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
             || (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slopeparent,1,0))
                 yspeed = 0;
             else
-                yspeed += 0.5;
+                yspeed += 0.2;
         }
-        else 
-        yspeed = 0;
+        else {
+    
+            //Reduce the player's speed until he stops.
+            yspeed = max(0,abs(yspeed)-0.2)*sign(yspeed);
+            
+            //Set up vertical speed to 0 when yspeed hits 0.2
+            if ((yspeed < 0.2) && (yspeed > -0.2))                
+                yspeed = 0;
+        }
             
         //Prevent the player from moving horizontally too fast.
         if (xspeed > xspeedmax) 

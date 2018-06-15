@@ -30,6 +30,10 @@
 //Call parent variables
 event_inherited();
 
+//Wall kick variables
+wallkick = 0;
+wallready = 0;
+
 //Maximum horizontal speed
 xspeedmax = 1.45;
 
@@ -273,7 +277,7 @@ if (sprite_index == scr_mario_skid()) || ((sliding) &amp;&amp; (state &lt; 2)) {
 }
 
 //Otherwise, if Mario is walljumping
-else if (sprite_index == scr_mario_walljump()) {
+else if (wallkick == 1) {
 
     //If Mario is small
     if (global.powerup == cs_small) {
@@ -296,6 +300,33 @@ else if (sprite_index == scr_mario_walljump()) {
 //Otherwise, hold it
 else
     alarm[10] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reset various actions of Mario
+
+//Reset the wallkick
+wallkick = 0;
+wallready = 0;
 </string>
           </argument>
         </arguments>
@@ -1189,6 +1220,33 @@ else {
     &amp;&amp; (audio_is_playing(snd_skid))
         audio_stop_sound(snd_skid);
 }                  
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="24">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reset player variables
+
+//End walljumping
+wallkick = 0;
+wallready = 0;
 </string>
           </argument>
         </arguments>

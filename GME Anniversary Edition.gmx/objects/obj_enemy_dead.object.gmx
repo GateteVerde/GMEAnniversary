@@ -123,6 +123,23 @@ alarm[0] = 8;
             <kind>1</kind>
             <string>///Dead enemy logic
 
+//Check for quicksand
+if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_quicksand,0,0)) {
+
+    //Stop horizontal speed
+    hspeed = 0;
+    
+    //Sink slowly and stop if moving up
+    if (vspeed &lt; 0)
+        vspeed = 0;
+    else {
+    
+        gravity = 0.1;
+        if (vspeed &gt; 0.1)
+            vspeed = 0.1;
+    }
+}
+
 //Cap vertical speed
 if (vspeed &gt; 0) {
 
@@ -150,39 +167,6 @@ if ((hspeed &gt; 0.6) &amp;&amp; (hspeed &lt; 2))
     hspeed = 0.6;
 else if ((hspeed &gt; -2) &amp;&amp; (hspeed &lt; -0.6))
     hspeed = -0.6;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_quicksand">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Stop movement and sink slowly
-
-//Stop horizontal movement
-hspeed = 0;
-
-//Stop vertical movement
-vspeed = 0;
-gravity = 0;
-
-//Move y pixels down
-y += 0.1;
 </string>
           </argument>
         </arguments>

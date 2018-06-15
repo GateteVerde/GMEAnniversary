@@ -178,12 +178,19 @@ if (other.state = 2)
 &amp;&amp; (other.visible = 1) 
 &amp;&amp; (other.bbox_bottom &lt; yprevious+5) {
 
-    //Snap position
-    other.x = x;
-    other.y = y-2;
-
-    //Force him to hold Yoshi
-    other.holding = 4;
+    //With the player
+    with (obj_playerparent) {
+    
+        //Snap into yoshi's position
+        x = other.x;
+        y = other.y-2;
+        
+        //Force him to hold yoshi
+        holding = 4;
+        
+        //Force end variables
+        event_user(14);
+    }
 
     //Make a Yoshi
     with (instance_create(x,y,obj_yoshi)) colour = other.colour;

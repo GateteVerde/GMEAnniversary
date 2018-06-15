@@ -1376,8 +1376,8 @@ if (stomp != -1)
                         if (global.mount == 2)
                         &amp;&amp; (global.mountcolour = 1) {
                         
-                            with (instance_create(x+12,y+8,obj_fireball)) hspeed = 3;
-                            with (instance_create(x-12,y+8,obj_fireball)) hspeed = -3;
+                            with (instance_create(x+12,y+8,obj_fireball)) hspeed = 1.5;
+                            with (instance_create(x-12,y+8,obj_fireball)) hspeed = -1.5;
                         }
                     }
                     else

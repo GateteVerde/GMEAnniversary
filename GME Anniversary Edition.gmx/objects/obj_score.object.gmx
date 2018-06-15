@@ -563,9 +563,9 @@ score += 10;
             <string>///Draw it
 
 if (y &gt; view_yview[0]+16)
-    draw_sprite(sprite_index,image_index,round(x),y);
+    draw_sprite(sprite_index,image_index,round(x),round(y));
 else
-    draw_sprite(sprite_index,image_index,round(x),view_yview[0]+16);
+    draw_sprite(sprite_index,image_index,round(x),round(view_yview[0]+16));
 </string>
           </argument>
         </arguments>

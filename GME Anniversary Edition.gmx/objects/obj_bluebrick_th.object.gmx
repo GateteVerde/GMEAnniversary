@@ -238,6 +238,9 @@ if (!held) {
         swimming = false;
 }
 
+//Keep default animation speed if kicked
+if (ready) then image_speed = 0.5;
+
 //Destroy when outside the view
 if (outside_view())
     instance_destroy();
@@ -394,15 +397,15 @@ if (ready) {
 
     if (sprite_index == spr_bluebrick_th) {
     
-        if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1-hspeed,bbox_top+4,bbox_left,bbox_bottom-5-abs(hspeed),obj_solid,1,0)))
-        || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1+hspeed,bbox_bottom-5-abs(hspeed),obj_solid,1,0)))
+        if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1+hspeed,bbox_top,bbox_left,bbox_bottom-8,obj_solid,1,0)))
+        || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top,bbox_right+1+hspeed,bbox_bottom-8,obj_solid,1,0)))
             event_user(0);
     }
     else {
     
         //If moving left
         if (hspeed &lt; 0) 
-        &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0)) {
+        &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top,bbox_left,bbox_bottom-8,obj_solid,1,0)) {
         
             //If not outside view
             if (!outside_view()) {
@@ -419,13 +422,13 @@ if (ready) {
             hspeed = -hspeed;    
             
             //Prevent getting embed on a wall
-            while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-5-abs(hspeed),obj_solid,0,0))
+            while (collision_rectangle(bbox_left,bbox_top,bbox_left,bbox_bottom-8,obj_solid,0,0))
                 x++; 
         }
         
         //Otherwise, if moving right
         else if (hspeed &gt; 0)
-        &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-5-abs(hspeed),obj_solid,1,0)) {
+        &amp;&amp; (collision_rectangle(bbox_right,bbox_top,bbox_right+1,bbox_bottom-8,obj_solid,1,0)) {
         
             //If not outside view
             if (!outside_view()) {
@@ -442,7 +445,7 @@ if (ready) {
             hspeed = -hspeed;
             
             //Prevent getting embed on a wall
-            while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-5-abs(hspeed),obj_solid,0,0))
+            while (collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom-8,obj_solid,0,0))
                 x--;             
         }
     }    

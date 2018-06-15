@@ -8,7 +8,7 @@
 **      Handles the main movement of the player when it's climbing
 */
 
-//Reset following variables
+//Reset sliding
 if (sliding > 0) {
 
     //Stop sliding
@@ -17,10 +17,10 @@ if (sliding > 0) {
     //Clear 'Down' key
     keyboard_clear(global.downkey);
 }
-floatnow = 0;
+
+//Reset bunny and carrot fly
 beefly = 0;
-shelltime = 0;
-stompstyle = 0;
+floatnow = 0;
 if (isfloating) {
 
     isfloating = 0;
@@ -28,6 +28,14 @@ if (isfloating) {
         audio_stop_sound(snd_spin);
 }
 
+//Reset shell timer
+shelltime = 0;
+
+//Reset spin jump
+stompstyle = 0;
+
+//Reset player local variables
+event_user(14);
 
 //Cap horizontal speed
 if (xspeed > 1)
