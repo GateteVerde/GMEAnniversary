@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="48" name="datafiles">
-    <datafiles number="48" name="music">
+  <datafiles number="50" name="datafiles">
+    <datafiles number="50" name="music">
       <datafile>
         <name>airship.ogg</name>
         <exists>-1</exists>
@@ -348,7 +348,7 @@
       <datafile>
         <name>starman.ogg</name>
         <exists>-1</exists>
-        <size>55965</size>
+        <size>75262</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -382,7 +382,7 @@
       <datafile>
         <name>title.ogg</name>
         <exists>-1</exists>
-        <size>560670</size>
+        <size>362874</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -1446,8 +1446,8 @@
       <sprite>sprites\spr_mapmario_water</sprite>
       <sprite>sprites\spr_mapmario_yoshi</sprite>
       <sprite>sprites\spr_mapmario_yoshi_water</sprite>
-      <sprite>sprites\spr_mapmario_arrows</sprite>
       <sprite>sprites\spr_mapmario_events</sprite>
+      <sprite>sprites\spr_mapmario_arrows</sprite>
       <sprites name="Paths">
         <sprites name="Misc">
           <sprite>sprites\spr_mapbridge_h</sprite>
@@ -1995,6 +1995,9 @@
           <sprite>sprites\spr_palette_warpnoteblock</sprite>
         </sprites>
         <sprites name="NPCs">
+          <sprites name="Enemies">
+            <sprite>sprites\spr_palette_wiggler</sprite>
+          </sprites>
           <sprite>sprites\spr_palette_yoshi</sprite>
         </sprites>
         <sprite>sprites\spr_palette_door</sprite>
@@ -2020,6 +2023,7 @@
     <sprite>sprites\spr_titlebg_top</sprite>
     <sprite>sprites\spr_titlebg_middle</sprite>
     <sprite>sprites\spr_titlebg_bottom</sprite>
+    <sprite>sprites\spr_titlebg_cog</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Levels">

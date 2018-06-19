@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_deactenemyparent</parentName>
-  <maskName>spr_sproutmask</maskName>
+  <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -209,9 +209,20 @@ with (parent) event_user(0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw wiggler's body
+            <string>///Draw wiggler body
 
+//If transforming, apply palette
+if (ready == 1) {
+
+    pal_swap_set(spr_palette_wiggler, parent.color);
+}
+
+//Draw wiggler
 draw_sprite_ext(sprite_index, -1, round(x), y+1, xscale, 1, 0, c_white, 1);
+
+//If transforming, end palette
+if (ready == 1)
+    pal_swap_reset();
 </string>
           </argument>
         </arguments>
