@@ -411,7 +411,7 @@ if (hspeed &gt; 0) {
 //Otherwise, if the wiggler is moving left...
 else if (hspeed &lt; 0) {
 
-    ///...and there's a enemy on the way and that enemy is not it's body.
+    //...and there's a enemy on the way and that enemy is not it's body.
     if (collision_rectangle(bbox_left-hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_enemyparent,0,1))
     &amp;&amp; (!collision_rectangle(bbox_left-hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_wiggler_body,0,0))
         hspeed = -hspeed;
