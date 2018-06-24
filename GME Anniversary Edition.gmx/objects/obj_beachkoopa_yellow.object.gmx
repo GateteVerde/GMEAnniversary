@@ -203,6 +203,23 @@ else if (ready &gt; 0) {
                 else if ((hspeed &gt; 0) &amp;&amp; (obj_playerparent.x &lt; x-48))
                     hspeed = -1;
             }
+            
+            //Check for a moving shell
+            var mshell = collision_rectangle(x+(16*sign(xscale)),bbox_top,x+(24*sign(xscale)),bbox_bottom-4,obj_shell_kick,0,0);
+            
+            //If there's a shell in position and said shell does not have a koopa inside.
+            if (mshell) 
+            &amp;&amp; (mshell.hspeed != hspeed) {
+            
+                //Set the vertical speed
+                if (swimming == 0)
+                    vspeed = -4;
+                else
+                    vspeed = -2;
+                    
+                //Boost jump
+                y--;
+            }
         }
     
         //Check for a shell
@@ -246,7 +263,8 @@ else if (ready &gt; 0) {
         if (jumping == 1)
         &amp;&amp; (gravity == 0)
         &amp;&amp; (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_shell,0,0))
-            jumping = 0;           
+            jumping = 0;
+                   
     }
 }
 
