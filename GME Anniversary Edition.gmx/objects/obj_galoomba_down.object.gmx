@@ -203,22 +203,10 @@ if (other.sliding)
             event_user(8);
     }
     else if (other.hitcombo &gt; 6) { //1-UP
-    
-        //If the combo is odd
-        if (other.hitcombo % 2 == 1) {
-    
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(9);
-        }
-        
-        //Otherwise, if the combo is even
-        else if (other.hitcombo % 2 == 0) {
-        
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(10);        
-        }
+
+        audio_play_sound(snd_kick8, 0, false);
+        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+            event_user(9);
     }
     
     //Create 'Spinthump' effect
@@ -259,8 +247,7 @@ else if (kickme) {
                 if (instance_exists(obj_yoshi))
                 || (instance_exists(obj_kuriboshoe)) {
                 
-                    with (obj_playerparent) 
-                        event_user(1);
+                    with (obj_playerparent) event_user(1);
                 }
                     
                 //Create two fireballs if the player is wearing a red shoe
@@ -283,20 +270,10 @@ else if (kickme) {
 
                 //If the player did 7 or more consecutive stomps
                 else if (other.hitcombo &gt; 6) { //1-UP
-                
-                    //If the combo is odd
-                    if (other.hitcombo % 2 == 1) {
-                
-                        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                            event_user(9);
-                    }
-                    
-                    //Otherwise, if the combo is even
-                    else if (other.hitcombo % 2 == 0) {
-
-                        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                            event_user(10);        
-                    }
+            
+                    audio_play_sound(snd_kick8, 0, false);
+                    with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+                        event_user(9);
                 }
                 
                 //Increment hitcombo

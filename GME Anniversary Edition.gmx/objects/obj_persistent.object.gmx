@@ -160,18 +160,27 @@ else {
 
 if (addlives &gt; 0) {
 
-    //Play '1up' sound
-    audio_stop_sound(snd_1up);
-    audio_play_sound(snd_1up, 0, false);
-
-    //Add a life
-    lives++;
+    //If lives are maxed out, do not give more
+    if (lives == 99) {
     
-    //Subtract a spare life
-    addlives--;
+        addlives = 0;
+        exit;
+    }
+    else {
     
-    //Continue
-    alarm[2] = 30;
+        //Play '1up' sound
+        audio_stop_sound(snd_1up);
+        audio_play_sound(snd_1up, 0, false);
+    
+        //Add a life
+        lives++;
+        
+        //Subtract a spare life
+        addlives--;
+        
+        //Continue
+        alarm[2] = 30;
+    }
 }
 </string>
           </argument>
@@ -467,6 +476,36 @@ display_set_gui_size(global.gw*s,global.gh*s);
 
 //Center the window
 alarm[0] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///If the game is givin' out extra lives, give them at once after exiting a room
+
+if (addlives &gt; 0) {
+
+    lives += addlives;
+    addlives = 0;
+    alarm[2] = -1;
+}
 </string>
           </argument>
         </arguments>

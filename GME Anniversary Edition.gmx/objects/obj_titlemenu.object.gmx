@@ -676,7 +676,7 @@ if (mode != 0) {
         
         //...and draw a arrow next to the selected option 
         if (i == current)
-            draw_text_colour_shadowed(view_xview[0]+10, view_yview[0]+120+(12*(i-1)),string("{ "), c_black, c_white, 1, 1, 0.5, 1);
+            draw_sprite_ext(spr_hud_font_select, -1, view_xview[0]+10, view_yview[0]+120+(12*(i-1)), 1, 1, 0, c_white, 1);
     }
     
     //Reset text alignment
@@ -693,7 +693,7 @@ draw_set_font(global.font_interface);
 draw_set_alpha(1);
 
 //Draw the text
-draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+4,"VERSION 9.3.2", c_black, c_white, 1, 1, 0.5, 1);
+draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+4,"VERSION 9.3.3", c_black, c_white, 1, 1, 0.5, 1);
 draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+global.gh-12,"2008-2018 GMETEAM/GATETE GAMING", c_black, c_white, 1, 1, 0.5, 1);
 
 //Re align the text

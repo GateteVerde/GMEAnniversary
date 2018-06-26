@@ -155,23 +155,12 @@ else {
                 event_user(8);
         }
         else if (other.hitcombo &gt; 6) { //1-UP
-        
-            //If the combo is odd
-            if (other.hitcombo % 2 == 1) {
-        
-                audio_play_sound(snd_kick8, 0, false);
-                with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                    event_user(9);
-            }
-            
-            //Otherwise, if the combo is even
-            else if (other.hitcombo % 2 == 0) {
-            
-                audio_play_sound(snd_kick8, 0, false);
-                with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                    event_user(10);        
-            }
+    
+            audio_play_sound(snd_kick8, 0, false);
+            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+                event_user(9);
         }
+        
         //Create 'Spinthump' effect
         with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
         
@@ -252,24 +241,13 @@ if (vulnerable &lt; 99) {
         with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
             event_user(8);
     }
-    else if (other.hitcombo &gt; 6) { //1-UP / 2-UP
-    
-        //If the combo is odd
-        if (other.hitcombo % 2 == 1) {
-    
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(9);
-        }
-        
-        //Otherwise, if the combo is even
-        else if (other.hitcombo % 2 == 0) {
-        
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(10);        
-        }
+    else if (other.hitcombo &gt; 6) { //1-UP
+
+        audio_play_sound(snd_kick8, 0, false);
+        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+            event_user(9);
     }
+    
     //Create 'Spinthump' effect
     with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
     
@@ -353,23 +331,12 @@ if (other.held == 0) {
                 event_user(8);
         }
         else if (other.hitcombo &gt; 6) { //1-UP
-        
-            //If the combo is odd
-            if (other.hitcombo % 2 == 1) {
-        
-                audio_play_sound(snd_kick8, 0, false);
-                with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                    event_user(9);
-            }
-            
-            //Otherwise, if the combo is even
-            else if (other.hitcombo % 2 == 0) {
-            
-                audio_play_sound(snd_kick8, 0, false);
-                with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                    event_user(10);        
-            }
+    
+            audio_play_sound(snd_kick8, 0, false);
+            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+                event_user(9);
         }
+        
         //Create 'Spinthump' effect
         with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
         
@@ -451,22 +418,10 @@ if (vulnerable &lt; 99) {
             event_user(8);
     }
     else if (other.hitcombo &gt; 6) { //1-UP
-    
-        //If the combo is odd
-        if (other.hitcombo % 2 == 1) {
-    
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(9);
-        }
-        
-        //Otherwise, if the combo is even
-        else if (other.hitcombo % 2 == 0) {
-        
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(10);        
-        }
+
+        audio_play_sound(snd_kick8, 0, false);
+        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+            event_user(9);
     }
     
     //Create 'Spinthump' effect
@@ -699,22 +654,10 @@ if (vulnerable &lt; 99) {
             event_user(8);
     }
     else if (other.hitcombo &gt; 6) { //1-UP
-    
-        //If the combo is odd
-        if (other.hitcombo % 2 == 1) {
-    
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(9);
-        }
-        
-        //Otherwise, if the combo is even
-        else if (other.hitcombo % 2 == 0) {
-        
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(10);        
-        }
+
+        audio_play_sound(snd_kick8, 0, false);
+        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+            event_user(9);
     }
     
     //Create 'Spinthump' effect
@@ -796,22 +739,10 @@ if (vulnerable &lt; 99) {
             event_user(8);
     }
     else if (other.hitcombo &gt; 6) { //1-UP
-    
-        //If the combo is odd
-        if (other.hitcombo % 2 == 1) {
-    
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(9);
-        }
-        
-        //Otherwise, if the combo is even
-        else if (other.hitcombo % 2 == 0) {
-        
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(10);        
-        }
+
+        audio_play_sound(snd_kick8, 0, false);
+        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+            event_user(9);
     }
     
     //Create 'Spinthump' effect
@@ -916,22 +847,10 @@ if (vulnerable &lt; 99) {
                 event_user(8);
         }
         else if (other.hitcombo &gt; 6) { //1-UP
-        
-            //If the combo is odd
-            if (other.hitcombo % 2 == 1) {
-        
-                audio_play_sound(snd_kick8, 0, false);
-                with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                    event_user(9);
-            }
-            
-            //Otherwise, if the combo is even
-            else if (other.hitcombo % 2 == 0) {
-            
-                audio_play_sound(snd_kick8, 0, false);
-                with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                    event_user(10);        
-            }
+    
+            audio_play_sound(snd_kick8, 0, false);
+            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+                event_user(9);
         }
         
         //Create 'Spinthump' effect
@@ -1020,22 +939,10 @@ if (vulnerable &lt; 99)
             event_user(8);
     }
     else if (other.hitcombo &gt; 6) { //1-UP
-    
-        //If the combo is odd
-        if (other.hitcombo % 2 == 1) {
-    
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(9);
-        }
-        
-        //Otherwise, if the combo is even
-        else if (other.hitcombo % 2 == 0) {
-        
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(10);        
-        }
+
+        audio_play_sound(snd_kick8, 0, false);
+        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+            event_user(9);
     }
     
     //Create 'Spinthump' effect
