@@ -48,27 +48,27 @@ file_text_readln(file);
 
 //Red Switch Palace
 global.palacered = real(base64_decode(file_text_read_string(file)));
-file_text_readln(file)
+file_text_readln(file);
 
 //Blue Switch Palace
 global.palaceblue = real(base64_decode(file_text_read_string(file)));
-file_text_readln(file)
+file_text_readln(file);
 
 //Yellow Switch Palace
 global.palaceyellow = real(base64_decode(file_text_read_string(file)));
-file_text_readln(file)
+file_text_readln(file);
 
 //Green Switch Palace
 global.palacegreen = real(base64_decode(file_text_read_string(file)));
-file_text_readln(file)
+file_text_readln(file);
 
 //Yoshi
 global.mount = real(base64_decode(file_text_read_string(file)));
-file_text_readln(file)
+file_text_readln(file);
 
 //Yoshi's Color
 global.mountcolour = real(base64_decode(file_text_read_string(file)));
-file_text_readln(file)
+file_text_readln(file);
 
 //Inventory Items
 for (var i = 0; i < 13; i++) {
@@ -76,6 +76,10 @@ for (var i = 0; i < 13; i++) {
     global.inventory[i] = real(base64_decode(file_text_read_string(file)));
     file_text_readln(file);
 }
+
+//Game completion
+global.gameclear = real(base64_decode(file_text_read_string(file)));
+file_text_readln(file);
 
 //Close the file
 file_text_close(file);

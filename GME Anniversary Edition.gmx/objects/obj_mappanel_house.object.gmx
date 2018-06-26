@@ -88,8 +88,15 @@ checkpoint = noone;
 //Check map value
 if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
 
+    //Make it visible
     visible = 1;
-    if (ds_map_find_value(global.mapscreen,id) == 2) {
+    
+    //If the game is 100% percent clear
+    if (global.gameclear == 1)
+        exit;
+        
+    //Otherwise
+    else if (ds_map_find_value(global.mapscreen,id) == 2) {
     
         beaten = 2;
         image_index = 1;

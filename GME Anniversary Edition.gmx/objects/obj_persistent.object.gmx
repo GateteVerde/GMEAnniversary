@@ -540,6 +540,12 @@ if (global.healthmode) {
 
 //Allow restart
 restart = 0;
+
+//Check if all coins have been collected
+if (global.starcoins == (global.levelmax*3))
+    global.gameclear = 1;
+else
+    global.gameclear = 0;
 </string>
           </argument>
         </arguments>

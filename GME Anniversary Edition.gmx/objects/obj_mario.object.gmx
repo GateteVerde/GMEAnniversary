@@ -277,7 +277,7 @@ if (sprite_index == scr_mario_skid()) || ((sliding) &amp;&amp; (state &lt; 2)) {
 }
 
 //Otherwise, if Mario is walljumping
-else if (wallkick == 1) {
+else if ((wallkick == 1) &amp;&amp; (yspeed &gt; 0)) {
 
     //If Mario is small
     if (global.powerup == cs_small) {

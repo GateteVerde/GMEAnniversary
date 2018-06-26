@@ -806,25 +806,33 @@ y = round(y);
 //Get a extra life if 100 coins are collected
 if (global.coins &gt; 99) {
 
-    //Subtract 100 coins
-    global.coins -= 100;
-    
-    //If there's not spare lifes
-    if (obj_persistent.addlives == 0) {
-    
-        //Play '1up' sound
-        audio_play_sound(snd_1up, 0, false);
-    
-        //Add a life instantly
-        lives++;
-    }
+    //If lives are maxed out, keep them at 99.
+    if (lives &gt;= 99)
+        global.coins = 99;
+        
+    //Otherwise, give a extra life and reset the counter.
     else {
     
-        //Add a spare life
-        with (obj_persistent) {
+        //Subtract 100 coins
+        global.coins -= 100;
         
-            addlives++;
-            alarm[2] = 30;
+        //If there's not spare lifes
+        if (obj_persistent.addlives == 0) {
+        
+            //Play '1up' sound
+            audio_play_sound(snd_1up, 0, false);
+        
+            //Add a life instantly
+            lives++;
+        }
+        else {
+        
+            //Add a spare life
+            with (obj_persistent) {
+            
+                addlives++;
+                alarm[2] = 30;
+            }
         }
     }
 }

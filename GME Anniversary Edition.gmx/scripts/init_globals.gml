@@ -196,5 +196,10 @@ global.starcoins = 0;
 global.mapscreen = ds_map_create();
 
 //Map inventory variables
-for(var i=0; i<13; i++)
+for (var i=0; i<13; i++) {
+
     global.inventory[i] = 0;
+}
+    
+//100% game completion variable
+global.gameclear = 0;
