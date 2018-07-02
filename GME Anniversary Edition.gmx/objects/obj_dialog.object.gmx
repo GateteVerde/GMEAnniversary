@@ -264,23 +264,20 @@ if (background_exists(back)) {
 }
 
 //Draw the message box
-draw_sprite_ext(spr_dialog,0,view_xview[0]+(view_wview[0]/2)-144,view_yview[0]+view_hview[0]-64,1,1,0,c_white,0.9);
+draw_sprite_ext(spr_dialog,0,view_xview[0]+(view_wview[0]/2)-144,view_yview[0]+view_hview[0]-64,1,1,0,c_white,1);
 
 //If the text should be displayed
 if (showing) {   
     
     //Increment the number of letters that should be displayed
-    if (a &lt; string_length(text)) {
-    
+    if (a &lt; string_length(text))    
         a++;
-    }
     
     //Set the font
     draw_set_font(font); 
 
     //Draw the text up to the number of letters that should be displayed
-    draw_text_colour(view_xview[0]+(view_wview[0]/2)-95,view_yview[0]+view_hview[0]-55,string_copy(text,1,a),make_color_rgb(1,75,131),make_color_rgb(1,75,131),make_color_rgb(1,75,131),make_color_rgb(1,75,131),1);
-    draw_text_colour(view_xview[0]+(view_wview[0]/2)-96,view_yview[0]+view_hview[0]-56,string_copy(text,1,a),c_white,c_white,c_white,c_white,1);
+    draw_text_colour_shadowed(view_xview[0]+(view_wview[0]/2)-96,view_yview[0]+view_hview[0]-56,string_copy(text,1,a),make_color_rgb(1,117,203),c_white,1,1,1,1);
     
     //Draw mugshot if exists
     if (mugshot != noone) {

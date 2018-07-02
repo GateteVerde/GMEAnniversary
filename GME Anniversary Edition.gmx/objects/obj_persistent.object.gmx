@@ -85,11 +85,8 @@ global.numbers_w = font_add_sprite_ext(spr_numbers,"0123456789",0,-1);
 //Regular Gold Numbers
 global.numbers_g = font_add_sprite_ext(spr_numbersgold,"0123456789",0,-1);
 
-//Regular Font
-global.font = font_add_sprite(spr_hud_font,ord('!'),1,0);
-
 //Message Font
-global.font_message = font_add_sprite(spr_hud_font_message,ord('!'),0,0);
+global.font_message = font_add_sprite(spr_hud_font,ord('!'),0,0);
 
 //Interface font
 global.font_interface = font_add_sprite(spr_hud_font_interface,ord('!'),0,0);

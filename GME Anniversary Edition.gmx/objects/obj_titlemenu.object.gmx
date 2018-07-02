@@ -676,7 +676,7 @@ if (mode != 0) {
         
         //...and draw a arrow next to the selected option 
         if (i == current)
-            draw_sprite_ext(spr_hud_font_select, -1, view_xview[0]+10, view_yview[0]+120+(12*(i-1)), 1, 1, 0, c_white, 1);
+            draw_sprite_ext(spr_cursor, -1, view_xview[0]+10, view_yview[0]+120+(12*(i-1)), 1, 1, 0, c_white, 1);
     }
     
     //Reset text alignment
