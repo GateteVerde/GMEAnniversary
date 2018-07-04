@@ -1688,6 +1688,7 @@
         <sprites name="SMB3">
           <sprite>sprites\spr_arrowplatform</sprite>
           <sprite>sprites\spr_rotaryplatform</sprite>
+          <sprite>sprites\spr_spincollision</sprite>
           <sprite>sprites\spr_boltlift</sprite>
           <sprite>sprites\spr_donut</sprite>
           <sprite>sprites\spr_donut_triple</sprite>
@@ -3135,6 +3136,7 @@
             <objects name="SMB3">
               <object>objects\obj_arrowplatform_platform</object>
               <object>objects\obj_spinmask</object>
+              <object>objects\obj_spincollision</object>
               <object>objects\obj_boltlift_top</object>
               <object>objects\obj_boltlift_fall</object>
             </objects>

@@ -93,10 +93,10 @@ if (instance_exists(obj_puller)) {
         sprite_index = other.sprite_index;
         
         //Get the facing direction
-        image_xscale = other.xscale;
+        xscale = other.xscale;
         
         //Set the respawn object
-        turnback = other.object_index;
+        turnback = obj_shyguy_big_b;
         myveggie = obj_enemy_carried;
         
         //Pull up

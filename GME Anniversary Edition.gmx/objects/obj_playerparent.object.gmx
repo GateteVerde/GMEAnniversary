@@ -495,6 +495,11 @@ invulnerable = false;
             <kind>1</kind>
             <string>///Physics
 
+//Reset gravity, hspeed and vspeed as they are unused on the player.
+gravity = 0;
+hspeed = 0;
+vspeed = 0;
+
 //Move the player based on the values of xspeed, yspeed and ygrav
 x += xspeed;
 y += yspeed;

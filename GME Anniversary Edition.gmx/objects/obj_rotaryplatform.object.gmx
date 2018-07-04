@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-1</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_deactivateparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -38,18 +38,132 @@
 //Default values:
 type = 0;
 
+//Speed variable
+morespeed = 2;
+
 //Do not animate
 image_speed = 0;
 image_index = 0;
 
 //Initialize
 alarm[0] = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop movement
 
-//Number of spins
-spin = -1;
+morespeed = 0;
+alarm[3] = 10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create spin collision
 
-//Make it solid
-mysolid = instance_create(x,y+1,obj_spinmask);
+spincollision = instance_create(x+16,y-24,obj_spincollision)
+spincollision.alarm[2] = 50
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop and create spin mask
+
+//Create spin mask
+myspin = instance_create(x,y,obj_spinmask);
+
+//Stop animation
+image_speed = 0;
+image_index = 0;
+
+//Go again
+alarm[1] = 50;
+
+//Increment speed
+morespeed = 3;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Animate and spin
+
+//Keep spinning
+morespeed = 2;
+
+//End movement
+alarm[5] = 45;
 </string>
           </argument>
         </arguments>
@@ -72,13 +186,19 @@ mysolid = instance_create(x,y+1,obj_spinmask);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Animate and spin
+            <string>///Initialize
 
-//Animate
-image_speed = 0.75;
+//Destroy myspin
+with myspin instance_destroy()
 
-//Spin 6 times
-spin = 6;
+//Accelerate
+morespeed = 1;
+
+//Increment speed
+alarm[2] = 10;
+
+//Create spin collision
+alarm[4] = 5;
 </string>
           </argument>
         </arguments>
@@ -101,13 +221,25 @@ spin = 6;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize
+            <string>///Initialize movement
 
-//Animate or delay animation
-if (type == 0)
-    alarm[1] = 100;
-else
-    image_speed = 0.75;
+//If the movement type is set to 0
+if (type == 0) {
+
+    //Make it solid
+    myspin = instance_create(x,y+1,obj_spinmask);
+    
+    //Start spinning
+    alarm[1] = 45;
+}
+
+//Otherwise, spin infinitely
+else if (type == 1) {
+
+    //Create spin collision
+    spincollision = instance_create(x+16,y-24,obj_spincollision);
+    image_speed = 1.2;
+}
 </string>
           </argument>
         </arguments>
@@ -130,15 +262,19 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Change the position of the solid mask
+            <string>///Set up the speed of the platform
 
-with (mysolid) {
-
-    if (other.image_speed == 0)
-        x = other.xstart;
-    else
-        x = -1000;
-}
+//Increment speed
+if (morespeed == 1)
+    image_speed += 0.07;
+    
+//Decrement speed
+else if (morespeed == 0)
+    image_speed += -0.07;
+    
+//Set maximum speed
+else if (morespeed == 2)
+    image_speed = 1.5;
 </string>
           </argument>
         </arguments>
@@ -163,68 +299,27 @@ with (mysolid) {
             <kind>1</kind>
             <string>///Push the player if moving
 
-//If the platform is animating
-if (image_speed == 0.75) {
+//If the platform is moving and the player is below the platform, make him spin
+if (image_speed &gt; 0.5)
+&amp;&amp; (other.bbox_bottom &gt; yprevious+5) {
 
-    //With the player
-    with (other) {
+    //Deny variable jump
+    jumpnow = 2;
     
-        //Deny variable jump 
-        jumpnow = 2
-        
-        //If the player is at the right of the platform, push him to the right.
-        if (x &gt; other.x+24)
-            xspeed = 3;
-            
-        //Otherwise, if it's at the left, push him to the left.
-        else
-            xspeed = -3;
-            
-        //If the player is below the platform, push him down.
-        if (y &gt; other.y)
-            yspeed = 3;
-        
-        //Otherwise, if the player is above the platform, push him upwards.
-        else
-            yspeed = -3;
+    //If the player is below
+    if (other.y &gt; y) {
+    
+        other.xspeed = 2+random(2);
+        other.yspeed = 4;
     }
-}   
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="7">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///End spin
-
-//If the platform is animating
-if (spin == 0) {
-
-    //Do not animate
-    image_speed = 0;
-    image_index = 0;
     
-    //Repeat the process
-    alarm[1] = 100;
+    //Otherwise, if the player is above
+    else {
+    
+        other.xspeed = -2+random(2);
+        other.vspeed = -5;
+    }
 }
-else
-    spin--;
 </string>
           </argument>
         </arguments>

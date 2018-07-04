@@ -82,10 +82,10 @@ if (sprite_index == spr_pokey_green) {
 else if (sprite_index == spr_cobrat_jump)
     sprite_index = spr_cobrat;
 
-//If the enemy y offset is equal or greater than 16, apply draw fix
-if (sprite_get_yoffset(sprite_index) &gt;= 16)
+//If the enemy is a big one, apply a fix
+if (sprite_width &gt; 16)
+|| (sprite_height &gt; 16)
     drawfix = true;
-
 </string>
           </argument>
         </arguments>
