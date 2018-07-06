@@ -50,6 +50,9 @@ image_speed = 0.125;
 
 //Not angry
 ready = 0
+
+//Temporary turning variable
+temp = 0;
 </string>
           </argument>
         </arguments>
@@ -84,7 +87,7 @@ else
     hspeed = xscale;
     
 //Set the offset within the parent
-x = parent.x-offset*xscale;
+x = parent.x-(offset*xscale);
 </string>
           </argument>
         </arguments>
@@ -107,10 +110,10 @@ x = parent.x-offset*xscale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Snap body parts within the parent
+            <string>///Make sure the head does not get lost
 
-if (xscale == nextxscale)
-    x = parent.x-offset*xscale;
+if (!instance_exists(parent))
+    instance_activate_object(parent);
 </string>
           </argument>
         </arguments>
