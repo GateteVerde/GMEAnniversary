@@ -144,7 +144,7 @@ if (global.mapstar) {
             <string>///Handle various map features
 
 //Animate the player sprite at the top-left corner
-anim += 0.15;
+anim += 0.07;
 
 //If the 'Space' key is pressed...
 if (keyboard_check_pressed(global.spacekey)) 
