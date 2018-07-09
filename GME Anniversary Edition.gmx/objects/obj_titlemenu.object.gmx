@@ -693,7 +693,7 @@ draw_set_font(global.font_interface);
 draw_set_alpha(1);
 
 //Draw the text
-draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+4,"07/07/2018 - v1.4.0.2", c_black, c_white, 1, 1, 0.5, 1);
+draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+4,"09/07/2018 - v1.4.0.3", c_black, c_white, 1, 1, 0.5, 1);
 draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+global.gh-12,"2008-2018 GMETEAM/GATETE GAMING", c_black, c_white, 1, 1, 0.5, 1);
 
 //Re align the text
