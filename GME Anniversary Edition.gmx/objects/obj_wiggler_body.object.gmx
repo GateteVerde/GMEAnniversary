@@ -48,6 +48,9 @@ nextxscale = 0;
 //Animate
 image_speed = 0.125;
 
+//Check if the body is ready
+reggie = 0;
+
 //Not angry
 ready = 0
 
@@ -80,6 +83,9 @@ temp = 0;
 //Set facing direction
 xscale = nextxscale;
 
+//Body is ready
+reggie = 1;
+
 //Set horizontal speed
 if (ready = 0)
     hspeed = 0.5*xscale;
@@ -110,10 +116,16 @@ x = parent.x-(offset*xscale);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Make sure the head does not get lost
+            <string>///Activate parent and snap into place if the wiggler is not turning
 
+//Activate parent if it not exists
 if (!instance_exists(parent))
     instance_activate_object(parent);
+    
+//...and snap the body if it's not turning.
+if (xscale == nextxscale)
+&amp;&amp; (reggie)
+    x = parent.x-(offset*xscale);
 </string>
           </argument>
         </arguments>

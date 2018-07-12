@@ -55,7 +55,7 @@ ready = 0
 color = 0;
 
 //Previous horizontal speed
-prevhspeed = 0
+prevhspeed = 0;
 
 //Create body parts
 for (var i=0; i&lt;4; i++) {
@@ -287,7 +287,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Make sure body parts dont get lost
+            <string>///Make sure body parts don't get lost
 
 for (i=0; i&lt;4; i++) {
 
@@ -321,11 +321,8 @@ for (i=0; i&lt;4; i++) {
 //Remember horizontal speed
 prevhspeed = hspeed;
 
-//Default wall collision
-event_user(3);
-
-//Default floor collision
-event_user(4);
+//Inherit event
+event_inherited();
 
 //Turn at ledges
 event_user(6);
@@ -422,7 +419,7 @@ if (hspeed &gt; 0) {
 
     //...and there's a enemy on the way and that enemy is not it's body.
     if (collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_enemyparent,0,1))
-    &amp;&amp; (!collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_wiggler_body,0,0))
+    &amp;&amp; (!collision_rectangle(bbox_right,bbox_top,bbox_right+hspeed*2,bbox_bottom,obj_wiggler_body,0,1))
         hspeed = -hspeed;
 }
 
@@ -431,7 +428,7 @@ else if (hspeed &lt; 0) {
 
     //...and there's a enemy on the way and that enemy is not it's body.
     if (collision_rectangle(bbox_left-hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_enemyparent,0,1))
-    &amp;&amp; (!collision_rectangle(bbox_left-hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_wiggler_body,0,0))
+    &amp;&amp; (!collision_rectangle(bbox_left-hspeed*2,bbox_top,bbox_left,bbox_bottom,obj_wiggler_body,0,1))
         hspeed = -hspeed;
 }
 </string>

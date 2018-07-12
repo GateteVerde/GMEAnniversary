@@ -124,7 +124,7 @@ spincollision.alarm[2] = 50
             <string>///Stop and create spin mask
 
 //Create spin mask
-myspin = instance_create(x,y,obj_spinmask);
+myspin = instance_create(x,y+2,obj_spinmask);
 
 //Stop animation
 image_speed = 0;
@@ -227,7 +227,7 @@ alarm[4] = 5;
 if (type == 0) {
 
     //Make it solid
-    myspin = instance_create(x,y+1,obj_spinmask);
+    myspin = instance_create(x,y+2,obj_spinmask);
     
     //Start spinning
     alarm[1] = 45;

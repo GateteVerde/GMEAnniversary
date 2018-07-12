@@ -433,7 +433,7 @@ if (showcase == 0) {
     pal_swap_set(spr_palette_mario, isflashing);
     
     //Draw the player
-    draw_sprite_ext(scr_mario_walk(), anim, view_xview[0]+32, view_yview[0]+16, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(scr_mario_walk(), anim*2, view_xview[0]+32, view_yview[0]+16, 1, 1, 0, c_white, 1);
     
     //Reset the palette
     pal_swap_reset();
