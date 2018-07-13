@@ -4,7 +4,7 @@
   <width>3488</width>
   <height>432</height>
   <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -400,7 +400,6 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_pwingblock" x="64" y="368" name="inst_AA52D91F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pwingblock" x="64" y="384" name="inst_A1466E09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock_hidden" x="128" y="320" name="inst_F3AB67B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="104" y="384" name="inst_09317B41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="248" y="384" name="inst_93ABC01C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="200" y="384" name="inst_D6C2DBF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_generator_goomba" x="296" y="384" name="inst_56A4C6B8" locked="0" code="dir = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -425,6 +424,7 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_rotaryplatform" x="528" y="48" name="inst_FAE3C1A5" locked="0" code="type = 1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ninji_black" x="8" y="288" name="inst_3BCEDC7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa" x="328" y="352" name="inst_2D82EC10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="1496" y="144" name="inst_0E39BEF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_goal" x="3056" y="192" w="432" h="240" xo="0" yo="0" id="10063048" name="inst_F5C2A5C1" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
