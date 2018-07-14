@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_deactenemyparent</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -51,9 +51,6 @@ image_speed = 0.125;
 //Not angry
 ready = 0
 
-//Is the body ready?
-reggie = 0;
-
 //Temporary turning variable
 temp = 0;
 </string>
@@ -83,9 +80,6 @@ temp = 0;
 //Set facing direction
 xscale = nextxscale;
 
-//Body is ready
-reggie = 1;
-
 //Set horizontal speed
 if (ready = 0)
     hspeed = 0.5*xscale;
@@ -94,38 +88,6 @@ else
     
 //Set the offset within the parent
 x = parent.x-(offset*xscale);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Activate parent and snap into position if not turning around
-
-///Activate parent if it not exists.
-if (!instance_exists(parent))
-    instance_activate_object(parent);
-    
-//If the body scale is not the same as the parent, do not snap into place.
-if (xscale == nextxscale)
-&amp;&amp; (reggie == 1)
-    x = parent.x-(offset*xscale);
 </string>
           </argument>
         </arguments>

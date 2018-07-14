@@ -272,8 +272,7 @@ if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0))
 &amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0)) 
 &amp;&amp; (vspeed == 0) {
 
-    //Make sure it's not in contact with a semisolid
-    if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_semisolid,0,0))
+    if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+5,obj_semisolid,0,0))
         y += 4;
 }
     

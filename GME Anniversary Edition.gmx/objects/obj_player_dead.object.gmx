@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>///You killed the player, happy now?
 
+//Do not animate
+image_speed = 0;
+
 //Play sound
 stream = audio_play_sound(global._theme_miss, 0, 0);
 
@@ -136,6 +139,7 @@ endlevel();
             <kind>1</kind>
             <string>///Move up if inside the view
 
+image_speed = 0.2;
 if (y &lt; view_yview[0]+216) {
 
     vspeed = -6;

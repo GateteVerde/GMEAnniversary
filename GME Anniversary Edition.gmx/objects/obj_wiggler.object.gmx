@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_deactenemyparent</parentName>
+  <parentName>obj_enemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -53,6 +53,9 @@ ready = 0
 
 //Colour
 color = 0;
+
+//Is the wiggler moving
+moving = 0;
 
 //Previous horizontal speed
 prevhspeed = 0;
@@ -120,24 +123,32 @@ for (i=0; i&lt;4; i++)
             <kind>1</kind>
             <string>///Start moving
 
-//Set the body horizontal scale
-for (i=0; i&lt;4; i++) {
+if (!outside_view()) {
 
-    with (mybody[i]) {
+    //Check if moving
+    moving = 1;
     
-        if (!instance_exists(obj_playerparent))
-        || (obj_playerparent.x &lt; x)
-            xscale = -1;
-        else
-            xscale = 1;
+    //Set the body horizontal scale
+    for (i=0; i&lt;4; i++) {
+    
+        with (mybody[i]) {
+        
+            if (!instance_exists(obj_playerparent))
+            || (obj_playerparent.x &lt; x)
+                xscale = -1;
+            else
+                xscale = 1;
+        }
     }
-}
+        
+    //Inherit event
+    event_inherited();
     
-//Inherit event
-event_inherited();
-
-//Turn around
-event_user(15);
+    //Turn around
+    event_user(15);
+}
+else
+    alarm[10] = 1;
 </string>
           </argument>
         </arguments>
@@ -270,35 +281,6 @@ else
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Make sure body parts don't get lost
-
-for (i=0; i&lt;4; i++) {
-
-    if (!instance_exists(mybody[i]))
-        instance_activate_object(mybody[i]);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -317,6 +299,19 @@ for (i=0; i&lt;4; i++) {
           <argument>
             <kind>1</kind>
             <string>///Wiggler logic
+
+//Create respawn point if moving and outside the view.
+if (moving == 1) &amp;&amp; (outside_view()) {
+
+    //End movement
+    moving = 2;
+    
+    //Create respawn point
+    instance_create(xstart,ystart,obj_wiggler_respawn);
+    
+    //Destroy
+    instance_destroy();
+}
 
 //Remember horizontal speed
 prevhspeed = hspeed;
