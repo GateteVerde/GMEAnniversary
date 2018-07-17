@@ -2203,6 +2203,7 @@
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
   </shaders>
   <objects name="objects">
+    <object>objects\obj_persistent</object>
     <objects name="Main">
       <objects name="Controllers">
         <objects name="Gameplay">
@@ -3261,8 +3262,6 @@
       <object>objects\obj_intro</object>
       <object>objects\obj_skipper</object>
       <object>objects\obj_mariostart</object>
-      <object>objects\obj_persistent</object>
-      <object>objects\obj_persistent_musicplayer</object>
       <object>objects\obj_gameover</object>
     </objects>
     <object>objects\obj_up</object>

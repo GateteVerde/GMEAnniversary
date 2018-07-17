@@ -736,6 +736,51 @@ alarm[1] = 1;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Music variables
+
+//Open GMEMUSIC.INI for reading
+ini_open("gmemusicini.ini");
+
+//Main stream control
+global._stream = -1;
+
+//PSwitch stream control
+global._stream_pswitch = -1;
+
+//Starman stream control
+global._stream_starman = -1;
+
+//Minigame stream control
+global._stream_minigame = -1;
+
+//Overworld map BGM stream control
+global._stream_map = -1;
+
+//Initialize all music variables
+init_globals_music()
+
+//Close SMFMUSIC.INI after using it
+ini_close();
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="64">
       <action>

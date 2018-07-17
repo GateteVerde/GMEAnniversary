@@ -195,7 +195,6 @@ if (instance_exists(obj_tides))
 
 //Activate persistent object.
 instance_activate_object(obj_persistent);
-instance_activate_object(obj_persistent_musicplayer);
 
 //Set the animation sequence.
 switch (sequence) {

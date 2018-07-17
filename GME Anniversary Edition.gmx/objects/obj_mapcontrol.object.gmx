@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>///The world map manager, this is needed on the world map room. Do not forget to place it.
 
+//World map music
+mapmusic = noone;
+
 //Do not animate
 image_speed = 0;
 image_index = 0;
@@ -56,6 +59,57 @@ boxselection = 0;
 //Draws the player or collected Star Coins
 showcase = 0;
 alarm[1] = 240;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop playing the world map music
+
+audio_stop_sound(global._stream_map);
+global._stream_map = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Begin playing the world map music
+
+global._stream_map = audio_play_sound(mapmusic, 0, 1);
 </string>
           </argument>
         </arguments>
@@ -396,6 +450,12 @@ if (global.healthmode) {
             global.powerup = cs_big;
     }
 }
+
+//Begin playing the world map music
+if (instance_exists(obj_mapplayer))
+&amp;&amp; (global.died == 0)
+&amp;&amp; (global.clear == 0)
+    alarm[2] = 1;
 
 //Make sure the player did not bring a kuribo shoe from a level
 if (global.mount == 2)

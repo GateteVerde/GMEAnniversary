@@ -112,13 +112,11 @@ game_end();
             <kind>1</kind>
             <string>///Begin closing the menu.
 
-//Make the player able to move again.
-if (instance_exists(obj_mapplayer))
-    obj_mapplayer.ready = false;
+//Make the player able to move again
+obj_mapplayer.ready = 0;
 
-//Play up the map music.
-if (audio_is_paused(global._stream_map))
-    obj_persistent_musicplayer.alarm[2] = 2;
+//Play the current world map theme
+obj_mapcontrol.alarm[2] = 1;
 
 //Clear some stuff
 io_clear();

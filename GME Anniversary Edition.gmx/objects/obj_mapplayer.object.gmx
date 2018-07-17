@@ -203,9 +203,8 @@ if (panel) {
             //Allow movement
             ready = 0;
             
-            //Play music if it was paused
-            if (audio_is_paused(global._stream_map))
-                obj_persistent_musicplayer.alarm[2] = 2;
+            //Play music
+            obj_mapcontrol.alarm[2] = 1;
         }
             
         //Otherwise, wait
@@ -230,9 +229,8 @@ if (panel) {
         //Allow movement
         ready = 0;
         
-        //Play music if it was paused
-        if (audio_is_paused(global._stream_map))
-            obj_persistent_musicplayer.alarm[2] = 2;
+        //Play music
+        obj_mapcontrol.alarm[2] = 1;
     }
 }
 
@@ -288,8 +286,8 @@ frame = !frame;
             <kind>1</kind>
             <string>///Go to the destination room
 
-//Pause map stream
-audio_pause_sound(global._stream_map);
+//Stop map stream
+obj_mapcontrol.alarm[3] = 1;
 
 //Remember position
 event_user(1);
@@ -781,8 +779,7 @@ if (panel) {
     if (keyboard_check_pressed(global.shiftkey)) 
     &amp;&amp; (speed == 0)
     &amp;&amp; (letsgo == 0) 
-    &amp;&amp; (panel.beaten != 2) 
-    &amp;&amp; (!audio_is_paused(global._stream_map)) {
+    &amp;&amp; (panel.beaten != 2) {
         
         //Check if the panel is blocked
         if (panel.block == 0) {
