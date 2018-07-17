@@ -66,7 +66,7 @@ with (other) {
 //Replace the x and y position in map
 if (pipetype != global.pipetype) {
 
-    ds_map_replace(global.mapscreen, "mapx", global.pipex+8);
+    ds_map_replace(global.mapscreen, "mapx", global.pipex);
     ds_map_replace(global.mapscreen, "mapy", global.pipey);
 }
 

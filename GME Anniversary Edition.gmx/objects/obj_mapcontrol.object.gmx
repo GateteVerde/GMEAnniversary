@@ -143,6 +143,10 @@ if (global.mapstar) {
             <kind>1</kind>
             <string>///Handle various map features
 
+//Snap on the player's leftmost position
+x = obj_mapplayer.x+8;
+y = obj_mapplayer.y;
+
 //Animate the player sprite at the top-left corner
 anim += 0.07;
 
