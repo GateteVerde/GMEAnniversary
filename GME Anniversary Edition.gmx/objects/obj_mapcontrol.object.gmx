@@ -109,6 +109,17 @@ global._stream_map = -1;
             <kind>1</kind>
             <string>///Begin playing the world map music
 
+//Check the current world
+switch (global.world) {
+
+    //World 1
+    case ("1"): mapmusic = global._theme_map1; break;
+    
+    //World 2
+    case ("2"): mapmusic = global._theme_map2; break;
+}
+
+//Play the correct theme based on the current world
 global._stream_map = audio_play_sound(mapmusic, 0, 1);
 </string>
           </argument>

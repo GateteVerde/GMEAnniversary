@@ -35,7 +35,6 @@
 */
 
 //Default music
-mapmusic = noone;
 mapworld = "1";
 </string>
           </argument>
@@ -74,12 +73,12 @@ if (obj_persistent.restart == false) {
         
         //Set up the music
         with (obj_mapcontrol) {
-        
-            //Hereby map music
-            mapmusic = other.mapmusic;
+            
+            //Stop it
+            alarm[1] = 1;
             
             //Play it
-            alarm[0] = 1;
+            alarm[0] = 2;
         }
     }
 }
