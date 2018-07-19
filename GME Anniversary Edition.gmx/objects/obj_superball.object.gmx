@@ -140,9 +140,9 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
 }
 
 //If the player is moving up
-if (vspeed &lt; 0)
-&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)) 
-|| (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
+if (vspeed &lt;= 0)
+&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1+vspeed,bbox_right,bbox_top-1,obj_solid,1,0)) 
+|| (collision_rectangle(bbox_left,bbox_top-1+vspeed,bbox_right,bbox_top-1,obj_ceilslopeparent,1,0))) {
     
     //Prevent the player's head from getting stuck on a ceiling.
     if (vspeed != 0) {
@@ -152,7 +152,7 @@ if (vspeed &lt; 0)
             y++;
     }
     
-    //Reverse vertical speed
+    //Stop vertical speed
     vspeed = -vspeed;
 }
 
@@ -160,6 +160,33 @@ if (vspeed &lt; 0)
 if (vspeed != 0)
     while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
         y++;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Custom wall collision
+
+if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-8,obj_solid,1,0)))
+|| ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-8,obj_solid,1,0)))
+    hspeed = -hspeed;
 </string>
           </argument>
         </arguments>
