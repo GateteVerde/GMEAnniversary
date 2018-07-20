@@ -359,25 +359,12 @@ if (keyboard_check_pressed(vk_f4))
     
 //Restart the game when ALT+R are pressed.
 else if (keyboard_check_pressed(ord('R'))) {
-
-    //Reset all stream variables
-    with (obj_persistent_musicplayer) {
     
-        //Reset overworld map BGM control variable
-        mapmusicinit = false;
-        
-        //Reset map theme
-        mapmusic = noone;
-        
-        //Stop all music instances
-        audio_stop_all();
-    }
+    //Reset all global variables
+    init_globals();    
     
     //Restart?
     restart = 1;
-
-    //Reset all global variables
-    init_globals();
     
     //Stop all audio
     audio_stop_all();

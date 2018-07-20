@@ -64,8 +64,6 @@ mapworld = "1";
 if (obj_persistent.restart == false) {
 
     if (global.world != mapworld)
-    &amp;&amp; (global.clear == 0)
-    &amp;&amp; (global.died == 0)  
     &amp;&amp; (other.speed == 0) {
         
         //Set up the world
@@ -73,12 +71,12 @@ if (obj_persistent.restart == false) {
         
         //Set up the music
         with (obj_mapcontrol) {
-            
+
             //Stop it
             alarm[1] = 1;
             
             //Play it
-            alarm[0] = 2;
+            alarm[0] = 3;
         }
     }
 }

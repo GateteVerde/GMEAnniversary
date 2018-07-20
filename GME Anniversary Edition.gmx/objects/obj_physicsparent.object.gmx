@@ -323,21 +323,15 @@ else {
 
 //If the player is moving up
 if (vspeed &lt; 0)
-&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_solid,1,0)) 
-|| (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top-1,obj_ceilslopeparent,1,0))) {
+&amp;&amp; ((collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_solid,1,0)) 
+|| (collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_ceilslopeparent,1,0))) {
     
     //Prevent the NPC from getting stuck on a ceiling.
-    if (vspeed != 0) {
-
-        while ((collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0))
-        || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
-            y++;
-    }
+    while (collision_rectangle(bbox_left+1,bbox_top,bbox_right-1,bbox_top,obj_solid,1,0))
+        y++;
     
     //Stop vertical speed
     vspeed = 0;
-    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
-        y++;
 }
 </string>
           </argument>

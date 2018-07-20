@@ -31,13 +31,6 @@
 **  This item uses creation code!
 **
 **  levelname = Name of the warp pipe
-**  exitdir = Regular exit direction
-**  exitalt = Secret exit direction      
-**      0: Up
-**      1: Down
-**      2: Left
-**      3: Right
-**
 **  pipex = x position of pipe.
 **  pipey = y position of pipe.
 **  myroom = Destination room
@@ -47,8 +40,8 @@
 //Default variables
 levelname = "No name set!";
 levelid = -1;
-exitdir = 0;
-exitalt = 0;
+exitdir = 4;
+exitalt = 4;
 saveme = 0;
 pipex = 0;
 pipey = 0;

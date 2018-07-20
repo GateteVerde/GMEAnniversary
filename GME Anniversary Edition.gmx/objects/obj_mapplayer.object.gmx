@@ -347,7 +347,7 @@ if (global.clear == 1) {
             //Down
             case (1): {
             
-                //Check for a path above
+                //Check for a path below
                 var mypath = collision_rectangle(panel.x+8,panel.y+20,panel.x+8,panel.y+20,obj_mappathparent,0,0);
                 if (mypath)
                 &amp;&amp; (mypath.visible == false)
@@ -357,7 +357,7 @@ if (global.clear == 1) {
             //Left
             case (2): {
             
-                //Check for a path above
+                //Check for a path to the left
                 var mypath = collision_rectangle(panel.x-4,panel.y+8,panel.x-4,panel.y+8,obj_mappathparent,0,0);
                 if (mypath)
                 &amp;&amp; (mypath.visible == false)
@@ -367,11 +367,39 @@ if (global.clear == 1) {
             //Right
             case (3): {
             
-                //Check for a path above
+                //Check for a path to the right
                 var mypath = collision_rectangle(panel.x+20,panel.y+8,panel.x+20,panel.y+8,obj_mappathparent,0,0);
                 if (mypath)
                 &amp;&amp; (mypath.visible == false)
                     with (instance_create(panel.x,panel.y,obj_opener)) motion_set(0,2);
+            } break;
+            
+            //Default (Open in all directions)
+            case (4): {
+                        
+                //Check for a path above
+                var mypath = collision_rectangle(panel.x+8,panel.y-4,panel.x+8,panel.y-4,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(90,2);
+                                
+                //Check for a path below
+                var mypath = collision_rectangle(panel.x+8,panel.y+20,panel.x+8,panel.y+20,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(270,2);
+            
+                //Check for a path to the left
+                var mypath = collision_rectangle(panel.x-4,panel.y+8,panel.x-4,panel.y+8,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(180,2);
+                    
+                //Check for a path to the right
+                var mypath = collision_rectangle(panel.x+20,panel.y+8,panel.x+20,panel.y+8,obj_mappathparent,0,0);
+                if (mypath)
+                &amp;&amp; (mypath.visible == false)
+                    with (instance_create(panel.x,panel.y,obj_opener)) motion_set(0,2);                
             } break;
         }
         
@@ -424,7 +452,7 @@ else if (global.clear == 2) {
             //Down
             case (1): {
             
-                //Check for a path above
+                //Check for a path below
                 var mypath = collision_rectangle(panel.x+8,panel.y+20,panel.x+8,panel.y+20,obj_mappathparent,0,0);
                 if (mypath)
                 &amp;&amp; (mypath.visible == false)
@@ -434,7 +462,7 @@ else if (global.clear == 2) {
             //Left
             case (2): {
             
-                //Check for a path above
+                //Check for a path to the left
                 var mypath = collision_rectangle(panel.x-4,panel.y+8,panel.x-4,panel.y+8,obj_mappathparent,0,0);
                 if (mypath)
                 &amp;&amp; (mypath.visible == false)
@@ -444,7 +472,7 @@ else if (global.clear == 2) {
             //Right
             case (3): {
             
-                //Check for a path above
+                //Check for a path to the right
                 var mypath = collision_rectangle(panel.x+20,panel.y+8,panel.x+20,panel.y+8,obj_mappathparent,0,0);
                 if (mypath)
                 &amp;&amp; (mypath.visible == false)
@@ -1116,29 +1144,60 @@ else {
             <kind>1</kind>
             <string>///Make the player display some arrows
 
+//Check for a panel
+temp = collision_point(x,y+8,obj_maplevel,0,0);
+
 //Check for a path above
 var mypath_u = collision_rectangle(x+8,y-4,x+8,y-4,obj_mappathparent,0,0);
 if (mypath_u)
-&amp;&amp; (mypath_u.visible)
-    draw_sprite_ext(spr_mapmario_arrows,anim,x+8,y-12,1,1,90,c_white,1);
+&amp;&amp; (mypath_u.visible) {
+
+    //Draw secret path if it exists
+    if (temp)
+    &amp;&amp; (temp.exitalt == 0)
+        draw_sprite_ext(spr_mapmario_arrows_secret,anim,x+8,y-12,1,1,90,c_white,1);
+    else
+        draw_sprite_ext(spr_mapmario_arrows,anim,x+8,y-12,1,1,90,c_white,1);
+}
         
 //Check for a path below
 var mypath_d = collision_rectangle(x+8,y+20,x+8,y+20,obj_mappathparent,0,0);
 if (mypath_d)
-&amp;&amp; (mypath_d.visible)
-    draw_sprite_ext(spr_mapmario_arrows,anim,x+8,y+20,1,1,270,c_white,1);
+&amp;&amp; (mypath_d.visible) {
+
+    //Draw secret path if it exists
+    if (temp)
+    &amp;&amp; (temp.exitalt == 1)
+        draw_sprite_ext(spr_mapmario_arrows_secret,anim,x+8,y+20,1,1,270,c_white,1);
+    else
+        draw_sprite_ext(spr_mapmario_arrows,anim,x+8,y+20,1,1,270,c_white,1);
+}
     
 //Check for a path to the left
 var mypath_l = collision_rectangle(x-8,y+8,x-8,y+8,obj_mappathparent,0,0);
 if (mypath_l)
-&amp;&amp; (mypath_l.visible)
-    draw_sprite_ext(spr_mapmario_arrows,anim,x-8,y+4,1,1,180,c_white,1);
+&amp;&amp; (mypath_l.visible) {
+
+    //Draw secret path if it exists
+    if (temp)
+    &amp;&amp; (temp.exitalt == 2)
+        draw_sprite_ext(spr_mapmario_arrows_secret,anim,x-8,y+4,1,1,180,c_white,1);
+    else
+        draw_sprite_ext(spr_mapmario_arrows,anim,x-8,y+4,1,1,180,c_white,1);
+}
         
 //Check for a path to the right
 var mypath_r = collision_rectangle(x+24,y+8,x+24,y+8,obj_mappathparent,0,0);
 if (mypath_r)
-&amp;&amp; (mypath_r.visible)
-    draw_sprite_ext(spr_mapmario_arrows,anim,x+24,y+4,1,1,0,c_white,1);
+&amp;&amp; (mypath_r.visible) {
+
+    //Draw secret path if it exists
+    if (temp)
+    &amp;&amp; (temp.exitalt == 3)
+        draw_sprite_ext(spr_mapmario_arrows_secret,anim,x+24,y+4,1,1,0,c_white,1);
+    else
+        draw_sprite_ext(spr_mapmario_arrows,anim,x+24,y+4,1,1,0,c_white,1);
+}
 </string>
           </argument>
         </arguments>

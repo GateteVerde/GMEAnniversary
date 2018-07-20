@@ -466,7 +466,7 @@ if (global.healthmode) {
 if (instance_exists(obj_mapplayer))
 &amp;&amp; (global.died == 0)
 &amp;&amp; (global.clear == 0)
-    alarm[2] = 1;
+    alarm[2] = 2;
 
 //Make sure the player did not bring a kuribo shoe from a level
 if (global.mount == 2)

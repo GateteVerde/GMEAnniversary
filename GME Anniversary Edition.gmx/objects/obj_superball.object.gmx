@@ -84,109 +84,44 @@ event_user(0);
             <kind>1</kind>
             <string>///Superball logic
 
-//Wall collision
-event_user(3);
-
+//Horizontal collision
+if (hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right+hspeed,bbox_top,bbox_right+hspeed,bbox_bottom,obj_solid,0,0))
+|| (hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left+hspeed,bbox_top,bbox_left+hspeed,bbox_bottom,obj_solid,0,0))
+    hspeed = -hspeed;
+    
 //Floor collision
-event_user(4);
+if (vspeed &gt; 0) {
+
+    //If collision with a semisolid platform
+    if (collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_semisolid,0,0))
+        vspeed = -vspeed;
+        
+    //Otherwise, if the ball collides with a slope
+    else if (collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_slopeparent,1,0)) {
+    
+        hspeed = -hspeed;
+        vspeed = -vspeed;
+    }
+}
+
+//Ceiling collision
+if (vspeed &lt; 0) {
+
+    //If collision with a non-sloped ceiling
+    if (collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_solid,0,0))
+        vspeed = -vspeed;
+        
+    //Otherwise, if there's a sloped collision
+    else if (collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_ceilslopeparent,1,0)) {
+    
+        vspeed = -vspeed;
+        hspeed = -hspeed;
+    }
+}
 
 //Destroy when outside the view
 if (outside_view())
     instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="14">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Custom floor collision
-
-//When moving down
-if (vspeed &gt; 0) {
-
-    //Check for a semisolid below
-    var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_semisolid,0,0);
-    
-    //If the semisolid exists, snap above it.
-    if (semisolid)
-    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5)
-        y = semisolid.bbox_top-8;
-}
-
-//Check for floor objects
-if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
-&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_semisolid,0,0)))
-|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
-
-    //Reverse vertical speed
-    if (vspeed &gt; 0)
-        vspeed = -vspeed;
-}
-
-//If the player is moving up
-if (vspeed &lt;= 0)
-&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1+vspeed,bbox_right,bbox_top-1,obj_solid,1,0)) 
-|| (collision_rectangle(bbox_left,bbox_top-1+vspeed,bbox_right,bbox_top-1,obj_ceilslopeparent,1,0))) {
-    
-    //Prevent the player's head from getting stuck on a ceiling.
-    if (vspeed != 0) {
-
-        while ((collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0))
-        || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
-            y++;
-    }
-    
-    //Stop vertical speed
-    vspeed = -vspeed;
-}
-
-//Make sure that the player does not get embed on ceiling slopes
-if (vspeed != 0)
-    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
-        y++;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Custom wall collision
-
-if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-8,obj_solid,1,0)))
-|| ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-8,obj_solid,1,0)))
-    hspeed = -hspeed;
 </string>
           </argument>
         </arguments>

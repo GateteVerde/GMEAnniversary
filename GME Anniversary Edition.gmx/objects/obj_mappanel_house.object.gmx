@@ -66,12 +66,12 @@
 
 //Default variables
 levelname = "Mushroom House"
-levelid = -1;
 powerup[0] = -1;
 powerup[1] = -1;
 powerup[2] = -1;
-exitdir = 0;
-exitalt = 0;
+levelid = -1;
+exitdir = -1;
+exitalt = -1;
 saveme = 1;
 myroom = rm_bonus;
 block = 0;

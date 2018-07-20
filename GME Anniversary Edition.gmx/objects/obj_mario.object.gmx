@@ -366,14 +366,14 @@ if (stompstyle == 1)
     else if ((global.powerup == cs_ice) || ((global.powerup == cs_penguin) &amp;&amp; (swimming == false))) {
     
         with (instance_create(x,y,obj_iceball)) 
-            hspeed = other.xspeed+(1.2*sign(other.dir));
+            hspeed = 1.2*sign(other.dir);
     }
         
     //Hammer
     else if (global.powerup == cs_hammer) {
     
         with (instance_create(x,y,obj_hammer)) 
-            hspeed = other.xspeed+(1.25*sign(other.dir));
+            hspeed = 1.25*sign(other.dir);
     }
     
     //Superball

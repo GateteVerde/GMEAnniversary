@@ -22,7 +22,11 @@ for (var i = 0; i < 3; i++) {
     file_text_readln(file);
 }
 
-//Turn the global coin counter into a string and write it
+//Current World
+global.world = real(base64_decode(file_text_read_string(file)));
+file_text_readln(file);
+
+//Star Coins
 global.starcoins = real(base64_decode(file_text_read_string(file)));
 file_text_readln(file);
 

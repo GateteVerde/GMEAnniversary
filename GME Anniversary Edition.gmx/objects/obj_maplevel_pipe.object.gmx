@@ -31,13 +31,6 @@
 **  This item uses creation code!
 **
 **  pipetype = 0 or 1 (Destination pipe must be different from current pipe.)
-**  exitdir = Regular exit direction
-**  exitalt = Secret exit direction      
-**      0: Up
-**      1: Down
-**      2: Left
-**      3: Right
-**
 **  pipex = x position of pipe.
 **  pipey = y position of pipe.
 **  myroom = Destination room
@@ -48,8 +41,8 @@
 levelname = "Warp Pipe"
 levelid = -1;
 pipetype = 0;
-exitdir = 0;
-exitalt = 0;
+exitdir = 4;
+exitalt = 4;
 saveme = 0;
 pipex = 0;
 pipey = 0;
