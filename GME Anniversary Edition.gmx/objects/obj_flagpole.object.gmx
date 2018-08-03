@@ -139,7 +139,7 @@ if (other.y &gt;= y+16) {
 if (obj_playerparent_clear.ystart+16 &lt;= y+35) {
 
     limit = 27;
-    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+    with (instance_create(bbox_right+24,y+144,obj_score_flag)) 
         event_user(9);
 }
     
@@ -147,7 +147,7 @@ if (obj_playerparent_clear.ystart+16 &lt;= y+35) {
 else if (obj_playerparent_clear.ystart+16 &lt;= y+80) {
 
     limit = 45;
-    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+    with (instance_create(bbox_right+24,y+144,obj_score_flag)) 
         event_user(7);
 }
     
@@ -155,7 +155,7 @@ else if (obj_playerparent_clear.ystart+16 &lt;= y+80) {
 else if (obj_playerparent_clear.ystart+16 &lt;= y+104) {
 
     limit = 91
-    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+    with (instance_create(bbox_right+24,y+144,obj_score_flag)) 
         event_user(5);
 }
     
@@ -163,7 +163,7 @@ else if (obj_playerparent_clear.ystart+16 &lt;= y+104) {
 else if (obj_playerparent_clear.ystart+16 &lt;= y+144) {
 
     limit = 115;
-    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+    with (instance_create(bbox_right+24,y+144,obj_score_flag)) 
         event_user(3);
 }
     
@@ -171,7 +171,7 @@ else if (obj_playerparent_clear.ystart+16 &lt;= y+144) {
 else {
 
     limit = 144;
-    with (instance_create(bbox_right+32,y+144,obj_score_flag)) 
+    with (instance_create(bbox_right+24,y+144,obj_score_flag)) 
         event_user(1);
 }
 </string>

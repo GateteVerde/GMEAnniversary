@@ -27,11 +27,54 @@
             <kind>1</kind>
             <string>///You got points
 
+//Fade to yellow and glow?
+fade = 0;
+
+//Scale?
+scale = 1;
+
 //Set the vertical speed
 vspeed = -1;
 
 //Set the friction
 friction = 0.0175;
+
+//Create sparks when fading to yellow
+alarm[0] = 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create sparkles on fade
+
+if (fade &gt; 0) {
+
+    with (instance_create(x-16+random(32),y-12+random(16),obj_smoke)) {
+    
+        image_speed = 0.25;
+        depth = -7;
+        sprite_index = spr_boltspark;
+    }
+}
+alarm[0] = 2;
 </string>
           </argument>
         </arguments>
@@ -57,8 +100,31 @@ friction = 0.0175;
             <string>///Score logic
 
 //Destroy if vertical speed is equal to zero
-if (vspeed == 0)
-    instance_destroy();
+if (vspeed == 0) {
+
+    //If the sprite are not the extra lives ones, destroy at the moment.
+    if (sprite_index != spr_1uppts)
+    &amp;&amp; (sprite_index != spr_2uppts)
+    &amp;&amp; (sprite_index != spr_3uppts)
+        instance_destroy();
+        
+    //Otherwise, fade to yellow
+    else {
+    
+        fade += 0.05;
+        if (fade &gt; 1)
+            instance_destroy();
+    }
+}
+
+//Increment scale
+scale += 0.05;
+if (scale &gt; 1)
+    scale = 1;
+
+//Make sure if it's inside the view
+if (y &lt; view_yview[0]+16)
+    y = view_yview[0]+16;
 </string>
           </argument>
         </arguments>
@@ -176,6 +242,12 @@ if (global.time &gt; 0)
 //Set the sprite
 sprite_index = spr_3uppts;
 
+//Position fix
+x += 8;
+
+//Set the scale
+scale = 0;
+
 //If there's not spare lifes
 if (obj_persistent.addlives == 0) {
 
@@ -221,6 +293,12 @@ else
 //Set the sprite
 sprite_index = spr_2uppts;
 
+//Position fix
+x += 8;
+
+//Set the scale
+scale = 0;
+
 //If there's not spare lifes
 if (obj_persistent.addlives == 0) {
 
@@ -265,6 +343,12 @@ else
 
 //Set the sprite
 sprite_index = spr_1uppts;
+
+//Position fix
+x += 8;
+
+//Set the scale
+scale = 0;
 
 //If there's not spare lifes
 if (obj_persistent.addlives == 0) {
@@ -562,10 +646,18 @@ score += 10;
             <kind>1</kind>
             <string>///Draw it
 
-if (y &gt; view_yview[0]+16)
-    draw_sprite(sprite_index,image_index,round(x),round(y));
-else
-    draw_sprite(sprite_index,image_index,round(x),round(view_yview[0]+16));
+if (y &gt; view_yview[0]+16) {
+
+    draw_sprite_ext(sprite_index,0,round(x),round(y),scale,scale,0,c_white,1);;
+    if (fade &gt; 0)
+        draw_sprite_ext(sprite_index,1,round(x),round(y),1,1,0,c_white,fade);
+}
+else {
+
+    draw_sprite_ext(sprite_index,0,round(x),round(view_yview[0]+16),scale,scale,0,c_white,1);
+    if (fade &gt; 0)
+        draw_sprite_ext(sprite_index,1,round(x),round(view_yview[0]+16),1,1,0,c_white,fade);
+}
 </string>
           </argument>
         </arguments>

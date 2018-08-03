@@ -213,7 +213,7 @@ if (other.gravity &gt; 0) {
         imdead.image_index = image_index;
         
         //Make the dead object hereby the scale
-        imdead.image_xscale = xscale;
+        imdead.image_xscale = dir;
         
         //Do NOT apply vertical speed
         imdead.hspeed = 0;
