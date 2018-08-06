@@ -49,6 +49,9 @@ x = choose(64,144,224,304);
 //Do not show Mario Start!
 global.mariostart = 1;
 
+//Prevent level exit
+global.levelbeat = 0;
+
 //Create controller object
 if (!instance_exists(obj_levelcontrol))
     instance_create(0,0,obj_levelcontrol);

@@ -106,7 +106,7 @@ with (instance_create(x-8,y,obj_score)) {
 
     if (global.silvercoins &lt; 8)
         event_user(3+global.silvercoins);
-    else
+    else 
         event_user(11);
 }
 

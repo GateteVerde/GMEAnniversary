@@ -335,9 +335,6 @@ else if (inventory) {
         else if (keyboard_check_pressed(global.leftkey)) 
         &amp;&amp; (boxselection != 0) {
         
-            //Play 'Move' sound
-            audio_play_sound(snd_move, 0, false)
-        
             //If the item selected is the leftmost one, go to the last one
             if (boxselection &gt; 1) {
             

@@ -104,11 +104,14 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
 //Play 'Enter Stage' sound
 audio_play_sound(snd_enterstage, 0, false);
 
+//Do not remember checkpoint
+global.checkpoint = noone;
+
 //Do not display "Mario Start!"
 global.mariostart = 1;
 
-//Do not remember checkpoint
-global.checkpoint = noone;
+//Prevent level exit
+global.levelbeat = 0;
 
 //Make the player go to the destination room
 with (obj_mapplayer) {
