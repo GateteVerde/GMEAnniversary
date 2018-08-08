@@ -27,10 +27,14 @@
             <kind>1</kind>
             <string>///The In-Level HUD
 
-//SMB3 Card Icons
-alpha = 0;
+//P-Meter
+alpha2 = 0;
+
+//SMB3 Card Holders
 if (instance_exists(obj_goalcard))
     alpha = 2;
+else
+    alpha = 0;
 
 //P-Meter flash
 flash = 0;
@@ -127,6 +131,23 @@ alarm[0] = 7;
             <kind>1</kind>
             <string>///HUD Logic
 
+//If the player is running, make the pmeter visible
+if (instance_exists(obj_playerparent)) {
+
+    if (obj_playerparent.pmeter &gt; 0) {
+    
+        alpha2 += 0.1;
+        if (alpha2 &gt; 1)
+            alpha2 = 1;
+    }
+    else {
+    
+        alpha2 -= 0.1;
+        if (alpha2 &lt; 0)
+            alpha2 = 0;
+    }
+}
+
 //If the goal card exists, show HUD cards
 if (instance_exists(obj_goalcard)) {
 
@@ -134,7 +155,7 @@ if (instance_exists(obj_goalcard)) {
     || (obj_levelcontrol.x &gt; obj_goalcard.x)
         alpha = 2;
     else
-        alpha -= 0.0125;
+        alpha -= 0.025;
 }
 
 //Otherwise, hide HUD cards
@@ -242,12 +263,12 @@ draw_text_colour(view_xview[0]+view_wview[0]-127, view_yview[0]+18, string_add_z
 if (instance_exists(obj_playerparent)) {
 
     if (obj_playerparent.pmeter &gt; 111)
-        draw_sprite_ext(spr_hud_pmeter, 7+flash, view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_hud_pmeter, 7+flash, view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, alpha2);
     else
-        draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/14), view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/14), view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, alpha2);
 }
 else
-    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_hud_pmeter, 0, view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, alpha2);
     
 //Enable the fog
 if (instance_exists(obj_lightningsheet)) {

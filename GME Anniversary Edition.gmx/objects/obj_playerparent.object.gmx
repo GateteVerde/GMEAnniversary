@@ -686,11 +686,10 @@ if (!swimming) {
                     //Make the player able to run.
                     run = true;
                 }
-                else {
                 
-                    //Fill P-Meter.
+                //Otherwise, fill P-Meter
+                else
                     pmeter += 2;
-                }
             }
             
             //Otherwise...
@@ -718,11 +717,10 @@ if (!swimming) {
                             //Make the player able to run.
                             run = true;
                         }
-                        else {
                         
-                            //Fill P-Meter.
+                        //Otherwise, fill P-Meter
+                        else
                             pmeter += 2;
-                        }
                     }
                     
                     //If the player is on the ground and not running.

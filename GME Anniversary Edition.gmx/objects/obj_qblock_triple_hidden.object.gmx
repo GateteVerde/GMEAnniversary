@@ -101,14 +101,14 @@ sprout[2] = cs_coin;
             <string>///Make it visible
 
 //Check for the player
-var player = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_playerparent,0,0);
+var player = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+2,obj_playerparent,0,0);
 
 //If the player is in position
 if (player)
 &amp;&amp; (player.yspeed &lt; 0)
 &amp;&amp; (player.x &gt; bbox_left) 
 &amp;&amp; (player.x &lt; bbox_right)
-&amp;&amp; (player.bbox_top &gt; bbox_bottom+player.yspeed) {
+&amp;&amp; (player.bbox_top &gt; bbox_bottom+1+player.yspeed) {
 
     //Create a new block, give it the same item and bump it.
     with (instance_create(x,y,obj_qblock_triple)) {
