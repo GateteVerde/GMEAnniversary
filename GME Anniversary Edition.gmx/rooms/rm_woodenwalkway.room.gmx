@@ -4,7 +4,7 @@
   <width>3504</width>
   <height>432</height>
   <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -398,9 +398,6 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_pwingblock" x="64" y="368" name="inst_AA52D91F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pwingblock" x="64" y="384" name="inst_A1466E09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock_hidden" x="128" y="320" name="inst_F3AB67B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_goomba" x="248" y="384" name="inst_93ABC01C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_goomba" x="200" y="384" name="inst_D6C2DBF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_generator_goomba" x="296" y="384" name="inst_56A4C6B8" locked="0" code="dir = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_basket" x="16" y="384" name="inst_07A7454A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="32" y="384" name="inst_A9608BEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="16" y="368" name="inst_35AF1301" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -426,6 +423,9 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_player" x="104" y="384" name="inst_F4A9A1FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_paragaloomba" x="424" y="320" name="inst_C09E198B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="1744" y="48" name="inst_343316FD" locked="0" code="sprout[0] = cs_bomb;&#xA;sprout[2] = cs_shell;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_goomba" x="200" y="384" name="inst_0B6E3A5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_goomba" x="248" y="384" name="inst_DF861838" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_generator_goomba" x="296" y="384" name="inst_336559F8" locked="0" code="dir = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="432" y="288" w="16" h="16" xo="368" yo="608" id="10063518" name="inst_779C14FE" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

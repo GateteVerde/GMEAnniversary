@@ -46,10 +46,10 @@ isheavy = 0;
 swimming = false;
 
 //Whether the object is charging at the player
-charge = false;
+charge = 0;
 
 //Animate
-image_speed = 0.2;
+image_speed = 0.125;
 
 //Start moving
 alarm[10] = 2;
@@ -61,6 +61,48 @@ with (mytop) {
     //Set the scale
     image_yscale = 0.25;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Follow the player
+
+//If not in contact with a slippery surface
+if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
+    
+    if (hspeed != 0) {
+    
+        //Start moving
+        if (!instance_exists(obj_playerparent))
+        || (obj_playerparent.x &lt; x)
+            hspeed = -1;
+        else
+            hspeed = 1;
+    }
+    
+    //Change direction
+    alarm[11] = 60+round(random_range(60,120));
+}
+
+
 </string>
           </argument>
         </arguments>
@@ -83,9 +125,24 @@ with (mytop) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Chaaaaaarge!
+            <string>///Move towards the player
 
-charge = 1;
+//Move towards the player
+if (hspeed == 0) {
+
+    //Start moving
+    if (!instance_exists(obj_playerparent))
+    || (obj_playerparent.x &lt; x)
+        hspeed = -1;
+    else
+        hspeed = 1;
+}
+
+//If in contact with a slippery surface, chaaaaarge... otherwise, turn around
+if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0))
+    charge = 1;
+else
+    alarm[11] = 60;
 </string>
           </argument>
         </arguments>
@@ -115,12 +172,12 @@ prevhspeed = hspeed;
 
 //Inherit event
 event_inherited();
-
-//If the direction changed, speed up
-if (hspeed != prevhspeed) then hspeed = sign(hspeed)*1.5;
     
 //Keep charging at the player
-if (charge == 1) {
+if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
+
+    //Enable charge
+    charge = 1;
 
     //If there's no gravity
     if (gravity == 0) {
@@ -140,14 +197,41 @@ if (charge == 1) {
                 hspeed = 1.5;
         }
     }
+        
+    //If the direction changed, speed up
+    if (hspeed != prevhspeed)
+        hspeed = sign(hspeed)*1.5;
+}
+else {
+
+    //If charging...
+    if (charge == 1) {
+        
+        //Turn towards the player
+        alarm[11] = 60;
+    
+        //Stop charging
+        charge = 0;
+        
+        //Set normal speed
+        if (hspeed &gt; 0)
+            hspeed = 1;
+        else
+            hspeed = -1;
+    }
 }
 
-//Face towards the player
-if (!instance_exists(obj_playerparent))
-|| (obj_playerparent.x &lt; x)
-    xscale = -1;
+//Face towards the player but only if in contact with a slippery surface
+if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
+    
+    if (!instance_exists(obj_playerparent))
+    || (obj_playerparent.x &lt; x)
+        xscale = -1;
+    else
+        xscale = 1;
+}
 else
-    xscale = 1;
+    xscale = 1*sign(hspeed);
 </string>
           </argument>
         </arguments>

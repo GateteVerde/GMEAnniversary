@@ -94,6 +94,10 @@ else if (ready ==  2){
         exit;
     }
 }
+
+//Destroy if outside the room
+if (y &lt; -16)
+    instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -157,6 +161,10 @@ if (ready &lt; 2) {
     
     //Collect it
     ready = 2;
+    
+    //Stop if moving up
+    if (vspeed &lt; 0)
+        vspeed = 0;
 }
 
 </string>

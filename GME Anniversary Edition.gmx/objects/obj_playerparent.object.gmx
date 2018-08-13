@@ -1095,7 +1095,8 @@ else if ((swimming) &amp;&amp; (!water)) {
     
 //Free the player is he is stuck on a solid.
 if (yspeed == 0)
-&amp;&amp; (crouch == false) {
+&amp;&amp; (crouch == false) 
+&amp;&amp; (mask_index == spr_bigmask) {
     
     //If the player gets stuck
     if (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,1,0)) 
@@ -1138,7 +1139,7 @@ if (yspeed == 0)
 //Unstuck in case of overlapping a solid completely
 if (state &lt; 2)
 &amp;&amp; (inwall == 0)
-    while (collision_rectangle(bbox_left+1,bbox_top+1,bbox_right-1,bbox_bottom-1,obj_solid,0,0))
+    while (collision_rectangle(x-1,bbox_top,x+1,bbox_bottom,obj_solid,0,0))
         y--;
     
 //Handle tail whip animation

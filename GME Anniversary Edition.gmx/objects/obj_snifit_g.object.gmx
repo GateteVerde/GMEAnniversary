@@ -208,7 +208,7 @@ else {
 }
 
 //Set lower gravity if jumping
-if (jumping != 0) then gravity = 0.15;
+if (jumping &gt; 0) then gravity = 0.15;
 
 //Follow the player
 if (!instance_exists(obj_playerparent))

@@ -196,7 +196,9 @@ else if (!water)
 
 //If the pow block kill effect is the goal one, make enemies go poof
 if (other.killtype == 1) {
-
+    
+    //Create smoke effect
+    instance_create(round(bbox_left+bbox_right)/2-8,round(bbox_top+bbox_bottom)/2-8,obj_enemy_coin2);
     instance_create(round(bbox_left+bbox_right)/2-8,round(bbox_top+bbox_bottom)/2-8,obj_smoke);
     instance_destroy();
     exit;
