@@ -226,7 +226,8 @@ else if (ready &gt; 0) {
         var shell = collision_rectangle(x+(5*sign(xscale)),bbox_top,x+(10*sign(xscale)),bbox_bottom+16,obj_shell,0,0);
         
         //If there's a shell in position and said shell does not have a koopa inside.
-        if (shell) {
+        if (shell) 
+        &amp;&amp; (shell.held == 0) {
         
             //Reduce speed so the koopa can enter the shell.
             if (abs(hspeed) &gt; 0.5) {

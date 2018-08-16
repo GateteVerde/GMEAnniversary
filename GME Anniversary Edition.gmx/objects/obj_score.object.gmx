@@ -123,8 +123,8 @@ if (scale &gt; 1)
     scale = 1;
 
 //Make sure if it's inside the view
-if (y &lt; view_yview[0]+16)
-    y = view_yview[0]+16;
+if (y &lt; view_yview[0]+60)
+    y = view_yview[0]+60;
 </string>
           </argument>
         </arguments>
@@ -646,7 +646,7 @@ score += 10;
             <kind>1</kind>
             <string>///Draw it
 
-if (y &gt; view_yview[0]+16) {
+if (y &gt; view_yview[0]+60) {
 
     draw_sprite_ext(sprite_index,0,round(x),round(y),scale,scale,0,c_white,1);;
     if (fade &gt; 0)
@@ -654,9 +654,9 @@ if (y &gt; view_yview[0]+16) {
 }
 else {
 
-    draw_sprite_ext(sprite_index,0,round(x),round(view_yview[0]+16),scale,scale,0,c_white,1);
+    draw_sprite_ext(sprite_index,0,round(x),round(view_yview[0]+60),scale,scale,0,c_white,1);
     if (fade &gt; 0)
-        draw_sprite_ext(sprite_index,1,round(x),round(view_yview[0]+16),1,1,0,c_white,fade);
+        draw_sprite_ext(sprite_index,1,round(x),round(view_yview[0]+60),1,1,0,c_white,fade);
 }
 </string>
           </argument>

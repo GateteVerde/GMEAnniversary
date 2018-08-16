@@ -126,6 +126,9 @@ alarm[0] = 8;
 //Check for quicksand
 if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_quicksand,0,0)) {
 
+    //Set the depth
+    depth = 10;
+
     //Stop horizontal speed
     hspeed = 0;
     
@@ -142,6 +145,9 @@ if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_quicksa
 
 //Cap vertical speed
 if (vspeed &gt; 0) {
+
+    //Set the default depth
+    depth = -6;
 
     //If not in water
     if (!place_meeting(x,y,obj_swim)) {

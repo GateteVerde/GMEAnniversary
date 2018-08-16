@@ -151,7 +151,8 @@ else if (ready &gt; 0) {
         var shell = collision_rectangle(x+(5*sign(xscale)),bbox_top,x+(10*sign(xscale)),bbox_bottom-4,obj_shell,0,0);
         
         //If there's a shell in position and said shell does not have a koopa inside.
-        if (shell) {
+        if (shell) 
+        &amp;&amp; (shell.held == 0) {
         
             //If there's not a koopa inside the shell
             if (shell.koopainside == 0) 
