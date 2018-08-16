@@ -10,7 +10,10 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>///Level parameters 
+  <code>///Level parameters
+
+//Light surface value
+global.ambient_light = c_black;
 
 //Skin
 global.skin = 1;
@@ -122,7 +125,6 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_brick" x="1104" y="16" name="inst_1EBCD84C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1120" y="16" name="inst_56A9585A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1136" y="16" name="inst_FEAC2285" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="1184" y="16" name="inst_ACF652C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1200" y="16" name="inst_FC96EDBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1184" y="16" name="inst_00DBD633" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1168" y="16" name="inst_E19844D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -152,8 +154,8 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_brick" x="1136" y="112" name="inst_9296AB63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1152" y="112" name="inst_1BBC35FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1152" y="96" name="inst_A6E857E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="1152" y="80" name="inst_5CE0453B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="1152" y="64" name="inst_1094623A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="1152" y="64" name="inst_5CE0453B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_brick" x="1152" y="80" name="inst_1094623A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1152" y="48" name="inst_A1F75B66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1152" y="32" name="inst_7EB4393E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="1136" y="32" name="inst_96EF89E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

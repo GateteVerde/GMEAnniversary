@@ -4,7 +4,7 @@
   <width>3504</width>
   <height>432</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -420,12 +420,12 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_ninji_black" x="8" y="288" name="inst_3BCEDC7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa" x="328" y="352" name="inst_2D82EC10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bobomb" x="1704" y="272" name="inst_38C65E1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="104" y="384" name="inst_F4A9A1FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_paragaloomba" x="424" y="320" name="inst_C09E198B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="1744" y="48" name="inst_343316FD" locked="0" code="sprout[0] = cs_bomb;&#xA;sprout[2] = cs_shell;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="200" y="384" name="inst_0B6E3A5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="248" y="384" name="inst_DF861838" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_generator_goomba" x="296" y="384" name="inst_336559F8" locked="0" code="dir = -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="104" y="384" name="inst_B52CFD78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="432" y="288" w="16" h="16" xo="368" yo="608" id="10063518" name="inst_779C14FE" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

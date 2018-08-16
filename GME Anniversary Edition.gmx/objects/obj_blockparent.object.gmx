@@ -138,7 +138,7 @@ alarm[1] = 4;
             <string>///Set depth
 
 //Check for the player
-var held = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_parhold,0,0);
+var held = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,obj_parhold,0,0);
 
 //If the player is in position
 if (held)

@@ -98,9 +98,23 @@ if (vspeed &gt; 0) {
         
     //Otherwise, if the ball collides with a slope
     else if (collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_slopeparent,1,0)) {
-    
-        hspeed = -hspeed;
-        vspeed = -vspeed;
+        
+        //If moving right and there's a opposite slope collision in place
+        if ((hspeed &gt; 0)
+        &amp;&amp; ((collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_slope_r,1,0))
+        || (collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_slope_sr,1,0))))
+        
+        //Otherwise, if moving left and there's a opposite slope collision in place
+        || ((hspeed &lt; 0)
+        &amp;&amp; ((collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_slope_l,1,0))
+        || (collision_rectangle(bbox_left,bbox_bottom+vspeed,bbox_right,bbox_bottom+vspeed,obj_slope_sl,1,0)))) {
+        
+            //Bounce horizontally
+            hspeed = -hspeed;
+        }
+        
+        //Bounce vertically
+        vspeed = -vspeed;        
     }
 }
 
@@ -113,9 +127,23 @@ if (vspeed &lt; 0) {
         
     //Otherwise, if there's a sloped collision
     else if (collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_ceilslopeparent,1,0)) {
-    
-        vspeed = -vspeed;
-        hspeed = -hspeed;
+                
+        //If moving right and there's a opposite slope collision in place
+        if ((hspeed &gt; 0)
+        &amp;&amp; ((collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_ceilslope_r,1,0))
+        || (collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_ceilslope_sr,1,0))))
+        
+        //Otherwise, if moving left and there's a opposite slope collision in place
+        || ((hspeed &lt; 0)
+        &amp;&amp; ((collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_ceilslope_l,1,0))
+        || (collision_rectangle(bbox_left,bbox_top+vspeed,bbox_right,bbox_top+vspeed,obj_ceilslope_sl,1,0)))) {
+        
+            //Bounce horizontally
+            hspeed = -hspeed;   
+        }
+                
+        //Bounce vertically
+        vspeed = -vspeed;        
     }
 }
 

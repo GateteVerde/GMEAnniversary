@@ -456,6 +456,7 @@
       <sound>sound\snd_bump</sound>
       <sound>sound\snd_climb</sound>
       <sound>sound\snd_fireball</sound>
+      <sound>sound\snd_freeze</sound>
       <sound>sound\snd_frog</sound>
       <sound>sound\snd_iceball</sound>
       <sound>sound\snd_jump</sound>
@@ -527,6 +528,8 @@
       <sound>sound\snd_redcoin7</sound>
       <sound>sound\snd_redcoin8</sound>
       <sound>sound\snd_ring</sound>
+      <sound>sound\snd_rocket</sound>
+      <sound>sound\snd_rocket2</sound>
       <sound>sound\snd_scatter</sound>
       <sound>sound\snd_shatter</sound>
       <sound>sound\snd_sprout</sound>
@@ -2008,6 +2011,7 @@
       <sprites name="Surfaces">
         <sprite>sprites\spr_surface_light</sprite>
         <sprite>sprites\spr_surface_light_small</sprite>
+        <sprite>sprites\spr_surface_light_large</sprite>
       </sprites>
       <sprite>sprites\spr_toad</sprite>
       <sprite>sprites\spr_digtile</sprite>
@@ -2822,6 +2826,7 @@
         <object>objects\obj_walltriangle_l</object>
         <object>objects\obj_walltriangle_ir</object>
         <object>objects\obj_walltriangle_il</object>
+        <object>objects\obj_lightblock</object>
         <object>objects\obj_propellerblock</object>
         <object>objects\obj_boomerang_blue</object>
         <object>objects\obj_waterbubble</object>
@@ -2989,7 +2994,7 @@
           <object>objects\obj_enemy_carried</object>
           <object>objects\obj_enemy_tick</object>
           <object>objects\obj_enemy_coin</object>
-          <object>objects\obj_enemy_coin2</object>
+          <object>objects\obj_enemy_score</object>
           <object>objects\obj_stomped</object>
           <objects name="Land">
             <object>objects\obj_goomba_micro</object>

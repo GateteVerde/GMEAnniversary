@@ -43,6 +43,7 @@ camlock = 1;
 //Begin playing the music if the p-switch effect is not active or you did not carried a star from a previous room
 if (global.pswitch == 0)
 &amp;&amp; (global.starman == 0)
+&amp;&amp; (global.mapstar == 0)
     alarm[0] = 2;
     
 //Music not disabled

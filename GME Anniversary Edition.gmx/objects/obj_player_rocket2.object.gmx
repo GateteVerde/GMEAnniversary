@@ -27,14 +27,17 @@
             <kind>1</kind>
             <string>///Warp to a new area using a rocket
 
+//Play 'Rocket' sound
+audio_play_sound(snd_rocket, 0, false);
+
 //Animate
 image_speed = 0.3;
 
 //Set the vertical speed
-vspeed = -0.075;
+vspeed = -0.25;
 
 //Speed up
-alarm[0] = 64;
+alarm[0] = 90;
 
 //Shake
 alarm[1] = 2;
@@ -71,7 +74,7 @@ myframe = 0;
             <kind>1</kind>
             <string>///Shake
 
-if (vspeed == -2.5) {
+if (vspeed == -1.5) {
 
     port_x = 0;
     port_y = 0;
@@ -107,7 +110,7 @@ else {
             <string>///Speed up
 
 //Play 'Rocket' sound
-audio_play_sound(snd_flames, 0, false);
+audio_play_sound(snd_rocket2, 0, false);
 
 //Set the sprite
 sprite_index = spr_rocket2;
