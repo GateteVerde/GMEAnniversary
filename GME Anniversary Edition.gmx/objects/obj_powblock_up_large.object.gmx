@@ -130,7 +130,7 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
         if (bounces &gt; 1) {
         
             //Shake the entire screen
-            instance_create(view_xview,view_yview,obj_powkiller);
+            instance_create(view_xview[0]+view_wview[0]/2,view_yview[0],obj_powkiller);
             
             //Create a big smoke effect
             with (instance_create(x,y,obj_smoke)) sprite_index = spr_supersmash;

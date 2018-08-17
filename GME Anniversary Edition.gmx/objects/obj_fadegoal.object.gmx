@@ -117,7 +117,7 @@ else if (fade == 2) {
             <kind>1</kind>
             <string>///Draw fade
 
-draw_sprite_ext(spr_screenmask, -1, view_xview[0], view_yview[0], 1, 1, 0, c_white, image_alpha);
+draw_sprite_ext(spr_screenmask, -1, view_xview[0]+view_wview[0]/2, view_yview[0], 1, 1, 0, c_white, image_alpha);
 </string>
           </argument>
         </arguments>

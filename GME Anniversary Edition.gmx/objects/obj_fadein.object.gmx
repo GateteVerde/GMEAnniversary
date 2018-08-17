@@ -108,7 +108,7 @@ if (background_exists(back)) {
     draw_enable_alphablend(1);
 }
 
-draw_sprite_ext(spr_screenmask,-1,view_xview[0],view_yview[0],1.5,1.5,0,c_black,alpha);
+draw_sprite_ext(spr_screenmask,-1,view_xview[0]+view_wview[0]/2,view_yview[0],1.5,1.5,0,c_black,alpha);
 </string>
           </argument>
         </arguments>

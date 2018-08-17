@@ -1729,9 +1729,9 @@ imdead.image_xscale = xscale;
 if (other.hspeed == 0) {
 
     //If the kill object is at the left of this object
-    if (other.bbox_left+bbox_right/2 &lt; bbox_left+bbox_right/2)
+    if (other.bbox_left+other.bbox_right/2 &lt; bbox_left+bbox_right/2)
         imdead.hspeed = 0.6;
-    else if (other.bbox_left+bbox_right/2 &gt; bbox_left+bbox_right/2)
+    else if (other.bbox_left+other.bbox_right/2 &gt; bbox_left+bbox_right/2)
         imdead.hspeed = -0.6;
 }
 else {

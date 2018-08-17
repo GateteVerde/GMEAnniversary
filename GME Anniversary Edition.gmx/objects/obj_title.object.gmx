@@ -27,14 +27,14 @@
             <kind>1</kind>
             <string>///Title screen effects menu
 
+//Cog animation
+frame = 0;
+
 //Background bars position
 barx = 0;
 
 //Title scale
 scale = 1;
-
-//Angle
-angle = 0;
 
 //Alpha
 alpha = 0;
@@ -74,8 +74,8 @@ else
 //Update bars position
 barx += 0.5;
 
-//Update angle
-angle += 1;
+//Update frame
+frame += 0.5;
 
 //Update background speed
 background_hspeed[0] = 0.25;
@@ -122,8 +122,8 @@ if (instance_exists(obj_titlemenu)) {
     }
     
     //Draw a cog
-    draw_sprite_ext(spr_titlebg_cog, -1, view_xview[0]+view_wview[0]-32, view_yview[0]+view_hview[0]-32, 1, 1, angle, c_white, alpha);
-    draw_sprite_ext(spr_titlebg_cog, -1, view_xview[0]+view_wview[0]-160, view_yview[0]+view_hview[0]-64, 0.75, 0.75, angle*-1, c_white, alpha);
+    draw_sprite_ext(spr_titlebg_cog, frame, view_xview[0]+80, view_yview[0]+80, 1, 1, 180, c_white, alpha);
+    draw_sprite_ext(spr_titlebg_cog, frame, view_xview[0]+view_wview[0]-80, view_yview[0]+view_hview[0]-80, 1, 1, 0, c_white, alpha);
 }
 
 //Draw title middle

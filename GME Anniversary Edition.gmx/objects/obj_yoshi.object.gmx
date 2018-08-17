@@ -1050,13 +1050,6 @@ if (mouthholder == obj_shell)
     
     //If the shell held in the mouth is a kamikaze one
     if (mouthsprite == spr_koopa_black) {
-    
-        //If the player lands after a jump, stomp
-        if (stateprev == 2)
-        &amp;&amp; (obj_playerparent.state != 2) {
-        
-            instance_create(x,y,obj_stomp);
-        }
             
         //If 'Shift' is being held outside water
         if (keyboard_check(global.shiftkey)) 
@@ -1101,23 +1094,26 @@ if (mouthholder == obj_shell)
             audio_stop_sound(snd_yoshi_lick);
             flying = 0;
             flyanim = 1;
-        }    
-    }
-    
-    //Otherwise, if the yoshi is a yellow one or yoshi has a yellow shell in mouth
-    else if (colour == 2)
-    || (mouthsprite == spr_shell_yellow_down) {
-            
+        }
+
         //If the player lands after a jump, stomp
         if (stateprev == 2)
-        &amp;&amp; (obj_playerparent.state != 2) {
-        
+        &amp;&amp; (obj_playerparent.state != 2)        
             instance_create(x,y,obj_stomp);
-        }
     }
     
-    //Otherwise, if the yoshi is a blue one or yoshi has a blue shell in mouth
-    else if (colour == 3)
+    //If yoshi has a yellow shell in mouth
+    if (colour == 2)
+    || (mouthsprite == spr_shell_yellow_down) {
+                    
+        //If the player lands after a jump, stomp
+        if (stateprev == 2)
+        &amp;&amp; (obj_playerparent.state != 2)        
+            instance_create(x,y,obj_stomp);
+    }
+    
+    //If yoshi has a blue shell in mouth
+    if (colour == 3) 
     || (mouthsprite == spr_shell_blue_down) {
     
         //If 'Shift' is being held outside water

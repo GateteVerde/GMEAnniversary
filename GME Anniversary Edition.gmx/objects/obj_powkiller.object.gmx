@@ -114,11 +114,8 @@ if (killtype == 0)
             <kind>1</kind>
             <string>///Keep it on screen
 
-if (killtype == 1) {
-
-    x = view_xview[0];
-    y = view_yview[0];
-}
+x = view_xview[0]+view_wview[0]/2;
+y = view_yview[0];
 </string>
           </argument>
         </arguments>

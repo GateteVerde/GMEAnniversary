@@ -156,20 +156,32 @@ else if (direct = -2) {
 //Otherwise, shoot in the given direction
 else {
 
-    //Play 'Explode' sound
-    audio_play_sound(snd_explode, 0, false);
-            
-    //Create smoke
-    instance_create(x,y,obj_smoke);
+    //If the player is nearby the cannon
+    if (obj_playerparent.x &gt; bbox_left-32)
+    &amp;&amp; (obj_playerparent.x &lt; bbox_right+32) {
     
-    //Shoot again
-    alarm[0] = 90+random(round(120));
+        alarm[0] = 1;
+        exit;
+    }
     
-    //Create bullet
-    with (instance_create(x,y,obj_bullet)) {
-    
-        speed = 2;
-        direction = other.direct;
+    //Otherwise
+    else {
+
+        //Play 'Explode' sound
+        audio_play_sound(snd_explode, 0, false);
+                
+        //Create smoke
+        instance_create(x,y,obj_smoke);
+        
+        //Shoot again
+        alarm[0] = 90+random(round(120));
+        
+        //Create bullet
+        with (instance_create(x,y,obj_bullet)) {
+        
+            speed = 2;
+            direction = other.direct;
+        }
     }
 }
 </string>
