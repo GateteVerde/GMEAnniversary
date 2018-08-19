@@ -63,16 +63,6 @@ alarm[0] = 300;
 audio_stop_sound(stream);
 stream = -1;
 
-//Reset all stream variables
-with (obj_persistent_musicplayer) {
-
-    //Reset overworld map BGM control variable
-    mapmusicinit = false;
-    
-    //Reset map theme
-    mapmusic = noone;
-}
-
 //Restart?
 restart = 1;
 
