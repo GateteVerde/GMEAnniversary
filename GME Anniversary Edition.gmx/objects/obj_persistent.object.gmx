@@ -68,9 +68,8 @@ restart = 0;
 showfps = false;
 
 //Controller Index System
-//0 - 3:    Xbox Controllers
-//4 - 7:    Direct Input Controllers
-//8 - 11:   Android Device Controllers
+//0 - 3:    Xbox / PS3 Controllers
+//4 - 11:   Direct Input Controllers
 global.device = 0;
 
 //Data structure for picked up 3up moons
@@ -255,12 +254,14 @@ window_center();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handle various in-game variables
+            <string>///Handle gamepad buttons
 
 //To edit the type of device, find global.device on the create event of obj_persistent
 
 //If there is a gamepad connected and the window is visible
-if (global.gamepad == true) &amp;&amp; (gamepad_is_connected(global.device)) &amp;&amp; (window_has_focus()) {
+if (global.gamepad == true) 
+&amp;&amp; (window_has_focus() == true)
+&amp;&amp; (gamepad_is_connected(global.device))  {
 
     //L-Stick Left / D-Pad Left
     if (gamepad_axis_value(global.device,gp_axislh) &lt;= -0.4) || (gamepad_button_check(global.device, gp_padl)) then keyboard_key_press(global.leftkey);       
@@ -278,11 +279,13 @@ if (global.gamepad == true) &amp;&amp; (gamepad_is_connected(global.device)) &am
     if (gamepad_axis_value(global.device,gp_axislv) &gt;= 0.4) || (gamepad_button_check(global.device, gp_padd)) then keyboard_key_press(global.downkey);
     else keyboard_key_release(global.downkey);
     
-    //A Button / B Button (Shift)
+    //A Button / B Button
+    //X Button / O Button (Shift)
     if ((gamepad_button_check(global.device,gp_face2)) || (gamepad_button_check(global.device,gp_face1))) then keyboard_key_press(global.shiftkey);
     else keyboard_key_release(global.shiftkey);
     
-    //X Button / Y Button (Control)
+    //X Button / Y Button 
+    //Square Button / Triangle Button (Control)
     if ((gamepad_button_check(global.device,gp_face4)) || (gamepad_button_check(global.device,gp_face3))) then keyboard_key_press(global.controlkey);
     else keyboard_key_release(global.controlkey);
     
@@ -294,41 +297,43 @@ if (global.gamepad == true) &amp;&amp; (gamepad_is_connected(global.device)) &am
     if (gamepad_button_check(global.device,gp_select)) then keyboard_key_press(global.spacekey);
     else keyboard_key_release(global.spacekey);        
 }
-
-//Update wport
-view_wport[0] = global.gw;
-
-//Update hport
-view_hport[0] = global.gh;
-
-//Update wview
-view_wview[0] = global.gw;
-
-//Update hview
-view_hview[0] = global.gh; 
-
-//Update hborder
-if (instance_exists(obj_levelcontrol)) then view_hborder[0] = (global.gw/2)-8;
-else view_hborder[0] = global.gw/2;
-
-//Update vborder
-view_vborder[0] = global.gh/2;
-
-//Enable views if not enabled
-view_enabled = true;
-
-//Make view 0 visible if not visible
-view_visible[0] = true;
-
-//Make sure lives don't go over 99
-if (lives &gt; 99) then lives = 99;
-
-//Make sure score don't go over 9999999990
-if (score &gt; 9999999990) then score = 9999999990;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle various in-game variables
 
 //Make the screen shake when the 'Thwomp' sound plays
-if (!audio_is_playing(snd_thwomp))
+if (!audio_is_playing(snd_thwomp)) {
+
     alarm[11] = 2;
+}
+
+//Make sure lives don't go over 99
+if (lives &gt; 99) 
+    lives = 99;
+
+//Make sure score don't go over 9999999990
+if (score &gt; 999999990) 
+    score = 999999990;
+
+
 </string>
           </argument>
         </arguments>
@@ -530,6 +535,54 @@ if (global.starcoins == (global.levelmax*3))
     global.gameclear = 1;
 else
     global.gameclear = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Set view parameters
+
+//Make view 0 visible if not visible
+view_visible[0] = true;
+
+//Enable views if not enabled
+view_enabled = true;
+
+//Update wport
+view_wport[0] = global.gw;
+
+//Update hport
+view_hport[0] = global.gh;
+
+//Update wview
+view_wview[0] = global.gw;
+
+//Update hview
+view_hview[0] = global.gh; 
+
+//Update vborder
+view_vborder[0] = global.gh/2;
+
+//Update hborder
+if (instance_exists(obj_levelcontrol)) 
+    view_hborder[0] = (global.gw/2)-8;
+else 
+    view_hborder[0] = global.gw/2;
 </string>
           </argument>
         </arguments>

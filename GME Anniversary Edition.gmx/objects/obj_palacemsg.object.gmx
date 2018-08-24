@@ -96,6 +96,15 @@ if (alpha &gt; 1)
             <kind>1</kind>
             <string>///Display up the message
 
+//Set the colour for the rectangle
+draw_set_colour(c_black);
+
+//Set the alpha
+draw_set_alpha(alpha/2);
+
+//Draw the rectangle
+draw_roundrect(view_xview[0]+(view_wview[0]/2)-141,view_yview[0]+(view_hview[0]/2)-62,view_xview[0]+(view_wview[0]/2)+139,view_yview[0]+(view_hview[0]/2)+27,false);
+
 //Set the font
 draw_set_font(global.font_interface);
 

@@ -1730,9 +1730,9 @@ if (other.hspeed == 0) {
 
     //If the kill object is at the left of this object
     if (other.bbox_left+other.bbox_right/2 &lt; bbox_left+bbox_right/2)
-        imdead.hspeed = 0.6;
+        imdead.hspeed = 1;
     else if (other.bbox_left+other.bbox_right/2 &gt; bbox_left+bbox_right/2)
-        imdead.hspeed = -0.6;
+        imdead.hspeed = -1;
 }
 else {
 
@@ -1748,9 +1748,9 @@ else {
     else {
     
         if (other.hspeed &gt; 0)
-            imdead.hspeed = 0.6;
+            imdead.hspeed = 1;
         else if (other.hspeed &lt; 0)
-            imdead.hspeed = -0.6;
+            imdead.hspeed = -1;
     }
 }
 

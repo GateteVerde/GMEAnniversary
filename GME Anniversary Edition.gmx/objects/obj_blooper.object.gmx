@@ -206,15 +206,18 @@ if (instance_exists(obj_playerparent)) {
         //Sink slowly
         alarm[0] = 40;
         
+        //Move up
+        vspeed = -1.5;
+        
         //Find Mario
         if (obj_mario.x &gt; x)            
-            motion_set(45,1.5);
+            hspeed = 1.5;
         else            
-            motion_set(135,1.5);
+            hspeed = -1.5;
     }
 }
 
-//Default Wall collisions.
+//Custom wall collision
 event_user(3);
 
 //Default Floor / Ceiling collisions.
@@ -312,6 +315,35 @@ if (vspeed &lt;= 0)
 if (vspeed != 0)
     while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
         y++;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Custom wall collision
+    
+//Move away from walls
+if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left+hspeed,bbox_top+4,bbox_left+hspeed,bbox_bottom-1,obj_solid,0,0)))
+    x += 1.5;
+if ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right+hspeed,bbox_top+4,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)))
+    x -= 1.5;    
 </string>
           </argument>
         </arguments>

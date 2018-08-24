@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="55" name="datafiles">
-    <datafiles number="55" name="music">
+  <datafiles number="58" name="datafiles">
+    <datafiles number="58" name="music">
       <datafile>
         <name>airship.ogg</name>
         <exists>-1</exists>
@@ -246,7 +246,7 @@
       <datafile>
         <name>sm2clear.ogg</name>
         <exists>-1</exists>
-        <size>90137</size>
+        <size>90887</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -348,7 +348,7 @@
       <datafile>
         <name>starman.ogg</name>
         <exists>-1</exists>
-        <size>262724</size>
+        <size>48987</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -1939,6 +1939,7 @@
         <sprite>sprites\spr_star</sprite>
         <sprite>sprites\spr_supersmash</sprite>
         <sprite>sprites\spr_sweat</sprite>
+        <sprite>sprites\spr_switchblock</sprite>
         <sprite>sprites\spr_tornado</sprite>
         <sprite>sprites\spr_torpedobubble</sprite>
       </sprites>
@@ -2009,9 +2010,16 @@
         <sprite>sprites\spr_palette_null</sprite>
       </sprites>
       <sprites name="Surfaces">
+        <sprites name="Small">
+          <sprite>sprites\spr_surface_light_small</sprite>
+          <sprite>sprites\spr_surface_light_small_b</sprite>
+          <sprite>sprites\spr_surface_light_small_c</sprite>
+        </sprites>
+        <sprites name="Large">
+          <sprite>sprites\spr_surface_light_large</sprite>
+          <sprite>sprites\spr_surface_light_large_b</sprite>
+        </sprites>
         <sprite>sprites\spr_surface_light</sprite>
-        <sprite>sprites\spr_surface_light_small</sprite>
-        <sprite>sprites\spr_surface_light_large</sprite>
       </sprites>
       <sprite>sprites\spr_toad</sprite>
       <sprite>sprites\spr_digtile</sprite>
@@ -2984,6 +2992,7 @@
             <object>objects\obj_flipblock_flip</object>
             <object>objects\obj_shard</object>
             <object>objects\obj_shard_th</object>
+            <object>objects\obj_shard_switch</object>
           </objects>
           <object>objects\obj_guessblock</object>
         </objects>

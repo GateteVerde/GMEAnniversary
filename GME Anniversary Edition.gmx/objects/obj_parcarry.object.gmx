@@ -243,7 +243,7 @@ else {
     if (!swimming) {
     
         //Gravity
-        gravity = 0.15;
+        gravity = 0.2;
         
         //Cap vertical speed
         if (vspeed &gt; 4)
@@ -254,7 +254,7 @@ else {
     else {
     
         //Gravity
-        gravity = 0.0375;
+        gravity = 0.05;
         
         //Cap vertical speed
         if (vspeed &gt; 1)

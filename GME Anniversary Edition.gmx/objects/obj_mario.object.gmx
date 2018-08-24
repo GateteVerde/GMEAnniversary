@@ -390,11 +390,14 @@ if (stompstyle == 1)
             hspeed = 6*sign(other.dir);
     }
     
-    //Repeat
-    alarm[3] = 15;
-    
     //Change the facing direction
     dir = -dir;
+    
+    //Set alarm based on direction
+    if (dir == 1)
+        alarm[3] = 15;
+    else
+        alarm[3] = 30;
 }
 
 //Otherwise, deny event

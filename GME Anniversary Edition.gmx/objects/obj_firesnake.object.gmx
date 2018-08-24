@@ -65,6 +65,17 @@ for (var i=0; i&lt;4; i++) {
         b.parent = id;
         b.depth = -1+i
 }
+
+//Create spotlight
+if (instance_exists(obj_levelcontrol_light)) {
+
+    with (instance_create(x,y,obj_light_st)) {
+    
+        target = other.id;
+        sprite_index = spr_surface_light_small_b;
+        image_blend = c_orange;
+    }
+}
 </string>
           </argument>
         </arguments>

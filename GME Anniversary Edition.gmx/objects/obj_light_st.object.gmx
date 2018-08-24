@@ -64,17 +64,11 @@ if (target != -1) {
     
         instance_destroy();
         exit;
-    }    
+    }
     
     //Set y position
+    x = (target.bbox_left+target.bbox_right)/2;
     y = (target.bbox_top+target.bbox_bottom)/2;
-    
-    //Set x position based on target offset
-    if (target.sprite_index != -1)
-    &amp;&amp; (target.sprite_xoffset &gt;= sprite_width/2)
-        x = (target.bbox_left+target.bbox_right)/2;
-    else
-        x = (target.bbox_left+target.bbox_right)/2;
 }
 </string>
           </argument>

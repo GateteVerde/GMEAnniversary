@@ -69,7 +69,13 @@ if (image_index == 0) {
     //Activate switch events
     with (obj_levelcontrol) {
     
+        //Reset warning
+        pwarning = 0;
+        
+        //Restart timer
         alarm[5] = 800;
+        
+        //Activate p-switch effect
         event_user(5);
     }
 }

@@ -42,7 +42,13 @@ if (image_index == 0) {
     //Activate switch events
     with (obj_levelcontrol) {
     
+        //Reset warning
+        gwarning = 0;
+        
+        //Restart timer
         alarm[6] = 800;
+        
+        //Activate g-switch effect
         event_user(6);
     }
 }

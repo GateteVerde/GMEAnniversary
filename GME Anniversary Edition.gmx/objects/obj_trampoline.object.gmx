@@ -112,7 +112,7 @@ if (!held) {
         ready = 1;
         ready2 = 1;
         
-        //Make sure to reset the player variable
+        //Make sure to reset the player variables
         with (other) event_user(15);
     }
     

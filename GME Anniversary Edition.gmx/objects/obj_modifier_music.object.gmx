@@ -64,7 +64,9 @@ mapworld = "1";
 if (obj_persistent.restart == false) {
 
     if (global.world != mapworld)
-    &amp;&amp; (other.speed == 0) {
+    &amp;&amp; (other.speed == 0) 
+    &amp;&amp; (other.ready == 0)
+    &amp;&amp; (global.clear == 0) {
         
         //Set up the world
         global.world = mapworld;
@@ -73,10 +75,10 @@ if (obj_persistent.restart == false) {
         with (obj_mapcontrol) {
 
             //Stop it
-            alarm[1] = 1;
+            alarm[3] = 1;
             
             //Play it
-            alarm[0] = 3;
+            alarm[2] = 3;
         }
     }
 }

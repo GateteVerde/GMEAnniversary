@@ -96,8 +96,10 @@ if (obj_levelcontrol.gswitchon == true) {
 
 //If the pow block kill effect is the goal one, make enemies go poof
 if (other.killtype == 1) {
-
-    instance_create(round(bbox_left+bbox_right)/2-8,round(bbox_top+bbox_bottom)/2-8,obj_smoke);
+    
+    //Create smoke effect
+    instance_create(round(bbox_left+bbox_right)/2-8,round(bbox_top+bbox_bottom)/2-8,obj_enemy_score);
+    instance_create(round(bbox_left+bbox_right)/2-8,round(bbox_top+bbox_bottom)/2-8,obj_smoke);    
     instance_destroy();
     exit;
 }
@@ -1417,9 +1419,9 @@ if (other.hspeed == 0) {
 
     //If the kill object is at the left of this object
     if (other.bbox_left+bbox_right/2 &lt; bbox_left+bbox_right/2)
-        imdead.hspeed = 0.6;
+        imdead.hspeed = 1;
     else if (other.bbox_left+bbox_right/2 &gt; bbox_left+bbox_right/2)
-        imdead.hspeed = -0.6;
+        imdead.hspeed = -1;
 }
 else {
 
@@ -1435,9 +1437,9 @@ else {
     else {
     
         if (other.hspeed &gt; 0)
-            imdead.hspeed = 0.6;
+            imdead.hspeed = 1;
         else if (other.hspeed &lt; 0)
-            imdead.hspeed = -0.6;
+            imdead.hspeed = -1;
     }
 }
 

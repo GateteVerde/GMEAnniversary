@@ -76,7 +76,7 @@ if (instance_exists(obj_invincibility)) {
     if (obj_invincibility.alarm[0] &gt; 120)
         alarm[0] = 4;
     else
-        alarm[0] = 8;
+        alarm[0] = 16;
 }
 else {
 

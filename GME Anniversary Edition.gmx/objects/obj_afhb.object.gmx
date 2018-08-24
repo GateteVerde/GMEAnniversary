@@ -218,11 +218,12 @@ x = myx-sin(angle)*distance;
 y = myy+cos(angle)*distance;
 
 //Push the player if it's not riding the platform
-if (other.y &gt; y-11) {
+if (instance_exists(obj_playerparent))
+&amp;&amp; (obj_playerparent.bbox_bottom &gt; yprevious+5) {
 
-    if (x-xprevious &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-3,bbox_top,bbox_left-3,bbox_bottom-1,obj_mario,0,0))
-    || (x-xprevious &gt; 0) &amp;&amp; (collision_rectangle(bbox_right+3,bbox_top,bbox_right+3,bbox_bottom-1,obj_mario,0,0))
-        obj_mario.x += x-xprevious;
+    if (x-xprevious &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-3,bbox_top,bbox_left-3,bbox_bottom-1,obj_playerparent,0,0))
+    || (x-xprevious &gt; 0) &amp;&amp; (collision_rectangle(bbox_right+3,bbox_top,bbox_right+3,bbox_bottom-1,obj_playerparent,0,0))
+        obj_playerparent.x += x-xprevious;
 }
 </string>
           </argument>

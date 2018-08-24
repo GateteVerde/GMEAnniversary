@@ -63,6 +63,8 @@ alarm[1] = 1;
 
 //If the offset of the sprites is greater than 16, do not flip
 if (sprite_get_yoffset(sprite_index) &gt;= 16)
+|| (sprite_index == spr_goombrat)
+|| (sprite_index == spr_angrysun)
     exit;
 
 //Otherwise, flip
@@ -142,12 +144,11 @@ if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_quicksa
             vspeed = 0.1;
     }
 }
+else
+    depth = -6;
 
 //Cap vertical speed
 if (vspeed &gt; 0) {
-
-    //Set the default depth
-    depth = -6;
 
     //If not in water
     if (!place_meeting(x,y,obj_swim)) {
@@ -169,10 +170,10 @@ if (vspeed &gt; 0) {
 }
 
 //Cap horizontal speed
-if ((hspeed &gt; 0.6) &amp;&amp; (hspeed &lt; 2))
-    hspeed = 0.6;
-else if ((hspeed &gt; -2) &amp;&amp; (hspeed &lt; -0.6))
-    hspeed = -0.6;
+if ((hspeed &gt; 1) &amp;&amp; (hspeed &lt; 2))
+    hspeed = 1;
+else if ((hspeed &gt; -2) &amp;&amp; (hspeed &lt; -1))
+    hspeed = -1;
 </string>
           </argument>
         </arguments>

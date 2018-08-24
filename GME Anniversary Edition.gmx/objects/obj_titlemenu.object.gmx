@@ -322,14 +322,22 @@ if (mode == 2) {
             //Option 1: Keyboard configuration
             if (current == 1) {
             
-                //Play 'Correct' sound
-                audio_play_sound(snd_correct, 0, false);
+                //Check if a gamepad is connected
+                if (global.gamepad == 0) {
                 
-                //Go to page 3
-                page = 3;
+                    //Play 'Correct' sound
+                    audio_play_sound(snd_correct, 0, false);
+                    
+                    //Go to page 3
+                    page = 3;
+                    
+                    //Set the choice
+                    current = 1;
+                }
                 
-                //Set the choice
-                current = 1;
+                //Otherwise, play 'Wrong' sound
+                else
+                    audio_play_sound(snd_wrong, 0, false);
             }
             
             //Option 2: Window size
@@ -693,7 +701,7 @@ draw_set_font(global.font_interface);
 draw_set_alpha(1);
 
 //Draw the text
-draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+4,"17/08/2018 - v1.4.3", c_black, c_white, 1, 1, 0.5, 1);
+draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+4,"24/08/2018 - v1.4.4", c_black, c_white, 1, 1, 0.5, 1);
 draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+global.gh-12,"2008-2018 GMETEAM/GATETE GAMING", c_black, c_white, 1, 1, 0.5, 1);
 
 //Re align the text

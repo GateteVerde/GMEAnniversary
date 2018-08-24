@@ -243,11 +243,8 @@ else
             <string>///Make buzzy beetle shells not vulnerable to fire
 
 if (sprite_index == spr_shell_buzzy)
-|| (sprite_index == spr_shell_buzzy_down) {
-
-    //Make it invulnerable to fire
+|| (sprite_index == spr_shell_buzzy_down)
     vulnerable = 1;
-}
 </string>
           </argument>
         </arguments>
@@ -496,6 +493,8 @@ else if (sprite_index == spr_shell_big)
     imheld.sprite_index = spr_shell_big_down;
 else if (sprite_index == spr_shell_big_red)
     imheld.sprite_index = spr_shell_big_red_down;
+else if (sprite_index == spr_shell_buzzy)
+    imheld.sprite_index = spr_shell_buzzy_down;
 else
     imheld.sprite_index = sprite_index;
 

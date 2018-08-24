@@ -104,6 +104,9 @@ if (image_index == 0) {
     //Set the frame
     image_index = 1;
     
+    //Generate block
+    event_user(2);
+    
     //Remember it
     beaten = 2;
     ds_map_replace(global.mapscreen, id, 2);
@@ -127,6 +130,56 @@ if (image_index == 0) {
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Generate switch effects
+
+//Initialize temp variables
+var a = 0;
+
+//Repeat 8 times
+repeat (8) {
+
+    //Create a effect
+    effect = instance_create(x+8,y+2,obj_shard_switch);
+    
+    //With the effect
+    with (effect) {
+    
+        //Set the sprite and frame
+        sprite_index = spr_switchblock;
+        image_speed = 0;
+        image_index = 0;
+        
+        //Set gravity
+        gravity = 0.1;          
+        
+        //Set the motion
+        motion_set(a,3);
+        
+    }
+    a += 45;  
+}
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
     <event eventtype="7" enumb="11">
