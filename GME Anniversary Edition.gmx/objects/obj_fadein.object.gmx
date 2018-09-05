@@ -33,6 +33,12 @@ target = noone;
 //Take a screenshot.
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0);
 
+//Deactivate all instances
+instance_deactivate_all(1);
+
+//Activate persistent object
+instance_activate_object(obj_persistent);
+
 //Set the alpha.
 alpha = 0;
 </string>
@@ -67,6 +73,15 @@ if (alpha &gt; 1) {
 
     //Set up the alpha.
     alpha = 1;
+    
+    //Delete temp background
+    if (background_exists(back)) {
+    
+        background_delete(back);
+    }
+    
+    //Activate all instances
+    instance_activate_all();
     
     //Go to the destination room
     room_goto(target);
@@ -108,6 +123,7 @@ if (background_exists(back)) {
     draw_enable_alphablend(1);
 }
 
+//Draw screen mask
 draw_sprite_ext(spr_screenmask,-1,view_xview[0]+view_wview[0]/2,view_yview[0],1.5,1.5,0,c_black,alpha);
 </string>
           </argument>

@@ -1074,7 +1074,7 @@ else {
                 
             //Otherwise, if Mario is turning
             else {
-            
+
                 image_speed = 0;
                 image_index = 0;
             }
@@ -1083,33 +1083,44 @@ else {
         //Otherwise, if Mario is jumping
         else if (state == 2) {
         
-            //If Mario does have either the carrot or bee powerup.
-            if (global.powerup == cs_carrot) 
-            || (global.powerup == cs_bee) {
+            //If the player is not turning
+            if (!turning) {
             
-                //If Mario is floating
-                if (floatnow &gt; 0)
-                    image_speed = 0.15;
+                //If Mario does have either the carrot or bee powerup.
+                if (global.powerup == cs_carrot) 
+                || (global.powerup == cs_bee) {
+                
+                    //If Mario is floating
+                    if (floatnow &gt; 0)
+                        image_speed = 0.15;
+                    else {
+                    
+                        image_speed = 0;
+                        image_index = 0;
+                    }
+                }
+                
+                //Otherwise, if Mario does have either the raccoon or tanooki powerup.
+                else if (global.powerup == cs_leaf)
+                || (global.powerup == cs_tanooki) {
+                
+                    image_speed = 0;
+                    image_index = 0+(wiggle/4);
+                }
+                
+                //Otherwise, do not animate
                 else {
                 
                     image_speed = 0;
-                    image_index = 0;
+                    image_index = 1;
                 }
             }
             
-            //Otherwise, if Mario does have either the raccoon or tanooki powerup.
-            else if (global.powerup == cs_leaf)
-            || (global.powerup == cs_tanooki) {
-            
-                image_speed = 0;
-                image_index = 0+(wiggle/4);
-            }
-            
-            //Otherwise, do not animate
+            //Otherwise, set turning pose
             else {
             
                 image_speed = 0;
-                image_index = 1;
+                image_index = 0;
             }
         }
         
