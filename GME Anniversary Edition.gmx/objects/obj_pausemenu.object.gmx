@@ -35,11 +35,9 @@ audio_stop_sound(snd_skid);
 //Make sure the box doesn't animate
 image_speed = 0;
 image_index = 0;
+image_alpha = 0;
 image_xscale = 0;
 image_yscale = 0;
-
-//Shader variables
-usize = shader_get_uniform(shd_gaussian,"size");
 
 //Create a screenshot
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0)
@@ -132,10 +130,15 @@ if (ready2 == 1) {
 
     if (image_xscale &lt; 1) {
     
+        //Scale menu up
         image_xscale += 0.1;
         image_yscale += 0.1;
-        //Repeats the process...
-            alarm[0] = 1;
+        
+        //Backgrond alpha
+        image_alpha += 0.05;
+        
+        //Repeats the process
+        alarm[0] = 1;
     }
     
     else {
@@ -150,11 +153,15 @@ else if (ready2 == 2) {
 
     if (image_xscale &gt; 0) {
     
+        //Scale menu down
         image_xscale -= 0.1;
         image_yscale -= 0.1;
-        ready = 0;
-        //Repeats the process...
-            alarm[0] = 1;
+        
+        //Backgrond alpha
+        image_alpha -= 0.05;
+        
+        //Repeats the process
+        alarm[0] = 1;
     }
     
     else {
@@ -249,9 +256,9 @@ else if (keyboard_check_pressed(global.shiftkey)) {
             case (0): {
             
                 if (ready == 1) {
+                
                     ready2 = 2;
-                    //Shrinks...
-                        alarm[0] = 1;
+                    alarm[0] = 1;
                 }
             } break;
             
@@ -333,10 +340,6 @@ else if (keyboard_check_pressed(global.enterkey)) &amp;&amp; (!keyboard_check(vk
             <kind>1</kind>
             <string>///Draw the menu.
 
-//Set the shader
-shader_set(shd_gaussian);
-shader_set_uniform_f(usize, view_wview[0], view_hview[0], 4) //width,height,radius
-
 //Draw the screenshot if it exists
 if (background_exists(back)) {
 
@@ -350,8 +353,8 @@ if (background_exists(back)) {
     draw_enable_alphablend(1);
 }
 
-//Reset shader
-shader_reset();
+//Draw the background
+draw_sprite_ext(spr_mariostart, 0, view_xview[0],view_yview[0],1,1,0,c_white,image_alpha);
 
 //Draw the actual border.
 draw_sprite_ext(spr_pausemenu,1,view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,image_xscale,image_yscale,0,c_white,1);
