@@ -319,11 +319,16 @@ if (global.gamepad == true)
             <kind>1</kind>
             <string>///Handle various in-game variables
 
-//Make the screen shake when the 'Thwomp' sound plays
-if (!audio_is_playing(snd_thwomp)) {
+//Freeze the game when the form looses focus
+if (window_has_focus() == false) {
 
-    alarm[11] = 2;
+    //If there's no freezing object active
+    if (!instance_exists(obj_freeze))
+        instance_create(0,0,obj_freeze);
 }
+
+//Make the screen shake when the 'Thwomp' sound plays
+if (!audio_is_playing(snd_thwomp)) then alarm[11] = 2;
 
 //Make sure lives don't go over 99
 if (lives &gt; 99) 
@@ -332,8 +337,6 @@ if (lives &gt; 99)
 //Make sure score don't go over 9999999990
 if (score &gt; 999999990) 
     score = 999999990;
-
-
 </string>
           </argument>
         </arguments>
