@@ -52,9 +52,10 @@ stream = audio_play_sound(global._theme_bonus, 0, 1);
             <kind>1</kind>
             <string>///Display message
 
-with (instance_create(0,0,obj_message)) {
+with (instance_create(0,0,obj_dialog)) {
 
     varmsg = "Welcome to the lucky house!. ##Test your luck and win up to 5 extra lives by matching 4 symbols.";
+    mugshot = spr_mugshot_toad;
 }
 </string>
           </argument>

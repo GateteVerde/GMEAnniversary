@@ -30,6 +30,15 @@
 //Take a screenshot.
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0);
 
+//Stop movement on all backgrounds
+for (var i=0; i&lt;8; i++) {
+
+    temp_h[i] = background_hspeed[i];
+    temp_v[i] = background_vspeed[i];
+    background_hspeed[i] = 0;
+    background_vspeed[i] = 0;
+}
+
 //Pause particles
 with (obj_rainmaker) event_user(0);
 
@@ -69,6 +78,13 @@ if (window_has_focus() == true) {
 
     //Delete the screenshot if it exists.
     background_delete(back);
+    
+    //Resume movement on all backgrounds
+    for (var i=0; i&lt;8; i++) {
+    
+        background_hspeed[i] = temp_h[i];
+        background_vspeed[i] = temp_v[i];
+    }
     
     //Activate all instances.
     instance_activate_all();

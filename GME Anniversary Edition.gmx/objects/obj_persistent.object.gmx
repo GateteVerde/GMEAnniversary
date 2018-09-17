@@ -320,7 +320,9 @@ if (global.gamepad == true)
             <string>///Handle various in-game variables
 
 //Freeze the game when the form looses focus
-if (window_has_focus() == false) {
+if (window_has_focus() == false) 
+&amp;&amp; (instance_number(obj_pausemenu) == 0)
+&amp;&amp; (instance_number(obj_player_transform) == 0) {
 
     //If there's no freezing object active
     if (!instance_exists(obj_freeze))

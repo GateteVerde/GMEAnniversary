@@ -134,9 +134,10 @@ stream = audio_play_sound(global._theme_pswitch, 0, 1);
             <kind>1</kind>
             <string>///Display message
 
-with (instance_create(0,0,obj_message)) {
+with (instance_create(0,0,obj_dialog)) {
 
     varmsg = "Pick a chest!. ##Its contents will help you on your way.";
+    mugshot = spr_mugshot_toad;
 }
 </string>
           </argument>

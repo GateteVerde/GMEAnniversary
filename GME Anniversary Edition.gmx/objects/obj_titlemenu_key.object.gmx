@@ -37,7 +37,16 @@ ready = 0;
 alarm[0] = 2;
 
 //Create a screenshot
-back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0)
+back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0);
+
+//Stop movement on all backgrounds
+for (var i=0; i&lt;8; i++) {
+
+    temp_h[i] = background_hspeed[i];
+    temp_v[i] = background_vspeed[i];
+    background_hspeed[i] = 0;
+    background_vspeed[i] = 0;
+}
 
 //Deactivate the instances.
 instance_deactivate_all(1);
@@ -233,12 +242,18 @@ if (ready == 1) {
         }
     }
     
+    //Delete the screenshot
+    background_delete(back);
+    
     //Activate everything
     instance_activate_all();
+
+    //Resume movement on all backgrounds
+    for (var i=0; i&lt;8; i++) {
     
-    //Delete the screenshot
-    if (background_exists(back))        
-        background_delete(back);
+        background_hspeed[i] = temp_h[i]
+        background_vspeed[i] = temp_v[i]
+    }
     
     //Destroy
     instance_destroy();

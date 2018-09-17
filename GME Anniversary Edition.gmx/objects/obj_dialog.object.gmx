@@ -56,6 +56,15 @@ choice = 1;
 //Create a screenshot
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0)
 
+//Stop movement on all backgrounds
+for (var i=0; i&lt;8; i++) {
+
+    temp_h[i] = background_hspeed[i];
+    temp_v[i] = background_vspeed[i];
+    background_hspeed[i] = 0;
+    background_vspeed[i] = 0;
+}
+
 //Pause particles
 with (obj_rainmaker) event_user(0);
 
@@ -159,20 +168,24 @@ if (keyboard_check_pressed(global.shiftkey)) {
             //Otherwise, end dialog.
             else {
             
+                //Delete the screenshot
+                background_delete(back);
+            
                 //Activate everything
                 instance_activate_all();
+                
+                //Resume movement on all backgrounds
+                for (var i=0; i&lt;8; i++) {
+        
+                    background_hspeed[i] = temp_h[i];
+                    background_vspeed[i] = temp_v[i];
+                }
                 
                 //Resume particles
                 with (obj_rainmaker) event_user(0);
                 
                 //Activate all timelines
                 timeline_running = 1;
-                
-                //Delete the screenshot
-                if (background_exists(back)) {
-                
-                    background_delete(back);
-                }
                 
                 //Reset the state of the shift key
                 keyboard_clear(global.shiftkey);
