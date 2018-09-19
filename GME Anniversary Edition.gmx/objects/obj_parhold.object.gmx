@@ -266,8 +266,8 @@ if (!held) {
         event_inherited();
         
         //Slowdown if in contact with the floor
-        if (vspeed == 0) {
-        
+        if (gravity == 0) {
+    
             //If the item is not underwater
             if (!swimming) {
             
