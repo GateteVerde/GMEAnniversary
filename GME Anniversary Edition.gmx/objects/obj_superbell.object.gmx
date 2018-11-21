@@ -62,6 +62,9 @@ if (gravity != 0) {
     //Set animation speed
     image_speed = 0.2;
     
+    //Gravity
+    gravity = 0.15;
+    
     //If the vertical speed is greater than 0
     if ((depth == 10) &amp;&amp; (vspeed &gt;= 0))
         depth = -2;

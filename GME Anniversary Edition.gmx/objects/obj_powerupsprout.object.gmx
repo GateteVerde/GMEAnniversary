@@ -147,7 +147,7 @@ else if (sprite_index == spr_superbell) {
 
     //Create a bell
     with (instance_create(xstart,ystart-2,obj_superbell))
-        vspeed = -3;
+        vspeed = -5;
 }
 
 //Otherwise

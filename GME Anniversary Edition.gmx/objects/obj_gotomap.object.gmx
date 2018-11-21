@@ -33,7 +33,7 @@ audio_stop_sound(global._stream_pswitch);
 audio_stop_sound(global._stream_starman);
 
 //Do special clear sequence
-global.clear = 3;
+global.clear = 1;
 
 //Remove checkpoints
 global.checkpoint = noone;

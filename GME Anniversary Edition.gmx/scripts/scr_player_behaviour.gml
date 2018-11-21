@@ -463,17 +463,15 @@ else if (yspeed == 0) {
 //Prevent the player from moving too fast
 if (state != 2) {
 
-    //Check if the pmeter is full and enter the shell if so.
+    //Check if the player has the shell powerup, it is not riding anything nor holding anything and running
     if (global.powerup == cs_shell)
     && (global.mount == 0)
     && (holding = 0)
-    && (pmeter >= 112) {
+    && (pmeter >= 112) 
+    && (keyboard_check(global.downkey)) {
     
         //Force sliding
         sliding = true;
-        
-        //Force press 'Down' key
-        keyboard_key_press(global.downkey);
     }
     
     //Check the horizontal speed

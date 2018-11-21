@@ -82,7 +82,7 @@ event_inherited();
 //Bounce
 if (gravity == 0) {
 
-    vspeed = -3;
+    vspeed = -2.5;
     y--;
 }
 

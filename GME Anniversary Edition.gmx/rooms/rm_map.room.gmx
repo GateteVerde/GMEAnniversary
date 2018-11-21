@@ -87,7 +87,6 @@
     <instance objName="obj_maptree" x="272" y="304" name="inst_C0316B43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="304" y="304" name="inst_1F3244DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="336" y="304" name="inst_DB44CDBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_maptree" x="288" y="320" name="inst_AEF217A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bganimator" x="16" y="0" name="inst_3428C0F9" locked="0" code="bg_index = 0;&#xA;bg_timer = 21;&#xA;bg_frame[0] = bgr_mapwater;&#xA;bg_frame[1] = bgr_mapwater_b;&#xA;bg_frame[2] = bgr_mapwater_c;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapwater" x="112" y="320" name="inst_50A23F94" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapwater" x="128" y="320" name="inst_2E553693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -146,7 +145,6 @@
     <instance objName="obj_mapwater" x="208" y="512" name="inst_5D011E68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapwater" x="224" y="512" name="inst_EE007F15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapwater" x="240" y="496" name="inst_6D9FC102" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_maptree_alt" x="272" y="320" name="inst_837E0948" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree_alt" x="288" y="272" name="inst_F1802746" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree_alt" x="336" y="240" name="inst_8861C2DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree_alt" x="192" y="208" name="inst_A5049623" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -383,7 +381,7 @@
     <instance objName="obj_maplevel" x="256" y="160" name="inst_33EBE8CD" locked="0" code="sprite_index = spr_maplevel_red;&#xA;levelname = &quot;Scorching Desert&quot;;&#xA;levelid = 2;&#xA;exitdir = 2;&#xA;exitalt = 3;&#xA;myroom = rm_scorchingdesert;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel" x="256" y="224" name="inst_56F43FC8" locked="0" code="levelname = &quot;Subcon Fields&quot;;&#xA;levelid = 3;&#xA;exitdir = 2;&#xA;myroom = rm_subconfields;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel" x="992" y="336" name="inst_FF3981EB" locked="0" code="sprite_index = spr_maplevel_red;&#xA;levelname = &quot;Radiant Mine&quot;;&#xA;levelid = 4;&#xA;exitdir = 3;&#xA;exitalt = 0;&#xA;myroom = rm_radiantmine;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_maplevel" x="1088" y="160" name="inst_AE8F6AA9" locked="0" code="sprite_index = spr_maplevel_bowser;&#xA;levelname = &quot;Bowser's Castle&quot;;&#xA;levelid = 6;&#xA;exitdir = 2;&#xA;saveme = 1;&#xA;myroom = rm_bowsercastle;&#xA;block = 9;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maplevel" x="1088" y="160" name="inst_AE8F6AA9" locked="0" code="sprite_index = spr_maplevel_bowser;&#xA;levelname = &quot;Bowser's Castle&quot;;&#xA;levelid = 6;&#xA;exitdir = 2;&#xA;saveme = 1;&#xA;myroom = rm_bowsercastle;&#xA;block = 9;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel_ghost" x="1088" y="288" name="inst_A2C62AF2" locked="0" code="levelname = &quot;Frightening Cottage&quot;;&#xA;levelid = 5;&#xA;exitdir = 0;&#xA;exitalt = 1;&#xA;myroom = rm_frighteningcottage;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappanel_house_c" x="336" y="176" name="inst_8AB7A1DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappanel_house_c" x="864" y="160" name="inst_1A7B1D1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -408,6 +406,11 @@
     <instance objName="obj_mappath_downright" x="272" y="144" name="inst_CCFF7697" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_upleft" x="272" y="160" name="inst_C2E15D6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_upleft" x="288" y="144" name="inst_7DC8241E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappath_h" x="272" y="320" name="inst_EBA6957C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maplevel_castle" x="288" y="320" name="inst_19E28FAA" locked="0" code="levelname = &quot;Powerup Test Area&quot;;&#xA;levelid = -1;&#xA;saveme = 0;&#xA;myroom = rm_poweruptestarea;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappath_levelnode" x="288" y="320" name="inst_F453D9E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_modifier" x="272" y="320" name="inst_E9659E54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_modifier" x="288" y="320" name="inst_BC8909B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_map" x="112" y="320" w="16" h="16" xo="496" yo="448" id="10006996" name="inst_BFCC86D8" depth="11" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

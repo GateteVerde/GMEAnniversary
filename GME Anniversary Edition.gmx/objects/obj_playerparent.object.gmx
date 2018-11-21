@@ -1130,17 +1130,21 @@ if (yspeed == 0)
         }
         
         //If the player collides with a wall while being stuck
-        if (collision_rectangle(bbox_left,y+4,bbox_left,bbox_bottom-4,obj_solid,1,0))
-        || (collision_rectangle(bbox_right,y+4,bbox_right,bbox_bottom-4,obj_solid,1,0))
+        if ((direct == -1) &amp;&amp; (collision_line(bbox_left,y+4,bbox_left,bbox_bottom-4,obj_solid,1,0)))
+        || ((direct == 1) &amp;&amp; (collision_line(bbox_right,y+4,bbox_right,bbox_bottom-4,obj_solid,1,0)))
             direct = -direct;
     }
 }
 
 //Unstuck in case of overlapping a solid completely
 if (state &lt; 2)
-&amp;&amp; (inwall == 0)
-    while (collision_rectangle(x-1,bbox_top,x+1,bbox_bottom,obj_solid,0,0))
+&amp;&amp; (inwall == 0) {
+
+    //If overlapping
+    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_mblock,0,0))
+    || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_propellerblock,0,0))
         y--;
+}
     
 //Handle tail whip animation
 if ((state == 2) &amp;&amp; (wiggle &gt; 0))
