@@ -27,6 +27,15 @@
             <kind>1</kind>
             <string>///Boomerang Bro.
 
+/*
+**  This item uses creation code!
+**
+**  blue = To make the boomerang bro throw blue boomerangs that can be picked.
+*/
+
+//Default value
+blue = 0;
+
 //How vulnerable is this enemy to various items?
 vulnerable = 0;
 
@@ -101,6 +110,8 @@ if (instance_exists(obj_playerparent)) {
             hspeed = 2;
             image_xscale = 1;
             parent = other.id;
+            if (other.id.blue)
+                sprite_index = spr_boomerangbro_boomerang_blue;
         }
     }
     
@@ -112,6 +123,8 @@ if (instance_exists(obj_playerparent)) {
             hspeed = -2;
             image_xscale = -1;
             parent = other.id;
+            if (other.id.blue)
+                sprite_index = spr_boomerangbro_boomerang_blue
         }
     }
 }
@@ -124,6 +137,8 @@ else {
         hspeed = -2;
         image_xscale = -1;
         parent = other.id;
+        if (other.id.blue)
+            sprite_index = spr_boomerangbro_boomerang_blue
     }
 }
 
@@ -207,13 +222,24 @@ event_inherited();
 if (gravity &gt; 0) {
 
     //Set the jumping sprite
-    sprite_index = spr_boomerangbro_c;
+    sprite_index = spr_boomerangbro_d;
 
     //Do not animate
     image_speed = 0;
     
-    //Set or not set throwing frame
-    image_index = throw;
+    //If not throwing
+    if (throw == 0)
+        image_index = 0;
+        
+    //Otherwise, if throwing
+    else {
+    
+        //If not throwing a blue boomerang
+        if (blue == 0)
+            image_index = 1;
+        else
+            image_index = 2;
+    }
 }
 
 //Otherwise
@@ -227,8 +253,13 @@ else {
         sprite_index = spr_boomerangbro;
     
     //Otherwise, if it's about to throw
-    else if (throw == 1)
-        sprite_index = spr_boomerangbro_b;
+    else if (throw == 1) {
+    
+        if (blue == 0)
+            sprite_index = spr_boomerangbro_b;
+        else
+            sprite_index = spr_boomerangbro_c;
+    }
 }
 </string>
           </argument>

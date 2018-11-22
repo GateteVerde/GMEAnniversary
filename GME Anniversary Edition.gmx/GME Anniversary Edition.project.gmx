@@ -1420,10 +1420,15 @@
       <sprite>sprites\spr_boomerangbro</sprite>
       <sprite>sprites\spr_boomerangbro_b</sprite>
       <sprite>sprites\spr_boomerangbro_c</sprite>
+      <sprite>sprites\spr_boomerangbro_d</sprite>
       <sprite>sprites\spr_boomerangbro_boomerang</sprite>
+      <sprite>sprites\spr_boomerangbro_boomerang_blue</sprite>
       <sprite>sprites\spr_firebro</sprite>
       <sprite>sprites\spr_firebro_b</sprite>
       <sprite>sprites\spr_firebro_c</sprite>
+      <sprite>sprites\spr_icebro</sprite>
+      <sprite>sprites\spr_icebro_b</sprite>
+      <sprite>sprites\spr_icebro_c</sprite>
       <sprite>sprites\spr_sledgebro</sprite>
       <sprite>sprites\spr_sledgebro_b</sprite>
       <sprite>sprites\spr_afhb</sprite>
@@ -1830,6 +1835,10 @@
     </sprites>
     <sprites name="Projectiles">
       <sprites name="Ice Blocks">
+        <sprites name="Player">
+          <sprite>sprites\spr_iceblock_player</sprite>
+          <sprite>sprites\spr_iceblock_player_big</sprite>
+        </sprites>
         <sprite>sprites\spr_iceblock</sprite>
         <sprite>sprites\spr_iceblock_16x32</sprite>
         <sprite>sprites\spr_iceblock_32x16</sprite>
@@ -2587,6 +2596,7 @@
       <object>objects\obj_hammerbro</object>
       <object>objects\obj_boomerangbro</object>
       <object>objects\obj_firebro</object>
+      <object>objects\obj_icebro</object>
       <object>objects\obj_sledgebro</object>
       <object>objects\obj_afhb</object>
       <object>objects\obj_sumobro</object>
@@ -3086,6 +3096,7 @@
           <object>objects\obj_hammerbro_hammer</object>
           <object>objects\obj_boomerangbro_boomerang</object>
           <object>objects\obj_firebro_fireball</object>
+          <object>objects\obj_icebro_snowball</object>
           <object>objects\obj_afhb_rider</object>
           <object>objects\obj_sumobro_flame</object>
           <object>objects\obj_sumobro_lightning</object>

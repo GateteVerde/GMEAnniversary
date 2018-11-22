@@ -144,6 +144,9 @@ swimtype = 0;
 //Prevents the player from moving if stunned
 stuntime = 0;
 
+//Prevents the player from moving if frozen
+freezetime = 0;
+
 //Makes the player shake when stunned
 shake = 0;
 
@@ -535,8 +538,11 @@ if (stuntime &gt; 0) {
     //If the stuntime is about to end
     if (stuntime == 1) {
     
+        //Stop stun
         stuntime = 0;
         shake = 0;
+        
+        //Enable controls
         disablecontrol = false;
     }
     
@@ -545,6 +551,29 @@ if (stuntime &gt; 0) {
     
     //Shake if possible
     shake = -shake;
+}
+
+//Decrement freeze time
+if (freezetime &gt; 1) {
+
+    //Decrement freezetime
+    freezetime--;
+
+    //Unfreeze when 'freezetime' hits 1
+    if (freezetime == 1) {
+    
+        //Stop freeze
+        freezetime = 0;
+        
+        //Enable gravity/controls
+        disablegrav = 0;
+        disablecontrol = false;
+        
+        //Make invulnerable for less time
+        invulnerable = 1;
+        alarm[0] = 90;
+        alarm[1] = 1;
+    }
 }
 
 //Make sure the player is doing a spinjump
@@ -1001,6 +1030,7 @@ if (state != 3) {
     //Handles powerup specific projectiles, tail spinning, cat scratching and statue morphing.
     if (keyboard_check_pressed(global.controlkey)) 
     &amp;&amp; (!obj_levelcontrol.barrier)
+    &amp;&amp; (!disablecontrol)
         alarm[11] = 1;
 }
 else {
@@ -1459,7 +1489,7 @@ if (invulnerable == false) {
     }
     
     else {
-    
+
         //If health mode is active
         if (global.healthmode == true) {
         
@@ -1580,19 +1610,37 @@ if (invulnerable == false) {
             <kind>1</kind>
             <string>///Draw player and effects
 
-//Set the shader
-pal_swap_set(spr_palette_mario, isflashing);
+//Draw the player frozen
+if (freezetime &gt; 0) {
 
-//Draw player
-draw_sprite_player(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha,0);
+    //Draw the player first
+    draw_sprite_player(sprite_index, -1, round(x), round(y)+1, xscale, 1, 0, make_colour_rgb(0, 193, 255), image_alpha, 0);
+    
+    //Draw the ice block
+    if (global.powerup == cs_small)
+    || (crouch)
+        draw_sprite_ext(spr_iceblock_player, 0, round(x), round(y)+1, 1, 1, 0, c_white, 1);
+    else
+        draw_sprite_ext(spr_iceblock_player_big, 0, round(x), round(y)+1, 1, 1, 0, c_white, 1);
+}
 
-//End shader
-pal_swap_reset();
+//Otherwise, draw normally
+else if (freezetime == 0) {
 
-//Draw a tornado if spinning down with the propeller suit
-if (global.powerup == cs_propeller)
-&amp;&amp; (stompstyle == 1)
-    draw_sprite_ext(spr_tornado,-1,round(x),round(y)+1,1,1,0,c_white,0.5);
+    //Set the shader
+    pal_swap_set(spr_palette_mario, isflashing);
+    
+    //Draw player
+    draw_sprite_player(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha,0);
+    
+    //End shader
+    pal_swap_reset();
+    
+    //Draw a tornado if spinning down with the propeller suit
+    if (global.powerup == cs_propeller)
+    &amp;&amp; (stompstyle == 1)
+        draw_sprite_ext(spr_tornado,-1,round(x),round(y)+1,1,1,0,c_white,0.5);
+}
 </string>
           </argument>
         </arguments>
