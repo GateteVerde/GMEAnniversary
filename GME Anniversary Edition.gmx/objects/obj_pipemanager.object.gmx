@@ -47,7 +47,6 @@ for (i=0; i&lt;2; i++) {
 }
 
 //Stream
-stream = -1;
 alarm[0] = 1;
 
 //Create player object
@@ -105,7 +104,7 @@ with (instance_create(destx[global.pipetype]+16, desty[global.pipetype]+16, obj_
             <kind>1</kind>
             <string>///Play music
 
-stream = audio_play_sound(global._theme_underground, 0, 1);
+audio_play_sound(bgm_underground, 0, true);
 </string>
           </argument>
         </arguments>
@@ -130,8 +129,7 @@ stream = audio_play_sound(global._theme_underground, 0, 1);
             <kind>1</kind>
             <string>///Stop stream
 
-audio_stop_sound(stream);
-stream = -1;
+audio_stop_sound(bgm_underground);
 </string>
           </argument>
         </arguments>

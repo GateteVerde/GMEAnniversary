@@ -152,7 +152,8 @@ if (ready == 0) {
 }
 
 //Otherwise, if the switch is pressed and no fanfare is playing
-else if (ready) &amp;&amp; (audio_is_playing(stream))
+else if (ready) 
+&amp;&amp; (audio_is_playing(bgm_smwclear))
     alarm[0] = 120;
 </string>
           </argument>
@@ -179,7 +180,7 @@ else if (ready) &amp;&amp; (audio_is_playing(stream))
             <string>///Press the switch
 
 //Play 'Course Clear' music
-stream = audio_play_sound(global._theme_smwcleara, 0, 0);
+audio_play_sound(bgm_smwclear, 0, false);
 
 //Display message
 instance_create(0,0,obj_palacemsg);

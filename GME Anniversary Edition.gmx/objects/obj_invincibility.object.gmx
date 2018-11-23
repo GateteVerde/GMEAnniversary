@@ -67,9 +67,9 @@ with (obj_levelcontrol) {
 }
 
 //Play 'Starman' theme
-if (!audio_is_playing(global._stream_starman)) 
-&amp;&amp; (!audio_is_playing(global._stream_pswitch))
-    global._stream_starman = audio_play_sound(global._theme_starman,0,1);
+if (!audio_is_playing(bgm_pswitch))
+&amp;&amp; (!audio_is_playing(bgm_starman))
+    audio_play_sound(bgm_starman, 0, true);
 </string>
           </argument>
         </arguments>
@@ -127,8 +127,7 @@ instance_destroy();
             <string>///End invincibility
 
 //Stop starman music
-audio_stop_sound(global._stream_starman);
-global._stream_starman = -1;
+audio_stop_sound(bgm_starman);
 
 //Play level music
 obj_levelcontrol.alarm[0] = 2;
@@ -214,18 +213,11 @@ if (obj_persistent.restart == false) {
         global.starman = alarm[0];
         
     //Otherwise
-    else {
-    
-        //Stop 'Starman' instance
-        audio_stop_sound(global._stream_starman);
-        global._stream_starman = -1;
-    }
+    else
+        audio_stop_sound(bgm_starman);
 }
-else {
-
-    audio_stop_sound(global._stream_starman);
-    global._stream_starman = -1;    
-}
+else 
+    audio_stop_sound(bgm_starman);  
 </string>
           </argument>
         </arguments>

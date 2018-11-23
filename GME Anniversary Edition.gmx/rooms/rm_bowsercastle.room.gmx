@@ -86,7 +86,7 @@ if (global.mariostart == 0) {
     <instance objName="obj_onoffplatform_p" x="688" y="272" name="inst_0ED14FCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform_p" x="688" y="288" name="inst_4D7D1C4C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onoffplatform_p" x="688" y="304" name="inst_B1440C9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_4F8E7868" locked="0" code="levelmusic = global._theme_castle;&#xA;leveltime = 500;&#xA;camlock = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_4F8E7868" locked="0" code="levelmusic = bgm_castle;&#xA;leveltime = 500;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_starcoin" x="472" y="280" name="inst_527D3712" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_thwomp" x="448" y="240" name="inst_6BB1799A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_thwomp" x="528" y="240" name="inst_34489520" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Play stream
 
-stream = audio_play_sound(global._theme_bonus, 0, 1);
+audio_play_sound(bgm_bonus, 0, true);
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
+            <string>///Intro
+
+/*
 LETTER TEMPLATE
 
 Each line must not have more than 29 characters (spaces are included), Use the template below on the draw event.
@@ -70,7 +72,7 @@ EXAMPLE: "Hello!#"
 */
 
 //Stream
-stream = audio_play_sound(global._theme_intro, 0, 0);
+audio_play_sound(bgm_intro, 0, false);
 </string>
           </argument>
         </arguments>
@@ -95,7 +97,7 @@ stream = audio_play_sound(global._theme_intro, 0, 0);
             <kind>1</kind>
             <string>///Go to the map
 
-if (!audio_is_playing(stream)) {
+if (!audio_is_playing(bgm_intro)) {
 
     if (instance_number(obj_fadein) == 0)
         with (instance_create(0,0,obj_fadein)) target = rm_map;
@@ -194,8 +196,7 @@ draw_text_colour_shadowed(view_xview[0]+64,view_yview[0]+40,"Hello!#"
             <kind>1</kind>
             <string>///Skip intro
 
-if (audio_is_playing(stream))
-    audio_stop_sound(stream);
+audio_stop_sound(bgm_intro);
 </string>
           </argument>
         </arguments>

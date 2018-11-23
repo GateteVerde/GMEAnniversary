@@ -533,7 +533,7 @@
     <instance objName="obj_coin_p" x="688" y="64" name="inst_A8B54B6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pswitchblock" x="128" y="192" name="inst_6F759A11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="40" y="192" name="inst_8E595D08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelcontrol" x="0" y="240" name="inst_5AC2F287" locked="0" code="levelmusic = global._theme_bonus;&#xA;leveltime = 200;&#xA;camlock = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="240" name="inst_5AC2F287" locked="0" code="levelmusic = bgm_bonus;&#xA;leveltime = 200;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin_p" x="32" y="192" name="inst_77FBD719" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_palaceswitch" x="1360" y="176" name="inst_0D753A7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>

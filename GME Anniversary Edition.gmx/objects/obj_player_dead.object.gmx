@@ -31,7 +31,7 @@
 image_speed = 0;
 
 //Play sound
-stream = audio_play_sound(global._theme_miss, 0, 0);
+audio_play_sound(bgm_miss, 0, false);
 
 //Stop stream and timer
 with (obj_levelcontrol) {

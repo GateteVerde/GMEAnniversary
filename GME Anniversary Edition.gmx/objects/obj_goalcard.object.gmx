@@ -137,10 +137,8 @@ if (!ready) {
 with (instance_create(other.x,other.y,obj_player_goal_smb3)) mygoal = other.id;
 
 //Stop streams
-audio_stop_sound(global._stream_pswitch);
-global._stream_pswitch = -1;
-audio_stop_sound(global._stream_starman);
-global._stream_starman = -1;
+audio_stop_sound(bgm_pswitch);
+audio_stop_sound(bgm_starman);
 
 //Stop both music and timer
 with (obj_levelcontrol) {
@@ -256,7 +254,7 @@ if ((global.card[0] == global.card[1]) &amp;&amp; (global.card[0] == global.card
     if (global.card[0] == 0) {
     
         //Play stream
-        stream = audio_play_sound(global._theme_sm3clearc, 0, 0);
+        stream = audio_play_sound(bgm_sm3clear_c, 0, false);
         
         //Set the card type
         cardtype = 1;
@@ -269,7 +267,7 @@ if ((global.card[0] == global.card[1]) &amp;&amp; (global.card[0] == global.card
     else if (global.card[0] == 1) {
     
         //Play stream
-        stream = audio_play_sound(global._theme_sm3clearc, 0, 0);
+        stream = audio_play_sound(bgm_sm3clear_c, 0, false);
         
         //Set the card type
         cardtype = 2;
@@ -282,7 +280,7 @@ if ((global.card[0] == global.card[1]) &amp;&amp; (global.card[0] == global.card
     else if (global.card[0] == 2) {
     
         //Play stream
-        stream = audio_play_sound(global._theme_sm3clearc, 0, 0);
+        stream = audio_play_sound(bgm_sm3clear_c, 0, false);
         
         //Set the card type
         cardtype = 3;
@@ -296,7 +294,7 @@ if ((global.card[0] == global.card[1]) &amp;&amp; (global.card[0] == global.card
 else {
 
     //Play stream
-    stream = audio_play_sound(global._theme_sm3clearb, 0, 0);
+    stream = audio_play_sound(bgm_sm3clear_b, 0, false);
     
     //Set the card type
     cardtype = 0;
@@ -332,7 +330,7 @@ else {
 if (global.card[0] == -1) {
 
     //Play stream
-    stream = audio_play_sound(global._theme_sm3cleara, 0, 0);
+    stream = audio_play_sound(bgm_sm3clear, 0, false);
     
     //Set the image for card A.
     global.card[0] = image_index;
@@ -342,7 +340,7 @@ if (global.card[0] == -1) {
 else if ((global.card[0] != -1) &amp;&amp; (global.card[1] == -1)) {
 
     //Play stream
-    stream = audio_play_sound(global._theme_sm3cleara, 0, 0);
+    stream = audio_play_sound(bgm_sm3clear, 0, 0);
     
     //Set the image for card B.
     global.card[1] = image_index;

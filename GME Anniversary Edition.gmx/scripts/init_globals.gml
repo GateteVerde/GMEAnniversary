@@ -190,7 +190,7 @@ for (var i = 0; i < 3; i++) {
 }
 
 //Star Coins collected
-global.starcoins = 0;
+global.starcoins = 9;
 
 //Data structure for storing the state of the world map.
 global.mapscreen = ds_map_create();

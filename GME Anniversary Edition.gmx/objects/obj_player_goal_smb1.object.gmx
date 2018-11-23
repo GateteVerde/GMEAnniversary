@@ -201,7 +201,7 @@ depth = 14;
             <kind>1</kind>
             <string>///Return to the map after the music is done playing.
 
-if (!audio_is_playing(stream)) {
+if (!audio_is_playing(bgm_sm1clear)) {
 
     //If there's not fireworks
     if (global.fireworks == 0)
@@ -345,7 +345,7 @@ else {
 ready = 2;
 
 //Play the flagpole music
-stream = audio_play_sound(global._theme_sm1clear, 0, 0);
+audio_play_sound(bgm_sm1clear, 0, false);
 
 //Jump off the flagpole
 vspeed = -3;

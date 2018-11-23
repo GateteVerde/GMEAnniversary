@@ -120,7 +120,7 @@ with (instance_create(view_xview[0],view_yview[0],obj_powkiller))
             <kind>1</kind>
             <string>///Return to the map if no music is playing
 
-if (audio_is_playing(stream))
+if (audio_is_playing(bgm_sm2clear))
     alarm[2] = 1;
 else
     endlevel();
@@ -228,7 +228,7 @@ else {
             <kind>1</kind>
             <string>///Play music
 
-stream = audio_play_sound(global._theme_sm2clear, 0, 0);
+audio_play_sound(bgm_sm2clear, 0, false);
 </string>
           </argument>
         </arguments>

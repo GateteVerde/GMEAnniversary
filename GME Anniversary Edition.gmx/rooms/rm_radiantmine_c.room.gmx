@@ -58,7 +58,7 @@ background_hspeed[7] = -0.25;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_2A390BBE" locked="0" code="levelmusic = global._theme_underground;&#xA;leveltime = 1;&#xA;camlock = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_2A390BBE" locked="0" code="levelmusic = bgm_underground;&#xA;leveltime = 1;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="64" y="16" name="inst_B951D7E9" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="64" y="192" name="inst_E4B2D47D" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="240" y="112" name="inst_36E49152" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>

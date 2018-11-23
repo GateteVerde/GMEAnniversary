@@ -52,7 +52,7 @@ background_hspeed[7] = -0.25;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_FD16D4E9" locked="0" code="levelmusic = global._theme_subcon;&#xA;leveltime = 500;&#xA;camlock = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_FD16D4E9" locked="0" code="levelmusic = bgm_subcon;&#xA;leveltime = 500;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="0" y="848" name="inst_3284F0EA" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="352" y="752" name="inst_E87D457E" locked="0" code="myroom = rm_subconfields_b;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="0" y="688" name="inst_1AFBCF5A" locked="0" code="" scaleX="8" scaleY="1" colour="4294967295" rotation="0"/>

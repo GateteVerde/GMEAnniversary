@@ -55,7 +55,7 @@ background_hspeed[7] = -0.25;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_7611F4EB" locked="0" code="levelmusic = global._theme_ghost;&#xA;leveltime = 1;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_7611F4EB" locked="0" code="levelmusic = bgm_ghost;&#xA;leveltime = 1;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_boo" x="1304" y="72" name="inst_C83DB5A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qswitchblock" x="184" y="288" name="inst_4B9E0A81" locked="0" code="timelineS = tml_water_rise;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="32" y="-112" name="inst_9FC16F72" locked="0" code="" scaleX="1" scaleY="38" colour="4294967295" rotation="0"/>

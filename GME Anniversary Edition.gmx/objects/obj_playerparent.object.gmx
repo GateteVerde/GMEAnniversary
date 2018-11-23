@@ -562,6 +562,25 @@ if (freezetime &gt; 1) {
     //Unfreeze when 'freezetime' hits 1
     if (freezetime == 1) {
     
+        //Play 'Shatter' sound
+        audio_play_sound(snd_shatter, 0, false);
+        
+        //Create sparklies
+        repeat (32) {
+
+            with (instance_create(bbox_left+sprite_width/2-4,bbox_top+sprite_height/2-4,obj_smoke)) {
+            
+                //Sprite
+                sprite_index = spr_icespark;
+                
+                //Animate
+                image_speed = 0.1;
+                
+                //Motion
+                motion_set(random(360), random(1));
+            }
+        }
+    
         //Stop freeze
         freezetime = 0;
         
@@ -1489,6 +1508,36 @@ if (invulnerable == false) {
     }
     
     else {
+    
+        //If frozen, break ice
+        if (freezetime &gt; 0) {
+        
+            //Play 'Shatter' sound
+            audio_play_sound(snd_shatter, 0, false);
+            
+            //Create sparklies
+            repeat (32) {
+
+                with (instance_create(bbox_left+sprite_width/2-4,bbox_top+sprite_height/2-4,obj_smoke)) {
+                
+                    //Sprite
+                    sprite_index = spr_icespark;
+                    
+                    //Animate
+                    image_speed = 0.1;
+                    
+                    //Motion
+                    motion_set(random(360), random(1));
+                }
+            }
+            
+            //Break ice
+            freezetime = 0;
+            disablegrav = 0;
+            
+            //Enable controls
+            disablecontrol = false;             
+        }
 
         //If health mode is active
         if (global.healthmode == true) {

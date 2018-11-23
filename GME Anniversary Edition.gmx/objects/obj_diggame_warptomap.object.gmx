@@ -28,7 +28,7 @@
             <string>///Return to the map
 
 //Play 'Minigame' stream
-stream = audio_play_sound(global._theme_minigame, 0, 1);
+audio_play_sound(bgm_minigame, 0, true);
 
 //Whether the player reached this point
 ready = 0;
@@ -64,8 +64,7 @@ if (instance_exists(obj_diggame_chest)) {
     exit;
     
     //Otherwise, stop minigame sound
-    audio_stop_sound(stream);
-    stream = -1;
+    audio_stop_sound(bgm_minigame);
     
     //Clear it
     global.clear = 1;

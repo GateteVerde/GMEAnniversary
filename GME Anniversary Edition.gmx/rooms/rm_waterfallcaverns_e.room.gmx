@@ -3,7 +3,7 @@
   <caption></caption>
   <width>752</width>
   <height>432</height>
-  <vsnap>8</vsnap>
+  <vsnap>16</vsnap>
   <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
@@ -59,7 +59,7 @@
     <instance objName="obj_solid" x="16" y="384" name="inst_A352301D" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="128" y="384" name="inst_DA217463" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="96" y="384" name="inst_930DA44B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_1CCB6F69" locked="0" code="levelmusic = global._theme_athletic&#xA;leveltime = 1&#xA;camlock = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="0" name="inst_1CCB6F69" locked="0" code="levelmusic = bgm_athletic;&#xA;leveltime = 1&#xA;camlock = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goalgate_secret" x="384" y="224" name="inst_067E18B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_p" x="176" y="256" name="inst_347F72B4" locked="0" code="sprout = cs_1up;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="144" y="384" name="inst_26E1C598" locked="0" code="" scaleX="38" scaleY="1" colour="4294967295" rotation="0"/>
