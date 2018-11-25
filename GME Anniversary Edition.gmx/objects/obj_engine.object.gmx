@@ -59,15 +59,15 @@ instance_create(x-8,y-8,obj_solid);
             <kind>1</kind>
             <string>///Set up the frame.
 
-//Go back
-image_index--;
-
 //Check if the frame is the second one and make the engine start after 2 seconds.
 if (image_index == 1) {
 
     //Destroy light
-    with (light) instance_destroy();
-    light = -1;
+    if (light != -1) {
+    
+        with (light) instance_destroy();
+        light = -1;
+    }
 
     //Set the frame.
     image_index = 0;
@@ -75,14 +75,17 @@ if (image_index == 1) {
     //Make it invisible
     visible = 0;
     
-    //Start engine again.
-    if (instance_exists(obj_engine_alt))
-        obj_engine_alt.alarm[0] = 120;
+    //Start alternate engines or the same engine again.
+    if (instance_number(obj_engine_alt) &gt; 0)
+        with (obj_engine_alt) alarm[0] = 120;
     else
         alarm[0] = 120;
 }
-else
+else if (image_index &gt; 1) {
+
+    image_index--;
     alarm[2] = 4;
+}
 </string>
           </argument>
         </arguments>

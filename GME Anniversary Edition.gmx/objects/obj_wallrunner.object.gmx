@@ -204,6 +204,7 @@ if (keyboard_check_pressed(global.shiftkey)) {
         
             yspeed = other.vspeed;
             xspeed = -3*other.xscale;
+            xscale = -xscale;
             angle = 45;
             alarm[4] = 8;
         }
@@ -216,6 +217,7 @@ if (keyboard_check_pressed(global.shiftkey)) {
         
             yspeed = other.vspeed;
             xspeed = 3*other.xscale;
+            xscale = -xscale;
             angle = 315;
             alarm[4] = 8;
         }

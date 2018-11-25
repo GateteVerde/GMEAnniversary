@@ -31,6 +31,8 @@
 **  This item uses creation code!
 **
 **  fire = Whether the plant should spit fire upon reaching the top area
+**      1: Fire
+**      2: Ice
 */
 
 //Default variables
@@ -87,8 +89,18 @@ alarm[0] = 2;
 audio_play_sound(snd_podoboo, 0, false);
 
 //Create fireballs
-with (instance_create(x,y+4,obj_plantfire2)) hspeed = 1;
-with (instance_create(x,y+4,obj_plantfire2)) hspeed = -1;
+with (instance_create(x,y+4,obj_plantfire2)) {
+
+    hspeed = 1;
+    if (other.fire == 2)
+        sprite_index = spr_snowball;
+}
+with (instance_create(x,y+4,obj_plantfire2)) {
+
+    hspeed = -1;
+    if (other.fire == 2)
+        sprite_index = spr_snowball;
+}
 </string>
           </argument>
         </arguments>
@@ -136,6 +148,31 @@ else {
     alarm[0] = 1;
     exit;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Change to ice
+
+if (fire == 2) then sprite_index = spr_jpplant_ice;
 </string>
           </argument>
         </arguments>

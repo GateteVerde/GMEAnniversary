@@ -34,15 +34,55 @@ image_speed = 0.3;
 vspeed = -4;
 gravity = 0.2;
 
+//Leave trail
+alarm[0] = 8;
+
 //Create spotlight
 if (instance_exists(obj_levelcontrol_light)) {
 
     with (instance_create(x,y,obj_light_st)) {
     
-        target = other.id;
         sprite_index = spr_surface_light_small_b;
-        image_blend = c_orange;
+        target = other.id;
+        if (sprite_index == spr_fireball)
+            image_blend = c_orange;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Leave a trail
+
+if (sprite_index == spr_snowball) {
+
+    //Create effect
+    with (instance_create(x-4+random(8),y+random(8),obj_smoke)) {
+    
+        image_speed = 0.1;
+        sprite_index = spr_icespark;
+    }
+    
+    //Repeat the process
+    alarm[0] = 8;
 }
 </string>
           </argument>
@@ -102,20 +142,60 @@ if (x &lt; view_xview[0]-32)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Hurt the player
+            <string>///Hurt or freeze the player
 
-//If the player is invincible or the player does have the hammer powerup and is crouched down.
-if (instance_exists(obj_invincibility)) 
-|| ((global.powerup == cs_hammer) &amp;&amp; (other.crouch)) {
+//If the sprite is a fireball
+if (sprite_index == spr_fireball) {
 
-    instance_create(x-8,y-4,obj_smoke);
-    instance_destroy();
-    exit;
+    //If the player is invincible or the player does have the hammer powerup and is crouched down.
+    if (instance_exists(obj_invincibility)) 
+    || ((global.powerup == cs_hammer) &amp;&amp; (other.crouch)) {
+    
+        instance_create(x-8,y-4,obj_smoke);
+        instance_destroy();
+        exit;
+    }
+    
+    //Otherwise, hurt him.
+    else
+        with (other) event_user(0);
 }
 
-//Otherwise, hurt him.
-else
-    with (other) event_user(0);
+//Otherwise, perform following event
+else if (sprite_index == spr_snowball)
+    event_perform_object(obj_icebro_snowball, ev_collision, obj_playerparent);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy
+
+//Play 'Bump' sound
+audio_play_sound(snd_bump, 0, false)
+
+//Create smoke effect
+instance_create(x-8,y-4,obj_smoke);
+
+//Destroy
+instance_destroy();
 </string>
           </argument>
         </arguments>

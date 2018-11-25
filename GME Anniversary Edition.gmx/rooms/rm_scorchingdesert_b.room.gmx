@@ -86,13 +86,12 @@
     <instance objName="obj_left" x="336" y="96" name="inst_B9EEB431" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_watertop" x="96" y="256" name="inst_C3E21E5F" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_watertop" x="224" y="256" name="inst_931C7825" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pplant_side_r" x="80" y="144" name="inst_1A65B7FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pplant_large_down" x="256" y="192" name="inst_29DE9C73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cheepcheep_green" x="280" y="288" name="inst_30A149C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cheepcheep_green" x="104" y="288" name="inst_8109FA83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pplant_large_fire" x="432" y="224" name="inst_D292BC16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pplant_large_fire" x="432" y="224" name="inst_D292BC16" locked="0" code="ice = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_watertop" x="352" y="256" name="inst_E50B1CAF" locked="0" code="" scaleX="20" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="464" y="160" name="inst_63F03CBE" locked="0" code="varmsg = &quot;These platforms to my right are Yoshi platforms, they will become solid if you are riding a yoshi.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="464" y="160" name="inst_63F03CBE" locked="0" code="varmsg = &quot;These platforms to my right are Yoshi platforms, they will become solid if you are riding a yoshi.&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="384" y="48" name="inst_E1CC9E26" locked="0" code="" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="480" y="48" name="inst_B6587CDB" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="400" y="32" name="inst_4AEBACCD" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
@@ -159,6 +158,9 @@
     <instance objName="obj_flipblock" x="560" y="128" name="inst_E9185717" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flipblock" x="560" y="144" name="inst_A331BF5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flipblock" x="560" y="160" name="inst_D695F801" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pplant_fire_side_r" x="80" y="144" name="inst_8BAD044B" locked="0" code="ice = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="304" y="32" name="inst_F2DFFDD7" locked="0" code="varmsg = &quot;We found evidence that the piranha plants that populate this area are capable of spit ice instead of fire. Be careful!&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_onoffblock_o" x="832" y="144" name="inst_E45DE362" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="176" y="96" w="16" h="16" xo="720" yo="432" id="10071601" name="inst_220028B0" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -489,7 +489,7 @@ if ((state == 2) || (delay != 0)) {
         ygrav = grav_alt;
     
     //Otherwise, use default gravity.     
-    else {
+    else if (disablegrav == 0) {
         
         //Use default gravity
         ygrav = grav;

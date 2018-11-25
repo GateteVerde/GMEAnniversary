@@ -532,7 +532,7 @@ if (!audio_is_playing(bgm_pswitch))
     exit;
     
     //If the music is not the same as the music from the previous area.
-    if (levelmusic != global.levelmusic)
+    if (!audio_is_playing(levelmusic))
         audio_play_sound(levelmusic, 1, true);
 }
 </string>
@@ -1327,8 +1327,10 @@ audio_stop_sound(snd_timer_end);
 if (obj_persistent.restart == false) {
 
     //If the main level theme was playing, remember it
-    if (audio_is_playing(levelmusic))
+    if (audio_is_playing(levelmusic)) {
+    
         global.levelmusic = levelmusic;
+    }
     
     //Otherwise, reset.
     else    
@@ -1367,6 +1369,16 @@ if (global.skin != 0)
           <argument>
             <kind>1</kind>
             <string>///Handles the Mario Start! text, room warping, music and timer.
+
+//If the music is not the same as the music used in the last room
+if (global.levelmusic != levelmusic) {
+
+    //Stop the old music
+    audio_stop_sound(global.levelmusic);
+
+    //Set the new music
+    global.levelmusic = levelmusic;
+}
 
 //Set up the time for the level.
 if (leveltime &gt; 0) { //If the timer has been set.

@@ -31,10 +31,12 @@
 **  This item uses creation code!
 **
 **  fires = How many fires will this plant spit before going inside the pipe.
+**  ice   = To make fire piranha plants spit snowballs instead of fire balls.
 */
 
 //Default variables
 fires = 2;
+ice = 0;
 prevfires = 0;
 
 //How vulnerable is this enemy to various items?
@@ -112,6 +114,10 @@ if (fires &gt; 0) {
             //Set the vertical speed
             vspeed = -0.5;
         }
+        
+        //If the plant spits ice, turn into a snowball
+        if (other.ice)
+            sprite_index = spr_snowball;
     }
 
     //Repeat
@@ -192,6 +198,9 @@ else {
     else
         image_index = 2;    
 }
+
+//Change to ice
+if (ice) then sprite_index = spr_pplant_side_ice;
 </string>
           </argument>
         </arguments>

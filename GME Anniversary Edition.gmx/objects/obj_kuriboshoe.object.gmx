@@ -127,7 +127,7 @@ if (instance_exists(obj_playerparent)) {
             <string>///Create smoke effect if in contact with lava
 
 //If the shoe is in contact with lava
-var lava = collision_rectangle(bbox_left,bbox_bottom+6,bbox_right,bbox_bottom+7,obj_lava,0,0)
+var lava = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+7,obj_lava,1,0)
 if (lava) {
     
     if (movement.gravity == 0)

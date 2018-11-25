@@ -140,6 +140,7 @@
         <sound>sound\bgm_miss</sound>
         <sound>sound\bgm_pswitch</sound>
         <sound>sound\bgm_starman</sound>
+        <sound>sound\bgm_title</sound>
       </sounds>
       <sounds name="Maps">
         <sound>sound\bgm_map1</sound>
@@ -153,7 +154,6 @@
       <sound>sound\bgm_land</sound>
       <sound>sound\bgm_minigame</sound>
       <sound>sound\bgm_subcon</sound>
-      <sound>sound\bgm_title</sound>
       <sound>sound\bgm_underground</sound>
       <sound>sound\bgm_underwater</sound>
     </sounds>
@@ -803,11 +803,15 @@
         <sprite>sprites\spr_shell_spiny</sprite>
         <sprite>sprites\spr_pplant</sprite>
         <sprite>sprites\spr_pplant_fire</sprite>
+        <sprite>sprites\spr_pplant_ice</sprite>
         <sprite>sprites\spr_pplant_side</sprite>
         <sprite>sprites\spr_pplant_side_fire</sprite>
+        <sprite>sprites\spr_pplant_side_ice</sprite>
         <sprite>sprites\spr_pplant_large</sprite>
         <sprite>sprites\spr_pplant_large_fire</sprite>
+        <sprite>sprites\spr_pplant_large_ice</sprite>
         <sprite>sprites\spr_jpplant</sprite>
+        <sprite>sprites\spr_jpplant_ice</sprite>
         <sprite>sprites\spr_ptooie</sprite>
         <sprite>sprites\spr_ptooie_blow</sprite>
         <sprite>sprites\spr_ptooie_ball</sprite>
@@ -1727,87 +1731,86 @@
     <path>paths\pth_bubble_v</path>
   </paths>
   <scripts name="scripts">
-    <scripts name="Player">
-      <scripts name="Animation">
-        <script>scripts\scr_mario_walk.gml</script>
-        <script>scripts\scr_mario_jump.gml</script>
-        <script>scripts\scr_mario_run.gml</script>
-        <script>scripts\scr_mario_runjump.gml</script>
-        <script>scripts\scr_mario_skid.gml</script>
-        <script>scripts\scr_mario_climb.gml</script>
-        <script>scripts\scr_mario_swim.gml</script>
-        <script>scripts\scr_mario_swim2.gml</script>
-        <script>scripts\scr_mario_swim3.gml</script>
-        <script>scripts\scr_mario_carry.gml</script>
-        <script>scripts\scr_mario_hold.gml</script>
-        <script>scripts\scr_mario_hold2.gml</script>
-        <script>scripts\scr_mario_duck.gml</script>
-        <script>scripts\scr_mario_goal.gml</script>
-        <script>scripts\scr_mario_spin.gml</script>
-        <script>scripts\scr_mario_spin2.gml</script>
-        <script>scripts\scr_mario_shoot.gml</script>
-        <script>scripts\scr_mario_slide.gml</script>
-        <script>scripts\scr_mario_kick.gml</script>
-        <script>scripts\scr_mario_clear.gml</script>
-        <script>scripts\scr_mario_walljump.gml</script>
-        <script>scripts\scr_mario_somersault.gml</script>
-        <script>scripts\scr_mario_ride.gml</script>
-      </scripts>
-      <scripts name="Behaviour">
-        <scripts name="Special">
-          <scripts name="Mario">
-            <script>scripts\scr_player_behaviour_wall.gml</script>
-          </scripts>
+    <scripts name="Main">
+      <scripts name="Player">
+        <scripts name="Animation">
+          <script>scripts\scr_mario_walk.gml</script>
+          <script>scripts\scr_mario_jump.gml</script>
+          <script>scripts\scr_mario_run.gml</script>
+          <script>scripts\scr_mario_runjump.gml</script>
+          <script>scripts\scr_mario_skid.gml</script>
+          <script>scripts\scr_mario_climb.gml</script>
+          <script>scripts\scr_mario_swim.gml</script>
+          <script>scripts\scr_mario_swim2.gml</script>
+          <script>scripts\scr_mario_swim3.gml</script>
+          <script>scripts\scr_mario_carry.gml</script>
+          <script>scripts\scr_mario_hold.gml</script>
+          <script>scripts\scr_mario_hold2.gml</script>
+          <script>scripts\scr_mario_duck.gml</script>
+          <script>scripts\scr_mario_goal.gml</script>
+          <script>scripts\scr_mario_spin.gml</script>
+          <script>scripts\scr_mario_spin2.gml</script>
+          <script>scripts\scr_mario_shoot.gml</script>
+          <script>scripts\scr_mario_slide.gml</script>
+          <script>scripts\scr_mario_kick.gml</script>
+          <script>scripts\scr_mario_clear.gml</script>
+          <script>scripts\scr_mario_walljump.gml</script>
+          <script>scripts\scr_mario_somersault.gml</script>
+          <script>scripts\scr_mario_ride.gml</script>
         </scripts>
-        <script>scripts\scr_player_behaviour.gml</script>
-        <script>scripts\scr_player_behaviour_climb.gml</script>
-        <script>scripts\scr_player_behaviour_swim.gml</script>
-        <script>scripts\scr_player_behaviour_slide.gml</script>
+        <scripts name="Behaviour">
+          <scripts name="Special">
+            <scripts name="Mario">
+              <script>scripts\scr_player_behaviour_wall.gml</script>
+            </scripts>
+          </scripts>
+          <script>scripts\scr_player_behaviour.gml</script>
+          <script>scripts\scr_player_behaviour_climb.gml</script>
+          <script>scripts\scr_player_behaviour_swim.gml</script>
+          <script>scripts\scr_player_behaviour_slide.gml</script>
+        </scripts>
+        <script>scripts\isinice.gml</script>
+        <script>scripts\canpull.gml</script>
+        <script>scripts\canhold.gml</script>
+        <script>scripts\player_retrieve.gml</script>
+        <script>scripts\draw_sprite_player.gml</script>
+        <script>scripts\player_draw_yoshi.gml</script>
       </scripts>
-      <script>scripts\isinice.gml</script>
-      <script>scripts\canpull.gml</script>
-      <script>scripts\canhold.gml</script>
-      <script>scripts\player_retrieve.gml</script>
-      <script>scripts\draw_sprite_player.gml</script>
-      <script>scripts\player_draw_yoshi.gml</script>
+      <script>scripts\move_contact_object.gml</script>
     </scripts>
     <scripts name="Events">
-      <script>scripts\endlevel.gml</script>
-      <script>scripts\pswitch_activate.gml</script>
-      <script>scripts\pswitch_deactivate.gml</script>
-    </scripts>
-    <scripts name="System">
-      <scripts name="Shaders">
-        <scripts name="Palettes">
-          <scripts name="Palette Swap System">
-            <script>scripts\pal_swap_init_system.gml</script>
-            <script>scripts\pal_swap_set.gml</script>
-            <script>scripts\pal_swap_reset.gml</script>
-            <script>scripts\pal_swap_get_pal_count.gml</script>
-          </scripts>
-          <script>scripts\palette_get.gml</script>
-        </scripts>
-      </scripts>
-      <scripts name="Text">
-        <script>scripts\draw_text_colour_shadowed.gml</script>
-        <script>scripts\string_add_zeros.gml</script>
-        <script>scripts\string_make_width.gml</script>
+      <scripts name="Key Mapping">
+        <script>scripts\key_to_string.gml</script>
+        <script>scripts\set_keys.gml</script>
       </scripts>
       <script>scripts\save.gml</script>
       <script>scripts\load.gml</script>
-      <script>scripts\set_keys.gml</script>
-      <script>scripts\music_add.gml</script>
-      <script>scripts\init_globals.gml</script>
-      <script>scripts\draw_circle_colour_precise.gml</script>
-      <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
-      <script>scripts\draw_sprite_tiled_area_ext.gml</script>
+      <script>scripts\endlevel.gml</script>
+      <script>scripts\pswitch_activate.gml</script>
+      <script>scripts\pswitch_deactivate.gml</script>
+      <script>scripts\outside_view.gml</script>
     </scripts>
-    <script>scripts\outside_view.gml</script>
+    <scripts name="Shaders">
+      <scripts name="Palette Swap System">
+        <script>scripts\pal_swap_init_system.gml</script>
+        <script>scripts\pal_swap_set.gml</script>
+        <script>scripts\pal_swap_reset.gml</script>
+        <script>scripts\pal_swap_get_pal_count.gml</script>
+      </scripts>
+      <script>scripts\palette_get.gml</script>
+    </scripts>
+    <scripts name="Text">
+      <script>scripts\draw_text_colour_shadowed.gml</script>
+      <script>scripts\string_add_zeros.gml</script>
+      <script>scripts\string_make_width.gml</script>
+    </scripts>
+    <script>scripts\init_globals.gml</script>
     <script>scripts\constant_get_sprite.gml</script>
     <script>scripts\sprite_get_constant.gml</script>
     <script>scripts\sprite_make_object.gml</script>
-    <script>scripts\move_contact_object.gml</script>
-    <script>scripts\key_to_string.gml</script>
+    <script>scripts\draw_circle_colour_precise.gml</script>
+    <script>scripts\draw_sprite_tiled_area_ext.gml</script>
+    <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>

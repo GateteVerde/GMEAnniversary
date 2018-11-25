@@ -175,7 +175,6 @@ if (global.mariostart == 0) {
     <instance objName="obj_qblock" x="144" y="288" name="inst_D452567A" locked="0" code="sprout = cs_fire;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="624" y="176" name="inst_FD997134" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_engine" x="840" y="376" name="inst_F7CF3500" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_engine" x="952" y="376" name="inst_91920C27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
     <instance objName="obj_firebar_manager" x="480" y="352" name="inst_1298DF6B" locked="0" code="length = 10;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pblock" x="1040" y="240" name="inst_09ED7ED8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pblock" x="1024" y="240" name="inst_57F56716" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -211,6 +210,7 @@ if (global.mariostart == 0) {
     <instance objName="obj_tilehider" x="688" y="48" name="inst_7665A9DA" locked="0" code="" scaleX="12" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpleft" x="832" y="64" name="inst_FA387DAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="880" y="80" name="inst_D81B7271" locked="0" code="myroom = rm_bowsercastle_e;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_engine_alt" x="952" y="376" name="inst_BDCF5BDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="112" y="256" w="16" h="16" xo="480" yo="288" id="10048616" name="tile_A7022011" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

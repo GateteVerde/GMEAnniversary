@@ -59,6 +59,7 @@ if (instance_exists(obj_levelcontrol_light)) {
     
         target = other.id;
         image_blend = c_orange;
+        sprite_index = spr_surface_light_small_b;
     }
 }
 </string>
@@ -100,6 +101,9 @@ if (vspeed &gt; 0) {
         //Set the gravity
         gravity = 0.4;
         
+        //Set depth
+        depth = 10;
+        
         //Set the animation
         image_speed = 0.1;
         
@@ -139,7 +143,7 @@ lava = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_lava_ce
 if (lava) {
 
     //Create lava splash
-    with (instance_create(x-8,lava.bbox_bottom-4,obj_smoke))
+    with (instance_create(x-8,lava.bbox_bottom+12,obj_smoke))
         sprite_index = spr_splash_lava;
 }
 </string>
@@ -276,7 +280,7 @@ if (lava) {
         alarm[0] = 10;
         
         //Create lava splash
-        with (instance_create(x-8,lava.bbox_bottom-4,obj_smoke))
+        with (instance_create(x-8,lava.bbox_bottom+12,obj_smoke))
             sprite_index = spr_splash_lava_up;
     }
 }

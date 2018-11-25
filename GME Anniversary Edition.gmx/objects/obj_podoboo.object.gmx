@@ -58,6 +58,7 @@ if (instance_exists(obj_levelcontrol_light)) {
     
         target = other.id;
         image_blend = c_orange;
+        sprite_index = spr_surface_light_small_b;
     }
 }
 </string>
@@ -95,6 +96,9 @@ if (vspeed &lt; 0) {
     
         //Set the gravity
         gravity = 0.4;
+        
+        //Set the depth
+        depth = 10;
         
         //Set the animation
         image_speed = 0.1;
@@ -135,7 +139,7 @@ lava = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_lava,0,
 if (lava) {
 
     //Create lava splash
-    with (instance_create(x-8,lava.bbox_top-12,obj_smoke))
+    with (instance_create(x-8,lava.y-12,obj_smoke))
         sprite_index = spr_splash_lava;
 }
 </string>
@@ -274,7 +278,7 @@ if (bbox_top &gt; room_height) {
 }
 
 //Bounce in contact with lava.
-lava = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_lava,0,0);
+lava = collision_rectangle(bbox_left,bbox_bottom+7,bbox_right,bbox_bottom+7,obj_lava,0,0);
 if (lava) {
 
     //Bounce.
@@ -287,7 +291,7 @@ if (lava) {
         alarm[0] = 10;
         
         //Create lava splash
-        with (instance_create(x-8,lava.bbox_top-12,obj_smoke))
+        with (instance_create(x-8,lava.y-12,obj_smoke))
             sprite_index = spr_splash_lava;
     }
 }

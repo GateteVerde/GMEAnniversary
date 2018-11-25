@@ -46,6 +46,7 @@ if (instance_exists(obj_levelcontrol_light)) {
     
         target = other.id;
         image_blend = c_orange;
+        sprite_index = spr_surface_light_small_b;
     }
 }
 </string>

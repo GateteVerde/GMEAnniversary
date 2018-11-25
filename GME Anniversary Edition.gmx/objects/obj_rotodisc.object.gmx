@@ -32,6 +32,24 @@ image_speed = 0.75;
 
 //Leave a trail
 alarm[0] = 2;
+
+//Light
+light = -1;
+
+//Create spotlight
+if (instance_exists(obj_levelcontrol_light)) {
+
+    //Create a light
+    light = instance_create(x,y,obj_light_st);
+    
+    //With the light
+    with (light) {
+    
+        target = other.id;
+        image_blend = make_colour_rgb(214, 0, 33);
+        sprite_index = spr_surface_light_small_b;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -62,6 +80,50 @@ alarm[0] = 2;
 //Leave a trail.
 with (instance_create(x,y,obj_rotodisc_trail)) 
     image_index = 0+(other.image_index*2);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Change the light colour if it exists
+
+if (light != -1) {
+
+    switch (image_index) {
+    
+        //Red
+        case (0): with (light) image_blend = make_colour_rgb(214, 0, 33); break;
+        
+        //Brown
+        case (1): with (light) image_blend = make_colour_rgb(148, 97, 99); break;
+        
+        //Yellow
+        case (2): with (light) image_blend = make_colour_rgb(255, 211, 49); break;
+        
+        //Green
+        case (3): with (light) image_blend = make_colour_rgb(165, 235, 33); break;
+        
+        //Gray
+        case (4): with (light) image_blend = make_colour_rgb(189, 186, 189); break;
+    }
+}
 </string>
           </argument>
         </arguments>
