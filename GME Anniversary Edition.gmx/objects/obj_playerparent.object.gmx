@@ -558,6 +558,11 @@ if (freezetime &gt; 1) {
 
     //Decrement freezetime
     freezetime--;
+    
+    //Do not move
+    xspeed = 0;
+    yspeed = 0;
+    ygrav = 0;
 
     //Unfreeze when 'freezetime' hits 1
     if (freezetime == 1) {
@@ -584,8 +589,7 @@ if (freezetime &gt; 1) {
         //Stop freeze
         freezetime = 0;
         
-        //Enable gravity/controls
-        disablegrav = 0;
+        //Enable controls
         disablecontrol = false;
         
         //Make invulnerable for less time
@@ -1533,7 +1537,6 @@ if (invulnerable == false) {
             
             //Break ice
             freezetime = 0;
-            disablegrav = 0;
             
             //Enable controls
             disablecontrol = false;             

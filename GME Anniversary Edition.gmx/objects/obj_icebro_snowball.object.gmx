@@ -215,9 +215,6 @@ else {
             //Freeze
             freezetime = 120;
             
-            //Disable gravity
-            disablegrav = 120;
-            
             //Disable controls
             disablecontrol = 1;
         }
@@ -253,7 +250,6 @@ else {
             
             //Break ice
             freezetime = 0;
-            disablegrav = 0;
             
             //Enable controls
             disablecontrol = false;            

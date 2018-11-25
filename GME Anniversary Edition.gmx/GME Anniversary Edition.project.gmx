@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="58" name="datafiles"/>
+  <datafiles number="83" name="datafiles"/>
   <NewExtensions/>
   <sounds name="sound">
     <sounds name="Action">
@@ -137,6 +137,7 @@
         </sounds>
         <sound>sound\bgm_gameover</sound>
         <sound>sound\bgm_intro</sound>
+        <sound>sound\bgm_minigame</sound>
         <sound>sound\bgm_miss</sound>
         <sound>sound\bgm_pswitch</sound>
         <sound>sound\bgm_starman</sound>
@@ -152,7 +153,6 @@
       <sound>sound\bgm_castle</sound>
       <sound>sound\bgm_ghost</sound>
       <sound>sound\bgm_land</sound>
-      <sound>sound\bgm_minigame</sound>
       <sound>sound\bgm_subcon</sound>
       <sound>sound\bgm_underground</sound>
       <sound>sound\bgm_underwater</sound>
