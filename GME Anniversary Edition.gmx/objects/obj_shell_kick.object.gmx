@@ -121,7 +121,7 @@ event_inherited();
 
 //Bump nearby blocks
 if (harmplayer)
-&amp;&amp; (hspeed != prevhspeed) {
+&amp;&amp; (sign(hspeed) != sign(prevhspeed)) {
 
     //If the shell is moving left
     if (hspeed &gt; 0) {
@@ -151,10 +151,6 @@ if (harmplayer)
     &amp;&amp; (!audio_is_playing(snd_bump))
         audio_play_sound(snd_bump, 0, false);
 }
-
-//If no gravity
-if (vspeed != 0)
-    gravity = 0.4;
 
 //Allow the shell to hurt the player
 if (harmplayer == 0)
@@ -193,6 +189,60 @@ exit;
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_walltriangle_l">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Bounce in contact with a wall triangle
+
+if (hspeed &lt; 0)
+&amp;&amp; (x &lt; other.x+8)
+    vspeed = -3;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_walltriangle_r">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Bounce in contact with a wall triangle
+
+if (hspeed &gt; 0)
+&amp;&amp; (x &gt; other.x+8)
+    vspeed = -3;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="17">
       <action>
         <libid>1</libid>
@@ -213,6 +263,110 @@ exit;
             <string>///Default enemy flip script
 
 event_perform_object(obj_shell, ev_other, ev_user7);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="14">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Custom floor / ceiling collision
+
+//When moving down
+if (vspeed &gt;= 0) {
+
+    //Check for a semisolid below
+    var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_semisolid,0,0);
+    
+    //If the semisolid exists, snap above it.
+    if (semisolid)
+    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5)
+        y = semisolid.bbox_top-16;
+}
+
+//Embed the NPC into the slope to ensure correct slope physics.
+if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
+&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0)) 
+&amp;&amp; (vspeed == 0) {
+
+    if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+5,obj_semisolid,0,0))
+        y += 4;
+}
+    
+//Handle slope collision
+if (vspeed &gt; -0.85)
+&amp;&amp; ((collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
+&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0))) {
+
+    //Stay embed on the slope.
+    while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
+        y--;
+}
+
+//Check for floor objects
+if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
+&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_semisolid,0,0)))
+|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
+
+    //Stop vertical movement
+    gravity = 0;
+    if (vspeed &gt; 0.5) 
+        vspeed = -vspeed/2;
+    else
+        vspeed = 0;
+}
+else {
+
+    //Set the gravity when not underwater
+    if (!swimming) {
+    
+        //Gravity
+        gravity = 0.2;
+        
+        //Cap vertical speed
+        if (vspeed &gt; 4)
+            vspeed = 4;
+    }
+    
+    //Otherwise, set the gravity when underwater
+    else {
+    
+        //Gravity
+        gravity = 0.03;
+        
+        //Cap vertical speed
+        if (vspeed &gt; 1)
+            vspeed = 1;
+    }
+}
+
+//If the player is moving up
+if (vspeed &lt; 0)
+&amp;&amp; ((collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_solid,1,0)) 
+|| (collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_ceilslopeparent,1,0))) {
+    
+    //Prevent the NPC from getting stuck on a ceiling.
+    while (collision_rectangle(bbox_left+1,bbox_top,bbox_right-1,bbox_top,obj_solid,1,0))
+        y++;
+    
+    //Stop vertical speed
+    vspeed = 0;
+}
 </string>
           </argument>
         </arguments>
