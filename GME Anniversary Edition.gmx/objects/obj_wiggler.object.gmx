@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_enemyparent</parentName>
+  <parentName>obj_deactenemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -53,9 +53,6 @@ ready = 0
 
 //Colour
 color = 0;
-
-//Is the wiggler moving
-moving = 0;
 
 //Previous horizontal speed
 prevhspeed = 0;
@@ -281,6 +278,35 @@ else
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make sure body parts don't get lost
+
+for (var i=0; i&lt;4; i++) {
+
+    if (!instance_exists(mybody[i]))
+        instance_activate_object(mybody[i]);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -299,19 +325,6 @@ else
           <argument>
             <kind>1</kind>
             <string>///Wiggler logic
-
-//Create respawn point if moving and outside the view.
-if (moving == 1) &amp;&amp; (outside_view()) {
-
-    //End movement
-    moving = 2;
-    
-    //Create respawn point
-    instance_create(xstart,ystart,obj_wiggler_respawn);
-    
-    //Destroy
-    instance_destroy();
-}
 
 //Remember horizontal speed
 prevhspeed = hspeed;
