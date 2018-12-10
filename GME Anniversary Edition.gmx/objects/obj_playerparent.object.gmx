@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>///Super Player Parent
 
+//Enable / Disable gravity
+enable_gravity = true;
+
 //Movement variables
 xspeed = 0;
 yspeed = 0;
@@ -498,352 +501,372 @@ invulnerable = false;
             <kind>1</kind>
             <string>///Physics
 
-//Reset gravity, hspeed and vspeed as they are unused on the player.
-gravity = 0;
-hspeed = 0;
-vspeed = 0;
+//If the gravity is enabled
+if (enable_gravity == 1) {
 
-//Move the player based on the values of xspeed, yspeed and ygrav
-x += xspeed;
-y += yspeed;
-yspeed += ygrav;
-
-//Change the angle when doing a somersault
-if (state == 2) 
-&amp;&amp; (crouch == 0)
-&amp;&amp; (holding == 0)
-&amp;&amp; (wallkick == 0)
-&amp;&amp; (swimming == 0)
-&amp;&amp; (stompstyle == 0)
-&amp;&amp; (global.powerup != cs_small) {
-
-    //If the player is doing a somersault
-    if (somersault)    
-        angle -= 30*sign(xscale);
-}
-else {
-
-    somersault = 0;
-    if (angle != 0)
-        angle = 0;
-}
-
-//Decrement net smack
-if (netsmack &gt; 0)
-    netsmack--;
+    //Reset gravity, hspeed and vspeed as they are unused on the player.
+    gravity = 0;
+    hspeed = 0;
+    vspeed = 0;
     
-//Decrement stun time
-if (stuntime &gt; 0) {
-
-    //If the stuntime is about to end
-    if (stuntime == 1) {
+    //Move the player based on the values of xspeed, yspeed and ygrav
+    x += xspeed;
+    y += yspeed;
+    yspeed += ygrav;
     
-        //Stop stun
-        stuntime = 0;
-        shake = 0;
-        
-        //Enable controls
-        disablecontrol = false;
+    //Change the angle when doing a somersault
+    if (state == 2) 
+    &amp;&amp; (crouch == 0)
+    &amp;&amp; (holding == 0)
+    &amp;&amp; (wallkick == 0)
+    &amp;&amp; (swimming == 0)
+    &amp;&amp; (stompstyle == 0)
+    &amp;&amp; (global.powerup != cs_small) {
+    
+        //If the player is doing a somersault
+        if (somersault)    
+            angle -= 30*sign(xscale);
+    }
+    else {
+    
+        somersault = 0;
+        if (angle != 0)
+            angle = 0;
     }
     
-    //Decrement stuntime
-    stuntime--;
-    
-    //Shake if possible
-    shake = -shake;
-}
-
-//Decrement freeze time
-if (freezetime &gt; 1) {
-
-    //Decrement freezetime
-    freezetime--;
-    
-    //Do not move
-    xspeed = 0;
-    yspeed = 0;
-    ygrav = 0;
-
-    //Unfreeze when 'freezetime' hits 1
-    if (freezetime == 1) {
-    
-        //Play 'Shatter' sound
-        audio_play_sound(snd_shatter, 0, false);
+    //Decrement net smack
+    if (netsmack &gt; 0)
+        netsmack--;
         
-        //Create sparklies
-        repeat (32) {
-
-            with (instance_create(bbox_left+sprite_width/2-4,bbox_top+sprite_height/2-4,obj_smoke)) {
+    //Decrement stun time
+    if (stuntime &gt; 0) {
+    
+        //If the stuntime is about to end
+        if (stuntime == 1) {
+        
+            //Stop stun
+            stuntime = 0;
+            shake = 0;
             
-                //Sprite
-                sprite_index = spr_icespark;
-                
-                //Animate
-                image_speed = 0.1;
-                
-                //Motion
-                motion_set(random(360), random(1));
-            }
+            //Enable controls
+            disablecontrol = false;
         }
-    
-        //Stop freeze
-        freezetime = 0;
         
-        //Enable controls
-        disablecontrol = false;
+        //Decrement stuntime
+        stuntime--;
         
-        //Make invulnerable for less time
-        invulnerable = 1;
-        alarm[0] = 90;
-        alarm[1] = 1;
+        //Shake if possible
+        shake = -shake;
     }
-}
-
-//Make sure the player is doing a spinjump
-if (global.powerup != cs_propeller)
-&amp;&amp; (stompstyle == 2)
-    stompstyle = 1;
     
-//Make sure the player does not spinjump when holding something
-if ((holding &gt; 0) &amp;&amp; (holding &lt; 4))
-&amp;&amp; (stompstyle &gt; 0)
-    stompstyle = 0;
-
-//Mute 'Bump' sound when climbing or when the player is swimming with the frog or penguin powerup
-if (state == 3)
-|| ((state == 2) &amp;&amp; (swimming) &amp;&amp; ((global.powerup == cs_frog) || (global.powerup == cs_penguin)))
-    noisy = 1;
-else
-    noisy = 0;
-
-//Floor collision
-if (yspeed &gt;= 0) { //If the player is moving down and the gravity is not disabled.
-
-    //Check for a semisolid object
-    var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+yspeed,obj_semisolid,0,0);
+    //Decrement freeze time
+    if (freezetime &gt; 1) {
     
-    //If the semisolid exists and the player is above it.
-    if (semisolid)
-    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5) {
-    
-        //Snap above the semisolid platform
-        y = semisolid.y-16;
+        //Decrement freezetime
+        freezetime--;
         
-        //Stop vertical movement
+        //Do not move
+        xspeed = 0;
         yspeed = 0;
         ygrav = 0;
+    
+        //Unfreeze when 'freezetime' hits 1
+        if (freezetime == 1) {
         
-        //Reset values
-        event_user(15);
-    }
-    
-    //Check for a enemy that is solid on top
-    var enemy = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+yspeed,obj_enemytop,0,0);
-    
-    //If the enemy exists and the player is above it
-    if (enemy)
-    &amp;&amp; (bbox_bottom &lt; enemy.yprevious+5) {
-    
-        //Snap above the semisolid platform
-        y = enemy.y-16;
-        
-        //Stop vertical movement
-        yspeed = 0;
-        ygrav = 0;
-        
-        //Reset values
-        event_user(15);
-    }
-}
-    
-//Embed the player into the slope if he is walking or sliding down a slope to ensure correct slope physics.
-if ((collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0)))
-&amp;&amp; (state == 1) {
-
-    if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_semisolid,0,0))
-        y += 4;
-}
-
-//Handle slope collision
-if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0)) 
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
-
-    //If the player is moving down onto a slope.
-    if (yspeed &gt; 0) {
-    
-        //Stop vertical movement
-        yspeed = 0;
-        ygrav = 0;
-        
-        //Reset values
-        event_user(15);
-    }
-    
-    //Prevent the player from getting embed inside a slope.
-    if (yspeed &gt; -0.8) {
-    
-        while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0))        
-            y--;
-    }
-}
-
-//Left conveyor belt collision
-lconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_conveyor_l,0,0);
-if ((lconv) &amp;&amp; (lconv.image_speed != 0)) {
-
-    if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0))
-        x -= 0.75;
-}
-
-//Right conveyor belt collision
-rconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_conveyor_r,0,0);
-if ((rconv) &amp;&amp; (rconv.image_speed != 0)) {
-
-    if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0))
-        x += 0.75;
-}
-
-//If the player is not swimming
-if (!swimming) {
-
-    //If the player is not sliding
-    if (!sliding) {
-
-        //If the player is not climbing
-        if (state != 3) {
-    
-            //Execute main behaviour script
-            scr_player_behaviour();
+            //Play 'Shatter' sound
+            audio_play_sound(snd_shatter, 0, false);
             
-            //Execute the wall collision checking script
-            scr_player_behaviour_wall()
-            
-            //If the player is running on walls or ceilings
-            if (instance_exists(obj_wallrunner)) 
-            &amp;&amp; (global.mount != 2) {
-            
-                //If the P-Meter is full.
-                if (pmeter &gt; 112) {
+            //Create sparklies
+            repeat (32) {
+    
+                with (instance_create(bbox_left+sprite_width/2-4,bbox_top+sprite_height/2-4,obj_smoke)) {
                 
-                    //Play 'P-Meter' sound
-                    if (!audio_is_playing(snd_pmeter)) {
+                    //Sprite
+                    sprite_index = spr_icespark;
                     
-                        audio_play_sound(snd_pmeter, 0, true);
-                    }
+                    //Animate
+                    image_speed = 0.1;
                     
-                    //Keep P-Meter full.
-                    pmeter = 112;
-                
-                    //Make the player able to run.
-                    run = true;
+                    //Motion
+                    motion_set(random(360), random(1));
                 }
-                
-                //Otherwise, fill P-Meter
-                else
-                    pmeter += 2;
             }
+        
+            //Stop freeze
+            freezetime = 0;
             
-            //Otherwise...
-            else {
+            //Enable controls
+            disablecontrol = false;
             
-                //If the player's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
-                if (abs(xspeed) &gt; runspeed-0.1) 
+            //Make invulnerable for less time
+            invulnerable = 1;
+            alarm[0] = 90;
+            alarm[1] = 1;
+        }
+    }
+    
+    //Make sure the player is doing a spinjump
+    if (global.powerup != cs_propeller)
+    &amp;&amp; (stompstyle == 2)
+        stompstyle = 1;
+        
+    //Make sure the player does not spinjump when holding something
+    if ((holding &gt; 0) &amp;&amp; (holding &lt; 4))
+    &amp;&amp; (stompstyle &gt; 0)
+        stompstyle = 0;
+    
+    //Mute 'Bump' sound when climbing or when the player is swimming with the frog or penguin powerup
+    if (state == 3)
+    || ((state == 2) &amp;&amp; (swimming) &amp;&amp; ((global.powerup == cs_frog) || (global.powerup == cs_penguin)))
+        noisy = 1;
+    else
+        noisy = 0;
+    
+    //Floor collision
+    if (yspeed &gt;= 0) { //If the player is moving down and the gravity is not disabled.
+    
+        //Check for a semisolid object
+        var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+yspeed,obj_semisolid,0,0);
+        
+        //If the semisolid exists and the player is above it.
+        if (semisolid)
+        &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5) {
+        
+            //Snap above the semisolid platform
+            y = semisolid.y-16;
+            
+            //Stop vertical movement
+            yspeed = 0;
+            ygrav = 0;
+            
+            //Reset values
+            event_user(15);
+        }
+        
+        //Check for a enemy that is solid on top
+        var enemy = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+yspeed,obj_enemytop,0,0);
+        
+        //If the enemy exists and the player is above it
+        if (enemy)
+        &amp;&amp; (bbox_bottom &lt; enemy.yprevious+5) {
+        
+            //Snap above the semisolid platform
+            y = enemy.y-16;
+            
+            //Stop vertical movement
+            yspeed = 0;
+            ygrav = 0;
+            
+            //Reset values
+            event_user(15);
+        }
+    }
+        
+    //Embed the player into the slope if he is walking or sliding down a slope to ensure correct slope physics.
+    if ((collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
+    &amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0)))
+    &amp;&amp; (state == 1) {
+    
+        if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_semisolid,0,0))
+            y += 4;
+    }
+    
+    //Handle slope collision
+    if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0)) 
+    &amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
+    
+        //If the player is moving down onto a slope.
+        if (yspeed &gt; 0) {
+        
+            //Stop vertical movement
+            yspeed = 0;
+            ygrav = 0;
+            
+            //Reset values
+            event_user(15);
+        }
+        
+        //Prevent the player from getting embed inside a slope.
+        if (yspeed &gt; -0.8) {
+        
+            while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0))        
+                y--;
+        }
+    }
+    
+    //Left conveyor belt collision
+    lconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_conveyor_l,0,0);
+    if ((lconv) &amp;&amp; (lconv.image_speed != 0)) {
+    
+        if (!collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0))
+            x -= 0.75;
+    }
+    
+    //Right conveyor belt collision
+    rconv = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_conveyor_r,0,0);
+    if ((rconv) &amp;&amp; (rconv.image_speed != 0)) {
+    
+        if (!collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-1,obj_solid,1,0))
+            x += 0.75;
+    }
+    
+    //If the player is not swimming
+    if (!swimming) {
+    
+        //If the player is not sliding
+        if (!sliding) {
+    
+            //If the player is not climbing
+            if (state != 3) {
+        
+                //Execute main behaviour script
+                scr_player_behaviour();
+                
+                //Execute the wall collision checking script
+                scr_player_behaviour_wall()
+                
+                //If the player is running on walls or ceilings
+                if (instance_exists(obj_wallrunner)) 
                 &amp;&amp; (global.mount != 2) {
                 
-                    //If the player is not jumping.
-                    if (state &lt; 2) {
+                    //If the P-Meter is full.
+                    if (pmeter &gt; 112) {
                     
-                        //If the P-Meter is full.
-                        if (pmeter &gt; 112) {
+                        //Play 'P-Meter' sound
+                        if (!audio_is_playing(snd_pmeter)) {
                         
-                            //Play 'P-Meter' sound
-                            if (!audio_is_playing(snd_pmeter)) {
-                            
-                                audio_play_sound(snd_pmeter, 0, true);
-                            }
-                            
-                            //Keep P-Meter full.
-                            pmeter = 112;
-                        
-                            //Make the player able to run.
-                            run = true;
+                            audio_play_sound(snd_pmeter, 0, true);
                         }
                         
-                        //Otherwise, fill P-Meter
-                        else
-                            pmeter += 2;
+                        //Keep P-Meter full.
+                        pmeter = 112;
+                    
+                        //Make the player able to run.
+                        run = true;
                     }
                     
-                    //If the player is on the ground and not running.
-                    else if ((!run) &amp;&amp; (pmeter &gt; 0))
-                        pmeter--;
+                    //Otherwise, fill P-Meter
+                    else
+                        pmeter += 2;
                 }
                 
-                //Otherwise, if the player's horizontal speed is lower than 2.4
-                else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; runspeed))) { 
+                //Otherwise...
+                else {
                 
-                    //If the player is flying and lands on the floor.
-                    if (flying) {
+                    //If the player's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
+                    if (abs(xspeed) &gt; runspeed-0.1) 
+                    &amp;&amp; (global.mount != 2) {
                     
-                        //Stop 'P-Meter' sound
-                        audio_stop_sound(snd_pmeter);
+                        //If the player is not jumping.
+                        if (state &lt; 2) {
                         
-                        //Allow the player to fly again.
-                        flying = false;
+                            //If the P-Meter is full.
+                            if (pmeter &gt; 112) {
+                            
+                                //Play 'P-Meter' sound
+                                if (!audio_is_playing(snd_pmeter)) {
+                                
+                                    audio_play_sound(snd_pmeter, 0, true);
+                                }
+                                
+                                //Keep P-Meter full.
+                                pmeter = 112;
+                            
+                                //Make the player able to run.
+                                run = true;
+                            }
+                            
+                            //Otherwise, fill P-Meter
+                            else
+                                pmeter += 2;
+                        }
                         
-                        //Make the player walk
-                        run = false;
-                        
-                        //Empty P-Meter.
-                        if (pmeter &gt; 0)        
-                            pmeter --;
+                        //If the player is on the ground and not running.
+                        else if ((!run) &amp;&amp; (pmeter &gt; 0))
+                            pmeter--;
                     }
                     
-                    //If the player is not flying.
-                    else if (!flying) {
+                    //Otherwise, if the player's horizontal speed is lower than 2.4
+                    else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; runspeed))) { 
                     
-                        //Stop 'P-Meter' sound
-                        audio_stop_sound(snd_pmeter);
-                                            
-                        //Make the player walk
-                        run = false;
+                        //If the player is flying and lands on the floor.
+                        if (flying) {
                         
-                        //Restart flying.
-                        alarm[9] = 0;
+                            //Stop 'P-Meter' sound
+                            audio_stop_sound(snd_pmeter);
+                            
+                            //Allow the player to fly again.
+                            flying = false;
+                            
+                            //Make the player walk
+                            run = false;
+                            
+                            //Empty P-Meter.
+                            if (pmeter &gt; 0)        
+                                pmeter --;
+                        }
                         
-                        //Empty P-Meter.
-                        if (pmeter &gt; 0)       
-                            pmeter --;
-                    }   
+                        //If the player is not flying.
+                        else if (!flying) {
+                        
+                            //Stop 'P-Meter' sound
+                            audio_stop_sound(snd_pmeter);
+                                                
+                            //Make the player walk
+                            run = false;
+                            
+                            //Restart flying.
+                            alarm[9] = 0;
+                            
+                            //Empty P-Meter.
+                            if (pmeter &gt; 0)       
+                                pmeter --;
+                        }   
+                    }
                 }
+            }
+            
+            //Otherwise, if the player is climbing.
+            else if (state == 3) {
+            
+                //Execute climb behaviour script
+                scr_player_behaviour_climb();
+                
+                //Smack net if possible
+                if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb_net,0,0))
+                &amp;&amp; (keyboard_check_pressed(global.controlkey))
+                &amp;&amp; (netsmack == 0) {
+                
+                    //Play 'Bump' sound
+                    audio_play_sound(snd_bump, 0, false);
+                
+                    //Increment netsmack
+                    netsmack = 4;
+                    
+                    //Change facing direction
+                    xscale = -xscale;
+                }
+            
+                //Stop 'P-Meter' sound
+                audio_stop_sound(snd_pmeter);
+                                                                
+                //Decrement P-Meter
+                flying = false;
+                run = false;
+                if (pmeter &gt; 0)
+                    pmeter--;
             }
         }
         
-        //Otherwise, if the player is climbing.
-        else if (state == 3) {
+        //Otherwise, if the player is sliding down a slope
+        else if (sliding) {
         
-            //Execute climb behaviour script
-            scr_player_behaviour_climb();
+            //Execute slide behaviour script
+            scr_player_behaviour_slide();
             
-            //Smack net if possible
-            if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb_net,0,0))
-            &amp;&amp; (keyboard_check_pressed(global.controlkey))
-            &amp;&amp; (netsmack == 0) {
-            
-                //Play 'Bump' sound
-                audio_play_sound(snd_bump, 0, false);
-            
-                //Increment netsmack
-                netsmack = 4;
-                
-                //Change facing direction
-                xscale = -xscale;
-            }
-        
             //Stop 'P-Meter' sound
             audio_stop_sound(snd_pmeter);
-                                                            
+                        
             //Decrement P-Meter
             flying = false;
             run = false;
@@ -852,389 +875,373 @@ if (!swimming) {
         }
     }
     
-    //Otherwise, if the player is sliding down a slope
-    else if (sliding) {
-    
-        //Execute slide behaviour script
-        scr_player_behaviour_slide();
+    //Otherwise, if the player is actually swimming.
+    else if (swimming) {
         
+        //Execute swim behaviour script
+        scr_player_behaviour_swim();
+            
         //Stop 'P-Meter' sound
         audio_stop_sound(snd_pmeter);
-                    
+                        
         //Decrement P-Meter
         flying = false;
         run = false;
         if (pmeter &gt; 0)
             pmeter--;
     }
-}
-
-//Otherwise, if the player is actually swimming.
-else if (swimming) {
     
-    //Execute swim behaviour script
-    scr_player_behaviour_swim();
+    //If the player is bumping into a wall to the right
+    if (xspeed &gt; 0)
+    &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-5,obj_solid,1,0)) {
+    
+        //If the player is sliding with the shell
+        if (global.powerup == cs_shell)
+        &amp;&amp; (global.mount == 0)
+        &amp;&amp; (sliding) {
         
-    //Stop 'P-Meter' sound
-    audio_stop_sound(snd_pmeter);
-                    
-    //Decrement P-Meter
-    flying = false;
-    run = false;
-    if (pmeter &gt; 0)
-        pmeter--;
-}
-
-//If the player is bumping into a wall to the right
-if (xspeed &gt; 0)
-&amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-5,obj_solid,1,0)) {
-
-    //If the player is sliding with the shell
-    if (global.powerup == cs_shell)
-    &amp;&amp; (global.mount == 0)
-    &amp;&amp; (sliding) {
-    
-        //Play 'Bump' sound
-        if (!audio_is_playing(snd_bump)) {
-        
-            audio_play_sound(snd_bump, 0, false);
-        }
-    
-        //Reverse horizontal speed
-        xspeed = -xspeed;
-        
-        //Create shell thump effect
-        instance_create(x+5,y+8,obj_shellbump);
-        
-        //Create block bumper object
-        instance_create(x-8,y,obj_blockbumper);
-    }
-        
-    //Otherwise, stop it and stop slide if necessary.
-    else {
-    
-        //Stop horizontal movement
-        xspeed = 0;
-        
-        //Stop sliding
-        sliding = false;       
-    }
-    
-    //Prevent the player from getting embed into the wall
-    while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-5,obj_solid,1,0))
-    &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
-        x--;
-}
-
-//Otherwise, if the player is bumping into a wall to the left
-else if (xspeed &lt; 0)
-&amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0)) {
-
-    //If the player is sliding with the shell
-    if (global.powerup == cs_shell)
-    &amp;&amp; (global.mount == 0)
-    &amp;&amp; (sliding) {
-        
-        //Play 'Bump' sound
-        if (!audio_is_playing(snd_bump)) {
-        
-            audio_play_sound(snd_bump, 0, false);
-        }
-    
-        //Reverse horizontal speed
-        xspeed = -xspeed;
-        
-        //Create shell thump effect
-        instance_create(x-5,y+8,obj_shellbump);
-                
-        //Create block bumper object
-        instance_create(x-8,y,obj_blockbumper);
-    }
-
-    //Otherwise, stop it and stop slide if necessary.    
-    else {
-    
-        //Stop horizontal movement
-        xspeed = 0;
-        
-        //Stop sliding
-        sliding = false; 
-    }        
-    
-    //Prevent the player from getting embed into the wall
-    while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0))
-    &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
-        x++;
-}
-
-//If the player is moving up
-if (yspeed &lt; 0)
-&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)) 
-|| (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
-    
-    //Prevent the player's head from getting stuck on a ceiling.
-    if ((state &gt; 1) &amp;&amp; (yspeed &lt; 0)) {
-
-        while ((collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0))
-        || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
-            y++;
-    }
-    
-    //Check if there's a block on the way.
-    var block = collision_rectangle(bbox_left,bbox_top-2,bbox_right,bbox_top,obj_blockparent,1,0);
-    
-    //If there's a block on the way.
-    if (block) {
-        
-        //If the block has NOT been hit.
-        if (block.ready == 0) {
-    
-            //Trigger block events
-            with (block) {
+            //Play 'Bump' sound
+            if (!audio_is_playing(snd_bump)) {
             
-                //Block is hit
-                ready = 1;
-                
-                //Set vertical speed
-                vspeed = -2;
-                alarm[0] = 4;
-                
-                //Block specific events
-                event_user(0);
+                audio_play_sound(snd_bump, 0, false);
             }
-        }
-    }
-    
-    //If the player does not have either the frog and penguin suit, and it's not climbing.
-    if ((state &gt; 1) &amp;&amp; (!noisy)) {
-    
-        //Max out the bee flying timer
-        beefly = 128;
         
-        //Stop variable jumping
-        if (state != 3)
-            jumpnow = 2;        
-        
-        //Play 'Bump' sound
-        if (yspeed &lt; 0)
-        if (!audio_is_playing(snd_bump))        
-            audio_play_sound(snd_bump, 0, false);        
-    }
-    
-    //Stop vertical speed
-    yspeed = 0;
-}
-
-//Make sure that the player does not get embed on ceiling slopes
-if (state &gt; 1)
-    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
-        y++;
-
-//If the player is not climbing
-if (state != 3) {
-
-    //If the player's controls are not disabled and it's not jumping
-    if (state != 2)
-    &amp;&amp; (!sliding)
-    &amp;&amp; (!disablecontrol) {
-    
-        //Make the player crouch down when the 'Down' key is held
-        if (keyboard_check(global.downkey))
-        &amp;&amp; (global.powerup != cs_frog)
-        &amp;&amp; (!crouch)
-        &amp;&amp; (!noisy)
-            crouch = true;
+            //Reverse horizontal speed
+            xspeed = -xspeed;
             
-        //Otherwise, if the 'Down' key is no longer pressed
-        else if (!keyboard_check(global.downkey))
-            crouch = false;
-    }
-    
-    //Handles powerup specific projectiles, tail spinning, cat scratching and statue morphing.
-    if (keyboard_check_pressed(global.controlkey)) 
-    &amp;&amp; (!obj_levelcontrol.barrier)
-    &amp;&amp; (!disablecontrol)
-        alarm[11] = 1;
-}
-else {
-
-    //Make the player get up
-    crouch = false;
-    
-    //Stop special jump
-    stompstyle = false;
-}
-
-//Check for a nearby swimming surface
-var water = collision_rectangle(bbox_left,y-1,bbox_right,y,obj_swim,1,0);
-
-//If the player is not swimming and makes contact with a water surface
-if ((!swimming) &amp;&amp; (water)) {
-    
-    //Make the player swim.
-    swimming = true;
-    swimtype = 0;
-    
-    //Make the player get up
-    crouch = false;
-    
-    //Stop most horizontal movement
-    xspeed = xspeed/2.5;
+            //Create shell thump effect
+            instance_create(x+5,y+8,obj_shellbump);
             
-    //Stop vertical movement
-    ygrav = 0;
-    if (yspeed &gt; 0) {
-    
-        //Stop vertical movement
-        yspeed = 0;
-        
-        //Create a splash effect if not in contact with a bubble
-        if (water.object_index != obj_waterbubble) {
-        
-            with (instance_create(x-8,water.y-15,obj_smoke)) {
+            //Create block bumper object
+            instance_create(x-8,y,obj_blockbumper);
+        }
             
-                depth = -4;
-                sprite_index = spr_splash;
-            }            
-        }
-    }
-}
-
-//Otherwise, if the player had enough swimming and wants to get out
-else if ((swimming) &amp;&amp; (!water)) {
-
-    //If there's not water above and there's not a solid on the way out
-    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)) {
-    
-        //If the player is moving up
-        if ((state == 2) &amp;&amp; (yspeed &lt; 0)) {
-        
-            //If 'Shift' is held
-            if (keyboard_check(global.shiftkey)) {
-            
-                //Play 'Jump' sound
-                audio_play_sound(snd_jump, 0, false);
-                
-                //Make the player not swim
-                swimming = false;
-                
-                //Allow variable jump
-                jumping = 1;
-                
-                //Set the vertical speed
-                yspeed = -3.4675;
-                
-                //Create splash effect
-                if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_waterbubble,1,0)) {
-                
-                    with (instance_create(x-8,y-15,obj_smoke)) {
-                    
-                        depth = -4;
-                        sprite_index = spr_splash;
-                    }
-                }
-            }
-            
-            //Otherwise, if 'Shift' is not held.
-            else {
-            
-                //If the player is moving up.
-                if (yspeed &lt; 0)
-                    yspeed = 0;
-            }
-        }
-    }
-}
-    
-//Free the player is he is stuck on a solid.
-if (yspeed == 0)
-&amp;&amp; (crouch == false) 
-&amp;&amp; (mask_index == spr_bigmask) {
-    
-    //If the player gets stuck
-    if (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,1,0)) 
-    &amp;&amp; (inwall == 0) {
-    
-        //If the direction was not set
-        if (direct2 == 0) {
-        
-            //Set it up
-            direct2 = xscale;
-        }
-        
-        //Begin movement
-        inwall = 1;
-        
-        //Set the movement direction
-        direct = -direct2;
-    }
-    
-    //Otherwise, if the player gets stuck on a wall.
-    else if (inwall == 1) {
-        
-        //Move the player until it's not embed in a wall.
-        x += 1*sign(direct);       
-        
-        //If the player is not longer embed on a wall, make him able to move.
-        if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,1,0)) {
-        
-            inwall = 0;
-            direct2 = 0;
-        }
-        
-        //If the player collides with a wall while being stuck
-        if ((direct == -1) &amp;&amp; (collision_line(bbox_left,y+4,bbox_left,bbox_bottom-4,obj_solid,1,0)))
-        || ((direct == 1) &amp;&amp; (collision_line(bbox_right,y+4,bbox_right,bbox_bottom-4,obj_solid,1,0)))
-            direct = -direct;
-    }
-}
-
-//Unstuck in case of overlapping a solid completely
-if (state &lt; 2)
-&amp;&amp; (inwall == 0) {
-
-    //If overlapping
-    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_mblock,0,0))
-    || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_propellerblock,0,0))
-        y--;
-}
-    
-//Handle tail whip animation
-if ((state == 2) &amp;&amp; (wiggle &gt; 0))
-    wiggle--;
-else
-    wiggle = 0;
-
-//If the player is not in contact with water.
-if (!collision_rectangle(bbox_left,y,bbox_right,bbox_bottom,obj_swim,0,0)) {
-
-    //If the player is swimming.
-    if (swimming)  
-        swimming = false;
-}
-
-//Prevent the player from going too high on the level
-if (y &lt; -96)
-    y = -96;
-    
-//Otherwise, if he is falling.
-else {
-
-    //If the player is below the bottom room boundary and didn't activate a warp, restart the room.
-    if (bbox_bottom &gt; room_height+32) {
-                
-        if (pitwarp == false) {
-        
-            instance_create(x,y,obj_player_dead);
-            instance_destroy();
-            exit;  
-        }
-        
+        //Otherwise, stop it and stop slide if necessary.
         else {
         
-            //Force the player to fall.
-            vspeed = 4;
-        }       
+            //Stop horizontal movement
+            xspeed = 0;
+            
+            //Stop sliding
+            sliding = false;       
+        }
+        
+        //Prevent the player from getting embed into the wall
+        while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-5,obj_solid,1,0))
+        &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
+            x--;
+    }
+    
+    //Otherwise, if the player is bumping into a wall to the left
+    else if (xspeed &lt; 0)
+    &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0)) {
+    
+        //If the player is sliding with the shell
+        if (global.powerup == cs_shell)
+        &amp;&amp; (global.mount == 0)
+        &amp;&amp; (sliding) {
+            
+            //Play 'Bump' sound
+            if (!audio_is_playing(snd_bump)) {
+            
+                audio_play_sound(snd_bump, 0, false);
+            }
+        
+            //Reverse horizontal speed
+            xspeed = -xspeed;
+            
+            //Create shell thump effect
+            instance_create(x-5,y+8,obj_shellbump);
+                    
+            //Create block bumper object
+            instance_create(x-8,y,obj_blockbumper);
+        }
+    
+        //Otherwise, stop it and stop slide if necessary.    
+        else {
+        
+            //Stop horizontal movement
+            xspeed = 0;
+            
+            //Stop sliding
+            sliding = false; 
+        }        
+        
+        //Prevent the player from getting embed into the wall
+        while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0))
+        &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
+            x++;
+    }
+    
+    //If the player is moving up
+    if (yspeed &lt; 0)
+    &amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)) 
+    || (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
+        
+        //Prevent the player's head from getting stuck on a ceiling.
+        if ((state &gt; 1) &amp;&amp; (yspeed &lt; 0)) {
+    
+            while ((collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0))
+            || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
+                y++;
+        }
+        
+        //Check if there's a block on the way.
+        var block = collision_rectangle(bbox_left,bbox_top-2,bbox_right,bbox_top,obj_blockparent,1,0);
+        
+        //If there's a block on the way.
+        if (block) {
+            
+            //If the block has NOT been hit.
+            if (block.ready == 0) {
+        
+                //Trigger block events
+                with (block) {
+                
+                    //Block is hit
+                    ready = 1;
+                    
+                    //Set vertical speed
+                    vspeed = -2;
+                    alarm[0] = 4;
+                    
+                    //Block specific events
+                    event_user(0);
+                }
+            }
+        }
+        
+        //If the player does not have either the frog and penguin suit, and it's not climbing.
+        if ((state &gt; 1) &amp;&amp; (!noisy)) {
+        
+            //Max out the bee flying timer
+            beefly = 128;
+            
+            //Stop variable jumping
+            if (state != 3)
+                jumpnow = 2;        
+            
+            //Play 'Bump' sound
+            if (yspeed &lt; 0)
+            if (!audio_is_playing(snd_bump))        
+                audio_play_sound(snd_bump, 0, false);        
+        }
+        
+        //Stop vertical speed
+        yspeed = 0;
+    }
+    
+    //Make sure that the player does not get embed on ceiling slopes
+    if (state &gt; 1)
+        while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
+            y++;
+    
+    //If the player is not climbing
+    if (state != 3) {
+    
+        //If the player's controls are not disabled and it's not jumping
+        if (state != 2)
+        &amp;&amp; (!sliding)
+        &amp;&amp; (!disablecontrol) {
+        
+            //Make the player crouch down when the 'Down' key is held
+            if (keyboard_check(global.downkey))
+            &amp;&amp; (global.powerup != cs_frog)
+            &amp;&amp; (!crouch)
+            &amp;&amp; (!noisy)
+                crouch = true;
+                
+            //Otherwise, if the 'Down' key is no longer pressed
+            else if (!keyboard_check(global.downkey))
+                crouch = false;
+        }
+        
+        //Handles powerup specific projectiles, tail spinning, cat scratching and statue morphing.
+        if (keyboard_check_pressed(global.controlkey)) 
+        &amp;&amp; (!obj_levelcontrol.barrier)
+        &amp;&amp; (!disablecontrol)
+            alarm[11] = 1;
+    }
+    else {
+    
+        //Make the player get up
+        crouch = false;
+        
+        //Stop special jump
+        stompstyle = false;
+    }
+    
+    //Check for a nearby swimming surface
+    var water = collision_rectangle(bbox_left,y-1,bbox_right,y,obj_swim,1,0);
+    
+    //If the player is not swimming and makes contact with a water surface
+    if ((!swimming) &amp;&amp; (water)) {
+        
+        //Make the player swim.
+        swimming = true;
+        swimtype = 0;
+        
+        //Make the player get up
+        crouch = false;
+        
+        //Stop most horizontal movement
+        xspeed = xspeed/2.5;
+                
+        //Stop vertical movement
+        ygrav = 0;
+        if (yspeed &gt; 0) {
+        
+            //Stop vertical movement
+            yspeed = 0;
+            
+            //Create a splash effect if not in contact with a bubble
+            if (water.object_index != obj_waterbubble) {
+            
+                with (instance_create(x-8,water.y-15,obj_smoke)) {
+                
+                    depth = -4;
+                    sprite_index = spr_splash;
+                }            
+            }
+        }
+    }
+    
+    //Otherwise, if the player had enough swimming and wants to get out
+    else if ((swimming) &amp;&amp; (!water)) {
+    
+        //If there's not water above and there's not a solid on the way out
+        if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)) {
+        
+            //If the player is moving up
+            if ((state == 2) &amp;&amp; (yspeed &lt; 0)) {
+            
+                //If 'Shift' is held
+                if (keyboard_check(global.shiftkey)) {
+                
+                    //Play 'Jump' sound
+                    audio_play_sound(snd_jump, 0, false);
+                    
+                    //Make the player not swim
+                    swimming = false;
+                    
+                    //Allow variable jump
+                    jumping = 1;
+                    
+                    //Set the vertical speed
+                    yspeed = -3.4675;
+                    
+                    //Create splash effect
+                    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_waterbubble,1,0)) {
+                    
+                        with (instance_create(x-8,y-15,obj_smoke)) {
+                        
+                            depth = -4;
+                            sprite_index = spr_splash;
+                        }
+                    }
+                }
+                
+                //Otherwise, if 'Shift' is not held.
+                else {
+                
+                    //If the player is moving up.
+                    if (yspeed &lt; 0)
+                        yspeed = 0;
+                }
+            }
+        }
+    }
+        
+    //Free the player is he is stuck on a solid.
+    if (yspeed == 0)
+    &amp;&amp; (crouch == false) 
+    &amp;&amp; (mask_index == spr_bigmask) {
+        
+        //If the player gets stuck
+        if (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_top+4,obj_solid,1,0)) 
+        &amp;&amp; (inwall == 0) {
+        
+            //If the direction was not set
+            if (direct2 == 0) {
+            
+                //Set it up
+                direct2 = xscale;
+            }
+            
+            //Begin movement
+            inwall = 1;
+            
+            //Set the movement direction
+            direct = -direct2;
+        }
+        
+        //Otherwise, if the player gets stuck on a wall.
+        else if (inwall == 1) {
+            
+            //Move the player until it's not embed in a wall.
+            x += 1*sign(direct);       
+            
+            //If the player is not longer embed on a wall, make him able to move.
+            if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,1,0)) {
+            
+                inwall = 0;
+                direct2 = 0;
+            }
+            
+            //If the player collides with a wall while being stuck
+            if ((direct == -1) &amp;&amp; (collision_line(bbox_left,y+4,bbox_left,bbox_bottom-4,obj_solid,1,0)))
+            || ((direct == 1) &amp;&amp; (collision_line(bbox_right,y+4,bbox_right,bbox_bottom-4,obj_solid,1,0)))
+                direct = -direct;
+        }
+    }
+    
+    //Unstuck in case of overlapping a solid completely
+    if (state &lt; 2)
+    &amp;&amp; (inwall == 0) {
+    
+        //If overlapping
+        while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_mblock,0,0))
+        || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_propellerblock,0,0))
+            y--;
+    }
+        
+    //Handle tail whip animation
+    if ((state == 2) &amp;&amp; (wiggle &gt; 0))
+        wiggle--;
+    else
+        wiggle = 0;
+    
+    //If the player is not in contact with water.
+    if (!collision_rectangle(bbox_left,y,bbox_right,bbox_bottom,obj_swim,0,0)) {
+    
+        //If the player is swimming.
+        if (swimming)  
+            swimming = false;
+    }
+    
+    //Prevent the player from going too high on the level
+    if (y &lt; -96)
+        y = -96;
+        
+    //Otherwise, if he is falling.
+    else {
+    
+        //If the player is below the bottom room boundary and didn't activate a warp, restart the room.
+        if (bbox_bottom &gt; room_height+32) {
+                    
+            if (pitwarp == false) {
+            
+                instance_create(x,y,obj_player_dead);
+                instance_destroy();
+                exit;  
+            }
+            
+            else {
+            
+                //Force the player to fall.
+                vspeed = 4;
+            }       
+        }
     }
 }
 </string>

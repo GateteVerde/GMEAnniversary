@@ -12,7 +12,7 @@
 global.gamepad = false;
 
 //World Number
-global.world = "1";
+global.world = 1;
 
 //Level ID (Used for star coin management)
 global.level = 0;
