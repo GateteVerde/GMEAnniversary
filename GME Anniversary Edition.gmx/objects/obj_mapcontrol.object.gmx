@@ -112,10 +112,10 @@ audio_stop_sound(mapmusic);
 switch (global.world) {
 
     //World 1
-    case ("1"): mapmusic = bgm_map1; break;
+    case (1): mapmusic = bgm_map1; break;
     
     //World 2
-    case ("2"): mapmusic = bgm_map2; break;
+    case (2): mapmusic = bgm_map2; break;
 }
 
 //Play the correct theme based on the current world

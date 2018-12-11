@@ -1095,7 +1095,9 @@
       <sprites name="Decoration">
         <sprites name="Liquids">
           <sprite>sprites\spr_mapwater</sprite>
+          <sprite>sprites\spr_mapwater_front</sprite>
           <sprite>sprites\spr_maplava</sprite>
+          <sprite>sprites\spr_maplava_front</sprite>
         </sprites>
         <sprites name="NPCs">
           <sprite>sprites\spr_mapghost</sprite>
@@ -1642,7 +1644,7 @@
     <sprite>sprites\spr_titlebg_cog</sprite>
   </sprites>
   <backgrounds name="background">
-    <backgrounds name="Levels">
+    <backgrounds name="Tile Sets">
       <backgrounds name="Backgrounds">
         <background>background\bgr_blocks</background>
         <background>background\bgr_bonus</background>
@@ -1703,17 +1705,7 @@
       </backgrounds>
       <background>background\bgr_pit</background>
       <background>background\bgr_goal</background>
-    </backgrounds>
-    <backgrounds name="Map">
-      <backgrounds name="Tile Sets">
-        <background>background\bgr_tileset_map</background>
-      </backgrounds>
-      <background>background\bgr_mapwater</background>
-      <background>background\bgr_mapwater_b</background>
-      <background>background\bgr_mapwater_c</background>
-      <background>background\bgr_mappoison</background>
-      <background>background\bgr_mappoison_b</background>
-      <background>background\bgr_mappoison_c</background>
+      <background>background\bgr_worldmap</background>
     </backgrounds>
     <background>background\bgr_anniversary</background>
     <background>background\bgr_title</background>
@@ -2244,6 +2236,7 @@
       <objects name="Decoration">
         <objects name="Liquids">
           <object>objects\obj_mapwater</object>
+          <object>objects\obj_mapwater_front</object>
           <object>objects\obj_maplava</object>
         </objects>
         <object>objects\obj_maptree</object>
