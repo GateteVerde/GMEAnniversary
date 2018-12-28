@@ -161,7 +161,6 @@ if (water)
     swimming = true;
     
     //Stop vertical movement
-    gravity = 0;
     if (vspeed &gt; 0)
         vspeed = 0;
 }

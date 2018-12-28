@@ -164,7 +164,7 @@ else if (ready &gt; 0) {
     &amp;&amp; (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_shell,0,0))
         ready = 2;
         
-    //Otherwise if the koopa is no longer overlapping a shell, make him enter one.
+    //Otherwise if the koopa is no longer overlapping a shell, make him kick one.
     else if (ready == 2) {
     
         //Check for a shell
@@ -314,6 +314,33 @@ if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_
     while (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-5,obj_solid,0,0))
         x--;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Special turn at enemies script
+
+if (ready &lt; 2)
+exit;
+    event_inherited();
 </string>
           </argument>
         </arguments>

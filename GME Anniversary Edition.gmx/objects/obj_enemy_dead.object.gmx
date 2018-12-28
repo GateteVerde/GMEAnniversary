@@ -151,7 +151,7 @@ else
 if (vspeed &gt; 0) {
 
     //If not in water
-    if (!place_meeting(x,y,obj_swim)) {
+    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0)) {
 
         //Cap vertical speed
         if (vspeed &gt; 4)

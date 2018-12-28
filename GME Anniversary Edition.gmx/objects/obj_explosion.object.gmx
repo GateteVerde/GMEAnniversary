@@ -211,7 +211,8 @@ instance_destroy();
             <string>///Bump the block
 
 //If the block is not ready
-if (other.ready == 0) {
+if (other.ready == 0) 
+&amp;&amp; (other.sprite_index != spr_messageblock) {
 
     //With the block
     with (other) {

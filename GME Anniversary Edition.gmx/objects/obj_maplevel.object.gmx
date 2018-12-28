@@ -150,11 +150,12 @@ if (global.checkpoint != noone)
             <kind>1</kind>
             <string>///Open up the path
 
+//If the level is not visible
 if (!visible) {
-
-    //Make it visible
+    
+    //Make visible...
     visible = 1;
-
+    
     //...and remember it
     ds_map_replace(global.mapscreen, id, 1);
 }
@@ -182,11 +183,12 @@ if (!visible) {
             <kind>1</kind>
             <string>///Open up the path
 
+//If the level is not visible
 if (!visible) {
-
-    //Make it visible
+    
+    //Make visible...
     visible = 1;
-
+    
     //...and remember it
     ds_map_replace(global.mapscreen, id, 1);
 }

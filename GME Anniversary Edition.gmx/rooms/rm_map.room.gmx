@@ -53,7 +53,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_maplava" x="688" y="32" name="inst_6454D3BC" locked="-1" code="" scaleX="41" scaleY="32" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maplava" x="688" y="32" name="inst_6454D3BC" locked="0" code="" scaleX="41" scaleY="32" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="304" y="144" name="inst_74699869" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="320" y="144" name="inst_C8038D22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="320" y="160" name="inst_D61E7BB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -190,12 +190,8 @@
     <instance objName="obj_mappath_levelnode" x="256" y="320" name="inst_E038E9CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_modifier" x="256" y="320" name="inst_3635F983" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapcontrol" x="0" y="0" name="inst_CDDD7857" locked="0" code="mapmusic = bgm_map1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mappath_water" x="288" y="224" name="inst_40EBED4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mappath_down" x="288" y="208" name="inst_7A763802" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mappath_left" x="304" y="224" name="inst_DA5E739A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mappath_up" x="288" y="240" name="inst_4C0DA2F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_maplevel" x="320" y="288" name="inst_55872592" locked="0" code="sprite_index = spr_maplevel_red;&#xA;levelname = &quot;Wooden Walkway&quot;&#xA;levelid = 0;&#xA;exitdir = 0;&#xA;exitalt = 3;&#xA;myroom = rm_woodenwalkway;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_maplevel" x="288" y="224" name="inst_6F0B7100" locked="0" code="sprite_index = spr_maplevel_red;&#xA;levelname = &quot;Waterfall Caverns&quot;;&#xA;levelid = 1;&#xA;exitdir = 0;&#xA;exitalt = 3;&#xA;myroom = rm_waterfallcaverns;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maplevel" x="320" y="288" name="inst_55872592" locked="0" code="sprite_index = spr_maplevel_b;&#xA;levelname = &quot;Wooden Walkway&quot;&#xA;levelid = 0;&#xA;exitdir = 0;&#xA;exitalt = 3;&#xA;myroom = rm_woodenwalkway;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maplevel" x="288" y="224" name="inst_6F0B7100" locked="0" code="sprite_index = spr_maplevel_b;&#xA;levelname = &quot;Waterfall Caverns&quot;;&#xA;levelid = 1;&#xA;exitdir = 0;&#xA;exitalt = 3;&#xA;myroom = rm_waterfallcaverns;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree_alt_b" x="320" y="256" name="inst_D55CC302" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel_switch_y" x="208" y="416" name="inst_1DD8417F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel_switch_r" x="432" y="256" name="inst_4CF51E08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -318,9 +314,9 @@
     <instance objName="obj_mappanel_house" x="256" y="320" name="inst_A95BD037" locked="0" code="powerup[0] = cs_fire;&#xA;powerup[1] = cs_star;&#xA;powerup[2] = cs_penguin;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappanel_house_b" x="176" y="256" name="inst_80ABBDDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappanel_house_b" x="1136" y="336" name="inst_8890425C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_maplevel" x="256" y="160" name="inst_33EBE8CD" locked="0" code="sprite_index = spr_maplevel_red;&#xA;levelname = &quot;Scorching Desert&quot;;&#xA;levelid = 2;&#xA;exitdir = 2;&#xA;exitalt = 3;&#xA;myroom = rm_scorchingdesert;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maplevel" x="256" y="160" name="inst_33EBE8CD" locked="0" code="sprite_index = spr_maplevel_b;&#xA;levelname = &quot;Scorching Desert&quot;;&#xA;levelid = 2;&#xA;exitdir = 2;&#xA;exitalt = 3;&#xA;myroom = rm_scorchingdesert;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel" x="256" y="224" name="inst_56F43FC8" locked="0" code="levelname = &quot;Subcon Fields&quot;;&#xA;levelid = 3;&#xA;exitdir = 2;&#xA;myroom = rm_subconfields;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_maplevel" x="992" y="336" name="inst_FF3981EB" locked="0" code="sprite_index = spr_maplevel_red;&#xA;levelname = &quot;Radiant Mine&quot;;&#xA;levelid = 4;&#xA;exitdir = 3;&#xA;exitalt = 0;&#xA;myroom = rm_radiantmine;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maplevel" x="992" y="336" name="inst_FF3981EB" locked="0" code="sprite_index = spr_maplevel_b;&#xA;levelname = &quot;Radiant Mine&quot;;&#xA;levelid = 4;&#xA;exitdir = 3;&#xA;exitalt = 0;&#xA;myroom = rm_radiantmine;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel" x="1088" y="160" name="inst_AE8F6AA9" locked="0" code="sprite_index = spr_maplevel_bowser;&#xA;levelname = &quot;Bowser's Castle&quot;;&#xA;levelid = 6;&#xA;exitdir = 2;&#xA;saveme = 1;&#xA;myroom = rm_bowsercastle;&#xA;block = 9;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel_ghost" x="1088" y="288" name="inst_A2C62AF2" locked="0" code="levelname = &quot;Frightening Cottage&quot;;&#xA;levelid = 5;&#xA;exitdir = 0;&#xA;exitalt = 1;&#xA;myroom = rm_frighteningcottage;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappanel_house_c" x="336" y="176" name="inst_8AB7A1DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -352,7 +348,11 @@
     <instance objName="obj_modifier" x="272" y="320" name="inst_E9659E54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_modifier" x="288" y="320" name="inst_BC8909B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_v" x="208" y="384" name="inst_909E527A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mapwater" x="0" y="32" name="inst_1DEC3D8B" locked="-1" code="" scaleX="39" scaleY="33" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mapwater" x="0" y="32" name="inst_1DEC3D8B" locked="0" code="" scaleX="39" scaleY="33" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappath_water" x="288" y="224" name="inst_B1317AF9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappath_up" x="288" y="240" name="inst_31261875" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappath_left" x="304" y="224" name="inst_FAE2957A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mappath_down" x="288" y="208" name="inst_C487F99F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_map" x="112" y="320" w="16" h="16" xo="496" yo="448" id="10006996" name="inst_BFCC86D8" depth="11" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

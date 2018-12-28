@@ -325,7 +325,6 @@ if (!held) {
         hspeed = hspeed/2;
         
         //Stop vertical movement
-        gravity = 0;
         if (vspeed &gt; 0)
             vspeed = 0;
     }
@@ -552,8 +551,8 @@ else {
 
 //If the player is moving up
 if (vspeed &lt; 0)
-&amp;&amp; ((collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_solid,1,0)) 
-|| (collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_ceilslopeparent,1,0))) {
+&amp;&amp; ((collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top,obj_solid,1,0)) 
+|| (collision_rectangle(bbox_left+1,bbox_top-1,bbox_right-1,bbox_top,obj_ceilslopeparent,1,0))) {
     
     //Prevent the NPC from getting stuck on a ceiling.
     while (collision_rectangle(bbox_left+1,bbox_top,bbox_right-1,bbox_top,obj_solid,1,0))

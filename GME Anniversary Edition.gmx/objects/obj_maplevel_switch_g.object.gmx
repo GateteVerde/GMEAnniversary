@@ -64,7 +64,7 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
     visible = 1;
     if (ds_map_find_value(global.mapscreen,id) == 2) {
     
-        beaten = 1;
+        beaten = 2;
         image_index = 1;
     }
 }
