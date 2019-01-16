@@ -291,7 +291,7 @@ if (hunger = 0) {
 
 if (hunger == 0) 
 &amp;&amp; (ready == 0) 
-&amp;&amp; (other.depth &lt; 10) {
+&amp;&amp; (other.depth &lt; 11) {
 
     //If the enemy is edible by yoshi
     if (other.edible == 2) {

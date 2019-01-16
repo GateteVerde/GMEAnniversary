@@ -30,6 +30,9 @@
 //P-Meter
 alpha2 = 0;
 
+//Reserve box
+alpha3 = 0;
+
 //SMB3 Card Holders
 if (instance_exists(obj_goalcard))
     alpha = 2;
@@ -148,6 +151,20 @@ if (instance_exists(obj_playerparent)) {
     }
 }
 
+//If there's no a reserve item, hide the box
+if (global.reserve == cs_small) {
+
+    alpha3 -= 0.1;
+    if (alpha3 &lt; -0.5)
+        alpha3 = -0.5;
+}
+else {
+
+    alpha3 += 0.1;
+    if (alpha3 &gt; 1)
+        alpha3 = 1;
+}
+
 //If the goal card exists, show HUD cards
 if (instance_exists(obj_goalcard)) {
 
@@ -195,25 +212,25 @@ if (instance_exists(obj_lightningsheet)) {
 draw_set_font(global.numbers_w);
 
 //Lives
-draw_sprite_ext(spr_hud_mario, -1, view_xview[0]+8, view_yview[0]+13, 1, 1, 0, c_white, 1);
-draw_text_colour(view_xview[0]+36, view_yview[0]+18, string_format(lives, 2, 0), c_white, c_white, c_white, c_white, 1);
+draw_sprite_ext(spr_hud_mario, -1, view_xview[0]+8, view_yview[0]+8, 1, 1, 0, c_white, 1);
+draw_text_colour(view_xview[0]+34, view_yview[0]+12, string_format(lives, 2, 0), c_white, c_white, c_white, c_white, 1);
 
 //Set font
 draw_set_font(global.numbers_g);
 
 //Coins
-draw_sprite_ext(spr_hud_coin, -1, view_xview[0]+69, view_yview[0]+13, 1, 1, 0, c_white, 1);
-draw_text_colour(view_xview[0]+97, view_yview[0]+18, string_format(global.coins, 2, 0), c_white, c_white, c_white, c_white, 1);
+draw_sprite_ext(spr_hud_coin, -1, view_xview[0]+8, view_yview[0]+27, 1, 1, 0, c_white, 1);
+draw_text_colour(view_xview[0]+19, view_yview[0]+31, string_format(global.coins, 2, 0), c_white, c_white, c_white, c_white, 1);
 
 //Star coins
 if (global.level != -1) {
 
-    draw_sprite_ext(spr_hud_starcoin, -1, view_xview[0]+8, view_yview[0]+33, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_hud_starcoin, -1, view_xview[0]+8, view_yview[0]+46, 1, 1, 0, c_white, 1);
     for (var i = 0; i &lt; 3; i++) {
     
         //Draw the coin if it has been collected
         if (ds_map_find_value(global.sc[i],global.level) &gt; 0)
-            draw_sprite_ext(spr_hud_starcoin_get, -1, view_xview[0]+8+(17*i), view_yview[0]+33, 1, 1, 0, c_white, 1);
+            draw_sprite_ext(spr_hud_starcoin_get, -1, view_xview[0]+8+(17*i), view_yview[0]+46, 1, 1, 0, c_white, 1);
     }
 }
 
@@ -229,11 +246,11 @@ for (var i = 0; i &lt; 3; i++) {
 if (global.healthmode == 0) {
 
     //Box
-    draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, alpha3);
     
     //Reserve item
     if (global.reserve &gt; cs_small)
-        draw_sprite_ext(constant_get_sprite(global.reserve), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+15, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(constant_get_sprite(global.reserve), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+15, 1, 1, 0, c_white, alpha3);
 }
 else
 draw_sprite_ext(spr_hud_health, health, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, 1);
@@ -242,22 +259,27 @@ draw_sprite_ext(spr_hud_health, health, view_xview[0]+view_wview[0]/2, view_yvie
 draw_set_font(global.numbers_w);
 
 //Time
-draw_sprite_ext(spr_hud_time, -1, view_xview[0]+view_wview[0]-33+shakex, view_yview[0]+11+shakey, 1, 1, 0, c_white, 1);
+draw_sprite_ext(spr_hud_time, -1, view_xview[0]+view_wview[0]-56+shakex, view_yview[0]+12+shakey, 1, 1, 0, c_white, 1);
 if (global.time &gt; -1)
 &amp;&amp; (obj_levelcontrol.leveltime != 0) {
 
     //If there's 100 or less seconds left and the level isn't finished
     if (global.time &lt;= 100 &amp;&amp; global.clear == 0)
-        draw_text_colour(view_xview[0]+view_wview[0]-32+shakex, view_yview[0]+18+shakey, string_add_zeros(global.time, 3), c_red, c_red, c_red, c_red, 1);
+        draw_text_colour(view_xview[0]+view_wview[0]-41+shakex, view_yview[0]+12+shakey, string_add_zeros(global.time, 3), c_red, c_red, c_red, c_red, 1);
     else
-        draw_text_colour(view_xview[0]+view_wview[0]-32, view_yview[0]+18, string_add_zeros(global.time, 3), c_white, c_white, c_white, c_white, 1);
+        draw_text_colour(view_xview[0]+view_wview[0]-41, view_yview[0]+12, string_add_zeros(global.time, 3), c_white, c_white, c_white, c_white, 1);
 }
 else
-draw_text_colour(view_xview[0]+view_wview[0]-32, view_yview[0]+18, "000", c_white, c_white, c_white, c_white, 1);
+draw_text_colour(view_xview[0]+view_wview[0]-41, view_yview[0]+12, "000", c_white, c_white, c_white, c_white, 1);
+
+//Set font
+draw_set_font(global.numbers_b);
 
 //Score
-draw_sprite_ext(spr_hud_score, -1, view_xview[0]+view_wview[0]-91, view_yview[0]+11, 1, 1, 0, c_white, 1);
-draw_text_colour(view_xview[0]+view_wview[0]-127, view_yview[0]+18, string_add_zeros(score, 9), c_white, c_white, c_white, c_white, 1);
+draw_text_colour(view_xview[0]+view_wview[0]-152, view_yview[0]+12, string_add_zeros(score, 8), c_white, c_white, c_white, c_white, 1);
+
+//Set font
+draw_set_font(global.numbers_w);
 
 //P-Meter
 if (instance_exists(obj_playerparent)) {

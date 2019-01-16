@@ -31,7 +31,7 @@
 x = round(obj_playerparent_clear.x);
 y = round(obj_playerparent_clear.y);
 
-//This grows the image, you can change the values to control how fast the circle should grow.
+//This shrinks the image, you can change the values to control how fast the circle should shrink.
 scale += -3.125;
 if (scale &lt; 0)
     endlevel();

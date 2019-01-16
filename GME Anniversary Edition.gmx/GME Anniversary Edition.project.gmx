@@ -634,6 +634,7 @@
           <sprite>sprites\spr_shard_th_a</sprite>
           <sprite>sprites\spr_shard_th_b</sprite>
           <sprite>sprites\spr_shard_th_c</sprite>
+          <sprite>sprites\spr_shard_gr</sprite>
         </sprites>
         <sprite>sprites\spr_brick</sprite>
         <sprite>sprites\spr_bigbrick</sprite>
@@ -643,6 +644,7 @@
         <sprite>sprites\spr_redbrick_th</sprite>
         <sprite>sprites\spr_graybrick</sprite>
         <sprite>sprites\spr_graybrick_th</sprite>
+        <sprite>sprites\spr_greenbrick</sprite>
         <sprite>sprites\spr_flipblock</sprite>
       </sprites>
       <sprite>sprites\spr_viewblock</sprite>
@@ -1227,6 +1229,7 @@
           <sprite>sprites\spr_superbell</sprite>
           <sprite>sprites\spr_starman</sprite>
           <sprite>sprites\spr_1up</sprite>
+          <sprite>sprites\spr_1uph</sprite>
           <sprite>sprites\spr_poison</sprite>
           <sprite>sprites\spr_goldshroom</sprite>
         </sprites>
@@ -1551,11 +1554,11 @@
           <sprites name="Digits">
             <sprite>sprites\spr_numbers</sprite>
             <sprite>sprites\spr_numbersgold</sprite>
+            <sprite>sprites\spr_numbersblack</sprite>
           </sprites>
           <sprite>sprites\spr_hud_mario</sprite>
           <sprite>sprites\spr_hud_coin</sprite>
           <sprite>sprites\spr_hud_time</sprite>
-          <sprite>sprites\spr_hud_score</sprite>
           <sprite>sprites\spr_hud_health</sprite>
           <sprite>sprites\spr_hud_pmeter</sprite>
         </sprites>
@@ -1803,8 +1806,8 @@
     <script>scripts\sprite_get_constant.gml</script>
     <script>scripts\sprite_make_object.gml</script>
     <script>scripts\draw_circle_colour_precise.gml</script>
-    <script>scripts\draw_sprite_tiled_area_ext.gml</script>
     <script>scripts\draw_background_tiled_horizontal_ext.gml</script>
+    <script>scripts\draw_sprite_tiled_area_ext.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
@@ -1931,6 +1934,7 @@
         <object>objects\obj_bluebrick</object>
         <object>objects\obj_redbrick</object>
         <object>objects\obj_graybrick</object>
+        <object>objects\obj_greenbrick</object>
         <object>objects\obj_flipblock</object>
       </objects>
       <object>objects\obj_viewblock</object>
@@ -2135,6 +2139,7 @@
         <object>objects\obj_snifit_g</object>
         <object>objects\obj_snifit_p</object>
         <object>objects\obj_ninji</object>
+        <object>objects\obj_ninji_chase</object>
         <object>objects\obj_ninji_big</object>
         <object>objects\obj_tweeter</object>
         <object>objects\obj_tweeter_b</object>
@@ -2325,6 +2330,7 @@
           <object>objects\obj_superbell</object>
           <object>objects\obj_starman</object>
           <object>objects\obj_1up</object>
+          <object>objects\obj_1uph</object>
           <object>objects\obj_poison</object>
           <object>objects\obj_goldshroom</object>
         </objects>

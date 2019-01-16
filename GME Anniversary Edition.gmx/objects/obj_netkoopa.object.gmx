@@ -250,7 +250,7 @@ switch (ready) {
 switch (depth) {
 
     //If behind a fence, turn vulnerable
-    case (10): {
+    case (11): {
     
         //Set vulnerability
         vulnerable = 0;
@@ -272,7 +272,7 @@ switch (depth) {
         stomp = -1;
         
         //Set depth
-        depth = 10;
+        depth = 11;
     }
 }
 
@@ -430,7 +430,7 @@ if (other.state == 3)
 &amp;&amp; (other.netsmack &gt; 0) {
 
     //If the koopa is behind the fence
-    if (depth == 10) {
+    if (depth == 11) {
 
         //Play 'Kick' sound
         audio_play_sound(snd_kick, 0, false);
@@ -477,6 +477,9 @@ event_inherited();
 
 //Set depth
 imdead.depth = depth;
+
+//Set sprite
+imdead.sprite_index = spr_shell;
 </string>
           </argument>
         </arguments>

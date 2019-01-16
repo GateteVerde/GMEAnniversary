@@ -56,7 +56,7 @@ sequence = 4;
             <kind>1</kind>
             <string>///Move towards the player
 
-vspeed = -4;
+vspeed = -4+(2*swimming);
 y--;
 if (!instance_exists(obj_playerparent))
 || (obj_playerparent.x &lt; x)

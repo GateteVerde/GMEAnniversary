@@ -170,14 +170,33 @@ if (gravity == 0) {
                 &amp;&amp; (mysolid.image_yscale &lt;= 1) 
                 &amp;&amp; (mysolid.object_index != obj_solid) {
                 
-                    //Jump through solid blocks.
-                    ready = 1;
+                    //Find nearest layer 9 tile
+                    var tile;
+                    tile = tile_layer_find(9, x, bbox_bottom+1);
                     
-                    //Make the body jump too.
-                    for (i=0; i&lt;4; i++) {
+                    //If there's a layer 9 tile below
+                    if (tile = -1) {
+                        
+                        //Pass through semisolids
+                        ready = 1;
+                        
+                        //Make the body jump too.
+                        for (i=0; i&lt;4; i++) {
+                        
+                            mybody[i].alarm[0] = 5+(5*i)
+                            mybody[i].type = 2;                
+                        }
+                    }
                     
-                        mybody[i].alarm[0] = 5+(5*i)
-                        mybody[i].type = 2;                
+                    //Otherwise, do not allow the fire snake to pass through semisolids
+                    else {
+                    
+                        //Make the body jump too.
+                        for (i=0; i&lt;4; i++) {
+                        
+                            mybody[i].alarm[0] = 5+(5*i)
+                            mybody[i].type = 1;                
+                        }                                                    
                     }
                 }
                 else {

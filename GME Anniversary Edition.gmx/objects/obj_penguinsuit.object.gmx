@@ -59,7 +59,7 @@ image_speed = 0;
             <kind>1</kind>
             <string>///Move towards the player
 
-vspeed = -1.5;
+vspeed = -1.5+(0.75*swimming);
 y--;
 if (!instance_exists(obj_playerparent))
 || (obj_playerparent.x &lt; x)

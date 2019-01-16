@@ -107,13 +107,6 @@ with (instance_create(0,0,obj_message)) {
             <kind>1</kind>
             <string>///Return to the map
 
-//Stop stream
-with (obj_diggame_warptomap) {
-
-    audio_stop_sound(stream);
-    stream = -1;
-}
-
 //Clear it
 global.clear = 1;
 

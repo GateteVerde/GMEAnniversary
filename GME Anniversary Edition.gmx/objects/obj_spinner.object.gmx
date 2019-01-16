@@ -77,7 +77,7 @@ hitcombo = 0;
 ready = 0;
 
 //Make the player invisible
-obj_playerparent.visible = false;
+obj_playerparent.visible = 0;
 </string>
           </argument>
         </arguments>
@@ -102,8 +102,12 @@ obj_playerparent.visible = false;
             <kind>1</kind>
             <string>///Make the player visible
 
-//Make player visible
-with (obj_playerparent) visible = true;
+with (obj_playerparent) {
+
+    visible = 1;
+    if (image_alpha != 1)
+        image_alpha = 1;
+}
 </string>
           </argument>
         </arguments>

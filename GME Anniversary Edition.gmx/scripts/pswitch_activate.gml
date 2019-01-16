@@ -11,11 +11,15 @@
 //Turn bricks into coins.
 with (obj_brick) {
 
-    //Create a coin from the brick.
-    instance_create(x,y,obj_coinchange);
+    //If the sprite is not a green brick
+    if (sprite_index != spr_greenbrick) {
     
-    //Destroy the brick
-    instance_destroy();
+        //Create a coin from the brick.
+        instance_create(x,y,obj_coinchange);
+        
+        //Destroy the brick
+        instance_destroy();
+    }
 }
 
 //Turn coins into bricks.

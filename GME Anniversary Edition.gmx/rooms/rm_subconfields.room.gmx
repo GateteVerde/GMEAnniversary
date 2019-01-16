@@ -4,7 +4,7 @@
   <width>384</width>
   <height>880</height>
   <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -90,6 +90,9 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_grass" x="336" y="832" name="inst_529946FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="320" y="832" name="inst_6D790539" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_acecoin" x="16" y="704" name="inst_72EA60EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_generator_beezo" x="32" y="0" name="inst_38B14D45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ninji_chase" x="360" y="832" name="inst_85D201A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ninji_chase" x="312" y="832" name="inst_90EF38D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb2" x="128" y="768" w="16" h="16" xo="32" yo="0" id="10066651" name="inst_AC4FA988" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

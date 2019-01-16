@@ -122,20 +122,29 @@ alarm[0] = 1;
             <kind>1</kind>
             <string>///Make the player visible
 
-if (instance_exists(obj_puller))
-    obj_puller.visible = true;
+//If the player is not riding anything
+if (global.mount == 0) {
     
-//Otherwise, if the spinner exists
-else if (instance_exists(obj_spinner))
-    obj_spinner.visible = true;
-    
-//Otherwise, if the dropdown exists
-else if (instance_exists(obj_dropdown))
-    obj_dropdown.visible = true;
-    
-//Otherwise, if the wallrunner exists
-else if (instance_exists(obj_wallrunner))
-    obj_wallrunner.visible = true;
+    //If the player is pulling an item, make said object visible
+    if (instance_exists(obj_puller))
+        obj_puller.visible = true;
+        
+    //Otherwise, if the spinner exists, make said object visible
+    else if (instance_exists(obj_spinner))
+        obj_spinner.visible = true;
+        
+    //Otherwise, if the dropdown exists, make said object visible
+    else if (instance_exists(obj_dropdown))
+        obj_dropdown.visible = true;
+        
+    //Otherwise, if the wallrunner exists make said object visible
+    else if (instance_exists(obj_wallrunner))
+        obj_wallrunner.visible = true;
+        
+    //Otherwise, make the main player visible
+    else
+        image_alpha = 1;
+}
     
 //If the player is riding a yoshi, make yoshi visible.
 if (global.mount == 1)
@@ -309,6 +318,9 @@ if (ready) {
             
             //Make visible
             visible = true;
+            
+            //Reset alarm
+            if (alarm[0] &gt; -1) then alarm[0] = 90;
             
             //Set alpha back to 1, but check first if the player is not doing a special action.
             if (!instance_exists(obj_puller))

@@ -30,9 +30,9 @@
 /*
 **  This item uses creation code!
 **
-**  levelmusic = The level music (Any sound resource you load in)
-**  leveltime = The time limit in seconds (Optional)
-**  camlock = Whether to lock the camera in place
+**  levelmusic  = The level music (Any sound resource you load in)
+**  leveltime   = The time limit in seconds (Optional)
+**  camlock     = Whether to lock the camera in place
 */
 
 //Default Values:
@@ -80,6 +80,10 @@ follow = noone;
 //P-Switch Warning
 pwarning = 0;
 gwarning = 0;
+
+//How many 1-UP checks are inside the room?
+check = 0;
+checkmax = 0;
 
 //Make sure the view follows this object.
 view_object[0] = id;

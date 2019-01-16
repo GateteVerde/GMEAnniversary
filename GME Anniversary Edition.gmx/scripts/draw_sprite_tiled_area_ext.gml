@@ -31,8 +31,9 @@ i = x1 - ((x1 mod sw)-(xx mod sw)) - sw*((x1 mod sw)<(xx mod sw));
 j = y1 - ((y1 mod sh)-(yy mod sh)) - sh*((y1 mod sh)<(yy mod sh)); 
 jj = j;
 
-for(i=i; i<=x2; i+=sw) {
-    for(j=j ;j<=y2; j+=sh) {
+for (i=i; i<=x2; i+=sw) {
+
+    for (j=j ;j<=y2; j+=sh) {
 
         if(i <= x1) left = x1-i;
         else left = 0;
