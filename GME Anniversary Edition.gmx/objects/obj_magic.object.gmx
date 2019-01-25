@@ -312,7 +312,7 @@ instance_destroy();
 //Draw spell
 for (var i=0; i&lt;3; i++) {
 
-    draw_sprite_ext(spr_magic, i, x+5*cos((angle+(i*360/3))*pi/180), y+5*sin((angle+(i*360/3))*pi/180), 1, 1, 0, c_white, 1);
+    draw_sprite_ext(spr_magic, i, x+8*cos((angle+(i*360/3))*pi/180), y+8*sin((angle+(i*360/3))*pi/180), 1, 1, 0, c_white, 1);
 }
 
 //Update angle

@@ -85,9 +85,6 @@ f = 0;
 //Player's previous state
 stateprev = 0;
 
-//Sweat if fluttering
-alarm[5] = 1;
-
 //If an item was carried from the previous room.
 if (global.carrieditem != noone) {
 
@@ -149,7 +146,7 @@ if (instance_exists(obj_playerparent)) {
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="6">
+    <event eventtype="2" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -198,49 +195,6 @@ if (instance_exists(obj_playerparent))
 //Otherwise, wait...
 else
     alarm[6] = 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Sweat if Yoshi is fluttering
-
-if (flutter == 1) {
-
-    //Create sweat effect
-    with (instance_create(x+8*sign(image_xscale),y-12,obj_smoke)) {
-    
-        //Motion
-        motion_set(random_range(45,135), random_range(0.5,1));
-        
-        //Animation
-        image_speed = 0.1;
-        
-        //Gravity
-        gravity = 0.05;
-        
-        //Sprite
-        sprite_index = spr_sweat;
-    }
-}
-alarm[5] = 8;
 </string>
           </argument>
         </arguments>
@@ -361,7 +315,7 @@ else if (berry != noone) {
         if (global.berries == 5) {
         
             //Make Yoshi lay a egg
-            alarm[6] = 1;
+            alarm[5] = 1;
         
             //Show how many berries yoshi ate
             with (instance_create(x,y-26,obj_score_coins)) {

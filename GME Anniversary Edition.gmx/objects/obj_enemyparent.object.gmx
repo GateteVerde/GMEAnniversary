@@ -1598,18 +1598,18 @@ if (gravity == 0) {
     //If moving left
     if (hspeed &lt; 0) {
     
-        //If there's not ground on the way
-        if (!collision_rectangle(bbox_left-1+hspeed,bbox_bottom-1,bbox_left,bbox_bottom+15,obj_semisolid,0,0))
-        &amp;&amp; (!collision_rectangle(bbox_left-1+hspeed,bbox_bottom-1,bbox_left,bbox_bottom+19,obj_slopeparent,1,0))
+        //If there's not ground on the way...
+        if (!collision_rectangle(bbox_left-1+hspeed,bbox_bottom,bbox_left,bbox_bottom+15,obj_semisolid,0,0))
+        &amp;&amp; (!collision_rectangle(bbox_left-1+hspeed,bbox_bottom,bbox_left,bbox_bottom+21,obj_slopeparent,1,0))
             hspeed = -hspeed;
     }
     
     //Otherwise, if moving right
     else if (hspeed &gt; 0) {
         
-        //If there's no ground on the way
-        if (!collision_rectangle(bbox_right,bbox_bottom-1,bbox_right+1+hspeed,bbox_bottom+15,obj_semisolid,0,0))
-        &amp;&amp; (!collision_rectangle(bbox_right,bbox_bottom-1,bbox_right+1+hspeed,bbox_bottom+19,obj_slopeparent,1,0))
+        //If there's no ground on the way...
+        if (!collision_rectangle(bbox_right,bbox_bottom,bbox_right+1+hspeed,bbox_bottom+15,obj_semisolid,0,0))
+        &amp;&amp; (!collision_rectangle(bbox_right,bbox_bottom,bbox_right+1+hspeed,bbox_bottom+21,obj_slopeparent,1,0))
             hspeed = -hspeed;
     }
 }

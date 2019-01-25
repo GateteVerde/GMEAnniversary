@@ -273,24 +273,30 @@ alarm[1] = 60;
 
 //If the magikoopa is about to appear
 if (ready == 0) {
-    
-    //Increment alpha
-    image_alpha += 0.05;
-    
-    //If the magikoopa is done
-    if (image_alpha &gt; 1) {
-    
-        //Set both alpha and frame
-        image_alpha = 1;
-        image_index = 1;
+
+    //If the player is inside the area
+    if (instance_exists(obj_playerparent))
+    &amp;&amp; (obj_playerparent.x &gt; xmin)
+    &amp;&amp; (obj_playerparent.x &lt; xmax) {
         
-        //Make vulnerable
-        vulnerable = 1;
-        stomp = 0;
+        //Increment alpha
+        image_alpha += 0.05;
         
-        //Prepare a spell
-        ready = 1;
-        alarm[0] = 90;
+        //If the magikoopa is done
+        if (image_alpha &gt; 1) {
+        
+            //Set both alpha and frame
+            image_alpha = 1;
+            image_index = 1;
+            
+            //Make vulnerable
+            vulnerable = 1;
+            stomp = 0;
+            
+            //Prepare a spell
+            ready = 1;
+            alarm[0] = 90;
+        }
     }
 }
 
