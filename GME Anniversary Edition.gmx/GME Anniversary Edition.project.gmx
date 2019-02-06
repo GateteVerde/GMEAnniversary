@@ -654,6 +654,8 @@
       <sprite>sprites\spr_noteblock_blue_hidden</sprite>
       <sprite>sprites\spr_noteblock_warp</sprite>
       <sprite>sprites\spr_noteblock_warp_hidden</sprite>
+      <sprite>sprites\spr_noteblock_diagonal_r</sprite>
+      <sprite>sprites\spr_noteblock_diagonal_l</sprite>
       <sprite>sprites\spr_messageblock</sprite>
       <sprite>sprites\spr_pswitchblock</sprite>
       <sprite>sprites\spr_qswitchblock</sprite>
@@ -670,6 +672,7 @@
       <sprite>sprites\spr_arrowblock_right</sprite>
       <sprite>sprites\spr_arrowblock_reset</sprite>
       <sprite>sprites\spr_guessblock</sprite>
+      <sprite>sprites\spr_discoblock</sprite>
       <sprite>sprites\spr_beanstalk</sprite>
     </sprites>
     <sprites name="Masks">
@@ -967,6 +970,7 @@
         <sprite>sprites\spr_cannon_quad</sprite>
         <sprite>sprites\spr_cannonball</sprite>
         <sprite>sprites\spr_cannonball_large</sprite>
+        <sprite>sprites\spr_cannonball_spike</sprite>
         <sprite>sprites\spr_engine_st</sprite>
         <sprite>sprites\spr_engine</sprite>
         <sprite>sprites\spr_engine_alt</sprite>
@@ -984,7 +988,6 @@
         <sprite>sprites\spr_snifit_b</sprite>
         <sprite>sprites\spr_snifit_g</sprite>
         <sprite>sprites\spr_snifit_p</sprite>
-        <sprite>sprites\spr_snifit_ball</sprite>
         <sprite>sprites\spr_ninji</sprite>
         <sprite>sprites\spr_ninji_big</sprite>
         <sprite>sprites\spr_tweeter</sprite>
@@ -1032,8 +1035,10 @@
       <sprite>sprites\spr_sumobro_flame</sprite>
       <sprite>sprites\spr_sumobro_lightning</sprite>
       <sprite>sprites\spr_walrus</sprite>
+      <sprite>sprites\spr_pararus</sprite>
       <sprite>sprites\spr_grayrus</sprite>
       <sprite>sprites\spr_gladrus</sprite>
+      <sprite>sprites\spr_gladrus_sq</sprite>
       <sprite>sprites\spr_gladrus_mad</sprite>
       <sprite>sprites\spr_chainchomp</sprite>
       <sprite>sprites\spr_chainchomp_chain</sprite>
@@ -1169,6 +1174,7 @@
       <sprite>sprites\spr_seaweedb</sprite>
       <sprite>sprites\spr_quicksand</sprite>
       <sprite>sprites\spr_quicksandb</sprite>
+      <sprite>sprites\spr_discoball</sprite>
     </sprites>
     <sprites name="Items">
       <sprites name="Collectables">
@@ -1375,6 +1381,8 @@
         <sprite>sprites\spr_trampoline_p_end</sprite>
         <sprite>sprites\spr_trampoline_timed</sprite>
         <sprite>sprites\spr_trampoline_timed_end</sprite>
+        <sprite>sprites\spr_billy</sprite>
+        <sprite>sprites\spr_billygun</sprite>
         <sprite>sprites\spr_bumper</sprite>
         <sprite>sprites\spr_wallspring</sprite>
         <sprite>sprites\spr_wallspring_end</sprite>
@@ -1627,6 +1635,7 @@
           <sprite>sprites\spr_surface_light_large_b</sprite>
         </sprites>
         <sprite>sprites\spr_surface_light</sprite>
+        <sprite>sprites\spr_surface_disco</sprite>
       </sprites>
       <sprite>sprites\spr_toad</sprite>
       <sprite>sprites\spr_digtile</sprite>
@@ -1821,6 +1830,7 @@
             <object>objects\obj_rainmaker</object>
             <object>objects\obj_snowmaker</object>
           </objects>
+          <object>objects\obj_discoball</object>
           <object>objects\obj_bganimator</object>
           <object>objects\obj_levelcontrol</object>
           <object>objects\obj_levelcontrol_light</object>
@@ -1857,6 +1867,7 @@
       <objects name="Lights">
         <object>objects\obj_light</object>
         <object>objects\obj_light_st</object>
+        <object>objects\obj_light_disco</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_player_warp</object>
@@ -1944,6 +1955,8 @@
       <object>objects\obj_noteblock_blue_hidden</object>
       <object>objects\obj_noteblock_warp</object>
       <object>objects\obj_noteblock_warp_hidden</object>
+      <object>objects\obj_noteblock_diagonal_r</object>
+      <object>objects\obj_noteblock_diagonal_l</object>
       <object>objects\obj_messageblock</object>
       <object>objects\obj_pswitchblock</object>
       <object>objects\obj_qswitchblock</object>
@@ -1958,6 +1971,7 @@
       <object>objects\obj_arrowblock_left</object>
       <object>objects\obj_arrowblock_right</object>
       <object>objects\obj_arrowblock_reset</object>
+      <object>objects\obj_discoblock</object>
     </objects>
     <objects name="Enemies">
       <objects name="Land">
@@ -2124,6 +2138,7 @@
         <object>objects\obj_cannon_side</object>
         <object>objects\obj_cannon_quad</object>
         <object>objects\obj_cannon_big</object>
+        <object>objects\obj_cannon_spike</object>
         <object>objects\obj_engine</object>
         <object>objects\obj_engine_alt</object>
         <object>objects\obj_rockywrench</object>
@@ -2190,6 +2205,7 @@
       <object>objects\obj_afhb</object>
       <object>objects\obj_sumobro</object>
       <object>objects\obj_walrus</object>
+      <object>objects\obj_pararus</object>
       <object>objects\obj_grayrus</object>
       <object>objects\obj_gladrus</object>
       <object>objects\obj_chainchomp</object>
@@ -2425,6 +2441,7 @@
         <object>objects\obj_trampoline</object>
         <object>objects\obj_trampoline_p</object>
         <object>objects\obj_trampoline_timed</object>
+        <object>objects\obj_billygun</object>
         <object>objects\obj_bumper</object>
         <object>objects\obj_wallspring</object>
         <object>objects\obj_flipper_top</object>
@@ -2674,6 +2691,8 @@
             <object>objects\obj_bullet_banzai</object>
             <object>objects\obj_cannonball</object>
             <object>objects\obj_cannonball_large</object>
+            <object>objects\obj_cannonball_spike</object>
+            <object>objects\obj_cannonball_spike_trail</object>
             <object>objects\obj_wrench</object>
           </objects>
           <objects name="Subcon">
@@ -2800,6 +2819,8 @@
               </objects>
             </objects>
             <object>objects\obj_trampoline_p_active</object>
+            <object>objects\obj_billy</object>
+            <object>objects\obj_billy_dead</object>
             <object>objects\obj_propellerblock_up</object>
             <object>objects\obj_boomerang_blue_up</object>
           </objects>
@@ -2895,7 +2916,6 @@
     </timelines>
   </timelines>
   <rooms name="rooms">
-    <room>rooms\rm_gamestart</room>
     <room>rooms\rm_disclaimer</room>
     <room>rooms\rm_anniversary</room>
     <room>rooms\rm_titlemenu</room>
@@ -2969,7 +2989,9 @@
       <room>rooms\rm_poweruptestarea</room>
     </rooms>
   </rooms>
-  <constants number="43">
+  <constants number="45">
+    <constant name="cs_levels">7</constant>
+    <constant name="cs_billy">-29</constant>
     <constant name="cs_golden">-28</constant>
     <constant name="cs_beanstalk">-27</constant>
     <constant name="cs_propellerblock">-26</constant>

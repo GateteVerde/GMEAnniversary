@@ -19,7 +19,7 @@ global.level = 0;
 
 //How many level does the game have? 
 //(Make sure is 1 number higher than the amount of levels)
-global.levelmax = 7;
+global.levelmax = cs_levels;
 
 //Level time
 global.time = 0;
@@ -190,7 +190,7 @@ for (var i = 0; i < 3; i++) {
 }
 
 //Star Coins collected
-global.starcoins = 0;
+global.starcoins = 9;
 
 //Data structure for storing the state of the world map.
 global.mapscreen = ds_map_create();

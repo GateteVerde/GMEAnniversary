@@ -283,13 +283,11 @@ else if (keyboard_check_pressed(global.shiftkey)) {
                     //Activate all deactivated instances
                     instance_activate_all();
                     
-                    //Stop Music
-                    audio_stop_sound(global._stream);
-                    audio_stop_sound(global._stream_pswitch);
-                    audio_stop_sound(global._stream_starman);
-                    
                     //Perform dead event
                     global.died = true;
+                    
+                    //Stop Music
+                    audio_stop_all();
                     
                     //Play a sound
                     audio_play_sound(snd_correct,false,0);

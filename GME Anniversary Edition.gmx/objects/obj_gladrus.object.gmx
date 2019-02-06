@@ -45,6 +45,11 @@ swimming = false;
 //Whether the object is not pissed
 charge = false;
 
+//Fake
+fxs = 1;
+fys = 1;
+squishy = 0;
+
 //Animate
 image_speed = 0.125;
 
@@ -77,7 +82,7 @@ alarm[10] = 2;
 //Inherit event
 event_inherited();
 
-//If the gladrusrus is angry
+//If the gladrus is angry
 if (charge == 1) {
 
     //Previous hspeed
@@ -119,6 +124,30 @@ if (charge == 1) {
 
 //Otherwise, face towards direction
 else {
+
+    //Handle squish animation
+    if (squishy == 1) {
+    
+        //Return to normal
+        fxs -= 0.05;
+        fys += 0.05;
+    
+        //Start charging at Mario
+        if (fxs &lt;= 1) &amp;&amp; (fys &gt;= 1) {
+        
+            //End squish
+            squishy = 2;
+            
+            //Begin to charge
+            charge = 1;
+            
+            //Set the sprite
+            sprite_index = spr_gladrus_mad;
+            
+            //Animate
+            image_speed = 0.3;
+        }
+    }
     
     //Face towards the player
     if (hspeed &gt; 0)
@@ -151,7 +180,7 @@ else {
             <string>///Gladrus stomp event
 
 //If the gladrus is not angry
-if (charge == 0) {
+if (charge == 0) &amp;&amp; (squishy == 0) {
 
     //Get points based on combo
     if (obj_playerparent.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
@@ -170,12 +199,47 @@ if (charge == 0) {
     //Increment combo
     obj_playerparent.hitcombo++;
     
-    //Make angry
-    charge = 1;
-    sprite_index = spr_gladrus_mad;
-    image_speed = 0.3;
-    hspeed = hspeed*2;
+    //Squish walrus
+    squishy = 1;
+    image_speed = 0;
+    image_index = 0;
+    
+    //Set scale
+    fxs = 1.5;
+    fys = 0.5;
+    
+    //Stop movement
+    hspeed = 0;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw gladrus
+
+//If the walrus has been squished
+if (squishy == 1)
+    draw_sprite_ext(spr_gladrus_sq, -1, round(x), round(y)+17, xscale * fxs, fys, 0, c_white, 1);
+else
+    event_inherited();
 </string>
           </argument>
         </arguments>

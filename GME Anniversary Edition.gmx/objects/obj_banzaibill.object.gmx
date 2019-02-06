@@ -76,7 +76,7 @@ if (vulnerable == 100) {
         audio_play_sound(snd_lightning, 0, false);
         
         //Turn vulnerable
-        vulnerable = 0;
+        vulnerable = 1;
         stomp = 0;
         
         //Set the horizontal speed
@@ -91,7 +91,7 @@ if (vulnerable == 100) {
         audio_play_sound(snd_lightning, 0, false);
         
         //Turn vulnerable
-        vulnerable = 0;
+        vulnerable = 1;
         stomp = 0;
         
         //Set the horizontal speed

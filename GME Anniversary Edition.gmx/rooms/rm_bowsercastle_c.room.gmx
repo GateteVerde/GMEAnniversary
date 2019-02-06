@@ -4,7 +4,7 @@
   <width>2960</width>
   <height>336</height>
   <vsnap>16</vsnap>
-  <hsnap>8</hsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -45,7 +45,7 @@ background_hspeed[7] = -0.25;</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
-    <background visible="0" foreground="-1" name="bgr_smog" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -66,7 +66,6 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_flipblock" x="144" y="208" name="inst_5949EF23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flipblock" x="160" y="208" name="inst_775564EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flipblock" x="176" y="208" name="inst_FAA4334D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_flipblock" x="208" y="256" name="inst_ACD083AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flipblock" x="304" y="272" name="inst_0E0B4F6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flipblock" x="320" y="272" name="inst_5AA40CD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flipblock" x="336" y="272" name="inst_377EB797" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -260,7 +259,7 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_flipblock" x="2000" y="208" name="inst_498A9A76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flipblock" x="2016" y="208" name="inst_45453654" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_starcoin" x="776" y="216" name="inst_32472708" locked="0" code="type = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_magikoopa" x="264" y="272" name="inst_0F96D348" locked="0" code="xmax = 1472;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_magikoopa" x="264" y="272" name="inst_0F96D348" locked="0" code="xmin = 0;&#xA;xmax = 1472;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="48" y="240" name="inst_D4BFB5F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="16" y="208" name="inst_1BEE44CD" locked="0" code="" scaleX="2" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="48" y="224" name="inst_3D14DB3A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -288,6 +287,10 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_hurtmask" x="2272" y="272" name="inst_DCF7C93F" locked="0" code="" scaleX="2" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="2496" y="192" name="inst_F6614C94" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fireflower" x="2504" y="176" name="inst_C669F1A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_discoball" x="40" y="-8" name="inst_AC608BAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol_light" x="16" y="-16" name="inst_AFE1E67F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_discoblock" x="208" y="240" name="inst_58D43D20" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_discoblock" x="2448" y="208" name="inst_18CAD597" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="0" y="256" w="16" h="16" xo="480" yo="288" id="10089359" name="inst_D2A920EF" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

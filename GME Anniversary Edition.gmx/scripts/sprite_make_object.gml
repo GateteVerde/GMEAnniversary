@@ -158,5 +158,8 @@ switch (argument[2]) {
             i.held = false;
     }
     return i;
+    
+    //Billy Gun
+    case (spr_billygun): return instance_create(argument[0],argument[1],obj_billygun);    
 }
 

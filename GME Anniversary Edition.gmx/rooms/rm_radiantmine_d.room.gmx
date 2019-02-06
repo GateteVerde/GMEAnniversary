@@ -12,9 +12,6 @@
   <showcolour>-1</showcolour>
   <code>///Level parameters
 
-//Light surface value
-global.ambient_light = c_black;
-
 //Skin
 global.skin = 1;
 
@@ -304,6 +301,7 @@ background_hspeed[7] = -0.25;</code>
     <instance objName="obj_light_st" x="2160" y="112" name="inst_E44EE886" locked="0" code="image_blend = c_yellow;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpleft" x="2352" y="144" name="inst_BD88F0C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2400" y="160" name="inst_FCB94C8A" locked="0" code="postchange = 1;&#xA;postx = 640;&#xA;posty = 144;&#xA;myroom = rm_radiantmine;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_multicoin" x="1168" y="80" name="inst_193D5851" locked="0" code="sprite_index = spr_brick;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smw" x="608" y="144" w="16" h="16" xo="896" yo="368" id="10077237" name="inst_8C7224E8" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

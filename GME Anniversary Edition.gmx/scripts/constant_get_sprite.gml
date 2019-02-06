@@ -49,6 +49,7 @@ switch (argument[0]) {
     case (cs_trampoline): return spr_trampoline;
     case (cs_propellerblock): return spr_propellerblock;
     case (cs_beanstalk): return spr_beanstalk;
+    case (cs_billy): return spr_billygun;
     case (cs_area_y): return spr_mushroom;
     case (cs_area_g): return spr_leaf;
     case (cs_area_r): return spr_fireflower;

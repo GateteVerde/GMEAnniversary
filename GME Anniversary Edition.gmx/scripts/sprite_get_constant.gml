@@ -48,5 +48,6 @@ switch (argument[0]) {
     case (spr_trampoline): return cs_trampoline;
     case (spr_propellerblock): return cs_propellerblock;
     case (spr_beanstalk): return cs_beanstalk;
+    case (spr_billygun): return cs_billy;
     default: return -1;
 }

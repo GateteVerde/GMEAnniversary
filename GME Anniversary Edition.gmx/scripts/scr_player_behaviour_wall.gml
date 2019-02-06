@@ -120,6 +120,18 @@ if (wallkick == 1) {
         //Set the vertical speed
         yspeed = jumpstr*-1.047;
         
+        //Perform spin jump if 'Up' is pressed and Mario does not have the Propeller or Cat powerups
+        if (keyboard_check(global.upkey)) 
+        && (global.powerup != cs_propeller) 
+        && (global.powerup != cs_cat) {
+        
+            //Play 'Spin' sound
+            audio_play_sound(snd_spin, 0, false);
+        
+            //Set spin jump mode
+            stompstyle = 1;
+        }
+        
         //Allow variable jump
         jumping = 1;
         
@@ -154,6 +166,18 @@ if (wallkick == 1) {
         
             //Set the horizontal speed.
             xspeed = xspeedmax*+0.8;
+            
+            //Perform spin jump if 'Up' is pressed and Mario does not have the Propeller or Cat powerups
+            if (keyboard_check(global.upkey)) 
+            && (global.powerup != cs_propeller) 
+            && (global.powerup != cs_cat) {
+            
+                //Play 'Spin' sound
+                audio_play_sound(snd_spin, 0, false);
+            
+                //Set spin jump mode
+                stompstyle = 1;
+            }
             
             //Move 2 pixels to the right
             x += 2;

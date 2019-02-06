@@ -36,6 +36,9 @@ ready = 0;
 //Whether the timer was initiated
 coiny = 0;
 
+//How many coins did the player got from this block?
+get = 0;
+
 //Make it solid
 mysolid = instance_create(x,y,obj_solid);
 </string>
@@ -92,8 +95,24 @@ vspeed = 0;
 y = ystart;
 
 //Change into a empty block
-if (coiny == 2)
+if (coiny == 2) {
+
+    //Create 5 coins if this block got hit enough times
+    if (get &gt; 9) {
+
+        audio_play_sound(snd_starcoin, 0, false);
+        repeat (5) {
+        
+            with (instance_create(x+8,ystart-24,obj_blockcoin2)) {
+            
+                hspeed = random_range(1,-1);
+                vspeed = random_range(-1,-4);
+            }        
+        }
+    }
+
     instance_change(obj_emptyblock, false);
+}
 else
     ready = 0;
 </string>
@@ -121,6 +140,11 @@ else
             <string>///Create a coin if no item was selected and initialize the counter
 
 instance_create(x,ystart-16,obj_blockcoin);
+
+//Increment bonus
+get++;
+
+//Start timer
 if (coiny == 0) {
 
     coiny = 1;

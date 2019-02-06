@@ -148,7 +148,7 @@
     <instance objName="obj_coin" x="128" y="240" name="inst_E94063CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="112" y="256" name="inst_1D1A5201" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="96" y="272" name="inst_59E6D066" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock" x="624" y="288" name="inst_42126738" locked="0" code="sprout = cs_yoshi_r;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="624" y="288" name="inst_42126738" locked="0" code="sprout = round(random_range(cs_yoshi,cs_yoshi_b));&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="640" y="288" name="inst_D81AE0CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="880" y="272" name="inst_D8F97CA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="896" y="272" name="inst_FA52316B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

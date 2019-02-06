@@ -207,7 +207,7 @@ else {
         //Down, Right
         case (1):
         case (2):
-            image_index = 0; break;
+            image_index = 1; break;
     }
     
     //Do not animate
@@ -245,9 +245,6 @@ event_inherited();
 
 //Set depth
 imdead.depth = depth;
-
-//Set sprite
-imdead.sprite_index = spr_shell_red;
 </string>
           </argument>
         </arguments>

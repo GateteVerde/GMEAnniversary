@@ -279,8 +279,8 @@ switch (depth) {
 //Set new direction
 alarm[1] = 1;
 
-//End turn animation
-alarm[2] = 4;
+//End turning animation
+alarm[2] = 2;
 </string>
           </argument>
         </arguments>
@@ -332,7 +332,7 @@ else {
         //Down, Right
         case (1):
         case (2):
-            image_index = 0; break;
+            image_index = 1; break;
     }
     
     //Do not animate
@@ -366,17 +366,29 @@ else {
             <string>///Net koopa logic
 
 //If the koopa can turn and there's not a climbable surface in position
-if (ready2 == false)
-&amp;&amp; (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb_net,0,0)) {
+if (ready2 == false) {
 
-    //Stop movement
-    speed = 0;
+    //If the koopa is moving down
+    if (vspeed &gt; 0)
+    &amp;&amp; (!collision_line(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_climb_net,0,0)) {
     
-    //Turn
-    ready2 = true;
+        vspeed = -vspeed;
+        if (ready != 2)
+            ready = 2;
+    }
     
-    //Change direction
-    alarm[0] = 10;
+    //Otherwise, turn around
+    else if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_climb_net,0,0)) {
+
+        //Stop movement
+        speed = 0;
+    
+        //Turn
+        ready2 = true;
+    
+        //Change direction
+        alarm[0] = 10;
+    }
 }
 
 //Wall collision
@@ -398,7 +410,7 @@ if (vspeed &lt; 0) {
 }
 
 //Otherwise, if moving down and there's a semisolid in place
-else if (vspeed &gt; 0)
+else if (vspeed &gt; 0)  
 &amp;&amp; (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_semisolid,0,0))
     vspeed = -vspeed;
 </string>
@@ -477,9 +489,6 @@ event_inherited();
 
 //Set depth
 imdead.depth = depth;
-
-//Set sprite
-imdead.sprite_index = spr_shell;
 </string>
           </argument>
         </arguments>

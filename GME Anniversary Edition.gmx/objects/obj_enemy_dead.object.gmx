@@ -144,8 +144,6 @@ if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom,obj_quicksa
             vspeed = 0.1;
     }
 }
-else
-    depth = -6;
 
 //Cap vertical speed
 if (vspeed &gt; 0) {
