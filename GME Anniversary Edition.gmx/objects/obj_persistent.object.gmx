@@ -33,7 +33,7 @@ pal_swap_init_system(shd_palette_swapper);
 //Flight time (In seconds, how much the player should be able to fly.)
 global.flighttime = 4;
 
-//Health Mode
+//Health Mode (0: Disabled / 1: Enabled)
 global.healthmode = 0;
 
 //Cat climb time (In seconds, how much the player should be able to climb up a wall.)
@@ -67,10 +67,18 @@ restart = 0;
 //Show the FPS?
 showfps = false;
 
-//Controller Index System
-//0 - 3:    Xbox / PS3 Controllers
-//4 - 11:   Direct Input Controllers
-global.device = 0;
+//Gamepad variables
+gamepad_check = 0;
+message = "";
+
+//Gamepad left stick
+leftstick[0] = 0;
+leftstick[1] = 0;
+leftstick[2] = 0;
+leftstick[3] = 0;
+
+//The level music
+global.levelmusic = bgm_gameover;
 
 //Data structure for picked up 3up moons
 global.moons = ds_map_create();
@@ -133,6 +141,31 @@ else {
     port_x = 0;
     port_y = 0;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stop displaying message
+
+message = "";
 </string>
           </argument>
         </arguments>
@@ -257,48 +290,122 @@ window_center();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handle gamepad buttons
+            <string>///Handle gamepad key actions
 
-//To edit the type of device, find global.device on the create event of obj_persistent
+//If the gamepad variable exists
+if (variable_global_exists("gamepad")) {
 
-//If there is a gamepad connected and the window is visible
-if (global.gamepad == true) 
-&amp;&amp; (window_has_focus() == true)
-&amp;&amp; (gamepad_is_connected(global.device))  {
-
-    //L-Stick Left / D-Pad Left
-    if (gamepad_axis_value(global.device,gp_axislh) &lt;= -0.4) || (gamepad_button_check(global.device, gp_padl)) then keyboard_key_press(global.leftkey);       
-    else keyboard_key_release(global.leftkey);
+    //If there's a gamepad active
+    if (global.gamepad) {
     
-    //L-Stick Right / D-Pad Right
-    if (gamepad_axis_value(global.device,gp_axislh) &gt;= 0.4) || (gamepad_button_check(global.device, gp_padr)) then keyboard_key_press(global.rightkey);
-    else keyboard_key_release(global.rightkey);
+        //Left Stick - Up
+        if (leftstick[0] = 0)
+        &amp;&amp; (gamepad_axis_value(gamepad_input, gp_axislv) &lt;= -0.5) {
+        
+            leftstick[0] = 1;
+            keyboard_key_press(global.upkey);
+        }
+        else if (leftstick[0] == 1)
+        &amp;&amp; (gamepad_axis_value(gamepad_input, gp_axislv) &gt; -0.5) {
+        
+            leftstick[0] = 0;
+            keyboard_key_release(global.upkey);
+        }
+        
+        //Left Stick - Down
+        if (leftstick[1] = 0)
+        &amp;&amp; (gamepad_axis_value(gamepad_input, gp_axislv) &gt;= 0.5) {
+        
+            leftstick[1] = 1;
+            keyboard_key_press(global.downkey);
+        }
+        else if (leftstick[1] == 1)
+        &amp;&amp; (gamepad_axis_value(gamepad_input, gp_axislv) &lt; 0.5) {
+        
+            leftstick[1] = 0;
+            keyboard_key_release(global.downkey);
+        }
+        
+        //Left Stick - Left
+        if (leftstick[2] = 0)
+        &amp;&amp; (gamepad_axis_value(gamepad_input, gp_axislh) &lt;= -0.5) {
+        
+            leftstick[2] = 1;
+            keyboard_key_press(global.leftkey);
+        }
+        else if (leftstick[2] == 1)
+        &amp;&amp; (gamepad_axis_value(gamepad_input, gp_axislh) &gt; -0.5) {
+        
+            leftstick[2] = 0;
+            keyboard_key_release(global.leftkey);
+        }
+        
+        //Left Stick - Right
+        if (leftstick[3] = 0)
+        &amp;&amp; (gamepad_axis_value(gamepad_input, gp_axislh) &gt;= 0.5) {
+        
+            leftstick[3] = 1;
+            keyboard_key_press(global.rightkey);
+        }
+        else if (leftstick[3] == 1)
+        &amp;&amp; (gamepad_axis_value(gamepad_input, gp_axislh) &lt; 0.5) {
+        
+            leftstick[3] = 0;
+            keyboard_key_release(global.rightkey);
+        }
+        
+        //Up on d-pad
+        if (gamepad_button_check_pressed(gamepad_input, gp_padu))
+            keyboard_key_press(global.upkey);
+        else if (gamepad_button_check_released(gamepad_input, gp_padu))
+            keyboard_key_release(global.upkey);
     
-    //L-Stick Up / D-Pad Up
-    if (gamepad_axis_value(global.device,gp_axislv) &lt;= -0.4) || (gamepad_button_check(global.device, gp_padu)) then keyboard_key_press(global.upkey);
-    else keyboard_key_release(global.upkey);
+        //Down on d-pad
+        if (gamepad_button_check_pressed(gamepad_input, gp_padd))
+            keyboard_key_press(global.downkey);
+        else if (gamepad_button_check_released(gamepad_input, gp_padd))
+            keyboard_key_release(global.downkey);
     
-    //L-Stick Down / D-Pad Down
-    if (gamepad_axis_value(global.device,gp_axislv) &gt;= 0.4) || (gamepad_button_check(global.device, gp_padd)) then keyboard_key_press(global.downkey);
-    else keyboard_key_release(global.downkey);
+        //Left on d-pad
+        if (gamepad_button_check_pressed(gamepad_input, gp_padl))
+            keyboard_key_press(global.leftkey);
+        else if (gamepad_button_check_released(gamepad_input, gp_padl))
+            keyboard_key_release(global.leftkey);
     
-    //A Button / B Button
-    //X Button / O Button (Shift)
-    if ((gamepad_button_check(global.device,gp_face2)) || (gamepad_button_check(global.device,gp_face1))) then keyboard_key_press(global.shiftkey);
-    else keyboard_key_release(global.shiftkey);
-    
-    //X Button / Y Button 
-    //Square Button / Triangle Button (Control)
-    if ((gamepad_button_check(global.device,gp_face4)) || (gamepad_button_check(global.device,gp_face3))) then keyboard_key_press(global.controlkey);
-    else keyboard_key_release(global.controlkey);
-    
-    //Start Key
-    if (gamepad_button_check(global.device,gp_start)) then keyboard_key_press(global.enterkey);
-    else keyboard_key_release(global.enterkey);
-    
-    //Select Key
-    if (gamepad_button_check(global.device,gp_select)) then keyboard_key_press(global.spacekey);
-    else keyboard_key_release(global.spacekey);        
+        //Right on d-pad
+        if (gamepad_button_check_pressed(gamepad_input, gp_padr))
+            keyboard_key_press(global.rightkey);
+        else if (gamepad_button_check_released(gamepad_input, gp_padr))
+            keyboard_key_release(global.rightkey);
+            
+        //A Button / B Button
+        //X Button / O Button (Shift)
+        if (gamepad_button_check(gamepad_input, gp_face1)) 
+        || (gamepad_button_check(gamepad_input, gp_face2))
+            keyboard_key_press(global.shiftkey);
+        else 
+            keyboard_key_release(global.shiftkey);
+        
+        //X Button / Y Button 
+        //Square Button / Triangle Button (Control)
+        if (gamepad_button_check(gamepad_input, gp_face3)) 
+        || (gamepad_button_check(gamepad_input, gp_face4))
+            keyboard_key_press(global.controlkey);
+        else
+            keyboard_key_release(global.controlkey);
+        
+        //Start Key
+        if (gamepad_button_check(gamepad_input, gp_start))
+            keyboard_key_press(global.enterkey);
+        else
+            keyboard_key_release(global.enterkey);
+        
+        //Select Key
+        if (gamepad_button_check(gamepad_input, gp_select)) 
+            keyboard_key_press(global.spacekey);
+        else 
+            keyboard_key_release(global.spacekey);     
+    }
 }
 </string>
           </argument>
@@ -322,12 +429,6 @@ if (global.gamepad == true)
             <kind>1</kind>
             <string>///Handle various in-game variables
 
-//Make the screen shake when the 'Thwomp' sound plays
-if (!audio_is_playing(snd_thwomp)) {
-
-    alarm[11] = 2;
-}
-
 //Make sure lives don't go over 99
 if (lives &gt; 99) 
     lives = 99;
@@ -335,6 +436,10 @@ if (lives &gt; 99)
 //Make sure score don't go over 9999999990
 if (score &gt; 999999990) 
     score = 999999990;
+    
+//Make the screen shake when the 'Thwomp' sound plays
+if (!audio_is_playing(snd_thwomp))
+    alarm[11] = 2;
 </string>
           </argument>
         </arguments>
@@ -415,6 +520,73 @@ else if (keyboard_check_pressed(ord('W'))) {
     
     //Apply settings
     event_user(0);       
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Check if the gamepad is connected / disconnected
+
+//Gamepad type
+gamepad_input = 0;
+
+//Check first if the variable exists
+if (variable_global_exists("gamepad")) {
+    
+    //Update gamepad state
+    global.gamepad = gamepad_is_connected(gamepad_input);
+    
+    //Show a temporary message if the gamepad has been connected
+    if (gamepad_check == 0) {
+    
+        //If a gamepad is connected
+        if (global.gamepad == 1) {
+        
+            //Show message
+            message = "Gamepad Connected";
+            
+            //Hide it
+            alarm[3] = 30;
+            
+            //Let the game know it
+            gamepad_check = 1;
+        }
+    }
+    
+    //Otherwise
+    else {
+    
+        //If a gamepad is connected
+        if (global.gamepad == 0) {
+        
+            //Show message
+            message = "Gamepad Disconnected";
+            
+            //Hide it
+            alarm[3] = 30;
+            
+            //Let the game know it
+            gamepad_check = 0;
+        }    
+    }
 }
 </string>
           </argument>
@@ -518,44 +690,6 @@ if (addlives &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Check various in-game values
-
-//Make sure to give the player the big state if health is greater than 1
-if (global.healthmode) {
-
-    if (health &gt; 1)
-    &amp;&amp; (global.powerup = cs_small)
-        global.powerup = cs_big;
-}
-
-//Allow restart
-restart = 0;
-
-//Check if all coins have been collected
-if (global.starcoins == (global.levelmax*3))
-    global.gameclear = 1;
-else
-    global.gameclear = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///Set view parameters
 
 //Make view 0 visible if not visible
@@ -584,6 +718,44 @@ if (instance_exists(obj_levelcontrol))
     view_hborder[0] = (global.gw/2)-8;
 else 
     view_hborder[0] = global.gw/2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Check various in-game values
+
+//Make sure to give the player the big state if health is greater than 1
+if (global.healthmode) {
+
+    if (health &gt; 1)
+    &amp;&amp; (global.powerup = cs_small)
+        global.powerup = cs_big;
+}
+
+//Allow restart
+restart = 0;
+
+//Check if all coins have been collected
+if (global.starcoins == (global.levelmax*3))
+    global.gameclear = 1;
+else
+    global.gameclear = 0;
 </string>
           </argument>
         </arguments>
@@ -851,6 +1023,10 @@ if (background_exists(back)) {
     //Enable alpha blending.
     draw_enable_alphablend(1);
 }
+
+//Display message
+if (message != "")
+    draw_text(2, 2, string(message));
 </string>
           </argument>
         </arguments>

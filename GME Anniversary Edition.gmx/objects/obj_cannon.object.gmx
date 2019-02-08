@@ -80,6 +80,20 @@ instance_create(x,y,obj_solid);
             <kind>1</kind>
             <string>///Shoot a cannonball
 
+//If the player does not exist
+if (!instance_exists(obj_playerparent)) {
+
+    alarm[0] = 1;
+    exit;
+}
+
+//If the gray p-switch is active
+if (obj_levelcontrol.gswitchon == true) {
+
+    alarm[0] = 1;
+    exit;
+}
+
 //Play 'Cannon' sound
 audio_play_sound(snd_explode, 0, false);
 

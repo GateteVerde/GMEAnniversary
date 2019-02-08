@@ -156,9 +156,6 @@ global.prize[2] = 0;
 //Map pipe area type
 global.pipetype = 0;
 
-//Remember level music
-global.levelmusic = noone;
-
 //Data structure for opened doors
 global.doors = ds_map_create();
 
@@ -190,7 +187,7 @@ for (var i = 0; i < 3; i++) {
 }
 
 //Star Coins collected
-global.starcoins = 9;
+global.starcoins = 0;
 
 //Data structure for storing the state of the world map.
 global.mapscreen = ds_map_create();

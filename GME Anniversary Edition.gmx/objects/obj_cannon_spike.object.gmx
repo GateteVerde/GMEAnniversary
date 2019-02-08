@@ -52,8 +52,15 @@ alarm[0] = 100;
             <kind>1</kind>
             <string>///Shoot a spike ball
 
-//If the player does not exist, exit
+//If the player does not exist
 if (!instance_exists(obj_playerparent)) {
+
+    alarm[0] = 1;
+    exit;
+}
+
+//If the gray p-switch is active
+else if (obj_levelcontrol.gswitchon == true) {
 
     alarm[0] = 1;
     exit;

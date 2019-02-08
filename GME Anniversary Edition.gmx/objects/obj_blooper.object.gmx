@@ -255,8 +255,8 @@ else if (!ready)
 
 //If the player is moving up
 if (vspeed &lt;= 0)
-&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)) 
-|| (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
+&amp;&amp; ((collision_rectangle(bbox_left,bbox_top-vspeed,bbox_right,bbox_top,obj_solid,1,0)) 
+|| (collision_rectangle(bbox_left,bbox_top-vspeed,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
     
     //Prevent the player's head from getting stuck on a ceiling.
     if (vspeed != 0) {

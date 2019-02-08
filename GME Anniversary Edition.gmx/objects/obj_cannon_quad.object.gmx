@@ -93,6 +93,13 @@ if (!instance_exists(obj_playerparent)) {
     exit;
 }
 
+//If the gray p-switch is active
+else if (obj_levelcontrol.gswitchon == true) {
+
+    alarm[0] = 1;
+    exit;
+}
+
 //Otherwise, shoot a cannonball
 else {
 

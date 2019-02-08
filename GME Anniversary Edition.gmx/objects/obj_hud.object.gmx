@@ -246,11 +246,11 @@ for (var i = 0; i &lt; 3; i++) {
 if (global.healthmode == 0) {
 
     //Box
-    draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, alpha3);
+    draw_sprite_ext(spr_hud_reserve, 0, view_xview[0]+view_wview[0]/2, view_yview[0]+12, 1, 1, 0, c_white, alpha3);
     
     //Reserve item
     if (global.reserve &gt; cs_small)
-        draw_sprite_ext(constant_get_sprite(global.reserve), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+15, 1, 1, 0, c_white, alpha3);
+        draw_sprite_ext(constant_get_sprite(global.reserve), 0, view_xview[0]+view_wview[0]/2, view_yview[0]+12, 1, 1, 0, c_white, alpha3);
 }
 else
 draw_sprite_ext(spr_hud_health, health, view_xview[0]+view_wview[0]/2, view_yview[0]+23, 1, 1, 0, c_white, 1);

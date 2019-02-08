@@ -40,7 +40,7 @@ vulnerable = 0;
 //1: Hurt Mario
 //2: Hurt Mario + Mount Immunity
 //3: Subcon
-//4: Stomp Only
+//4: Stomp
 //-1: Phase through Mario
 stomp = 0;
 
@@ -1240,6 +1240,7 @@ if (stomp != -1)
                 //If this enemy is not immune to spin jumps
                 if (stomp == 0)
                 || (stomp == 3)
+                || (stomp == 5)
                 || ((stomp == 1) &amp;&amp; (global.mount &gt; 0)) {
                 
                     //Create spin smoke effect
@@ -1249,14 +1250,10 @@ if (stomp != -1)
                     if (other.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
                         with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
                     else {
-                            
-                        //If the combo is odd
-                        if (other.hitcombo % 2 == 1)
-                            with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(9);
-                        
-                        //Otherwise, if the combo is even
-                        else if (other.hitcombo % 2 == 0)
-                            with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);        
+                    
+                        audio_play_sound(snd_1up, 0, false);
+                        with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) 
+                            event_user(9);
                     }
                     
                     //Increment combo
@@ -1298,7 +1295,7 @@ if (stomp != -1)
             }
     
             //Regular stomp
-            else if ((stomp == 0) || (stomp == 4))
+            else if ((stomp == 0) || (stomp == 4) || (stomp == 5))
             &amp;&amp; (other.swimming == false) {
             
                 //Play 'Stomp' sound

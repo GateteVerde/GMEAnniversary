@@ -521,7 +521,7 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
         hspeed = hspeed/2;
         vspeed = -vspeed/2;
     }
-    else if ((vspeed &gt; 0) &amp;&amp; (vspeed &lt; 0.5))
+    else if ((vspeed &gt; 0) &amp;&amp; (vspeed &lt;= 0.5))
         vspeed = 0;
 }
 else {
