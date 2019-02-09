@@ -60,7 +60,7 @@ permission = 0;
 event_user(5);
 
 //Destroy in contact with lava
-if (collision_rectangle(bbox_left,bbox_bottom+7,bbox_right,bbox_bottom+7,obj_lava,1,0)) {
+if (collision_rectangle(bbox_left,bbox_bottom+7,bbox_right,bbox_bottom+7+vspeed,obj_lava,1,0)) {
 
     //Ignore the following event if the object is a baburu shoe
     if (sprite_index != spr_baburushoe) {

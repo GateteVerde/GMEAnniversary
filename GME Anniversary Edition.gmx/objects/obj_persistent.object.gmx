@@ -77,14 +77,14 @@ leftstick[1] = 0;
 leftstick[2] = 0;
 leftstick[3] = 0;
 
+//Epsilon value for floating point numbers
+math_set_epsilon(0.00001);
+
 //The level music
 global.levelmusic = bgm_gameover;
 
 //Data structure for picked up 3up moons
 global.moons = ds_map_create();
-
-//Set the epsilon value for floating point numbers
-math_set_epsilon(0.00001);
 
 //Regular Numbers
 global.numbers_w = font_add_sprite_ext(spr_numbers,"0123456789",0,-1);
