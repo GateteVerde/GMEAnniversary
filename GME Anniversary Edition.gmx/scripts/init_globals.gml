@@ -156,6 +156,9 @@ global.prize[2] = 0;
 //Map pipe area type
 global.pipetype = 0;
 
+//Level music variable
+global.levelmusic = bgm_gameover;
+
 //Data structure for opened doors
 global.doors = ds_map_create();
 

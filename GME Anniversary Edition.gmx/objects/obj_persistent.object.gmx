@@ -80,9 +80,6 @@ leftstick[3] = 0;
 //Epsilon value for floating point numbers
 math_set_epsilon(0.00001);
 
-//The level music
-global.levelmusic = bgm_gameover;
-
 //Data structure for picked up 3up moons
 global.moons = ds_map_create();
 

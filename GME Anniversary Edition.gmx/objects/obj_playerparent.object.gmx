@@ -630,7 +630,8 @@ if (enable_gravity == 1) {
         
         //If the semisolid exists and the player is above it.
         if (semisolid)
-        &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5) {
+        &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5) 
+        &amp;&amp; (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) {
         
             //Snap above the semisolid platform
             y = semisolid.y-16;
@@ -687,7 +688,7 @@ if (enable_gravity == 1) {
         }
         
         //Prevent the player from getting embed inside a slope.
-        if (yspeed &gt; -0.8) {
+        if (yspeed &gt; -0.85) {
         
             while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0))        
                 y--;

@@ -99,6 +99,9 @@ exit;
 //Create held object
 imheld = instance_create(x,y-2,obj_nokobomb_down);
 
+//Make the held object hereby the sprite
+imheld.sprite_index = sprite_index;
+
 //Make the held object hereby the scale
 imheld.dir = dir;
 

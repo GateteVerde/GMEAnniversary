@@ -1367,7 +1367,7 @@ if (global.levelmusic != levelmusic) {
     audio_stop_sound(global.levelmusic);
 
     //Set the new music
-    global.levelmusic = levelmusic;
+    global.levelmusic = levelmusic;    
 }
 
 //Set up the time for the level.
