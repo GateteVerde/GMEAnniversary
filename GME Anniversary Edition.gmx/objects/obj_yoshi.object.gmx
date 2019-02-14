@@ -130,6 +130,9 @@ global.mount = 0;
 //Stop 'Flying' sound
 audio_stop_sound(snd_yoshi_lick);
 
+//Stop 'Flutter' sound
+audio_stop_sound(snd_yoshi_hover);
+
 //Destroy Yoshi's tongue if it exists
 with (obj_tongue) instance_destroy();
 
@@ -485,10 +488,9 @@ if (instance_exists(obj_playerparent)) {
     &amp;&amp; (obj_playerparent.crouch == false)
     &amp;&amp; (obj_playerparent.swimming == false) {
     
-        //If Yoshi can flutter
+        //If Yoshi can flutter and it is moving down
         if (flutter == 0)
-        &amp;&amp; (obj_playerparent.yspeed &gt; 2) 
-        &amp;&amp; (obj_playerparent.yspeed != 0) {
+        &amp;&amp; (obj_playerparent.yspeed &gt;= 2.5) {
         
             //Play 'Hover' sound
             audio_play_sound(snd_yoshi_hover, 0, false);
@@ -639,23 +641,37 @@ if (instance_exists(obj_playerparent)) {
     
         //If the 'Up' key is being held or Yoshi is jumping.
         if (locked == 1) {
+        
+            //If yoshi is fluttering
+            if (flutter == 1) {
             
-            //Set the sprite
-            sprite_index = spr_yoshi_swallow;
-            
-            //Do not animate
-            image_speed = 0;
-            
-            //Set the frame
-            if (obj_playerparent.yspeed != 0) {
-            
-                if (obj_playerparent.yspeed &lt; 0)
-                    image_index = 1;
-                else if (obj_playerparent.yspeed &gt; 0)
-                    image_index = 2;
+                //Set the sprite
+                sprite_index = spr_yoshi_flutter_lick;                         
+                
+                //Animate
+                image_speed = 0.3;                    
             }
-            else
-                image_index = 0;
+            
+            //Otherwise
+            else {
+            
+                //Set the sprite
+                sprite_index = spr_yoshi_swallow;
+                
+                //Do not animate
+                image_speed = 0;
+                
+                //Set the frame
+                if (obj_playerparent.yspeed != 0) {
+                
+                    if (obj_playerparent.yspeed &lt; 0)
+                        image_index = 1;
+                    else if (obj_playerparent.yspeed &gt; 0)
+                        image_index = 2;
+                }
+                else
+                    image_index = 0;
+            }
         }
             
         //Otherwise, if the player is not moving vertically
@@ -799,10 +815,10 @@ if (instance_exists(obj_playerparent)) {
                     if (flutter == 1) {
                     
                         //Set the sprite
-                        sprite_index = spr_yoshi_flutter;
+                        sprite_index = spr_yoshi_flutter;                         
                         
                         //Animate
-                        image_speed = 0.3;                    
+                        image_speed = 0.3;                                      
                     }
                     
                     else {

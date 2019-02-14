@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_solid</parentName>
+  <parentName>obj_platformparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -217,13 +217,103 @@ mytimer += 0.5;
 x = myx-sin(angle)*distance;
 y = myy+cos(angle)*distance;
 
-//Push the player if it's not riding the platform
-if (instance_exists(obj_playerparent))
-&amp;&amp; (obj_playerparent.bbox_bottom &gt; yprevious+5) {
+//Manage player events
+event_user(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Manage player events
 
-    if (x-xprevious &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-3,bbox_top,bbox_left-3,bbox_bottom-1,obj_playerparent,0,0))
-    || (x-xprevious &gt; 0) &amp;&amp; (collision_rectangle(bbox_right+3,bbox_top,bbox_right+3,bbox_bottom-1,obj_playerparent,0,0))
-        obj_playerparent.x += x-xprevious;
+//Make sure the player exists
+if (instance_exists(obj_playerparent)) {
+
+    with (obj_playerparent) {
+    
+        //If the player is moving to the right and there's a wall on the way.
+        if (xspeed &gt; 0) 
+        &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-4,other.id,0,0)) {
+        
+            //Stop horizontal speed
+            xspeed = 0;
+            
+            //Prevent the player from getting embed on the wall
+            while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-4,other.id,0,0))
+            &amp;&amp; (!collision_point(x,bbox_top+4,other.id,0,0))
+                x--;
+        }
+        
+        //Otherwise, if the player is moving to the left and there's a wall on the way.
+        else if (xspeed &lt; 0)
+        &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-4,other.id,0,0)) {
+        
+            //Stop horizontal speed
+            xspeed = 0;
+            
+            //Prevent the player from getting embed on the wall
+            while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-4,other.id,0,0))
+            &amp;&amp; (!collision_point(x,bbox_top+4,other.id,0,0))
+                x++;
+        }
+        
+        //If the player is moving up
+        if (yspeed &lt; 0) 
+        &amp;&amp; (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,other.id,1,0)) {
+        
+            //Prevent the player from getting embed on a ceiling
+            if (state &gt; 1) {
+            
+                while (collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,other.id,0,0))
+                    y++;
+            }
+            
+            //Stop vertical movement
+            yspeed = 0;
+            
+            //Play 'Bump' sound if not climbing
+            if (state == 2)
+                audio_play_sound(snd_bump, 0, false);
+        }
+    }
+    
+    //Make sure if the player is below the block
+    if (obj_playerparent.y &gt; y-11) {
+    
+        //If moving down
+        if (vspeed &gt; 0) {
+        
+            //With the player
+            with (obj_playerparent) {
+            
+                //If the player is below the platform
+                while (collision_rectangle(bbox_left,bbox_top-1+other.id.vspeed,bbox_right,bbox_top,other.id,0,0))
+                    y += other.id.vspeed;
+            }
+        }
+
+        //Push the player in the direction the platform moves    
+        if ((x-xprevious &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-2-hspeed,bbox_top+4,bbox_left-2,bbox_bottom-1,obj_playerparent,0,0)))
+        || ((x-xprevious &gt; 0) &amp;&amp; (collision_rectangle(bbox_right+2,bbox_top+4,bbox_right+2+hspeed,bbox_bottom-1,obj_playerparent,0,0)))
+            obj_playerparent.x += x-xprevious;
+    }
 }
 </string>
           </argument>

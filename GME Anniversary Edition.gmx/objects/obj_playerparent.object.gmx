@@ -351,7 +351,7 @@ if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
     isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
+    if (isflashing &gt; 3)
         isflashing = 0;
     
     //Repeat the process.
@@ -1673,15 +1673,14 @@ if (invulnerable == false) {
 //Draw the player frozen
 if (freezetime &gt; 0) {
 
+    //Set shader
+    pal_swap_set(spr_palette_mario, 4);
+
     //Draw the player first
-    draw_sprite_player(sprite_index, -1, round(x), round(y)+1, xscale, 1, 0, make_colour_rgb(0, 193, 255), image_alpha, 0);
+    draw_sprite_player(sprite_index, -1, round(x), round(y)+1, xscale, 1, 0, c_white, image_alpha, 0);
     
-    //Draw the ice block
-    if (global.powerup == cs_small)
-    || (crouch)
-        draw_sprite_ext(spr_iceblock_player, 0, round(x), round(y)+1, 1, 1, 0, c_white, 1);
-    else
-        draw_sprite_ext(spr_iceblock_player_big, 0, round(x), round(y)+1, 1, 1, 0, c_white, 1);
+    //End shader
+    pal_swap_reset();
 }
 
 //Otherwise, draw normally

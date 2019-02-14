@@ -106,7 +106,15 @@ prevhspeed = hspeed;
 event_inherited();
 
 //If the direction changed, speed up
-if (hspeed != prevhspeed) then hspeed = sign(hspeed)*1.5;
+if (hspeed != prevhspeed) {
+
+    hspeed = sign(hspeed)*1.5;
+    if (gravity == 0) {
+    
+        vspeed = -1.5;
+        y--;
+    }
+}
     
 //Keep charging at the player
 if (charge == 1) {

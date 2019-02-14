@@ -196,6 +196,42 @@ alarm[0] = 10;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make sure pokey parts do not get lost
+
+if (!instance_exists(mebelow)) {
+
+    var next = mebelow;
+    while (next != noone) {
+    
+        instance_activate_object(next);
+        if (instance_exists(next))
+            next = next.mebelow;
+        else
+            next = noone;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -230,20 +266,6 @@ if (mebelow == noone) {
         
         //Manage offset values
         alarm[0] = 10;
-        
-        ///Make sure pokey parts do not get lost
-        if (!instance_exists(mebelow)) {
-        
-            var next = mebelow;
-            while (next != noone) {
-            
-                instance_activate_object(next);
-                if (instance_exists(next))
-                    next = next.mebelow;
-                else
-                    next = noone;
-            }
-        }
     }
     
     //Otherwise, execute default event and deny offset functions.
@@ -251,9 +273,6 @@ if (mebelow == noone) {
     
         //Execute default event
         event_inherited();
-        
-        //Turn on ledges
-        event_user(6);       
             
         //Reset offset values
         offset = 0;
@@ -275,7 +294,7 @@ else {
     
         //Snap above it
         x = mebelow.x;
-        y = mebelow.bbox_top-16;
+        y = mebelow.y-16;
         xscale = mebelow.xscale;
     }
     

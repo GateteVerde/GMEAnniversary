@@ -1187,6 +1187,7 @@
                   <sprite>sprites\spr_yoshi</sprite>
                   <sprite>sprites\spr_yoshi_jump</sprite>
                   <sprite>sprites\spr_yoshi_flutter</sprite>
+                  <sprite>sprites\spr_yoshi_flutter_lick</sprite>
                   <sprite>sprites\spr_yoshi_wait</sprite>
                 </sprites>
                 <sprites name="Full Mouth">
@@ -1441,10 +1442,6 @@
     </sprites>
     <sprites name="Projectiles">
       <sprites name="Ice Blocks">
-        <sprites name="Player">
-          <sprite>sprites\spr_iceblock_player</sprite>
-          <sprite>sprites\spr_iceblock_player_big</sprite>
-        </sprites>
         <sprite>sprites\spr_iceblock</sprite>
         <sprite>sprites\spr_iceblock_16x32</sprite>
         <sprite>sprites\spr_iceblock_32x16</sprite>

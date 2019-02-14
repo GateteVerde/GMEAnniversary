@@ -30,12 +30,15 @@
 /*
 **  This item uses creation code!
 **
-**  fire = Whether the plant should spit fire upon reaching the top area
+**  type = Whether the plant should spit fire upon reaching the top area
 **      1: Fire
 **      2: Ice
 */
 
-//Default variables
+//Default variable
+type = 0;
+
+//Did the plant spit projectiles?
 fire = 0;
 
 //How vulnerable is this enemy to various items?
@@ -92,13 +95,13 @@ audio_play_sound(snd_podoboo, 0, false);
 with (instance_create(x,y+4,obj_plantfire2)) {
 
     hspeed = 1;
-    if (other.fire == 2)
+    if (other.type == 2)
         sprite_index = spr_snowball;
 }
 with (instance_create(x,y+4,obj_plantfire2)) {
 
     hspeed = -1;
-    if (other.fire == 2)
+    if (other.type == 2)
         sprite_index = spr_snowball;
 }
 </string>
@@ -172,7 +175,7 @@ else {
             <kind>1</kind>
             <string>///Change to ice
 
-if (fire == 2) then sprite_index = spr_jpplant_ice;
+if (type == 2) then sprite_index = spr_jpplant_ice;
 </string>
           </argument>
         </arguments>
@@ -215,10 +218,10 @@ if (ready == 0)
     if (vspeed == 0) {
     
         //If the piranha plant can shoot fireballs, do so
-        if (fire == 1) {
+        if (fire == 0) {
         
             //Fire
-            fire = 2;
+            fire = 1;
             alarm[1] = 1;
         }
     }
@@ -237,9 +240,8 @@ else if ((ready == 1) &amp;&amp; (y &gt; ystart)) {
     //Allow to jump
     ready = 0;
     
-    //Allow to fire
-    if (fire == 2)
-        fire = 1;
+    //Allow to fire again
+    fire = 0;
 }
 </string>
           </argument>
