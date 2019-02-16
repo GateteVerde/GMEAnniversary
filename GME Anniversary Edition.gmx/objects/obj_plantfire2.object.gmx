@@ -35,7 +35,7 @@ vspeed = -4;
 gravity = 0.2;
 
 //Leave trail
-alarm[0] = 8;
+alarm[0] = 1;
 
 //Create spotlight
 if (instance_exists(obj_levelcontrol_light)) {
@@ -83,6 +83,18 @@ if (sprite_index == spr_snowball) {
     
     //Repeat the process
     alarm[0] = 8;
+}
+else {
+
+    //Create effect
+    with (instance_create(x, y+4, obj_smoke)) {
+    
+        depth = -1;
+        sprite_index = spr_cinder;
+    }
+    
+    //Repeat the process
+    alarm[0] = 2;
 }
 </string>
           </argument>

@@ -371,10 +371,6 @@ if (sprite_index == spr_charginchuck_damage) {
     //Charge at the player again
     alarm[10] = 60;
 }
-
-//Otherwise, if dashing...
-else if (sprite_index == spr_charginchuck_walk)
-    image_index = 1;
 </string>
           </argument>
         </arguments>

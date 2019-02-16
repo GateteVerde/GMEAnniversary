@@ -62,6 +62,12 @@ vspeed = -2.5;
             <kind>1</kind>
             <string>///Hammer logic
 
+//Rotate based on speed
+image_angle -= 10*(sign(hspeed))*abs(hspeed);
+
+//Set scale
+image_xscale = 1*sign(hspeed);
+
 //Destroy if outside the view
 if (x &lt; view_xview[0]-32)
 || (x &gt; view_xview[0]+view_wview[0]+32)

@@ -36,6 +36,9 @@ image_speed = 0.15;
 //Set the vertical speed
 vspeed = 0.5;
 
+//Leave a trail
+alarm[0] = 4;
+
 //Check if swimming
 swimming = false;
 
@@ -48,6 +51,36 @@ if (instance_exists(obj_levelcontrol_light)) {
         image_blend = c_orange;
         sprite_index = spr_surface_light_small_b;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Leave a trail
+
+alarm[0] = 2;
+with (instance_create(x, y+4, obj_smoke)) {
+
+    depth = -1;
+    sprite_index = spr_cinder;
 }
 </string>
           </argument>
@@ -258,8 +291,20 @@ if (vspeed &lt; 0)
 //Play 'Bump' sound
 audio_play_sound(snd_bump, 0, false)
 
-//Create smoke effect
-instance_create(x-8,y-4,obj_smoke);
+//Create fire smoke
+with (instance_create(x-8, y-4, obj_smoke)) sprite_index = spr_firesmoke;
+
+//Create directional cinders
+repeat (16) {
+
+    with (instance_create(x, y+4, obj_smoke)) {
+    
+        motion_set(random(360), random_range(0.5, 1.5));
+        depth = -7;
+        image_speed = 0.125;
+        sprite_index = spr_cinder;
+    }
+}
 
 //Destroy
 instance_destroy();

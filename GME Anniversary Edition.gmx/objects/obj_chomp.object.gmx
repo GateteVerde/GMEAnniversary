@@ -181,9 +181,9 @@ if (idle) {
 
     //Reverse horizontal speed.
     if (x &lt; stop_l)
-    hspeed = 1
+        hspeed = 1
     if (x &gt; stop_r)
-    hspeed = -1
+        hspeed = -1
     
     //If Mario does exist
     if (instance_exists(obj_playerparent)) {
