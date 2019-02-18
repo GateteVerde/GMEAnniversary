@@ -53,7 +53,10 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_maplava" x="688" y="32" name="inst_6454D3BC" locked="0" code="" scaleX="41" scaleY="32" colour="4294967295" rotation="0"/>
+    <instance objName="obj_maplava" x="688" y="32" name="inst_6454D3BC" locked="-1" code="" scaleX="41" scaleY="32" colour="4294967295" rotation="0"/>
+    <instance objName="obj_modifier_music" x="176" y="128" name="inst_66795117" locked="0" code="mapworld = 1;&#xA;" scaleX="17" scaleY="19" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mapwater" x="0" y="16" name="inst_1DEC3D8B" locked="-1" code="" scaleX="39" scaleY="33" colour="4294967295" rotation="0"/>
+    <instance objName="obj_modifier_music" x="864" y="128" name="inst_E073E426" locked="0" code="mapworld = 2;&#xA;" scaleX="18" scaleY="17" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="304" y="144" name="inst_74699869" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="320" y="144" name="inst_C8038D22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maptree" x="320" y="160" name="inst_D61E7BB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -305,8 +308,6 @@
     <instance objName="obj_maplevel_pipe2" x="208" y="192" name="inst_F35C1279" locked="0" code="levelname = &quot;W2: Bowser's Villa&quot;;&#xA;pipex = 992;&#xA;pipey = 384;&#xA;myroom = rm_map;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_levelnode" x="992" y="384" name="inst_CD3EAF07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_maplevel_pipe2" x="992" y="384" name="inst_BD0D51E2" locked="0" code="levelname = &quot;W1: Gatete's Island&quot;;&#xA;pipex = 208;&#xA;pipey = 192;&#xA;myroom = rm_map;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_modifier_music" x="176" y="128" name="inst_66795117" locked="0" code="mapworld = 1;&#xA;" scaleX="17" scaleY="19" colour="4294967295" rotation="0"/>
-    <instance objName="obj_modifier_music" x="864" y="128" name="inst_E073E426" locked="0" code="mapworld = 2;&#xA;" scaleX="18" scaleY="17" colour="4294967295" rotation="0"/>
     <instance objName="obj_mapfire" x="976" y="336" name="inst_6B29B0E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappanel_house" x="224" y="128" name="inst_6E97EBFE" locked="0" code="powerup[0] = cs_tanooki;&#xA;powerup[1] = cs_hammer;&#xA;powerup[2] = cs_boomerang;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappanel_house" x="944" y="240" name="inst_BFC8A85A" locked="0" code="powerup[0] = cs_bomb;&#xA;powerup[1] = cs_super;&#xA;powerup[2] = cs_1up;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -345,7 +346,6 @@
     <instance objName="obj_modifier" x="272" y="320" name="inst_E9659E54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_modifier" x="288" y="320" name="inst_BC8909B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_v" x="208" y="384" name="inst_909E527A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mapwater" x="0" y="16" name="inst_1DEC3D8B" locked="-1" code="" scaleX="39" scaleY="33" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_water" x="288" y="224" name="inst_B1317AF9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_up" x="288" y="240" name="inst_31261875" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mappath_left" x="304" y="224" name="inst_FAE2957A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

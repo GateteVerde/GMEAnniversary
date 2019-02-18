@@ -39,6 +39,10 @@ image_alpha = 0;
 image_xscale = 0;
 image_yscale = 0;
 
+//Shader variables
+usize = shader_get_uniform(shd_gaussian,"size");
+radius = 0;
+
 //Create a screenshot
 back = background_create_from_surface(application_surface,0,0,room_width,room_height,0,0);
 
@@ -146,6 +150,9 @@ if (ready2 == 1) {
         //Backgrond alpha
         image_alpha += 0.05;
         
+        //Radius
+        radius += 0.4;
+        
         //Repeats the process
         alarm[0] = 1;
     }
@@ -168,6 +175,9 @@ else if (ready2 == 2) {
         
         //Backgrond alpha
         image_alpha -= 0.05;
+        
+        //Radies
+        radius -= 0.4;
         
         //Repeats the process
         alarm[0] = 1;
@@ -351,24 +361,31 @@ else if (keyboard_check_pressed(global.enterkey)) &amp;&amp; (!keyboard_check(vk
             <kind>1</kind>
             <string>///Draw the menu.
 
-//Draw the screenshot if it exists
-if (background_exists(back)) {
+//Set the shader
+shader_set(shd_gaussian);
+shader_set_uniform_f(usize, view_wview[0]+32, view_hview[0]+32, radius) //width,height,radius
 
-    //Disable alpha blending
+//Set the colour
+draw_set_colour(c_white);
+
+//Draw the background
+if (background_exists(back)) {
+    
+    //Disable alpha blending.
     draw_enable_alphablend(0);
     
-    //Draw screenshot
-    draw_background(back,view_xview[0],view_yview[0]);
+    //Draw the screenshot
+    draw_background(back, view_xview[0], view_yview[0]);
     
-    //Enable alpha blending
+    //Enable alpha blending.
     draw_enable_alphablend(1);
 }
 
-//Draw the background
-draw_sprite_ext(spr_mariostart, 0, view_xview[0],view_yview[0],1,1,0,c_white,image_alpha);
+//Reset shader
+shader_reset();
 
 //Draw the actual border.
-draw_sprite_ext(spr_pausemenu,1,view_xview[0]+global.gw/2,view_yview[0]+global.gh/2,image_xscale,image_yscale,0,c_white,1);
+draw_sprite_ext(spr_pausemenu, 1, view_xview[0]+global.gw/2, view_yview[0]+global.gh/2, image_xscale, image_yscale, 0, c_white, 1);
 
 //Draw if the menu if fully scaled
 if (image_xscale == 1) {
@@ -392,9 +409,9 @@ if (image_xscale == 1) {
         
         //Draw depending of the option chosen
         if (choice != i)
-            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,string(text), make_color_rgb(1,117,203), make_color_rgb(151,216,255), 1, 1, 1, 1);
+            draw_text_colour_shadowed(view_xview[0]+global.gw/2, view_yview[0]+global.gh/2-12+(i)*12, string(text), make_color_rgb(1,117,203), make_color_rgb(151,216,255), 1, 1, 1, 1);
         else
-            draw_text_colour_shadowed(view_xview[0]+global.gw/2,view_yview[0]+global.gh/2-12+(i)*12,"{ " + string(text) + " }", make_color_rgb(1,117,203), c_white, 1, 1, 1, 1);
+            draw_text_colour_shadowed(view_xview[0]+global.gw/2, view_yview[0]+global.gh/2-12+(i)*12,"{ " + string(text) + " }", make_color_rgb(1,117,203), c_white, 1, 1, 1, 1);
     }
     
     //Re-align the text

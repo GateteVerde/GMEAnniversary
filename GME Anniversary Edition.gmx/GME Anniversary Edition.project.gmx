@@ -804,7 +804,6 @@
         <sprite>sprites\spr_shell_buzzy</sprite>
         <sprite>sprites\spr_shell_buzzy_down</sprite>
         <sprite>sprites\spr_spiny</sprite>
-        <sprite>sprites\spr_spiny_dead</sprite>
         <sprite>sprites\spr_shell_spiny</sprite>
         <sprite>sprites\spr_pplant</sprite>
         <sprite>sprites\spr_pplant_fire</sprite>
@@ -1659,8 +1658,6 @@
       <backgrounds name="Foregrounds">
         <background>background\bgr_cloudblanket</background>
         <background>background\bgr_cloudblanket_desert</background>
-        <background>background\bgr_cloudblanket_snow</background>
-        <background>background\bgr_cloudfg</background>
         <background>background\bgr_reef</background>
         <background>background\bgr_smog</background>
         <background>background\bgr_smog2</background>
@@ -1671,16 +1668,11 @@
       <background>background\bgr_cave_fg</background>
       <background>background\bgr_clouds</background>
       <background>background\bgr_clouds_desert</background>
-      <background>background\bgr_darkhills</background>
-      <background>background\bgr_darkhills_b</background>
-      <background>background\bgr_darkhills_c</background>
       <background>background\bgr_desert_bg</background>
       <background>background\bgr_desert_fg</background>
       <background>background\bgr_fortress_bg</background>
       <background>background\bgr_fortress_fg</background>
       <background>background\bgr_ghosthouse</background>
-      <background>background\bgr_hills</background>
-      <background>background\bgr_iceforest</background>
       <background>background\bgr_subcon_bg</background>
       <background>background\bgr_subcon_fg</background>
       <background>background\bgr_switchpalace_b</background>
@@ -1688,17 +1680,8 @@
       <background>background\bgr_switchpalace_r</background>
       <background>background\bgr_switchpalace_y</background>
       <background>background\bgr_underground_bg</background>
-      <background>background\bgr_underground_fg</background>
-      <background>background\bgr_underground_fg_b</background>
-      <background>background\bgr_underground_fg_c</background>
-      <background>background\bgr_underground_fg_d</background>
-      <background>background\bgr_underground_fg_e</background>
       <background>background\bgr_underwater</background>
       <background>background\bgr_volcano</background>
-      <background>background\bgr_waterfall</background>
-      <background>background\bgr_waterfall_b</background>
-      <background>background\bgr_waterfall_c</background>
-      <background>background\bgr_waterfall_d</background>
     </backgrounds>
     <backgrounds name="Tile Sets">
       <backgrounds name="SMB">
@@ -1819,6 +1802,7 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
+    <shader type="GLSLES">shaders\shd_gaussian.shader</shader>
   </shaders>
   <objects name="objects">
     <object>objects\obj_persistent</object>

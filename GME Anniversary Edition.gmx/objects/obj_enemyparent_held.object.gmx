@@ -560,7 +560,7 @@ else if (vulnerable &lt; 100) {
 if (vulnerable &lt; 2) {
     
     //Play 'Transform' sound
-    audio_play_sound(snd_transform, 0, false);
+    audio_play_sound(snd_freeze, 0, false);
     
     //Turn into a ice cube
     imiced = instance_create(x,y,obj_iceblock);
