@@ -257,7 +257,7 @@ else if (!ready)
 if (vspeed &lt; 0) {
     
     //Prevent the player's head from getting stuck on a ceiling.
-    while (collision_rectangle(bbox_left,bbox_top-vspeed,bbox_right,bbox_top+1,obj_solid,1,0))
+    while (collision_rectangle(bbox_left,bbox_top-vspeed,bbox_right,bbox_top,obj_solid,1,0))
     || (collision_rectangle(bbox_left,bbox_top-vspeed,bbox_right,bbox_top,obj_ceilslopeparent,1,0))
         y += vspeed;
 }
@@ -286,9 +286,9 @@ if (vspeed &lt; 0) {
             <string>///Custom wall collision
     
 //Move away from walls
-if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-hspeed,bbox_top+4,bbox_left-hspeed,bbox_bottom-1,obj_solid,0,0)))
+if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-hspeed,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,0)))
     x += hspeed;
-if ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right+hspeed,bbox_top+4,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)))
+if ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)))
     x -= hspeed;    
 </string>
           </argument>

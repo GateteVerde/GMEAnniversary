@@ -451,6 +451,9 @@ with (instance_create(view_xview[0]+24,view_yview[0]+8,obj_smoke))
             <kind>1</kind>
             <string>///Perform fade out and do not bring kuribo shoes
 
+//Generate map water
+instance_create(0,0,obj_mapwater);
+
 //Fade out screen
 instance_create(0,0,obj_fadeout);
 
