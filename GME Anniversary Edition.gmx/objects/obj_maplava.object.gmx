@@ -53,6 +53,8 @@ anim = 0;
             <string>///Update anim
 
 anim += 0.075;
+if (anim &gt; 4)
+    anim = 0;
 </string>
           </argument>
         </arguments>
@@ -75,7 +77,7 @@ anim += 0.075;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw the water
+            <string>///Draw the lava
 
 //Set the colour
 draw_set_colour(make_colour_rgb(216, 32, 0));
@@ -84,7 +86,7 @@ draw_set_colour(make_colour_rgb(216, 32, 0));
 draw_rectangle(x, y, x+(image_xscale*16), y+(image_yscale*16), false);
 
 //Draw bubbles
-draw_sprite_tiled_area_ext(spr_maplava_front, anim, x, y, x, y, x+(image_xscale*16), y+(image_yscale*16), c_white, 1);
+draw_sprite_tiled_area_ext(sprite_index, anim, x, y, x, y, x+(image_xscale*16), y+(image_yscale*16), c_white, 1);
 
 //Reset the colour
 draw_set_colour(c_white);
