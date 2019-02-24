@@ -27,6 +27,13 @@
             <kind>1</kind>
             <string>///Gatete Mario Engine: Anniversary Edition Persistent Object
 
+/*
+//      IMPORTANT NOTE:
+//      If the game detects more than one instance of this object, the game will return an error and it will become unplayable.
+//      
+//      Please, double check every level before releasing your game.
+*/
+
 //Initialize palette system
 pal_swap_init_system(shd_palette_swapper);
 

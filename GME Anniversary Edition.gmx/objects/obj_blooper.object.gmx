@@ -283,13 +283,20 @@ if (vspeed &lt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Custom wall collision
+            <string>///Default wall collision
+
+if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-8,obj_solid,1,0)))
+|| ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-8,obj_solid,1,0))) {
+
+    //Reverse horizontal speed
+    hspeed = 0;
     
-//Move away from walls
-if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-hspeed,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,0,0)))
-    x += hspeed;
-if ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+hspeed,bbox_bottom-1,obj_solid,0,0)))
-    x -= hspeed;    
+    //Prevent getting embed on walls
+    while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-8,obj_solid,1,0))
+        x++;
+    while (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-8,obj_solid,1,0))
+        x--;
+}
 </string>
           </argument>
         </arguments>

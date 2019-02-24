@@ -94,6 +94,7 @@ if (speed &gt; 0.75) then speed = 0.75;
 //Play 'Boo' sound if it was not moving
 if (movenow == 1)
 &amp;&amp; (movenowprev == 0)
+&amp;&amp; (outside_view() == false)
     audio_play_sound(snd_boo, 0, false);
 </string>
           </argument>

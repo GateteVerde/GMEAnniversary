@@ -719,6 +719,7 @@
       <sprite>sprites\spr_itembubblemask</sprite>
       <sprite>sprites\spr_liftmask</sprite>
       <sprite>sprites\spr_magicmask</sprite>
+      <sprite>sprites\spr_nomask</sprite>
       <sprite>sprites\spr_opener</sprite>
       <sprite>sprites\spr_pipemask</sprite>
       <sprite>sprites\spr_screenmask</sprite>
@@ -741,8 +742,6 @@
         <sprite>sprites\spr_goomba_red_sq</sprite>
         <sprite>sprites\spr_goomba_shoe</sprite>
         <sprite>sprites\spr_goomba_micro</sprite>
-        <sprite>sprites\spr_goomba_big</sprite>
-        <sprite>sprites\spr_goomba_big_sq</sprite>
         <sprite>sprites\spr_galoomba</sprite>
         <sprite>sprites\spr_galoomba_down</sprite>
         <sprite>sprites\spr_galoomba_parachute</sprite>
@@ -753,18 +752,10 @@
         <sprite>sprites\spr_parakoopa</sprite>
         <sprite>sprites\spr_shell</sprite>
         <sprite>sprites\spr_shell_down</sprite>
-        <sprite>sprites\spr_koopa_big</sprite>
-        <sprite>sprites\spr_parakoopa_big</sprite>
-        <sprite>sprites\spr_shell_big</sprite>
-        <sprite>sprites\spr_shell_big_down</sprite>
         <sprite>sprites\spr_koopa_red</sprite>
         <sprite>sprites\spr_parakoopa_red</sprite>
         <sprite>sprites\spr_shell_red</sprite>
         <sprite>sprites\spr_shell_red_down</sprite>
-        <sprite>sprites\spr_koopa_big_red</sprite>
-        <sprite>sprites\spr_parakoopa_big_red</sprite>
-        <sprite>sprites\spr_shell_big_red</sprite>
-        <sprite>sprites\spr_shell_big_red_down</sprite>
         <sprite>sprites\spr_koopa_blue</sprite>
         <sprite>sprites\spr_shell_blue</sprite>
         <sprite>sprites\spr_shell_blue_down</sprite>
@@ -789,14 +780,6 @@
         <sprite>sprites\spr_spike_throw</sprite>
         <sprite>sprites\spr_spike_throw2</sprite>
         <sprite>sprites\spr_spike_ball</sprite>
-        <sprite>sprites\spr_hoopster</sprite>
-        <sprite>sprites\spr_ninji_black</sprite>
-        <sprite>sprites\spr_fuzzy</sprite>
-        <sprite>sprites\spr_wiggler</sprite>
-        <sprite>sprites\spr_wiggler_body</sprite>
-        <sprite>sprites\spr_wiggler_mad</sprite>
-        <sprite>sprites\spr_wiggler_mad_body</sprite>
-        <sprite>sprites\spr_wiggler_flower</sprite>
       </sprites>
       <sprites name="Underground">
         <sprite>sprites\spr_buzzybeetle</sprite>
@@ -818,7 +801,6 @@
         <sprite>sprites\spr_ptooie</sprite>
         <sprite>sprites\spr_ptooie_blow</sprite>
         <sprite>sprites\spr_ptooie_ball</sprite>
-        <sprite>sprites\spr_bigplant</sprite>
         <sprite>sprites\spr_swooper</sprite>
         <sprite>sprites\spr_spiketop</sprite>
         <sprite>sprites\spr_spiketop_turn</sprite>
@@ -857,6 +839,27 @@
         <sprite>sprites\spr_blooper</sprite>
       </sprites>
       <sprites name="Desert">
+        <sprite>sprites\spr_dinotorch</sprite>
+        <sprite>sprites\spr_dinotorch_blow</sprite>
+        <sprite>sprites\spr_dinotorch_sq</sprite>
+        <sprite>sprites\spr_dinoflame</sprite>
+        <sprite>sprites\spr_dinoflame_st</sprite>
+        <sprite>sprites\spr_dinorhino</sprite>
+        <sprite>sprites\spr_pokey</sprite>
+        <sprite>sprites\spr_firesnake</sprite>
+        <sprite>sprites\spr_firesnake_body</sprite>
+        <sprite>sprites\spr_brickgoomba</sprite>
+        <sprite>sprites\spr_angrysun</sprite>
+      </sprites>
+      <sprites name="Forest">
+        <sprite>sprites\spr_hoopster</sprite>
+        <sprite>sprites\spr_ninji_black</sprite>
+        <sprite>sprites\spr_fuzzy</sprite>
+        <sprite>sprites\spr_wiggler</sprite>
+        <sprite>sprites\spr_wiggler_body</sprite>
+        <sprite>sprites\spr_wiggler_mad</sprite>
+        <sprite>sprites\spr_wiggler_mad_body</sprite>
+        <sprite>sprites\spr_wiggler_flower</sprite>
         <sprite>sprites\spr_nipper</sprite>
         <sprite>sprites\spr_nipper_jump</sprite>
         <sprite>sprites\spr_montymole</sprite>
@@ -864,21 +867,10 @@
         <sprite>sprites\spr_montymole_dirt</sprite>
         <sprite>sprites\spr_montymole_dirt_wall</sprite>
         <sprite>sprites\spr_megamole</sprite>
-        <sprite>sprites\spr_dinotorch</sprite>
-        <sprite>sprites\spr_dinotorch_blow</sprite>
-        <sprite>sprites\spr_dinotorch_sq</sprite>
-        <sprite>sprites\spr_dinoflame</sprite>
-        <sprite>sprites\spr_dinoflame_st</sprite>
-        <sprite>sprites\spr_dinorhino</sprite>
         <sprite>sprites\spr_volcanolotus</sprite>
         <sprite>sprites\spr_volcanolotus_b</sprite>
         <sprite>sprites\spr_volcanolotus_c</sprite>
         <sprite>sprites\spr_lotusball</sprite>
-        <sprite>sprites\spr_pokey</sprite>
-        <sprite>sprites\spr_firesnake</sprite>
-        <sprite>sprites\spr_firesnake_body</sprite>
-        <sprite>sprites\spr_brickgoomba</sprite>
-        <sprite>sprites\spr_angrysun</sprite>
       </sprites>
       <sprites name="Sky">
         <sprite>sprites\spr_lakitu</sprite>
@@ -1008,6 +1000,19 @@
         <sprite>sprites\spr_pokey_green</sprite>
         <sprite>sprites\spr_porcupo</sprite>
         <sprite>sprites\spr_trouter</sprite>
+      </sprites>
+      <sprites name="Big">
+        <sprite>sprites\spr_goomba_big</sprite>
+        <sprite>sprites\spr_goomba_big_sq</sprite>
+        <sprite>sprites\spr_koopa_big</sprite>
+        <sprite>sprites\spr_parakoopa_big</sprite>
+        <sprite>sprites\spr_shell_big</sprite>
+        <sprite>sprites\spr_shell_big_down</sprite>
+        <sprite>sprites\spr_koopa_big_red</sprite>
+        <sprite>sprites\spr_parakoopa_big_red</sprite>
+        <sprite>sprites\spr_shell_big_red</sprite>
+        <sprite>sprites\spr_shell_big_red_down</sprite>
+        <sprite>sprites\spr_bigplant</sprite>
       </sprites>
       <sprite>sprites\spr_hammerbro</sprite>
       <sprite>sprites\spr_hammerbro_b</sprite>
@@ -1213,6 +1218,22 @@
             <sprite>sprites\spr_baburushoe</sprite>
             <sprite>sprites\spr_dossunshoe</sprite>
             <sprite>sprites\spr_jugemushoe</sprite>
+          </sprites>
+          <sprites name="Projectiles">
+            <sprites name="Ice Blocks">
+              <sprite>sprites\spr_iceblock</sprite>
+              <sprite>sprites\spr_iceblock_16x32</sprite>
+              <sprite>sprites\spr_iceblock_32x16</sprite>
+              <sprite>sprites\spr_iceblock_32x32</sprite>
+            </sprites>
+            <sprite>sprites\spr_fireball</sprite>
+            <sprite>sprites\spr_snowball</sprite>
+            <sprite>sprites\spr_hammer</sprite>
+            <sprite>sprites\spr_boomerang</sprite>
+            <sprite>sprites\spr_superball</sprite>
+            <sprite>sprites\spr_mbomb</sprite>
+            <sprite>sprites\spr_mbomb_th</sprite>
+            <sprite>sprites\spr_bolt</sprite>
           </sprites>
           <sprite>sprites\spr_mushroom</sprite>
           <sprite>sprites\spr_fireflower</sprite>
@@ -1436,21 +1457,6 @@
       <sprite>sprites\spr_door_block</sprite>
       <sprite>sprites\spr_door_key</sprite>
     </sprites>
-    <sprites name="Projectiles">
-      <sprites name="Ice Blocks">
-        <sprite>sprites\spr_iceblock</sprite>
-        <sprite>sprites\spr_iceblock_16x32</sprite>
-        <sprite>sprites\spr_iceblock_32x16</sprite>
-        <sprite>sprites\spr_iceblock_32x32</sprite>
-      </sprites>
-      <sprite>sprites\spr_fireball</sprite>
-      <sprite>sprites\spr_snowball</sprite>
-      <sprite>sprites\spr_hammer</sprite>
-      <sprite>sprites\spr_boomerang</sprite>
-      <sprite>sprites\spr_superball</sprite>
-      <sprite>sprites\spr_mbomb</sprite>
-      <sprite>sprites\spr_bolt</sprite>
-    </sprites>
     <sprites name="Markers">
       <sprites name="Enemy Markers">
         <sprites name="Obstacles">
@@ -1552,7 +1558,7 @@
         <sprite>sprites\spr_tornado</sprite>
         <sprite>sprites\spr_torpedobubble</sprite>
       </sprites>
-      <sprites name="GUI">
+      <sprites name="HUD">
         <sprites name="In-Level">
           <sprites name="Digits">
             <sprite>sprites\spr_numbers</sprite>
@@ -1960,7 +1966,6 @@
         <object>objects\obj_goombrat</object>
         <object>objects\obj_goomba_red</object>
         <object>objects\obj_paragoomba_red</object>
-        <object>objects\obj_goomba_big</object>
         <object>objects\obj_galoomba</object>
         <object>objects\obj_paragaloomba</object>
         <object>objects\obj_galoomba_parachute</object>
@@ -1968,14 +1973,9 @@
         <object>objects\obj_koopa</object>
         <object>objects\obj_parakoopa</object>
         <object>objects\obj_parakoopa_fly</object>
-        <object>objects\obj_koopa_big</object>
-        <object>objects\obj_parakoopa_big</object>
-        <object>objects\obj_parakoopa_big_fly</object>
         <object>objects\obj_beachkoopa</object>
         <object>objects\obj_koopa_red</object>
         <object>objects\obj_parakoopa_red</object>
-        <object>objects\obj_koopa_big_red</object>
-        <object>objects\obj_parakoopa_big_red</object>
         <object>objects\obj_beachkoopa_red</object>
         <object>objects\obj_koopa_blue</object>
         <object>objects\obj_beachkoopa_blue</object>
@@ -1983,12 +1983,9 @@
         <object>objects\obj_parakoopa_yellow</object>
         <object>objects\obj_beachkoopa_yellow</object>
         <object>objects\obj_rex</object>
+        <object>objects\obj_dinotorch</object>
+        <object>objects\obj_dinorhino</object>
         <object>objects\obj_spike</object>
-        <object>objects\obj_hoopster</object>
-        <object>objects\obj_ninji_black</object>
-        <object>objects\obj_fuzzy</object>
-        <object>objects\obj_fuzzy_line</object>
-        <object>objects\obj_wiggler</object>
       </objects>
       <objects name="Underground">
         <object>objects\obj_buzzybeetle</object>
@@ -2008,7 +2005,6 @@
         <object>objects\obj_jpplant</object>
         <object>objects\obj_ptooie</object>
         <object>objects\obj_ptooie_pipe</object>
-        <object>objects\obj_bigplant</object>
         <object>objects\obj_swooper</object>
         <object>objects\obj_spiketop</object>
         <object>objects\obj_spiketop_blue</object>
@@ -2036,19 +2032,23 @@
         <object>objects\obj_blooper</object>
       </objects>
       <objects name="Desert">
+        <object>objects\obj_pokey</object>
+        <object>objects\obj_firesnake</object>
+        <object>objects\obj_brickgoomba</object>
+        <object>objects\obj_angrysun</object>
+      </objects>
+      <objects name="Forest">
+        <object>objects\obj_hoopster</object>
+        <object>objects\obj_ninji_black</object>
+        <object>objects\obj_fuzzy</object>
+        <object>objects\obj_fuzzy_line</object>
+        <object>objects\obj_wiggler</object>
         <object>objects\obj_nipper</object>
         <object>objects\obj_firenipper</object>
         <object>objects\obj_monty</object>
         <object>objects\obj_monty_chase</object>
         <object>objects\obj_monty_dig</object>
-        <object>objects\obj_megamole</object>
-        <object>objects\obj_dinotorch</object>
-        <object>objects\obj_dinorhino</object>
         <object>objects\obj_volcanolotus</object>
-        <object>objects\obj_pokey</object>
-        <object>objects\obj_firesnake</object>
-        <object>objects\obj_brickgoomba</object>
-        <object>objects\obj_angrysun</object>
       </objects>
       <objects name="Sky">
         <object>objects\obj_lakitu</object>
@@ -2152,6 +2152,16 @@
         <object>objects\obj_pokey_green</object>
         <object>objects\obj_porcupo</object>
         <object>objects\obj_trouter</object>
+      </objects>
+      <objects name="Big">
+        <object>objects\obj_goomba_big</object>
+        <object>objects\obj_koopa_big</object>
+        <object>objects\obj_parakoopa_big</object>
+        <object>objects\obj_parakoopa_big_fly</object>
+        <object>objects\obj_koopa_big_red</object>
+        <object>objects\obj_parakoopa_big_red</object>
+        <object>objects\obj_bigplant</object>
+        <object>objects\obj_megamole</object>
       </objects>
       <objects name="Generators">
         <objects name="Land">
@@ -2607,8 +2617,8 @@
             <object>objects\obj_goomba_micro</object>
             <object>objects\obj_galoomba_down</object>
             <object>objects\obj_koopa_kamikaze</object>
+            <object>objects\obj_dinotorch_fire</object>
             <object>objects\obj_spike_ball</object>
-            <object>objects\obj_wiggler_body</object>
           </objects>
           <objects name="Underground">
             <object>objects\obj_plantfire</object>
@@ -2629,10 +2639,12 @@
           </objects>
           <objects name="Desert">
             <object>objects\obj_monty_jump</object>
-            <object>objects\obj_dinotorch_fire</object>
             <object>objects\obj_lotusball</object>
             <object>objects\obj_firesnake_body</object>
             <object>objects\obj_angrysun_movement</object>
+          </objects>
+          <objects name="Forest">
+            <object>objects\obj_wiggler_body</object>
           </objects>
           <objects name="Sky">
             <object>objects\obj_lakitu_movement</object>

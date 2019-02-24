@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Map lava
 
-anim = 0;
+anim = 1;
 </string>
           </argument>
         </arguments>
@@ -53,8 +53,8 @@ anim = 0;
             <string>///Update anim
 
 anim += 0.075;
-if (anim &gt; 4)
-    anim = 0;
+if (anim &gt; 5)
+    anim = 1;
 </string>
           </argument>
         </arguments>
