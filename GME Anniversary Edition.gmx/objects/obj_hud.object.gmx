@@ -268,6 +268,7 @@ draw_set_font(global.numbers_w);
 if (instance_exists(obj_playerparent)) {
 
     if (obj_playerparent.pmeter &gt; 111)
+    || (global.pwing == 1)
         draw_sprite_ext(spr_hud_pmeter, 7+flash, view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, alpha2);
     else
         draw_sprite_ext(spr_hud_pmeter, 0+(obj_playerparent.pmeter/14), view_xview[0]+8, view_yview[0]+view_hview[0]-18, 1, 1, 0, c_white, alpha2);

@@ -605,7 +605,7 @@ else {
                         }
                     
                         //If Mario is running
-                        if (run)                      
+                        if (run)                     
                             sprite_index = scr_mario_run();
                         else {
                                              
@@ -859,6 +859,7 @@ else {
                                                 
                                                 //Set the appropiate sprite
                                                 if (!run)
+                                                &amp;&amp; (global.pwing == 0)
                                                     sprite_index = scr_mario_jump();
                                                 else
                                                     sprite_index = scr_mario_runjump(); 

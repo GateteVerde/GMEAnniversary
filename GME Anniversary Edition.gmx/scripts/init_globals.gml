@@ -144,6 +144,9 @@ global.starman = 0;
 //Star used in map?
 global.mapstar = 0;
 
+//P-Wing active?
+global.pwing = 0;
+
 //Warp used in map
 global.pipex = 0;
 global.pipey = 0;

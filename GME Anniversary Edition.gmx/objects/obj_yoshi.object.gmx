@@ -256,7 +256,7 @@ if (flying) {
     audio_play_sound(snd_yoshi_lick, 0, false);
     
     //Repeat
-    alarm[3] = 9;
+    alarm[3] = 5;
 }
 </string>
           </argument>
@@ -1050,7 +1050,10 @@ if (mouthholder == obj_shell)
                 }
                 
                 //Animate wing
-                flyanim += 0.25;
+                if (global.pwing == 0)
+                    flyanim += 0.25;
+                else
+                    flyanim = 0;
             }
             
             //Otherwise, reset fly animation
@@ -1063,7 +1066,7 @@ if (mouthholder == obj_shell)
         
             audio_stop_sound(snd_yoshi_lick);
             flying = 0;
-            flyanim = 1;
+            flyanim = 0;
         }
 
         //If the player lands after a jump, stomp
@@ -1092,7 +1095,8 @@ if (mouthholder == obj_shell)
         
             //If not flying and moving down, start flying.
             if (!flying)
-            &amp;&amp; (obj_playerparent.yspeed &gt; 0) {
+            &amp;&amp; (obj_playerparent.yspeed &gt; 0) 
+            &amp;&amp; (obj_playerparent.flying = 0) {
             
                 flying = 1;
                 alarm[3] = 1;
@@ -1115,7 +1119,10 @@ if (mouthholder == obj_shell)
                 }
                 
                 //Animate wing
-                flyanim += 0.15;
+                if (global.pwing == 0)
+                    flyanim += 0.25;
+                else
+                    flyanim = 0;
             }
             
             //Otherwise, reset fly animation
@@ -1128,7 +1135,7 @@ if (mouthholder == obj_shell)
         
             audio_stop_sound(snd_yoshi_lick);
             flying = 0;
-            flyanim = 1;
+            flyanim = 0;
         }    
     }    
 }

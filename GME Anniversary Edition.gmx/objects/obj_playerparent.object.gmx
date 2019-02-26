@@ -501,6 +501,40 @@ invulnerable = false;
             <kind>1</kind>
             <string>///Physics
 
+//Manage P-Wing effect
+if (global.pwing == 1) {
+
+    //If the player does not have either raccoon or tanooki powerup
+    if (global.powerup != cs_leaf)
+    &amp;&amp; (global.powerup != cs_tanooki) {
+    
+        //Disable P-Wing
+        global.pwing = 0;
+        
+        //Allow the player to fly again.
+        flying = false;
+        
+        //Reset P-Meter
+        pmeter = 0;
+    }
+    
+    //Keep pmeter active
+    pmeter = 112;
+    
+    //Play 'P-Meter' sound if not playing
+    if (!audio_is_playing(snd_pmeter)) 
+        audio_play_sound(snd_pmeter, 0, true);
+    
+    //Keep alarm 9 active 
+    alarm[9] = 60 * global.flighttime;
+    
+    //If the player is flying
+    if (state != 2) &amp;&amp; (global.pwing == 1)
+        flyfix = 0;
+    else
+        flyfix = 1;
+}
+
 //If the gravity is enabled
 if (enable_gravity == 1) {
 
@@ -520,8 +554,7 @@ if (enable_gravity == 1) {
     &amp;&amp; (holding == 0)
     &amp;&amp; (wallkick == 0)
     &amp;&amp; (swimming == 0)
-    &amp;&amp; (stompstyle == 0)
-    &amp;&amp; (global.powerup != cs_small) {
+    &amp;&amp; (stompstyle == 0) {
     
         //If the player is doing a somersault
         if (somersault)    
@@ -756,30 +789,47 @@ if (enable_gravity == 1) {
                 
                     //If the player's horizontal speed is equal/greater than 2.4 and it's not wearing a kuribo shoe.
                     if (abs(xspeed) &gt; runspeed-0.1) 
-                    &amp;&amp; (global.mount != 2) {
+                    &amp;&amp; (global.mount != 2) 
+                    || (global.pwing == 1) {
                     
                         //If the player is not jumping.
                         if (state &lt; 2) {
                         
-                            //If the P-Meter is full.
-                            if (pmeter &gt; 112) {
+                            //If the P-Wing is active
+                            if (global.pwing == 1) {
                             
                                 //Play 'P-Meter' sound
                                 if (!audio_is_playing(snd_pmeter)) {
                                 
                                     audio_play_sound(snd_pmeter, 0, true);
-                                }
-                                
-                                //Keep P-Meter full.
-                                pmeter = 112;
-                            
-                                //Make the player able to run.
-                                run = true;
+                                    if (pmeter &lt; 112)
+                                        pmeter = 112;
+                                }                                
                             }
                             
-                            //Otherwise, fill P-Meter
-                            else
-                                pmeter += 2;
+                            //Otherwise
+                            else {
+                        
+                                //If the P-Meter is full.
+                                if (pmeter &gt; 112) {
+                                
+                                    //Play 'P-Meter' sound
+                                    if (!audio_is_playing(snd_pmeter)) {
+                                    
+                                        audio_play_sound(snd_pmeter, 0, true);
+                                    }
+                                    
+                                    //Keep P-Meter full.
+                                    pmeter = 112;
+                                
+                                    //Make the player able to run.
+                                    run = true;
+                                }
+                                
+                                //Otherwise, fill P-Meter
+                                else
+                                    pmeter += 2;
+                            }
                         }
                         
                         //If the player is on the ground and not running.
@@ -788,7 +838,7 @@ if (enable_gravity == 1) {
                     }
                     
                     //Otherwise, if the player's horizontal speed is lower than 2.4
-                    else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; runspeed))) { 
+                    else if ((!run) || ((state &lt; 2) &amp;&amp; (abs(xspeed) &lt; runspeed)) &amp;&amp; (global.pwing == 0)) { 
                     
                         //If the player is flying and lands on the floor.
                         if (flying) {
@@ -847,6 +897,30 @@ if (enable_gravity == 1) {
                     //Change facing direction
                     xscale = -xscale;
                 }
+                
+                //Stop P-Meter if not permanent
+                if (global.pwing == 0) {
+                
+                    //Stop 'P-Meter' sound
+                    audio_stop_sound(snd_pmeter);
+                                                                    
+                    //Decrement P-Meter
+                    flying = false;
+                    run = false;
+                    if (pmeter &gt; 0)
+                        pmeter--;
+                }
+            }
+        }
+        
+        //Otherwise, if the player is sliding down a slope
+        else if (sliding) {
+        
+            //Execute slide behaviour script
+            scr_player_behaviour_slide();
+            
+            //Stop P-Meter if not permanent
+            if (global.pwing == 0) {
             
                 //Stop 'P-Meter' sound
                 audio_stop_sound(snd_pmeter);
@@ -858,22 +932,6 @@ if (enable_gravity == 1) {
                     pmeter--;
             }
         }
-        
-        //Otherwise, if the player is sliding down a slope
-        else if (sliding) {
-        
-            //Execute slide behaviour script
-            scr_player_behaviour_slide();
-            
-            //Stop 'P-Meter' sound
-            audio_stop_sound(snd_pmeter);
-                        
-            //Decrement P-Meter
-            flying = false;
-            run = false;
-            if (pmeter &gt; 0)
-                pmeter--;
-        }
     }
     
     //Otherwise, if the player is actually swimming.
@@ -882,14 +940,18 @@ if (enable_gravity == 1) {
         //Execute swim behaviour script
         scr_player_behaviour_swim();
             
-        //Stop 'P-Meter' sound
-        audio_stop_sound(snd_pmeter);
-                        
-        //Decrement P-Meter
-        flying = false;
-        run = false;
-        if (pmeter &gt; 0)
-            pmeter--;
+        //Stop P-Meter if not permanent
+        if (global.pwing == 0) {
+        
+            //Stop 'P-Meter' sound
+            audio_stop_sound(snd_pmeter);
+                                                            
+            //Decrement P-Meter
+            flying = false;
+            run = false;
+            if (pmeter &gt; 0)
+                pmeter--;
+        }
     }
     
     //If the player is bumping into a wall to the right

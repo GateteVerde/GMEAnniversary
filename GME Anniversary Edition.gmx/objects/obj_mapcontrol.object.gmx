@@ -180,7 +180,7 @@ alarm[0] = 4;
 if (global.mapstar) {
     
     isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
+    if (isflashing &gt; 3)
         isflashing = 0;
 }
 </string>
@@ -269,7 +269,8 @@ else if (inventory) {
         if (keyboard_check_pressed(global.shiftkey)) {
         
             //If a powerup is selected.
-            if (global.inventory[boxselection] != cs_star) {
+            if (global.inventory[boxselection] != cs_star) 
+            &amp;&amp; (global.inventory[boxselection] != cs_pwing) {
                 
                 //Play the reserve item sound
                 audio_play_sound(snd_powerup,0,0)
@@ -306,6 +307,7 @@ else if (inventory) {
             //Otherwise, if a star got selected.
             else if (global.inventory[boxselection] == cs_star) {
             
+                //If the star is not active
                 if (!global.mapstar) {
             
                     //Play the reserve item sound
@@ -331,6 +333,42 @@ else if (inventory) {
                     //Deny event
                     audio_play_sound(snd_wrong, 0, false);
                 }         
+            }
+            
+            //Otherwise, if a p-wing got selected
+            else if (global.inventory[boxselection] == cs_pwing) {
+            
+                //If the p-wing is not active
+                if (global.pwing == 0) {
+            
+                    //Play the reserve item sound
+                    audio_play_sound(snd_powerup,0,0)
+                    
+                    //Change the powerup to the selected item
+                    if (global.powerup != cs_leaf)
+                    &amp;&amp; (global.powerup != cs_tanooki)
+                        global.powerup = cs_leaf;
+                                    
+                    //Shift the inventory items over by one
+                    for (var i = boxselection; i &lt; global.inventory[0]; i++) {
+                    
+                        global.inventory[i] = global.inventory[i+1];
+                    }
+                        
+                    //Subtract from the number of items in the inventory
+                    global.inventory[0]--;
+                    
+                    //Give Mario star power on the next level if we didn't.
+                    global.pwing = 1;
+                    
+                    //Finish item retrieval
+                    event_user(0);
+                }
+                else {
+                
+                    //Deny event
+                    audio_play_sound(snd_wrong, 0, false);
+                }                     
             }
         }
         

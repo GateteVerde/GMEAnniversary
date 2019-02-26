@@ -135,6 +135,9 @@ switch (argument[2]) {
     //Star
     case (spr_starman): return instance_create(argument[0],argument[1],obj_starman);
     
+    //P-Wing
+    case (spr_pwing): return instance_create(argument[0],argument[1],obj_pwing);
+    
     //Poison
     case (spr_poison): return instance_create(argument[0],argument[1],obj_poison);
         

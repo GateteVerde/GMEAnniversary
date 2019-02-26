@@ -12,7 +12,8 @@ if (yspeed > 0)
 && (!crouch) 
 && (!flying)
 && (!stompstyle) 
-&& (holding == 0) 
+&& (holding == 0)
+&& (global.pwing = 0)
 && (global.mount = 0) 
 && (!instance_exists(obj_spinner)) {
         

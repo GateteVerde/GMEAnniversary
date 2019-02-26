@@ -90,7 +90,7 @@ if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
     isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
+    if (isflashing &gt; 3)
         isflashing = 0;
     
     //Repeat the process.

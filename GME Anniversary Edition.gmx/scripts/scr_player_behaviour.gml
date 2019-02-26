@@ -77,7 +77,7 @@ if (!flying) { //If the player is not flying
             else {
                             
                 //If the P-Meter is filled up.
-                if (run)  
+                if (run)
                     xspeedmax = fullrunspeed+abs(0.3*instance_number(obj_invincibility));
                 
                 //Otherwise, if the P-Meter is not filled up.
@@ -90,7 +90,7 @@ if (!flying) { //If the player is not flying
         else {
             
             //If the P-Meter is filled up.
-            if (run)  
+            if (run) 
                 xspeedmax = fullrunspeed+abs(0.3*instance_number(obj_invincibility));
             
             //Otherwise, if the P-Meter is not filled up.
@@ -107,11 +107,25 @@ if (!flying) { //If the player is not flying
 //Otherwise, if the player is flying.
 else {
 
-    xspeedmax = 2;
-    if (xspeed > 2)
-        xspeed -= acc;
-    if (xspeed < -2)
-        xspeed += acc;
+    //If the player is flying
+    if (flyfix == 1) {
+    
+        xspeedmax = 2;
+        if (xspeed > 2)
+            xspeed -= acc;
+        if (xspeed < -2)
+            xspeed += acc;
+    }
+    else {
+    
+        //Set running speed
+        if (keyboard_check(global.controlkey))
+            xspeedmax = runspeed+abs(0.3*instance_number(obj_invincibility));           
+        
+        //Otherwise, do not reduce speed until the player makes contact with the ground.  
+        else     
+            xspeedmax = walkspeed;    
+    }
 }
     
 //If controls are not disabled or the player is not stuck in a wall
@@ -639,8 +653,9 @@ if (state == 2)
     && (keyboard_check_pressed(global.shiftkey)) 
     && (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_quicksand,0,0)) {
     
-        //If the player is running.
-        if (run) {
+        //If the player is running or the pwing is active
+        if (run) 
+        || (global.pwing == 1) {
         
             //Play 'tail' sound.
             audio_stop_sound(snd_spin);

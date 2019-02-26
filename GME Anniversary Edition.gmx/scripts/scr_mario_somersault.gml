@@ -10,7 +10,7 @@
 
 switch (global.powerup) {
 
-    case (cs_small): return spr_mario_small_jump;
+    case (cs_small): return spr_mario_small_somersault;
     case (cs_big): return spr_mario_big_somersault;
     case (cs_fire): return spr_mario_fire_somersault;
     case (cs_ice): return spr_mario_ice_somersault;

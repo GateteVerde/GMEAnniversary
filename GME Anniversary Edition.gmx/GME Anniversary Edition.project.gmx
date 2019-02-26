@@ -184,6 +184,7 @@
           <sprite>sprites\spr_mario_small_clear</sprite>
           <sprite>sprites\spr_mario_small_kick</sprite>
           <sprite>sprites\spr_mario_small_walljump</sprite>
+          <sprite>sprites\spr_mario_small_somersault</sprite>
           <sprite>sprites\spr_mario_small_ride</sprite>
         </sprites>
         <sprites name="Big">
@@ -1253,6 +1254,7 @@
           <sprite>sprites\spr_propellershroom</sprite>
           <sprite>sprites\spr_superbell</sprite>
           <sprite>sprites\spr_starman</sprite>
+          <sprite>sprites\spr_pwing</sprite>
           <sprite>sprites\spr_1up</sprite>
           <sprite>sprites\spr_1uph</sprite>
           <sprite>sprites\spr_poison</sprite>
@@ -1805,7 +1807,7 @@
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_palette_swapper.shader</shader>
-    <shader type="GLSLES">shaders\shd_gaussian.shader</shader>
+    <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
   </shaders>
   <objects name="objects">
     <object>objects\obj_persistent</object>
@@ -2334,6 +2336,7 @@
           <object>objects\obj_propellershroom</object>
           <object>objects\obj_superbell</object>
           <object>objects\obj_starman</object>
+          <object>objects\obj_pwing</object>
           <object>objects\obj_1up</object>
           <object>objects\obj_1uph</object>
           <object>objects\obj_poison</object>
@@ -2718,6 +2721,7 @@
             <objects name="Powerups">
               <objects name="Pickup">
                 <object>objects\obj_pickup_leaf</object>
+                <object>objects\obj_pickup_pwing</object>
                 <object>objects\obj_pickup_propeller</object>
               </objects>
               <objects name="Mounts">
@@ -2980,18 +2984,19 @@
       <room>rooms\rm_poweruptestarea</room>
     </rooms>
   </rooms>
-  <constants number="46">
+  <constants number="47">
     <constant name="cs_version">"09-02-2019 - v1.6.3.1"</constant>
     <constant name="cs_levels">7</constant>
-    <constant name="cs_billy">-29</constant>
-    <constant name="cs_golden">-28</constant>
-    <constant name="cs_beanstalk">-27</constant>
-    <constant name="cs_propellerblock">-26</constant>
-    <constant name="cs_trampoline">-25</constant>
-    <constant name="cs_gswitch">-24</constant>
-    <constant name="cs_pswitch">-23</constant>
-    <constant name="cs_key">-22</constant>
-    <constant name="cs_poison">-21</constant>
+    <constant name="cs_billy">-30</constant>
+    <constant name="cs_golden">-29</constant>
+    <constant name="cs_beanstalk">-28</constant>
+    <constant name="cs_propellerblock">-27</constant>
+    <constant name="cs_trampoline">-26</constant>
+    <constant name="cs_gswitch">-25</constant>
+    <constant name="cs_pswitch">-24</constant>
+    <constant name="cs_key">-23</constant>
+    <constant name="cs_poison">-22</constant>
+    <constant name="cs_pwing">-21</constant>
     <constant name="cs_star">-20</constant>
     <constant name="cs_3up">-19</constant>
     <constant name="cs_1up">-18</constant>
