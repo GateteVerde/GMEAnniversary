@@ -154,6 +154,10 @@ if (ready &lt; 2) {
     //Otherwise, if health mode is active.
     else if (global.healthmode == true) {
 
+        //Play 'Collect' sound
+        audio_play_sound(snd_cherry, 0, false);
+        
+        //Increment health
         health++;
         if (health &gt; 4)
             health = 4;

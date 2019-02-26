@@ -1634,6 +1634,11 @@ else {
                 draw_sprite_ext(spr_mapmario,image_index+frame,round(x)+8,round(y)-4,xscale,1,0,c_white,1);
         }    
     }
+    
+    //Show if the player has the p-meter
+    if (global.pwing)
+    &amp;&amp; (speed == 0)
+        draw_sprite_ext(spr_mapmario_p, 0, x+8, y-12, 1, 1, 0, c_white, 1);
 }
 </string>
           </argument>
