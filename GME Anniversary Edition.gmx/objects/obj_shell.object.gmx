@@ -614,16 +614,17 @@ if (keyboard_check(global.upkey)) {
     else {
     
         //Create dead object
-        imdead = instance_create(x,y,obj_enemy_dead);
+        with (instance_create(x,y,obj_enemy_dead)) {
         
-        //Hereby sprite
-        imdead.sprite_index = sprite_index;
-        
-        //Hereby scale
-        imdead.image_xscale = dir;
+            sprite_index = other.sprite_index;
+            image_xscale = other.dir;
+        }
+    
+        //Get 100 points
+        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(1);
         
         //Destroy
-        instance_destroy();
+        instance_destroy();  
     }
 }
 
@@ -659,13 +660,17 @@ else if (vspeed &gt;= 0) {
     if (place_meeting(x,y,obj_solid)) {
     
         //Create dead object
-        imdead = instance_create(x,y,obj_enemy_dead);
+        with (instance_create(x,y,obj_enemy_dead)) {
         
-        //Hereby sprite
-        imdead.sprite_index = sprite_index;
+            sprite_index = other.sprite_index;
+            image_xscale = other.dir;
+        }
+    
+        //Get 100 points
+        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score)) event_user(1);
         
-        //Hereby scale
-        imdead.image_xscale = dir;
+        //Destroy
+        instance_destroy();  
     }
     else {
     

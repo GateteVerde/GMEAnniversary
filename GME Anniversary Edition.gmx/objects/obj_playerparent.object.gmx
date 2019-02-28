@@ -723,7 +723,7 @@ if (enable_gravity == 1) {
         //Prevent the player from getting embed inside a slope.
         if (yspeed &gt; -0.85) {
         
-            while (collision_rectangle(x-1,bbox_bottom-4+direction,x+1,bbox_bottom-1+direction,obj_slopeparent,1,0))        
+            while (collision_rectangle(x-1,bbox_bottom-4+direction,x+1,bbox_bottom-1,obj_slopeparent,1,0))        
                 y--;
         }
     }
