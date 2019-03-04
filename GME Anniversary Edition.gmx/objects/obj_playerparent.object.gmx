@@ -89,6 +89,7 @@ sliding = 0;
 
 //Makes the player able to fly high.
 flying = false;
+flyfix = 0;
 
 //Makes the player able to crouch down.
 crouch = 0;
@@ -530,6 +531,15 @@ if (global.pwing == 1) {
     
     //If the player is flying
     if (state != 2) &amp;&amp; (global.pwing == 1)
+        flyfix = 0;
+    else
+        flyfix = 1;
+}
+
+//Otherwise
+else {
+
+    if ((state != 2) &amp;&amp; (flying == 0))
         flyfix = 0;
     else
         flyfix = 1;

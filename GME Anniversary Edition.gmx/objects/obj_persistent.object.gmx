@@ -974,16 +974,16 @@ alarm[1] = 1;
             <string>///Deals with the application surface, window size, and fading.
 
 //Disable alpha blending
-draw_enable_alphablend(false)
+draw_enable_alphablend(0);
 
 //Draw a rectangle
-draw_rectangle_colour(0,0,global.gw*(filter+1),global.gh*(filter+1),c_black,c_black,c_black,c_black,0);
+draw_rectangle_colour(0, 0, global.gw*(filter+1), global.gh*(filter+1), c_black, c_black, c_black, c_black, 0);
 
 //Draw the application surface
-draw_surface_stretched(application_surface,port_x*(filter+1),port_y*(filter+1),global.gw*(filter+1),global.gh*(filter+1));
+draw_surface_stretched(application_surface, port_x*(filter+1), port_y*(filter+1),global.gw*(filter+1), global.gh*(filter+1));
 
 //Enable alpha blending
-draw_enable_alphablend(true)
+draw_enable_alphablend(1);
 
 //Set 'Interface' font
 draw_set_font(global.font_interface);
@@ -1022,7 +1022,7 @@ if (background_exists(back)) {
     draw_enable_alphablend(0);
     
     //Draw the screenshot
-    draw_background(back,view_xview[0],view_yview[0]);
+    draw_background(back, view_xview[0], view_yview[0]);
     
     //Enable alpha blending.
     draw_enable_alphablend(1);

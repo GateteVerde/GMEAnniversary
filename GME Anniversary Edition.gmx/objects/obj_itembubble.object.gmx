@@ -241,7 +241,7 @@ if ((other.held == 0) &amp;&amp; (other.vspeed &gt;= 0)) {
             
                 repeat(5) {
                 
-                    with (instance_create(x,y-8,obj_blockcoin2)) {
+                    with (instance_create(x,y-12,obj_blockcoin2)) {
                     
                         hspeed = random_range(1,-1);
                         vspeed = random_range(-2,-6);
@@ -252,7 +252,7 @@ if ((other.held == 0) &amp;&amp; (other.vspeed &gt;= 0)) {
             //Otherwise, create a item.
             else if (sprout != cs_coin) {
             
-                with (sprite_make_object(x-8+(sprite_get_xoffset(constant_get_sprite(sprout))),y-8,constant_get_sprite(sprout))) {
+                with (sprite_make_object(x-8+(sprite_get_xoffset(constant_get_sprite(sprout))),y-12,constant_get_sprite(sprout))) {
                 
                     vspeed = -4;
                     permission = 1;

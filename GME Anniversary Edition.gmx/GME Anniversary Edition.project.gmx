@@ -928,6 +928,15 @@
         <sprite>sprites\spr_lilsparky</sprite>
         <sprite>sprites\spr_hothead</sprite>
         <sprite>sprites\spr_hothead_blink</sprite>
+        <sprite>sprites\spr_bowserstatue</sprite>
+        <sprite>sprites\spr_bowserstatue_gold</sprite>
+        <sprite>sprites\spr_bowserstatue_fire</sprite>
+        <sprite>sprites\spr_magikoopa</sprite>
+        <sprite>sprites\spr_magic</sprite>
+        <sprite>sprites\spr_fishbone</sprite>
+        <sprite>sprites\spr_fishbone_blink</sprite>
+      </sprites>
+      <sprites name="Ghost">
         <sprite>sprites\spr_boo</sprite>
         <sprite>sprites\spr_boo_large</sprite>
         <sprite>sprites\spr_boo_large_turn</sprite>
@@ -936,13 +945,6 @@
         <sprite>sprites\spr_boo_block</sprite>
         <sprite>sprites\spr_peepa</sprite>
         <sprite>sprites\spr_eerie</sprite>
-        <sprite>sprites\spr_bowserstatue</sprite>
-        <sprite>sprites\spr_bowserstatue_gold</sprite>
-        <sprite>sprites\spr_bowserstatue_fire</sprite>
-        <sprite>sprites\spr_magikoopa</sprite>
-        <sprite>sprites\spr_magic</sprite>
-        <sprite>sprites\spr_fishbone</sprite>
-        <sprite>sprites\spr_fishbone_blink</sprite>
       </sprites>
       <sprites name="Airship">
         <sprite>sprites\spr_bobomb</sprite>
@@ -2093,6 +2095,12 @@
         <object>objects\obj_hotfoot</object>
         <object>objects\obj_lilspark</object>
         <object>objects\obj_hothead</object>
+        <object>objects\obj_bowserstatue</object>
+        <object>objects\obj_bowserstatue_gold</object>
+        <object>objects\obj_magikoopa</object>
+        <object>objects\obj_fishbone</object>
+      </objects>
+      <objects name="Ghost">
         <object>objects\obj_boo</object>
         <object>objects\obj_bigboo</object>
         <object>objects\obj_boocircle</object>
@@ -2104,10 +2112,6 @@
         <object>objects\obj_peepa</object>
         <object>objects\obj_peepa_v</object>
         <object>objects\obj_eerie</object>
-        <object>objects\obj_bowserstatue</object>
-        <object>objects\obj_bowserstatue_gold</object>
-        <object>objects\obj_magikoopa</object>
-        <object>objects\obj_fishbone</object>
       </objects>
       <objects name="Airship">
         <object>objects\obj_bobomb</object>

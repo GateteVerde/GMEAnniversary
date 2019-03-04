@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>///Fade the screen out.
 
-//Set the alpha.
 alpha = 1;
 </string>
           </argument>
@@ -54,7 +53,7 @@ alpha = 1;
             <string>///Destroy after fading out completely.
 
 //Fade in
-alpha -= 0.1;
+alpha -= 0.04;
 
 //Destroy the object
 if (alpha &lt; 0)
@@ -83,7 +82,8 @@ if (alpha &lt; 0)
             <kind>1</kind>
             <string>///Draw the effect.
 
-draw_sprite_ext(spr_screenmask,-1,view_xview[0]+view_wview[0]/2,view_yview[0],1.5,1.5,0,c_black,alpha);
+//Draw screen mask
+draw_sprite_ext(spr_screenmask, -1, view_xview[0]+view_wview[0]/2, view_yview[0], 1.5, 1.5, 0, c_black, alpha);
 </string>
           </argument>
         </arguments>
