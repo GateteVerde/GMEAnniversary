@@ -82,6 +82,9 @@ fluttertime = 0;
 //Player's current frame
 f = 0;
 
+//Player's y position
+myy = 0;
+
 //Player's previous state
 stateprev = 0;
 
@@ -538,7 +541,8 @@ if (instance_exists(obj_playerparent)) {
             }
         }
     }
-    else if (flutter == 1) {
+    else if (flutter == 1) 
+    || (obj_playerparent.yspeed &lt; -1.6) {
             
         //Stop 'Hover' sound
         audio_stop_sound(snd_yoshi_hover);
@@ -596,6 +600,16 @@ if (instance_exists(obj_playerparent)) {
 
 //Otherwise, if the player does not exist.
 else {
+
+    //Do not hold anything if the player cleared a level
+    if (instance_exists(obj_playerparent_clear)) {
+    
+        if (mouthholder != noone) {
+        
+            mouthholder = noone;
+            mouthsprite = noone;
+        }
+    }
 
     //Find a suitable player
     event_user(15);
@@ -951,6 +965,18 @@ if (instance_exists(obj_playerparent)) {
     
     //Set the facing direction
     image_xscale = obj_playerparent.xscale;
+    
+    //Set up the y position for Mario
+    if (sprite_index == spr_yoshi)
+    || (sprite_index == spr_yoshi_fm) {
+    
+        if (image_index &gt; 0.99)
+            myy = 1;
+        else
+            myy = 0;
+    }
+    else
+        myy = 0;
 }
 </string>
           </argument>
@@ -1173,7 +1199,7 @@ pal_swap_set(spr_palette_mario, obj_playerparent.isflashing);
 switch (global.player) {
 
     //Mario
-    case (0): draw_sprite_ext(scr_mario_ride(),f,round(x),round(y)+1,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha); break;
+    case (0): draw_sprite_ext(scr_mario_ride(),f,round(x),round(y)+1+myy,obj_playerparent.xscale,1,0,c_white,obj_playerparent.image_alpha); break;
 }
 
 //Reset palette

@@ -94,7 +94,7 @@ if (!ready) {
     if (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_playerparent,0,0)) {
 
         //Play 'Bump' sound
-        audio_play_sound(snd_bump, 0, false);
+        audio_play_sound(snd_noteblock, 0, false);
         
         //Block specfic events
         event_user(0);     

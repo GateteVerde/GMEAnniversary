@@ -135,8 +135,8 @@ if (!ready) {
             //Check if the 'Jump' key is pressed.
             if (keyboard_check(global.shiftkey)) {
                 
-                //Play 'Trampoline' sound
-                audio_play_sound(snd_trampoline, 0, false);
+                //Play 'Noteblock' sound
+                audio_play_sound(snd_noteblock_b, 0, false);
                 
                 //Create 'Warp' player
                 with (instance_create(x,y,obj_player_warpnote)) {
@@ -154,8 +154,14 @@ if (!ready) {
                 //Destroy
                 instance_destroy();
             }
-            else
-                jumping = 2;      
+            else {
+            
+                //Do not allow variable jumping
+                jumping = 2;
+                
+                //Play 'Noteblock' sound
+                audio_play_sound(snd_noteblock, 0, false);
+            }      
         }
     }
 }

@@ -159,9 +159,6 @@ if (!ready) {
 
     //If Mario bumps from above
     if (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_playerparent,0,0)) {
-
-        //Play 'Bump' sound
-        audio_play_sound(snd_bump, 0, false);
         
         //This block is hit
         ready = 1;
@@ -189,10 +186,16 @@ if (!ready) {
                 jumping = 1;
                 
                 //Play 'Trampoline' sound
-                audio_play_sound(snd_trampoline, 0, false);
+                audio_play_sound(snd_noteblock_b, 0, false);
             }
-            else
-                jumping = 2;      
+            else {
+            
+                //Do not allow variable jumping
+                jumping = 2;
+                
+                //Play 'Noteblock' sound
+                audio_play_sound(snd_noteblock, 0, false);
+            } 
         }
         
         //Make an item appear downwards

@@ -320,22 +320,10 @@ if (other.sliding)
             event_user(8);
     }
     else if (other.hitcombo &gt; 6) { //1-UP
-    
-        //If the combo is odd
-        if (other.hitcombo % 2 == 1) {
-    
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(9);
-        }
-        
-        //Otherwise, if the combo is even
-        else if (other.hitcombo % 2 == 0) {
-        
-            audio_play_sound(snd_kick8, 0, false);
-            with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
-                event_user(10);        
-        }
+
+        audio_play_sound(snd_kick8, 0, false);
+        with (instance_create(round(bbox_left+bbox_right)/2-8,y,obj_score))
+            event_user(9);
     }
     
     //Create 'Spinthump' effect

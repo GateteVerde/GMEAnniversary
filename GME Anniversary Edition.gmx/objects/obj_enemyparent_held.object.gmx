@@ -111,7 +111,15 @@ else {
     if (vulnerable &lt; 99) {
     
         //Kill the enemy
-        event_user(0);
+        if (other.object_index == obj_stomp) {
+        
+            //Do not perform if the object is moving
+            if (vspeed != 0)
+            exit;
+                event_user(7);
+        }
+        else
+            event_user(0);
         
         //Get points based on combo
         if (other.hitcombo == 0) { //200 points

@@ -210,7 +210,10 @@ else {
     if (vulnerable &lt; 99) {
     
         //Kill the enemy
-        event_user(0);
+        if (other.object_index == obj_stomp)
+            event_user(7);
+        else
+            event_user(0);
         
         //Get points based on combo
         if (other.hitcombo == 0) { //200 points
