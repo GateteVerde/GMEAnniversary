@@ -314,8 +314,11 @@ else {
 if (aa &gt; 0) { //If the timer is still going...
 
     aa--;
-    if (aa &lt; 120)
+    if (aa &lt; 120) {
+    
+        sprite_index = spr_turnip_bomb_th;
         image_speed = 0.3;
+    }
 }
 
 //Otherwise, explode.

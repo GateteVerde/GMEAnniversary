@@ -89,10 +89,6 @@ with (mytop) {
 //If the ninji is not jumping
 if (jumping == 0) {
 
-    //Do not animate
-    image_speed = 0;
-    image_index = 1;
-
     //If the player does exists
     if (instance_exists(obj_playerparent)) {
         

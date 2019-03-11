@@ -70,7 +70,6 @@
       <sound>sound\snd_hawkmouth</sound>
       <sound>sound\snd_hawkmouth_close</sound>
       <sound>sound\snd_key</sound>
-      <sound>sound\snd_mystery</sound>
       <sound>sound\snd_noteblock</sound>
       <sound>sound\snd_noteblock_b</sound>
       <sound>sound\snd_pop</sound>
@@ -1004,6 +1003,7 @@
         <sprite>sprites\spr_panser_fire</sprite>
         <sprite>sprites\spr_pokey_green</sprite>
         <sprite>sprites\spr_porcupo</sprite>
+        <sprite>sprites\spr_porcupo_r</sprite>
         <sprite>sprites\spr_trouter</sprite>
       </sprites>
       <sprites name="Big">
@@ -1431,6 +1431,7 @@
           <sprite>sprites\spr_turnip_mini</sprite>
           <sprite>sprites\spr_turnip_large</sprite>
           <sprite>sprites\spr_turnip_bomb</sprite>
+          <sprite>sprites\spr_turnip_bomb_th</sprite>
           <sprite>sprites\spr_turnip_shell</sprite>
         </sprites>
         <sprites name="Collectibles">
@@ -2160,6 +2161,7 @@
         <object>objects\obj_panser_p</object>
         <object>objects\obj_pokey_green</object>
         <object>objects\obj_porcupo</object>
+        <object>objects\obj_porcupo_r</object>
         <object>objects\obj_trouter</object>
       </objects>
       <objects name="Big">
@@ -2992,7 +2994,7 @@
     </rooms>
   </rooms>
   <constants number="47">
-    <constant name="cs_version">"27-02-2019 - v1.7"</constant>
+    <constant name="cs_version">"11-03-2019 - v1.7.1"</constant>
     <constant name="cs_levels">7</constant>
     <constant name="cs_billy">-30</constant>
     <constant name="cs_golden">-29</constant>

@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>///Kill nearby enemies
 
+//Does this object have a parent
+parent = noone;
+
 //Default kill method
 killtype = 0;
 
@@ -112,10 +115,15 @@ if (killtype == 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Keep it on screen
+            <string>///Pow killer logic
 
+//Stay in screen
 x = view_xview[0]+view_wview[0]/2;
 y = view_yview[0];
+
+//Update parent hitpoint
+if (parent != noone)
+    parent.hitcombo = hitcombo;
 </string>
           </argument>
         </arguments>

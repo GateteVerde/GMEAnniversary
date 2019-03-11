@@ -54,9 +54,6 @@ image_speed = 0.125;
 //Start moving
 alarm[10] = 2;
 
-//Start jumping
-alarm[1] = 15+random(round(30));
-
 //Create solid collision
 mytop = instance_create(x,y,obj_enemytop);
 with (mytop) {
@@ -145,50 +142,6 @@ image_speed = 0.125;
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Start jumping
-
-//If the ninji is not jumping
-if (jumping == 0) {
-
-    //Do not animate
-    image_speed = 0;
-    image_index = 1;
-
-    //Jump
-    vspeed = -4+(2*swimming);
-    
-    //Boost jump
-    y--;
-    
-    //Jump
-    jumping = 1;
-
-    //Stop animation
-    image_speed = 0;
-    image_index = 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -221,6 +174,7 @@ if (gravity &gt; 0) {
 }
 else {
 
+    //If the Ninji jumped...
     if (jumping == 2) {
     
         //Animate
@@ -228,9 +182,29 @@ else {
         
         //End jump
         jumping = 0;
+    }
+    
+    //Otherwise
+    else if (jumping == 0)
+    &amp;&amp; (instance_exists(obj_playerparent)) {
+    
+        //If the player is nearby a ninji and jumps, make ninji jump.
+        if (obj_playerparent.jumping &gt; 0)
+        &amp;&amp; (point_distance(obj_playerparent.x, obj_playerparent.y, x, y) &lt; 48) {
         
-        //Jump again
-        alarm[1] = 15+random(round(30));
+            //Jump
+            vspeed = -4+(2*swimming);
+            
+            //Boost jump
+            y--;
+            
+            //Jump
+            jumping = 1;
+        
+            //Stop animation
+            image_speed = 0;
+            image_index = 1;
+        }
     }
 }
 

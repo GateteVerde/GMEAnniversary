@@ -30,6 +30,9 @@
 //Bounces
 bounces = 4;
 
+//Hitpoints
+hitcombo = 0;
+
 //Inherit create event
 event_inherited();
 </string>
@@ -131,7 +134,11 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
         if (bounces &gt; 1) {
         
             //Shake the entire screen
-            instance_create(view_xview[0]+view_wview[0]/2,view_yview[0],obj_powkiller);
+            with (instance_create(view_xview[0]+view_wview[0]/2,view_yview[0],obj_powkiller)) {
+            
+                hitcombo = other.hitcombo;
+                parent = other.id;
+            }
             
             //Create a big smoke effect
             with (instance_create(x,y,obj_smoke)) sprite_index = spr_supersmash;
@@ -150,7 +157,10 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
         else if (bounces == 1) {
         
             //Shake the entire screen
-            instance_create(view_xview,view_yview,obj_powkiller);
+            with (instance_create(view_xview[0]+view_wview[0]/2,view_yview[0],obj_powkiller)) {
+            
+                hitcombo = other.hitcombo;
+            }
                         
             //Create a big smoke effect
             with (instance_create(x,y,obj_smoke)) sprite_index = spr_supersmash;
