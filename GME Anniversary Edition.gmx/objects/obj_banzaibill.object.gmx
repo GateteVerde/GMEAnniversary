@@ -100,7 +100,7 @@ if (vulnerable == 100) {
 }
 
 //Turn visible
-if (vulnerable == 0)
+if (vulnerable != 100)
     visible = 1;
 </string>
           </argument>
