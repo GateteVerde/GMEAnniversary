@@ -661,6 +661,7 @@
       <sprite>sprites\spr_pswitchblock</sprite>
       <sprite>sprites\spr_qswitchblock</sprite>
       <sprite>sprites\spr_eswitchblock</sprite>
+      <sprite>sprites\spr_woodblock</sprite>
       <sprite>sprites\spr_eoutline</sprite>
       <sprite>sprites\spr_eblock</sprite>
       <sprite>sprites\spr_pblock</sprite>
@@ -838,6 +839,7 @@
         <sprite>sprites\spr_lavalotus_ball</sprite>
         <sprite>sprites\spr_torpedobox</sprite>
         <sprite>sprites\spr_torpedoted</sprite>
+        <sprite>sprites\spr_jelectro</sprite>
         <sprite>sprites\spr_blooper</sprite>
       </sprites>
       <sprites name="Desert">
@@ -1123,6 +1125,8 @@
         <sprite>sprites\spr_maphill</sprite>
         <sprite>sprites\spr_maphilltrio</sprite>
         <sprite>sprites\spr_mapfire</sprite>
+        <sprite>sprites\spr_mapcloud</sprite>
+        <sprite>sprites\spr_mapcloud_b</sprite>
       </sprites>
       <sprite>sprites\spr_modifier</sprite>
       <sprite>sprites\spr_modifier_water</sprite>
@@ -1363,6 +1367,8 @@
         <sprite>sprites\spr_pulleyplatform_32x</sprite>
         <sprite>sprites\spr_pulleyplatform_64x</sprite>
         <sprite>sprites\spr_mushroomplatform</sprite>
+        <sprite>sprites\spr_jellyplatform</sprite>
+        <sprite>sprites\spr_jellymask</sprite>
       </sprites>
       <sprites name="Interactive">
         <sprites name="Goals">
@@ -1803,6 +1809,7 @@
       <script>scripts\string_add_zeros.gml</script>
       <script>scripts\string_make_width.gml</script>
     </scripts>
+    <script>scripts\approach.gml</script>
     <script>scripts\init_globals.gml</script>
     <script>scripts\constant_get_sprite.gml</script>
     <script>scripts\sprite_get_constant.gml</script>
@@ -1955,6 +1962,7 @@
       <object>objects\obj_pswitchblock</object>
       <object>objects\obj_qswitchblock</object>
       <object>objects\obj_eswitchblock</object>
+      <object>objects\obj_woodblock</object>
       <object>objects\obj_eblock</object>
       <object>objects\obj_pblock</object>
       <object>objects\obj_area_y</object>
@@ -2037,6 +2045,7 @@
         <object>objects\obj_dolphin_jump</object>
         <object>objects\obj_lavalotus</object>
         <object>objects\obj_torpedobox</object>
+        <object>objects\obj_jelectro</object>
         <object>objects\obj_blooper</object>
       </objects>
       <objects name="Desert">
@@ -2435,6 +2444,7 @@
         <object>objects\obj_yoshiplatform</object>
         <object>objects\obj_pulleyplatform</object>
         <object>objects\obj_mushroomplatform</object>
+        <object>objects\obj_jellyplatform</object>
       </objects>
       <objects name="Interactive">
         <object>objects\obj_pswitch</object>
@@ -2721,6 +2731,7 @@
             <object>objects\obj_mapghost</object>
           </objects>
           <object>objects\obj_opener</object>
+          <object>objects\obj_mapcloud</object>
         </objects>
         <objects name="Decoration">
           <object>objects\obj_coin_m</object>

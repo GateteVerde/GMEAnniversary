@@ -42,9 +42,6 @@ edible = 1;
 //Facing direction
 xscale = 1;
 
-//Whether the object stopped sliding
-ready = 0;
-
 //Combo
 hitcombo = 0;
 
@@ -120,8 +117,7 @@ if (sprite_index == spr_shell_buzzy)
 event_inherited();
 
 //Bump nearby blocks
-if (harmplayer)
-&amp;&amp; (sign(hspeed) != sign(prevhspeed)) {
+if (sign(hspeed) != sign(prevhspeed)) {
 
     //If the shell is moving left
     if (hspeed &gt; 0) {
@@ -209,8 +205,11 @@ exit;
             <string>///Bounce in contact with a wall triangle
 
 if (hspeed &lt; 0)
-&amp;&amp; (x &lt; other.x+8)
+&amp;&amp; (x &lt;= other.x+8) {
+
     vspeed = -3;
+    y -= 4;
+}
 </string>
           </argument>
         </arguments>
@@ -236,8 +235,11 @@ if (hspeed &lt; 0)
             <string>///Bounce in contact with a wall triangle
 
 if (hspeed &gt; 0)
-&amp;&amp; (x &gt; other.x+8)
+&amp;&amp; (x &gt;= other.x+8) {
+
     vspeed = -3;
+    y -= 4;
+}
 </string>
           </argument>
         </arguments>
@@ -324,15 +326,21 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
 &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_semisolid,0,0)))
 || (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
 
+    //Set default mask
+    mask_index = sprite_index;
+
     //Stop vertical movement
     gravity = 0;
     if (vspeed &gt; 0.5) 
         vspeed = -vspeed/2;
-    else
+    else    
         vspeed = 0;
 }
 else {
 
+    //Set the mask
+    mask_index = spr_shellmask;
+    
     //Set the gravity when not underwater
     if (!swimming) {
     
@@ -340,7 +348,7 @@ else {
         gravity = 0.2;
         
         //Cap vertical speed
-        if (vspeed &gt; 4)
+        if (vspeed &gt; 4) 
             vspeed = 4;
     }
     

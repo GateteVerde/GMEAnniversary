@@ -126,26 +126,26 @@ if (!disablecontrol) { //If the player's controls are not disabled.
 
 
 //Accelerate when in contact with a slope
-if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom,obj_slopeparent,1,0)) {
+if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
 
     //If the player does have the shell or penguin powerup and it's not at full speed.
     if (((global.powerup == cs_shell) || (global.powerup == cs_penguin)) && (abs(xspeed) != xspeedmax)) 
     || ((global.powerup != cs_shell) && (global.powerup != cs_penguin)) {
     
         //22.5º Right Slope
-        if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slope_r,1,0))
+        if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_r,1,0))
             xspeed += -0.075;
         
         //22.5º Left Slope
-        else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slope_l,1,0))  
+        else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_l,1,0))  
             xspeed += 0.075;
         
         //45º Right Slope
-        else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slope_sr,1,0))    
+        else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_sr,1,0))    
             xspeed += -0.15;
         
         //45º Left Slope
-        else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slope_sl,1,0))    
+        else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_sl,1,0))    
             xspeed += 0.15;
     }
 }

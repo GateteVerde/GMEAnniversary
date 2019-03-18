@@ -666,15 +666,14 @@ if (enable_gravity == 1) {
         noisy = 0;
     
     //Floor collision
-    if (yspeed &gt;= 0) { //If the player is moving down and the gravity is not disabled.
+    if (yspeed &gt; 0) { //If the player is moving down and the gravity is not disabled.
     
         //Check for a semisolid object
         var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+yspeed,obj_semisolid,0,0);
         
         //If the semisolid exists and the player is above it.
         if (semisolid)
-        &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5) 
-        &amp;&amp; (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) {
+        &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5) {
         
             //Snap above the semisolid platform
             y = semisolid.y-16;
@@ -709,14 +708,11 @@ if (enable_gravity == 1) {
     //Embed the player into the slope if he is walking or sliding down a slope to ensure correct slope physics.
     if ((collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
     &amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0)))
-    &amp;&amp; (state == 1) {
-    
-        if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_semisolid,0,0))
-            y += 4;
-    }
+    &amp;&amp; (state == 1)
+        y += 4;
     
     //Handle slope collision
-    if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-1,obj_slopeparent,1,0)) 
+    if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0)) 
     &amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
     
         //If the player is moving down onto a slope.
@@ -731,11 +727,9 @@ if (enable_gravity == 1) {
         }
         
         //Prevent the player from getting embed inside a slope.
-        if (yspeed &gt; -0.85) {
-        
-            while (collision_rectangle(x-1,bbox_bottom-4+direction,x+1,bbox_bottom-1,obj_slopeparent,1,0))        
+        if (yspeed &gt; -0.85)        
+            while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))        
                 y--;
-        }
     }
     
     //Left conveyor belt collision
@@ -966,7 +960,7 @@ if (enable_gravity == 1) {
     
     //If the player is bumping into a wall to the right
     if (xspeed &gt; 0)
-    &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-5,obj_solid,1,0)) {
+    &amp;&amp; (collision_rectangle(bbox_right,bbox_top+4,bbox_right+1,bbox_bottom-4,obj_solid,1,0)) {
     
         //If the player is sliding with the shell
         if (global.powerup == cs_shell)
@@ -1000,14 +994,14 @@ if (enable_gravity == 1) {
         }
         
         //Prevent the player from getting embed into the wall
-        while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-5,obj_solid,1,0))
+        while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,1,0))
         &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
             x--;
     }
     
     //Otherwise, if the player is bumping into a wall to the left
     else if (xspeed &lt; 0)
-    &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0)) {
+    &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+4,bbox_left,bbox_bottom-4,obj_solid,1,0)) {
     
         //If the player is sliding with the shell
         if (global.powerup == cs_shell)
@@ -1041,23 +1035,26 @@ if (enable_gravity == 1) {
         }        
         
         //Prevent the player from getting embed into the wall
-        while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-5,obj_solid,1,0))
+        while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-1,obj_solid,1,0))
         &amp;&amp; (!collision_point(x,bbox_top+4,obj_solid,0,0))
             x++;
     }
     
     //If the player is moving up
     if (yspeed &lt; 0)
-    &amp;&amp; ((collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_solid,1,0)) 
-    || (collision_rectangle(bbox_left,bbox_top-1,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
+    &amp;&amp; ((collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_solid,1,0)) 
+    || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0))) {
         
         //Prevent the player's head from getting stuck on a ceiling.
-        if ((state &gt; 1) &amp;&amp; (yspeed &lt; 0)) {
+        if (state &gt; 1) {
     
             while ((collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_solid,1,0))
-            || (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_ceilslopeparent,1,0)))
+            || (collision_rectangle(bbox_left,bbox_top+1,bbox_right,bbox_top+1,obj_ceilslopeparent,1,0)))
                 y++;
         }
+        
+        //Stop vertical speed
+        yspeed = 0;
         
         //Check if there's a block on the way.
         var block = collision_rectangle(bbox_left,bbox_top-2,bbox_right,bbox_top,obj_blockparent,1,0);
@@ -1085,29 +1082,23 @@ if (enable_gravity == 1) {
         }
         
         //If the player does not have either the frog and penguin suit, and it's not climbing.
-        if ((state &gt; 1) &amp;&amp; (!noisy)) {
+        if (!noisy)
+        &amp;&amp; (state &lt; 3) {
         
             //Max out the bee flying timer
-            beefly = 128;
+            if (global.powerup == cs_bee) {
+    
+                beefly = 128;
+            }
             
             //Stop variable jumping
-            if (state != 3)
-                jumpnow = 2;        
+            jumpnow = 2;        
             
             //Play 'Bump' sound
-            if (yspeed &lt; 0)
             if (!audio_is_playing(snd_bump))        
                 audio_play_sound(snd_bump, 0, false);        
         }
-        
-        //Stop vertical speed
-        yspeed = 0;
     }
-    
-    //Make sure that the player does not get embed on ceiling slopes
-    if (state &gt; 1)
-        while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_ceilslopeparent,1,0))
-            y++;
     
     //If the player is not climbing
     if (state != 3) {
@@ -1621,92 +1612,103 @@ if (invulnerable == false) {
             //Enable controls
             disablecontrol = false;             
         }
-
-        //If health mode is active
-        if (global.healthmode == true) {
         
-            //If the player does have a powerup
-            if (global.powerup &gt; cs_big) {
+        //Otherwise
+        else {
+
+            //If health mode is active
+            if (global.healthmode == true) {
             
-                //Play 'Warp' sound
-                audio_play_sound(snd_warp, 0, false);
-                
-                //Turn into 'Super'
-                global.powerup = cs_big;
-                
-                //Perform animation sequence
-                with (instance_create(0,0,obj_player_transform))
-                    sequence = 3;
-            }
-            
-            //Otherwise, if the player does not have a powerup
-            else {
-            
-                //If there's health left
-                if (health &gt; 1) {
+                //If the player does have a powerup
+                if (global.powerup &gt; cs_big) {
                 
                     //Play 'Warp' sound
                     audio_play_sound(snd_warp, 0, false);
                     
-                    //Decrement health
-                    health--;
+                    //Turn into 'Super'
+                    global.powerup = cs_big;
                     
                     //Perform animation sequence
                     with (instance_create(0,0,obj_player_transform))
                         sequence = 3;
                 }
                 
-                //Otherwise if the HP is 1, die.
-                else if (health == 1) {
+                //Otherwise, if the player does not have a powerup
+                else {
                 
-                    //Set health
-                    health = 0;
+                    //If there's health left
+                    if (health &gt; 1) {
                     
-                    //Perform death events
+                        //Play 'Warp' sound
+                        audio_play_sound(snd_warp, 0, false);
+                        
+                        //Decrement health
+                        health--;
+                        
+                        //Perform animation sequence
+                        with (instance_create(0,0,obj_player_transform))
+                            sequence = 3;
+                    }
+                    
+                    //Otherwise if the HP is 1, die.
+                    else if (health == 1) {
+                    
+                        //Set health
+                        health = 0;
+                        
+                        //Perform death events
+                        instance_create(x,y,obj_player_dead);
+                        instance_destroy();
+                        exit;     
+                    }
+                }
+            }
+            
+            //Otherwise, if health mode is not enabled
+            else if (global.healthmode == false) {
+            
+                //If the player has a higher grade powerup
+                if (global.powerup &gt; cs_big) {
+                
+                    //Play 'Warp' sound
+                    audio_play_sound(snd_warp, 0, false);
+            
+                    //Turn the player into 'Super'.
+                    global.powerup = cs_big;
+                    
+                    //Perform animation sequence
+                    with (instance_create(0,0,obj_player_transform))
+                        sequence = 3;    
+                }
+                
+                //Otherwise, turn into small
+                else if (global.powerup == cs_big) {
+                
+                    //Play 'Warp' sound
+                    audio_play_sound(snd_warp, 0, false);
+                    
+                    //Turn the player into 'Super'.
+                    global.powerup = cs_small;
+                    
+                    //Drop reserve item
+                    with (obj_levelcontrol) {
+                    
+                        if (global.reserve &gt; cs_small)
+                            event_user(1);
+                    }
+                    
+                    //Perform animation sequence
+                    with (instance_create(0,0,obj_player_transform))
+                        sequence = 1;        
+                }
+                
+                //Otherwise, kill the player
+                else {
+                  
                     instance_create(x,y,obj_player_dead);
                     instance_destroy();
                     exit;     
                 }
-            }
-        }
-        
-        //Otherwise, if health mode is not enabled
-        else if (global.healthmode == false) {
-        
-            //If the player has a higher grade powerup
-            if (global.powerup &gt; cs_big) {
-            
-                //Play 'Warp' sound
-                audio_play_sound(snd_warp, 0, false);
-        
-                //Turn the player into 'Super'.
-                global.powerup = cs_big;
-                
-                //Perform animation sequence
-                with (instance_create(0,0,obj_player_transform))
-                    sequence = 3;    
-            }
-            
-            //Otherwise, turn into small
-            else if (global.powerup == cs_big) {
-            
-                //Play 'Warp' sound
-                audio_play_sound(snd_warp, 0, false);
-                
-                //Turn the player into 'Super'.
-                global.powerup = cs_small;
-                
-                //Perform animation sequence
-                with (instance_create(0,0,obj_player_transform))
-                    sequence = 1;        
-            }
-            
-            //Otherwise, kill the player
-            else {
-              
-                instance_create(x,y,obj_player_dead);
-                instance_destroy();
-                exit;     
             }
         }
     }

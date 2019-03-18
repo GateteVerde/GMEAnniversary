@@ -59,6 +59,41 @@ boxselection = 0;
 //Draws the player or collected Star Coins
 showcase = 0;
 alarm[1] = 240;
+
+//Generate a cloud every 10 seconds
+alarm[4] = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Generate a cloud
+
+//Generate another cloud
+alarm[4] = round(random(120)) + 120;
+
+//Generate current cloud
+if (choose(0,1) == 1)
+    instance_create(view_xview[0]-16, view_yview[0]-16, obj_mapcloud);
+else
+    instance_create(view_xview[0] + view_wview[0], view_yview[0] + view_hview[0], obj_mapcloud);
 </string>
           </argument>
         </arguments>
@@ -271,37 +306,46 @@ else if (inventory) {
             //If a powerup is selected.
             if (global.inventory[boxselection] != cs_star) 
             &amp;&amp; (global.inventory[boxselection] != cs_pwing) {
-                
-                //Play the reserve item sound
-                audio_play_sound(snd_powerup,0,0)
-                
-                //Remember previous powerup
-                var previous = global.powerup;
             
-                //Change the powerup to the selected item
-                global.powerup = global.inventory[boxselection];
+                //If a P-Wing is active
+                if (!global.pwing) {
                 
-                //If Mario does not have a powerup.
-                if (previous == 0) {
+                    //Play the reserve item sound
+                    audio_play_sound(snd_powerup,0,0)
                     
-                    //Shift the inventory items over by one
-                    for (var i = boxselection; i &lt; global.inventory[0]; i++) {
+                    //Remember previous powerup
+                    var previous = global.powerup;
+                
+                    //Change the powerup to the selected item
+                    global.powerup = global.inventory[boxselection];
                     
-                        global.inventory[i] = global.inventory[i+1];
+                    //If Mario does not have a powerup.
+                    if (previous == 0) {
+                        
+                        //Shift the inventory items over by one
+                        for (var i = boxselection; i &lt; global.inventory[0]; i++) {
+                        
+                            global.inventory[i] = global.inventory[i+1];
+                        }
+                            
+                        //Subtract from the number of items in the inventory
+                        global.inventory[0]--;
                     }
-                        
-                    //Subtract from the number of items in the inventory
-                    global.inventory[0]--;
+                    
+                    //Otherwise, replace the powerup with the old powerup.
+                    else {
+                            
+                        global.inventory[boxselection] = previous;
+                    }
+                    
+                    //Finish item retrieval
+                    event_user(0);
                 }
-                
-                //Otherwise, replace the powerup with the old powerup.
                 else {
-                        
-                    global.inventory[boxselection] = previous;
-                }
                 
-                //Finish item retrieval
-                event_user(0);
+                    //Deny event
+                    audio_play_sound(snd_wrong, 0, false);
+                }
             }
             
             //Otherwise, if a star got selected.

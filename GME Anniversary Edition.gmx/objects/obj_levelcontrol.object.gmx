@@ -868,20 +868,10 @@ if (barrier == 0)
 &amp;&amp; (instance_exists(obj_playerparent)) 
 &amp;&amp; (obj_playerparent.disablecontrol == false) {
 
-    //If there's a item in reserve
-    if (global.reserve &gt; cs_small) {
-    
-        //If the 'Space' key is pressed...
-        if (keyboard_check_pressed(global.spacekey))
-        
-        //...or the player turned into the small form and there's a reserve item saved
-        || ((obj_playerparent.invulnerable)
-        &amp;&amp; (global.powerup == 0)) {
-        
-            //Drop the reserve item
-            event_user(1);
-        }
-    }
+    //If there's a item in reserve and the player presses the reserve key.
+    if (keyboard_check_pressed(global.spacekey))
+    &amp;&amp; (global.reserve &gt; cs_small)
+        event_user(1);
         
     //If the 'Enter' key is pressed and the player controls are not disabled
     if (keyboard_check_pressed(global.enterkey))

@@ -45,6 +45,9 @@ alarm[1] = 600;
 //Whether the block was kicked
 ready = 0;
 
+//Whether the block falls
+ready2 = 0;
+
 //Combo
 hitcombo = 0;
 
@@ -429,6 +432,9 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
 &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_semisolid,0,0)))
 || (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
 
+    //Set mask
+    mask_index = sprite_index;
+
     //Stop vertical movement
     gravity = 0;
     if (vspeed &gt; 0.5) {
@@ -441,6 +447,9 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
         vspeed = 0;
 }
 else {
+
+    //Set mask
+    mask_index = spr_shellmask;
 
     //Set the gravity when not underwater
     if (!swimming) {
