@@ -103,11 +103,11 @@ swimming = false;
 with (instance_create(view_xview[0],view_yview[0],obj_powkiller)) killtype = 1;
 
 //Get number of fireworks
-if (global.time -(floor(global.time/10)*10) == 6) 
+if ((global.time mod 10) == 6) 
     global.fireworks = 6;
-else if (global.time -(floor(global.time/10)*10) == 3) 
+else if ((global.time mod 10) == 3) 
     global.fireworks = 3;
-else if (global.time -(floor(global.time/10)*10) == 1) 
+else if ((global.time mod 10) == 1) 
     global.fireworks = 1;
     
 
@@ -652,13 +652,13 @@ if (global.mount == 1) {
         pal_swap_set(spr_palette_yoshi, obj_yoshi.colour);
         
         //Draw Yoshi
-        draw_sprite_ext(spr_yoshi, 0, round(x), round(y)+1, image_xscale, 1, 0, c_white, image_alpha);
+        draw_sprite_ext(spr_yoshi_flag, 0, round(x)-8*sign(image_xscale), round(y)+1, image_xscale, 1, 0, c_white, image_alpha);
         
         //Reset palette
         pal_swap_reset();
         
         //Draw the player
-        player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale);        
+        player_draw_yoshi(scr_mario_ride(), 0, round(x)-8*sign(image_xscale), y, image_xscale);        
     }
 
     //Otherwise, if the player is moving
@@ -682,7 +682,7 @@ if (global.mount == 1) {
             pal_swap_reset();
             
             //Draw the player
-            player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale);
+            player_draw_yoshi(scr_mario_ride(), 0, x, y+obj_yoshi.myy, image_xscale);
         }
         
         //Otherwise, if the player is not jumping
@@ -692,7 +692,7 @@ if (global.mount == 1) {
             if (hspeed == 0) {
                 
                 //Draw the player first
-                player_draw_yoshi(scr_mario_clear(), 0, x, y-9, image_xscale);               
+                player_draw_yoshi(scr_mario_clear(), 0, x, y-9+obj_yoshi.myy, image_xscale);               
                 
                 //Set Yoshi palette
                 pal_swap_set(spr_palette_yoshi, obj_yoshi.colour);
@@ -721,9 +721,9 @@ if (global.mount == 1) {
                 
                 //Draw the player
                 if (x &lt; obj_incastle.x)
-                    player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale);
+                    player_draw_yoshi(scr_mario_ride(), 0, x, y+obj_yoshi.myy, image_xscale);
                 else
-                    player_draw_yoshi(scr_mario_ride(), 1, x, y-3, image_xscale);
+                    player_draw_yoshi(scr_mario_ride(), 1, x, y-3+obj_yoshi.myy, image_xscale);
             }
         }
     }

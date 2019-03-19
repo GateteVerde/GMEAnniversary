@@ -460,7 +460,7 @@ if (global.mount == 1) {
         pal_swap_reset();
         
         //Draw the player
-        player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale);
+        player_draw_yoshi(scr_mario_ride(), 0, x, y+obj_yoshi.myy, image_xscale);
     }
     
     //Otherwise, if the player is not jumping
@@ -470,7 +470,7 @@ if (global.mount == 1) {
         if (hspeed == 0) {
             
             //Draw the player first
-            player_draw_yoshi(scr_mario_clear(), 0, x, y-9, image_xscale);               
+            player_draw_yoshi(scr_mario_clear(), 0, x, y-9+obj_yoshi.myy, image_xscale);               
             
             //Set Yoshi palette
             pal_swap_set(spr_palette_yoshi, obj_yoshi.colour);
@@ -498,7 +498,7 @@ if (global.mount == 1) {
             pal_swap_reset();
             
             //Draw the player
-            player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale);
+            player_draw_yoshi(scr_mario_ride(), 0, x, y+obj_yoshi.myy, image_xscale);
         }
     }
 }

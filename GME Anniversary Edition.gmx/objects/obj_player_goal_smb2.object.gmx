@@ -312,7 +312,7 @@ if (global.mount == 1) {
     pal_swap_reset();
     
     //Draw the player
-    player_draw_yoshi(scr_mario_ride(), 0, x, y, image_xscale);
+    player_draw_yoshi(scr_mario_ride(), 0, x, y+obj_yoshi.myy, image_xscale);
 }
 
 //Otherwise, draw normally
