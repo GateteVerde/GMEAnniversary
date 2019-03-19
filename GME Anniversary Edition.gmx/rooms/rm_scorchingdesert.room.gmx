@@ -148,7 +148,7 @@
     <instance objName="obj_coin" x="128" y="240" name="inst_E94063CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="112" y="256" name="inst_1D1A5201" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="96" y="272" name="inst_59E6D066" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock" x="624" y="288" name="inst_42126738" locked="0" code="sprout = round(random_range(cs_yoshi,cs_yoshi_b));&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="624" y="288" name="inst_42126738" locked="0" code="sprout = round(random_range(cs_yoshi,cs_yoshi_p));&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="640" y="288" name="inst_D81AE0CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="880" y="272" name="inst_D8F97CA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="896" y="272" name="inst_FA52316B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -348,10 +348,6 @@
     <instance objName="obj_donut_red" x="2336" y="384" name="inst_A0BC3736" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpright" x="1824" y="352" name="inst_78EA3F52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="2384" y="112" name="inst_D0012EEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_onoffplatform_o" x="2608" y="224" name="inst_DC134E1F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_onoffplatform_o" x="2624" y="224" name="inst_9EDA6846" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_onoffplatform_o" x="2640" y="288" name="inst_7ECACCCC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_onoffplatform_o" x="2656" y="288" name="inst_10FEFF11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="1776" y="368" name="inst_CEFFB1D4" locked="0" code="myroom = rm_scorchingdesert_b;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warproom" x="2400" y="64" name="inst_36CCAE24" locked="0" code="myroom = rm_scorchingdesert_c;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="2208" y="256" name="inst_DF63CF56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -396,6 +392,10 @@
     <instance objName="obj_graybrick" x="4128" y="352" name="inst_A8DBBB9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_redbrick" x="4128" y="336" name="inst_F851C5BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_redbrick" x="4112" y="352" name="inst_F44FA188" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_onoffplatform_r" x="2624" y="224" name="inst_AF0E8EB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_onoffplatform_r" x="2608" y="224" name="inst_268FE626" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_onoffplatform_r" x="2656" y="288" name="inst_982DE64B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_onoffplatform_r" x="2640" y="288" name="inst_0CDA366B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_smb3" x="160" y="272" w="16" h="16" xo="800" yo="0" id="10069433" name="inst_3C0EF63D" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

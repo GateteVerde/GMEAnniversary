@@ -34,6 +34,8 @@ switch (argument[0]) {
     case (cs_yoshi_r): return spr_egg_r;
     case (cs_yoshi_y): return spr_egg_y;
     case (cs_yoshi_b): return spr_egg_b;
+    case (cs_yoshi_t): return spr_egg_t;
+    case (cs_yoshi_p): return spr_egg_p;
     case (cs_kuriboshoe): return spr_kuriboshoe;
     case (cs_baburushoe): return spr_baburushoe;
     case (cs_dossunshoe): return spr_dossunshoe;

@@ -191,6 +191,12 @@ if (instance_exists(obj_playerparent))
             
             //Blue Yoshi
             case (3): sprite_index = spr_egg_b; break;
+            
+            //Teal Yoshi
+            case (4): sprite_index = spr_egg_t; break;
+            
+            //Pink Yoshi
+            case (5): sprite_index = spr_egg_p; break;
         }
         
         //Set the horizontal speed
@@ -1369,6 +1375,27 @@ else {
             vspeed = -1;         
     }
     
+    //Otherwise, if there's a turnip inside yoshi's mouth
+    else if (mouthholder == obj_turnip) {
+    
+        //Create a turnip
+        with (instance_create(x+(10*obj_playerparent.xscale),y-16,obj_turnip)) {
+        
+            //Use the correct sprite
+            sprite_index = other.mouthsprite;
+        
+            //Set the motion
+            hspeed = 3*obj_playerparent.xscale;
+            vspeed = 0.1;
+            
+            //Set gravity
+            gravity = 0.2;
+            
+            //Do not held the item
+            held = false;
+        }
+    }
+    
     else {
     
         //Create up an item
@@ -1390,6 +1417,20 @@ else {
                 
                 //Set the animation speed
                 image_speed = 0.5;
+                
+                //Get thrown
+                ready = 1;
+                
+                //If the object is in contact with a solid.
+                if (place_meeting(x,y,obj_solid))
+                    event_user(0);
+            }
+            
+            //Otherwise, if the eaten item is a ice block
+            else if (sprite_index == spr_iceblock) {
+            
+                //Set the horizontal speed
+                hspeed = 2.7*obj_playerparent.xscale;
                 
                 //Get thrown
                 ready = 1;

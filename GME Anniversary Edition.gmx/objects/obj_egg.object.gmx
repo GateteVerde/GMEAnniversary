@@ -86,6 +86,14 @@ if (instance_number(obj_yoshi) == 0)
         //Blue Yoshi
         else if (other.sprite_index == spr_egg_b)
             colour = 3;
+            
+        //Teal Yoshi
+        else if (other.sprite_index == spr_egg_t)
+            colour = 4;
+            
+        //Pink Yoshi
+        else if (other.sprite_index == spr_egg_p)
+            colour = 5;
     }
     
     //Destroy

@@ -622,10 +622,6 @@
         <sprite>sprites\spr_onoffplatform_r</sprite>
         <sprite>sprites\spr_onoffblock_b</sprite>
         <sprite>sprites\spr_onoffplatform_b</sprite>
-        <sprite>sprites\spr_onoffblock_p</sprite>
-        <sprite>sprites\spr_onoffplatform_p</sprite>
-        <sprite>sprites\spr_onoffblock_o</sprite>
-        <sprite>sprites\spr_onoffplatform_o</sprite>
       </sprites>
       <sprites name="Bricks">
         <sprites name="Shards">
@@ -1220,6 +1216,8 @@
               <sprite>sprites\spr_egg_r</sprite>
               <sprite>sprites\spr_egg_y</sprite>
               <sprite>sprites\spr_egg_b</sprite>
+              <sprite>sprites\spr_egg_t</sprite>
+              <sprite>sprites\spr_egg_p</sprite>
               <sprite>sprites\spr_egg_bits</sprite>
               <sprite>sprites\spr_yoshi_fire</sprite>
               <sprite>sprites\spr_yoshi_hatch</sprite>
@@ -1935,10 +1933,6 @@
         <object>objects\obj_onoffplatform_r</object>
         <object>objects\obj_onoffblock_b</object>
         <object>objects\obj_onoffplatform_b</object>
-        <object>objects\obj_onoffblock_p</object>
-        <object>objects\obj_onoffplatform_p</object>
-        <object>objects\obj_onoffblock_o</object>
-        <object>objects\obj_onoffplatform_o</object>
       </objects>
       <objects name="Bricks">
         <object>objects\obj_brick</object>
@@ -3004,26 +2998,28 @@
       <room>rooms\rm_poweruptestarea</room>
     </rooms>
   </rooms>
-  <constants number="47">
+  <constants number="49">
     <constant name="cs_version">"11-03-2019 - v1.7.1"</constant>
     <constant name="cs_levels">7</constant>
-    <constant name="cs_billy">-30</constant>
-    <constant name="cs_golden">-29</constant>
-    <constant name="cs_beanstalk">-28</constant>
-    <constant name="cs_propellerblock">-27</constant>
-    <constant name="cs_trampoline">-26</constant>
-    <constant name="cs_gswitch">-25</constant>
-    <constant name="cs_pswitch">-24</constant>
-    <constant name="cs_key">-23</constant>
-    <constant name="cs_poison">-22</constant>
-    <constant name="cs_pwing">-21</constant>
-    <constant name="cs_star">-20</constant>
-    <constant name="cs_3up">-19</constant>
-    <constant name="cs_1up">-18</constant>
-    <constant name="cs_jugemushoe">-17</constant>
-    <constant name="cs_dossunshoe">-16</constant>
-    <constant name="cs_baburushoe">-15</constant>
-    <constant name="cs_kuriboshoe">-14</constant>
+    <constant name="cs_billy">-32</constant>
+    <constant name="cs_golden">-31</constant>
+    <constant name="cs_beanstalk">-30</constant>
+    <constant name="cs_propellerblock">-29</constant>
+    <constant name="cs_trampoline">-28</constant>
+    <constant name="cs_gswitch">-27</constant>
+    <constant name="cs_pswitch">-26</constant>
+    <constant name="cs_key">-25</constant>
+    <constant name="cs_poison">-24</constant>
+    <constant name="cs_pwing">-23</constant>
+    <constant name="cs_star">-22</constant>
+    <constant name="cs_3up">-21</constant>
+    <constant name="cs_1up">-20</constant>
+    <constant name="cs_jugemushoe">-19</constant>
+    <constant name="cs_dossunshoe">-18</constant>
+    <constant name="cs_baburushoe">-17</constant>
+    <constant name="cs_kuriboshoe">-16</constant>
+    <constant name="cs_yoshi_p">-15</constant>
+    <constant name="cs_yoshi_t">-14</constant>
     <constant name="cs_yoshi_b">-13</constant>
     <constant name="cs_yoshi_r">-12</constant>
     <constant name="cs_yoshi_y">-11</constant>

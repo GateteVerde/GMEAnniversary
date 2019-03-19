@@ -167,7 +167,7 @@ background_hspeed[1] = -0.2;</code>
     <instance objName="obj_qblock_spiked" x="624" y="48" name="inst_4D4B3C31" locked="0" code="sprout = cs_trampoline;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="448" y="32" name="inst_52F723CA" locked="0" code="sprout = cs_lightning;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="320" y="160" name="inst_7E5FC9C1" locked="0" code="sprout = cs_kuriboshoe;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock" x="160" y="160" name="inst_C6B31E45" locked="0" code="sprout = round(random_range(cs_yoshi,cs_yoshi_b));&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="160" y="160" name="inst_C6B31E45" locked="0" code="//sprout = round(random_range(cs_yoshi,cs_yoshi_p));&#xA;sprout = cs_yoshi_p;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="384" y="272" name="inst_47BBBA7F" locked="0" code="varmsg = &quot;These blocks to my right are throwable bricks, press 'Run / Hold' to grab them and release said key to kick the block in the direction you're facing.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="448" y="256" name="inst_B21376C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="416" y="256" name="inst_46808A50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

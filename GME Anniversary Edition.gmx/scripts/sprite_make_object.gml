@@ -92,6 +92,24 @@ switch (argument[2]) {
             i.sprite_index = spr_egg_b;
     }
     return i;
+    
+    //Teal Yoshi
+    case (spr_egg_t): {
+    
+        var i;
+        i = instance_create(argument[0],argument[1],obj_egg);
+            i.sprite_index = spr_egg_t;
+    }
+    return i;
+    
+    //Pink Yoshi
+    case (spr_egg_p): {
+    
+        var i;
+        i = instance_create(argument[0],argument[1],obj_egg);
+            i.sprite_index = spr_egg_p;
+    }
+    return i;
         
     //Kuribo Shoe
     case (spr_kuriboshoe): return instance_create(argument[0],argument[1],obj_getshoe);

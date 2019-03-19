@@ -104,8 +104,6 @@ global.onoffyellow = 1;
 global.onoffgreen = 1;
 global.onoffred = 1;
 global.onoffblue = 1;
-global.onoffpurple = 1;
-global.onofforange = 1;
 
 //Position change object type
 //-1: No Change
@@ -130,6 +128,8 @@ global.mount = 0;
 //1: Red
 //2: Yellow
 //3: Blue
+//4: Teal (Does not affect Kuribo shoes, only Yoshi)
+//5: Pink (Does not affect Kuribo shoes, only Yoshi)
 global.mountcolour = 0;
 
 //P-Switch time limit
