@@ -616,12 +616,16 @@
       <sprites name="Area Blocks">
         <sprite>sprites\spr_onoffblock_y</sprite>
         <sprite>sprites\spr_onoffplatform_y</sprite>
+        <sprite>sprites\spr_onofflift_y</sprite>
         <sprite>sprites\spr_onoffblock_g</sprite>
         <sprite>sprites\spr_onoffplatform_g</sprite>
+        <sprite>sprites\spr_onofflift_g</sprite>
         <sprite>sprites\spr_onoffblock_r</sprite>
         <sprite>sprites\spr_onoffplatform_r</sprite>
+        <sprite>sprites\spr_onofflift_r</sprite>
         <sprite>sprites\spr_onoffblock_b</sprite>
         <sprite>sprites\spr_onoffplatform_b</sprite>
+        <sprite>sprites\spr_onofflift_b</sprite>
       </sprites>
       <sprites name="Bricks">
         <sprites name="Shards">
@@ -1700,22 +1704,18 @@
       <background>background\bgr_volcano</background>
     </backgrounds>
     <backgrounds name="Tile Sets">
-      <backgrounds name="SMB">
-        <background>background\bgr_tileset_smb</background>
-        <background>background\bgr_tileset_smb_goal</background>
+      <backgrounds name="Decoration">
+        <background>background\bgr_tileset_pipes</background>
+        <background>background\bgr_tileset_bushes</background>
+        <background>background\bgr_tileset_bushes_large</background>
+        <background>background\bgr_tileset_ghost</background>
       </backgrounds>
-      <background>background\bgr_tileset_smb2</background>
-      <backgrounds name="SMB3">
-        <background>background\bgr_tileset_smb3</background>
-        <background>background\bgr_tileset_smb3_goal</background>
-      </backgrounds>
-      <backgrounds name="SMW">
-        <background>background\bgr_tileset_smw</background>
-        <background>background\bgr_tileset_smw_pipe</background>
-        <background>background\bgr_tileset_smw_bush</background>
-        <background>background\bgr_tileset_smw_largebush</background>
-        <background>background\bgr_tileset_smw_ghost</background>
-      </backgrounds>
+      <background>background\bgr_tileset</background>
+      <background>background\bgr_tileset_2</background>
+      <background>background\bgr_tileset_3</background>
+      <background>background\bgr_tileset_4</background>
+      <background>background\bgr_tileset_goal</background>
+      <background>background\bgr_tileset_goal_smb3</background>
       <background>background\bgr_tileset_map</background>
     </backgrounds>
     <background>background\bgr_anniversary</background>
@@ -1928,12 +1928,16 @@
       <objects name="Area Blocks">
         <object>objects\obj_onoffblock_y</object>
         <object>objects\obj_onoffplatform_y</object>
+        <object>objects\obj_onofflift_y</object>
         <object>objects\obj_onoffblock_g</object>
         <object>objects\obj_onoffplatform_g</object>
+        <object>objects\obj_onofflift_g</object>
         <object>objects\obj_onoffblock_r</object>
         <object>objects\obj_onoffplatform_r</object>
+        <object>objects\obj_onofflift_r</object>
         <object>objects\obj_onoffblock_b</object>
         <object>objects\obj_onoffplatform_b</object>
+        <object>objects\obj_onofflift_b</object>
       </objects>
       <objects name="Bricks">
         <object>objects\obj_brick</object>

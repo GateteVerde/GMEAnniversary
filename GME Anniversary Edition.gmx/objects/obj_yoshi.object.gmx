@@ -631,6 +631,11 @@ else {
         depth = follow.depth;
     }
 }
+
+//Stop 'Flutter' sound if yoshi is not fluttering
+if (flutter != 1)
+&amp;&amp; (audio_is_playing(snd_yoshi_hover))
+    audio_stop_sound(snd_yoshi_hover);
 </string>
           </argument>
         </arguments>
@@ -1421,6 +1426,10 @@ else {
                 //Get thrown
                 ready = 1;
                 
+                //Do not destroy
+                alarm[0] = -1;
+                alarm[1] = -1;
+                
                 //If the object is in contact with a solid.
                 if (place_meeting(x,y,obj_solid))
                     event_user(0);
@@ -1434,6 +1443,10 @@ else {
                 
                 //Get thrown
                 ready = 1;
+                
+                //Do not destroy
+                alarm[0] = -1;
+                alarm[1] = -1;
                 
                 //If the object is in contact with a solid.
                 if (place_meeting(x,y,obj_solid))
