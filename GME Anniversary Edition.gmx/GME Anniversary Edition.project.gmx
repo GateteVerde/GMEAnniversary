@@ -1481,6 +1481,7 @@
           <sprite>sprites\spr_marker_rotodisc</sprite>
           <sprite>sprites\spr_marker_spinners</sprite>
         </sprites>
+        <sprite>sprites\spr_marker_enemy</sprite>
         <sprite>sprites\spr_marker_galoomba</sprite>
         <sprite>sprites\spr_marker_cheep</sprite>
         <sprite>sprites\spr_marker_cheep_spiked</sprite>
@@ -1677,28 +1678,28 @@
     <backgrounds name="Backgrounds">
       <backgrounds name="Foregrounds">
         <background>background\bgr_cloudblanket</background>
-        <background>background\bgr_cloudblanket_desert</background>
         <background>background\bgr_reef</background>
         <background>background\bgr_smog</background>
         <background>background\bgr_smog2</background>
       </backgrounds>
       <background>background\bgr_blocks</background>
+      <background>background\bgr_blocks_bg</background>
       <background>background\bgr_bonus</background>
       <background>background\bgr_cave_bg</background>
       <background>background\bgr_cave_fg</background>
       <background>background\bgr_clouds</background>
-      <background>background\bgr_clouds_desert</background>
       <background>background\bgr_desert_bg</background>
       <background>background\bgr_desert_fg</background>
+      <background>background\bgr_desert_fg2</background>
       <background>background\bgr_fortress_bg</background>
       <background>background\bgr_fortress_fg</background>
       <background>background\bgr_ghosthouse</background>
       <background>background\bgr_subcon_bg</background>
       <background>background\bgr_subcon_fg</background>
-      <background>background\bgr_switchpalace_b</background>
+      <background>background\bgr_switchpalace_y</background>
       <background>background\bgr_switchpalace_g</background>
       <background>background\bgr_switchpalace_r</background>
-      <background>background\bgr_switchpalace_y</background>
+      <background>background\bgr_switchpalace_b</background>
       <background>background\bgr_underground</background>
       <background>background\bgr_underwater</background>
       <background>background\bgr_volcano</background>
@@ -2184,7 +2185,6 @@
       </objects>
       <objects name="Generators">
         <objects name="Land">
-          <object>objects\obj_generator_goomba</object>
           <object>objects\obj_generator_galoomba</object>
         </objects>
         <objects name="Underwater">
@@ -2201,10 +2201,9 @@
           <object>objects\obj_generator_bulletbill</object>
         </objects>
         <objects name="Subcon">
-          <object>objects\obj_generator_shyguy</object>
-          <object>objects\obj_generator_bombguy</object>
           <object>objects\obj_generator_beezo</object>
         </objects>
+        <object>objects\obj_generator_enemy</object>
       </objects>
       <object>objects\obj_hammerbro</object>
       <object>objects\obj_boomerangbro</object>

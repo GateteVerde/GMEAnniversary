@@ -39,7 +39,7 @@ scale = 1;
 //Alpha
 alpha = 0;
 
-//Scale modifier
+//Title position
 vspeed = 0.25;
 </string>
           </argument>
@@ -65,12 +65,12 @@ vspeed = 0.25;
             <kind>1</kind>
             <string>///Update position of bars and background
 
-//Update title scale
+//Update title position
 if (y &gt; ystart)
     vspeed -= 0.005;
 else
     vspeed += 0.005;
-
+    
 //Update bars position
 barx += 0.5;
 

@@ -80,6 +80,10 @@ image_speed = 0.3;
             <kind>1</kind>
             <string>///Make buzzy beetle shells edible and not vulnerable to fire
 
+//Inherit event
+event_inherited();
+
+//Read top comment
 if (sprite_index == spr_shell_buzzy)
 || (sprite_index == spr_shell_buzzy_down) {
 

@@ -216,7 +216,7 @@ if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerpa
             <string>///Winged block logic
 
 //Check for the player
-var player = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_playerparent,0,0);
+var player = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+2,obj_playerparent,0,0);
 
 //If the player is in position
 if (player)

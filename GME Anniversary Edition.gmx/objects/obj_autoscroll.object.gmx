@@ -81,7 +81,13 @@ airshipoffset = 0;
             <kind>1</kind>
             <string>///Start moving
 
-path_start(mypath,0.01,path_action_stop,false);
+//If a path does exist
+if (mypath != noone)
+    path_start(mypath,0.01,path_action_stop,false);
+
+//Otherwise, move normally
+else
+    hspeed = 0.01;
 </string>
           </argument>
         </arguments>
@@ -174,7 +180,7 @@ else {
 
     hspeed += 0.01;
     if (hspeed &gt; maxspd)
-        hspeed -= 0.01;
+        hspeed = maxspd;
 }
 
 //Airship floating effect.
