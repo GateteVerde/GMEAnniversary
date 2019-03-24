@@ -257,8 +257,14 @@ if (mebelow == noone) {
     //If a enemy is below, remember it.
     if (position_meeting(x,bbox_bottom+8,obj_pokey)) {
     
-        //Ride above this goomba
+        //Ride above this pokey
         mebelow = collision_point(x,bbox_bottom+8,obj_pokey,0,0);
+        
+        //Make sure below parts collides with walls
+        with (mebelow) {
+        
+            event_user(3);
+        }
         
         //Stop moving
         vspeed = 0;
@@ -273,6 +279,9 @@ if (mebelow == noone) {
     
         //Execute default event
         event_inherited();
+        
+        //Turn on ledges
+        event_user(6);
             
         //Reset offset values
         offset = 0;
@@ -294,7 +303,7 @@ else {
     
         //Snap above it
         x = mebelow.x;
-        y = mebelow.y-16;
+        y = mebelow.y-14;
         xscale = mebelow.xscale;
     }
     

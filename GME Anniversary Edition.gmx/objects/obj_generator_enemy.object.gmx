@@ -40,7 +40,7 @@
 **      2:    Left
 **      3:    Down
 **
-**  spd     = Speed of the enemy, defaults to 0.5 if not set
+**  spd     = Speed of the resulting enemy
 */
 
 //Default values
@@ -169,7 +169,7 @@ else if (ready == 1) {
     }
 }
 
-//Hereby the sprite
+//Hereby the sprite and check it
 sprite_index = object_get_sprite(object);
 </string>
           </argument>
