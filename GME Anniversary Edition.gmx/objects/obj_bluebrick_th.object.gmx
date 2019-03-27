@@ -410,7 +410,7 @@ if (vspeed &gt;= 0) {
 //Embed the NPC into the slope to ensure correct slope physics.
 if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
 &amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0)) 
-&amp;&amp; (vspeed == 0)
+&amp;&amp; (vspeed &gt;= 0)
     y += 4;
     
 //Handle slope collision

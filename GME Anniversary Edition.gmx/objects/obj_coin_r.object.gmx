@@ -77,8 +77,8 @@ if (visible) {
         default: audio_play_sound(snd_redcoin, 0, false); break;
     }
     
-    //Increment 2 coins
-    global.coins += 2;
+    //Increment coin
+    global.coins++;
     
     //Get 20 points
     score += 20;

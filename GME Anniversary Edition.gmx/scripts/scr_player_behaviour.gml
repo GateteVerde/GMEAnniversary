@@ -598,7 +598,7 @@ if (keyboard_check_pressed(global.downkey))
 
     //If the player does have the penguin suit
     if ((global.powerup == cs_shell)
-    || (global.powerup == cs_penguin))
+    || ((global.powerup == cs_penguin) && (collision_rectangle(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+2, obj_slippery, 1, 0))))
     && (global.mount == 0)
     && (state == 1)
     && (!sliding)

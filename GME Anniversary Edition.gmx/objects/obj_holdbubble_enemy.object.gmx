@@ -216,11 +216,14 @@ else
             <kind>1</kind>
             <string>///Pop the bubble
 
-//Stop movement of the player
+//Stop movement of the player if not sliding
 with (other) {
 
-    xspeed = 0;
-    yspeed = 0;
+    if (sliding == 0) {
+    
+        xspeed = 0;
+        yspeed = 0;
+    }
 }
 
 //Destroy

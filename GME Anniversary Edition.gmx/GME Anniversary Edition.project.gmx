@@ -691,6 +691,10 @@
           <sprite>sprites\spr_slope_l</sprite>
           <sprite>sprites\spr_slope_sr</sprite>
           <sprite>sprites\spr_slope_sl</sprite>
+          <sprite>sprites\spr_slope_ice_r</sprite>
+          <sprite>sprites\spr_slope_ice_l</sprite>
+          <sprite>sprites\spr_slope_ice_sr</sprite>
+          <sprite>sprites\spr_slope_ice_sl</sprite>
         </sprites>
         <sprites name="Slopes (Ceiling)">
           <sprite>sprites\spr_cslope_r</sprite>
@@ -1888,6 +1892,10 @@
         <object>objects\obj_slope_l</object>
         <object>objects\obj_slope_sr</object>
         <object>objects\obj_slope_sl</object>
+        <object>objects\obj_slope_ice_r</object>
+        <object>objects\obj_slope_ice_l</object>
+        <object>objects\obj_slope_ice_sr</object>
+        <object>objects\obj_slope_ice_sl</object>
       </objects>
       <objects name="Slopes (Ceiling)">
         <object>objects\obj_ceilslope_r</object>

@@ -128,9 +128,18 @@ if (!disablecontrol) { //If the player's controls are not disabled.
 //Accelerate when in contact with a slope
 if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
 
-    //If the player does have the shell or penguin powerup and it's not at full speed.
-    if (((global.powerup == cs_shell) || (global.powerup == cs_penguin)) && (abs(xspeed) != xspeedmax)) 
-    || ((global.powerup != cs_shell) && (global.powerup != cs_penguin)) {
+    //If the player does have the shell or powerup and it's not at full speed.
+    if ((global.powerup == cs_shell) 
+    && (abs(xspeed) != xspeedmax))
+    
+    //Or the player does have the shell or powerup and it's not at full speed.
+    || ((global.powerup == cs_penguin) 
+    && (abs(xspeed) != xspeedmax)
+    && (!collision_rectangle(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+2, obj_slippery, 1, 0)))
+    
+    //Or the player does not have shell or penguin powerup
+    || ((global.powerup != cs_shell) 
+    && (global.powerup != cs_penguin)) {
     
         //22.5º Right Slope
         if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_r,1,0))
@@ -200,13 +209,10 @@ else if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,
         else {
     
             //If the player does have the shell or penguin powerups and the horizontal speed is not equal to the maximum speed.
-            if (((global.powerup == cs_shell) 
-            || (global.powerup == cs_penguin))
-            && (abs(xspeed) != xspeedmax)) 
+            if ((global.powerup == cs_shell) && (abs(xspeed) != xspeedmax)) 
             
             //Or the player does not have either the shell or penguin powerup.
-            || ((global.powerup != cs_shell)
-            && (global.powerup != cs_penguin)) {
+            || ((global.powerup != cs_shell)) {
         
                 //If the player is not on contact with a slippery surface.
                 if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
@@ -229,18 +235,26 @@ else if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,
                 //Otherwise, if the player is on contact with a slippery surface.
                 else if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
                 
-                    //Slowdown
-                    xspeed = max(0,abs(xspeed)-0.0125)*sign(xspeed);
-                    if ((xspeed > -0.0125) && (xspeed < 0.0125)) {
+                    //If the player has the penguin powerup and the horizontal speed equals the cap limit.
+                    if ((global.powerup == cs_penguin)
+                    && (abs(xspeed) != xspeedmax)) 
                     
-                        //Stop horizontal speed.
-                        xspeed = 0;
+                    //Or else if the player does not have it.
+                    || (global.powerup != cs_penguin) {
+                    
+                        //Slowdown
+                        xspeed = max(0,abs(xspeed)-0.0125)*sign(xspeed);
+                        if ((xspeed > -0.0125) && (xspeed < 0.0125)) {
                         
-                        //End combo
-                        hitcombo = 0;
-                        
-                        //Stop sliding behaviour
-                        sliding = false;
+                            //Stop horizontal speed.
+                            xspeed = 0;
+                            
+                            //End combo
+                            hitcombo = 0;
+                            
+                            //Stop sliding behaviour
+                            sliding = false;
+                        }
                     }        
                 }
             }
