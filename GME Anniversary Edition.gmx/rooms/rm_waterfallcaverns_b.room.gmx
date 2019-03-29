@@ -164,8 +164,7 @@
     <instance objName="obj_blooper" x="1200" y="144" name="inst_2C2B1A98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="1456" y="32" name="inst_A8A35C5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ripvanfish" x="1056" y="160" name="inst_AABEE7E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warproom" x="1472" y="-16" name="inst_BB47677B" locked="0" code="myroom = rm_waterfallcaverns_d;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_EB72FFC6" locked="0" code="levelmusic = bgm_underwater;&#xA;leveltime = 1&#xA;camlock = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_EB72FFC6" locked="0" code="levelmusic = bgm_underwater;&#xA;leveltime = 200;&#xA;camlock = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blowpipe" x="528" y="16" name="inst_ADD6136C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blowpipe" x="624" y="96" name="inst_A9CF70FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="528" y="16" name="inst_347655FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -257,6 +256,8 @@
     <instance objName="obj_jelectro" x="1232" y="80" name="inst_439E20F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jelectro" x="1184" y="80" name="inst_4DC6FE5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jelectro" x="1248" y="32" name="inst_369DEE32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warpbranch" x="1472" y="-16" name="inst_16F298CF" locked="0" code="mybranch = branch_waterfallcaverns();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_checkpoint" x="112" y="144" name="inst_8578AD90" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset" x="368" y="192" w="32" h="16" xo="736" yo="432" id="10056271" name="tile_2E977693" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

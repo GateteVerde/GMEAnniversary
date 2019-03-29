@@ -124,6 +124,52 @@ image_speed = 0.065+abs(hspeed)/7.5;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Block coin logic
+
+//Inherit event
+event_inherited();
+
+//Check for a water object
+var water = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0);
+
+//If the object is not underwater and makes contact with water
+if (water) 
+&amp;&amp; (!swimming) {
+
+    //Make the object go underwater
+    swimming = true;
+    
+    //Stop vertical movement
+    if (vspeed &gt; 0)
+        vspeed = 0;
+}
+
+//Otherwise, if the object is underwater and it's not underwater, end swimming.
+else if (!water) 
+&amp;&amp; (swimming)
+    swimming = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_blockparent">
       <action>
         <libid>1</libid>
@@ -175,6 +221,12 @@ if ((other.vspeed &lt;&gt; 0) &amp;&amp; (vspeed &gt;= 0)) {
 
 //Play 'Coin' sound
 audio_play_sound(snd_coin, 0, false);
+
+//Increment branch warp counter
+if (instance_exists(obj_warpbranch)) {
+
+    with (obj_warpbranch) coins++;
+}
 
 //Increment coins
 global.coins++;

@@ -113,6 +113,12 @@ if (other.vspeed &lt;&gt; 0) {
 //Play 'Coin' sound
 audio_play_sound(snd_coin, 0, false);
 
+//Increment branch warp counter
+if (instance_exists(obj_warpbranch)) {
+
+    with (obj_warpbranch) coins++;
+}
+
 //Increment coins
 global.coins++;
 

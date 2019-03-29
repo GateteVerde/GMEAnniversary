@@ -204,7 +204,7 @@ if (vspeed &gt; 0)
             <kind>1</kind>
             <string>///Collect the coin with a thrown shell
 
-event_perform(ev_collision,obj_mario); 
+event_perform(ev_collision,obj_playerparent); 
 </string>
           </argument>
         </arguments>
@@ -229,7 +229,7 @@ event_perform(ev_collision,obj_mario);
             <kind>1</kind>
             <string>///Collect the coin with a kamikaze koopa
 
-event_perform(ev_collision,obj_mario); 
+event_perform(ev_collision,obj_playerparent); 
 </string>
           </argument>
         </arguments>
@@ -256,7 +256,7 @@ event_perform(ev_collision,obj_mario);
 
 if (other.held == 0)
 &amp;&amp; (other.ready == 1)
-    event_perform(ev_collision,obj_mario); 
+    event_perform(ev_collision,obj_playerparent); 
 </string>
           </argument>
         </arguments>
@@ -341,7 +341,7 @@ if (!ready) {
             <string>///Collect the coin with a vegetable
 
 if (other.held == 0)
-    event_perform(ev_collision,obj_mario); 
+    event_perform(ev_collision,obj_playerparent); 
 </string>
           </argument>
         </arguments>

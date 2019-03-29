@@ -1272,7 +1272,10 @@
           <sprite>sprites\spr_starman</sprite>
           <sprite>sprites\spr_pwing</sprite>
           <sprite>sprites\spr_1up</sprite>
-          <sprite>sprites\spr_1uph</sprite>
+          <sprite>sprites\spr_1up_h1</sprite>
+          <sprite>sprites\spr_1up_h2</sprite>
+          <sprite>sprites\spr_1up_h3</sprite>
+          <sprite>sprites\spr_1up_h4</sprite>
           <sprite>sprites\spr_poison</sprite>
           <sprite>sprites\spr_goldshroom</sprite>
         </sprites>
@@ -1794,6 +1797,7 @@
       </scripts>
       <script>scripts\save.gml</script>
       <script>scripts\load.gml</script>
+      <script>scripts\branch.gml</script>
       <script>scripts\endlevel.gml</script>
       <script>scripts\pswitch_activate.gml</script>
       <script>scripts\pswitch_deactivate.gml</script>
@@ -2362,9 +2366,14 @@
           <object>objects\obj_starman</object>
           <object>objects\obj_pwing</object>
           <object>objects\obj_1up</object>
-          <object>objects\obj_1uph</object>
           <object>objects\obj_poison</object>
           <object>objects\obj_goldshroom</object>
+        </objects>
+        <objects name="Markers">
+          <object>objects\obj_1up_h1</object>
+          <object>objects\obj_1up_h2</object>
+          <object>objects\obj_1up_h3</object>
+          <object>objects\obj_1up_h4</object>
         </objects>
         <objects name="Coins">
           <objects name="Special">
@@ -2522,6 +2531,7 @@
       <object>objects\obj_warpmap</object>
       <object>objects\obj_warppost</object>
       <object>objects\obj_warproom</object>
+      <object>objects\obj_warpbranch</object>
       <object>objects\obj_warpcannon</object>
       <object>objects\obj_warpcannon_big</object>
       <object>objects\obj_pitwarp</object>

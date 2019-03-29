@@ -81,10 +81,6 @@ follow = noone;
 pwarning = 0;
 gwarning = 0;
 
-//How many 1-UP checks are inside the room?
-check = 0;
-checkmax = 0;
-
 //Make sure the view follows this object.
 view_object[0] = id;
 
@@ -460,15 +456,15 @@ if (instance_exists(obj_playerparent)) {
         global.time--;
         
         //Decrement again
-        alarm[2] = 50;
+        alarm[2] = 40;
         
         //Play the hurry up sound at 100 seconds
         if (global.time == 101)
-            alarm[3] = 50;
+            alarm[3] = 40;
             
         //Kill the player at 0 seconds
         else if (global.time == 1)
-            alarm[4] = 50;
+            alarm[4] = 40;
     }
 }
 

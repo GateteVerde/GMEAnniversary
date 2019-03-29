@@ -27,6 +27,12 @@
             <kind>1</kind>
             <string>///A coin that came out from a block
 
+//Increment branch warp counter
+if (instance_exists(obj_warpbranch)) {
+
+    with (obj_warpbranch) coins++;
+}
+
 //Increment coins
 global.coins++;
 
