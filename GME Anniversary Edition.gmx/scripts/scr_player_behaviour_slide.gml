@@ -266,7 +266,7 @@ else if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,
 if (!keyboard_check(vk_down)) 
 && (state < 2)
 && ((global.powerup == cs_shell)
-|| (global.powerup == cs_penguin))
+|| ((global.powerup == cs_penguin) && (abs(xspeed) == xspeedmax)))
     sliding = false;
 
 //Prevent the player from sliding too fast.

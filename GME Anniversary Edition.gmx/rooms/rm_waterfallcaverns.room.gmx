@@ -177,7 +177,7 @@
     <instance objName="obj_ceilingspiny" x="3192" y="112" name="inst_2E5C7431" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="232" y="240" name="inst_E738421D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="184" y="240" name="inst_D9CC276D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mario" x="24" y="96" name="inst_8BF793F1" locked="0" code="sliding = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mario" x="24" y="96" name="inst_8BF793F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_502B62E3" locked="0" code="levelmusic = bgm_underground;&#xA;leveltime = 400;&#xA;camlock = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="48" y="-96" name="inst_B3D38675" locked="0" code="" scaleX="1" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="160" y="160" name="inst_8024BAC9" locked="0" code="" scaleX="7" scaleY="1" colour="4294967295" rotation="0"/>
@@ -344,7 +344,24 @@
     <instance objName="obj_coin_p" x="3424" y="80" name="inst_B35A2EA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin_p" x="3392" y="80" name="inst_EF88280C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin_p" x="3456" y="80" name="inst_F769318B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="512" y="192" name="inst_AF6C66FC" locked="0" code="varmsg = &quot;Here, the time is more valuable. Depending of how many time you have left on the clock you might be or not be able to access the secret exit of this level.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="512" y="192" name="inst_AF6C66FC" locked="0" code="varmsg = &quot;Here, the time can change how you progress on the level. Can you find the secret goal?&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3376" y="64" name="inst_BC238188" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3408" y="64" name="inst_A8B0F33E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3440" y="64" name="inst_8DC8B2FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3456" y="48" name="inst_2CD42149" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3424" y="48" name="inst_7B7775A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3392" y="48" name="inst_FC6992B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3376" y="32" name="inst_22E05892" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3408" y="32" name="inst_A0AD1F55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3440" y="32" name="inst_A3CE0768" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3456" y="16" name="inst_796243DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3424" y="16" name="inst_932EAEC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_coin_p" x="3392" y="16" name="inst_00B58566" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pblock" x="3424" y="240" name="inst_68F47E4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pblock" x="3440" y="240" name="inst_41785880" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pblock" x="3456" y="240" name="inst_877FBC31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_trampoline_p" x="3448" y="224" name="inst_0AEAB89A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ceilingnokobombette" x="3240" y="112" name="inst_A0D71690" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset" x="176" y="240" w="16" h="16" xo="928" yo="32" id="10032296" name="tile_4D0075AF" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
