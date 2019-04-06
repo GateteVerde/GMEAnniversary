@@ -440,15 +440,8 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
     mask_index = sprite_index;
 
     //Stop vertical movement
-    gravity = 0;
-    if (vspeed &gt; 0.5) {
-    
-        vspeed = -vspeed/2;
-        if (ready == 0)
-            hspeed = hspeed/2;        
-    }
-    else if ((vspeed &gt; 0) &amp;&amp; (vspeed &lt;= 0.5))
-        vspeed = 0;
+    vspeed = 0;
+    gravity = 0; 
 }
 else {
 
@@ -519,15 +512,15 @@ if (ready) {
 
     if (sprite_index == spr_bluebrick_th) {
     
-        if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1+hspeed,bbox_top,bbox_left,bbox_bottom-8,obj_solid,1,0)))
-        || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top,bbox_right+1+hspeed,bbox_bottom-8,obj_solid,1,0)))
+        if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1+hspeed,bbox_top+1,bbox_left,bbox_bottom-4,obj_solid,1,0)))
+        || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+1,bbox_right+1+hspeed,bbox_bottom-4,obj_solid,1,0)))
             event_user(0);
     }
     else {
     
         //If moving left
         if (hspeed &lt; 0) 
-        &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top,bbox_left,bbox_bottom-8,obj_solid,1,0)) {
+        &amp;&amp; (collision_rectangle(bbox_left+hspeed,bbox_top+1,bbox_left,bbox_bottom-4,obj_solid,1,0)) {
         
             //If not outside view
             if (!outside_view()) {
@@ -538,19 +531,19 @@ if (ready) {
                 //Bump nearby blocks
                 instance_create(x-5,y+8,obj_shellbump);
                 instance_create(x-8,y,obj_blockbumper);
-            }
+            }   
             
             //Reverse speed
-            hspeed = -hspeed;    
+            hspeed = -hspeed;
             
-            //Prevent getting embed on a wall
-            while (collision_rectangle(bbox_left,bbox_top,bbox_left,bbox_bottom-8,obj_solid,0,0))
-                x++; 
+            //Prevent getting embed on walls
+            while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-4,obj_solid,1,0))            
+                x++;         
         }
         
         //Otherwise, if moving right
         else if (hspeed &gt; 0)
-        &amp;&amp; (collision_rectangle(bbox_right,bbox_top,bbox_right+1,bbox_bottom-8,obj_solid,1,0)) {
+        &amp;&amp; (collision_rectangle(bbox_right,bbox_top+1,bbox_right+hspeed,bbox_bottom-4,obj_solid,1,0)) {
         
             //If not outside view
             if (!outside_view()) {
@@ -561,14 +554,14 @@ if (ready) {
                 //Bump nearby blocks
                 instance_create(x+5,y+8,obj_shellbump);
                 instance_create(x-8,y,obj_blockbumper);
-            }
+            }          
             
             //Reverse speed
             hspeed = -hspeed;
             
-            //Prevent getting embed on a wall
-            while (collision_rectangle(bbox_right,bbox_top,bbox_right,bbox_bottom-8,obj_solid,0,0))
-                x--;             
+            //Prevent getting embed on walls
+            while (collision_rectangle(bbox_right,bbox_top+4,bbox_right,bbox_bottom-4,obj_solid,1,0))            
+                x--;       
         }
     }    
 }

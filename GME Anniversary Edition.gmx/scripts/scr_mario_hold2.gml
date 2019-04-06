@@ -56,4 +56,5 @@ switch (global.powerup) {
     case (cs_penguin): return spr_mario_penguin_hold2;
     case (cs_propeller): return spr_mario_propeller_hold2;
     case (cs_cat): return spr_mario_cat_hold2;
+    case (cs_football): return spr_mario_football_hold2;
 }

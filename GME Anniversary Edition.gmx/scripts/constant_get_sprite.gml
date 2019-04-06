@@ -30,6 +30,7 @@ switch (argument[0]) {
     case (cs_penguin): return spr_penguinsuit;
     case (cs_propeller): return spr_propellershroom;
     case (cs_cat): return spr_superbell;
+    case (cs_football): return spr_helmet;
     case (cs_yoshi): return spr_egg;
     case (cs_yoshi_r): return spr_egg_r;
     case (cs_yoshi_y): return spr_egg_y;

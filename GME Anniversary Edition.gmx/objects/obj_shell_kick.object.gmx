@@ -334,11 +334,8 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
     mask_index = sprite_index;
 
     //Stop vertical movement
-    gravity = 0;
-    if (vspeed &gt; 0.5) 
-        vspeed = -vspeed/2;
-    else    
-        vspeed = 0;
+    vspeed = 0;
+    gravity = 0; 
 }
 else {
 

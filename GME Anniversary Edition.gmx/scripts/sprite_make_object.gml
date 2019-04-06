@@ -63,6 +63,9 @@ switch (argument[2]) {
     //Super Bell
     case (spr_superbell): return instance_create(argument[0],argument[1],obj_superbell);
     
+    //Helmet
+    case (spr_helmet): return instance_create(argument[0],argument[1],obj_helmet);
+    
     //Green Yoshi
     case (spr_egg): return instance_create(argument[0],argument[1],obj_egg);
 

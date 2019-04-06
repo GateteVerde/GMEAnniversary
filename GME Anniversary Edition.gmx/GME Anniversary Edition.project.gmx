@@ -570,6 +570,27 @@
           <sprite>sprites\spr_mario_cat_somersault</sprite>
           <sprite>sprites\spr_mario_cat_ride</sprite>
         </sprites>
+        <sprites name="Football">
+          <sprite>sprites\spr_mario_football_walk</sprite>
+          <sprite>sprites\spr_mario_football_jump</sprite>
+          <sprite>sprites\spr_mario_football_run</sprite>
+          <sprite>sprites\spr_mario_football_runjump</sprite>
+          <sprite>sprites\spr_mario_football_skid</sprite>
+          <sprite>sprites\spr_mario_football_climb</sprite>
+          <sprite>sprites\spr_mario_football_swim</sprite>
+          <sprite>sprites\spr_mario_football_carry</sprite>
+          <sprite>sprites\spr_mario_football_hold</sprite>
+          <sprite>sprites\spr_mario_football_hold2</sprite>
+          <sprite>sprites\spr_mario_football_duck</sprite>
+          <sprite>sprites\spr_mario_football_spin</sprite>
+          <sprite>sprites\spr_mario_football_slide</sprite>
+          <sprite>sprites\spr_mario_football_goal</sprite>
+          <sprite>sprites\spr_mario_football_clear</sprite>
+          <sprite>sprites\spr_mario_football_kick</sprite>
+          <sprite>sprites\spr_mario_football_walljump</sprite>
+          <sprite>sprites\spr_mario_football_somersault</sprite>
+          <sprite>sprites\spr_mario_football_ride</sprite>
+        </sprites>
       </sprites>
       <sprites name="Extra">
         <sprites name="Transformations">
@@ -783,6 +804,9 @@
         <sprite>sprites\spr_rex</sprite>
         <sprite>sprites\spr_rex2</sprite>
         <sprite>sprites\spr_rex_sq</sprite>
+        <sprite>sprites\spr_rex_red</sprite>
+        <sprite>sprites\spr_rex_red2</sprite>
+        <sprite>sprites\spr_rex_red_sq</sprite>
         <sprite>sprites\spr_spike</sprite>
         <sprite>sprites\spr_spike_throw</sprite>
         <sprite>sprites\spr_spike_throw2</sprite>
@@ -1251,6 +1275,7 @@
             <sprite>sprites\spr_mbomb</sprite>
             <sprite>sprites\spr_mbomb_th</sprite>
             <sprite>sprites\spr_bolt</sprite>
+            <sprite>sprites\spr_football</sprite>
           </sprites>
           <sprite>sprites\spr_mushroom</sprite>
           <sprite>sprites\spr_fireflower</sprite>
@@ -1269,6 +1294,7 @@
           <sprite>sprites\spr_penguinsuit</sprite>
           <sprite>sprites\spr_propellershroom</sprite>
           <sprite>sprites\spr_superbell</sprite>
+          <sprite>sprites\spr_helmet</sprite>
           <sprite>sprites\spr_starman</sprite>
           <sprite>sprites\spr_pwing</sprite>
           <sprite>sprites\spr_1up</sprite>
@@ -1936,7 +1962,7 @@
         <object>objects\obj_starblock</object>
         <object>objects\obj_shoeblock</object>
         <object>objects\obj_switchblock</object>
-        <object>objects\obj_pwingblock</object>
+        <object>objects\obj_dashblock</object>
       </objects>
       <objects name="Area Blocks">
         <object>objects\obj_onoffblock_y</object>
@@ -2011,6 +2037,7 @@
         <object>objects\obj_parakoopa_yellow</object>
         <object>objects\obj_beachkoopa_yellow</object>
         <object>objects\obj_rex</object>
+        <object>objects\obj_rex_red</object>
         <object>objects\obj_dinotorch</object>
         <object>objects\obj_dinorhino</object>
         <object>objects\obj_spike</object>
@@ -2363,6 +2390,7 @@
           <object>objects\obj_penguinsuit</object>
           <object>objects\obj_propellershroom</object>
           <object>objects\obj_superbell</object>
+          <object>objects\obj_helmet</object>
           <object>objects\obj_starman</object>
           <object>objects\obj_pwing</object>
           <object>objects\obj_1up</object>
@@ -2792,6 +2820,7 @@
               <object>objects\obj_superball</object>
               <object>objects\obj_bomb</object>
               <object>objects\obj_bolt</object>
+              <object>objects\obj_football</object>
               <object>objects\obj_invincibility</object>
             </objects>
             <objects name="Coins">
@@ -3020,7 +3049,7 @@
       <room>rooms\rm_poweruptestarea</room>
     </rooms>
   </rooms>
-  <constants number="49">
+  <constants number="50">
     <constant name="cs_version">"11-03-2019 - v1.7.1"</constant>
     <constant name="cs_levels">7</constant>
     <constant name="cs_billy">-32</constant>
@@ -3070,6 +3099,7 @@
     <constant name="cs_penguin">15</constant>
     <constant name="cs_propeller">16</constant>
     <constant name="cs_cat">17</constant>
+    <constant name="cs_football">18</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

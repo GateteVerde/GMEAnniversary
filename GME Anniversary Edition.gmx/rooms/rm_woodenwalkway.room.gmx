@@ -374,9 +374,9 @@
     <instance objName="obj_solid" x="64" y="320" name="inst_088AA0C0" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="16" y="336" name="inst_8D6D858F" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="0" y="304" name="inst_DBE4A7F5" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pwingblock" x="64" y="352" name="inst_B93BD2A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pwingblock" x="64" y="368" name="inst_AA52D91F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_pwingblock" x="64" y="384" name="inst_A1466E09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dashblock" x="64" y="352" name="inst_B93BD2A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dashblock" x="64" y="368" name="inst_AA52D91F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dashblock" x="64" y="384" name="inst_A1466E09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_noteblock_hidden" x="128" y="320" name="inst_F3AB67B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_basket" x="16" y="384" name="inst_07A7454A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="32" y="384" name="inst_A9608BEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -411,7 +411,6 @@
     <instance objName="obj_grayrus" x="1160" y="224" name="inst_AF82784E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goombrat" x="296" y="176" name="inst_D1A1BC21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goombrat" x="328" y="208" name="inst_942124E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_koopa" x="328" y="352" name="inst_4F808E55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flagpole" x="3232" y="208" name="inst_730F48D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="3228" y="368" name="inst_A7B2E9C6" locked="0" code="" scaleX="1.5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="3248" y="384" name="inst_844508D9" locked="0" code="" scaleX="18" scaleY="1" colour="4294967295" rotation="0"/>
@@ -434,6 +433,7 @@
     <instance objName="obj_solid" x="288" y="368" name="inst_A51C5A38" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_generator_enemy" x="296" y="384" name="inst_39B93BFC" locked="0" code="object = obj_goomba;&#xA;dir = 2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="304" y="240" name="inst_F2F4037E" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_rex_red" x="1656" y="160" name="inst_3656F5B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_goal" x="3344" y="304" w="96" h="80" xo="0" yo="0" id="10093352" name="inst_0FFAD497" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

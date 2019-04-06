@@ -984,6 +984,7 @@ if (vulnerable &lt; 99) {
         
         //Destroy brick if red
         if (other.sprite_index == spr_redbrick_th)
+        || (other.sprite_index == spr_football)
             with (other) event_user(0);
     }
 }

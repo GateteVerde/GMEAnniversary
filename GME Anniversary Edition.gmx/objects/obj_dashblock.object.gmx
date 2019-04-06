@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Break in contact with the player when running at full speed
+            <string>///Break in contact with the player when running at full speed and with the football suit
 
 //Check for the player object
 if (instance_exists(obj_playerparent)) {
@@ -33,6 +33,7 @@ if (instance_exists(obj_playerparent)) {
     //If the player is on contact with the block and the player is running at fullspeed
     if (collision_rectangle(bbox_left-8,bbox_top-1,bbox_right+8,bbox_bottom+1,obj_playerparent,0,0))
     &amp;&amp; (obj_playerparent.pmeter &gt;= 112)
+    &amp;&amp; (global.powerup == cs_football)
         event_user(0);
 }
 </string>

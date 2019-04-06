@@ -27,4 +27,5 @@ switch (global.powerup) {
     case (cs_lightning): return spr_mario_lightning_walljump;
     case (cs_penguin): return spr_mario_penguin_walljump;
     case (cs_propeller): return spr_mario_propeller_walljump;
+    case (cs_football): return spr_mario_football_walljump;
 }

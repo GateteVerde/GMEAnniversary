@@ -233,6 +233,14 @@ if (disablecontrol == false)
             with (instance_create(x,y+2,obj_bolt))
                 hspeed = 6*sign(other.xscale);
         }
+        
+        //Football
+        else if (global.powerup == cs_football)
+        &amp;&amp; (instance_number(obj_football) &lt; 1) {
+        
+            with (instance_create(x-8,y,obj_football))
+                held = 1;
+        }
     }
 }
 </string>
@@ -1347,6 +1355,14 @@ else if ((sprite_index == spr_mario_frog_swim2) || (sprite_index == spr_mario_pe
     //Play 'Swim' sound
     audio_stop_sound(snd_swim);
     audio_play_sound(snd_swim, 0, false);
+}
+
+//Otherwise, if Mario is dashing while having the football suit
+else if (sprite_index == spr_mario_football_run) {
+
+    //Play 'Bump' sound
+    audio_stop_sound(snd_bump);
+    audio_play_sound(snd_bump, 0, false);
 }
 </string>
           </argument>

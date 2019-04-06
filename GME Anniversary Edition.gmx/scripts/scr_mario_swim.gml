@@ -40,4 +40,5 @@ switch (global.powerup) {
     }
     case (cs_propeller): return spr_mario_propeller_swim;
     case (cs_cat): return (spr_mario_cat_swim);
+    case (cs_football): return spr_mario_football_swim;
 }

@@ -65,6 +65,10 @@ else {
     alarm[10] = 2;
 }
 
+//Top
+a = -14;
+alarm[9] = 2;
+
 //Offset values
 offset = 0;
 offsetnext = 0;
@@ -151,6 +155,50 @@ if (hspeed == 0) {
 
 //Move towards the player
 alarm[11] = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="9">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Update how many parts are above
+
+//Only update if there's no body part below
+if (mebelow == noone) {
+
+    //Repeat 99 times
+    repeat (99) {
+    
+        //If there's a pokey part above, update a
+        if (position_meeting(x, bbox_top+a, obj_pokey))
+            a -= 14;
+        else {
+        
+            a += 14;
+            if (a &lt; -14)
+                a = -14;
+        }
+    }
+}
+
+//Keep updating
+alarm[9] = 2;
 </string>
           </argument>
         </arguments>
@@ -396,6 +444,46 @@ if (position_meeting(x,y-8,obj_pokey_green))
     image_index = 1;
 else
     image_index = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Custom wall collision
+
+//If there's not a pokey below, perform wall collision
+if (mebelow == noone) {
+
+    if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1,bbox_top+a,bbox_left,bbox_bottom-8,obj_solid,1,0)))
+    || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+a,bbox_right+1,bbox_bottom-8,obj_solid,1,0))) {
+    
+        //Reverse horizontal speed
+        hspeed = -hspeed;
+        
+        //Prevent getting embed on walls
+        while (collision_rectangle(bbox_left,bbox_top+4,bbox_left,bbox_bottom-8,obj_solid,1,0))
+            x++;
+        while (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-8,obj_solid,1,0))
+            x--;
+    }
+}
 </string>
           </argument>
         </arguments>

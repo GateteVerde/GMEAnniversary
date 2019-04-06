@@ -487,14 +487,8 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
 || (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) {
 
     //Stop vertical movement
-    gravity = 0;
-    if (vspeed &gt; 0.5) {
-    
-        hspeed = hspeed/2;
-        vspeed = -vspeed/2;
-    }
-    else if ((vspeed &gt; 0) &amp;&amp; (vspeed &lt;= 0.5))
-        vspeed = 0;
+    vspeed = 0;
+    gravity = 0;    
 }
 else {
 
