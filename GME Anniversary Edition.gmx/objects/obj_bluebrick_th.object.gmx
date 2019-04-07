@@ -196,8 +196,9 @@ if (!held) {
         }
         
         //Stop it if it gets stuck in a solid
-        if (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,0))
-        &amp;&amp; (vspeed &lt; 0) {
+        if (ready == 0)
+        &amp;&amp; (vspeed &lt; 0)
+        &amp;&amp; (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,0)) {
         
             //Stop movement
             speed = 0;
@@ -512,8 +513,8 @@ if (ready) {
 
     if (sprite_index == spr_bluebrick_th) {
     
-        if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-1+hspeed,bbox_top+1,bbox_left,bbox_bottom-4,obj_solid,1,0)))
-        || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+1,bbox_right+1+hspeed,bbox_bottom-4,obj_solid,1,0)))
+        if ((hspeed &lt; 0) &amp;&amp; (collision_rectangle(bbox_left-hspeed,bbox_top+1,bbox_left,bbox_bottom-4,obj_solid,1,0)))
+        || ((hspeed &gt; 0) &amp;&amp; (collision_rectangle(bbox_right,bbox_top+1,bbox_right+hspeed,bbox_bottom-4,obj_solid,1,0)))
             event_user(0);
     }
     else {

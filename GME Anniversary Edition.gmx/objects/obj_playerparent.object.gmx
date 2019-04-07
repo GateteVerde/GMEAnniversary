@@ -178,6 +178,10 @@ alarm[10] = 1; //This one is found on player skins
 //Create markers
 instance_create(0,0,obj_marker_head);
 instance_create(0,0,obj_marker_bottom);
+
+//Create dash attack
+if (instance_number(obj_dashkill) == 0)
+    instance_create(0,0,obj_dashkill);
 </string>
           </argument>
         </arguments>
