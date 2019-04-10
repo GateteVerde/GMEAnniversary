@@ -53,6 +53,7 @@
       <sound>sound\snd_boomerang</sound>
       <sound>sound\snd_bubble</sound>
       <sound>sound\snd_cherry</sound>
+      <sound>sound\snd_cherry2</sound>
       <sound>sound\snd_chest</sound>
       <sound>sound\snd_chestitem</sound>
       <sound>sound\snd_chestitemget</sound>
@@ -87,10 +88,9 @@
       <sound>sound\snd_rocket</sound>
       <sound>sound\snd_rocket2</sound>
       <sound>sound\snd_scatter</sound>
+      <sound>sound\snd_scatter2</sound>
       <sound>sound\snd_shatter</sound>
       <sound>sound\snd_sprout</sound>
-      <sound>sound\snd_starcoin</sound>
-      <sound>sound\snd_starcoin2</sound>
       <sound>sound\snd_switch</sound>
       <sound>sound\snd_trampoline</sound>
       <sound>sound\snd_vinesprout</sound>
@@ -135,6 +135,7 @@
           <sound>sound\bgm_sm3clear_c</sound>
           <sound>sound\bgm_smwclear</sound>
         </sounds>
+        <sound>sound\bgm_credits</sound>
         <sound>sound\bgm_gameover</sound>
         <sound>sound\bgm_intro</sound>
         <sound>sound\bgm_minigame</sound>
@@ -1277,6 +1278,7 @@
             <sprite>sprites\spr_mbomb_th</sprite>
             <sprite>sprites\spr_bolt</sprite>
             <sprite>sprites\spr_football</sprite>
+            <sprite>sprites\spr_stone</sprite>
           </sprites>
           <sprite>sprites\spr_mushroom</sprite>
           <sprite>sprites\spr_fireflower</sprite>
@@ -1703,6 +1705,7 @@
       <sprite>sprites\spr_letter</sprite>
     </sprites>
     <sprite>sprites\spr_logo</sprite>
+    <sprite>sprites\spr_theend</sprite>
     <sprite>sprites\spr_titlebg_top</sprite>
     <sprite>sprites\spr_titlebg_middle</sprite>
     <sprite>sprites\spr_titlebg_bottom</sprite>
@@ -2942,6 +2945,9 @@
               <object>objects\obj_titlemenu</object>
               <object>objects\obj_titlemenu_key</object>
             </objects>
+            <objects name="Credits">
+              <object>objects\obj_credits_text</object>
+            </objects>
             <object>objects\obj_savemenu</object>
             <object>objects\obj_pausemenu</object>
           </objects>
@@ -2961,6 +2967,7 @@
         <object>objects\obj_crystal_up</object>
       </objects>
       <object>objects\obj_intro</object>
+      <object>objects\obj_credits</object>
       <object>objects\obj_skipper</object>
       <object>objects\obj_mariostart</object>
       <object>objects\obj_gameover</object>
@@ -3050,9 +3057,10 @@
       <room>rooms\rm_switchpalace_b</room>
       <room>rooms\rm_poweruptestarea</room>
     </rooms>
+    <room>rooms\rm_credits</room>
   </rooms>
   <constants number="50">
-    <constant name="cs_version">"11-03-2019 - v1.7.1"</constant>
+    <constant name="cs_version">"??-??-2019 - v2.0"</constant>
     <constant name="cs_levels">7</constant>
     <constant name="cs_billy">-32</constant>
     <constant name="cs_golden">-31</constant>

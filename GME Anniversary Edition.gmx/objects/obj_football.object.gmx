@@ -50,6 +50,10 @@ hitcombo = 0;
 
 //How many times did this object bounce
 bounces = 0;
+
+//Turn into a stone
+if (floor(random(100)) &lt; 10)
+    sprite_index = spr_stone;
 </string>
           </argument>
         </arguments>
@@ -403,27 +407,35 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
     //Stop vertical movement
     gravity = 0;
     
-    //If not kicked, stop vertical movement
-    if (ready == 0) 
-        vspeed = 0;
-        
+    //If the football turned into a stone
+    if (sprite_index == spr_stone)
+        event_user(0);
+    
     //Otherwise, bounce
     else {
     
-        bounces++
-        if (bounces mod 2) {
-        
-            if (swimming)
-                vspeed = -1.5;
-            else
-                vspeed = -3;
-        }
+        //If not kicked, stop vertical movement
+        if (ready == 0) 
+            vspeed = 0;
+            
+        //Otherwise, bounce
         else {
         
-            if (swimming)
-                vspeed = -2.5;
-            else
-                vspeed = -5;
+            bounces++
+            if (bounces mod 2) {
+            
+                if (swimming)
+                    vspeed = -1.5;
+                else
+                    vspeed = -3;
+            }
+            else {
+            
+                if (swimming)
+                    vspeed = -2.5;
+                else
+                    vspeed = -5;
+            }
         }
     }
 }
@@ -637,33 +649,66 @@ else {
             <kind>1</kind>
             <string>///Destroy
 
-//Create dead object
-imdead = instance_create(x,y,obj_enemy_dead);
+//If the football turned to be a stone...
+if (sprite_index == spr_stone) {
 
-//Make the dead object hereby the sprite
-imdead.sprite_index = sprite_index;
-
-//Make the dead object hereby the frame
-imdead.image_index = image_index;
-
-//Make the dead object hereby the scale
-imdead.image_xscale = 1;
-
-//Set the hspeed of the dead object
-if (other.hspeed == 0) {
-
-    //If the kill object is at the left of this object
-    if (other.bbox_left+other.bbox_right/2 &lt; bbox_left+bbox_right/2)
-        imdead.hspeed = 1;
-    else if (other.bbox_left+other.bbox_right/2 &gt; bbox_left+bbox_right/2)
-        imdead.hspeed = -1;
+    //Play 'Break' sound
+    audio_play_sound(snd_break, 0, false);
+    
+    //Create shards
+    with (instance_create(x,y+8,obj_shard)) {
+    
+        motion_set(45, 6);
+        sprite_index = spr_shard_g;
+    }
+    with (instance_create(x,y+8,obj_shard)) {
+    
+        motion_set(60, 6);
+        sprite_index = spr_shard_g;
+    }
+    with (instance_create(x,y+8,obj_shard)) {
+    
+        motion_set(120, 6);
+        sprite_index = spr_shard_g;
+    }
+    with (instance_create(x,y+8,obj_shard)) {
+    
+        motion_set(135, 6);
+        sprite_index = spr_shard_g;
+    }
 }
+
+//Otherwise, kill normally
 else {
 
-    if (other.hspeed &gt; 0)
-        imdead.hspeed = 1;
-    else if (other.hspeed &lt; 0)
-        imdead.hspeed = -1;
+    //Create dead object
+    imdead = instance_create(x,y,obj_enemy_dead);
+    
+    //Make the dead object hereby the sprite
+    imdead.sprite_index = sprite_index;
+    
+    //Make the dead object hereby the frame
+    imdead.image_index = image_index;
+    
+    //Make the dead object hereby the scale
+    imdead.image_xscale = 1;
+    
+    //Set the hspeed of the dead object
+    if (other.hspeed == 0) {
+    
+        //If the kill object is at the left of this object
+        if (other.bbox_left+other.bbox_right/2 &lt; bbox_left+bbox_right/2)
+            imdead.hspeed = 1;
+        else if (other.bbox_left+other.bbox_right/2 &gt; bbox_left+bbox_right/2)
+            imdead.hspeed = -1;
+    }
+    else {
+    
+        if (other.hspeed &gt; 0)
+            imdead.hspeed = 1;
+        else if (other.hspeed &lt; 0)
+            imdead.hspeed = -1;
+    }
 }
 
 //Destroy

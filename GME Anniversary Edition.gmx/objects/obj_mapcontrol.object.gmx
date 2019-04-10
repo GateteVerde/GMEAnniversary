@@ -209,14 +209,14 @@ alarm[1] = 240;
             <string>///Cycle between palettes
 
 //Repeat
-alarm[0] = 4;
+alarm[0] = 1;
 
 //Make the player flash.
 if (global.mapstar) {
     
-    isflashing++;
-    if (isflashing &gt; 3)
-        isflashing = 0;
+    isflashing += 0.1;
+    if (isflashing &gt; 6)
+        isflashing = 1;
 }
 </string>
           </argument>

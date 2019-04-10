@@ -128,7 +128,7 @@ if (room == rm_disclaimer) {
     draw_set_colour(c_white);
     
     //Draw the disclaimer
-    draw_text_colour(view_xview[0]+global.gw/2, view_yview[0]+148, "This is an OPEN-SOURCE Mario engine#"
+    draw_text_colour(view_xview[0]+global.gw/2, view_yview[0]+156, "This is an OPEN-SOURCE Mario engine#"
     + "developed by the GMETeam#"
     + " #"
     + "This engine is under the BSD-3 license#"

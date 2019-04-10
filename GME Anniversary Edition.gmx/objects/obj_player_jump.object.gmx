@@ -71,15 +71,15 @@ myframe = 0;
 if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
-    isflashing++;
-    if (isflashing &gt; 3)
-        isflashing = 0;
+    isflashing += 0.1;
+    if (isflashing &gt; 6)
+        isflashing = 1;
     
     //Repeat the process.
     if (obj_invincibility.alarm[0] &gt; 120)
-        alarm[0] = 4;
+        alarm[0] = 1;
     else
-        alarm[0] = 16;
+        alarm[0] = 4;
 }
 else {
 
