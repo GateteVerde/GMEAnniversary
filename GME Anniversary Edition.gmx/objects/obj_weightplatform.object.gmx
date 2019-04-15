@@ -172,10 +172,12 @@ if (instance_exists(parent)) {
 //Draw the platform
 draw_sprite(sprite_index,0,round(x),round(y));
 
-//Draw the platform stem
+//Draw the stem
 draw_sprite(sprite_index,1,round(x),round(y)+16);
-for (i=0; i&lt;floor(room_height/16)+1; i++;)
+for (i=0; i&lt;floor(room_height/16)+1; i++;) {
+
     draw_sprite(sprite_index,2,round(x),round(y)+32+(i*16));
+}
 </string>
           </argument>
         </arguments>

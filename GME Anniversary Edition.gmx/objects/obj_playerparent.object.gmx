@@ -531,6 +531,15 @@ else {
         flyfix = 1;
 }
 
+//Force end somersault if starman ends
+if (somersault == 1)
+&amp;&amp; (!instance_exists(obj_invincibility)) {
+
+    somersault = false;
+    if (angle != 0)
+        angle = 0;
+}
+
 //If the gravity is enabled
 if (enable_gravity == 1) {
 
@@ -1468,6 +1477,7 @@ else
 //If the player has the propeller suit and the down key is pressed.
 if (global.powerup == cs_propeller)
 &amp;&amp; (keyboard_check(global.downkey))
+&amp;&amp; (stompstyle != 0)
     exit;
     
 //Otherwise, if the player is not climbing

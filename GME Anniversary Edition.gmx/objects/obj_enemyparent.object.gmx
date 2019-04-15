@@ -1258,12 +1258,12 @@ if (stomp != -1)
         if (other.bbox_bottom &lt; bbox_top-vspeed+5) {
     
             //If the player is spin jumping
-            if (stomp != 4)
+            if (stomp != 3)
+            &amp;&amp; (stomp != 4)
             &amp;&amp; ((other.stompstyle == 1) || (global.mount &gt; 0)) {
     
                 //If this enemy is not immune to spin jumps
                 if (stomp == 0)
-                || (stomp == 3)
                 || (stomp == 5)
                 || ((stomp == 1) &amp;&amp; (global.mount &gt; 0)) {
                 

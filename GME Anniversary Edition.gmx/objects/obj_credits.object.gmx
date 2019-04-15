@@ -145,12 +145,16 @@ else
             <string>///Update background
 
 //If there's no more text to display, allow exit
-if (numb == array_length_1d(text))
-&amp;&amp; (instance_number(obj_credits_text) == 0) {
+if (numb == array_length_1d(text)) {
 
-    //If not ready
-    if (ready == 0) {
-        
+    //If there's not more text in screen
+    if (instance_number(obj_credits_text) == 0)
+    &amp;&amp; (ready == 0)
+        ready = 1;
+
+    //If 'The End' is still appearing
+    else if (ready == 1) {
+            
         alpha += 0.025;
         if (alpha &gt; 1) {
         
@@ -161,13 +165,13 @@ if (numb == array_length_1d(text))
             alpha = 1;
             
             //Allow exit
-            ready = 1;
+            ready = 2;
             alarm[1] = 30;
         }
     }
     
     //Otherwise, allow exit
-    else {
+    else if (ready == 2) {
     
         //If any key is pressed
         if (keyboard_check_pressed(vk_anykey)) {

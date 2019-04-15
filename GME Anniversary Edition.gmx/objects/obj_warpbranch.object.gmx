@@ -28,73 +28,32 @@
             <string>///Warps Mario to another location based on what stuff has been collected.
 
 /*
-**  This must be manually done via scripts, check examples to see how it works.
-**
-**     mybranch = Script to execute
-**
-**  Also check the create event of obj_warproom for more variables
+**  This works like obj_warproom but different, check the object for more details.
 */
 
 //Default values
-mybranch = noone;
+//0: Coins
+//1: Time
+//2: A-Coins Collected
+mode = 0;
+check = 0;
+
+//Targets
+target_a = 0;
+target_b = 0;
+target_c = 0;
+
+//Warp methods
+for (i=0; i&lt;3; i++) {
+
+    postchange[i] = -1;
+    postx[i] = 0;
+    posty[i] = 0;
+    myroom[i] = room_next(room);
+}
 
 //Coins collected in the area
 coins = 0;
-
-//Inherit event from obj_warproom
-event_inherited();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Update the script
-
-if (mybranch == noone)
-exit;
-    script_execute(mybranch);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Draw current coins
-
-draw_text(x+18, y, string(coins));
 </string>
           </argument>
         </arguments>

@@ -517,7 +517,7 @@ if ((state == 2) || (delay != 0)) {
     if (global.powerup == cs_propeller) {
 
         //If the player is spin jumping normally
-        if ((stompstyle) && (global.mount == 0)) {
+        if ((stompstyle != 0) && (global.mount == 0)) {
            
             //Lower the gravity
             ygrav = ygrav/2.25;

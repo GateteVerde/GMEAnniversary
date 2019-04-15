@@ -164,7 +164,7 @@
     <instance objName="obj_qblock_spiked" x="624" y="48" name="inst_4D4B3C31" locked="0" code="sprout = cs_trampoline;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="448" y="32" name="inst_52F723CA" locked="0" code="sprout = cs_lightning;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="320" y="160" name="inst_7E5FC9C1" locked="0" code="sprout = cs_kuriboshoe;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock" x="160" y="160" name="inst_C6B31E45" locked="0" code="sprout = round(random_range(cs_yoshi,cs_yoshi_p));&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="160" y="160" name="inst_C6B31E45" locked="0" code="sprout = round(random_range(cs_yoshi,cs_yoshi_p));" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="384" y="272" name="inst_47BBBA7F" locked="0" code="varmsg = &quot;These blocks to my right are throwable bricks, press 'Run / Hold' to grab them and release said key to kick the block in the direction you're facing.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="448" y="256" name="inst_B21376C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bluebrick" x="416" y="256" name="inst_46808A50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -426,7 +426,6 @@
     <instance objName="obj_coin" x="1936" y="128" name="inst_4AF6CDA2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="1952" y="128" name="inst_2154180B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="1968" y="128" name="inst_8C04A7A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_watertop" x="2064" y="408" name="inst_D138A202" locked="0" code="" scaleX="37" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_jellyplatform" x="800" y="320" name="inst_AEFB9EF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_up" x="800" y="320" name="inst_3F36DE6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="800" y="224" name="inst_305D1A8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -516,6 +515,7 @@
     <tile bgName="bgr_tileset" x="2240" y="0" w="16" h="16" xo="304" yo="576" id="10094234" name="inst_DEC44A78" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset" x="2256" y="0" w="16" h="16" xo="304" yo="576" id="10094235" name="inst_B326F047" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset" x="2272" y="0" w="16" h="16" xo="320" yo="576" id="10094236" name="inst_A12890F7" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bgr_tileset" x="2320" y="288" w="16" h="16" xo="256" yo="416" id="10096261" name="inst_26525AFD" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_bushes" x="0" y="336" w="96" h="64" xo="0" yo="64" id="10063427" name="inst_B3F531A6" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset_bushes_large" x="192" y="320" w="144" h="80" xo="0" yo="80" id="10063428" name="inst_10CF5674" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset" x="112" y="384" w="16" h="16" xo="928" yo="32" id="10063429" name="inst_38BEB792" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -1611,7 +1611,6 @@
     <tile bgName="bgr_tileset" x="64" y="192" w="16" h="16" xo="640" yo="224" id="10064926" name="inst_659440E0" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset" x="80" y="192" w="16" h="16" xo="640" yo="224" id="10064927" name="inst_2061E834" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset" x="96" y="192" w="16" h="16" xo="640" yo="224" id="10064928" name="inst_1382F75E" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bgr_tileset" x="2320" y="288" w="16" h="16" xo="256" yo="416" id="10064955" name="inst_EE044A27" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset" x="2656" y="272" w="16" h="16" xo="0" yo="0" id="10065012" name="inst_2249B1C9" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset" x="2656" y="288" w="16" h="16" xo="0" yo="16" id="10065014" name="inst_8E5B9D80" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgr_tileset" x="2656" y="304" w="16" h="16" xo="0" yo="16" id="10065015" name="inst_D424A9A8" depth="9" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

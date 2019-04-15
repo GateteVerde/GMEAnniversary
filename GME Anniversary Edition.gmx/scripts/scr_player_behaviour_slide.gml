@@ -95,10 +95,20 @@ if (!disablecontrol) { //If the player's controls are not disabled.
     && (yspeed == 0) 
     && (state != 2) { //If the 'Shift' key is pressed and the player is not jumping.
         
-        //Stop slide
-        if (global.powerup != cs_shell)
-        && (global.powerup != cs_penguin)             
-            sliding = false;    
+        //If the player does have the shell or penguin suit.
+        if (global.powerup == cs_shell) 
+        || (global.powerup == cs_penguin) {
+        
+            //If the horizontal speed is lower than the max
+            if (abs(xspeed) != xspeedmax)
+                sliding = false;             
+        }
+        
+        //Otherwise, if the player does not have any of those powerups
+        else {
+        
+            sliding = false;
+        }    
                 
         //Set the vertical speed.
         yspeed = -jumpstr+abs(xspeed)/7.5*-1;
@@ -128,18 +138,32 @@ if (!disablecontrol) { //If the player's controls are not disabled.
 //Accelerate when in contact with a slope
 if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
 
-    //If the player does have the shell or powerup and it's not at full speed.
-    if ((global.powerup == cs_shell) 
-    && (abs(xspeed) != xspeedmax))
+    //If the player does have the shell or penguin suit.
+    if ((global.powerup == cs_shell) || (global.powerup == cs_penguin)) {
     
-    //Or the player does have the shell or powerup and it's not at full speed.
-    || ((global.powerup == cs_penguin) 
-    && (abs(xspeed) != xspeedmax)
-    && (!collision_rectangle(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+2, obj_slippery, 1, 0)))
+        //If the horizontal speed is lower than the max
+        if (abs(xspeed) != xspeedmax) {
+            
+            //22.5º Right Slope
+            if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_r,1,0))
+                xspeed += -0.075;
+            
+            //22.5º Left Slope
+            else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_l,1,0))  
+                xspeed += 0.075;
+            
+            //45º Right Slope
+            else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_sr,1,0))    
+                xspeed += -0.15;
+            
+            //45º Left Slope
+            else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_sl,1,0))    
+                xspeed += 0.15;            
+        }
+    }
     
-    //Or the player does not have shell or penguin powerup
-    || ((global.powerup != cs_shell) 
-    && (global.powerup != cs_penguin)) {
+    //Otherwise, change direction when allowed
+    else {
     
         //22.5º Right Slope
         if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_r,1,0))
@@ -155,7 +179,7 @@ if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,1,0)) 
         
         //45º Left Slope
         else if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+2,obj_slope_sl,1,0))    
-            xspeed += 0.15;
+            xspeed += 0.15;              
     }
 }
 
@@ -208,12 +232,94 @@ else if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,
         //Otherwise, do normal slide
         else {
     
-            //If the player does have the shell or penguin powerups and the horizontal speed is not equal to the maximum speed.
-            if ((global.powerup == cs_shell) && (abs(xspeed) != xspeedmax)) 
+            //If the player does have the shell or penguin suit
+            if (global.powerup == cs_shell) 
+            || (global.powerup == cs_penguin) {
             
-            //Or the player does not have either the shell or penguin powerup.
-            || ((global.powerup != cs_shell)) {
-        
+                //If the horizontal speed is lower than the max
+                if (abs(xspeed) != xspeedmax) {
+            
+                    //If the player is not on contact with a slippery surface.
+                    if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
+                    
+                        //Slowdown
+                        xspeed = max(0,abs(xspeed)-0.05)*sign(xspeed);
+                        if ((xspeed > -0.05) && (xspeed < 0.05)) {
+                        
+                            //Stop horizontal speed.
+                            xspeed = 0;
+                            
+                            //End combo
+                            hitcombo = 0;
+                            
+                            //Stop sliding behaviour
+                            sliding = false;
+                        }
+                    }
+                    
+                    //Otherwise, if the player is on contact with a slippery surface.
+                    else if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
+                    
+                        //Slowdown
+                        xspeed = max(0,abs(xspeed)-0.0125)*sign(xspeed);
+                        if ((xspeed > -0.0125) && (xspeed < 0.0125)) {
+                        
+                            //Stop horizontal speed.
+                            xspeed = 0;
+                            
+                            //End combo
+                            hitcombo = 0;
+                            
+                            //Stop sliding behaviour
+                            sliding = false;
+                        }  
+                    }
+                }
+                
+                //Otherwise, slow down if the penguin suit is worn
+                else if (global.powerup == cs_penguin) {
+                
+                    //If the player is not on contact with a slippery surface.
+                    if ((!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) || (abs(xspeed) != xspeedmax)) {
+                    
+                        //Slowdown
+                        xspeed = max(0,abs(xspeed)-0.05)*sign(xspeed);
+                        if ((xspeed > -0.05) && (xspeed < 0.05)) {
+                        
+                            //Stop horizontal speed.
+                            xspeed = 0;
+                            
+                            //End combo
+                            hitcombo = 0;
+                            
+                            //Stop sliding behaviour
+                            sliding = false;
+                        }
+                    }
+                    
+                    //Otherwise, if the player is on contact with a slippery surface.
+                    else if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
+                    
+                        //Slowdown
+                        xspeed = max(0,abs(xspeed)-0.0125)*sign(xspeed);
+                        if ((xspeed > -0.0125) && (xspeed < 0.0125)) {
+                        
+                            //Stop horizontal speed.
+                            xspeed = 0;
+                            
+                            //End combo
+                            hitcombo = 0;
+                            
+                            //Stop sliding behaviour
+                            sliding = false;
+                        }  
+                    }                                    
+                }
+            }
+            
+            //Otherwise, stop sliding
+            else {
+            
                 //If the player is not on contact with a slippery surface.
                 if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
                 
@@ -235,39 +341,36 @@ else if (!collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+1,obj_slopeparent,
                 //Otherwise, if the player is on contact with a slippery surface.
                 else if (collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) {
                 
-                    //If the player has the penguin powerup and the horizontal speed equals the cap limit.
-                    if ((global.powerup == cs_penguin)
-                    && (abs(xspeed) != xspeedmax)) 
+                    //Slowdown
+                    xspeed = max(0,abs(xspeed)-0.0125)*sign(xspeed);
+                    if ((xspeed > -0.0125) && (xspeed < 0.0125)) {
                     
-                    //Or else if the player does not have it.
-                    || (global.powerup != cs_penguin) {
-                    
-                        //Slowdown
-                        xspeed = max(0,abs(xspeed)-0.0125)*sign(xspeed);
-                        if ((xspeed > -0.0125) && (xspeed < 0.0125)) {
+                        //Stop horizontal speed.
+                        xspeed = 0;
                         
-                            //Stop horizontal speed.
-                            xspeed = 0;
-                            
-                            //End combo
-                            hitcombo = 0;
-                            
-                            //Stop sliding behaviour
-                            sliding = false;
-                        }
-                    }        
-                }
+                        //End combo
+                        hitcombo = 0;
+                        
+                        //Stop sliding behaviour
+                        sliding = false;
+                    }  
+                }                            
             }
         }
     }
 }
 
 //End sliding when the 'Down' key is no longer pressed and the player is on ground.
-if (!keyboard_check(vk_down)) 
-&& (state < 2)
-&& ((global.powerup == cs_shell)
-|| ((global.powerup == cs_penguin) && (abs(xspeed) == xspeedmax)))
-    sliding = false;
+if (!keyboard_check(vk_down)) && (state < 2) {
+
+    //If the player has the shell powerup
+    if (global.powerup == cs_shell)
+        sliding = false;
+        
+    //Otherwise, if the player does have the penguin suit and the horizontal speed is not at the max peak.
+    else if (global.powerup == cs_penguin) && (abs(xspeed) == xspeedmax)
+        sliding = false;
+}
 
 //Prevent the player from sliding too fast.
 if (xspeed > xspeedmax)

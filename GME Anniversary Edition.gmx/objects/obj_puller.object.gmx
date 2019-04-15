@@ -170,21 +170,13 @@ if (instance_exists(obj_playerparent)) {
         ygrav = 0;
     }
     
+    //Make the player invisible
+    obj_playerparent.visible = 0;
+    
     //Snap in player's position
     x = round(obj_playerparent.x);
     y = round(obj_playerparent.y);
 }
-
-/*
-//Check if control is not longer pressed
-if (!keyboard_check(global.controlkey)) {
-
-    //If the vegetable is not being pulled
-    if (!instance_exists(obj_turnip_out))
-    &amp;&amp; (sprite_index == spr_mario_pull)
-        alarm[0] = 1;
-}
-*/
 </string>
           </argument>
         </arguments>

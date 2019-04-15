@@ -703,7 +703,7 @@ else {
                                     else {
                                     
                                         //Set the walking sprite
-                                        sprite_index = scr_mario_walk();
+                                        sprite_index = scr_mario_spin();
                                         
                                         //Animate it
                                         image_speed = 0.2;

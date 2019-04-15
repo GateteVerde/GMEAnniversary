@@ -126,24 +126,24 @@ alarm[0] = 1;
 if (global.mount == 0) {
     
     //If the player is pulling an item, make said object visible
-    if (instance_exists(obj_puller))
+    if (instance_exists(obj_puller))    
         obj_puller.visible = true;
         
     //Otherwise, if the spinner exists, make said object visible
-    else if (instance_exists(obj_spinner))
+    else if (instance_exists(obj_spinner))    
         obj_spinner.visible = true;
         
     //Otherwise, if the dropdown exists, make said object visible
-    else if (instance_exists(obj_dropdown))
+    else if (instance_exists(obj_dropdown))    
         obj_dropdown.visible = true;
         
     //Otherwise, if the wallrunner exists make said object visible
-    else if (instance_exists(obj_wallrunner))
+    else if (instance_exists(obj_wallrunner))    
         obj_wallrunner.visible = true;
         
     //Otherwise, make the main player visible
     else
-        image_alpha = 1;
+        obj_playerparent.image_alpha = 1;
 }
     
 //If the player is riding a yoshi, make yoshi visible.
@@ -323,13 +323,13 @@ if (ready) {
             if (alarm[0] &gt; -1) then alarm[0] = 90;
             
             //Set alpha back to 1, but check first if the player is not doing a special action.
-            if (!instance_exists(obj_puller))
-            &amp;&amp; (!instance_exists(obj_spinner))
-            &amp;&amp; (!instance_exists(obj_dropdown))
-            &amp;&amp; (!instance_exists(obj_wallrunner))
-                image_alpha = 1;
-            else
+            if (instance_exists(obj_puller))
+            || (instance_exists(obj_spinner))
+            || (instance_exists(obj_dropdown))
+            || (instance_exists(obj_wallrunner))
                 image_alpha = 0;
+            else
+                image_alpha = 1;
         }
         
         //Destroy

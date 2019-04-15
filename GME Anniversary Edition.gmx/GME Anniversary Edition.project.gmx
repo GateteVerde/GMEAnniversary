@@ -1733,10 +1733,9 @@
       <background>background\bgr_ghosthouse</background>
       <background>background\bgr_subcon_bg</background>
       <background>background\bgr_subcon_fg</background>
-      <background>background\bgr_switchpalace_y</background>
-      <background>background\bgr_switchpalace_g</background>
-      <background>background\bgr_switchpalace_r</background>
-      <background>background\bgr_switchpalace_b</background>
+      <background>background\bgr_switchpalace</background>
+      <background>background\bgr_switchpalace_fg1</background>
+      <background>background\bgr_switchpalace_fg2</background>
       <background>background\bgr_underground</background>
       <background>background\bgr_underwater</background>
       <background>background\bgr_volcano</background>
@@ -1827,7 +1826,6 @@
       </scripts>
       <script>scripts\save.gml</script>
       <script>scripts\load.gml</script>
-      <script>scripts\branch.gml</script>
       <script>scripts\endlevel.gml</script>
       <script>scripts\pswitch_activate.gml</script>
       <script>scripts\pswitch_deactivate.gml</script>

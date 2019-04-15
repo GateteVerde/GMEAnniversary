@@ -472,9 +472,8 @@ if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0))
     y += 4;
     
 //Handle slope collision
-if (vspeed &gt; -0.85)
-&amp;&amp; ((collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0))) {
+if (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
+&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0)) {
 
     //Stay embed on the slope.
     while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
@@ -486,9 +485,12 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
 &amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_semisolid,0,0)))
 || (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) {
 
-    //Stop vertical movement
-    vspeed = 0;
-    gravity = 0;    
+    //Stop vertical movement if moving down
+    if (vspeed &gt; 0) {
+    
+        vspeed = 0;
+        gravity = 0;
+    }
 }
 else {
 
@@ -571,6 +573,9 @@ if (keyboard_check(global.upkey)) {
         
         //Set the horizontal speed
         hspeed = obj_playerparent.xspeed/2;
+        
+        //Boost kick
+        y -= 2;
         
         //If the item is not in a water surface
         if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0))

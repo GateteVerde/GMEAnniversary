@@ -570,6 +570,121 @@ if (cannon == 0) {
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_warpbranch">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Warp to another room.
+
+//With the warp object.
+with (other) {
+
+    //Value to check
+    switch (mode) {
+    
+        //Coins
+        case (0): 
+            check = coins; 
+            break;
+        
+        //Time
+        case (1): 
+            check = global.time; 
+            break;
+        
+        //A-Coins
+        case (2): 
+            check = ds_map_size(global.acecoins); 
+            break;
+    }
+            
+    //Range A
+    if ((check &gt;= target_a) &amp;&amp; (check &lt; target_b)) {
+    
+        //If the position needs to be changed
+        if (postchange[0] != -1) {
+        
+            //Remember the spawn type
+            global.postchange = postchange[0];
+            
+            //Remember the x spawn position.
+            global.postx = postx[0]+16;
+            
+            //Remember the y spawn position.
+            global.posty = posty[0]+16;                                    
+        }
+        
+        //Go to the assigned room
+        if (instance_number(obj_fadein) == 0)
+            with (instance_create(0, 0, obj_fadein)) target = other.myroom[0];
+    }
+    
+    //Range B
+    else if ((check &gt;= target_b) &amp;&amp; (check &lt; target_c)) {
+    
+        //If the position needs to be changed
+        if (postchange[1] != -1) {
+        
+            //Remember the spawn type
+            global.postchange = postchange[1];
+            
+            //Remember the x spawn position.
+            global.postx = postx[1]+16;
+            
+            //Remember the y spawn position.
+            global.posty = posty[1]+16;                                    
+        }
+        
+        //Go to the assigned room
+        if (instance_number(obj_fadein) == 0)
+            with (instance_create(0, 0, obj_fadein)) target = other.myroom[1];                            
+    }
+    
+    //Range C
+    else if (check &gt; target_c) {
+    
+        //If the position needs to be changed
+        if (postchange[2] != -1) {
+        
+            //Remember the spawn type
+            global.postchange = postchange[2];
+            
+            //Remember the x spawn position.
+            global.postx = postx[2]+16;
+            
+            //Remember the y spawn position.
+            global.posty = posty[2]+16;                                    
+        }
+        
+        //Go to the assigned room
+        if (instance_number(obj_fadein) == 0)
+            with (instance_create(0, 0, obj_fadein)) target = other.myroom[2];                     
+    }
+}
+
+//Stop
+speed = 0;
+
+//Snap in grid
+move_snap(16,16);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_warproom">
       <action>
         <libid>1</libid>

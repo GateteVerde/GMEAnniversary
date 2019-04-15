@@ -1,4 +1,4 @@
-/// draw_sprite_tiled_area_ext(sprite,subimg,x,y,x1,y2,x2,y2,color,alpha)
+/// draw_sprite_tiled_area_ext(sprite,subimg,x,y,x1,y1,x2,y2,color,alpha)
 //
 //  Draws a repeated sprite image, tiled to fill a given region and with
 //  a given offset. 
