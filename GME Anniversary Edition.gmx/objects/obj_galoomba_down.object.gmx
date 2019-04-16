@@ -305,17 +305,20 @@ else if (kickme) {
                 y--;
                 
                 //Set the horizontal speed
-                if (!collision_rectangle(x-1,bbox_top,x+1,bbox_bottom,obj_slopeparent,1,0))
-                    hspeed = obj_playerparent.xspeed+0.75*obj_playerparent.xscale;
+                if (obj_playerparent.x &lt; x) {
+                
+                    x = obj_playerparent.x+8;
+                    hspeed = 1.5;
+                }
                 else {
                 
-                    //Set the horizontal speed
-                    hspeed = 1.5*obj_playerparent.xscale;
-                    
-                    //Boost movement
-                    while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))   
-                        y--;
+                    x = obj_playerparent.x-8;
+                    hspeed = -1.5;
                 }
+                
+                //Boost movement
+                while (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))   
+                    y--;
             }
         }
     }

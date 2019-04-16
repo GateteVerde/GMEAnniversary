@@ -83,6 +83,9 @@ if (ready == 0) {
             //Play 'Swooper' sound
             audio_play_sound(snd_swooper, 0, false);
             
+            //Set flying sprite
+            sprite_index = spr_swooper_fly;
+            
             //Animate
             image_speed = 0.3;
             
@@ -132,31 +135,6 @@ else {
     else if (hspeed &lt; 0)
         xscale = -1;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="7">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Reset animation
-
-image_index = 1;
 </string>
           </argument>
         </arguments>

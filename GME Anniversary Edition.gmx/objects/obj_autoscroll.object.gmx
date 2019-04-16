@@ -49,6 +49,9 @@ alarm[1] = 1;
 //Start moving.
 alarm[2] = 1;
 
+//Mode
+mode = 0;
+
 //Make mario die
 candie = 1;
 
@@ -86,7 +89,7 @@ if (mypath != noone)
     path_start(mypath,0.01,path_action_stop,false);
 
 //Otherwise, move normally
-else
+else if (mode == 0)
     hspeed = 0.01;
 </string>
           </argument>
@@ -178,9 +181,13 @@ if (mypath != noone) {
 }
 else {
 
-    hspeed += 0.01;
-    if (hspeed &gt; maxspd)
-        hspeed = maxspd;
+    //If the area does not have a boss
+    if (mode == 0) {
+    
+        hspeed += 0.01;
+        if (hspeed &gt; maxspd)
+            hspeed = maxspd;
+    }
 }
 
 //Airship floating effect.

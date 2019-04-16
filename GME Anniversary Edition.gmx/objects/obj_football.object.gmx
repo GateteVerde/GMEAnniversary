@@ -320,6 +320,13 @@ if (!ready) {
     
         //Play 'Kick' sound
         audio_play_sound(snd_kick, 0, false);
+                
+        //Make the player visually kick the item
+        with (obj_playerparent) {
+        
+            if (holding == 0)
+                event_user(4);
+        }
         
         //Set default animation
         image_speed = 0.15;

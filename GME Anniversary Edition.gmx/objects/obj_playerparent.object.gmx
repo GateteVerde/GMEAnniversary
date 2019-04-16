@@ -1744,7 +1744,7 @@ if (invulnerable == false) {
 if (freezetime &gt; 0) {
 
     //Set shader
-    pal_swap_set(spr_palette_mario, 4);
+    pal_swap_set(spr_palette_mario, 7);
 
     //Draw the player first
     draw_sprite_player(sprite_index, -1, round(x), round(y)+1, xscale, 1, 0, c_white, image_alpha, 0);

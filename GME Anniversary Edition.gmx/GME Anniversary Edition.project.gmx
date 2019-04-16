@@ -40,6 +40,7 @@
       <sound>sound\snd_blargg</sound>
       <sound>sound\snd_boo</sound>
       <sound>sound\snd_boo_big</sound>
+      <sound>sound\snd_bossorb</sound>
       <sound>sound\snd_crumble</sound>
       <sound>sound\snd_flames</sound>
       <sound>sound\snd_hammer</sound>
@@ -151,6 +152,7 @@
       <sound>sound\bgm_airship</sound>
       <sound>sound\bgm_athletic</sound>
       <sound>sound\bgm_bonus</sound>
+      <sound>sound\bgm_boss</sound>
       <sound>sound\bgm_castle</sound>
       <sound>sound\bgm_ghost</sound>
       <sound>sound\bgm_land</sound>
@@ -835,6 +837,7 @@
         <sprite>sprites\spr_ptooie_blow</sprite>
         <sprite>sprites\spr_ptooie_ball</sprite>
         <sprite>sprites\spr_swooper</sprite>
+        <sprite>sprites\spr_swooper_fly</sprite>
         <sprite>sprites\spr_spiketop</sprite>
         <sprite>sprites\spr_spiketop_turn</sprite>
         <sprite>sprites\spr_spiketop_blue</sprite>
@@ -1050,6 +1053,16 @@
         <sprite>sprites\spr_shell_big_red</sprite>
         <sprite>sprites\spr_shell_big_red_down</sprite>
         <sprite>sprites\spr_bigplant</sprite>
+      </sprites>
+      <sprites name="Boss">
+        <sprites name="Items">
+          <sprite>sprites\spr_bossorb</sprite>
+          <sprite>sprites\spr_bossdoor</sprite>
+        </sprites>
+        <sprite>sprites\spr_boomboom</sprite>
+        <sprite>sprites\spr_boomboom2</sprite>
+        <sprite>sprites\spr_boomboom_sq</sprite>
+        <sprite>sprites\spr_boomboom_dead</sprite>
       </sprites>
       <sprite>sprites\spr_hammerbro</sprite>
       <sprite>sprites\spr_hammerbro_b</sprite>
@@ -1722,6 +1735,7 @@
       <background>background\bgr_blocks</background>
       <background>background\bgr_blocks_bg</background>
       <background>background\bgr_bonus</background>
+      <background>background\bgr_cabin</background>
       <background>background\bgr_cave_bg</background>
       <background>background\bgr_cave_fg</background>
       <background>background\bgr_clouds</background>
@@ -2224,6 +2238,13 @@
         <object>objects\obj_bigplant</object>
         <object>objects\obj_megamole</object>
       </objects>
+      <objects name="Boss">
+        <objects name="Items">
+          <object>objects\obj_bossorb</object>
+          <object>objects\obj_bossdoor</object>
+        </objects>
+        <object>objects\obj_boomboom</object>
+      </objects>
       <objects name="Generators">
         <objects name="Land">
           <object>objects\obj_generator_galoomba</object>
@@ -2601,6 +2622,7 @@
               <object>objects\obj_enemyparent_held</object>
               <object>objects\obj_deactenemyparent</object>
               <object>objects\obj_subconenemyparent</object>
+              <object>objects\obj_bossparent</object>
             </objects>
             <object>objects\obj_physicsparent</object>
             <object>objects\obj_powerupparent</object>
@@ -3034,6 +3056,7 @@
           <room>rooms\rm_bowsercastle_c</room>
           <room>rooms\rm_bowsercastle_d</room>
           <room>rooms\rm_bowsercastle_e</room>
+          <room>rooms\rm_bowsercastle_f</room>
         </rooms>
       </rooms>
       <room>rooms\rm_template</room>

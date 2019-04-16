@@ -921,7 +921,7 @@ if (vulnerable &lt; 99) {
     }
     
     //Otherwise
-    else if ((other.held == 0) &amp;&amp; (other.ready == 1)) {
+    else if (((other.held == 0) &amp;&amp; (other.ready == 1)) || (other.speed != 0)) {
         
         //Kill the enemy
         event_user(0);

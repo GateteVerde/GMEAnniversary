@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_deactenemyparent</parentName>
+  <parentName>obj_subconenemyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -31,7 +31,7 @@
 vulnerable = 1;
 
 //How vulnerable is this enemy to the player?
-stomp = 0;
+stomp = 3;
 
 //How vulnerable is this enemy to yoshi?
 edible = 2;
@@ -44,6 +44,14 @@ alarm[0] = 2;
 
 //Do not animate
 image_speed = 0;
+
+//Create solid collision
+mytop = instance_create(x,y-14,obj_enemytop);
+with (mytop) {
+    
+    //Set the scale
+    image_yscale = 0.25;
+}
 </string>
           </argument>
         </arguments>
@@ -215,6 +223,55 @@ else {
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Top Collision logic
+
+//If the collision exists
+if (instance_exists(mytop)) {
+
+    //If the player is on this enemy
+    if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerparent,0,0))
+    &amp;&amp; (obj_playerparent.bbox_bottom &lt; yprevious+5)
+    &amp;&amp; (obj_playerparent.state &lt; 2)) {
+        
+        //Check for a moving platform
+        var check = collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom+1,obj_enemytop,0,0);
+        if (check)
+        &amp;&amp; (check != mytop)
+            exit;
+                
+        //Snap the player vertically
+        obj_playerparent.y = ceil(bbox_top-15);
+
+        //Snap the player horizontally and prevent it from getting embed on a solid.
+        obj_playerparent.x += x-xprevious;
+        if (collision_rectangle(obj_playerparent.bbox_right,obj_playerparent.bbox_top+4,obj_playerparent.bbox_right+1,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
+            with (obj_playerparent) x--;
+        else if (collision_rectangle(obj_playerparent.bbox_left-1,obj_playerparent.bbox_top+4,obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_solid,0,0))
+            with (obj_playerparent) x++;       
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -233,6 +290,41 @@ else {
           <argument>
             <kind>1</kind>
             <string>///Rocky Wrench logic
+
+//Make stompable if the player jumps
+if (instance_exists(obj_playerparent)) {
+
+    //If the player is jumping
+    if (obj_playerparent.state == 2) {
+    
+        //Make it stompable
+        stomp = 0;
+        
+        //Hide semisolid
+        mytop.x = -1000;
+        mytop.y = -1000;
+    }
+    
+    //Otherwise, if the player is not jumping
+    else {
+    
+        //Make non-stompable
+        stomp = 3;
+        
+        //Set semisolid position
+        mytop.x = x-8;
+        mytop.y = bbox_top;
+    }
+}
+else {
+
+    //Make not stompable
+    stomp = 3;
+    
+    //Set semisolid position
+    mytop.x = x-8;
+    mytop.y = bbox_top;
+}
 
 //Depth
 depth = 10;

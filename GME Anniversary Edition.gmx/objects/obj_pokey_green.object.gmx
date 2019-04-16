@@ -52,9 +52,9 @@ image_speed = 0;
 alarm[10] = 2;
 
 //Remember enemies below.
-if (position_meeting(x,bbox_bottom+8,obj_pokey)) {
+if (position_meeting(x,bbox_bottom+8,obj_pokey_green)) {
 
-    mebelow = collision_point(x,bbox_bottom+8,obj_pokey,0,0);
+    mebelow = collision_point(x,bbox_bottom+8,obj_pokey_green,0,0);
     alarm[1] = 10;
 }
  
@@ -370,7 +370,7 @@ if (mebelow == noone) {
     if (position_meeting(x,bbox_bottom+8,obj_pokey_green)) {
     
         //Ride above this pokey
-        mebelow = collision_point(x,bbox_bottom+8,obj_pokey,0,0);
+        mebelow = collision_point(x,bbox_bottom+8,obj_pokey_green,0,0);
         
         //Make sure below parts collides with walls
         with (mebelow) {
