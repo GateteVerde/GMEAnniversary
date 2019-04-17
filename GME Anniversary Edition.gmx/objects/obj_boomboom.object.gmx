@@ -28,13 +28,10 @@
             <string>///Boom-Boom
 
 //How vulnerable is this enemy to various items?
-vulnerable = 99;
+vulnerable = 0;
 
 //How vulnerable is this enemy to the player?
 stomp = 4;
-
-//How vulnerable is this enemy to yoshi?
-edible = 2;
 
 //Facing direction
 xscale = 1;
@@ -42,8 +39,14 @@ xscale = 1;
 //Boss state
 ready = 0;
 
+//Invincibility frames
+inv = 0;
+
 //How many hits before this boss dies
 hitpoints = 3;
+
+//How many projectile hits before this boss dies
+firehitpoints = 9;
 
 //Speed multiplier
 increment = 1;
@@ -286,7 +289,44 @@ alarm[9] = 60;
             <kind>1</kind>
             <string>///Explode
 
-event_user(6);
+event_user(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Boom-Boom logic
+
+//Inherit event
+event_inherited();
+
+//Invincibility frames
+if (hitpoints &gt; 1) {
+
+    inv--;
+    if (inv &lt; 0) {
+    
+        inv = 0;
+        vulnerable = 0;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -309,7 +349,7 @@ event_user(6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Hurt Boom-Boom
+            <string>///Default hurt script
 
 //If not ready
 if (ready == 0) {

@@ -3,9 +3,9 @@
   <spriteName>spr_boomboom2</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_enemyparent</parentName>
+  <parentName>obj_physicsparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,17 +27,43 @@
             <kind>1</kind>
             <string>///The parent object for all boss enemies
 
-//Inherit event from enemy parent
-event_inherited();
+//How vulnerable is this enemy to various items?
+//0: Normal
+//1: Immune to fireballs
+//2: Immune to all projectiles
+//99: Invincible
+//100: Invincible + Ignore projectiles
+vulnerable = 0;
 
-//How many hits does this boss takes to defeat?
+//How vulnerable is this enemy to the player?
+//0: Normal
+//1: Hurt Mario
+//2: Hurt Mario + Mount Immunity
+//3: Subcon
+//4: Stomp
+//-1: Phase through Mario
+stomp = 0;
+
+//Facing direction
+xscale = 1;
+
+//Whether the object is swimming
+swimming = false;
+
+//Invincibility frames
+inv = 0;
+
+//How many hits does this boss take to be defeated?
 hitpoints = 0;
+
+//How many projectile hits does this boss take to be defeated?
+firehitpoints = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="16">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,31 +80,454 @@ hitpoints = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Create orb and destroy
+            <string>///Boss logic
 
-//Play 'Orb' sound
-audio_play_sound(snd_bossorb, 0, false);
+//Turn at enemies script
+event_user(2);
 
-//Create smoke
-var a;
-a = 0;
-repeat (8) {
+//Default wall collision
+event_user(3);
 
-    with (instance_create(x-8,y,obj_smoke)) {
+//Default floor collision
+event_user(4);
+
+//Check for a water object
+var water = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0);
+
+//If the object is not underwater and makes contact with water
+if (water) 
+&amp;&amp; (!swimming) {
+
+    //Make the object go underwater
+    swimming = true;
     
-        motion_set(0+(45*a), 2);
-        a += 45;
+    //Stop vertical movement
+    if (vspeed &gt; 0)
+        vspeed = 0;
+}
+
+//Otherwise, if the object is underwater and it's not underwater, end swimming.
+else if (!water) 
+&amp;&amp; (swimming)
+    swimming = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_boomerang">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Hammer hurt script
+
+//If the enemy is vulnerable to projectiles
+if (vulnerable &lt; 2) {
+
+    //Play 'Kick' sound
+    audio_play_sound(snd_kick, 0, false);
+    
+    //Create 'Spinthump' effect
+    with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
+    
+    //Decrement hits
+    firehitpoints--;
+    
+    //If there's no more fire hits left
+    if (firehitpoints == 0) {
+    
+        //Force set hits
+        hitpoints = 1;
+        
+        //Default hurt script
+        event_user(1);
+    }
+    
+    //Otherwise, become invulnerable for a bit.
+    else {
+
+        vulnerable = 99;
+        inv = 8;
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_hammer">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Hammer hurt script
 
-//Create orb if there no boss parents left
-if (instance_number(obj_bossparent) == 1) {
+//If the enemy is vulnerable to projectiles
+if (vulnerable &lt; 2) {
 
-    with (instance_create(x, y, obj_bossorb)) vspeed = -5;
+    //Play 'Kick' sound
+    audio_play_sound(snd_kick, 0, false);
+    
+    //Create 'Spinthump' effect
+    with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
+    
+    //Decrement hits
+    firehitpoints--;
+    
+    //If there's no more fire hits left
+    if (firehitpoints == 0) {
+    
+        //Force set hits
+        hitpoints = 1;
+        
+        //Default hurt script
+        event_user(1);
+    }
+    
+    //Otherwise, become invulnerable for a bit.
+    else {
+
+        vulnerable = 99;
+        inv = 8;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_iceball">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Projectile Hurt Script
+
+//If the enemy is vulnerable to projectiles
+if (vulnerable &lt; 2) {
+
+    //Play 'Kick' sound
+    audio_play_sound(snd_kick, 0, false);
+    
+    //Decrement hits
+    firehitpoints--;
+    
+    //If there's no more fire hits left
+    if (firehitpoints == 0) {
+    
+        //Force set hits
+        hitpoints = 1;
+        
+        //Default hurt script
+        event_user(1);
+    }
+    
+    //Otherwise, become invulnerable for a bit.
+    else {
+
+        vulnerable = 99;
+        inv = 8;
+    }
+    
+    //Destroy projectile
+    with (other) event_user(0);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_playerparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collision with the player
+
+//If the player is invulnerable, exit
+if (instance_exists(obj_invincibility))
+exit;
+
+//If the enemy is invulnerable to stomp or the player is invulnerable.
+if (stomp != -1)
+|| (other.invulnerable == -1) {
+    
+    //If the player is above the enemy and moving down
+    if (other.bbox_bottom &lt; bbox_top-vspeed+5) {
+
+        //If the player is spin jumping
+        if (stomp != 3)
+        &amp;&amp; (stomp != 4)
+        &amp;&amp; ((other.stompstyle == 1) || (global.mount &gt; 0)) {
+
+            //If this enemy is not immune to spin jumps
+            if (stomp == 0)
+            || (stomp == 5)
+            || ((stomp == 1) &amp;&amp; (global.mount &gt; 0)) {
+            
+                //Create spin smoke effect
+                instance_create((bbox_left+bbox_right)/2-8,y,obj_spinsmoke);
+                
+                //Get points based on combo
+                if (other.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
+                    with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
+                else {
+                
+                    audio_play_sound(snd_1up, 0, false);
+                    with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) 
+                        event_user(9);
+                }
+                
+                //Increment combo
+                other.hitcombo++;
+                
+                //Bounce against if riding or just stop
+                if (global.mount &gt; 0) {
+                
+                    //Bounce
+                    with (other) event_user(1);
+                    
+                    //Create two fireballs if the player is wearing a red shoe
+                    if (global.mount == 2)
+                    &amp;&amp; (global.mountcolour = 1) {
+                    
+                        with (instance_create(x+12,y+8,obj_fireball)) hspeed = 1.5;
+                        with (instance_create(x-12,y+8,obj_fireball)) hspeed = -1.5;
+                    }
+                }
+                else
+                    other.vspeed = 0;
+                    
+                //Destroy
+                instance_destroy();
+            }
+            
+            //Otherwise, spin on spiky enemies
+            else {
+            
+                //Play 'Stomp' sound
+                audio_play_sound(snd_stomp, 0, false);
+                
+                //Create spin smoke
+                with (instance_create(other.x,other.bbox_bottom-8,obj_smoke)) sprite_index = spr_spinthump;
+                
+                //Bounce
+                with (other) event_user(1);
+            }    
+        }
+
+        //Regular stomp
+        else if ((stomp == 0) || (stomp == 4) || (stomp == 5))
+        &amp;&amp; (other.swimming == false) {
+        
+            //Play 'Stomp' sound
+            audio_play_sound(snd_stomp, 0, false);
+        
+            //Prevent certain enemies from getting double stomped
+            if (vspeed &lt; 0) {
+            
+                y = yprevious;
+                if (other.yspeed &gt; 0)
+                    other.y = other.yprevious;
+            }
+            
+            //Bounce the player
+            with (other) event_user(1);
+            
+            //If the enemy does give points
+            if (stomp == 0) {
+            
+                //Get points based on combo
+                if (other.hitcombo &lt;= 6) //If the player did 6 or less consecutive stomps
+                    with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(2+obj_playerparent.hitcombo);
+                else {
+                        
+                    //If the combo is odd
+                    if (other.hitcombo % 2 == 1)
+                        with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(9);
+                    
+                    //Otherwise, if the combo is even
+                    else if (other.hitcombo % 2 == 0)
+                        with (instance_create((bbox_left+bbox_right)/2-8,y,obj_score)) event_user(10);        
+                }
+                
+                //Increment combo
+                other.hitcombo++;
+            }
+            
+            //Create spin smoke
+            with (instance_create(other.x,other.bbox_bottom-8,obj_smoke)) sprite_index = spr_spinthump;
+            
+            //Stomp the enemy
+            event_user(1);                
+        }
+    }
+
+    //Otherwise, hurt the player
+    else
+        with (other) event_user(0);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_projectileparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Projectile Hurt Script
+
+//If the enemy is vulnerable to projectiles
+if (vulnerable &lt; 2) {
+
+    //Play 'Kick' sound
+    audio_play_sound(snd_kick, 0, false);
+    
+    //Decrement hits
+    firehitpoints--;
+    
+    //If there's no more fire hits left
+    if (firehitpoints == 0) {
+    
+        //Force set hits
+        hitpoints = 1;
+        
+        //Default hurt script
+        event_user(1);
+    }
+    
+    //Otherwise, become invulnerable for a bit.
+    else {
+
+        vulnerable = 99;
+        inv = 8;
+    }
+    
+    //Destroy projectile
+    with (other) event_user(0);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn at enemies / shells script
+
+//Collision with regular enemies
+var overlap = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_enemyparent,0,1);
+if (overlap) 
+&amp;&amp; (overlap.vulnerable &lt; 99) {
+
+    //Go right if the object is further to the right or in the same spot and a higher id.
+    if ((bbox_left+bbox_right)*0.5 &gt; (overlap.bbox_left+overlap.bbox_right)*0.5)
+    || (((bbox_left+bbox_right)*0.5 = (overlap.bbox_left+overlap.bbox_right)*0.5) &amp;&amp; (id &gt; overlap.id)) {
+    
+        //Keep going right.
+        hspeed = abs(hspeed);
+    }
+    
+    //Otherwise, go left.
+    else
+        hspeed = -abs(hspeed);
 }
 
-//Destroy
-instance_destroy();
+//Collision with shells
+var overlap2 = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_shell,0,1);
+if (overlap2)
+&amp;&amp; (overlap2.vulnerable &lt; 99) {
+
+    //Go right if the object is further to the right or in the same spot and a higher id.
+    if ((bbox_left+bbox_right)*0.5 &gt; (overlap2.bbox_left+overlap2.bbox_right)*0.5)
+    || (((bbox_left+bbox_right)*0.5 = (overlap2.bbox_left+overlap2.bbox_right)*0.5) &amp;&amp; (id &gt; overlap2.id)) {
+    
+        //Keep going right.
+        hspeed = abs(hspeed);
+    }
+    
+    //Otherwise, go left.
+    else
+        hspeed = -abs(hspeed);    
+}
 </string>
           </argument>
         </arguments>
@@ -102,6 +551,8 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>///Default boss hurt script
+
+exit;
 </string>
           </argument>
         </arguments>
@@ -124,7 +575,33 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///UNUSED IN THIS OBJECT
+            <string>///Default boss death script (Creates orb and destroys)
+
+//Create orb if there no boss parents left
+if (instance_number(obj_bossparent) == 1) {
+
+    //Play 'Orb' sound
+    audio_play_sound(snd_bossorb, 0, false);
+
+    //Create Orb
+    with (instance_create(x, y, obj_bossorb)) 
+        vspeed = -5;
+}
+
+//Create smoke
+var a;
+a = 0;
+repeat (8) {
+
+    with (instance_create(x-8,y,obj_smoke)) {
+    
+        motion_set(0+(45*a), 2);
+        a += 45;
+    }
+}
+
+//Destroy
+instance_destroy();
 </string>
           </argument>
         </arguments>
