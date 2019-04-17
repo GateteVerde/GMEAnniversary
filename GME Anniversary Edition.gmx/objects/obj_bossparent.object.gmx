@@ -71,8 +71,11 @@ repeat (8) {
     }
 }
 
-//Create orb
-with (instance_create(x, y, obj_bossorb)) vspeed = -5;
+//Create orb if there no boss parents left
+if (instance_number(obj_bossparent) == 1) {
+
+    with (instance_create(x, y, obj_bossorb)) vspeed = -5;
+}
 
 //Destroy
 instance_destroy();
