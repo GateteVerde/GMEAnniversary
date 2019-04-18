@@ -82,34 +82,21 @@ firehitpoints = 0;
             <kind>1</kind>
             <string>///Boss logic
 
-//Turn at enemies script
-event_user(2);
+//Perform obj_enemyparent step event
+event_perform_object(obj_enemyparent, ev_step, ev_step_normal);
 
-//Default wall collision
-event_user(3);
+//Invincibility frames
+if (hitpoints &gt; 1) {
 
-//Default floor collision
-event_user(4);
-
-//Check for a water object
-var water = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0);
-
-//If the object is not underwater and makes contact with water
-if (water) 
-&amp;&amp; (!swimming) {
-
-    //Make the object go underwater
-    swimming = true;
+    inv--;
+    if (inv &lt; 0) {
     
-    //Stop vertical movement
-    if (vspeed &gt; 0)
-        vspeed = 0;
+        inv = 0;
+        vulnerable = 0;
+    }
 }
-
-//Otherwise, if the object is underwater and it's not underwater, end swimming.
-else if (!water) 
-&amp;&amp; (swimming)
-    swimming = false;
+else
+    inv = 0;
 </string>
           </argument>
         </arguments>
@@ -160,7 +147,7 @@ if (vulnerable &lt; 2) {
     else {
 
         vulnerable = 99;
-        inv = 8;
+        inv = 4;
     }
 }
 </string>
@@ -213,7 +200,7 @@ if (vulnerable &lt; 2) {
     else {
 
         vulnerable = 99;
-        inv = 8;
+        inv = 4;
     }
 }
 </string>
@@ -263,7 +250,7 @@ if (vulnerable &lt; 2) {
     else {
 
         vulnerable = 99;
-        inv = 8;
+        inv = 4;
     }
     
     //Destroy projectile
@@ -463,7 +450,7 @@ if (vulnerable &lt; 2) {
     else {
 
         vulnerable = 99;
-        inv = 8;
+        inv = 4;
     }
     
     //Destroy projectile
@@ -494,7 +481,7 @@ if (vulnerable &lt; 2) {
             <string>///Turn at enemies / shells script
 
 //Collision with regular enemies
-var overlap = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_enemyparent,0,1);
+var overlap = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-4,obj_bossparent,0,1);
 if (overlap) 
 &amp;&amp; (overlap.vulnerable &lt; 99) {
 
@@ -602,6 +589,34 @@ repeat (8) {
 
 //Destroy
 instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw boom-boom
+
+if (inv &gt; 0)
+    draw_sprite_ext(sprite_index, -1, round(x), round(y)+1, xscale, 1, 0, c_red, image_alpha);
+else
+    draw_sprite_ext(sprite_index, -1, round(x), round(y)+1, xscale, 1, 0, c_white, image_alpha);
 </string>
           </argument>
         </arguments>
