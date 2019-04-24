@@ -100,7 +100,7 @@ if (coiny == 2) {
     //Create 5 coins if this block got hit enough times
     if (get &gt; 9) {
 
-        audio_play_sound(snd_starcoin, 0, false);
+        audio_play_sound(snd_scatter, 0, false);
         repeat (5) {
         
             with (instance_create(x+8,ystart-24,obj_blockcoin2)) {
