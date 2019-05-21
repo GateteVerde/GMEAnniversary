@@ -30,17 +30,18 @@
 /*
 //  This item uses creation code.
 //
-//  push = Leave it to true to push Mario when it's swimming inside.
+//  push    = Leave it to true to push Mario when it's swimming inside.
+//  poison  = Makes this water poisonous and insta-kills the player if touched.
+//  myspd   = Movement speed of the tides
 */
 
 //Whether this can push Mario.
 push = false;
+poison = false;
+myspd = 0.25;
 
 //Animate
-image_speed = 0.15;
-
-//Alpha
-image_alpha = 0.7;
+image_speed = 0.075;
 
 //Set depth
 depth = -10;
@@ -50,6 +51,9 @@ alarm[0] = 360;
 
 //Create bubble effects
 alarm[1] = 7;
+
+//X position
+xx = 0;
 
 //Create a water surface
 water = instance_create(x,y+4,obj_swim);
@@ -142,11 +146,11 @@ if (vspeed == 0) {
 
     //Collision with a 'Up' arrow modifier.
     if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_up,0,1))   
-        vspeed = -0.25;
+        vspeed = -myspd;
     
     //Collision with a 'Down' arrow modifier.
     else if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_down,0,1))
-        vspeed = 0.25;
+        vspeed = myspd;
 }
 </string>
           </argument>
@@ -172,6 +176,9 @@ if (vspeed == 0) {
             <kind>1</kind>
             <string>///Water logic
 
+//Update xx
+xx -= 0.5;
+
 //If the water is changing it's position.
 if (vspeed != 0) {
 
@@ -195,6 +202,20 @@ water.y = y+4;
 
 //Check for Mario
 var player = collision_rectangle(water.bbox_left,water.bbox_top,water.bbox_right,water.bbox_bottom,obj_playerparent,0,1);
+
+//If this water is poisonous and Mario overlaps this object
+if (poison) {
+
+    if (player)
+    &amp;&amp; (player.swimming) {
+    
+        with (player) {
+        
+            instance_create(x, y, obj_player_dead);
+            instance_destroy();
+        }
+    }
+}
 
 //If Mario is overlapping this object and it's swimming.
 if (push) {
@@ -231,29 +252,43 @@ if (push) {
             <kind>1</kind>
             <string>///Draw tides
 
-//Draw the blend mode
-draw_set_blend_mode(bm_add);
+//If the water is not poisonous
+if (poison == false) {
 
-//Check the length of the room
-for (var i=0; i&lt;room_width/16+1; i++) {
-
-    draw_sprite_ext(sprite_index,-1,i*16,y,1,1,0,c_white,image_alpha);
+    //Draw the top part
+    draw_sprite_tiled_area_ext(sprite_index, -1, 0+xx, y, view_xview[0]/2, y, room_width, y+47, c_white, image_alpha);
+    
+    //Set the alpha
+    if (image_alpha &gt; 0) {
+    
+        draw_set_alpha(image_alpha/2);
+    }
+    
+    //Set the colour
+    draw_set_colour(make_colour_rgb(24, 136, 200));
 }
 
-//Set the colour
-draw_set_colour(make_color_rgb(0,40,120));
+//Otherwise, if the water is poisonous
+else {
 
-//Set the alpha
-draw_set_alpha(image_alpha);
+    //Draw the top part
+    draw_sprite_tiled_area_ext(spr_tides_poison, -1, 0+xx, y, view_xview[0]/2, y, room_width, y+47, c_white, image_alpha);
+    
+    //Set the alpha
+    if (image_alpha &gt; 0) {
+    
+        draw_set_alpha(image_alpha/2);
+    }
+    
+    //Set the colour
+    draw_set_colour(make_colour_rgb(144, 24, 200));
+}
 
 //Draw a rectangle.
-draw_rectangle(x,y+48,room_width,room_height,false);
+draw_rectangle(x, y+48, room_width, room_height, false);
 
 //Reset the alpha
 draw_set_alpha(1);
-
-//Set the blending mode.
-draw_set_blend_mode(bm_normal);
 </string>
           </argument>
         </arguments>

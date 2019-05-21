@@ -189,6 +189,21 @@ if (instance_exists(obj_playerparent))
                     obj_yoshi.berry = berry;
                     berry = noone;
                 }
+                
+                //Otherwise, if a rotten shroom was eaten
+                else if (obj_yoshi.mouthholder == obj_rotten) {
+                
+                    //Kill the player
+                    with (obj_playerparent) {
+                    
+                        //If the player is invulnerable
+                        if (!instance_exists(obj_invincibility)) {
+                            
+                            //Hurt the player                            
+                            event_user(0);                                    
+                        }
+                    }
+                }
 
                 //If Yoshi's mouth is not full, swallow
                 else if (obj_yoshi.mouthholder == noone) {
@@ -315,8 +330,15 @@ if (hunger == 0)
         ready = 1;
         alarm[0] = 8;
         
-        //Put shells inside yoshi's mouth
-        if (other.object_index == obj_shell_kick) {
+        //If the item is a rotten shroom, kill instantly.
+        if (other.object_index == obj_rotten) {
+        
+            //Put a rotten shroom inside yoshi's mouth
+            obj_yoshi.mouthholder = obj_rotten;
+        }
+        
+        //Otherwise, put shells inside yoshi's mouth
+        else if (other.object_index == obj_shell_kick) {
         
             //If the yoshi is a red one, put fire inside
             if (global.mountcolour = 1)

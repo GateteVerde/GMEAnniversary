@@ -46,6 +46,7 @@ switch (argument[0]) {
     case (spr_starman): return cs_star;
     case (spr_pwing): return cs_pwing;
     case (spr_poison): return cs_poison;
+    case (spr_rotten): return cs_rotten;
     case (spr_key): return cs_key;
     case (spr_pswitch): return cs_pswitch;
     case (spr_gswitch): return cs_gswitch;

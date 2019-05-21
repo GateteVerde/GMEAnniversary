@@ -75,6 +75,44 @@ offsetxscale = 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///If there's a body part below, kill it too
+
+if (image_index == 0) {
+
+    with (mebelow) {
+    
+        //Create dead body effect
+        instance_create(x, y, obj_pokey_dead);
+        
+        //If required... (Mainly a yoshi fix)
+        event_user(1);
+        
+        //Destroy
+        instance_destroy();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="11">
       <action>
         <libid>1</libid>
@@ -412,6 +450,46 @@ if (mebelow == noone) {
             x++;
         while (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-8,obj_solid,1,0))
             x--;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Kill if this is a body part
+
+//If this is not a head
+if (image_index == 1) {
+
+    //If this is a body part...
+    with (mebelow) {
+    
+        //Create dead body effect
+        instance_create(x, y, obj_pokey_dead);
+        
+        //Perform same event
+        event_user(1);
+        
+        //Destroy
+        instance_destroy();
     }
 }
 </string>

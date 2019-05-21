@@ -88,18 +88,30 @@ if (instance_exists(obj_playerparent)) {
                 //Otherwise, kill player
                 else {
                 
-                    instance_create(x,y,obj_player_dead);
+                    //Kill the player and leave a smoke trail
+                    with (instance_create(x,y,obj_player_dead)) {
+                    
+                        image_blend = c_gray;
+                        alarm[3] = 1;
+                    }
+                    
+                    //Destroy
                     instance_destroy();
-                    exit;
                 }
             }
             
             //Otherwise, kill the player
             else {
             
-                instance_create(x,y,obj_player_dead);
+                //Kill the player and leave a smoke trail
+                with (instance_create(x,y,obj_player_dead)) {
+                
+                    image_blend = c_gray;
+                    alarm[3] = 1;
+                }
+                
+                //Destroy
                 instance_destroy();
-                exit;
             }
         }
     }

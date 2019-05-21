@@ -374,7 +374,7 @@ if (ready == 0) {
     for (i=0; i&lt;4; i++) {
     
         with (mybody[i]) {
-        
+
             alarm[0] = 20+(16*other.i);
             image_index = 0+other.i;
         }

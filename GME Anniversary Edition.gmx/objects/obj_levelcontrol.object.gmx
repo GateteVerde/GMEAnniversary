@@ -33,12 +33,14 @@
 **  levelmusic  = The level music (Any sound resource you load in)
 **  leveltime   = The time limit in seconds (Optional)
 **  camlock     = Whether to lock the camera in place
+**  water       = Whether the area is a underwater area
 */
 
 //Default Values:
 levelmusic = noone;
 leveltime = 0;
 camlock = 1;
+water = 0;
 
 //Begin playing the music if the p-switch effect is not active or you did not carried a star from a previous room
 if (global.pswitch == 0)
@@ -258,9 +260,20 @@ for (var i=0; i&lt;8; i++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Disable barrier
+            <string>///Disable barrier and create water if required
 
+//Disable barrier
 barrier = 0;
+
+//Create swim object
+if (water) {
+
+    with (instance_create(0, -96, obj_swim)) {
+    
+        image_xscale = room_width;
+        image_yscale = room_height;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -1384,7 +1397,7 @@ if (global.mariostart == 0) {
         event_user(4);
         
         //Create a new Mario at the desired location
-        player_retrieve(global.checkpoint.x+8,global.checkpoint.y+32);
+        player_retrieve(global.checkpoint.xcoor,global.checkpoint.ycoor);
     }
 
     //Create the Mario Start! effect

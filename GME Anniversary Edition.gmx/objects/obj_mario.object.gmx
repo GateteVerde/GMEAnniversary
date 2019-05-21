@@ -305,7 +305,7 @@ if (sprite_index == scr_mario_skid()) || ((sliding) &amp;&amp; (state &lt; 2)) {
         }
         
         //Repeat
-        alarm[10] = 4;
+        alarm[10] = 2;
     }
     
     //Otherwise, hold it

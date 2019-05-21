@@ -811,6 +811,12 @@
         <sprite>sprites\spr_rex_red</sprite>
         <sprite>sprites\spr_rex_red2</sprite>
         <sprite>sprites\spr_rex_red_sq</sprite>
+        <sprite>sprites\spr_dinotorch</sprite>
+        <sprite>sprites\spr_dinotorch_blow</sprite>
+        <sprite>sprites\spr_dinotorch_sq</sprite>
+        <sprite>sprites\spr_dinoflame</sprite>
+        <sprite>sprites\spr_dinoflame_st</sprite>
+        <sprite>sprites\spr_dinorhino</sprite>
         <sprite>sprites\spr_spike</sprite>
         <sprite>sprites\spr_spike_throw</sprite>
         <sprite>sprites\spr_spike_throw2</sprite>
@@ -876,12 +882,6 @@
         <sprite>sprites\spr_blooper</sprite>
       </sprites>
       <sprites name="Desert">
-        <sprite>sprites\spr_dinotorch</sprite>
-        <sprite>sprites\spr_dinotorch_blow</sprite>
-        <sprite>sprites\spr_dinotorch_sq</sprite>
-        <sprite>sprites\spr_dinoflame</sprite>
-        <sprite>sprites\spr_dinoflame_st</sprite>
-        <sprite>sprites\spr_dinorhino</sprite>
         <sprite>sprites\spr_pokey</sprite>
         <sprite>sprites\spr_firesnake</sprite>
         <sprite>sprites\spr_firesnake_body</sprite>
@@ -1188,6 +1188,7 @@
         <sprite>sprites\spr_waterfall2_top</sprite>
         <sprite>sprites\spr_waterfall2_bottom</sprite>
         <sprite>sprites\spr_tides</sprite>
+        <sprite>sprites\spr_tides_poison</sprite>
       </sprites>
       <sprites name="Lava">
         <sprites name="Slopes">
@@ -1319,6 +1320,8 @@
           <sprite>sprites\spr_1up_h3</sprite>
           <sprite>sprites\spr_1up_h4</sprite>
           <sprite>sprites\spr_poison</sprite>
+          <sprite>sprites\spr_rotten</sprite>
+          <sprite>sprites\spr_rotten_dr</sprite>
           <sprite>sprites\spr_goldshroom</sprite>
         </sprites>
         <sprites name="Coins">
@@ -1448,6 +1451,9 @@
             <sprite>sprites\spr_goal_b</sprite>
             <sprite>sprites\spr_goalgate</sprite>
             <sprite>sprites\spr_goalgate_secret</sprite>
+            <sprite>sprites\spr_midwaygate</sprite>
+            <sprite>sprites\spr_midwaygate_b</sprite>
+            <sprite>sprites\spr_midwaygate_tape</sprite>
             <sprite>sprites\spr_keyhole</sprite>
             <sprite>sprites\spr_keyhole_anim</sprite>
           </sprites>
@@ -1611,6 +1617,8 @@
         <sprite>sprites\spr_smoke</sprite>
         <sprite>sprites\spr_smoke_b</sprite>
         <sprite>sprites\spr_smoke_c</sprite>
+        <sprite>sprites\spr_smoke_d</sprite>
+        <sprite>sprites\spr_smoke_e</sprite>
         <sprite>sprites\spr_sparkle</sprite>
         <sprite>sprites\spr_sparkle_b</sprite>
         <sprite>sprites\spr_sparkle_c</sprite>
@@ -1908,6 +1916,8 @@
             <object>objects\obj_keyhole</object>
           </objects>
           <object>objects\obj_checkpoint</object>
+          <object>objects\obj_midwaygate</object>
+          <object>objects\obj_midwaygate_tape</object>
         </objects>
         <object>objects\obj_tilehider</object>
         <object>objects\obj_gotomap</object>
@@ -2418,6 +2428,7 @@
           <object>objects\obj_pwing</object>
           <object>objects\obj_1up</object>
           <object>objects\obj_poison</object>
+          <object>objects\obj_rotten</object>
           <object>objects\obj_goldshroom</object>
         </objects>
         <objects name="Markers">
@@ -2728,6 +2739,7 @@
             <object>objects\obj_torpedoted</object>
           </objects>
           <objects name="Desert">
+            <object>objects\obj_pokey_dead</object>
             <object>objects\obj_monty_jump</object>
             <object>objects\obj_lotusball</object>
             <object>objects\obj_firesnake_body</object>
@@ -2901,6 +2913,7 @@
                 <object>objects\obj_goalgate_tape_b</object>
                 <object>objects\obj_goalgate_front</object>
               </objects>
+              <object>objects\obj_midwaygate_b</object>
             </objects>
             <object>objects\obj_trampoline_p_active</object>
             <object>objects\obj_billy</object>
@@ -3080,17 +3093,18 @@
     </rooms>
     <room>rooms\rm_credits</room>
   </rooms>
-  <constants number="50">
+  <constants number="51">
     <constant name="cs_version">"20-04-2019 - v2.0"</constant>
     <constant name="cs_levels">7</constant>
-    <constant name="cs_billy">-32</constant>
-    <constant name="cs_golden">-31</constant>
-    <constant name="cs_beanstalk">-30</constant>
-    <constant name="cs_propellerblock">-29</constant>
-    <constant name="cs_trampoline">-28</constant>
-    <constant name="cs_gswitch">-27</constant>
-    <constant name="cs_pswitch">-26</constant>
-    <constant name="cs_key">-25</constant>
+    <constant name="cs_billy">-33</constant>
+    <constant name="cs_golden">-32</constant>
+    <constant name="cs_beanstalk">-31</constant>
+    <constant name="cs_propellerblock">-30</constant>
+    <constant name="cs_trampoline">-29</constant>
+    <constant name="cs_gswitch">-28</constant>
+    <constant name="cs_pswitch">-27</constant>
+    <constant name="cs_key">-26</constant>
+    <constant name="cs_rotten">-25</constant>
     <constant name="cs_poison">-24</constant>
     <constant name="cs_pwing">-23</constant>
     <constant name="cs_star">-22</constant>

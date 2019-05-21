@@ -31,7 +31,7 @@
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="bgr_underwater" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="bgr_underwater" x="0" y="-216" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="320" htiled="-1" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -164,7 +164,7 @@
     <instance objName="obj_blooper" x="1200" y="144" name="inst_2C2B1A98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="1456" y="32" name="inst_A8A35C5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ripvanfish" x="1056" y="160" name="inst_AABEE7E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_EB72FFC6" locked="0" code="levelmusic = bgm_underwater;&#xA;leveltime = 200;&#xA;camlock = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_levelcontrol" x="0" y="-16" name="inst_EB72FFC6" locked="0" code="levelmusic = bgm_underwater;&#xA;leveltime = 200;&#xA;camlock = false;&#xA;water = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blowpipe" x="528" y="16" name="inst_ADD6136C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blowpipe" x="624" y="96" name="inst_A9CF70FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="528" y="16" name="inst_347655FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -227,7 +227,6 @@
     <instance objName="obj_semisolid" x="32" y="192" name="inst_52B0C056" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="192" y="160" name="inst_5B075CE2" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="288" y="192" name="inst_FA7FEDA8" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tides" x="0" y="-112" name="inst_2DE00065" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player_warp" x="80" y="16" name="inst_4B313500" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="336" y="-96" name="inst_502495B6" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="32" y="128" name="inst_6D7754A9" locked="0" code="sprout[0] = cs_frog;&#xA;sprout[2] = cs_penguin;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -256,8 +255,13 @@
     <instance objName="obj_jelectro" x="1232" y="80" name="inst_439E20F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jelectro" x="1184" y="80" name="inst_4DC6FE5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jelectro" x="1248" y="32" name="inst_369DEE32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_warpbranch" x="1472" y="-16" name="inst_16F298CF" locked="0" code="//Mode&#xA;mode = 1;&#xA;&#xA;//Targets&#xA;target_a = 0;&#xA;target_b = 300;&#xA;target_c = 400;&#xA;&#xA;//Warp 1 (TargetA - TargetB)&#xA;myroom[0] = rm_waterfallcaverns_d;&#xA;&#xA;//Warp 2 (TargetB - TargetC)&#xA;myroom[1] = rm_waterfallcaverns_d;&#xA;&#xA;//Warp 3 (TargetC)&#xA;myroom[2] = rm_waterfallcaverns_e;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_checkpoint" x="112" y="144" name="inst_8578AD90" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_warpbranch" x="1472" y="-16" name="inst_16F298CF" locked="0" code="//Mode&#xA;mode = 1;&#xA;&#xA;//Targets&#xA;target_a = 0;&#xA;target_b = 300;&#xA;target_c = 400;&#xA;&#xA;//Warp 1 (TargetA - TargetB)&#xA;myroom[0] = rm_waterfallcaverns_d;&#xA;&#xA;//Warp 2 (TargetB - TargetC)&#xA;myroom[1] = rm_waterfallcaverns_e;&#xA;&#xA;//Warp 3 (TargetC)&#xA;myroom[2] = rm_waterfallcaverns_e;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_midwaygate" x="128" y="64" name="inst_405DFF68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_midwaygate" x="128" y="80" name="inst_1B6F9807" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_midwaygate" x="128" y="96" name="inst_AAB36A1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_midwaygate" x="128" y="128" name="inst_DD871FF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_midwaygate" x="128" y="112" name="inst_8CD86528" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_midwaygate_tape" x="128" y="96" name="inst_D8BDE248" locked="0" code="xcoor = 120;&#xA;ycoor = 176;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset" x="368" y="192" w="32" h="16" xo="736" yo="432" id="10056271" name="tile_2E977693" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -161,6 +161,9 @@ switch (argument[2]) {
     
     //Poison
     case (spr_poison): return instance_create(argument[0],argument[1],obj_poison);
+    
+    //Rotten
+    case (spr_rotten): return instance_create(argument[0],argument[1],obj_rotten);
         
     //Key
     case (spr_key): return instance_create(argument[0],argument[1],obj_key);
