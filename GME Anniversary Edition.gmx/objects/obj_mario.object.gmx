@@ -1369,6 +1369,75 @@ else if (sprite_index == spr_mario_football_run) {
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw Mario
+
+//Draw the player frozen
+if (freezetime &gt; 0) {
+
+    //Set shader
+    pal_swap_set(spr_palette_mario, 7);
+
+    //Draw the player first
+    draw_sprite_player(sprite_index, -1, round(x), round(y)+1, xscale, 1, 0, c_white, image_alpha, 0);
+    
+    //End shader
+    pal_swap_reset();
+}
+
+//Otherwise, draw normally
+else if (freezetime == 0) {
+
+    //Set the shader
+    pal_swap_set(spr_palette_mario, isflashing);
+    
+    //If Mario is small
+    if (global.powerup == cs_small) {
+    
+        //If Mario is doing a somersault
+        if (sprite_index == scr_mario_somersault())
+            draw_sprite_player(scr_mario_somersault(),-1,round(x)+shake,round(y)+8,xscale,1,angle,c_white,image_alpha,0); 
+            
+        //Otherwise
+        else
+            draw_sprite_player(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha,0); 
+        
+    }
+    else {
+    
+        //Draw player
+        draw_sprite_player(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha,0);        
+    }
+    
+    //End shader
+    pal_swap_reset();
+    
+    //Draw a tornado if spinning down with the propeller suit
+    if (global.powerup == cs_propeller)
+    &amp;&amp; (stompstyle == 1)
+        draw_sprite_ext(spr_tornado,-1,round(x),round(y)+1,1,1,0,c_white,0.5);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

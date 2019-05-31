@@ -161,12 +161,6 @@
     <instance objName="obj_coin" x="1632" y="304" name="inst_9D4DEDD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="1648" y="304" name="inst_94427367" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelcontrol" x="0" y="0" name="inst_786FE1D2" locked="0" code="levelmusic = bgm_land;&#xA;leveltime = 500;&#xA;camlock = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="1824" y="304" name="inst_70434DA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="1840" y="304" name="inst_583E684D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="1856" y="304" name="inst_38BC25D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="1856" y="320" name="inst_AFFDA916" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="1840" y="320" name="inst_F0C97B2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="1824" y="320" name="inst_8AD39CE4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="400" y="288" name="inst_C5BD21AD" locked="0" code="varmsg = &quot;If you somehow land on a quicksand pool, keep pressing the 'Jump' key to get out of it.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_signpost" x="1408" y="256" name="inst_04FC89AB" locked="0" code="varmsg = &quot;Beware of the dog!&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_starcoin" x="2528" y="160" name="inst_CB6196FA" locked="0" code="type = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -390,7 +384,7 @@
     <instance objName="obj_path" x="2624" y="224" name="inst_FB53EB6E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_path" x="2784" y="240" name="inst_C4EF03A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_onofflift_r" x="2672" y="232" name="inst_437D8567" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_generator_enemy" x="2472" y="192" name="inst_6CB61405" locked="0" code="object = obj_bombguy;&#xA;dir = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_generator_enemy" x="2472" y="192" name="inst_6CB61405" locked="0" code="object = obj_bombguy;&#xA;dir = 1;&#xA;spd = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="128" y="304" name="inst_B0A58500" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="176" y="304" name="inst_3EDC1B44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass" x="384" y="336" name="inst_19F2705E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -404,6 +398,9 @@
     <instance objName="obj_grass" x="336" y="336" name="inst_1EA12C7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warptop" x="2176" y="176" name="inst_29EED91C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warpbottom" x="2176" y="288" name="inst_53715F2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_barrel" x="1824" y="336" name="inst_1DF3CB99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_barrel" x="1808" y="336" name="inst_AF53A9EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_barrel" x="1808" y="320" name="inst_87FF32E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset" x="160" y="272" w="16" h="16" xo="800" yo="0" id="10069433" name="inst_3C0EF63D" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

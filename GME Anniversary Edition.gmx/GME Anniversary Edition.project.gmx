@@ -1471,6 +1471,13 @@
         <sprite>sprites\spr_trampoline_p_end</sprite>
         <sprite>sprites\spr_trampoline_timed</sprite>
         <sprite>sprites\spr_trampoline_timed_end</sprite>
+        <sprite>sprites\spr_barrel</sprite>
+        <sprite>sprites\spr_barrel_up</sprite>
+        <sprite>sprites\spr_barrel_roll</sprite>
+        <sprite>sprites\spr_barrel_spin</sprite>
+        <sprite>sprites\spr_barrel_tnt</sprite>
+        <sprite>sprites\spr_barrel_tnt_up</sprite>
+        <sprite>sprites\spr_barrel_tnt_roll</sprite>
         <sprite>sprites\spr_billy</sprite>
         <sprite>sprites\spr_billygun</sprite>
         <sprite>sprites\spr_bumper</sprite>
@@ -2529,6 +2536,8 @@
         <object>objects\obj_trampoline</object>
         <object>objects\obj_trampoline_p</object>
         <object>objects\obj_trampoline_timed</object>
+        <object>objects\obj_barrel</object>
+        <object>objects\obj_barrel_tnt</object>
         <object>objects\obj_billygun</object>
         <object>objects\obj_bumper</object>
         <object>objects\obj_wallspring</object>
@@ -2916,6 +2925,7 @@
               <object>objects\obj_midwaygate_b</object>
             </objects>
             <object>objects\obj_trampoline_p_active</object>
+            <object>objects\obj_barrel_up</object>
             <object>objects\obj_billy</object>
             <object>objects\obj_billy_dead</object>
             <object>objects\obj_propellerblock_up</object>

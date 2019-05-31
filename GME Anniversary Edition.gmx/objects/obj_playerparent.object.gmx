@@ -531,15 +531,6 @@ else {
         flyfix = 1;
 }
 
-//Force end somersault if starman ends
-if (somersault == 1)
-&amp;&amp; (!instance_exists(obj_invincibility)) {
-
-    somersault = false;
-    if (angle != 0)
-        angle = 0;
-}
-
 //If the gravity is enabled
 if (enable_gravity == 1) {
 
@@ -1722,60 +1713,6 @@ if (invulnerable == false) {
     //Become vulnerable
     alarm[0] = 90;
     alarm[1] = 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Draw player and effects
-
-//Draw the player frozen
-if (freezetime &gt; 0) {
-
-    //Set shader
-    pal_swap_set(spr_palette_mario, 7);
-
-    //Draw the player first
-    draw_sprite_player(sprite_index, -1, round(x), round(y)+1, xscale, 1, 0, c_white, image_alpha, 0);
-    
-    //End shader
-    pal_swap_reset();
-}
-
-//Otherwise, draw normally
-else if (freezetime == 0) {
-
-    //Set the shader
-    pal_swap_set(spr_palette_mario, isflashing);
-    
-    //Draw player
-    draw_sprite_player(sprite_index,-1,round(x)+shake,round(y)+1,xscale,1,angle,c_white,image_alpha,0);
-    
-    //End shader
-    pal_swap_reset();
-    
-    //Draw a tornado if spinning down with the propeller suit
-    if (global.powerup == cs_propeller)
-    &amp;&amp; (stompstyle == 1)
-        draw_sprite_ext(spr_tornado,-1,round(x),round(y)+1,1,1,0,c_white,0.5);
 }
 </string>
           </argument>
