@@ -72,9 +72,8 @@ if (instance_exists(obj_yoshi)) {
     with (obj_yoshi) visible = 0;
 }
 
-//Make tides invisible for a moment
-if (instance_exists(obj_tides))
-    with (obj_tides) visible = 0;
+//Deactivate tides
+instance_deactivate_object(obj_tides);
 
 //Make Kuribo shoe invisible
 if (instance_exists(obj_kuriboshoe))
@@ -197,11 +196,6 @@ timeline_running = 0;
 
 //Deactivate all instances.
 instance_deactivate_all(true);
-
-//Activate tide object
-instance_activate_object(obj_tides);
-if (instance_exists(obj_tides))
-    with (obj_tides) visible = 1;
 
 //Activate persistent object
 instance_activate_object(obj_persistent);

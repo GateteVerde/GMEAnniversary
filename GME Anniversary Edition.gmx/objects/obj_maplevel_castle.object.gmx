@@ -53,8 +53,8 @@
 //Default variables
 levelname = "No name set!"
 levelid = -1;
-exitdir = 0;
-exitalt = 0;
+exitdir = -1;
+exitalt = -1;
 saveme = 1;
 myroom = room_next(room);
 block = 0;

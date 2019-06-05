@@ -50,10 +50,6 @@ hitcombo = 0;
 
 //How many times did this object bounce
 bounces = 0;
-
-//Turn into a stone
-if (floor(random(100)) &lt; 10)
-    sprite_index = spr_stone;
 </string>
           </argument>
         </arguments>
@@ -334,9 +330,9 @@ if (!ready) {
         //Stay visible
         image_alpha = 1;
         
-        //Stop alarms
-        alarm[0] = -1;
-        alarm[1] = -1;
+        //Reset alarms
+        alarm[0] = 540;
+        alarm[1] = 600;
         
         //Kick it
         ready = 1;
@@ -413,36 +409,28 @@ if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_se
 
     //Stop vertical movement
     gravity = 0;
-    
-    //If the football turned into a stone
-    if (sprite_index == spr_stone)
-        event_user(0);
-    
+
+    //If not kicked, stop vertical movement
+    if (ready == 0) 
+        vspeed = 0;
+        
     //Otherwise, bounce
     else {
     
-        //If not kicked, stop vertical movement
-        if (ready == 0) 
-            vspeed = 0;
-            
-        //Otherwise, bounce
+        bounces++
+        if (bounces mod 2) {
+        
+            if (swimming)
+                vspeed = -1.5;
+            else
+                vspeed = -3;
+        }
         else {
         
-            bounces++
-            if (bounces mod 2) {
-            
-                if (swimming)
-                    vspeed = -1.5;
-                else
-                    vspeed = -3;
-            }
-            else {
-            
-                if (swimming)
-                    vspeed = -2.5;
-                else
-                    vspeed = -5;
-            }
+            if (swimming)
+                vspeed = -2.5;
+            else
+                vspeed = -5;
         }
     }
 }
@@ -618,9 +606,9 @@ else {
     //Animate
     image_speed = 0.15;
     
-    //Ignore alarms
-    alarm[0] = -1;
-    alarm[1] = -1;
+    //Reset alarms
+    alarm[0] = 540;
+    alarm[1] = 600;
     
     //Kicked
     ready = 1;
@@ -656,70 +644,34 @@ else {
             <kind>1</kind>
             <string>///Destroy
 
-//If the football turned to be a stone...
-if (sprite_index == spr_stone) {
+//Create dead object
+imdead = instance_create(x,y,obj_enemy_dead);
 
-    //Play 'Break' sound
-    audio_play_sound(snd_break, 0, false);
-    
-    //Create shards
-    with (instance_create(x,y+8,obj_shard)) {
-    
-        motion_set(45, 6);
-        sprite_index = spr_shard_g;
-    }
-    with (instance_create(x,y+8,obj_shard)) {
-    
-        motion_set(60, 6);
-        sprite_index = spr_shard_g;
-    }
-    with (instance_create(x,y+8,obj_shard)) {
-    
-        motion_set(120, 6);
-        sprite_index = spr_shard_g;
-    }
-    with (instance_create(x,y+8,obj_shard)) {
-    
-        motion_set(135, 6);
-        sprite_index = spr_shard_g;
-    }
+//Make the dead object hereby the sprite
+imdead.sprite_index = sprite_index;
+
+//Make the dead object hereby the frame
+imdead.image_index = image_index;
+
+//Make the dead object hereby the scale
+imdead.image_xscale = 1;
+
+//Set the hspeed of the dead object
+if (other.hspeed == 0) {
+
+    //If the kill object is at the left of this object
+    if (other.bbox_left+other.bbox_right/2 &lt; bbox_left+bbox_right/2)
+        imdead.hspeed = 1;
+    else if (other.bbox_left+other.bbox_right/2 &gt; bbox_left+bbox_right/2)
+        imdead.hspeed = -1;
 }
-
-//Otherwise, kill normally
 else {
 
-    //Create dead object
-    imdead = instance_create(x,y,obj_enemy_dead);
-    
-    //Make the dead object hereby the sprite
-    imdead.sprite_index = sprite_index;
-    
-    //Make the dead object hereby the frame
-    imdead.image_index = image_index;
-    
-    //Make the dead object hereby the scale
-    imdead.image_xscale = 1;
-    
-    //Set the hspeed of the dead object
-    if (other.hspeed == 0) {
-    
-        //If the kill object is at the left of this object
-        if (other.bbox_left+other.bbox_right/2 &lt; bbox_left+bbox_right/2)
-            imdead.hspeed = 1;
-        else if (other.bbox_left+other.bbox_right/2 &gt; bbox_left+bbox_right/2)
-            imdead.hspeed = -1;
-    }
-    else {
-    
-        if (other.hspeed &gt; 0)
-            imdead.hspeed = 1;
-        else if (other.hspeed &lt; 0)
-            imdead.hspeed = -1;
-    }
+    if (other.hspeed &gt; 0)
+        imdead.hspeed = 1;
+    else if (other.hspeed &lt; 0)
+        imdead.hspeed = -1;
 }
-
-//Destroy
-instance_destroy();
 </string>
           </argument>
         </arguments>

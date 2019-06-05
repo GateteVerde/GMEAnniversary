@@ -36,12 +36,8 @@ audio_play_sound(snd_yoshi, 0, false);
 //Sets and starts the animation sequences.
 ready = 0;
 
-//Make Tides invisible
-if (instance_exists(obj_tides)) {
-
-    with (obj_tides) 
-        visible = 0;
-}
+//Deactivate tides
+instance_deactivate_object(obj_tides);
 
 //Start animations
 alarm[0] = 1;
@@ -80,14 +76,6 @@ timeline_running = 0;
 
 //Deactivate all instances.
 instance_deactivate_all(true);
-
-//Activate Tides
-instance_activate_object(obj_tides);
-if (instance_exists(obj_tides)) {
-
-    with (obj_tides) 
-        visible = 1;
-}
 
 //Activate persistent object.
 instance_activate_object(obj_persistent);

@@ -21,6 +21,10 @@ global.level = 0;
 //(Make sure is 1 number higher than the amount of levels)
 global.levelmax = cs_levels;
 
+//Exits found
+global.exits = ds_map_create();
+global.exits2 = ds_map_create();
+
 //Level time
 global.time = 0;
 

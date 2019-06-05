@@ -81,6 +81,9 @@ image_speed = 0.15;
 //Whether this block can be hit
 ready = 0;
 
+//"?" mark position
+xx = xstart;
+
 //Make it solid
 mysolid = instance_create(x,y,obj_solid);
     mysolid.image_xscale = 2;
@@ -158,6 +161,31 @@ instance_destroy();
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Manage "?" sign position
+
+xx += 0.5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -185,6 +213,43 @@ if (sprout == cs_coin)
 else if (sprout == cs_coin_s)
 &amp;&amp; (instance_number(obj_invincibility) == 0)
     instance_create(x+8,ystart-16,obj_blockcoin);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw a moving ? mark
+
+//Set the palette shader
+var pal = palette_get();
+if (pal != spr_palette_null) {
+
+    pal_swap_set(pal, global.skin);
+}
+
+//Draw the block
+draw_sprite(sprite_index, 0, round(x), round(y));
+draw_sprite_tiled_area_ext(sprite_index, 1, round(x)-xx, round(y), x+1, y+1, x+sprite_width-2, y+sprite_height-1, c_white, 1);
+
+//Reset shader
+pal_swap_reset();
 </string>
           </argument>
         </arguments>

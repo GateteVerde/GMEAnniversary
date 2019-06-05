@@ -26,6 +26,14 @@ for (var i = 0; i < 3; i++) {
 file_text_write_string(file,base64_encode(string(global.world)));
 file_text_writeln(file);
 
+//Current Exits
+file_text_write_string(file,ds_map_write(global.exits));
+file_text_writeln(file);
+
+//Current Alt Exits
+file_text_write_string(file,ds_map_write(global.exits2));
+file_text_writeln(file);
+
 //Star Coins
 file_text_write_string(file,base64_encode(string(global.starcoins)));
 file_text_writeln(file);

@@ -613,6 +613,9 @@
         <sprite>sprites\spr_qblock</sprite>
         <sprite>sprites\spr_qblock_hidden</sprite>
         <sprite>sprites\spr_qblock_empty</sprite>
+        <sprite>sprites\spr_qblock_double</sprite>
+        <sprite>sprites\spr_qblock_double_hidden</sprite>
+        <sprite>sprites\spr_qblock_double_empty</sprite>
         <sprite>sprites\spr_qblock_triple</sprite>
         <sprite>sprites\spr_qblock_triple_hidden</sprite>
         <sprite>sprites\spr_qblock_triple_empty</sprite>
@@ -1292,7 +1295,6 @@
             <sprite>sprites\spr_mbomb_th</sprite>
             <sprite>sprites\spr_bolt</sprite>
             <sprite>sprites\spr_football</sprite>
-            <sprite>sprites\spr_stone</sprite>
           </sprites>
           <sprite>sprites\spr_mushroom</sprite>
           <sprite>sprites\spr_fireflower</sprite>
@@ -1617,6 +1619,7 @@
         <sprite>sprites\spr_glass</sprite>
         <sprite>sprites\spr_glass_h</sprite>
         <sprite>sprites\spr_icespark</sprite>
+        <sprite>sprites\spr_lavablob</sprite>
         <sprite>sprites\spr_notespark</sprite>
         <sprite>sprites\spr_pop</sprite>
         <sprite>sprites\spr_shellthump</sprite>
@@ -1634,6 +1637,7 @@
         <sprite>sprites\spr_splash_lava</sprite>
         <sprite>sprites\spr_splash_lava_up</sprite>
         <sprite>sprites\spr_star</sprite>
+        <sprite>sprites\spr_starspark</sprite>
         <sprite>sprites\spr_supersmash</sprite>
         <sprite>sprites\spr_sweat</sprite>
         <sprite>sprites\spr_switchblock</sprite>
@@ -1797,6 +1801,7 @@
       </paths>
       <path>paths\pth_microgoomba</path>
     </paths>
+    <path>paths\pth_lava</path>
     <path>paths\pth_bubble</path>
     <path>paths\pth_bubble_v</path>
   </paths>
@@ -1976,6 +1981,8 @@
         <object>objects\obj_qblock_multicoin</object>
         <object>objects\obj_qblock_multicoin_shroom</object>
         <object>objects\obj_qblock_hidden</object>
+        <object>objects\obj_qblock_double</object>
+        <object>objects\obj_qblock_double_hidden</object>
         <object>objects\obj_qblock_triple</object>
         <object>objects\obj_qblock_triple_hidden</object>
         <object>objects\obj_qblock_big</object>
@@ -2974,6 +2981,7 @@
             <object>objects\obj_bubble</object>
             <object>objects\obj_bubble_blown</object>
             <object>objects\obj_bubble_v</object>
+            <object>objects\obj_lavaspark</object>
             <object>objects\obj_lightningsheet</object>
             <object>objects\obj_lightningsheet2</object>
             <object>objects\obj_notespark</object>
@@ -2981,6 +2989,7 @@
             <object>objects\obj_spinsmoke</object>
             <object>objects\obj_smoke</object>
             <object>objects\obj_star</object>
+            <object>objects\obj_starspark</object>
           </objects>
           <objects name="Menus">
             <objects name="Title">
@@ -3103,8 +3112,9 @@
     </rooms>
     <room>rooms\rm_credits</room>
   </rooms>
-  <constants number="51">
+  <constants number="52">
     <constant name="cs_version">"20-04-2019 - v2.0"</constant>
+    <constant name="cs_exitstotal">12</constant>
     <constant name="cs_levels">7</constant>
     <constant name="cs_billy">-33</constant>
     <constant name="cs_golden">-32</constant>

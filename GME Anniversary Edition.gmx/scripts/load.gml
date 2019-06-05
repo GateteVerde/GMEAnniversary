@@ -26,6 +26,14 @@ for (var i = 0; i < 3; i++) {
 global.world = real(base64_decode(file_text_read_string(file)));
 file_text_readln(file);
 
+//Current Exits
+ds_map_read(global.exits,file_text_read_string(file));
+file_text_readln(file);
+
+//Current Alt Exits
+ds_map_read(global.exits2,file_text_read_string(file));
+file_text_readln(file);
+
 //Star Coins
 global.starcoins = real(base64_decode(file_text_read_string(file)));
 file_text_readln(file);

@@ -67,7 +67,7 @@ if (ds_map_find_value(global.mapscreen,id) &gt; 0) {
     visible = 1;
     
     //If the game is 100% percent clear
-    if (global.gameclear == 1)
+    if (global.gameclear == 100)
         exit;
         
     //Otherwise

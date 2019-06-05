@@ -56,7 +56,6 @@
     <instance objName="obj_solid" x="0" y="352" name="inst_4B96E8F0" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="176" y="336" name="inst_D29F0F48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="224" y="336" name="inst_A64748C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock" x="208" y="336" name="inst_82AE1F5F" locked="0" code="sprout = cs_fire;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="400" y="272" name="inst_010802E5" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="16" y="400" name="inst_79503272" locked="0" code="" scaleX="17" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="416" y="336" name="inst_84A2631A" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
@@ -392,7 +391,6 @@
     <instance objName="obj_right" x="848" y="384" name="inst_90EF33D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_donut_triple" x="176" y="96" name="inst_753AED0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_donut_red_triple" x="112" y="64" name="inst_C1F43A5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_brick" x="192" y="336" name="inst_B7A0F649" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ninji_black" x="8" y="288" name="inst_3BCEDC7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="1744" y="48" name="inst_343316FD" locked="0" code="sprout[0] = cs_bomb;&#xA;sprout[1] = cs_football;&#xA;sprout[2] = cs_shell;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goomba" x="200" y="384" name="inst_0B6E3A5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -436,6 +434,7 @@
     <instance objName="obj_rex" x="552" y="360" name="inst_00697AB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wiggler" x="648" y="320" name="inst_23A04779" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tides" x="0" y="416" name="inst_887E1FBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_double" x="192" y="336" name="inst_C96BA4AE" locked="0" code="sprout[1] = cs_fire;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_goal" x="3344" y="304" w="96" h="80" xo="0" yo="0" id="10093352" name="inst_0FFAD497" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
