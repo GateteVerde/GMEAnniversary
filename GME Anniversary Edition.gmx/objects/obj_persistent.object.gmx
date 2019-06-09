@@ -436,12 +436,9 @@ if (variable_global_exists("gamepad")) {
             <string>///Handle various in-game variables
 
 //Calculate percentage
-got = (ds_map_size(global.exits) + ds_map_size(global.exits2)) + global.starcoins;
-total = cs_exitstotal + global.levelmax*3;
+got = (ds_map_size(global.exits) + ds_map_size(global.exits2)) + global.starcoins + (global.palaceyellow + global.palacegreen + global.palacered + global.palaceblue);
+total = cs_exitstotal + global.levelmax*3 + (1 + 1 + 1 + 1);
 global.gameclear = floor(got/total*100);
-
-//Keep following instances active
-event_user(1);
 
 //Make sure lives don't go over 99
 if (lives &gt; 99) 
@@ -602,32 +599,6 @@ if (variable_global_exists("gamepad")) {
         }    
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Keep following instances active
-
-//Tides
-instance_activate_object(obj_tides);
 </string>
           </argument>
         </arguments>

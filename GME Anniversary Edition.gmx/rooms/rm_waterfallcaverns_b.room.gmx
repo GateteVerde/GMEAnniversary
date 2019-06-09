@@ -149,7 +149,7 @@
     <instance objName="obj_solid" x="272" y="160" name="inst_B72E2FCB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="272" y="176" name="inst_1091BF2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_urchin_wall" x="224" y="32" name="inst_4F5AE3CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_down" x="96" y="16" name="inst_160F2A48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_down" x="96" y="32" name="inst_160F2A48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lavalotus" x="416" y="176" name="inst_02DEE185" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="848" y="48" name="inst_DD5F276B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_down" x="928" y="32" name="inst_CBB2FD62" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -227,7 +227,7 @@
     <instance objName="obj_semisolid" x="32" y="192" name="inst_52B0C056" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="192" y="160" name="inst_5B075CE2" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="288" y="192" name="inst_FA7FEDA8" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player_warp" x="80" y="16" name="inst_4B313500" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player_warp" x="80" y="32" name="inst_4B313500" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="336" y="-96" name="inst_502495B6" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_triple" x="32" y="128" name="inst_6D7754A9" locked="0" code="sprout[0] = cs_frog;&#xA;sprout[2] = cs_penguin;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="320" y="160" name="inst_9A5444E7" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
@@ -262,6 +262,8 @@
     <instance objName="obj_midwaygate" x="128" y="128" name="inst_DD871FF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwaygate" x="128" y="112" name="inst_8CD86528" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_midwaygate_tape" x="128" y="96" name="inst_D8BDE248" locked="0" code="xcoor = 120;&#xA;ycoor = 176;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_smwcheep" x="1032" y="80" name="inst_49FB7D3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_smwcheep_v" x="1112" y="112" name="inst_ADE4B4A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset" x="368" y="192" w="32" h="16" xo="736" yo="432" id="10056271" name="tile_2E977693" depth="12" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

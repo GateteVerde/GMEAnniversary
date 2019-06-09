@@ -81,7 +81,7 @@ mysolid = instance_create(x,y,obj_solid);
             <kind>1</kind>
             <string>///Create firebar
 
-for (var i=(-length); i&lt;(length-1); i++) {
+for (var i=0; i&lt;length; i++) {
 
     with (instance_create(x,y,obj_firebar)) {
     

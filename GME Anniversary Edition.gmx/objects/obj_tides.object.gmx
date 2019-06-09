@@ -177,7 +177,7 @@ if (vspeed == 0) {
             <string>///Water logic
 
 //Update xx
-xx -= 0.5;
+if (poison == false) then xx -= 0.5;
 
 //If the water is changing it's position.
 if (vspeed != 0) {
@@ -256,7 +256,7 @@ if (push) {
 if (poison == false) {
 
     //Draw the top part
-    draw_sprite_tiled_area_ext(sprite_index, -1, 0+xx, y, view_xview[0]/2, y, room_width, y+47, c_white, image_alpha);
+    draw_sprite_tiled_area_ext(sprite_index, -1, 0+xx-view_xview[view_current]/2, y, 0, y, room_width, y+47, c_white, image_alpha);
     
     //Set the alpha
     if (image_alpha &gt; 0) {
@@ -272,16 +272,16 @@ if (poison == false) {
 else {
 
     //Draw the top part
-    draw_sprite_tiled_area_ext(spr_tides_poison, -1, 0+xx, y, view_xview[0]/2, y, room_width, y+47, c_white, image_alpha);
+    draw_sprite_tiled_area_ext(spr_tides_poison, -1, 0+xx-view_xview[view_current]/2, y, 0, y, room_width, y+47, c_white, image_alpha);
     
     //Set the alpha
     if (image_alpha &gt; 0) {
     
-        draw_set_alpha(image_alpha/2);
+        draw_set_alpha(image_alpha);
     }
     
     //Set the colour
-    draw_set_colour(make_colour_rgb(144, 24, 200));
+    draw_set_colour(make_colour_rgb(89, 49, 146));
 }
 
 //Draw a rectangle.

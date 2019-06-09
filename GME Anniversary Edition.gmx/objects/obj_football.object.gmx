@@ -672,6 +672,9 @@ else {
     else if (other.hspeed &lt; 0)
         imdead.hspeed = -1;
 }
+
+//Destroy
+instance_destroy();
 </string>
           </argument>
         </arguments>

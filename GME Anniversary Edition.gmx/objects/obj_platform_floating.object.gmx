@@ -31,8 +31,9 @@
 water = -1;
 
 //Makes the platform able to float in water...
-ready = true;
+sink = 0;
 
+//Set up gravity 
 gravity = 0.1;
 </string>
           </argument>
@@ -62,15 +63,21 @@ gravity = 0.1;
 if ((collision_rectangle(bbox_left,bbox_top-5,bbox_right,bbox_top+4,obj_playerparent,0,0))
 &amp;&amp; (obj_playerparent.bbox_bottom &lt; yprevious+5)
 &amp;&amp; (obj_playerparent.state &lt; 2)) {
-
-    //Check for a moving platform or quicksand
-    var check = collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom+1,obj_semisolid,0,1);
-    if (check)
-    || (collision_rectangle(obj_playerparent.bbox_left,obj_playerparent.bbox_bottom-1,obj_playerparent.bbox_right,obj_playerparent.bbox_bottom+1,obj_quicksand,0,0))
-        exit;
-
+        
+    //Make the platform sink a bit
+    if (sink == 0) {
+    
+        sink = 1;
+        vspeed = 1;
+    }
+        
     //Snap the player vertically
     obj_playerparent.y = ceil(bbox_top-15);
+}
+else {
+
+    if (sink == 2)
+        sink = 0;
 }
 </string>
           </argument>
@@ -101,6 +108,7 @@ if (water != -1) {
 
     if (y &gt; water.y-8) {
     
+        //Stop gravity
         gravity = 0;
         
         //Floats...
@@ -111,8 +119,12 @@ if (water != -1) {
         gravity = 0.1;    
 }   
 
-if (vspeed &lt; -1)
+if (vspeed &lt; -1) {
+
     vspeed = -1;
+    if (sink == 1)
+        sink = 2;
+}
 </string>
           </argument>
         </arguments>

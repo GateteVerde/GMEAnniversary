@@ -171,9 +171,11 @@ else if (ready &gt; 0) {
         var shell = collision_rectangle(x+(5*sign(xscale)),bbox_top,x+(10*sign(xscale)),bbox_bottom-4,obj_shell,0,0);
         
         //If there's a shell in position
-        if (((shell) &amp;&amp; ((hspeed &gt;= 0) &amp;&amp; (xscale == 1))) 
-        || ((shell) &amp;&amp; ((hspeed &lt;= 0) &amp;&amp; (xscale == -1))))
-        &amp;&amp; (kick != 1) {
+        if (shell)
+        &amp;&amp; (kick != 1)
+        &amp;&amp; (shell.held == 0)
+        &amp;&amp; (((hspeed &gt; 0) &amp;&amp; (xscale == 1))
+        || ((hspeed &lt; 0) &amp;&amp; (xscale == -1))) {
         
             //Set sprite
             sprite_index = spr_beachkoopa_blue_walk;
