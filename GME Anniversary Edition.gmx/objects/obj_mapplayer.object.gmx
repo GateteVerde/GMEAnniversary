@@ -219,8 +219,17 @@ if (panel) {
                 exit;
             }
             
-            //Save the game if allowed
-            instance_create(0,0,obj_savemenu);
+            //If debug mode is not activated or the player did not used cheats, allow save.
+            if (debug_mode == false)
+            &amp;&amp; (global.cheats == false)
+                instance_create(0,0,obj_savemenu);
+                
+            //Otherwise, allow movement
+            else {
+            
+                ready = 0;
+                obj_mapcontrol.alarm[2] = 1;
+            }
         }
     }
     else {

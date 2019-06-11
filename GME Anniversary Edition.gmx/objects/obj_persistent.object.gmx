@@ -37,6 +37,9 @@
 //Initialize palette system
 pal_swap_init_system(shd_palette_swapper);
 
+//Turn enemies into coins? (0: Disabled / 1: Enabled)
+global.enemy_to_coin = 1;
+
 //Flight time (In seconds, how much the player should be able to fly.)
 global.flighttime = 4;
 

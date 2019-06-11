@@ -674,6 +674,58 @@ if (inv_y &gt; 0) {
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="123">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Open up the cheat introduction window.
+
+/*
+// WARNING: Remember to call 'global.cheats == true' on every cheat you introduce.
+*/
+
+var cheat = get_string("Please enter a cheat code. WARNING: You won't be able to save if you enter a correct cheat.", "");
+
+//Switch between cheats
+switch (cheat) {
+
+    //needafireflower
+    case ("needafireflower"): {
+    
+        audio_play_sound(snd_inventory, 0, false)
+        global.powerup = cs_fire;
+        global.cheats = true;
+    } break;
+    
+    //needarainbow
+    case ("needarainbow"): {
+    
+        audio_play_sound(snd_inventory, 0, false);
+        global.mapstar = true;
+        global.cheats = true;
+    } break;
+
+    default:
+        audio_play_sound(snd_wrong, 0, false); break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

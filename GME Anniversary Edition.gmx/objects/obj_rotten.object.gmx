@@ -218,14 +218,15 @@ else
             <string>///Hurt Mario if not invulnerable
 
 //If the player is invulnerable
-if (instance_exists(obj_invincibility))
-exit;
+if (instance_exists(obj_invincibility)) {
+
+    instance_create(x-8,y,obj_smoke);
+    instance_destroy();
+    exit;
+}
 
 //Hurt the player
-with (other) {
-
-    event_user(0);
-}
+with (other) event_user(0);
 
 //Destroy
 instance_destroy();

@@ -11,6 +11,9 @@
 //Gamepad
 global.gamepad = false;
 
+//Cheats
+global.cheats = false;
+
 //World Number
 global.world = 1;
 

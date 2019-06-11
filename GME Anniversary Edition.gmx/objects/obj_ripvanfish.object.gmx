@@ -143,37 +143,77 @@ else {
 
     //If the player does exist
     if (instance_exists(obj_playerparent)) {
+    
+        //If the player is under the effects of the starman, scoot away from it.
+        if (instance_exists(obj_invincibility)) {
         
-        //Set horizontal speed depending of the player's position
-        if (obj_playerparent.x &lt; x) {
-        
-            hspeed -= 0.01;
-            if (hspeed &lt; -1.5)
-                hspeed = -1.5;
+            //Set horizontal speed depending of the player's position
+            if (obj_playerparent.x &lt; x) {
+            
+                hspeed += 0.01;
+                if (hspeed &gt; 1.5)
+                    hspeed = 1.5;
+            }
+            
+            //Otherwise, if the player is at the right
+            else if (obj_playerparent.x &gt; x) {
+            
+                hspeed -= 0.01;
+                if (hspeed &lt; -1.5)
+                    hspeed = -1.5;
+            }
+            
+            //Set horizontal speed depending of the player's position
+            if (obj_playerparent.y &lt; y) {
+            
+                vspeed += 0.01;
+                if (vspeed &gt; 1.5)
+                    vspeed = 1.5;
+            }
+            
+            //Otherwise, if the player is at the right
+            else if (obj_playerparent.y &gt; y) {
+            
+                vspeed -= 0.01;
+                if (vspeed &lt; -1.5)
+                    vspeed = -1.5;
+            }
         }
         
-        //Otherwise, if the player is at the right
-        else if (obj_playerparent.x &gt; x) {
+        //If the player is not invulnerable
+        else {
         
-            hspeed += 0.01;
-            if (hspeed &gt; 1.5)
-                hspeed = 1.5;
-        }
-        
-        //Set horizontal speed depending of the player's position
-        if (obj_playerparent.y &lt; y) {
-        
-            vspeed -= 0.01;
-            if (vspeed &lt; -1.5)
-                vspeed = -1.5;
-        }
-        
-        //Otherwise, if the player is at the right
-        else if (obj_playerparent.y &gt; y) {
-        
-            vspeed += 0.01;
-            if (vspeed &gt; 1.5)
-                vspeed = 1.5;
+            //Set horizontal speed depending of the player's position
+            if (obj_playerparent.x &lt; x) {
+            
+                hspeed -= 0.01;
+                if (hspeed &lt; -1.5)
+                    hspeed = -1.5;
+            }
+            
+            //Otherwise, if the player is at the right
+            else if (obj_playerparent.x &gt; x) {
+            
+                hspeed += 0.01;
+                if (hspeed &gt; 1.5)
+                    hspeed = 1.5;
+            }
+            
+            //Set horizontal speed depending of the player's position
+            if (obj_playerparent.y &lt; y) {
+            
+                vspeed -= 0.01;
+                if (vspeed &lt; -1.5)
+                    vspeed = -1.5;
+            }
+            
+            //Otherwise, if the player is at the right
+            else if (obj_playerparent.y &gt; y) {
+            
+                vspeed += 0.01;
+                if (vspeed &gt; 1.5)
+                    vspeed = 1.5;
+            }        
         }        
     }
 

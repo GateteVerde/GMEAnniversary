@@ -75,15 +75,15 @@ myframe = 0;
 if (instance_exists(obj_invincibility)) {
 
     //Make the player flash.
-    isflashing++;
-    if (isflashing &gt; pal_swap_get_pal_count(spr_palette_mario)-1)
-        isflashing = 0;
+    isflashing += 0.1;
+    if (isflashing &gt; 6)
+        isflashing = 1;
     
     //Repeat the process.
     if (obj_invincibility.alarm[0] &gt; 120)
-        alarm[1] = 4;
+        alarm[1] = 1;
     else
-        alarm[1] = 16;
+        alarm[1] = 4;
 }
 else {
 
