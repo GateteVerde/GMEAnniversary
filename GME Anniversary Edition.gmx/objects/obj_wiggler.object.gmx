@@ -570,7 +570,7 @@ with (multidead) {
     count = 4;
     
     //Set the xscale
-    xscale = other.image_xscale;
+    xscale = other.xscale;
     
     //Set the sprite
     if (other.sprite_index == spr_wiggler)

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>obj_bluebrick_th</parentName>
+  <parentName>obj_parhold</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,37 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///A held football
+            <string>///A carryable football
+
+//Do not animate
+image_speed = 0;
+image_index = 0;
+
+//Direction of the item
+dir = 1;
+
+//Whether the item is held
+held = 0;
+
+//Whether the item is on a wall
+inwall = 0;
 
 //Inherit create event
 event_inherited();
-
-//Animate
-image_speed = 0;
-
-//Blink
-alarm[0] = 540;
-
-//Destroy
-alarm[1] = 600;
-
-//Whether the football was kicked
-ready = 0;
-
-//Whether the football falls
-ready2 = 0;
-
-//Combo
-hitcombo = 0;
-
-//How many times did this object bounce
-bounces = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="1" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -72,68 +64,139 @@ bounces = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Inherit default event
+            <string>///Held item logic when held
 
-if (held) {
-
-    //If the player was holding something
-    if (instance_exists(obj_playerparent))
-    &amp;&amp; (obj_playerparent.holding == 2)
-        obj_playerparent.holding = 0; 
+//If the item is being held
+if (held == 1) {
+    
+    //Disable underwater movement
+    swimming = false;
+    
+    //If the player does exist
+    if (instance_exists(obj_playerparent)) {
+    
+        //If the player control is not disabled
+        if (obj_playerparent.disablecontrol == false) {
+        
+            //If the player is turning
+            if (obj_playerparent.turning) {
+            
+                //Set up the depth
+                depth = -6;
+                
+                //Snap into player's 'x' position
+                x = obj_playerparent.x;
+            }
+            
+            //Otherwise...
+            else {
+            
+                //Set up the depth
+                depth = -4;
+                
+                //Snap into the player's 'x' position
+                x = obj_playerparent.x+(10*sign(obj_playerparent.xscale));
+            }
+            
+            //Make the player hold the item
+            if (keyboard_check(global.controlkey))
+                obj_playerparent.holding = 2;
+                
+            //Otherwise, release it
+            else {
+            
+                //Make the player release the item
+                with (obj_playerparent) {
+                
+                    //Set the kicking pose
+                    event_user(4);
+                    
+                    //Do not hold
+                    holding = 0;
+                }
+                
+                //Stop being held
+                held = 2;
+                
+                //Reset depth
+                depth = -2;
+                
+                //Kick the item
+                event_user(2);
+            }
+            
+            //Set the direction
+            dir = obj_playerparent.xscale;
+            
+            //Snap into the player's y position
+            if (obj_playerparent.crouch)
+                y = obj_playerparent.y;
+            else {
+            
+                if (obj_playerparent.mask_index != spr_bigmask)
+                    y = obj_playerparent.y-2;
+                else
+                    y = obj_playerparent.y-4;
+            }
+        }
+        else {
+                    
+            //Make the player release the item
+            with (obj_playerparent) {
+            
+                //Set the kicking pose
+                event_user(4);
+                
+                //Do not hold
+                holding = 0;
+            }
+            
+            //Stop being held
+            held = 2;
+            
+            //Reset depth
+            depth = -2;
+            
+            //Kick the item
+            event_user(2);            
+        }
+        
+        //Make it visible
+        visible = true;
+    }
+    
+    //Otherwise, follow other items
+    else {
+    
+        //Check what object is holding first
+        event_user(15);
+        
+        //Then check if it exists
+        if (instance_exists(follow)) {
+            
+            //Set the position of the item.
+            x = follow.x;
+            y = follow.y;
+            
+            //Make it invisible.
+            visible = 0;
+            
+            //Make said object hold the item
+            follow.holding = 1;
+            
+            //Set up the item's sprite
+            follow.myitem = sprite_index;
+            
+            //Set up the item's frame.
+            follow.myframe = image_index;            
+        }
+    }
+        
+    //Release if the player dies
+    if (!instance_exists(obj_playerparent))
+    &amp;&amp; (follow == noone)
+        held = 2;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Destroy
-
-instance_create(x-8,y,obj_smoke);
-instance_destroy();
-exit;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Blink
-
-alarm[0] = 1;
-image_alpha = !image_alpha
 </string>
           </argument>
         </arguments>
@@ -159,115 +222,48 @@ image_alpha = !image_alpha
             <string>///Holdable item logic when not held
 
 //If the item is not being held
-if (!held) {
+if (held != 1) {
 
-    //If the item is not stuck in a solid
-    if (!inwall) {
+    //Set the gravity when not underwater
+    if (!swimming) {
     
-        //Wall collision
-        event_user(3);
-
-        //Floor collision
-        event_user(4);
-                
-        //Slowdown if in contact with the floor and not kicked
-        if (ready == 0)
-        &amp;&amp; (vspeed == 0) {
+        //Gravity
+        gravity = 0.2;
         
-            //If the item is not underwater
-            if (!swimming) {
-            
-                //Slowdown until it stops
-                hspeed = max(0,abs(hspeed)-0.075)*sign(hspeed);
-                if (abs(hspeed) &lt; 0.075)
-                    hspeed = 0;
-            }
-            
-            //Otherwise, if the item is underwater
-            else if (swimming) {
-                        
-                //Slowdown until it stops
-                hspeed = max(0,abs(hspeed)-0.0375)*sign(hspeed);
-                if (abs(hspeed) &lt; 0.0375)
-                    hspeed = 0;            
-            }
-        }
-        
-        //Stop it if it gets stuck in a solid
-        if (ready == 0)
-        &amp;&amp; (vspeed &lt; 0)
-        &amp;&amp; (collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,0)) {
-        
-            //Stop movement
-            speed = 0;
-            gravity = 0;
-            
-            //Make the item move
-            inwall = true;
-        }        
+        //Cap vertical speed
+        if (vspeed &gt; 4)
+            vspeed = 4;
     }
     
-    //Otherwise, if the item is stuck in a solid
+    //Otherwise, set the gravity when underwater
     else {
     
-        //Move it until it does not make contact with a solid
-        x -= 2.5*sign(dir);
-       
-        //If the item is not longer overlapping a solid
-        if (!collision_rectangle(bbox_left,bbox_top+4,bbox_right,bbox_bottom-1,obj_solid,0,0))
-            inwall = false;        
+        //Gravity
+        gravity = 0.03;
+        
+        //Cap vertical speed
+        if (vspeed &gt; 1)
+            vspeed = 1;
     }
     
-    //Check for a body of water
+    //Check for a water object
     var water = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0);
     
     //If the object is not underwater and makes contact with water
-    if (water) 
-    &amp;&amp; (!swimming) {
+    if (water) &amp;&amp; (!swimming) {
     
         //Make the object go underwater
         swimming = true;
         
         //Stop vertical movement
-        gravity = 0;
         if (vspeed &gt; 0)
             vspeed = 0;
     }
     
     //Otherwise, if the object is underwater and it's not underwater, end swimming.
-    else if (!water) 
-    &amp;&amp; (swimming)
+    else if (!water) &amp;&amp; (swimming)    
         swimming = false;
 }
-
-//Destroy when outside the view
-if (outside_view())
-    instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_bluebrick_th">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Ignore this event
-
-exit;
 </string>
           </argument>
         </arguments>
@@ -292,14 +288,13 @@ exit;
             <kind>1</kind>
             <string>///Make the player interact with the item
 
-//If the item was not kicked yet
-if (!ready) {
+//If the item is not held
+if (held == 0) {
 
-    //If the item is not being held
-    if (canhold())
-    &amp;&amp; (!inwall)
+    //If the player can hold the item
+    if (canhold()) 
     &amp;&amp; (other.bbox_bottom &gt; bbox_top) {
-        
+    
         //Make the player hold it
         other.holding = 2;
         
@@ -308,54 +303,15 @@ if (!ready) {
         
         //Stop movement
         speed = 0;
-        gravity = 0;        
-    } 
-    
-    //Otherwise, if the item is not moving up
-    else if ((vspeed &gt;= 0) &amp;&amp; (!held)) {
-    
-        //Play 'Kick' sound
-        audio_play_sound(snd_kick, 0, false);
-                
-        //Make the player visually kick the item
-        with (obj_playerparent) {
-        
-            if (holding == 0)
-                event_user(4);
-        }
-        
-        //Set default animation
-        image_speed = 0.15;
-        
-        //Stay visible
-        image_alpha = 1;
-        
-        //Reset alarms
-        alarm[0] = 540;
-        alarm[1] = 600;
-        
-        //Kick it
-        ready = 1;
-        
-        //Create thump
-        with (instance_create(x,y,obj_smoke)) sprite_index = spr_spinthump;
-        
-        //Set the vertical speed
-        vspeed = -2.7;
-        
-        //Set the horizontal speed
-        if (obj_playerparent.x &lt; x)
-            hspeed = 2.7;
-        else
-            hspeed = -2.7;
-    }   
+        gravity = 0;
+    }
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="14">
+    <event eventtype="7" enumb="40">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -372,151 +328,15 @@ if (!ready) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Custom floor / ceiling collision
+            <string>///Destroy if outside the view
 
-//When moving down
-if (vspeed &gt;= 0) {
+//If not held
+if (held != 1) {
 
-    //Check for a semisolid below
-    var semisolid = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+vspeed,obj_semisolid,0,0);
-    
-    //If the semisolid exists, snap above it.
-    if (semisolid)
-    &amp;&amp; (bbox_bottom &lt; semisolid.yprevious+5)
-        y = semisolid.bbox_top-16;
-}
-
-//Embed the NPC into the slope to ensure correct slope physics.
-if (collision_rectangle(x-1,bbox_bottom,x+1,bbox_bottom+4,obj_slopeparent,1,0)) 
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom-4,obj_slopeparent,1,0)) 
-&amp;&amp; (vspeed == 0)
-    y += 4;
-    
-//Handle slope collision
-if (vspeed &gt; -0.85)
-&amp;&amp; ((collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
-&amp;&amp; (!collision_rectangle(x-1,bbox_bottom-8,x+1,bbox_bottom-8,obj_slopeparent,1,0))) {
-
-    //Stay embed on the slope.
-    while (collision_rectangle(x-1,bbox_bottom-4,x+1,bbox_bottom,obj_slopeparent,1,0))
-        y--;
-}
-
-//Check for floor objects
-if ((collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom+1,obj_semisolid,0,0))
-&amp;&amp; (!collision_rectangle(bbox_left,bbox_bottom-4,bbox_right,bbox_bottom-4,obj_semisolid,0,0)))
-|| (collision_rectangle(x-1,bbox_bottom+1,x+1,bbox_bottom+1,obj_slopeparent,1,0)) {
-
-    //Stop vertical movement
-    gravity = 0;
-
-    //If not kicked, stop vertical movement
-    if (ready == 0) 
-        vspeed = 0;
-        
-    //Otherwise, bounce
-    else {
-    
-        bounces++
-        if (bounces mod 2) {
-        
-            if (swimming)
-                vspeed = -1.5;
-            else
-                vspeed = -3;
-        }
-        else {
-        
-            if (swimming)
-                vspeed = -2.5;
-            else
-                vspeed = -5;
-        }
-    }
-}
-else {
-
-    //Set the gravity when not underwater
-    if (!swimming) {
-    
-        //Gravity
-        gravity = 0.2;
-        
-        //Cap vertical speed
-        if (vspeed &gt; 4)
-            vspeed = 4;
-    }
-    
-    //Otherwise, set the gravity when underwater
-    else {
-    
-        //Gravity
-        gravity = 0.03;
-        
-        //Cap vertical speed
-        if (vspeed &gt; 1)
-            vspeed = 1;
-    }
-}
-
-//If the player is moving up
-if (vspeed &lt; 0)
-&amp;&amp; ((collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_solid,1,0)) 
-|| (collision_rectangle(bbox_left+1,bbox_top+vspeed-1,bbox_right-1,bbox_top-1,obj_ceilslopeparent,1,0))) {
-    
-    //Prevent the NPC from getting stuck on a ceiling.
-    while (collision_rectangle(bbox_left+1,bbox_top,bbox_right-1,bbox_top,obj_solid,1,0))
-        y++;
-    
-    //Stop vertical speed
-    vspeed = 0;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Default wall collision
-
-//If moving left
-if (hspeed &lt; 0) 
-&amp;&amp; (collision_rectangle(bbox_left-hspeed, bbox_top+1, bbox_left, bbox_bottom-4, obj_solid, 0, 0)){
-
-    //Prevent getting embed on walls
-    while (collision_rectangle(bbox_left, bbox_top+4, bbox_left, bbox_bottom-4, obj_solid, 0, 0))
-        x++;
-        
-    //Reverse horizontal speed
-    hspeed = -hspeed;    
-}
-
-//Otherwise, if moving right
-else if (hspeed &gt; 0) 
-&amp;&amp; (collision_rectangle(bbox_right, bbox_top+1, bbox_right+hspeed, bbox_bottom-4, obj_solid, 0, 0)){
-
-    //Prevent getting embed on walls
-    while (collision_rectangle(bbox_right, bbox_top+4, bbox_right, bbox_bottom-4, obj_solid, 0, 0))
-        x--;
-        
-    //Reverse horizontal speed
-    hspeed = -hspeed;    
+    if (x &lt; view_xview[0]-32)
+    || (x &gt; view_xview[0]+view_wview[0]+32)
+    || (y &gt; view_yview[0]+view_hview[0]+32)
+        instance_destroy();
 }
 </string>
           </argument>
@@ -550,48 +370,26 @@ if (keyboard_check(global.upkey)) {
     
     //Create hit
     with (instance_create(x,y,obj_smoke)) sprite_index = spr_spinthump;
-    
-    //If the item is not overlapping a solid.
-    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
-        
-        //Set the horizontal speed
-        hspeed = obj_playerparent.xspeed/2;
-        
-        //If the item is not in a water surface
-        if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0))
-            vspeed = -7;
             
-        //Otherwise
-        else {
-
-            vspeed = -3.5;
-            swimming = true;
-        }
-    }
-    else
-        inwall = true;
-}
-
-//Otherwise, if 'Down' is pressed.
-else if (keyboard_check(global.downkey)) {
+    //Set the horizontal speed
+    hspeed = obj_playerparent.xspeed/2;
     
-    //Check if the object is stuck on a solid and move it
-    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_solid,0,0)) {
+    //Boost kick
+    y -= 2;
     
-        //Move it to a safe position
-        inwall = true;
+    //Animate
+    image_speed = 0.15;
+    
+    //If the item is not in a water surface
+    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0))
+        vspeed = -7;
         
-        //Stop it
-        hspeed = 0;
-    }
-    
-    //If there's not a slope in place...
-    if (!collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,obj_slopeparent,1,0))
-        hspeed = 0.5*obj_playerparent.xscale;
-    
     //Otherwise
-    else
-        vspeed = 0.1;    
+    else {
+
+        vspeed = -3.5;
+        swimming = true;
+    }
 }
 
 //Otherwise, throw it to the side.
@@ -599,26 +397,26 @@ else {
         
     //Play 'Kick' sound.
     audio_play_sound(snd_kick, 0, false);
-            
-    //Set the horizontal speed.
-    hspeed = 2.7*obj_playerparent.xscale;
-    
-    //Animate
-    image_speed = 0.15;
-    
-    //Reset alarms
-    alarm[0] = 540;
-    alarm[1] = 600;
-    
-    //Kicked
-    ready = 1;
     
     //Create hit
     with (instance_create(x,y,obj_smoke)) sprite_index = spr_spinthump;
+        
+    //Animate
+    image_speed = 0.15;    
     
-    //If there's a solid in position, turn around
-    if (place_meeting(x,y,obj_solid))
-        hspeed = -hspeed;
+    //Set the vertical speed
+    if (collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_top,obj_swim,0,0)) {
+    
+        vspeed = -1.3;
+        swimming = true;
+    }
+    else {
+    
+        vspeed = -2.7;
+    }
+        
+    //Set the horizontal speed
+    hspeed = 2.7*sign(obj_playerparent.xscale);
 }
 </string>
           </argument>
@@ -642,39 +440,36 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Destroy
+            <string>///Go poof!
 
-//Create dead object
-imdead = instance_create(x,y,obj_enemy_dead);
-
-//Make the dead object hereby the sprite
-imdead.sprite_index = sprite_index;
-
-//Make the dead object hereby the frame
-imdead.image_index = image_index;
-
-//Make the dead object hereby the scale
-imdead.image_xscale = 1;
-
-//Set the hspeed of the dead object
-if (other.hspeed == 0) {
-
-    //If the kill object is at the left of this object
-    if (other.bbox_left+other.bbox_right/2 &lt; bbox_left+bbox_right/2)
-        imdead.hspeed = 1;
-    else if (other.bbox_left+other.bbox_right/2 &gt; bbox_left+bbox_right/2)
-        imdead.hspeed = -1;
-}
-else {
-
-    if (other.hspeed &gt; 0)
-        imdead.hspeed = 1;
-    else if (other.hspeed &lt; 0)
-        imdead.hspeed = -1;
-}
-
-//Destroy
+instance_create(x-8, y, obj_smoke);
 instance_destroy();
+exit;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///This item cannot be carried between rooms
+
+exit;
 </string>
           </argument>
         </arguments>

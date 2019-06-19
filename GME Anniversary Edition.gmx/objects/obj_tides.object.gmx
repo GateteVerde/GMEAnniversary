@@ -256,7 +256,7 @@ if (push) {
 if (poison == false) {
 
     //Draw the top part
-    draw_sprite_tiled_area_ext(sprite_index, -1, 0+xx-view_xview[view_current]/2, y, 0, y, room_width, y+47, c_white, image_alpha);
+    draw_sprite_tiled_area_ext(sprite_index, -1, 0+xx, y, 0, y, room_width, y+47, c_white, image_alpha);
     
     //Set the alpha
     if (image_alpha &gt; 0) {
@@ -272,7 +272,7 @@ if (poison == false) {
 else {
 
     //Draw the top part
-    draw_sprite_tiled_area_ext(spr_tides_poison, -1, 0+xx-view_xview[view_current]/2, y, 0, y, room_width, y+47, c_white, image_alpha);
+    draw_sprite_tiled_area_ext(spr_tides_poison, -1, 0+xx, y, 0, y, room_width, y+47, c_white, image_alpha);
     
     //Set the alpha
     if (image_alpha &gt; 0) {

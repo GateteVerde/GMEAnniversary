@@ -143,6 +143,7 @@ var held = collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+4,ob
 //If the player is in position
 if (held)
 &amp;&amp; (held.vspeed &lt; 0)
+&amp;&amp; (held.object_index != obj_football)
 &amp;&amp; (held.bbox_top &gt; bbox_bottom+held.vspeed) {
 
     //Bump it

@@ -102,6 +102,59 @@ else
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_football">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Football hurt script
+
+//If the enemy is vulnerable to projectiles
+if (vulnerable &lt; 2) {
+
+    //Play 'Kick' sound
+    audio_play_sound(snd_kick, 0, false);
+    
+    //Create 'Spinthump' effect
+    with (instance_create(round(bbox_left+bbox_right)/2,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) sprite_index = spr_spinthump;
+    
+    //Decrement hits
+    firehitpoints--;
+    
+    //If there's no more fire hits left
+    if (firehitpoints == 0) {
+    
+        //Force set hits
+        hitpoints = 1;
+        
+        //Default hurt script
+        event_user(1);
+    }
+    
+    //Otherwise, become invulnerable for a bit.
+    else {
+
+        vulnerable = 99;
+        inv = 4;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_boomerang">
       <action>
         <libid>1</libid>
