@@ -27,11 +27,8 @@
             <kind>1</kind>
             <string>///Kuribo shoe movement
 
-//State
+//State (Checks if Mario is walking)
 state = 0;
-
-//Offset
-offset = 0;
 </string>
           </argument>
         </arguments>
@@ -107,7 +104,7 @@ if (instance_exists(obj_playerparent)) {
         vspeed = 0;
         y = ystart;
         
-        //End state
+        //End movement state
         state = 0;
         
         //Stop gravity
@@ -123,7 +120,7 @@ else {
     vspeed = 0;
     y = ystart;
     
-    //End state
+    //End movement state
     state = 0;
     
     //Stop gravity
