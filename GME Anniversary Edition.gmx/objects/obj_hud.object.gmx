@@ -41,6 +41,10 @@ alarm[0] = 7;
 shakex = 0;
 shakey = 0;
 
+//Fade
+fade = 0;
+fadetype = 1;
+
 //Shake the counter
 alarm[1] = 1;
 </string>
@@ -127,6 +131,37 @@ alarm[0] = 7;
           <argument>
             <kind>1</kind>
             <string>///HUD Logic
+
+//Fade timer to red if less than 100 seconds
+if (global.time &gt; -1)
+&amp;&amp; (obj_levelcontrol.leveltime != 0) {
+
+    //If there's less than 100 seconds left
+    if (global.time &lt;= 100) {
+    
+        //Fade out
+        if (fadetype == -1) {
+        
+            fade -= 0.05;
+            if (fade &lt; 0.05) {
+            
+                fade = 0;
+                fadetype = 1;
+            }
+        }
+        
+        //Otherwise, fade in
+        else {
+        
+            fade += 0.05;
+            if (fade &gt; 1) {
+            
+                fade = 1;
+                fadetype = -1;
+            }            
+        }        
+    }
+}
 
 //If the goal card exists, show HUD cards
 if (instance_exists(obj_goalcard)) {
@@ -224,8 +259,12 @@ if (global.time &gt; -1)
 &amp;&amp; (obj_levelcontrol.leveltime != 0) {
 
     //If there's 100 or less seconds left and the level isn't finished
-    if (global.time &lt;= 100 &amp;&amp; global.clear == 0)
-        draw_text_colour(view_xview[0]+view_wview[0]-41+shakex, view_yview[0]+12+shakey, string_add_zeros(global.time, 3), c_red, c_red, c_red, c_red, 1);
+    if (global.clear == 0) 
+    &amp;&amp; (global.time &lt;= 100) {
+    
+        draw_text_colour(view_xview[0]+view_wview[0]-41+shakex, view_yview[0]+12+shakey, string_add_zeros(global.time, 3), c_white, c_white, c_white, c_white, 1);
+        draw_text_colour(view_xview[0]+view_wview[0]-41+shakex, view_yview[0]+12+shakey, string_add_zeros(global.time, 3), c_red, c_red, c_red, c_red, fade);
+    }
     else
         draw_text_colour(view_xview[0]+view_wview[0]-41, view_yview[0]+12, string_add_zeros(global.time, 3), c_white, c_white, c_white, c_white, 1);
 }

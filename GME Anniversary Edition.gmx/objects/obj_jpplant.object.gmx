@@ -173,9 +173,15 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Change to ice
+            <string>///Change to fire or ice
 
-if (type == 2) then sprite_index = spr_jpplant_ice;
+//If this is a fire spitting plant, set the fire sprite
+if (type == 1) 
+    sprite_index = spr_jpplant_fire;
+    
+//Otherwise, if this is the ice spitting plant, set the ice sprite
+else if (type == 2)
+    sprite_index = spr_jpplant_ice;
 </string>
           </argument>
         </arguments>
@@ -217,8 +223,9 @@ if (ready == 0)
     //If the piranha plant has stopped
     if (vspeed == 0) {
     
-        //If the piranha plant can shoot fireballs, do so
-        if (fire == 0) {
+        //If the piranha plant can shoot fireballs or iceballs, do so
+        if (fire == 0) 
+        &amp;&amp; (type != 0) {
         
             //Fire
             fire = 1;

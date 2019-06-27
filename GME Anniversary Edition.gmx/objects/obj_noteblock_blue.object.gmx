@@ -121,6 +121,10 @@ if (!ready) {
             //Do not allow variable jump
             jumping = 2;      
         }
+        
+        //Create notes
+        with (instance_create(bbox_left,bbox_top,obj_note)) motion_set(135,1);
+        with (instance_create(bbox_right,bbox_top,obj_note)) motion_set(45,1);
     }
 }
 </string>

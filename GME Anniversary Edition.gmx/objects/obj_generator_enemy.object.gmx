@@ -98,7 +98,7 @@ if (ready == 0) {
     
         //First check if there's no solid blocking the entrance
         if (dir == 0) &amp;&amp; ((collision_rectangle(bbox_right+8, bbox_top, bbox_right+8, bbox_bottom, obj_playerparent, 0, 0)) || (collision_rectangle(bbox_right+8, bbox_top, bbox_right+8, bbox_bottom, obj_solid, 0, 0)))
-        || (dir == 1) &amp;&amp; ((collision_rectangle(bbox_left, bbox_top-8, bbox_right, bbox_top-8, obj_playerparent, 0, 0)) || (collision_rectangle(bbox_left, bbox_top-8, bbox_right, bbox_top-8, obj_solid, 0, 0)))
+        || (dir == 1) &amp;&amp; ((collision_rectangle(bbox_left, bbox_top-16, bbox_right, bbox_top-1, obj_playerparent, 0, 0)) || (collision_rectangle(bbox_left, bbox_top-16, bbox_right, bbox_top-1, obj_solid, 0, 0)))
         || (dir == 2) &amp;&amp; ((collision_rectangle(bbox_left-8, bbox_top, bbox_left-8, bbox_bottom, obj_playerparent, 0, 0)) || (collision_rectangle(bbox_left-8, bbox_top, bbox_left-8, bbox_bottom, obj_solid, 0, 0)))
         || (dir == 3) &amp;&amp; ((collision_rectangle(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+1, obj_playerparent, 0, 0)) || (collision_rectangle(bbox_left, bbox_bottom+1, bbox_right, bbox_bottom+1, obj_semisolid, 0, 0)))
             exit;

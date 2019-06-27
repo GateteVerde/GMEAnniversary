@@ -159,7 +159,11 @@ if (ready == 0)
             //Play 'Noteblock' sound
             audio_play_sound(snd_noteblock, 0, false);
         }  
-    }    
+    }
+    
+    //Create notes
+    with (instance_create(bbox_left,ystart+16,obj_note)) motion_set(135,1);
+    with (instance_create(bbox_right,ystart,obj_note)) motion_set(45,1);    
 }
 
 </string>
