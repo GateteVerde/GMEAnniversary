@@ -379,9 +379,9 @@ else if ((global.card[0] != -1) &amp;&amp; (global.card[1] != -1) &amp;&amp; (gl
             <kind>1</kind>
             <string>///Draw both card and box
 
-draw_sprite(spr_goalbox,0,round(xstart),round(ystart));
+draw_sprite(spr_goalbox, 0, round(xstart),round(ystart));
 if (!ready)
-    draw_sprite(sprite_index,-1,round(x),round(y));
+    draw_sprite(sprite_index, -1, round(x), round(y));
 </string>
           </argument>
         </arguments>

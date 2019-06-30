@@ -149,20 +149,43 @@ if (charge == 1) {
 
     //If there's no gravity
     if (gravity == 0) {
-        
-        //Follow the player
-        if (!instance_exists(obj_playerparent))
-        || (obj_playerparent.x &lt; x) {
-        
-            hspeed -= 0.0324;
-            if (hspeed &lt; -1)
-                hspeed = -1;
+    
+        //If the player is not under the effects of the starman
+        if (!instance_exists(obj_invincibility)) {
+            
+            //Follow the player
+            if (!instance_exists(obj_playerparent))
+            || (obj_playerparent.x &lt; x) {
+            
+                hspeed -= 0.0324;
+                if (hspeed &lt; -1)
+                    hspeed = -1;
+            }
+            else {
+            
+                hspeed += 0.0324;
+                if (hspeed &gt; 1)
+                    hspeed = 1;
+            }
         }
-        else {
         
-            hspeed += 0.0324;
-            if (hspeed &gt; 1)
-                hspeed = 1;
+        //Otherwise
+        else {
+            
+            //Un-follow the player
+            if (!instance_exists(obj_playerparent))
+            || (obj_playerparent.x &lt; x) {
+            
+                hspeed += 0.0324;
+                if (hspeed &gt; 1)
+                    hspeed = 1;
+            }
+            else {
+            
+                hspeed -= 0.0324;
+                if (hspeed &lt; -1)
+                    hspeed = -1;
+            }                    
         }
         
         //Allow jump
@@ -220,7 +243,16 @@ else
 //If the player is invulnerable
 if (instance_exists(obj_invincibility)) {
 
+    //Play 'Kick' sound
+    audio_play_sound(snd_kick, 0, false);
+
+    //Get 1000 points
+    with (instance_create(x-8, y, obj_score)) event_user(5);
+
+    //Create smoke
     instance_create(x-8,y,obj_smoke);
+    
+    //Destroy and exit
     instance_destroy();
     exit;
 }

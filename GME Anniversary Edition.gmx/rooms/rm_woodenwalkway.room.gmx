@@ -4,7 +4,7 @@
   <width>3536</width>
   <height>432</height>
   <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -298,8 +298,8 @@
     <instance objName="obj_grass_mini" x="1968" y="352" name="inst_E8DAB47C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grass_multicoin" x="2000" y="352" name="inst_0B80E784" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="2016" y="304" name="inst_D135EB04" locked="0" code="varmsg = &quot;Did you know that if you press the 'Run' button on those grass sprouts you can pick them up!.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock_triple" x="1744" y="240" name="inst_7B1E0238" locked="0" code="sprout[0] = cs_hammer;&#xA;sprout[2] = cs_super;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock_triple" x="1728" y="176" name="inst_2003D0D4" locked="0" code="sprout[0] = cs_frog;&#xA;sprout[2] = cs_tanooki;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_triple" x="1744" y="240" name="inst_7B1E0238" locked="0" code="sprout[0] = cs_hammer;&#xA;sprout[2] = cs_super;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_triple" x="1728" y="176" name="inst_2003D0D4" locked="0" code="sprout[0] = cs_frog;&#xA;sprout[2] = cs_tanooki;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shyguy" x="1944" y="352" name="inst_029C964B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shyguy_big" x="2000" y="352" name="inst_491D6827" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_plusclock_50" x="1488" y="32" name="inst_BEE33AC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -401,7 +401,6 @@
     <instance objName="obj_gladrus" x="1704" y="272" name="inst_4B84554E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_grayrus" x="1160" y="224" name="inst_AF82784E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goombrat" x="296" y="176" name="inst_D1A1BC21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_goombrat" x="328" y="208" name="inst_942124E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flagpole" x="3232" y="208" name="inst_730F48D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="3228" y="368" name="inst_A7B2E9C6" locked="0" code="" scaleX="1.5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="3248" y="384" name="inst_844508D9" locked="0" code="" scaleX="18" scaleY="1" colour="4294967295" rotation="0"/>
@@ -435,6 +434,8 @@
     <instance objName="obj_tides" x="0" y="408" name="inst_887E1FBF" locked="0" code="poison = false;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_double" x="192" y="336" name="inst_C96BA4AE" locked="0" code="sprout[1] = cs_fire;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_brick" x="176" y="336" name="inst_989225FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_goombud" x="328" y="208" name="inst_722977B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_goombud" x="632" y="160" name="inst_F7A8F1BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_goal" x="3344" y="304" w="96" h="80" xo="0" yo="0" id="10093352" name="inst_0FFAD497" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

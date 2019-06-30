@@ -91,14 +91,36 @@ kickme = 1;
             <kind>1</kind>
             <string>///Wake up
 
-with (instance_create(x,y,obj_galoomba)) {
+//Check sprite
+switch (sprite_index) {
 
-    //Set the horizontal speed
-    hspeed = 0.5*sign(other.dir);
+    //Goombud
+    case (spr_goombud_down): {
+        
+        with (instance_create(x,y,obj_goombud)) {
+        
+            //Set the horizontal speed
+            hspeed = 0.5*sign(other.dir);
+            
+            //Set the vertical speed
+            if (other.gravity == 0)
+                vspeed = -3;
+        }            
+    } break;
     
-    //Set the vertical speed
-    if (other.gravity == 0)
-        vspeed = -3;
+    //Default sprite
+    default: {
+        
+        with (instance_create(x,y,obj_galoomba)) {
+        
+            //Set the horizontal speed
+            hspeed = 0.5*sign(other.dir);
+            
+            //Set the vertical speed
+            if (other.gravity == 0)
+                vspeed = -3;
+        }
+    } break;
 }
 
 //Destroy
@@ -349,6 +371,9 @@ else if (kickme) {
 
 //Create held object
 imheld = instance_create(x,y-2,obj_galoomba_down);
+
+//Make the held object hereby the sprite
+imheld.sprite_index = sprite_index;
 
 //Make the held object hereby the scale
 imheld.dir = dir;
