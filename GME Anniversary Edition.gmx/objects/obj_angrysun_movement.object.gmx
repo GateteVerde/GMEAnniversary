@@ -56,7 +56,7 @@ alarm[3] = 10;
             <string>///Swoop to the right
 
 ready = 4;
-path_start(pth_angrysun_swoop_r, 4, path_action_stop, false);
+path_start(pth_angrysun_swoop_r, 3.5, path_action_stop, false);
 </string>
           </argument>
         </arguments>
@@ -81,11 +81,18 @@ path_start(pth_angrysun_swoop_r, 4, path_action_stop, false);
             <kind>1</kind>
             <string>///Pause before swooping to the right.
 
+//Do not stop if not at the given coordinate
+if (x &gt; 64) {
+
+    alarm[4] = 1;
+    exit;
+}
+
 x = 64;
 y = 48;
 ready = 0;
 speed = 0;
-alarm[5] = 15;
+alarm[5] = 22;
 </string>
           </argument>
         </arguments>
@@ -113,8 +120,8 @@ alarm[5] = 15;
 x = 64;
 y = 48;
 ready = 2;
-alarm[4] = 120;
-motion_set(270,4);
+alarm[4] = 200;
+motion_set(270,3);
 </string>
           </argument>
         </arguments>
@@ -140,7 +147,7 @@ motion_set(270,4);
             <string>///Swoop to the left
 
 ready = 3;
-path_start(pth_angrysun_swoop_l, 4, path_action_stop, false);
+path_start(pth_angrysun_swoop_l, 3.5, path_action_stop, false);
 </string>
           </argument>
         </arguments>
@@ -165,11 +172,18 @@ path_start(pth_angrysun_swoop_l, 4, path_action_stop, false);
             <kind>1</kind>
             <string>///Pause before swooping to the left.
 
+//Do not stop if not at the given coordinate
+if (x &lt; 304) {
+
+    alarm[1] = 1;
+    exit;
+}
+
 x = 304;
 y = 48;
 ready = 0;
 speed = 0;
-alarm[2] = 15;
+alarm[2] = 22;
 </string>
           </argument>
         </arguments>
@@ -197,8 +211,8 @@ alarm[2] = 15;
 x = 304;
 y = 48;
 ready = 1;
-alarm[1] = 120;
-motion_set(270,4);
+alarm[1] = 200;
+motion_set(270,3);
 </string>
           </argument>
         </arguments>
@@ -226,11 +240,11 @@ motion_set(270,4);
 switch (ready) {
 
     case (1): {
-        direction -= 15;
+        direction -= 11.25;
     } break;
     
     case (2): {
-        direction += 15;
+        direction += 11.25;
     } break;
 }
 </string>

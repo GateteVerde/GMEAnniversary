@@ -30,11 +30,13 @@
 /*
 **  This item uses creation code!
 **
-**  xmin = Minimum x coordinate where this enemy will go nuts (Default: X)
+**  xmin    = Minimum x coordinate where this enemy will go nuts (Default: X)
+**  happy   = Turn this into a happy moon, eliminates all enemies on screen.
 */
 
 //Default values
 xmin = x;
+happy = false;
 
 //How vulnerable is this enemy to various items?
 vulnerable = 2;
@@ -87,6 +89,41 @@ if (movement != noone)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Leave trail if this is a moon
+
+if (happy == true) {
+
+    with (instance_create(x-3+random(round(22)), y-3+random(round(22)), obj_smoke)) {
+    
+        sprite_index = spr_boltspark;
+        image_speed = 0.1;
+    }
+}
+
+//Repeat the process
+alarm[0] = 4;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -121,6 +158,9 @@ if (ready == 0) {
             //Went nut
             ready = 1;
             
+            //Leave trail
+            alarm[0] = 1;
+            
             //Create movement object
             movement = instance_create(0,0,obj_angrysun_movement);
         }
@@ -137,6 +177,108 @@ else {
         y = round(view_yview[0])+movement.y;
     }
 }
+
+//Change sprite into a happy moon and make it invulnerable
+if (happy == true) {
+
+    //Set sprite
+    sprite_index = spr_happymoon;
+    
+    //Make invulnerable
+    vulnerable = 100;
+    stomp = -1;
+    edible = 2;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_playerparent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Allow collection if happy
+
+if (happy == true) 
+&amp;&amp; (ready == true) {
+
+    //Play 'Powerup' sound
+    audio_play_sound(snd_scatter, 0, false);
+    
+    //Wipe enemies from screen
+    with (obj_enemyparent) {
+    
+        //If the enemy is not vulnerable
+        if (vulnerable &lt; 99) {
+    
+            //Create slow spark effects
+            var a = 0;
+            repeat (8) {
+            
+                with (instance_create(round(bbox_left+bbox_right)/2-8,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) {
+                
+                    //Set the sprite
+                    sprite_index = spr_boltspark;
+                    
+                    //Animate
+                    image_speed = 0.1;
+                    
+                    //Motion
+                    motion_set(a,0.5);
+                }
+                a += 45;
+            }
+            
+            //Create fast spark effects
+            var b = 22.5;
+            repeat (8) {
+            
+                with (instance_create(round(bbox_left+bbox_right)/2-8,round(bbox_top+bbox_bottom)/2-8,obj_smoke)) {
+                
+                    //Set the sprite
+                    sprite_index = spr_boltspark;
+                    
+                    //Animate
+                    image_speed = 0.1;
+                    
+                    //Motion
+                    motion_set(b,1);
+                }
+                b += 45;
+            }
+            
+            //Destroy
+            instance_destroy();
+            
+            //Get 200 points for each enemy wiped.
+            with (instance_create(round(bbox_left+bbox_right)/2,y,obj_score))
+                event_user(2);           
+        }        
+    }
+    
+    //Destroy
+    instance_destroy();
+    
+    //Get 1000 points for each enemy wiped.
+    with (instance_create(round(bbox_left+bbox_right)/2,y,obj_score))
+        event_user(5);       
+}
+else
+    event_inherited();
 </string>
           </argument>
         </arguments>

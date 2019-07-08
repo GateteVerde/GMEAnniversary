@@ -62,22 +62,26 @@ mapworld = 1;
 //Do not continue if the game is restarting
 if (obj_persistent.restart == false) {
 
-    if (global.world != mapworld)
-    &amp;&amp; (other.speed == 0) 
-    &amp;&amp; (other.ready == 0)
-    &amp;&amp; (global.clear == 0) {
-        
+    //If the player is not moving
+    if (other.speed == 0)
+    &amp;&amp; (global.world != mapworld) {
+    
         //Set up the world
         global.world = mapworld;
         
-        //Set up the music
-        with (obj_mapcontrol) {
-
-            //Stop it
-            alarm[3] = 1;
-            
-            //Play it
-            alarm[2] = 3;
+        //If the player is not ready
+        if (other.ready == 0)
+        &amp;&amp; (global.clear == 0) {
+        
+            //Set up the music
+            with (obj_mapcontrol) {
+    
+                //Stop it
+                alarm[3] = 1;
+                
+                //Play it
+                alarm[2] = 3;
+            }                    
         }
     }
 }

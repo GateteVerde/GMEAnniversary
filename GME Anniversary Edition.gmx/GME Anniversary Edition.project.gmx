@@ -896,6 +896,7 @@
         <sprite>sprites\spr_firesnake_body</sprite>
         <sprite>sprites\spr_brickgoomba</sprite>
         <sprite>sprites\spr_angrysun</sprite>
+        <sprite>sprites\spr_happymoon</sprite>
       </sprites>
       <sprites name="Forest">
         <sprite>sprites\spr_hoopster</sprite>
@@ -1921,31 +1922,6 @@
           <object>objects\obj_levelcontrol</object>
           <object>objects\obj_levelcontrol_light</object>
         </objects>
-        <objects name="Goals">
-          <objects name="SMB1">
-            <object>objects\obj_flagpole</object>
-            <object>objects\obj_flagpole_secret</object>
-            <object>objects\obj_incastle</object>
-          </objects>
-          <objects name="SMB2">
-            <object>objects\obj_crystal</object>
-            <object>objects\obj_crystal_red</object>
-            <object>objects\obj_hawkmouth</object>
-            <object>objects\obj_hawkmouth_secret</object>
-          </objects>
-          <objects name="SMB3">
-            <object>objects\obj_goalcard</object>
-            <object>objects\obj_goalcard_secret</object>
-          </objects>
-          <objects name="SMW">
-            <object>objects\obj_goalgate</object>
-            <object>objects\obj_goalgate_secret</object>
-            <object>objects\obj_keyhole</object>
-          </objects>
-          <object>objects\obj_checkpoint</object>
-          <object>objects\obj_midwaygate</object>
-          <object>objects\obj_midwaygate_tape</object>
-        </objects>
         <object>objects\obj_tilehider</object>
         <object>objects\obj_gotomap</object>
         <object>objects\obj_autoscroll</object>
@@ -2558,6 +2534,31 @@
         <object>objects\obj_jellyplatform</object>
       </objects>
       <objects name="Interactive">
+        <objects name="Goals">
+          <objects name="SMB1">
+            <object>objects\obj_flagpole</object>
+            <object>objects\obj_flagpole_secret</object>
+            <object>objects\obj_incastle</object>
+          </objects>
+          <objects name="SMB2">
+            <object>objects\obj_crystal</object>
+            <object>objects\obj_crystal_red</object>
+            <object>objects\obj_hawkmouth</object>
+            <object>objects\obj_hawkmouth_secret</object>
+          </objects>
+          <objects name="SMB3">
+            <object>objects\obj_goalcard</object>
+            <object>objects\obj_goalcard_secret</object>
+          </objects>
+          <objects name="SMW">
+            <object>objects\obj_goalgate</object>
+            <object>objects\obj_goalgate_secret</object>
+            <object>objects\obj_keyhole</object>
+          </objects>
+          <object>objects\obj_checkpoint</object>
+          <object>objects\obj_midwaygate</object>
+          <object>objects\obj_midwaygate_tape</object>
+        </objects>
         <object>objects\obj_pswitch</object>
         <object>objects\obj_gswitch</object>
         <object>objects\obj_trampoline</object>
@@ -3141,7 +3142,7 @@
     <room>rooms\rm_credits</room>
   </rooms>
   <constants number="52">
-    <constant name="cs_version">"11-06-2019 - v2.1"</constant>
+    <constant name="cs_version">"08-07-2019 - v2.1.1"</constant>
     <constant name="cs_exitstotal">12</constant>
     <constant name="cs_levels">7</constant>
     <constant name="cs_billy">-33</constant>
