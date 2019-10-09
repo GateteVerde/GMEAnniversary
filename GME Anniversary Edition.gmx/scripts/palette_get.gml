@@ -17,6 +17,7 @@ if (global.skin != 0) {
         //Question Blocks
         case (spr_qblock):
         case (spr_qblock_big):
+        case (spr_qblock_double):
         case (spr_qblock_triple): 
             return spr_palette_qblock;
             
