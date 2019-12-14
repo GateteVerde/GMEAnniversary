@@ -75,7 +75,7 @@ if (wallkick == 1) {
         wallkick = 0;
 
     //If the player does have the cat powerup.
-    if ((global.powerup == cs_cat) && (keyboard_check(vk_up))) {
+    if ((global.powerup == cs_cat) && (keyboard_check(global.upkey))) {
     
         //If the player can climb
         if (catclimbing < (global.cattime * 60)) {
