@@ -873,7 +873,8 @@ if (vulnerable &lt; 100)
             <kind>1</kind>
             <string>///Collision with a thrown shell
 
-if (vulnerable &lt; 99) {
+if (!outside_view())
+&amp;&amp; (vulnerable &lt; 99) {
 
     //Kill the enemy
     event_user(0);
