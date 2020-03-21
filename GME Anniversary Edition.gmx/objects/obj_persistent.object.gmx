@@ -812,6 +812,10 @@ file_text_writeln(file);
 file_text_write_string(file,string(vsync));
 file_text_writeln(file);
 
+//Save reserve item setting
+file_text_write_string(file,string(global.reservedrop))
+file_text_writeln(file);
+
 //Save control key
 file_text_write_string(file,string(real(global.controlkey)));
 file_text_writeln(file);
@@ -885,6 +889,10 @@ if (file_exists("settings.dat")) {
 
     //Set vsync based on the read value
     vsync = real(file_text_read_string(file));
+    file_text_readln(file);
+    
+    //Set reserve auto-drop based on the read value
+    global.reservedrop = real(file_text_read_string(file))
     file_text_readln(file);
     
     //Set key assigned to 'Control'

@@ -90,6 +90,7 @@ global.powerup = cs_small;
 
 //Reserve item
 global.reserve = cs_small;
+global.reservedrop = true;
 
 //Checkpoint
 global.checkpoint = noone;

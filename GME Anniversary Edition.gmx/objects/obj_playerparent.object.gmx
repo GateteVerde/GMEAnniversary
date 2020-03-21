@@ -1688,6 +1688,7 @@ if (invulnerable == false) {
                     with (obj_levelcontrol) {
                     
                         if (global.reserve &gt; cs_small)
+                        &amp;&amp; (global.reservedrop == true)
                             event_user(1);
                     }
                     

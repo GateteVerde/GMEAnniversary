@@ -83,13 +83,13 @@ if (y &lt; -8)
             <string>///Draw the text
 
 //Align it
-draw_set_halign(fa_right);
+draw_set_halign(fa_center);
 
 //Set the font
 draw_set_font(global.font_message);
 
 //Draw the text
-draw_text_colour_shadowed(round(x), round(y), string(mytext), c_black, colour, 1, 1, 0.5, 1);
+draw_text_colour_shadowed(view_xview[view_current] + view_wview[view_current] / 2, round(y), string(mytext), c_black, colour, 1, 1, 0.5, 1);
 
 //Reset align
 draw_set_halign(fa_left);

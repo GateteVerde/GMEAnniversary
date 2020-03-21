@@ -64,13 +64,14 @@ menu[1,3] = "File C - New!";
 menu[1,4] = "Back";
 
 //Menu 2: Options
-menu[2,0] = 6;
+menu[2,0] = 7;
 menu[2,1] = "Keyboard Configuration";
-menu[2,2] = "Set Window Size";
-menu[2,3] = "V-Sync: On";
-menu[2,4] = "FPS: On";
-menu[2,5] = "View Credits";
-menu[2,6] = "Back";
+menu[2,2] = "Reserve Auto-Drop: On";
+menu[2,3] = "Set Window Size";
+menu[2,4] = "V-Sync: On";
+menu[2,5] = "FPS: On";
+menu[2,6] = "View Credits";
+menu[2,7] = "Back";
 
 //Menu 3: Keys 1 / 2
 menu[3,0] = 7;
@@ -426,8 +427,18 @@ if (mode == 2) {
                     audio_play_sound(snd_wrong, 0, false);
             }
             
-            //Option 2: Window size
+            //Option 2: Reserve Auto-Drop
             else if (current == 2) {
+            
+                //Play 'Correct' sound
+                audio_play_sound(snd_correct, 0, false);
+                
+                //Enable Reserve item auto-drop
+                global.reservedrop = !global.reservedrop;
+            }
+            
+            //Option 3: Window size
+            else if (current == 3) {
             
                 //Play 'Correct' sound
                 audio_play_sound(snd_correct, 0, false);
@@ -470,8 +481,8 @@ if (mode == 2) {
                 }                    
             }
             
-            //Option 3: V-Sync
-            else if (current == 3) {
+            //Option 4: V-Sync
+            else if (current == 4) {
             
                 //Play 'Correct' sound
                 audio_play_sound(snd_correct, 0, false);
@@ -487,8 +498,8 @@ if (mode == 2) {
                 }
             }
             
-            //Option 4: FPS
-            else if (current == 4) {
+            //Option 5: FPS
+            else if (current == 5) {
             
                 //Play 'Correct' sound
                 audio_play_sound(snd_correct, 0, false);
@@ -501,8 +512,8 @@ if (mode == 2) {
                 }
             }
             
-            //Option 5: Credits
-            else if (current == 5) {
+            //Option 6: Credits
+            else if (current == 6) {
             
                 //Stop stream if it's playing
                 audio_stop_sound(bgm_title);
@@ -516,8 +527,8 @@ if (mode == 2) {
                 }                              
             }
             
-            //Option 6: Back
-            else if (current == 6) {
+            //Option 7: Back
+            else if (current == 7) {
                             
                 //Play 'Correct' sound
                 audio_play_sound(snd_correct, 0, false);
@@ -678,6 +689,24 @@ if (mode == 2) {
     }
 }
 
+//Update Reserve Auto-Drop text
+if (global.reservedrop)
+    menu[2,2] = "Reserve Auto-Drop: On";
+else
+    menu[2,2] = "Reserve Auto-Drop: Off";
+
+//Update V-Sync text
+if (obj_persistent.vsync)
+    menu[2,4] = "V-Sync: On";
+else
+    menu[2,4] = "V-Sync: Off";
+    
+//Update FPS text
+if (obj_persistent.showfps)
+    menu[2,5] = "FPS: On";
+else
+    menu[2,5] = "FPS: Off";
+    
 //Update Key Text
 menu[3,1] = "Run, Shoot: " + string(key_to_string(global.controlkey));
 menu[3,2] = "Jump, Spin: " + string(key_to_string(global.shiftkey));
@@ -688,17 +717,7 @@ menu[4,2] = "Down      : " + string(key_to_string(global.downkey));
 menu[4,3] = "Left      : " + string(key_to_string(global.leftkey));
 menu[4,4] = "Right     : " + string(key_to_string(global.rightkey));
 
-//Update V-Sync text
-if (obj_persistent.vsync)
-    menu[2,3] = "V-Sync: On";
-else
-    menu[2,3] = "V-Sync: Off";
-    
-//Update FPS text
-if (obj_persistent.showfps)
-    menu[2,4] = "FPS: On";
-else
-    menu[2,4] = "FPS: Off";
+
 </string>
           </argument>
         </arguments>
@@ -789,7 +808,7 @@ draw_set_alpha(1);
 
 //Draw the text
 draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+4, string(cs_version), c_black, c_white, 1, 1, 0.5, 1);
-draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+global.gh-12,"2008-2019 GMETEAM / DOUBLEG", c_black, c_white, 1, 1, 0.5, 1);
+draw_text_colour_shadowed(view_xview[0]+global.gw-4, view_yview[0]+global.gh-12,"2008-2020 GMETEAM / GREEN BARON GAMES", c_black, c_white, 1, 1, 0.5, 1);
 
 //Re align the text
 draw_set_halign(fa_left);
