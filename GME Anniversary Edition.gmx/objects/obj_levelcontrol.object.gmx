@@ -931,7 +931,7 @@ instance_deactivate_object(obj_deactenemyparent);
 instance_deactivate_object(obj_deactivateparent);
 
 //Activate deactivated instances inside the view
-instance_activate_region(view_xview[0]-32,view_yview[0]-32,view_wview[0]+32,view_hview[0]+32,true);
+instance_activate_region(view_xview[0]-40, view_yview[0]-32, view_wview[0]+40, view_hview[0]+32, true);
 </string>
           </argument>
         </arguments>

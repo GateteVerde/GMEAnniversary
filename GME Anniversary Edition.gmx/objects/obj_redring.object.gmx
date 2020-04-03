@@ -236,6 +236,9 @@ if (sprite_index != spr_redring_active) {
     //Play 'Ring' and 'Timer' sound
     audio_play_sound(snd_ring, 0, false);
     audio_play_sound(snd_timer, 0, true);
+    
+    //Restart red coins
+    global.redcoins = 0;
 
     //Make the coins visible            
     with (obj_coin_r) {

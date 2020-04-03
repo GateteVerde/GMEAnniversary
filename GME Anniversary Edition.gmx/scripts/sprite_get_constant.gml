@@ -41,6 +41,7 @@ switch (argument[0]) {
     case (spr_baburushoe): return cs_baburushoe;
     case (spr_dossunshoe): return cs_dossunshoe;
     case (spr_jugemushoe): return cs_jugemushoe;
+    case (spr_pentaroshoe): return cs_pentaroshoe;
     case (spr_1up): return cs_1up;
     case (spr_3upmoon): return cs_3up;
     case (spr_starman): return cs_star;
@@ -54,5 +55,6 @@ switch (argument[0]) {
     case (spr_propellerblock): return cs_propellerblock;
     case (spr_beanstalk): return cs_beanstalk;
     case (spr_billygun): return cs_billy;
+    case (spr_pipeypipe): return cs_pipey;
     default: return -1;
 }

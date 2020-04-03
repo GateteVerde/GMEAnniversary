@@ -633,9 +633,10 @@
         <sprite>sprites\spr_grayblock_boomerang</sprite>
         <sprite>sprites\spr_grayblock_bomb</sprite>
         <sprite>sprites\spr_grayblock_shell</sprite>
-        <sprite>sprites\spr_grayblock_lightning</sprite>
+        <sprite>sprites\spr_grayblock_bolt</sprite>
         <sprite>sprites\spr_grayblock_cat</sprite>
         <sprite>sprites\spr_grayblock_star</sprite>
+        <sprite>sprites\spr_grayblock_yoshi</sprite>
         <sprite>sprites\spr_grayblock_kuribo</sprite>
         <sprite>sprites\spr_grayblock_pswitch</sprite>
         <sprite>sprites\spr_grayblock_dash</sprite>
@@ -1286,6 +1287,7 @@
             <sprite>sprites\spr_baburushoe</sprite>
             <sprite>sprites\spr_dossunshoe</sprite>
             <sprite>sprites\spr_jugemushoe</sprite>
+            <sprite>sprites\spr_pentaroshoe</sprite>
           </sprites>
           <sprites name="Projectiles">
             <sprites name="Ice Blocks">
@@ -1496,6 +1498,9 @@
         <sprite>sprites\spr_barrel_tnt_roll</sprite>
         <sprite>sprites\spr_billy</sprite>
         <sprite>sprites\spr_billygun</sprite>
+        <sprite>sprites\spr_pipeypipe</sprite>
+        <sprite>sprites\spr_pipeypipe_held</sprite>
+        <sprite>sprites\spr_pipeypipe_plant</sprite>
         <sprite>sprites\spr_bumper</sprite>
         <sprite>sprites\spr_wallspring</sprite>
         <sprite>sprites\spr_wallspring_end</sprite>
@@ -1511,6 +1516,7 @@
         <sprite>sprites\spr_propellerblock</sprite>
         <sprite>sprites\spr_boomerang_blue</sprite>
         <sprite>sprites\spr_waterbubble</sprite>
+        <sprite>sprites\spr_twister</sprite>
       </sprites>
       <sprites name="Subcon">
         <sprites name="Vegetables">
@@ -1989,9 +1995,10 @@
         <object>objects\obj_bombblock</object>
         <object>objects\obj_shellblock</object>
         <object>objects\obj_boltblock</object>
-        <object>objects\obj_bellblock</object>
+        <object>objects\obj_catblock</object>
         <object>objects\obj_starblock</object>
-        <object>objects\obj_shoeblock</object>
+        <object>objects\obj_yoshiblock</object>
+        <object>objects\obj_kuriboblock</object>
         <object>objects\obj_switchblock</object>
         <object>objects\obj_dashblock</object>
       </objects>
@@ -2567,6 +2574,7 @@
         <object>objects\obj_barrel</object>
         <object>objects\obj_barrel_tnt</object>
         <object>objects\obj_billygun</object>
+        <object>objects\obj_pipeypipe</object>
         <object>objects\obj_bumper</object>
         <object>objects\obj_wallspring</object>
         <object>objects\obj_flipper_top</object>
@@ -2582,6 +2590,7 @@
         <object>objects\obj_propellerblock</object>
         <object>objects\obj_boomerang_blue</object>
         <object>objects\obj_waterbubble</object>
+        <object>objects\obj_twister</object>
       </objects>
       <objects name="Subcon">
         <objects name="Collectibles">
@@ -2963,8 +2972,10 @@
             <object>objects\obj_barrel_up</object>
             <object>objects\obj_billy</object>
             <object>objects\obj_billy_dead</object>
+            <object>objects\obj_pipeypipe_plant</object>
             <object>objects\obj_propellerblock_up</object>
             <object>objects\obj_boomerang_blue_up</object>
+            <object>objects\obj_twister_bubble</object>
           </objects>
           <objects name="Subcon">
             <object>objects\obj_turnip_out</object>
@@ -3024,6 +3035,7 @@
             <objects name="Title">
               <object>objects\obj_title</object>
               <object>objects\obj_titlemenu</object>
+              <object>objects\obj_titlemenu_health</object>
               <object>objects\obj_titlemenu_key</object>
             </objects>
             <objects name="Credits">
@@ -3141,24 +3153,26 @@
     </rooms>
     <room>rooms\rm_credits</room>
   </rooms>
-  <constants number="52">
-    <constant name="cs_version">"21-03-2020 - v2.2.1"</constant>
+  <constants number="54">
+    <constant name="cs_version">"03-04-2020 - v2.3"</constant>
     <constant name="cs_exitstotal">12</constant>
     <constant name="cs_levels">7</constant>
-    <constant name="cs_billy">-33</constant>
-    <constant name="cs_golden">-32</constant>
-    <constant name="cs_beanstalk">-31</constant>
-    <constant name="cs_propellerblock">-30</constant>
-    <constant name="cs_trampoline">-29</constant>
-    <constant name="cs_gswitch">-28</constant>
-    <constant name="cs_pswitch">-27</constant>
-    <constant name="cs_key">-26</constant>
-    <constant name="cs_rotten">-25</constant>
-    <constant name="cs_poison">-24</constant>
-    <constant name="cs_pwing">-23</constant>
-    <constant name="cs_star">-22</constant>
-    <constant name="cs_3up">-21</constant>
-    <constant name="cs_1up">-20</constant>
+    <constant name="cs_pipey">-35</constant>
+    <constant name="cs_billy">-34</constant>
+    <constant name="cs_golden">-33</constant>
+    <constant name="cs_beanstalk">-32</constant>
+    <constant name="cs_propellerblock">-31</constant>
+    <constant name="cs_trampoline">-30</constant>
+    <constant name="cs_gswitch">-29</constant>
+    <constant name="cs_pswitch">-28</constant>
+    <constant name="cs_key">-27</constant>
+    <constant name="cs_rotten">-26</constant>
+    <constant name="cs_poison">-25</constant>
+    <constant name="cs_pwing">-24</constant>
+    <constant name="cs_star">-23</constant>
+    <constant name="cs_3up">-22</constant>
+    <constant name="cs_1up">-21</constant>
+    <constant name="cs_pentaroshoe">-20</constant>
     <constant name="cs_jugemushoe">-19</constant>
     <constant name="cs_dossunshoe">-18</constant>
     <constant name="cs_baburushoe">-17</constant>

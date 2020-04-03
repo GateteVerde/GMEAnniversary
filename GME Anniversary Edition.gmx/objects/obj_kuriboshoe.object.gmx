@@ -59,6 +59,9 @@ switch (global.mountcolour) {
     
     //Jugemu Shoe
     case (3): sprite_index = spr_jugemushoe; break;
+        
+    //Pentaro Shoe
+    case (4): sprite_index = spr_pentaroshoe; break;
 }
 
 //Movement
@@ -238,7 +241,9 @@ if (instance_exists(obj_playerparent)) {
     if (global.mountcolour == 2) {
     
         //If the player lands after a jump, stomp
-        if ((stateprev == 2) &amp;&amp; (obj_playerparent.state != 2))
+        if (stateprev == 2) 
+        &amp;&amp; (obj_playerparent.state != 2)
+        &amp;&amp; (!collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_quicksand, 0, 0))
             instance_create(x,y,obj_stomp);
         
         //Remember last state
@@ -383,6 +388,9 @@ with (instance_create(x,y,obj_getshoe)) {
         
         //Jugemu Shoe
         case (3): sprite_index = spr_jugemushoe; break;
+        
+        //Pentaro Shoe
+        case (4): sprite_index = spr_pentaroshoe; break;
     }
     
     //Disallow pick up

@@ -41,6 +41,7 @@ switch (argument[0]) {
     case (cs_baburushoe): return spr_baburushoe;
     case (cs_dossunshoe): return spr_dossunshoe;
     case (cs_jugemushoe): return spr_jugemushoe;
+    case (cs_pentaroshoe): return spr_pentaroshoe;
     case (cs_golden): return spr_goldshroom;
     case (cs_1up): return spr_1up;
     case (cs_3up): return spr_3upmoon;
@@ -55,6 +56,7 @@ switch (argument[0]) {
     case (cs_propellerblock): return spr_propellerblock;
     case (cs_beanstalk): return spr_beanstalk;
     case (cs_billy): return spr_billygun;
+    case (cs_pipey): return spr_pipeypipe;
     case (cs_area_y): return spr_mushroom;
     case (cs_area_g): return spr_leaf;
     case (cs_area_r): return spr_fireflower;

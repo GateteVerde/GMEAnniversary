@@ -126,7 +126,7 @@ switch (argument[2]) {
     }
     return i;
     
-    //Yellow Yoshi
+    //Dossun Shoe
     case (spr_dossunshoe): {
     
         var i;
@@ -135,14 +135,23 @@ switch (argument[2]) {
     }
     return i;
     
-    //Blue Yoshi
+    //Jugemu Shoe
     case (spr_jugemushoe): {
     
         var i;
         i = instance_create(argument[0],argument[1],obj_getshoe);
             i.sprite_index = spr_jugemushoe;
     }
-    return i;        
+    return i;
+    
+    //Pentaro Shoe
+    case (spr_pentaroshoe): {
+    
+        var i;
+        i = instance_create(argument[0],argument[1],obj_getshoe);
+            i.sprite_index = spr_pentaroshoe;
+    }
+    return i;         
 
     //Golden Mushroom
     case (spr_goldshroom): return instance_create(argument[0],argument[1],obj_goldshroom);    
@@ -187,6 +196,9 @@ switch (argument[2]) {
     return i;
     
     //Billy Gun
-    case (spr_billygun): return instance_create(argument[0],argument[1],obj_billygun);    
+    case (spr_billygun): return instance_create(argument[0],argument[1],obj_billygun);
+    
+    //Billy Gun
+    case (spr_pipeypipe): return instance_create(argument[0],argument[1],obj_pipeypipe);       
 }
 

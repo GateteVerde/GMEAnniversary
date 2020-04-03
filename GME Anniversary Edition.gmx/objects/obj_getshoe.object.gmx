@@ -111,6 +111,50 @@ canpick = 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Kuribo Shoe logic
+
+//If this is a dossun shoe
+if (sprite_index == spr_dossunshoe) {
+    
+    //Check for a quicksand pool
+    qsand = collision_rectangle(bbox_left, bbox_bottom-4, bbox_right, bbox_bottom-4, obj_quicksand, 0, 0);
+    if (qsand)
+    &amp;&amp; (bbox_bottom &lt; qsand.yprevious+8) {
+    
+        //Stay on semisolid
+        y = qsand.bbox_top-11;
+        
+        //Stop vertical speed
+        vspeed = 0;
+        gravity = 0;
+    }
+}
+
+//Inherit event from parent
+event_inherited();
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_playerparent">
       <action>
         <libid>1</libid>
@@ -203,6 +247,9 @@ if (obj_playerparent.holding == 0)
         
         //Jugemu Shoe
         case (spr_jugemushoe): global.mountcolour = 3; break;
+        
+        //Pentaro Shoe
+        case (spr_pentaroshoe): global.mountcolour = 4; break;
     }    
     
     //Play 'Transform' sound

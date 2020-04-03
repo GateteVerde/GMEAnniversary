@@ -402,7 +402,8 @@ if (!disablecontrol)
     else if (yspeed == 0) { 
     
         //If the player is not overlapping a slippery surface.
-        if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0)) 
+        if (!collision_rectangle(bbox_left,bbox_bottom,bbox_right,bbox_bottom+1,obj_slippery,0,0))
+        || ((global.mount == 2) && (global.mountcolour == 4))
         || (global.powerup == cs_penguin) {
         
             //If the player is not crouched down.

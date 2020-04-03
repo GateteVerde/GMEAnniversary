@@ -32,8 +32,7 @@ if (instance_exists(obj_playerparent)) {
 
     if (place_meeting(x,y-(obj_playerparent.yspeed*2.5),obj_playerparent))
     &amp;&amp; (global.mount == 2)
-    &amp;&amp; (obj_playerparent.yspeed &gt; 0) 
-    &amp;&amp; (obj_playerparent.stompstyle == 1) {
+    &amp;&amp; (obj_playerparent.yspeed &gt; 0) {
         
         //Make player bounce
         with (obj_playerparent) event_user(1);

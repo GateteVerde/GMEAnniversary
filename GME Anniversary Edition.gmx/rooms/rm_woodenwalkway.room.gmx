@@ -157,16 +157,12 @@
     <instance objName="obj_semisolid" x="624" y="176" name="inst_DB3FBF2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ceilslope_l" x="208" y="240" name="inst_7EAEFEAD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ceilslope_r" x="272" y="240" name="inst_ABBCDBD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock_triple" x="608" y="112" name="inst_7FEEFCD6" locked="0" code="sprout[0] = cs_football;&#xA;sprout[1] = cs_billy;&#xA;sprout[2] = cs_boomerang;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock_triple" x="608" y="112" name="inst_7FEEFCD6" locked="0" code="sprout[0] = cs_billy;&#xA;sprout[1] = cs_football;&#xA;sprout[2] = cs_pipey;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock_spiked" x="624" y="48" name="inst_4D4B3C31" locked="0" code="sprout = cs_trampoline;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="448" y="32" name="inst_52F723CA" locked="0" code="sprout = cs_lightning;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_qblock" x="320" y="160" name="inst_7E5FC9C1" locked="0" code="sprout = round(random_range(cs_kuriboshoe,cs_jugemushoe));&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_qblock" x="320" y="160" name="inst_7E5FC9C1" locked="0" code="sprout = round(random_range(cs_kuriboshoe,cs_pentaroshoe));&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_qblock" x="160" y="160" name="inst_C6B31E45" locked="0" code="sprout = round(random_range(cs_yoshi,cs_yoshi_p));" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="384" y="272" name="inst_47BBBA7F" locked="0" code="varmsg = &quot;These blocks to my right are throwable bricks, press 'Run / Hold' to grab them and release said key to kick the block in the direction you're facing.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="448" y="256" name="inst_B21376C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bluebrick" x="416" y="256" name="inst_46808A50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_redbrick" x="432" y="240" name="inst_722349E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_graybrick" x="432" y="256" name="inst_DE5B8B22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="384" y="272" name="inst_47BBBA7F" locked="0" code="varmsg = &quot;These blocks to my right are throwable bricks, press the 'Run' key to grab them and release said key to kick the block in the direction you're facing.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="576" y="256" name="inst_4D80618E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coin" x="576" y="224" name="inst_6B6F5578" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageblock" x="400" y="64" name="inst_F3F013DA" locked="0" code="varmsg = &quot;When swimming, press 'Up' to swim higher or press 'Down' to swim as not high.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -177,7 +173,7 @@
     <instance objName="obj_path_diagonal_r" x="768" y="112" name="inst_2FC67F1B" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform_touch" x="720" y="144" name="inst_33A09DEC" locked="0" code="ready = 1;&#xA;direct = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="560" y="192" name="inst_9BF6BF35" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_messageblock" x="528" y="272" name="inst_5B0196A9" locked="0" code="varmsg = &quot;In order to perform a wall-jump: hug a wall and press the opposite key to start sliding it down. Once sliding press the 'Jump' key to jump against the wall.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_messageblock" x="528" y="272" name="inst_5B0196A9" locked="0" code="varmsg = &quot;In order to perform a walljump, hug a wall and press the opposite key to start sliding it down. Once sliding press the 'Jump' key to jump against the wall.&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fuzzy_line" x="784" y="112" name="inst_D6AEEAF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_holdbubble" x="704" y="240" name="inst_0BA1BF11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_holdbubble" x="880" y="208" name="inst_B6848C63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -258,8 +254,8 @@
     <instance objName="obj_qblock" x="1200" y="16" name="inst_321C1329" locked="0" code="sprout = cs_cat;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_koopa_red" x="1080" y="80" name="inst_C6284A7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_checkpoint" x="1552" y="208" name="inst_E13983AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bellblock" x="1360" y="288" name="inst_373DC572" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bellblock" x="1360" y="304" name="inst_DD94B82A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_catblock" x="1360" y="288" name="inst_373DC572" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_catblock" x="1360" y="304" name="inst_DD94B82A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_nipper" x="56" y="240" name="inst_A3BF02AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_nipper" x="72" y="240" name="inst_8E419042" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="656" y="336" name="inst_8702BCF2" locked="0" code="" scaleX="1" scaleY="13" colour="4294967295" rotation="0"/>
@@ -324,10 +320,6 @@
     <instance objName="obj_holdbubble" x="2256" y="208" name="inst_574CA8A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_holdbubble" x="2352" y="160" name="inst_7BD745EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_weightplatform" x="2448" y="320" name="inst_7270683B" locked="0" code="platx = 2560;&#xA;platy = 320;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_accordion_h" x="2512" y="256" name="inst_D04D3E02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="2496" y="208" name="inst_9040EF0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="2512" y="208" name="inst_A5E63E57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_coin" x="2528" y="208" name="inst_EAA70170" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wallspring" x="2640" y="368" name="inst_B8561FBC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="2656" y="272" name="inst_8F815B15" locked="0" code="" scaleX="1" scaleY="17" colour="4294967295" rotation="0"/>
     <instance objName="obj_semisolid" x="2368" y="80" name="inst_7720962A" locked="0" code="" scaleX="7" scaleY="1" colour="4294967295" rotation="0"/>
@@ -436,6 +428,13 @@
     <instance objName="obj_goombud" x="328" y="208" name="inst_722977B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goombud" x="632" y="160" name="inst_F7A8F1BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jellyplatform" x="800" y="320" name="inst_B4C91FB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_waterbubble" x="2464" y="208" name="inst_2B3C9375" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_right" x="2464" y="208" name="inst_E69D78AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_left" x="2576" y="208" name="inst_A08FFE9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_graybrick" x="432" y="256" name="inst_3D2FEA6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bluebrick" x="416" y="256" name="inst_5C151482" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bluebrick" x="448" y="256" name="inst_BA29B66C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_redbrick" x="432" y="240" name="inst_A86E68F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgr_tileset_goal" x="3344" y="304" w="96" h="80" xo="0" yo="0" id="10093352" name="inst_0FFAD497" depth="15" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

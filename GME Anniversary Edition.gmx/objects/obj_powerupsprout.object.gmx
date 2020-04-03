@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_mushroom</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -30,8 +30,11 @@
 //Animate
 image_speed = 0;
 
-//Make it visible
-visible = 1;
+//Does this object bounce outta the block
+bouncy = 0;
+
+//Item check
+alarm[0] = 2;
 
 //If there is a solid on top of the block
 if (position_meeting(x,y-8,obj_solid)) {
@@ -39,15 +42,15 @@ if (position_meeting(x,y-8,obj_solid)) {
     //Go down if both sides are blocked
     if (position_meeting(x-16,y+8,obj_solid))
     &amp;&amp; (position_meeting(x+16,y+8,obj_solid))
-        vspeed = 1;
+        vspeed = 0.35;
 
     //Go right if the left side is blocked
     else if (position_meeting(x-16,y+8,obj_solid))
-        hspeed = 1;
+        hspeed = 0.35;
 
     //Go left if the right side is blocked
     else if (position_meeting(x+16,y+8,obj_solid))
-        hspeed = -1;
+        hspeed = -0.35;
 
     //Otherwise, go towards Mario
     else {
@@ -56,125 +59,21 @@ if (position_meeting(x,y-8,obj_solid)) {
         if (instance_exists(obj_mario)) {
         
             if (obj_mario.x &gt; x)
-                hspeed = 1;
+                hspeed = 0.35;
             else
-                hspeed = -1;
+                hspeed = -0.35;
         }
         
         //Otherwise, if it does not exist.
         else
-            hspeed = -1;
+            hspeed = -0.35;
     }
 
 }
 
 //Otherwise, move up
 else
-    vspeed = -1;
-    
-//Sprout out
-alarm[0] = 16;
-
-//Item check
-alarm[1] = 1;
-
-//Sprite check
-alarm[2] = 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Sprite check
-
-//Star
-if (sprite_index == spr_starman)
-    image_speed = 0.15;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Item check
-
-//If this is a leaf, replace with a real leaf
-if (sprite_index == spr_leaf)
-    instance_create(xstart,ystart,obj_pickup_leaf);
-    
-//Otherwise, if this is a p-wing, replace with a real p-wing
-else if (sprite_index == spr_pwing)
-    instance_create(xstart,ystart,obj_pickup_pwing);
-    
-//Otherwise, if this is a propeller shroom, replace with a real propeller shroom
-else if (sprite_index == spr_propellershroom)
-    instance_create(xstart,ystart,obj_pickup_propeller);
-    
-//Otherwise, if this is a super bell, replace with a real super bell
-else if (sprite_index == spr_superbell) {
-
-    //Play 'Sprout' sound
-    audio_play_sound(snd_sprout, 0, false);
-
-    //Create a bell
-    with (instance_create(xstart,ystart-2,obj_superbell))
-        vspeed = -5;
-}
-
-//Otherwise
-else {
-
-    //If the sprite is a beanstalk
-    if (sprite_index == spr_beanstalk) {
-        
-        //Replace it with a real beanstalk.
-        instance_create(xstart,ystart,obj_beanstalk);
-    }
-    else {
-
-        //Play sprout sound
-        audio_play_sound(snd_sprout, 0, false);
-    
-        //Exit this event.
-        exit;
-    }
-}
-
-//Destroy
-instance_destroy()
+    vspeed = -0.35;
 </string>
           </argument>
         </arguments>
@@ -197,23 +96,159 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Finish sprouting
+            <string>///Item check
 
-//Create a item out of the sprite.
-with (sprite_make_object(x,y,sprite_index)) {
-
-    //If moving up
-    if (other.vspeed &lt; 0)
-        alarm[10] = 1;
-    else {
+//If this is a leaf, replace with a real leaf
+if (sprite_index == spr_leaf)
+    instance_create(xstart, ystart, obj_pickup_leaf);
     
-        permission = 1;
-        y--;
+//Otherwise, if this is a p-wing, replace with a real p-wing
+else if (sprite_index == spr_pwing)
+    instance_create(xstart, ystart, obj_pickup_pwing);
+    
+//Otherwise, if this is a propeller shroom, replace with a real propeller shroom
+else if (sprite_index == spr_propellershroom)
+    instance_create(xstart, ystart, obj_pickup_propeller);
+    
+//Otherwise, if this is a super bell, replace with a real super bell
+else if (sprite_index == spr_superbell) {
+
+    //Play 'Sprout' sound
+    audio_play_sound(snd_sprout, 0, false);
+
+    //Create a bell
+    with (instance_create(xstart, ystart-2, obj_superbell))
+        vspeed = -5;
+}
+
+//Otherwise
+else {
+
+    //If the sprite is a beanstalk
+    if (sprite_index == spr_beanstalk) {
+        
+        //Replace it with a real beanstalk.
+        instance_create(xstart, ystart, obj_beanstalk);
+    }
+    else {
+
+        //Play sprout sound
+        audio_play_sound(snd_sprout, 0, false);
+        
+        //If moving up...
+        if (vspeed &lt; 0) {
+        
+            //...and the sprite is one of the following, make it bounce.
+            if (sprite_index == spr_pswitch)
+            || (sprite_index == spr_gswitch)
+            || (sprite_index == spr_trampoline)
+            || (sprite_index == spr_powblock)
+            || (sprite_index == spr_key)
+            || (sprite_index == spr_egg)
+            || (sprite_index == spr_egg_r)
+            || (sprite_index == spr_egg_y)
+            || (sprite_index == spr_egg_b)
+            || (sprite_index == spr_egg_t)
+            || (sprite_index == spr_egg_p)
+            || (sprite_index == spr_kuriboshoe) 
+            || (sprite_index == spr_baburushoe)
+            || (sprite_index == spr_dossunshoe)
+            || (sprite_index == spr_jugemushoe)
+            || (sprite_index == spr_pentaroshoe)
+            || (sprite_index == spr_propellerblock) 
+            || (sprite_index == spr_billygun) 
+            || (sprite_index == spr_pipeypipe) {
+            
+                vspeed = -2.5;
+                bouncy = 1;
+            }
+        }        
+    
+        //Exit this event.
+        exit;
     }
 }
 
 //Destroy
-instance_destroy();
+instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Turn into a real item when no solid is overlapping
+
+//If not overlapping with a solid
+if (!collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, obj_solid, 0, 0)) {
+
+    //Create an item
+    with (sprite_make_object(x, y, sprite_index)) {
+    
+        //If moving up
+        if (other.vspeed &lt; 0) {
+        
+            alarm[10] = 1;
+            if (other.bouncy == 1)
+                vspeed = -2.5;
+        }
+            
+        //Otherwise, stop it
+        else {
+        
+            permission = 1;
+            y--;
+        }
+        
+        //If the item is underwater, make it swim
+        if (collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_top, obj_swim, 0, 0))
+            swimming = true;
+    }
+    
+    //Destroy
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw the sprite
+
+draw_sprite_ext(sprite_index, -1, round(x), round(y)+1, 1, 1, 0, c_white, 1);
 </string>
           </argument>
         </arguments>

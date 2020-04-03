@@ -271,13 +271,23 @@ else if (kickme) {
                 
                     with (obj_playerparent) event_user(1);
                 }
-                    
-                //Create two fireballs if the player is wearing a red shoe
-                if (global.mount == 2)
-                &amp;&amp; (global.mountcolour = 1) {
                 
-                    with (instance_create(x+12,y+8,obj_fireball)) hspeed = 1.5;
-                    with (instance_create(x-12,y+8,obj_fireball)) hspeed = -1.5;
+                //Create projectiles if the player is wearing a baburu or pentaro shoe
+                if (global.mount == 2) {
+                
+                    //If this is a baburu shoe, create two fireballs
+                    if (global.mountcolour = 1) {
+                    
+                        with (instance_create(x+12,y+8,obj_fireball)) hspeed = 1.5;
+                        with (instance_create(x-12,y+8,obj_fireball)) hspeed = -1.5;
+                    }
+
+                    //Otherwise, if this is a pentaro shoe, create two ice balls
+                    else if (global.mountcolour = 4) {
+                                                
+                        with (instance_create(x+12,y+8,obj_iceball)) hspeed = 1.5;
+                        with (instance_create(x-12,y+8,obj_iceball)) hspeed = -1.5;                                
+                    }
                 }
                 
                 //Create spin smoke

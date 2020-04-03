@@ -83,9 +83,9 @@ if (instance_exists(obj_playerparent)) {
 
 //Repeat
 if (alarm[0] &gt; 120)
-    alarm[3] = 4;
+    alarm[3] = 3;
 else
-    alarm[3] = 16;
+    alarm[3] = 12;
 </string>
           </argument>
         </arguments>
