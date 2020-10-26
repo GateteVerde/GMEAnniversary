@@ -1051,6 +1051,8 @@
         <sprite>sprites\spr_pokey_green</sprite>
         <sprite>sprites\spr_porcupo</sprite>
         <sprite>sprites\spr_porcupo_r</sprite>
+        <sprite>sprites\spr_autobomb</sprite>
+        <sprite>sprites\spr_autobomb_fire</sprite>
         <sprite>sprites\spr_trouter</sprite>
       </sprites>
       <sprites name="Big">
@@ -2253,6 +2255,7 @@
         <object>objects\obj_pokey_green</object>
         <object>objects\obj_porcupo</object>
         <object>objects\obj_porcupo_r</object>
+        <object>objects\obj_autobomb</object>
         <object>objects\obj_trouter</object>
       </objects>
       <objects name="Big">
@@ -2845,6 +2848,8 @@
             <object>objects\obj_snifit_ball</object>
             <object>objects\obj_beezo_active</object>
             <object>objects\obj_panser_fire</object>
+            <object>objects\obj_autobomb_shyguy</object>
+            <object>objects\obj_autobomb_fire</object>
           </objects>
           <object>objects\obj_shell</object>
           <object>objects\obj_shell_kick</object>

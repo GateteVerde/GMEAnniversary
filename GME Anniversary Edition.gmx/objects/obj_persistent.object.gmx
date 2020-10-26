@@ -389,16 +389,14 @@ if (variable_global_exists("gamepad")) {
             
         //A Button / B Button
         //X Button / O Button (Shift)
-        if (gamepad_button_check(gamepad_input, gp_face1)) 
-        || (gamepad_button_check(gamepad_input, gp_face2))
+        if ((gamepad_button_check(gamepad_input, gp_face1)) || (gamepad_button_check(gamepad_input, gp_face2)))
             keyboard_key_press(global.shiftkey);
         else 
             keyboard_key_release(global.shiftkey);
         
         //X Button / Y Button 
         //Square Button / Triangle Button (Control)
-        if (gamepad_button_check(gamepad_input, gp_face3)) 
-        || (gamepad_button_check(gamepad_input, gp_face4))
+        if ((gamepad_button_check(gamepad_input, gp_face3)) || (gamepad_button_check(gamepad_input, gp_face4)))
             keyboard_key_press(global.controlkey);
         else
             keyboard_key_release(global.controlkey);
